@@ -1,4 +1,4 @@
-![Logo](admin/ecoflow-mqtt.png)
+![Logo](admin/ecoflow.png)
 # ioBroker.ecoflow-mqtt
 
 [![NPM version](https://img.shields.io/npm/v/iobroker.ecoflow-mqtt.svg)](https://www.npmjs.com/package/iobroker.ecoflow-mqtt)
@@ -14,36 +14,11 @@
 
 connects to ecoflow products
 
-## Developer manual
-This section is intended for the developer. It can be deleted later.
-
-### DISCLAIMER
-
-Please make sure that you consider copyrights and trademarks when you use names or logos of a company and add a disclaimer to your README.
-You can check other adapters for examples or ask in the developer community. Using a name or logo of a company without permission may cause legal problems for you.
 
 ### Getting started
 
-You are almost done, only a few steps left:
-1. Create a new repository on GitHub with the name `ioBroker.ecoflow-mqtt`
-1. Initialize the current folder as a new git repository:  
-	```bash
-	git init -b main
-	git add .
-	git commit -m "Initial commit"
-	```
-1. Link your local repository with the one on GitHub:  
-	```bash
-	git remote add origin https://github.com/foxthefox/ioBroker.ecoflow-mqtt
-	```
 
-1. Push all files to the GitHub repo:  
-	```bash
-	git push origin main
-	```
 1. Add a new secret under https://github.com/foxthefox/ioBroker.ecoflow-mqtt/settings/secrets. It must be named `AUTO_MERGE_TOKEN` and contain a personal access token with push access to the repository, e.g. yours. You can create a new token under https://github.com/settings/tokens.
-
-1. Head over to [main.js](main.js) and start programming!
 
 ### Best Practices
 We've collected some [best practices](https://github.com/ioBroker/ioBroker.repositories#development-and-coding-best-practices) regarding ioBroker development and coding in general. If you're new to ioBroker or Node.js, you should
