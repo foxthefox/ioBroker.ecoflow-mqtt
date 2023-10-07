@@ -1,0 +1,51 @@
+{
+	"cli": true,
+	"target": "directory",
+	"adapterName": "ecoflow-mqtt",
+	"title": "ecoflow",
+	"description": "connects to ecoflow products",
+	"keywords": [
+		"ecoflow",
+		"powerstream",
+		"powerstation",
+		"delta",
+		"river"
+	],
+	"expert": "yes",
+	"features": [
+		"adapter"
+	],
+	"adminFeatures": [
+		"tab",
+		"custom"
+	],
+	"type": "iot-systems",
+	"startMode": "daemon",
+	"connectionType": "cloud",
+	"dataSource": "push",
+	"connectionIndicator": "yes",
+	"language": "JavaScript",
+	"nodeVersion": "18",
+	"adminUi": "html",
+	"tabReact": "yes",
+	"tools": [
+		"ESLint",
+		"type checking"
+	],
+	"i18n": "JSON",
+	"releaseScript": "yes",
+	"devServer": "yes",
+	"devServerPort": 8081,
+	"indentation": "Tab",
+	"quotes": "single",
+	"es6class": "yes",
+	"authorName": "foxthefox",
+	"authorGithub": "foxthefox",
+	"authorEmail": "foxthefox@wysiwis.net",
+	"gitRemoteProtocol": "HTTPS",
+	"gitCommit": "no",
+	"defaultBranch": "main",
+	"license": "MIT License",
+	"dependabot": "yes",
+	"creatorVersion": "2.5.0"
+}

@@ -1,0 +1,13 @@
+{
+	"env": {
+		"browser": true,
+		"es6": true
+	},
+	"parserOptions": {
+		"sourceType": "module",
+		"project": "./tsconfig.json"
+	},
+	"rules": {
+		"react/prop-types": "off"
+	}
+}
