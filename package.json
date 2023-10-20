@@ -61,7 +61,7 @@
 		"test:integration": "mocha test/integration --exit",
 		"test": "npm run test:js && npm run test:package",
 		"check": "tsc --noEmit -p tsconfig.check.json",
-		"lint": "eslint --ext .js,.jsx .",
+		"lint": "eslint .",
 		"translate": "translate-adapter",
 		"release": "release-script"
 	},
