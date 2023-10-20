@@ -1,5 +1,14 @@
 {
-	"ecoflow-mqtt adapter settings": "ecoflow-mqtt的适配器设置",
-	"option1": "选项1",
-	"option2": "选项2"
+    "ecoflow-mqtt adapter settings": "ecoflow-mqtt的适配器设置",
+    "option1": "选项1",
+    "option2": "选项2",
+    "userName": "用户名",
+    "userPassword": "用户密码",
+    "mqttBroker": "MQTT 经纪人",
+    "deviceName": "设备名称",
+    "deviceId": "设备ID",
+    "Authentication settings": "认证设置",
+    "Connection": "联系",
+    "Connection settings": "连接设置",
+    "Device settings": "设备设置"
 }

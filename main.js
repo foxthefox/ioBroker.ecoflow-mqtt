@@ -12,14 +12,13 @@ const utils = require('@iobroker/adapter-core');
 // const fs = require("fs");
 
 class EcoflowMqtt extends utils.Adapter {
-
 	/**
 	 * @param {Partial<utils.AdapterOptions>} [options={}]
 	 */
 	constructor(options) {
 		super({
 			...options,
-			name: 'ecoflow-mqtt',
+			name: 'ecoflow-mqtt'
 		});
 		this.on('ready', this.onReady.bind(this));
 		this.on('stateChange', this.onStateChange.bind(this));
@@ -54,9 +53,9 @@ class EcoflowMqtt extends utils.Adapter {
 				type: 'boolean',
 				role: 'indicator',
 				read: true,
-				write: true,
+				write: true
 			},
-			native: {},
+			native: {}
 		});
 
 		// In order to get state updates, you need to subscribe to them. The following line adds a subscription for our variable we have created above.
@@ -156,6 +155,112 @@ class EcoflowMqtt extends utils.Adapter {
 	// 	}
 	// }
 
+	async createChannel(typ, newId, name, role) {
+		this.log.info('____________________________________________');
+		this.log.info('create Main object ' + typ + ' ' + newId + ' ' + name + ' ' + role);
+		await this.setObjectNotExistsAsync(typ + newId, {
+			type: 'channel',
+			common: {
+				name: name,
+				role: role
+			},
+			native: {
+				aid: newId
+			}
+		});
+		return;
+	}
+
+	// role 'info', 'indicator'
+
+	/**
+	 * @param {string} newId
+	 * @param {string} datapoint
+	 * @param {string} name
+	 * @param {string} role
+	 * @param {string} subrole
+	 * @param {number} min
+	 * @param {number} max
+	 * @param {string} unit
+	 */
+	async createMyState(newId, datapoint, name, role, subrole, min, max, unit) {
+		let write = false;
+		let type = '';
+		switch (role) {
+			case 'switch':
+				type = 'boolean';
+				write = true;
+				break;
+			case 'indicator':
+				if ((subrole = 'number')) {
+					type = 'number';
+				}
+				if ((subrole = 'boolean')) {
+					type = 'boolean';
+				}
+				break;
+			case 'button':
+				type = 'boolean';
+				write = true;
+				break;
+			case 'info':
+				type = 'string';
+				break;
+			case 'value':
+				if (subrole) {
+					//value or value....
+					role.concat('.', subrole);
+				}
+				type = 'number';
+				write = true;
+				break;
+			case 'date':
+				type = 'string';
+				break;
+			case 'list':
+				type = 'array';
+				break;
+			default:
+				role = 'nix';
+		}
+
+		this.log.debug('create datapoint ' + newId + ' with  ' + datapoint);
+
+		if (!min && !max) {
+			// @ts-ignore
+			await this.setObjectNotExistsAsync(newId + '.' + datapoint, {
+				type: 'state',
+				common: {
+					name: name,
+					type: type,
+					read: true,
+					write: write,
+					role: role,
+					desc: name
+				},
+				native: {}
+			});
+		} else {
+			// @ts-ignore
+			await this.setObjectNotExistsAsync('DECT_' + newId + '.' + datapoint, {
+				type: 'state',
+				common: {
+					name: name,
+					type: type,
+					min: min,
+					max: max,
+					unit: unit,
+					read: true,
+					write: write,
+					role: 'info',
+					desc: name
+				},
+				native: {}
+			});
+		}
+
+		return;
+	}
 }
 
 if (require.main !== module) {

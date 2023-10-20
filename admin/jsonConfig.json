@@ -1,0 +1,58 @@
+{
+	"i18n": true,
+	"type": "panel",
+	"items": {
+		"_connection": {
+			"newLine": true,
+			"type": "header",
+			"text": "Connection settings",
+			"sm": 12,
+			"md": 12,
+			"lg": 12,
+			"size": 3
+		},
+		"mqttBroker": {
+			"type": "text",
+			"label": "mqtt broker",
+			"newLine": true
+		},
+		"_auth": {
+			"newLine": true,
+			"type": "header",
+			"text": "Authentication settings",
+			"sm": 12,
+			"md": 12,
+			"lg": 12,
+			"size": 3
+		},
+		"userName": {
+			"type": "text",
+			"label": "user name",
+			"newLine": true
+		},
+		"userPassword": {
+			"type": "text",
+			"label": "user password",
+			"newLine": true
+		},
+		"_device": {
+			"newLine": true,
+			"type": "header",
+			"text": "Device settings",
+			"sm": 12,
+			"md": 12,
+			"lg": 12,
+			"size": 3
+		},
+		"deviceName": {
+			"type": "text",
+			"label": "device Name",
+			"newLine": true
+		},
+		"deviceId": {
+			"type": "text",
+			"label": "device Id",
+			"newLine": true
+		}
+	}
+}
