@@ -1,4 +1,4 @@
-![Logo](admin/ecoflow.png)
+![Logo](admin/ecoflow-mqtt.png)
 # ioBroker.ecoflow-mqtt
 
 [![NPM version](https://img.shields.io/npm/v/iobroker.ecoflow-mqtt.svg)](https://www.npmjs.com/package/iobroker.ecoflow-mqtt)
@@ -14,8 +14,27 @@
 
 connects to ecoflow products
 
+## WARNING
 
-### Getting started
+This adapter uses a non-offical communication with the devices.
+The adapter is based on the work of:
+* my own evaluation and research
+* https://github.com/tolwi/hassio-ecoflow-cloud
+* https://forum.iobroker.net/topic/66743/ecoflow-connector-script-zur-dynamischen-leistungsanpassung
+
+
+## Installation and
+
+Install the adapter.
+
+In Admin Page the credentials for the mqqt Broker need to be inserted.
+There are 3 possibilities:
+1. by script https://github.com/mmiller7/ecoflow-withoutflow/blob/main/cloud-mqtt/ecoflow_get_mqtt_login.sh
+2. by website https://energychain.github.io/site_ecoflow_mqtt_credentials/
+3. by adapters own alogorithm (pressing the button)
+If option #3 is not working try to get the credentials via the other options
+
+
 
 
 1. Add a new secret under https://github.com/foxthefox/ioBroker.ecoflow-mqtt/settings/secrets. It must be named `AUTO_MERGE_TOKEN` and contain a personal access token with push access to the repository, e.g. yours. You can create a new token under https://github.com/settings/tokens.
