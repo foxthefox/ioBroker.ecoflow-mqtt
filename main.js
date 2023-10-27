@@ -7,6 +7,11 @@
 // The adapter-core module gives you access to the core ioBroker functions
 // you need to create an adapter
 const utils = require('@iobroker/adapter-core');
+const myutils = require('./lib/adapter_utils.js');
+const ef = require('./lib/ecoflow_utils.js');
+
+const mqtt = require('mqtt');
+const { isObject } = require('util');
 
 // Load your modules here, e.g.:
 // const fs = require("fs");
@@ -20,10 +25,30 @@ class EcoflowMqtt extends utils.Adapter {
 			...options,
 			name: 'ecoflow-mqtt'
 		});
+		this.mqttClient = null;
+		this.msgCountPstream = 0;
+		this.msgCountPstation = 0;
+		this.msgReconnects = 0;
+		this.mqttUserId = '';
+		this.mqttUserName = '';
+		this.mqttPwd = '';
+		this.mqttClientId = '';
+		this.mqttPort = 8883;
+		this.mqttProtocol = 'mqtts://';
+		this.mqttUrl = 'mqtt-e.ecoflow.com';
+		this.pstreamId = 'pstream600';
+		this.pstreamType = 'pstream600';
+		this.pstreamStates = null;
+		this.pstreamStatesDict = null;
+		this.pstationId = 'pstream600';
+		this.pstationType = 'deltamax';
+		this.pstationStates = null;
+		this.pstationStatesDict = null;
+		this.pstationCmd = null;
 		this.on('ready', this.onReady.bind(this));
 		this.on('stateChange', this.onStateChange.bind(this));
 		// this.on('objectChange', this.onObjectChange.bind(this));
-		// this.on('message', this.onMessage.bind(this));
+		this.on('message', this.onMessage.bind(this));
 		this.on('unload', this.onUnload.bind(this));
 	}
 
@@ -32,52 +57,291 @@ class EcoflowMqtt extends utils.Adapter {
 	 */
 	async onReady() {
 		// Initialize your adapter here
+		this.log.info('adapter entered ready');
+		try {
+			this.mqttUserId = this.config.mqttUserId;
+			this.mqttUserName = this.config.mqttUserName;
+			this.mqttPwd = this.config.mqttPwd;
+			this.mqttClientId = this.config.mqttClientId;
+			this.mqttPort = this.config.mqttPort || 8883;
+			this.mqttProtocol = 'mqtts://';
+			this.mqttUrl = this.config.mqttUrl || 'mqtt-e.ecoflow.com';
+			this.pstreamId = this.config.streamId || 'default';
+			this.pstreamType = this.config.streamType;
+			this.pstationId = this.config.stationId;
+			this.pstationType = this.config.stationType;
+			this.pstreamStates = require('./lib/ecoflow_data.js').pstreamStates;
+			this.pstreamStatesDict = require('./lib/ecoflow_data.js').pstreamStatesDict['pstream'];
+			this.pstationStates = require('./lib/ecoflow_data.js').pstationStates;
+			this.pstationStatesDict = require('./lib/ecoflow_data.js').pstationStatesDict[this.pstationType];
+			this.pstationCmd = require('./lib/ecoflow_data.js').pstationCmd[this.pstationType];
+			this.pstreamCmd = require('./lib/ecoflow_data.js').pstreamCmd['pstream'];
+			// value correction
+			if (this.pstreamType !== 'pstream800') {
+				//read pstream 600
+				//modify this.pstreamStates
+			}
+			//modify this.pstationStates
+		} catch (error) {
+			this.log.error('read config ' + error);
+		}
 
-		// Reset the connection indicator during startup
-		this.setState('info.connection', false, true);
+		//create pstream objects
+		if (this.pstreamType !== 'none') {
+			try {
+				if (this.config.msgStateCreationPstream) {
+					this.log.debug('____________________________________________');
+					this.log.debug('create  device ' + this.pstreamId);
+				}
+				await this.setObjectNotExistsAsync(this.pstreamId, {
+					type: 'device',
+					common: {
+						name: this.config.streamName,
+						role: 'device'
+					},
+					native: {}
+				});
+				for (let part in this.pstreamStatesDict) {
+					if (this.config.msgStateCreationPstream) {
+						this.log.debug('____________________________________________');
+						this.log.debug('create  channel ' + part);
+					}
+					await myutils.createMyChannel(this, this.pstreamId, part, part, 'channel');
+					for (let key in this.pstreamStatesDict[part]) {
+						let type = this.pstreamStatesDict[part][key]['entity'];
+						if (this.pstreamStates[part][type][key]) {
+							await myutils.createMyState(
+								this,
+								this.pstreamId,
+								part,
+								key,
+								this.pstreamStates[part][type][key]
+							);
+						} else {
+							this.log.debug('not created/mismatch ' + part + ' ' + key + ' ' + type);
+						}
+					}
+				}
+				//create states
+			} catch (error) {
+				this.log.error('create states powerstream ' + error);
+			}
+		}
 
-		// The adapters config (in the instance object everything under the attribute "native") is accessible via
-		// this.config:
-		this.log.info('config option1: ' + this.config.option1);
-		this.log.info('config option2: ' + this.config.option2);
+		//create pstation objects
+		if (this.pstationType !== 'none') {
+			try {
+				if (this.config.msgStateCreationPstation) {
+					this.log.info('____________________________________________');
+					this.log.info('create  device ' + this.pstationId);
+				}
+				await this.setObjectNotExistsAsync(this.pstationId, {
+					type: 'device',
+					common: {
+						name: this.config.stationName,
+						role: 'device'
+					},
+					native: {}
+				});
+				for (let part in this.pstationStatesDict) {
+					if (this.config.msgStateCreationPstation) {
+						this.log.info('____________________________________________');
+						this.log.info('create  channel ' + part);
+					}
+					await myutils.createMyChannel(this, this.pstationId, part, part, 'channel');
+					for (let key in this.pstationStatesDict[part]) {
+						let type = this.pstationStatesDict[part][key]['entity'];
+						if (type !== 'icon') {
+							if (this.pstationStates[part][type][key]) {
+								await myutils.createMyState(
+									this,
+									this.pstationId,
+									part,
+									key,
+									this.pstationStates[part][type][key]
+								);
+							} else {
+								this.log.debug('not created/mismatch ' + part + ' ' + key + ' ' + type);
+							}
+						}
+					}
+				}
+				//first additional battery
+				if (this.config.stationSlave1) {
+					if (this.config.msgStateCreationPstation) {
+						this.log.info('____________________________________________');
+						this.log.info('create  channel ' + 'bmsSlave1');
+					}
+					await myutils.createMyChannel(this, this.pstationId, 'bmsSlave1', 'bmsSlave1', 'channel');
+					for (let key in this.pstationStatesDict['bmsMaster']) {
+						let type = this.pstationStatesDict['bmsMaster'][key]['entity'];
+						if (type !== 'icon') {
+							if (this.pstationStates['bmsMaster'][type][key]) {
+								await myutils.createMyState(
+									this,
+									this.pstationId,
+									'bmsSlave1',
+									key,
+									this.pstationStates['bmsMaster'][type][key]
+								);
+							} else {
+								this.log.debug('not created/mismatch ' + 'bmsSlave1' + ' ' + key + ' ' + type);
+							}
+						}
+					}
+				}
+				//second additional battery
+				if (this.config.stationSlave2) {
+				}
+			} catch (error) {
+				this.log.error('create states powerstation ' + error);
+			}
+		}
+		//additional states for observance
+		myutils.createInfoStates(this);
+		this.log.info('object creation finished');
 
-		/*
-		For every state in the system there has to be also an object of type state
-		Here a simple template for a boolean variable named "testVariable"
-		Because every adapter instance uses its own unique namespace variable names can't collide with other adapters variables
-		*/
-		await this.setObjectNotExistsAsync('testVariable', {
-			type: 'state',
-			common: {
-				name: 'testVariable',
-				type: 'boolean',
-				role: 'indicator',
-				read: true,
-				write: true
-			},
-			native: {}
-		});
+		//create subscription topics
+		let topics;
+		if (this.mqttUserId.length > 0) {
+			topics = ef.createSubscribeTopics(
+				this.mqttUserId,
+				this.pstreamType,
+				this.pstreamId,
+				this.pstationType,
+				this.pstationId
+			);
+		}
+		this.log.debug('subscription topics ' + JSON.stringify(topics));
 
-		// In order to get state updates, you need to subscribe to them. The following line adds a subscription for our variable we have created above.
-		this.subscribeStates('testVariable');
-		// You can also add a subscription for multiple states. The following line watches all states starting with "lights."
-		// this.subscribeStates('lights.*');
-		// Or, if you really must, you can also watch all states. Don't do this if you don't need to. Otherwise this will cause a lot of unnecessary load on the system:
-		// this.subscribeStates('*');
+		//connect
+		const optionsMqtt = {
+			port: this.mqttPort || 8883,
+			clientId: this.mqttClientId,
+			username: this.mqttUserName,
+			password: this.mqttPwd
+		};
+		try {
+			this.client = mqtt.connect(this.mqttUrl + ':' + this.mqttPort, optionsMqtt);
 
-		/*
-			setState examples
-			you will notice that each setState will cause the stateChange event to fire (because of above subscribeStates cmd)
-		*/
-		// the variable testVariable is set to true as command (ack=false)
-		await this.setStateAsync('testVariable', true);
+			this.client.on('connect', () => {
+				this.log.debug('connected');
+				if (topics.length > 0) {
+					if (this.client) {
+						this.client.subscribe(topics, (err) => {
+							if (!err) {
+								this.log.debug('subscribed the topics');
+							}
+						});
+					}
+				} else {
+					this.log.debug('no topics for subscription');
+				}
+				this.setState('info.connection', true, true);
+			});
 
-		// same thing, but the value is flagged "ack"
-		// ack should be always set to true if the value is received from or acknowledged from the target system
-		await this.setStateAsync('testVariable', { val: true, ack: true });
+			this.client.on('message', async (topic, message) => {
+				// message is Buffer
+				// this.log.debug(topic + ' got ' + message.toString());
+				if (topic.includes('/app/device/property/')) {
+					topic = topic.replace('/app/device/property/', '');
+					if (topic === this.pstreamId) {
+						let msgdecode = ef.pstreamDecode(this, message);
+						if (this.config.msgUpdatePstream) {
+							this.log.debug('pstream: ' + JSON.stringify(msgdecode));
+						}
+						if (msgdecode !== null && typeof msgdecode === 'object') {
+							if (Object.keys(msgdecode).length > 0) {
+								await ef.storeStreamPayload(
+									this,
+									this.pstreamStatesDict,
+									this.pstreamStates,
+									topic,
+									msgdecode
+								);
+							}
+						}
+						this.msgCountPstream++;
+						await this.setStateAsync('info.msgCountPstream', { val: this.msgCountPstream, ack: true });
+					} else if (topic === this.pstationId) {
+						if (this.config.msgUpdatePstation) {
+							this.log.debug('pstation: ' + message.toString());
+						}
+						await ef.storeStationPayload(
+							this,
+							this.pstationStatesDict,
+							this.pstationStates,
+							topic,
+							JSON.parse(message.toString())
+						);
+						this.msgCountPstation++;
+						await this.setStateAsync('info.msgCountPstation', { val: this.msgCountPstation, ack: true });
+					} else {
+						this.log.debug('unknown topic, not matching IDs');
+					}
+				} else {
+					//other msg -> get or set
+					if (topic.includes('get')) {
+						topic = topic.replace('/app/' + this.mqttUserId + '/', '').replace('/thing/property/get', '');
 
-		// same thing, but the state is deleted after 30s (getState will return null afterwards)
-		await this.setStateAsync('testVariable', { val: true, ack: true, expire: 30 });
+						if (topic === this.pstreamId) {
+							this.log.debug('received get -> ' + Buffer.from(message).toString('hex'));
+							//ef.pstreamDecode()
+						} else if (topic === this.pstationId) {
+							if (this.config.msgSetGetPstation) {
+								this.log.debug(topic + ' get ' + message.toString());
+							}
+						}
+					} else if (topic.includes('set')) {
+						topic = topic.replace('/app/' + this.mqttUserId + '/', '').replace('/thing/property/set', '');
+						if (topic === this.pstreamId) {
+							this.log.debug('received set -> ' + Buffer.from(message).toString('hex'));
+
+							//ef.pstreamDecode()
+						} else if (topic === this.pstationId) {
+							if (this.config.msgSetGetPstation) {
+								let setmsg = JSON.parse(message.toString());
+								if (setmsg.params) {
+									let key = setmsg.params.id;
+									switch (key) {
+										case 40:
+										case 68:
+										case 72:
+											//Lebenszeichen der APP?
+
+											break;
+										default:
+											this.log.debug(topic + ' ->set ' + key + '  ' + JSON.stringify(setmsg));
+											break;
+									}
+								} else {
+									this.log.debug(topic + ' ->set wo params' + JSON.stringify(setmsg));
+								}
+							}
+						}
+					} else {
+						this.log.debug(topic + ' got ' + message.toString());
+					}
+				}
+			});
+
+			this.client.on('close', () => {
+				this.setState('info.connection', false, true);
+				this.log.info('ecfolow connection closed');
+			});
+			this.client.on('error', (error) => {
+				this.setState('info.connection', false, true);
+				this.log.error('Fehler bei der Ecoflow MQTT-Verbindung:' + error);
+			});
+
+			this.client.on('reconnect', async () => {
+				this.log.debug('Reconnecting to Ecoflow MQTT broker...');
+				this.msgReconnects++;
+				await this.setStateAsync('info.msgCountPstream', { val: this.msgReconnects, ack: true });
+			});
+		} catch (error) {
+			this.log.error('create states powerstation ' + error);
+		}
 
 		// examples for the checkPassword/checkGroup functions
 		let result = await this.checkPasswordAsync('admin', 'iobroker');
@@ -98,39 +362,88 @@ class EcoflowMqtt extends utils.Adapter {
 			// clearTimeout(timeout2);
 			// ...
 			// clearInterval(interval1);
-
+			if (this.client) {
+				this.client.end();
+			}
 			callback();
 		} catch (e) {
 			callback();
 		}
 	}
 
-	// If you need to react to object changes, uncomment the following block and the corresponding line in the constructor.
-	// You also need to subscribe to the objects with `this.subscribeObjects`, similar to `this.subscribeStates`.
-	// /**
-	//  * Is called if a subscribed object changes
-	//  * @param {string} id
-	//  * @param {ioBroker.Object | null | undefined} obj
-	//  */
-	// onObjectChange(id, obj) {
-	// 	if (obj) {
-	// 		// The object was changed
-	// 		this.log.info(`object ${id} changed: ${JSON.stringify(obj)}`);
-	// 	} else {
-	// 		// The object was deleted
-	// 		this.log.info(`object ${id} deleted`);
-	// 	}
-	// }
-
 	/**
 	 * Is called if a subscribed state changes
 	 * @param {string} id
 	 * @param {ioBroker.State | null | undefined} state
 	 */
-	onStateChange(id, state) {
+	async onStateChange(id, state) {
 		if (state) {
 			// The state was changed
 			this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
+			if (!state.ack) {
+				// kein DC/AC/USB Einschalten wenn SOC unterhalb von minDsg liegt
+				// kein Ladezuschaltung, wenn SOC über maxChg liegt
+				const idsplit = id.split('.');
+				const device = idsplit[2];
+				const channel = idsplit[3];
+				const item = idsplit[4];
+				const topic = '/app/' + this.mqttUserId + '/' + device + '/thing/property/set';
+
+				if (device === this.pstreamId) {
+					const msgBuf = ef.prepareStreamCmd(
+						this,
+						this.pstreamId,
+						this.pstreamType,
+						item,
+						state.val,
+						this.pstreamCmd[channel][item]
+					);
+					this.log.debug('msgBuf ' + msgBuf);
+					this.log.debug('Modifizierter Hex-String:' + Buffer.from(msgBuf).toString('hex'));
+
+					if (this.client) {
+						this.client.publish(topic, msgBuf, { qos: 1 }, (error) => {
+							if (error) {
+								this.log.error('Fehler beim Veröffentlichen der MQTT-Nachricht: ' + error);
+							} else {
+								if (this.config.msgCmdPstream) {
+									this.log.debug('Die MQTT-Nachricht wurde erfolgreich veröffentlicht.');
+								}
+							}
+						});
+					}
+				} else if (device === this.pstationId) {
+					const msg = await ef.prepareStationCmd(
+						this,
+						this.pstationId,
+						this.pstationType,
+						item,
+						state.val,
+						this.pstationCmd[channel][item]
+					);
+					const topic = '/app/' + this.mqttUserId + '/' + device + '/thing/property/set';
+					if (Object.keys(msg).length > 0) {
+						this.log.debug('publish  ' + topic);
+						this.log.debug('publish  ' + JSON.stringify(msg));
+
+						if (this.client) {
+							this.client.publish(topic, JSON.stringify(msg), { qos: 1 }, (error) => {
+								if (error) {
+									this.log.error('Fehler beim Veröffentlichen der MQTT-Nachricht: ' + error);
+								} else {
+									if (this.config.msgCmdPstation) {
+										this.log.debug('Die MQTT-Nachricht wurde erfolgreich veröffentlicht.');
+									}
+								}
+							});
+						}
+					} else {
+						this.log.debug('nothing to send ' + id + state);
+					}
+				} else {
+					this.log.warn('unknown state to be processed ' + id + state);
+				}
+			}
 		} else {
 			// The state was deleted
 			this.log.info(`state ${id} deleted`);
@@ -143,123 +456,124 @@ class EcoflowMqtt extends utils.Adapter {
 	//  * Using this method requires "common.messagebox" property to be set to true in io-package.json
 	//  * @param {ioBroker.Message} obj
 	//  */
-	// onMessage(obj) {
-	// 	if (typeof obj === 'object' && obj.message) {
-	// 		if (obj.command === 'send') {
-	// 			// e.g. send email or pushover or whatever
-	// 			this.log.info('send command');
+	onMessage(obj) {
+		this.log.info('send command');
+		this.log.info('obj' + JSON.stringify(obj.message));
+		this.log.info('obj' + obj.message);
+		if (!obj || !obj.command) {
+			return;
+		}
+		switch (obj.command) {
+			case 'create':
+				this.log.info('send msg create');
+				// e.g. send email or pushover or whatever
+				this.log.info('msg ' + this.config.mqttUserName);
+				this.log.info('msg ' + this.config.mqttUserId);
+				this.log.info('msg ' + this.config.mqttPwd);
+				this.log.info('msg ' + this.config.mqttClientId);
+				/*
+				this.updateConfig({
+					mqttUserName: 'login.User',
+					mqttPwd: 'login.Password',
+					mqttClientId: 'login.clientID'
+				});
+				*/
 
-	// 			// Send response in callback if required
-	// 			if (obj.callback) this.sendTo(obj.from, obj.command, 'Message received', obj.callback);
-	// 		}
-	// 	}
-	// }
+				/**
+				if (this.mqttDevice === '' && this.mqttUser === '' && this.mqttPwd === '') {
+					try {
+						let login = getEcoFlowMqttCredits(this, this.efUser, this.efPwd);
+						this.config.mqttUser = login.User;
+						this.config.mqttPwd = login.Password;
+						this.config.mqttDevice = login.clientID;
+					} catch (error) {
+						this.log.debug(error); //
+						throw new Error(
+							'Ein Fehler bei der Ermittlung der Zugangsdaten ist aufgetreten. Bitte prüfe die Zugangsdaten.'
+						);
+					}
+				}
+				*/
+				let result = {
+					native: {
+						mqttUserId: '1232445564356',
+						mqttUserName: 'login.User',
+						mqttPwd: 'login.Password',
+						mqttClientId: 'login.clientID'
+					},
+					reloadBrowser: true
+				};
+				this.sendTo(obj.from, obj.command, result, obj.callback);
+				// Send response in callback if required
+				//this.sendTo(obj.from, obj.command, 'close admin page and reopen', obj.callback);
+				//if (obj.callback) this.sendTo(obj.from, obj.command, 'Message received', obj.callback);
+				//if (obj.callback) this.sendTo(obj.from, obj.command, result, obj.callback);
+				break;
 
-	async createChannel(typ, newId, name, role) {
-		this.log.info('____________________________________________');
-		this.log.info('create Main object ' + typ + ' ' + newId + ' ' + name + ' ' + role);
-		await this.setObjectNotExistsAsync(typ + newId, {
-			type: 'channel',
-			common: {
-				name: name,
-				role: role
-			},
-			native: {
-				aid: newId
+			case 'test': {
+				// Try to connect to mqtt broker
+				if (obj.callback && obj.message) {
+					const mqtt = require('mqtt');
+
+					const _url = obj.message.url + ':' + obj.message.port;
+
+					const optionsMqtt = {
+						port: obj.message.port || 8883,
+						clientId: obj.message.clientId,
+						username: obj.message.user,
+						password: obj.message.pass
+					};
+
+					const _client = mqtt.connect(_url, optionsMqtt);
+					// Set timeout for connection
+					const timeout = setTimeout(() => {
+						_client.end();
+						this.sendTo(obj.from, obj.command, 'timeout', obj.callback);
+					}, 2000);
+
+					// If connected, return success
+					_client.on('connect', () => {
+						_client.end();
+						clearTimeout(timeout);
+						this.sendTo(obj.from, obj.command, 'connected', obj.callback);
+					});
+					// If connected, return success
+					_client.on('error', (err) => {
+						_client.end();
+						clearTimeout(timeout);
+						this.log.warn(`Error on mqtt test: ${err}`);
+						this.sendTo(obj.from, obj.command, 'error', obj.callback);
+					});
+				}
+				break;
 			}
-		});
-		return;
-	}
+			case 'sendmsg': {
+				// Try to connect to mqtt broker
+				if (obj.callback && obj.message) {
+					this.mqttClient();
+					// Set timeout for connection
+					const timeout = setTimeout(() => {
+						this.mqttClient.end();
+						this.sendTo(obj.from, obj.command, 'timeout', obj.callback);
+					}, 2000);
 
-	// role 'info', 'indicator'
-
-	/**
-	 * @param {string} newId
-	 * @param {string} datapoint
-	 * @param {string} name
-	 * @param {string} role
-	 * @param {string} subrole
-	 * @param {number} min
-	 * @param {number} max
-	 * @param {string} unit
-	 */
-	async createMyState(newId, datapoint, name, role, subrole, min, max, unit) {
-		let write = false;
-		let type = '';
-		switch (role) {
-			case 'switch':
-				type = 'boolean';
-				write = true;
-				break;
-			case 'indicator':
-				if ((subrole = 'number')) {
-					type = 'number';
-				}
-				if ((subrole = 'boolean')) {
-					type = 'boolean';
+					// If connected, return success
+					this.mqttClient.on('connect', () => {
+						this.mqttClient.end();
+						clearTimeout(timeout);
+						this.sendTo(obj.from, obj.command, 'connected', obj.callback);
+					});
+					// If connected, return success
+					this.mqttClient.on('error', (err) => {
+						this.mqttClient.end();
+						clearTimeout(timeout);
+						this.log.warn(`Error on mqtt test: ${err}`);
+						this.sendTo(obj.from, obj.command, 'error', obj.callback);
+					});
 				}
 				break;
-			case 'button':
-				type = 'boolean';
-				write = true;
-				break;
-			case 'info':
-				type = 'string';
-				break;
-			case 'value':
-				if (subrole) {
-					//value or value....
-					role.concat('.', subrole);
-				}
-				type = 'number';
-				write = true;
-				break;
-			case 'date':
-				type = 'string';
-				break;
-			case 'list':
-				type = 'array';
-				break;
-			default:
-				role = 'nix';
+			}
 		}
-
-		this.log.debug('create datapoint ' + newId + ' with  ' + datapoint);
-
-		if (!min && !max) {
-			// @ts-ignore
-			await this.setObjectNotExistsAsync(newId + '.' + datapoint, {
-				type: 'state',
-				common: {
-					name: name,
-					type: type,
-					read: true,
-					write: write,
-					role: role,
-					desc: name
-				},
-				native: {}
-			});
-		} else {
-			// @ts-ignore
-			await this.setObjectNotExistsAsync('DECT_' + newId + '.' + datapoint, {
-				type: 'state',
-				common: {
-					name: name,
-					type: type,
-					min: min,
-					max: max,
-					unit: unit,
-					read: true,
-					write: write,
-					role: 'info',
-					desc: name
-				},
-				native: {}
-			});
-		}
-
-		return;
 	}
 }
 
