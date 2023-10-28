@@ -140,8 +140,9 @@
 		"stationType": {
 			"type": "select",
 			"options": [
-				{ "value": "deltamax", "label": "Delta Max 2016" },
-				{ "value": "delta", "label": "Delta" },
+				{ "value": "deltamax", "label": "Delta Max 1600/2000" },
+				{ "value": "delta", "label": "Delta 1260Wh" },
+				{ "value": "deltamini", "label": "Delta Mini 882Wh" },
 				{ "value": "deltapro", "label": "Delta Pro" },
 				{ "value": "delta2", "label": "Delta 2" },
 				{ "value": "delta2max", "label": "Delta 2 Max" },
@@ -155,6 +156,7 @@
 		"stationSlave1": {
 			"newLine": true,
 			"type": "checkbox",
+			"hidden": "data.stationType !== 'deltapro' && data.stationType !== 'deltamax' && data.stationType !== 'delta2max' && data.stationType !== 'delta'",
 			"label": "battery on slave 1",
 			"sm": 12,
 			"md": 6,

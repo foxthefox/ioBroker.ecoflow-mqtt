@@ -82,6 +82,43 @@ class EcoflowMqtt extends utils.Adapter {
 				//modify this.pstreamStates
 			}
 			//modify this.pstationStates
+			try {
+				const streamupd = require('./lib/ecoflow_data.js').pstreamRanges['pstream600'];
+				this.log.debug(JSON.stringify(streamupd));
+				for (let channel in streamupd) {
+					for (let type in streamupd[channel]) {
+						for (let state in streamupd[channel][type]) {
+							for (let value in streamupd[channel][type][state]) {
+								this.pstreamStates[channel][type][state][value] =
+									streamupd[channel][type][state][value];
+							}
+						}
+					}
+				}
+
+				const stationupd = require('./lib/ecoflow_data.js').pstationRanges[this.pstationType];
+				this.log.debug(JSON.stringify(stationupd));
+				if (Object.keys(stationupd).length > 0) {
+					for (let channel in stationupd) {
+						for (let type in stationupd[channel]) {
+							for (let state in stationupd[channel][type]) {
+								for (let value in stationupd[channel][type][state]) {
+									this.pstationStates[channel][type][state][value] =
+										stationupd[channel][type][state][value];
+									this.log.debug(
+										'manipulate ' +
+											this.pstationStates[channel][type][state][value] +
+											' -- ' +
+											stationupd[channel][type][state][value]
+									);
+								}
+							}
+						}
+					}
+				}
+			} catch (error) {
+				this.log.error('modification went wrong' + error);
+			}
 		} catch (error) {
 			this.log.error('read config ' + error);
 		}
@@ -192,6 +229,27 @@ class EcoflowMqtt extends utils.Adapter {
 				}
 				//second additional battery
 				if (this.config.stationSlave2) {
+					if (this.config.msgStateCreationPstation) {
+						this.log.info('____________________________________________');
+						this.log.info('create  channel ' + 'bmsSlave2');
+					}
+					await myutils.createMyChannel(this, this.pstationId, 'bmsSlave2', 'bmsSlave2', 'channel');
+					for (let key in this.pstationStatesDict['bmsMaster']) {
+						let type = this.pstationStatesDict['bmsMaster'][key]['entity'];
+						if (type !== 'icon') {
+							if (this.pstationStates['bmsMaster'][type][key]) {
+								await myutils.createMyState(
+									this,
+									this.pstationId,
+									'bmsSlave2',
+									key,
+									this.pstationStates['bmsMaster'][type][key]
+								);
+							} else {
+								this.log.debug('not created/mismatch ' + 'bmsSlave2' + ' ' + key + ' ' + type);
+							}
+						}
+					}
 				}
 			} catch (error) {
 				this.log.error('create states powerstation ' + error);
@@ -221,134 +279,138 @@ class EcoflowMqtt extends utils.Adapter {
 			username: this.mqttUserName,
 			password: this.mqttPwd
 		};
-		try {
-			this.client = mqtt.connect(this.mqttUrl + ':' + this.mqttPort, optionsMqtt);
+		if (optionsMqtt.clientId.length > 18 && optionsMqtt.username.length > 18 && optionsMqtt.password.length > 18) {
+			try {
+				this.client = mqtt.connect(this.mqttUrl + ':' + this.mqttPort, optionsMqtt);
 
-			this.client.on('connect', () => {
-				this.log.debug('connected');
-				if (topics.length > 0) {
-					if (this.client) {
-						this.client.subscribe(topics, (err) => {
-							if (!err) {
-								this.log.debug('subscribed the topics');
-							}
-						});
-					}
-				} else {
-					this.log.debug('no topics for subscription');
-				}
-				this.setState('info.connection', true, true);
-			});
-
-			this.client.on('message', async (topic, message) => {
-				// message is Buffer
-				// this.log.debug(topic + ' got ' + message.toString());
-				if (topic.includes('/app/device/property/')) {
-					topic = topic.replace('/app/device/property/', '');
-					if (topic === this.pstreamId) {
-						let msgdecode = ef.pstreamDecode(this, message);
-						if (this.config.msgUpdatePstream) {
-							this.log.debug('pstream: ' + JSON.stringify(msgdecode));
+				this.client.on('connect', () => {
+					this.log.debug('connected');
+					if (topics.length > 0) {
+						if (this.client) {
+							this.client.subscribe(topics, (err) => {
+								if (!err) {
+									this.log.debug('subscribed the topics');
+								}
+							});
 						}
-						if (msgdecode !== null && typeof msgdecode === 'object') {
-							if (Object.keys(msgdecode).length > 0) {
-								await ef.storeStreamPayload(
-									this,
-									this.pstreamStatesDict,
-									this.pstreamStates,
-									topic,
-									msgdecode
-								);
-							}
-						}
-						this.msgCountPstream++;
-						await this.setStateAsync('info.msgCountPstream', { val: this.msgCountPstream, ack: true });
-					} else if (topic === this.pstationId) {
-						if (this.config.msgUpdatePstation) {
-							this.log.debug('pstation: ' + message.toString());
-						}
-						await ef.storeStationPayload(
-							this,
-							this.pstationStatesDict,
-							this.pstationStates,
-							topic,
-							JSON.parse(message.toString())
-						);
-						this.msgCountPstation++;
-						await this.setStateAsync('info.msgCountPstation', { val: this.msgCountPstation, ack: true });
 					} else {
-						this.log.debug('unknown topic, not matching IDs');
+						this.log.debug('no topics for subscription');
 					}
-				} else {
-					//other msg -> get or set
-					if (topic.includes('get')) {
-						topic = topic.replace('/app/' + this.mqttUserId + '/', '').replace('/thing/property/get', '');
+					this.setState('info.connection', true, true);
+				});
 
+				this.client.on('message', async (topic, message) => {
+					// message is Buffer
+					// this.log.debug(topic + ' got ' + message.toString());
+					if (topic.includes('/app/device/property/')) {
+						topic = topic.replace('/app/device/property/', '');
 						if (topic === this.pstreamId) {
-							this.log.debug('received get -> ' + Buffer.from(message).toString('hex'));
-							//ef.pstreamDecode()
-						} else if (topic === this.pstationId) {
-							if (this.config.msgSetGetPstation) {
-								this.log.debug(topic + ' get ' + message.toString());
+							let msgdecode = ef.pstreamDecode(this, message);
+							if (this.config.msgUpdatePstream) {
+								this.log.debug('pstream: ' + JSON.stringify(msgdecode));
 							}
-						}
-					} else if (topic.includes('set')) {
-						topic = topic.replace('/app/' + this.mqttUserId + '/', '').replace('/thing/property/set', '');
-						if (topic === this.pstreamId) {
-							this.log.debug('received set -> ' + Buffer.from(message).toString('hex'));
-
-							//ef.pstreamDecode()
-						} else if (topic === this.pstationId) {
-							if (this.config.msgSetGetPstation) {
-								let setmsg = JSON.parse(message.toString());
-								if (setmsg.params) {
-									let key = setmsg.params.id;
-									switch (key) {
-										case 40:
-										case 68:
-										case 72:
-											//Lebenszeichen der APP?
-
-											break;
-										default:
-											this.log.debug(topic + ' ->set ' + key + '  ' + JSON.stringify(setmsg));
-											break;
-									}
-								} else {
-									this.log.debug(topic + ' ->set wo params' + JSON.stringify(setmsg));
+							if (msgdecode !== null && typeof msgdecode === 'object') {
+								if (Object.keys(msgdecode).length > 0) {
+									await ef.storeStreamPayload(
+										this,
+										this.pstreamStatesDict,
+										this.pstreamStates,
+										topic,
+										msgdecode
+									);
 								}
 							}
+							this.msgCountPstream++;
+							await this.setStateAsync('info.msgCountPstream', { val: this.msgCountPstream, ack: true });
+						} else if (topic === this.pstationId) {
+							if (this.config.msgUpdatePstation) {
+								this.log.debug('pstation: ' + message.toString());
+							}
+							await ef.storeStationPayload(
+								this,
+								this.pstationStatesDict,
+								this.pstationStates,
+								topic,
+								JSON.parse(message.toString())
+							);
+							this.msgCountPstation++;
+							await this.setStateAsync('info.msgCountPstation', {
+								val: this.msgCountPstation,
+								ack: true
+							});
+						} else {
+							this.log.debug('unknown topic, not matching IDs');
 						}
 					} else {
-						this.log.debug(topic + ' got ' + message.toString());
+						//other msg -> get or set
+						if (topic.includes('get')) {
+							topic = topic
+								.replace('/app/' + this.mqttUserId + '/', '')
+								.replace('/thing/property/get', '');
+
+							if (topic === this.pstreamId) {
+								this.log.debug('received get -> ' + Buffer.from(message).toString('hex'));
+								//ef.pstreamDecode()
+							} else if (topic === this.pstationId) {
+								if (this.config.msgSetGetPstation) {
+									this.log.debug(topic + ' get ' + message.toString());
+								}
+							}
+						} else if (topic.includes('set')) {
+							topic = topic
+								.replace('/app/' + this.mqttUserId + '/', '')
+								.replace('/thing/property/set', '');
+							if (topic === this.pstreamId) {
+								this.log.debug('received set -> ' + Buffer.from(message).toString('hex'));
+
+								//ef.pstreamDecode()
+							} else if (topic === this.pstationId) {
+								if (this.config.msgSetGetPstation) {
+									let setmsg = JSON.parse(message.toString());
+									if (setmsg.params) {
+										let key = setmsg.params.id;
+										switch (key) {
+											case 40:
+											case 68:
+											case 72:
+												//Lebenszeichen der APP?
+
+												break;
+											default:
+												this.log.debug(topic + ' ->set ' + key + '  ' + JSON.stringify(setmsg));
+												break;
+										}
+									} else {
+										this.log.debug(topic + ' ->set wo params' + JSON.stringify(setmsg));
+									}
+								}
+							}
+						} else {
+							this.log.debug(topic + ' got ' + message.toString());
+						}
 					}
-				}
-			});
+				});
 
-			this.client.on('close', () => {
-				this.setState('info.connection', false, true);
-				this.log.info('ecfolow connection closed');
-			});
-			this.client.on('error', (error) => {
-				this.setState('info.connection', false, true);
-				this.log.error('Fehler bei der Ecoflow MQTT-Verbindung:' + error);
-			});
+				this.client.on('close', () => {
+					this.setState('info.connection', false, true);
+					this.log.info('ecfolow connection closed');
+				});
+				this.client.on('error', (error) => {
+					this.setState('info.connection', false, true);
+					this.log.error('Fehler bei der Ecoflow MQTT-Verbindung:' + error);
+				});
 
-			this.client.on('reconnect', async () => {
-				this.log.debug('Reconnecting to Ecoflow MQTT broker...');
-				this.msgReconnects++;
-				await this.setStateAsync('info.msgCountPstream', { val: this.msgReconnects, ack: true });
-			});
-		} catch (error) {
-			this.log.error('create states powerstation ' + error);
+				this.client.on('reconnect', async () => {
+					this.log.debug('Reconnecting to Ecoflow MQTT broker...');
+					this.msgReconnects++;
+					await this.setStateAsync('info.msgCountPstream', { val: this.msgReconnects, ack: true });
+				});
+			} catch (error) {
+				this.log.error('create states powerstation ' + error);
+			}
+		} else {
+			this.log.warn('check your mqtt credentials, they seem too short');
 		}
-
-		// examples for the checkPassword/checkGroup functions
-		let result = await this.checkPasswordAsync('admin', 'iobroker');
-		this.log.info('check user admin pw iobroker: ' + result);
-
-		result = await this.checkGroupAsync('admin', 'admin');
-		this.log.info('check group user admin group admin: ' + result);
 	}
 
 	/**
