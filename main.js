@@ -84,7 +84,7 @@ class EcoflowMqtt extends utils.Adapter {
 
 			//modify this.pstationStates
 			try {
-				if (this.pstreamType !== 'pstream800') {
+				if (this.pstreamType && this.pstreamType !== 'pstream800') {
 					const streamupd = require('./lib/ecoflow_data.js').pstreamRanges['pstream600'];
 					this.log.debug('pstream upd ' + JSON.stringify(streamupd));
 					if (Object.keys(streamupd).length > 0) {
@@ -94,12 +94,18 @@ class EcoflowMqtt extends utils.Adapter {
 									for (let value in streamupd[channel][type][state]) {
 										this.pstreamStates[channel][type][state][value] =
 											streamupd[channel][type][state][value];
+										this.log.debug(
+											'manipulate ' +
+												this.pstreamStates[channel][type][state][value] +
+												' -- ' +
+												streamupd[channel][type][state][value]
+										);
 									}
 								}
 							}
 						}
 					} else {
-						this.log.error('streamupd not possible');
+						this.log.debug('streamupd not possible ' + this.pstreamType);
 					}
 				}
 
