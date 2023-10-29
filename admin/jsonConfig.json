@@ -4,6 +4,7 @@
 	"items": {
 		"_userdata": {
 			"newLine": true,
+			"hidden": "true",
 			"type": "header",
 			"text": "User Data",
 			"sm": 12,
@@ -13,11 +14,13 @@
 		},
 		"userName": {
 			"type": "text",
+			"hidden": "true",
 			"label": "ecoflow account name / email  ",
 			"newLine": false
 		},
 		"userPassword": {
 			"type": "password",
+			"hidden": "true",
 			"visible": true,
 			"label": "user password",
 			"newLine": false
@@ -193,6 +196,13 @@
 			"md": 6,
 			"lg": 4
 		},
+		"msgUpdateValuePstation": {
+			"type": "checkbox",
+			"label": "msgUpdateValuePstation",
+			"sm": 12,
+			"md": 6,
+			"lg": 4
+		},
 		"msgSetGetPstation": {
 			"type": "checkbox",
 			"label": "msgSetGetPstation",
@@ -202,7 +212,7 @@
 		},
 		"msgCmdPstation": {
 			"type": "checkbox",
-			"label": "msgSetGetPstation",
+			"label": "msgCmdPstation",
 			"sm": 12,
 			"md": 6,
 			"lg": 4
@@ -230,6 +240,13 @@
 			"md": 6,
 			"lg": 4
 		},
+		"msgUpdateValuePstream": {
+			"type": "checkbox",
+			"label": "msgUpdateValuePstream",
+			"sm": 12,
+			"md": 6,
+			"lg": 4
+		},
 		"msgSetGetPstream": {
 			"type": "checkbox",
 			"label": "msgSetGetPstream",
@@ -239,7 +256,7 @@
 		},
 		"msgCmdPstream": {
 			"type": "checkbox",
-			"label": "msgSetGetPstream",
+			"label": "msgCmdPstream",
 			"sm": 12,
 			"md": 6,
 			"lg": 4
