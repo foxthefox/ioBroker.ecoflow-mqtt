@@ -85,6 +85,7 @@
 		},
 		"_test": {
 			"type": "sendTo",
+			"hidden": "true",
 			"label": "Test connection",
 			"command": "test",
 			"variant": "contained",
