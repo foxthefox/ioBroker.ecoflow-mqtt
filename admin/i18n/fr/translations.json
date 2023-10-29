@@ -1,14 +1,14 @@
 {
-    "ecoflow-mqtt adapter settings": "Paramètres d'adaptateur pour ecoflow-mqtt",
-    "option1": "Option 1",
-    "option2": "Option 2",
-    "userName": "nom d'utilisateur",
-    "userPassword": "mot de passe de l'utilisateur",
-    "mqttBroker": "courtier mqtt",
-    "deviceName": "nom de l'appareil",
-    "deviceId": "Reference de l'appareil",
     "Authentication settings": "Paramètres d'authentification",
     "Connection": "Connexion",
     "Connection settings": "Paramètres de connexion",
-    "Device settings": "Réglages de l'appareil"
+    "Device settings": "Réglages de l'appareil",
+    "deviceId": "Reference de l'appareil",
+    "deviceName": "nom de l'appareil",
+    "ecoflow-mqtt adapter settings": "Paramètres d'adaptateur pour ecoflow-mqtt",
+    "mqttBroker": "courtier mqtt",
+    "option1": "Option 1",
+    "option2": "Option 2",
+    "userName": "nom d'utilisateur",
+    "userPassword": "mot de passe de l'utilisateur"
 }

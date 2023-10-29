@@ -63,8 +63,6 @@
 		"adminUI": {
 			"config": "json"
 		},
-		"supportCustoms": true,
-		"eraseOnUpload": true,
 		"dependencies": [
 			{
 				"js-controller": ">=3.3.22"

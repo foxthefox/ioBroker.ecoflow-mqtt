@@ -1,14 +1,14 @@
 {
-	"ecoflow-mqtt adapter settings": "Adapter settings for ecoflow-mqtt",
-	"option1": "option1",
-	"option2": "option2",
-	"Authentication settings": "Authentication settings",
-	"Connection": "Connection",
-	"Connection settings": "Connection settings",
-	"Device settings": "Device settings",
-	"userName": "user name",
-	"userPassword": "user password",
-	"mqttBroker": "mqtt broker",
-	"deviceName": "device Name",
-	"deviceId": "device Id"
+    "Authentication settings": "Authentication settings",
+    "Connection": "Connection",
+    "Connection settings": "Connection settings",
+    "Device settings": "Device settings",
+    "deviceId": "device Id",
+    "deviceName": "device Name",
+    "ecoflow-mqtt adapter settings": "Adapter settings for ecoflow-mqtt",
+    "mqttBroker": "mqtt broker",
+    "option1": "option1",
+    "option2": "option2",
+    "userName": "user name",
+    "userPassword": "user password"
 }

@@ -1,14 +1,14 @@
 {
-    "ecoflow-mqtt adapter settings": "Налаштування адаптера для ecoflow-mqtt",
-    "option1": "варіант1",
-    "option2": "варіант2",
-    "userName": "ім'я користувача",
-    "userPassword": "пароль користувача",
-    "mqttBroker": "брокер mqtt",
-    "deviceName": "Ім'я пристрою",
-    "deviceId": "ID пристрою",
     "Authentication settings": "Налаштування автентифікації",
     "Connection": "Підключення",
     "Connection settings": "Налаштування підключення",
-    "Device settings": "Налаштування пристрою"
+    "Device settings": "Налаштування пристрою",
+    "deviceId": "ID пристрою",
+    "deviceName": "Ім'я пристрою",
+    "ecoflow-mqtt adapter settings": "Налаштування адаптера для ecoflow-mqtt",
+    "mqttBroker": "брокер mqtt",
+    "option1": "варіант1",
+    "option2": "варіант2",
+    "userName": "ім'я користувача",
+    "userPassword": "пароль користувача"
 }
