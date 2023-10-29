@@ -50,7 +50,7 @@
 		"platform": "Javascript/Node.js",
 		"main": "main.js",
 		"icon": "ecoflow-mqtt.png",
-		"enabled": true,
+		"enabled": false,
 		"extIcon": "https://raw.githubusercontent.com/foxthefox/ioBroker.ecoflow-mqtt/main/admin/ecoflow-mqtt.png",
 		"readme": "https://github.com/foxthefox/ioBroker.ecoflow-mqtt/blob/main/README.md",
 		"loglevel": "info",

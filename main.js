@@ -36,12 +36,12 @@ class EcoflowMqtt extends utils.Adapter {
 		this.mqttPort = 8883;
 		this.mqttProtocol = 'mqtts://';
 		this.mqttUrl = 'mqtt-e.ecoflow.com';
-		this.pstreamId = 'pstream600';
-		this.pstreamType = 'pstream600';
+		this.pstreamId = null;
+		this.pstreamType = null;
 		this.pstreamStates = null;
 		this.pstreamStatesDict = null;
-		this.pstationId = 'pstream600';
-		this.pstationType = 'deltamax';
+		this.pstationId = null;
+		this.pstationType = null;
 		this.pstationStates = null;
 		this.pstationStatesDict = null;
 		this.pstationCmd = null;
@@ -66,57 +66,68 @@ class EcoflowMqtt extends utils.Adapter {
 			this.mqttPort = this.config.mqttPort || 8883;
 			this.mqttProtocol = 'mqtts://';
 			this.mqttUrl = this.config.mqttUrl || 'mqtt-e.ecoflow.com';
-			this.pstreamId = this.config.streamId || 'default';
+			this.pstreamId = this.config.streamId;
 			this.pstreamType = this.config.streamType;
-			this.pstationId = this.config.stationId;
-			this.pstationType = this.config.stationType;
 			this.pstreamStates = require('./lib/ecoflow_data.js').pstreamStates;
 			this.pstreamStatesDict = require('./lib/ecoflow_data.js').pstreamStatesDict['pstream'];
-			this.pstationStates = require('./lib/ecoflow_data.js').pstationStates;
-			this.pstationStatesDict = require('./lib/ecoflow_data.js').pstationStatesDict[this.pstationType];
-			this.pstationCmd = require('./lib/ecoflow_data.js').pstationCmd[this.pstationType];
 			this.pstreamCmd = require('./lib/ecoflow_data.js').pstreamCmd['pstream'];
-			// value correction
-			if (this.pstreamType !== 'pstream800') {
-				//read pstream 600
-				//modify this.pstreamStates
+			this.pstationId = this.config.stationId;
+			this.pstationType = this.config.stationType;
+			this.pstationStates = require('./lib/ecoflow_data.js').pstationStates;
+			if (this.pstationType) {
+				this.pstationStatesDict = require('./lib/ecoflow_data.js').pstationStatesDict[this.pstationType];
+				this.pstationCmd = require('./lib/ecoflow_data.js').pstationCmd[this.pstationType];
+			} else {
+				this.log.error('pstationType not taken over' + this.pstationType);
 			}
+			// value correction
+
 			//modify this.pstationStates
 			try {
-				const streamupd = require('./lib/ecoflow_data.js').pstreamRanges['pstream600'];
-				this.log.debug(JSON.stringify(streamupd));
-				if (Object.keys(streamupd).length > 0) {
-					for (let channel in streamupd) {
-						for (let type in streamupd[channel]) {
-							for (let state in streamupd[channel][type]) {
-								for (let value in streamupd[channel][type][state]) {
-									this.pstreamStates[channel][type][state][value] =
-										streamupd[channel][type][state][value];
+				if (this.pstreamType !== 'pstream800') {
+					const streamupd = require('./lib/ecoflow_data.js').pstreamRanges['pstream600'];
+					this.log.debug(JSON.stringify(streamupd));
+					if (Object.keys(streamupd).length > 0) {
+						for (let channel in streamupd) {
+							for (let type in streamupd[channel]) {
+								for (let state in streamupd[channel][type]) {
+									for (let value in streamupd[channel][type][state]) {
+										this.pstreamStates[channel][type][state][value] =
+											streamupd[channel][type][state][value];
+									}
 								}
 							}
 						}
+					} else {
+						this.log.error('streamupd not possible');
 					}
 				}
 
-				const stationupd = require('./lib/ecoflow_data.js').pstationRanges[this.pstationType];
-				this.log.debug(JSON.stringify(stationupd));
-				if (Object.keys(stationupd).length > 0) {
-					for (let channel in stationupd) {
-						for (let type in stationupd[channel]) {
-							for (let state in stationupd[channel][type]) {
-								for (let value in stationupd[channel][type][state]) {
-									this.pstationStates[channel][type][state][value] =
-										stationupd[channel][type][state][value];
-									this.log.debug(
-										'manipulate ' +
-											this.pstationStates[channel][type][state][value] +
-											' -- ' +
-											stationupd[channel][type][state][value]
-									);
+				if (this.pstationType) {
+					const stationupd = require('./lib/ecoflow_data.js').pstationRanges[this.pstationType];
+					this.log.debug(JSON.stringify(stationupd));
+					if (Object.keys(stationupd).length > 0) {
+						for (let channel in stationupd) {
+							for (let type in stationupd[channel]) {
+								for (let state in stationupd[channel][type]) {
+									for (let value in stationupd[channel][type][state]) {
+										this.pstationStates[channel][type][state][value] =
+											stationupd[channel][type][state][value];
+										this.log.debug(
+											'manipulate ' +
+												this.pstationStates[channel][type][state][value] +
+												' -- ' +
+												stationupd[channel][type][state][value]
+										);
+									}
 								}
 							}
 						}
+					} else {
+						this.log.error('streamupd not possible');
 					}
+				} else {
+					this.log.error('pstationType not set' + this.pstationType);
 				}
 			} catch (error) {
 				this.log.error('modification went wrong' + error);
