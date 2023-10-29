@@ -16,7 +16,10 @@ connects to ecoflow products
 
 ## WARNING
 
-This adapter uses a non-offical communication with the devices.
+This adapter uses a non-offical communication with the devices. 
+Wrong communication or setting wrong values can affect the functionality of the device.
+
+
 The adapter is based on the work of:
 * my own evaluation and research
 * https://github.com/tolwi/hassio-ecoflow-cloud
@@ -38,19 +41,21 @@ There are 3 possibilities:
 1. by script https://github.com/mmiller7/ecoflow-withoutflow/blob/main/cloud-mqtt/ecoflow_get_mqtt_login.sh
 2. by website https://energychain.github.io/site_ecoflow_mqtt_credentials/
 3. (pending feature) by adapters own alogorithm (pressing the button)
-If option #3 is not working try to get the credentials via the other options
 
-deviceID of Powerstream as shown in the app, something like "HW51...."
-deviceID of Powerstation as shown in the app, varies by type of device
+Parametrizing the Powerstream:
+* set the deviceID of Powerstream as shown in the app, something like "HW51...."
+* give it a name
+* select the version (600W or 800W)
+
+Parametrizing the Powerstation:
+* set the deviceID of Powerstation as shown in the app, string varies by type of device
+* give it a name
+* select the device type
+* if additional battery pack is connected, check the port number where it is connected
 
 
 ## Changelog
-<!--
-	Placeholder for the next version (at the beginning of the line):
-	### **WORK IN PROGRESS**
--->
-
-### **WORK IN PROGRESS**
+### 0.0.1
 * (foxthefox) initial release
 
 ## License
