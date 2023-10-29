@@ -109,7 +109,7 @@ class EcoflowMqtt extends utils.Adapter {
 					}
 				}
 
-				if (this.pstationType) {
+				if (this.pstationType && this.pstationType !== 'none') {
 					const stationupd = require('./lib/ecoflow_data.js').pstationRanges[this.pstationType];
 					this.log.debug('pstation upd ' + JSON.stringify(stationupd));
 					if (Object.keys(stationupd).length > 0) {
@@ -281,7 +281,6 @@ class EcoflowMqtt extends utils.Adapter {
 		}
 		//additional states for observance
 		myutils.createInfoStates(this);
-		this.log.info('object creation finished');
 
 		//create subscription topics
 		let topics;
