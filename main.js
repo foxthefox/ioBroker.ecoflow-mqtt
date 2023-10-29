@@ -144,6 +144,7 @@ class EcoflowMqtt extends utils.Adapter {
 
 		//create pstream objects
 		if (this.pstreamType !== 'none') {
+			this.log.info('pstream state creation' + this.pstreamType + ' for Id ' + this.pstreamId);
 			try {
 				if (this.config.msgStateCreationPstream) {
 					this.log.debug('____________________________________________');
@@ -178,7 +179,7 @@ class EcoflowMqtt extends utils.Adapter {
 						}
 					}
 				}
-				//create states
+				this.log.info('pstream states created');
 			} catch (error) {
 				this.log.error('create states powerstream ' + error);
 			}
@@ -186,6 +187,7 @@ class EcoflowMqtt extends utils.Adapter {
 
 		//create pstation objects
 		if (this.pstationType !== 'none') {
+			this.log.info('pstation state creation ' + this.pstationType + ' for Id ' + this.pstationId);
 			try {
 				if (this.config.msgStateCreationPstation) {
 					this.log.debug('____________________________________________');
@@ -222,6 +224,7 @@ class EcoflowMqtt extends utils.Adapter {
 						}
 					}
 				}
+				this.log.info('pstation states created');
 				//first additional battery
 				if (this.config.stationSlave1) {
 					if (this.config.msgStateCreationPstation) {
@@ -245,6 +248,7 @@ class EcoflowMqtt extends utils.Adapter {
 							}
 						}
 					}
+					this.log.info('pstation add battery #1 states created');
 				}
 				//second additional battery
 				if (this.config.stationSlave2) {
@@ -269,6 +273,7 @@ class EcoflowMqtt extends utils.Adapter {
 							}
 						}
 					}
+					this.log.info('pstation add battery #1 states created');
 				}
 			} catch (error) {
 				this.log.error('create states powerstation ' + error);
