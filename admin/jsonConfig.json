@@ -112,9 +112,9 @@
 		"streamType": {
 			"type": "select",
 			"options": [
+				{ "value": "none", "label": "none" },
 				{ "value": "pstream600", "label": "Powerstream 600W" },
-				{ "value": "pstream800", "label": "Powerstream 800W" },
-				{ "value": "none", "label": "none" }
+				{ "value": "pstream800", "label": "Powerstream 800W" }
 			],
 			"label": "Powerstream Type",
 			"sm": 12,
@@ -143,13 +143,13 @@
 		"stationType": {
 			"type": "select",
 			"options": [
-				{ "value": "deltamax", "label": "Delta Max 1600/2000" },
-				{ "value": "delta", "label": "Delta 1260Wh" },
+				{ "value": "none", "label": "none" },
 				{ "value": "deltamini", "label": "Delta Mini 882Wh" },
+				{ "value": "delta", "label": "Delta 1260Wh" },
+				{ "value": "deltamax", "label": "Delta Max 1600/2000" },
 				{ "value": "deltapro", "label": "Delta Pro" },
 				{ "value": "delta2", "label": "Delta 2" },
-				{ "value": "delta2max", "label": "Delta 2 Max" },
-				{ "value": "none", "label": "none" }
+				{ "value": "delta2max", "label": "Delta 2 Max" }
 			],
 			"label": "Powerstation Type",
 			"sm": 12,

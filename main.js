@@ -85,12 +85,14 @@ class EcoflowMqtt extends utils.Adapter {
 			try {
 				const streamupd = require('./lib/ecoflow_data.js').pstreamRanges['pstream600'];
 				this.log.debug(JSON.stringify(streamupd));
-				for (let channel in streamupd) {
-					for (let type in streamupd[channel]) {
-						for (let state in streamupd[channel][type]) {
-							for (let value in streamupd[channel][type][state]) {
-								this.pstreamStates[channel][type][state][value] =
-									streamupd[channel][type][state][value];
+				if (Object.keys(streamupd).length > 0) {
+					for (let channel in streamupd) {
+						for (let type in streamupd[channel]) {
+							for (let state in streamupd[channel][type]) {
+								for (let value in streamupd[channel][type][state]) {
+									this.pstreamStates[channel][type][state][value] =
+										streamupd[channel][type][state][value];
+								}
 							}
 						}
 					}
@@ -169,8 +171,8 @@ class EcoflowMqtt extends utils.Adapter {
 		if (this.pstationType !== 'none') {
 			try {
 				if (this.config.msgStateCreationPstation) {
-					this.log.info('____________________________________________');
-					this.log.info('create  device ' + this.pstationId);
+					this.log.debug('____________________________________________');
+					this.log.debug('create  device ' + this.pstationId);
 				}
 				await this.setObjectNotExistsAsync(this.pstationId, {
 					type: 'device',
@@ -182,8 +184,8 @@ class EcoflowMqtt extends utils.Adapter {
 				});
 				for (let part in this.pstationStatesDict) {
 					if (this.config.msgStateCreationPstation) {
-						this.log.info('____________________________________________');
-						this.log.info('create  channel ' + part);
+						this.log.debug('____________________________________________');
+						this.log.debug('create  channel ' + part);
 					}
 					await myutils.createMyChannel(this, this.pstationId, part, part, 'channel');
 					for (let key in this.pstationStatesDict[part]) {
@@ -206,8 +208,8 @@ class EcoflowMqtt extends utils.Adapter {
 				//first additional battery
 				if (this.config.stationSlave1) {
 					if (this.config.msgStateCreationPstation) {
-						this.log.info('____________________________________________');
-						this.log.info('create  channel ' + 'bmsSlave1');
+						this.log.debug('____________________________________________');
+						this.log.debug('create  channel ' + 'bmsSlave1');
 					}
 					await myutils.createMyChannel(this, this.pstationId, 'bmsSlave1', 'bmsSlave1', 'channel');
 					for (let key in this.pstationStatesDict['bmsMaster']) {
@@ -230,8 +232,8 @@ class EcoflowMqtt extends utils.Adapter {
 				//second additional battery
 				if (this.config.stationSlave2) {
 					if (this.config.msgStateCreationPstation) {
-						this.log.info('____________________________________________');
-						this.log.info('create  channel ' + 'bmsSlave2');
+						this.log.debug('____________________________________________');
+						this.log.debug('create  channel ' + 'bmsSlave2');
 					}
 					await myutils.createMyChannel(this, this.pstationId, 'bmsSlave2', 'bmsSlave2', 'channel');
 					for (let key in this.pstationStatesDict['bmsMaster']) {
