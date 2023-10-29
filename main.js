@@ -86,7 +86,7 @@ class EcoflowMqtt extends utils.Adapter {
 			try {
 				if (this.pstreamType !== 'pstream800') {
 					const streamupd = require('./lib/ecoflow_data.js').pstreamRanges['pstream600'];
-					this.log.debug(JSON.stringify(streamupd));
+					this.log.debug('pstream upd ' + JSON.stringify(streamupd));
 					if (Object.keys(streamupd).length > 0) {
 						for (let channel in streamupd) {
 							for (let type in streamupd[channel]) {
@@ -105,7 +105,7 @@ class EcoflowMqtt extends utils.Adapter {
 
 				if (this.pstationType) {
 					const stationupd = require('./lib/ecoflow_data.js').pstationRanges[this.pstationType];
-					this.log.debug(JSON.stringify(stationupd));
+					this.log.debug('pstation upd ' + JSON.stringify(stationupd));
 					if (Object.keys(stationupd).length > 0) {
 						for (let channel in stationupd) {
 							for (let type in stationupd[channel]) {
