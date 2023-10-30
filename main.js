@@ -219,7 +219,7 @@ class EcoflowMqtt extends utils.Adapter {
 									this.pstationStates[part][type][key]
 								);
 							} else {
-								this.log.debug('not created/mismatch ->' + part + ' ' + key + ' ' + type);
+								this.log.info('not created/mismatch ->' + part + ' ' + key + ' ' + type);
 							}
 						}
 					}
@@ -244,7 +244,7 @@ class EcoflowMqtt extends utils.Adapter {
 									this.pstationStates['bmsMaster'][type][key]
 								);
 							} else {
-								this.log.debug('not created/mismatch ' + ' bmsSlave1 ->' + ' ' + key + ' ' + type);
+								this.log.info('not created/mismatch ' + ' bmsSlave1 ->' + ' ' + key + ' ' + type);
 							}
 						}
 					}
@@ -269,7 +269,7 @@ class EcoflowMqtt extends utils.Adapter {
 									this.pstationStates['bmsMaster'][type][key]
 								);
 							} else {
-								this.log.debug('not created/mismatch ' + 'bmsSlave2 ->' + ' ' + key + ' ' + type);
+								this.log.info('not created/mismatch ' + 'bmsSlave2 ->' + ' ' + key + ' ' + type);
 							}
 						}
 					}
@@ -423,11 +423,36 @@ class EcoflowMqtt extends utils.Adapter {
 									this.log.debug(
 										'received ' + msgtype + ' -> ' + Buffer.from(message).toString('hex')
 									);
-									//ef.pstreamDecode()
+								}
+								if (msgtype === 'get_reply') {
+									let msgdecode = ef.pstreamDecode(this, message);
+									if (this.config.msgUpdatePstream) {
+										this.log.debug('pstream get_reply: ' + JSON.stringify(msgdecode));
+									}
+									if (msgdecode !== null && typeof msgdecode === 'object') {
+										if (Object.keys(msgdecode).length > 0) {
+											await ef.storeStreamPayload(
+												this,
+												this.pstreamStatesDict,
+												this.pstreamStates,
+												topic,
+												msgdecode
+											);
+										}
+									}
 								}
 							} else if (topic === this.pstationId) {
 								if (this.config.msgSetGetPstation) {
 									this.log.debug(topic + ' received ' + msgtype + '-> ' + message.toString());
+								}
+								if (msgtype === 'get_reply' && message['operateType'] === 'latestQuotas') {
+									await ef.storeStationPayload(
+										this,
+										this.pstationStatesDict,
+										this.pstationStates,
+										topic,
+										JSON.parse(message.toString())
+									);
 								}
 							}
 						}
