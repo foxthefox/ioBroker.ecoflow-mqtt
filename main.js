@@ -143,7 +143,7 @@ class EcoflowMqtt extends utils.Adapter {
 		}
 
 		//create pstream objects
-		if (this.pstreamType !== 'none') {
+		if (this.pstreamType !== 'none' && this.pstreamId && this.pstreamStates) {
 			this.log.info('pstream state creation' + this.pstreamType + ' for Id ' + this.pstreamId);
 			try {
 				if (this.config.msgStateCreationPstream) {
@@ -186,7 +186,7 @@ class EcoflowMqtt extends utils.Adapter {
 		}
 
 		//create pstation objects
-		if (this.pstationType !== 'none') {
+		if (this.pstationType !== 'none' && this.pstationId && this.pstationStates) {
 			this.log.info('pstation state creation ' + this.pstationType + ' for Id ' + this.pstationId);
 			try {
 				if (this.config.msgStateCreationPstation) {
@@ -444,6 +444,7 @@ class EcoflowMqtt extends utils.Adapter {
 							} else if (topic === this.pstationId) {
 								if (this.config.msgSetGetPstation) {
 									this.log.debug(topic + ' received ' + msgtype + '-> ' + message.toString());
+									this.log.debug('operateType -> ' + message['operateType']);
 								}
 								if (msgtype === 'get_reply' && message['operateType'] === 'latestQuotas') {
 									await ef.storeStationPayload(
