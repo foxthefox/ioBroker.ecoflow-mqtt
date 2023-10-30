@@ -93,16 +93,16 @@
 		"streamId": "HW51Zxxxx",
 		"streamType": "none",
 		"streamName": "Powerstream Balkon",
-		"msgStateCreationPstation": true,
+		"msgStateCreationPstation": false,
 		"msgUpdatePstation": false,
-		"msgUpdateValuePstation": true,
+		"msgUpdateValuePstation": false,
 		"msgSetGetPstation": true,
 		"msgCmdPstation": true,
 		"msgStateCreationPstream": false,
 		"msgUpdatePstream": false,
-		"msgUpdateValuePstream": true,
-		"msgSetGetPstream": true,
-		"msgCmdPstream": true
+		"msgUpdateValuePstream": false,
+		"msgSetGetPstream": false,
+		"msgCmdPstream": false
 	},
 	"objects": [],
 	"instanceObjects": [

@@ -78,7 +78,7 @@ class EcoflowMqtt extends utils.Adapter {
 				this.pstationStatesDict = require('./lib/ecoflow_data.js').pstationStatesDict[this.pstationType];
 				this.pstationCmd = require('./lib/ecoflow_data.js').pstationCmd[this.pstationType];
 			} else {
-				this.log.error('pstationType not taken over' + this.pstationType);
+				this.log.error('pstationType not taken over ->' + this.pstationType);
 			}
 			// value correction
 
@@ -105,7 +105,7 @@ class EcoflowMqtt extends utils.Adapter {
 							}
 						}
 					} else {
-						this.log.debug('streamupd not possible ' + this.pstreamType);
+						this.log.debug('streamupd not possible ->' + this.pstreamType);
 					}
 				}
 
@@ -133,10 +133,10 @@ class EcoflowMqtt extends utils.Adapter {
 						this.log.error('streamupd not possible');
 					}
 				} else {
-					this.log.error('pstationType not set' + this.pstationType);
+					this.log.error('pstationType not set ->' + this.pstationType);
 				}
 			} catch (error) {
-				this.log.error('modification went wrong' + error);
+				this.log.error('modification went wrong ->' + error);
 			}
 		} catch (error) {
 			this.log.error('read config ' + error);
@@ -175,13 +175,13 @@ class EcoflowMqtt extends utils.Adapter {
 								this.pstreamStates[part][type][key]
 							);
 						} else {
-							this.log.debug('not created/mismatch ' + part + ' ' + key + ' ' + type);
+							this.log.debug('not created/mismatch ->' + part + ' ' + key + ' ' + type);
 						}
 					}
 				}
 				this.log.info('pstream states created');
 			} catch (error) {
-				this.log.error('create states powerstream ' + error);
+				this.log.error('create states powerstream ->' + error);
 			}
 		}
 
@@ -219,7 +219,7 @@ class EcoflowMqtt extends utils.Adapter {
 									this.pstationStates[part][type][key]
 								);
 							} else {
-								this.log.debug('not created/mismatch ' + part + ' ' + key + ' ' + type);
+								this.log.debug('not created/mismatch ->' + part + ' ' + key + ' ' + type);
 							}
 						}
 					}
@@ -244,7 +244,7 @@ class EcoflowMqtt extends utils.Adapter {
 									this.pstationStates['bmsMaster'][type][key]
 								);
 							} else {
-								this.log.debug('not created/mismatch ' + 'bmsSlave1' + ' ' + key + ' ' + type);
+								this.log.debug('not created/mismatch ' + ' bmsSlave1 ->' + ' ' + key + ' ' + type);
 							}
 						}
 					}
@@ -269,7 +269,7 @@ class EcoflowMqtt extends utils.Adapter {
 									this.pstationStates['bmsMaster'][type][key]
 								);
 							} else {
-								this.log.debug('not created/mismatch ' + 'bmsSlave2' + ' ' + key + ' ' + type);
+								this.log.debug('not created/mismatch ' + 'bmsSlave2 ->' + ' ' + key + ' ' + type);
 							}
 						}
 					}
@@ -366,26 +366,33 @@ class EcoflowMqtt extends utils.Adapter {
 						}
 					} else {
 						//other msg -> get or set
-						if (topic.includes('get')) {
+						let msgtype = '';
+						if (topic.includes('get_reply')) {
+							msgtype = 'get_reply';
+							topic = topic
+								.replace('/app/' + this.mqttUserId + '/', '')
+								.replace('/thing/property/get_reply', '');
+						} else if (topic.includes('get')) {
+							msgtype = 'get';
 							topic = topic
 								.replace('/app/' + this.mqttUserId + '/', '')
 								.replace('/thing/property/get', '');
-
-							if (topic === this.pstreamId) {
-								this.log.debug('received get -> ' + Buffer.from(message).toString('hex'));
-								//ef.pstreamDecode()
-							} else if (topic === this.pstationId) {
-								if (this.config.msgSetGetPstation) {
-									this.log.debug(topic + ' get ' + message.toString());
-								}
-							}
+						} else if (topic.includes('set_reply')) {
+							msgtype = 'set_reply';
+							topic = topic
+								.replace('/app/' + this.mqttUserId + '/', '')
+								.replace('/thing/property/set_reply', '');
 						} else if (topic.includes('set')) {
+							msgtype = 'set';
 							topic = topic
 								.replace('/app/' + this.mqttUserId + '/', '')
 								.replace('/thing/property/set', '');
+						} else {
+							msgtype = 'unknown msgtype';
+						}
+						if (msgtype === 'set') {
 							if (topic === this.pstreamId) {
 								this.log.debug('received set -> ' + Buffer.from(message).toString('hex'));
-
 								//ef.pstreamDecode()
 							} else if (topic === this.pstationId) {
 								if (this.config.msgSetGetPstation) {
@@ -404,12 +411,19 @@ class EcoflowMqtt extends utils.Adapter {
 												break;
 										}
 									} else {
-										this.log.debug(topic + ' ->set wo params' + JSON.stringify(setmsg));
+										this.log.debug(topic + ' ->set w/o params' + JSON.stringify(setmsg));
 									}
 								}
 							}
 						} else {
-							this.log.debug(topic + ' got ' + message.toString());
+							if (topic === this.pstreamId) {
+								this.log.debug('received ' + msgtype + ' -> ' + Buffer.from(message).toString('hex'));
+								//ef.pstreamDecode()
+							} else if (topic === this.pstationId) {
+								if (this.config.msgSetGetPstation) {
+									this.log.debug(topic + ' received ' + msgtype + '-> ' + message.toString());
+								}
+							}
 						}
 					}
 				});
