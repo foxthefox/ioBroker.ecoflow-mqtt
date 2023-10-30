@@ -392,8 +392,10 @@ class EcoflowMqtt extends utils.Adapter {
 						}
 						if (msgtype === 'set') {
 							if (topic === this.pstreamId) {
-								this.log.debug('received set -> ' + Buffer.from(message).toString('hex'));
-								//ef.pstreamDecode()
+								if (this.config.msgSetGetPstream) {
+									this.log.debug('received set -> ' + Buffer.from(message).toString('hex'));
+									//ef.pstreamDecode()
+								}
 							} else if (topic === this.pstationId) {
 								if (this.config.msgSetGetPstation) {
 									let setmsg = JSON.parse(message.toString());
@@ -417,8 +419,12 @@ class EcoflowMqtt extends utils.Adapter {
 							}
 						} else {
 							if (topic === this.pstreamId) {
-								this.log.debug('received ' + msgtype + ' -> ' + Buffer.from(message).toString('hex'));
-								//ef.pstreamDecode()
+								if (this.config.msgSetGetPstream) {
+									this.log.debug(
+										'received ' + msgtype + ' -> ' + Buffer.from(message).toString('hex')
+									);
+									//ef.pstreamDecode()
+								}
 							} else if (topic === this.pstationId) {
 								if (this.config.msgSetGetPstation) {
 									this.log.debug(topic + ' received ' + msgtype + '-> ' + message.toString());
