@@ -444,9 +444,9 @@ class EcoflowMqtt extends utils.Adapter {
 							} else if (topic === this.pstationId) {
 								if (this.config.msgSetGetPstation) {
 									this.log.debug(topic + ' received ' + msgtype + '-> ' + message.toString());
-									this.log.debug('operateType -> ' + message['operateType']);
+									this.log.debug('operateType -> ' + JSON.parse(message.toString())['operateType']);
 								}
-								if (msgtype === 'get_reply' && message['operateType'] === 'latestQuotas') {
+								if (msgtype === 'get_reply' && JSON.parse(message.toString()) === 'latestQuotas') {
 									await ef.storeStationPayload(
 										this,
 										this.pstationStatesDict,
