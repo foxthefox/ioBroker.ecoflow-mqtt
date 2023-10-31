@@ -197,7 +197,7 @@ class EcoflowMqtt extends utils.Adapter {
 				this.log.error('create states powerstream ->' + error);
 			}
 		} else {
-			this.log.error(
+			this.log.warn(
 				this.pstreamId +
 					'states -> ' +
 					this.pstreamStates +
@@ -205,6 +205,9 @@ class EcoflowMqtt extends utils.Adapter {
 					this.pstreamStatesDict +
 					' type -> ' +
 					this.pstreamType
+			);
+			this.log.warn(
+				'if in other message "type -> none" then no(none) powerstream is defined and this message is void'
 			);
 		}
 
