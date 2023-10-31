@@ -84,6 +84,9 @@ class EcoflowMqtt extends utils.Adapter {
 			// value correction
 
 			//modify this.pstationStates
+			this.log.info('your configration:');
+			this.log.info('powerstream  ->' + this.pstreamType);
+			this.log.info('powerstation ->' + this.pstationType);
 			try {
 				if (this.pstreamType && this.pstreamType !== 'pstream800' && this.pstreamStates) {
 					const streamupd = require('./lib/ecoflow_data.js').pstreamRanges['pstream600'];
@@ -560,6 +563,7 @@ class EcoflowMqtt extends utils.Adapter {
 				const device = idsplit[2];
 				const channel = idsplit[3];
 				const item = idsplit[4];
+				this.log.info('(ack=false) ->cmd : channel ' + channel + ' state ' + item);
 				const topic = '/app/' + this.mqttUserId + '/' + device + '/thing/property/set';
 
 				if (this.pstreamType && this.pstreamCmd) {
