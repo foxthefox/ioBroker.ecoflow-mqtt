@@ -12,6 +12,7 @@ const ef = require('./lib/ecoflow_utils.js');
 
 const mqtt = require('mqtt');
 const { isObject } = require('util');
+const { debug } = require('console');
 
 // Load your modules here, e.g.:
 // const fs = require("fs");
@@ -78,13 +79,13 @@ class EcoflowMqtt extends utils.Adapter {
 				this.pstationStatesDict = require('./lib/ecoflow_data.js').pstationStatesDict[this.pstationType];
 				this.pstationCmd = require('./lib/ecoflow_data.js').pstationCmd[this.pstationType];
 			} else {
-				this.log.error('pstationType not taken over ->' + this.pstationType);
+				this.log.error('pstationType initially not taken over ->' + this.pstationType);
 			}
 			// value correction
 
 			//modify this.pstationStates
 			try {
-				if (this.pstreamType && this.pstreamType !== 'pstream800') {
+				if (this.pstreamType && this.pstreamType !== 'pstream800' && this.pstreamStates) {
 					const streamupd = require('./lib/ecoflow_data.js').pstreamRanges['pstream600'];
 					this.log.debug('pstream upd ' + JSON.stringify(streamupd));
 					if (Object.keys(streamupd).length > 0) {
@@ -109,31 +110,37 @@ class EcoflowMqtt extends utils.Adapter {
 					}
 				}
 
-				if (this.pstationType && this.pstationType !== 'none') {
+				if (this.pstationType && this.pstationType !== 'none' && this.pstationStates) {
 					const stationupd = require('./lib/ecoflow_data.js').pstationRanges[this.pstationType];
 					this.log.debug('pstation upd ' + JSON.stringify(stationupd));
-					if (Object.keys(stationupd).length > 0) {
-						for (let channel in stationupd) {
-							for (let type in stationupd[channel]) {
-								for (let state in stationupd[channel][type]) {
-									for (let value in stationupd[channel][type][state]) {
-										this.pstationStates[channel][type][state][value] =
-											stationupd[channel][type][state][value];
-										this.log.debug(
-											'manipulate ' +
-												this.pstationStates[channel][type][state][value] +
-												' -- ' +
-												stationupd[channel][type][state][value]
-										);
+					if (stationupd) {
+						if (Object.keys(stationupd).length > 0) {
+							for (let channel in stationupd) {
+								for (let type in stationupd[channel]) {
+									for (let state in stationupd[channel][type]) {
+										for (let value in stationupd[channel][type][state]) {
+											this.pstationStates[channel][type][state][value] =
+												stationupd[channel][type][state][value];
+											this.log.debug(
+												'manipulate ' +
+													this.pstationStates[channel][type][state][value] +
+													' -- ' +
+													stationupd[channel][type][state][value]
+											);
+										}
 									}
 								}
 							}
+						} else {
+							this.log.error('streamupd not possible');
 						}
 					} else {
-						this.log.error('streamupd not possible');
+						this.log.warn('did not get stationupd');
 					}
 				} else {
-					this.log.error('pstationType not set ->' + this.pstationType);
+					this.log.error(
+						'pstationType not set ->' + this.pstationType + 'or no pstationStates ->' + this.pstationStates
+					);
 				}
 			} catch (error) {
 				this.log.error('modification went wrong ->' + error);
@@ -143,7 +150,13 @@ class EcoflowMqtt extends utils.Adapter {
 		}
 
 		//create pstream objects
-		if (this.pstreamType !== 'none' && this.pstreamId && this.pstreamStates) {
+		if (
+			this.pstreamType !== 'none' &&
+			this.pstreamId &&
+			this.pstreamStates &&
+			this.pstreamStatesDict &&
+			this.pstreamType
+		) {
 			this.log.info('pstream state creation' + this.pstreamType + ' for Id ' + this.pstreamId);
 			try {
 				if (this.config.msgStateCreationPstream) {
@@ -183,10 +196,26 @@ class EcoflowMqtt extends utils.Adapter {
 			} catch (error) {
 				this.log.error('create states powerstream ->' + error);
 			}
+		} else {
+			this.log.error(
+				this.pstreamId +
+					'states -> ' +
+					this.pstreamStates +
+					' dict -> ' +
+					this.pstreamStatesDict +
+					' type -> ' +
+					this.pstreamType
+			);
 		}
 
 		//create pstation objects
-		if (this.pstationType !== 'none' && this.pstationId && this.pstationStates) {
+		if (
+			this.pstationType !== 'none' &&
+			this.pstationId &&
+			this.pstationStates &&
+			this.pstationStatesDict &&
+			this.pstationType
+		) {
 			this.log.info('pstation state creation ' + this.pstationType + ' for Id ' + this.pstationId);
 			try {
 				if (this.config.msgStateCreationPstation) {
@@ -278,6 +307,17 @@ class EcoflowMqtt extends utils.Adapter {
 			} catch (error) {
 				this.log.error('create states powerstation ' + error);
 			}
+		} else {
+			this.log.error(
+				'something empty ID->' +
+					this.pstationId +
+					'states -> ' +
+					this.pstationStates +
+					' dict -> ' +
+					this.pstationStatesDict +
+					' type -> ' +
+					this.pstationType
+			);
 		}
 		//additional states for observance
 		myutils.createInfoStates(this);
@@ -519,59 +559,75 @@ class EcoflowMqtt extends utils.Adapter {
 				const item = idsplit[4];
 				const topic = '/app/' + this.mqttUserId + '/' + device + '/thing/property/set';
 
-				if (device === this.pstreamId) {
-					const msgBuf = ef.prepareStreamCmd(
-						this,
-						this.pstreamId,
-						this.pstreamType,
-						item,
-						state.val,
-						this.pstreamCmd[channel][item]
-					);
-					this.log.debug('msgBuf ' + msgBuf);
-					this.log.debug('Modifizierter Hex-String:' + Buffer.from(msgBuf).toString('hex'));
-
-					if (this.client) {
-						this.client.publish(topic, msgBuf, { qos: 1 }, (error) => {
-							if (error) {
-								this.log.error('Fehler beim Veröffentlichen der MQTT-Nachricht: ' + error);
-							} else {
-								if (this.config.msgCmdPstream) {
-									this.log.debug('Die MQTT-Nachricht wurde erfolgreich veröffentlicht.');
-								}
-							}
-						});
-					}
-				} else if (device === this.pstationId) {
-					const msg = await ef.prepareStationCmd(
-						this,
-						this.pstationId,
-						this.pstationType,
-						item,
-						state.val,
-						this.pstationCmd[channel][item]
-					);
-					const topic = '/app/' + this.mqttUserId + '/' + device + '/thing/property/set';
-					if (Object.keys(msg).length > 0) {
-						this.log.debug('publish  ' + topic);
-						this.log.debug('publish  ' + JSON.stringify(msg));
+				if (this.pstreamType && this.pstreamCmd) {
+					if (device === this.pstreamId) {
+						const msgBuf = ef.prepareStreamCmd(
+							this,
+							this.pstreamId,
+							this.pstreamType,
+							item,
+							state.val,
+							this.pstreamCmd[channel][item]
+						);
+						this.log.debug('msgBuf ' + msgBuf);
+						this.log.debug('Modifizierter Hex-String:' + Buffer.from(msgBuf).toString('hex'));
 
 						if (this.client) {
-							this.client.publish(topic, JSON.stringify(msg), { qos: 1 }, (error) => {
+							this.client.publish(topic, msgBuf, { qos: 1 }, (error) => {
 								if (error) {
 									this.log.error('Fehler beim Veröffentlichen der MQTT-Nachricht: ' + error);
 								} else {
-									if (this.config.msgCmdPstation) {
+									if (this.config.msgCmdPstream) {
 										this.log.debug('Die MQTT-Nachricht wurde erfolgreich veröffentlicht.');
 									}
 								}
 							});
 						}
-					} else {
-						this.log.debug('nothing to send ' + id + state);
 					}
 				} else {
-					this.log.warn('unknown state to be processed ' + id + state);
+					this.log.warn(
+						'pstreamType -> ' +
+							JSON.stringify(this.pstreamType) +
+							' or pstreamCmd problematic -> ' +
+							JSON.stringify(this.pstreamCmd)
+					);
+				}
+				if (this.pstationType && this.pstationCmd) {
+					if (device === this.pstationId) {
+						const msg = await ef.prepareStationCmd(
+							this,
+							this.pstationId,
+							this.pstationType,
+							item,
+							state.val,
+							this.pstationCmd[channel][item]
+						);
+						if (Object.keys(msg).length > 0) {
+							this.log.debug('publish  ' + topic);
+							this.log.debug('publish  ' + JSON.stringify(msg));
+
+							if (this.client) {
+								this.client.publish(topic, JSON.stringify(msg), { qos: 1 }, (error) => {
+									if (error) {
+										this.log.error('Fehler beim Veröffentlichen der MQTT-Nachricht: ' + error);
+									} else {
+										if (this.config.msgCmdPstation) {
+											this.log.debug('Die MQTT-Nachricht wurde erfolgreich veröffentlicht.');
+										}
+									}
+								});
+							}
+						} else {
+							this.log.debug('nothing to send ' + id + state);
+						}
+					}
+				} else {
+					this.log.warn(
+						'pstationType -> ' +
+							JSON.stringify(this.pstationType) +
+							' or pstationCmd problematic -> ' +
+							JSON.stringify(this.pstationCmd)
+					);
 				}
 			}
 		} else {
