@@ -94,12 +94,12 @@ class EcoflowMqtt extends utils.Adapter {
 						if (type !== 'none' && type !== '') {
 							const id = this.config.pstreams[pstr]['pstreamId'];
 							const name = this.config.pstreams[pstr]['pstreamName'];
-							this.pstreams.id = {};
-							this.pstreams.id['pstreamType'] = type;
-							this.pstreams.id['pstreamName'] = name;
+							this.pstreams[id] = {};
+							this.pstreams[id]['pstreamType'] = type;
+							this.pstreams[id]['pstreamName'] = name;
 						}
-						this.log.info('testing ->' + JSON.stringify(this.pstreams));
 					}
+					this.log.info('testing ->' + JSON.stringify(this.pstreams));
 				}
 				if (this.pstreamType && this.pstreamType !== 'pstream800' && this.pstreamStates) {
 					const streamupd = require('./lib/ecoflow_data.js').pstreamRanges['pstream600'];
