@@ -142,7 +142,10 @@ class EcoflowMqtt extends utils.Adapter {
 					}
 				} else {
 					this.log.error(
-						'pstationType not set ->' + this.pstationType + 'or no pstationStates ->' + this.pstationStates
+						'pstationType not set -> ' +
+							this.pstationType +
+							'or no pstationStates -> ' +
+							this.pstationStates
 					);
 				}
 			} catch (error) {
