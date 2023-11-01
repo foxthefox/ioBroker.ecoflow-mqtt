@@ -9,8 +9,8 @@
 const utils = require('@iobroker/adapter-core');
 const myutils = require('./lib/adapter_utils.js');
 const ef = require('./lib/ecoflow_utils.js');
-
 const mqtt = require('mqtt');
+
 const { isObject } = require('util');
 const { debug } = require('console');
 
@@ -67,6 +67,8 @@ class EcoflowMqtt extends utils.Adapter {
 			this.mqttPort = this.config.mqttPort || 8883;
 			this.mqttProtocol = 'mqtts://';
 			this.mqttUrl = this.config.mqttUrl || 'mqtt-e.ecoflow.com';
+			this.pstreams = {};
+			this.pstations = {};
 			this.pstreamId = this.config.streamId;
 			this.pstreamType = this.config.streamType;
 			this.pstreamStates = require('./lib/ecoflow_data.js').pstreamStates;
@@ -75,12 +77,9 @@ class EcoflowMqtt extends utils.Adapter {
 			this.pstationId = this.config.stationId;
 			this.pstationType = this.config.stationType;
 			this.pstationStates = require('./lib/ecoflow_data.js').pstationStates;
-			if (this.pstationType) {
-				this.pstationStatesDict = require('./lib/ecoflow_data.js').pstationStatesDict[this.pstationType];
-				this.pstationCmd = require('./lib/ecoflow_data.js').pstationCmd[this.pstationType];
-			} else {
-				this.log.error('pstationType initially not taken over ->' + this.pstationType);
-			}
+			this.pstationStatesDict = require('./lib/ecoflow_data.js').pstationStatesDict;
+			this.pstationCmd = require('./lib/ecoflow_data.js').pstationCmd;
+
 			// value correction
 
 			//modify this.pstationStates
@@ -88,6 +87,20 @@ class EcoflowMqtt extends utils.Adapter {
 			this.log.info('powerstream  ->' + this.pstreamType);
 			this.log.info('powerstation ->' + this.pstationType);
 			try {
+				//loop durch alle pstreams
+				if (this.config.pstreams.length > 0) {
+					for (let pstr = 0; pstr < this.config.pstreams.length; pstr++) {
+						const type = this.config.pstreams[pstr]['pstreamType'];
+						if (type !== 'none' && type !== '') {
+							const id = this.config.pstreams[pstr]['pstreamId'];
+							const name = this.config.pstreams[pstr]['pstreamName'];
+							this.pstreams.id = {};
+							this.pstreams.id['pstreamType'] = type;
+							this.pstreams.id['pstreamName'] = name;
+						}
+						this.log.info('testing ->' + JSON.stringify(this.pstreams));
+					}
+				}
 				if (this.pstreamType && this.pstreamType !== 'pstream800' && this.pstreamStates) {
 					const streamupd = require('./lib/ecoflow_data.js').pstreamRanges['pstream600'];
 					this.log.debug('pstream upd ' + JSON.stringify(streamupd));
@@ -112,7 +125,7 @@ class EcoflowMqtt extends utils.Adapter {
 						this.log.debug('streamupd not possible ->' + this.pstreamType);
 					}
 				}
-
+				//loop durch alle pstations
 				if (this.pstationType && this.pstationType !== 'none' && this.pstationStates) {
 					const stationupd = require('./lib/ecoflow_data.js').pstationRanges[this.pstationType];
 					this.log.debug('pstation upd ' + JSON.stringify(stationupd));

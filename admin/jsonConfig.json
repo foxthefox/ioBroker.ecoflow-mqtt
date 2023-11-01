@@ -275,7 +275,7 @@
 				"pstremHeader": {
 					"newLine": true,
 					"type": "header",
-					"text": "Power Stream Devices",
+					"text": "Power Stream Configuration",
 					"sm": 12,
 					"md": 12,
 					"lg": 12,
@@ -283,19 +283,20 @@
 				},
 				"introTable1Txt1": {
 					"type": "staticText",
-					"text": "This is a classic table with some elements. Add rows by clicking at + sign. <br>Columns Unique Text and Restructured Text have built in validations and error messages.",
+					"text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have no device, delete the added line item",
 					"newLine": true
 				},
 				"pstreams": {
 					"sm": 12,
 					"newLine": true,
 					"type": "table",
+					"label": "My configured Powerstream(s)",
 					"items": [
 						{
 							"type": "text",
 							"width": "20%",
 							"title": "name",
-							"attr": "streamName",
+							"attr": "pstreamName",
 							"filter": false,
 							"sort": false,
 							"default": "My Pstream1"
@@ -304,7 +305,7 @@
 							"type": "text",
 							"width": "20%",
 							"title": "id",
-							"attr": "streamId",
+							"attr": "pstreamId",
 							"filter": false,
 							"sort": false,
 							"default": "HW51"
@@ -318,7 +319,7 @@
 								{ "value": "pstream800", "label": "Powerstream 800W" }
 							],
 							"title": "Powerstream Type",
-							"attr": "streamType",
+							"attr": "pstreamType",
 							"filter": false,
 							"sort": false,
 							"default": "none"
@@ -328,23 +329,28 @@
 				"pstationHeader": {
 					"newLine": true,
 					"type": "header",
-					"text": "Power Station Devices",
+					"text": "Power Station Configuration",
 					"sm": 12,
 					"md": 12,
 					"lg": 12,
 					"size": 3
 				},
+				"introTable1Txt2": {
+					"type": "staticText",
+					"text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have additional batteries connected, check the slave port#. If you have no device, delete the added line item",
+					"newLine": true
+				},
 				"pstations": {
 					"sm": 12,
 					"newLine": true,
 					"type": "table",
-					"label": "Powerstations",
+					"label": "My configured Powerstation(s)",
 					"items": [
 						{
 							"type": "text",
-							"attr": "stationName",
+							"attr": "pstationName",
 							"width": "20%",
-							"title": "name",
+							"title": "Name",
 
 							"filter": false,
 							"sort": false,
@@ -354,7 +360,7 @@
 							"type": "text",
 							"width": "20%",
 							"title": "id",
-							"attr": "stationId",
+							"attr": "pstationId",
 							"filter": false,
 							"sort": false,
 							"default": "DAExxxx"
@@ -372,7 +378,7 @@
 								{ "value": "delta2max", "label": "Delta 2 Max" }
 							],
 							"title": "Power Station Type",
-							"attr": "stationType",
+							"attr": "pstationType",
 							"filter": false,
 							"sort": false,
 							"default": "none"
@@ -381,7 +387,7 @@
 							"type": "checkbox",
 							"title": "Slave 1",
 							"width": "10%",
-							"hidden": "data.stationType !== 'deltapro' && data.stationType !== 'deltamax' && data.stationType !== 'delta2max' && data.stationType !== 'delta'",
+							"hidden": "data.stationType !== 'deltapro' && data.stationType !== 'deltamax' && data.stationType !== 'delta2max' && data.stationType !== 'delta' && data.stationType !== 'delta2'",
 							"attr": "stationSlave1",
 							"filter": false,
 							"sort": false,
