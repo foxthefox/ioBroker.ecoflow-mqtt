@@ -93,6 +93,8 @@
 		"streamId": "HW51Zxxxx",
 		"streamType": "none",
 		"streamName": "Powerstream Balkon",
+		"pstreams": [],
+		"pstations": [],
 		"msgStateCreationPstation": false,
 		"msgUpdatePstation": false,
 		"msgUpdateValuePstation": false,

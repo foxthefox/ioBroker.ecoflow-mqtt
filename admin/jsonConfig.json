@@ -1,266 +1,405 @@
 {
 	"i18n": true,
-	"type": "panel",
+	"type": "tabs",
 	"items": {
-		"_userdata": {
-			"newLine": true,
-			"hidden": "true",
-			"type": "header",
-			"text": "User Data",
-			"sm": 12,
-			"md": 12,
-			"lg": 12,
-			"size": 3
+		"tab_1": {
+			"type": "panel",
+			"label": "Static",
+			"items": {
+				"_userdata": {
+					"newLine": true,
+					"hidden": "true",
+					"type": "header",
+					"text": "User Data",
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"size": 3
+				},
+				"userName": {
+					"type": "text",
+					"hidden": "true",
+					"label": "ecoflow account name / email  ",
+					"newLine": false
+				},
+				"userPassword": {
+					"type": "password",
+					"hidden": "true",
+					"visible": true,
+					"label": "user password",
+					"newLine": false
+				},
+				"_connection": {
+					"newLine": true,
+					"type": "header",
+					"text": "Connection settings",
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"size": 3
+				},
+				"mqttUrl": {
+					"type": "text",
+					"label": "mqtt broker",
+					"newLine": false
+				},
+				"mqttPort": {
+					"type": "text",
+					"label": "mqtt port",
+					"newLine": false
+				},
+				"_auth": {
+					"newLine": true,
+					"type": "header",
+					"text": "MQTT Authentication settings",
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"size": 3
+				},
+				"mqttUserId": {
+					"type": "text",
+					"label": "mqtt userId",
+					"newLine": false
+				},
+				"mqttUserName": {
+					"type": "text",
+					"label": "mqtt user name",
+					"newLine": false
+				},
+				"mqttPwd": {
+					"type": "password",
+					"visible": true,
+					"label": "mqtt pwd",
+					"newLine": false
+				},
+				"mqttClientId": {
+					"type": "text",
+					"label": "mqtt clientId",
+					"newLine": false
+				},
+				"_create": {
+					"type": "sendTo",
+					"label": "Create Login Data",
+					"hidden": "data.type !== 'client'",
+					"command": "create",
+					"variant": "outlined",
+					"useNative": true,
+					"jsonData": "{\"user\": \"${data.userName}\", \"pass\": \"${data.userPassword}\"}}"
+				},
+				"_test": {
+					"type": "sendTo",
+					"hidden": "true",
+					"label": "Test connection",
+					"command": "test",
+					"variant": "contained",
+					"jsonData": "{\"user\": \"${data.mqttUserName}\", \"pass\": \"${data.mqttPwd}\", \"url\": \"${data.mqttUrl}\", \"port\": ${data.mqttPort}, \"clientId\": \"${data.mqttClientId}\"}"
+				},
+				"_devicepstream": {
+					"newLine": true,
+					"type": "header",
+					"text": "Powerstream Device settings",
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"size": 3
+				},
+				"streamName": {
+					"type": "text",
+					"label": "device Name",
+					"newLine": false
+				},
+				"streamId": {
+					"type": "text",
+					"label": "device Id",
+					"newLine": false
+				},
+				"streamType": {
+					"type": "select",
+					"options": [
+						{ "value": "none", "label": "none" },
+						{ "value": "pstream600", "label": "Powerstream 600W" },
+						{ "value": "pstream800", "label": "Powerstream 800W" }
+					],
+					"label": "Powerstream Type",
+					"sm": 12,
+					"md": 6,
+					"lg": 4
+				},
+				"_devicepstation": {
+					"newLine": true,
+					"type": "header",
+					"text": "Powerstation Device settings",
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"size": 3
+				},
+				"stationName": {
+					"type": "text",
+					"label": "device Name",
+					"newLine": false
+				},
+				"stationId": {
+					"type": "text",
+					"label": "device Id",
+					"newLine": false
+				},
+				"stationType": {
+					"type": "select",
+					"options": [
+						{ "value": "none", "label": "none" },
+						{ "value": "deltamini", "label": "Delta Mini 882Wh" },
+						{ "value": "delta", "label": "Delta 1260Wh" },
+						{ "value": "deltamax", "label": "Delta Max 1600/2000" },
+						{ "value": "deltapro", "label": "Delta Pro" },
+						{ "value": "delta2", "label": "Delta 2" },
+						{ "value": "delta2max", "label": "Delta 2 Max" }
+					],
+					"label": "Powerstation Type",
+					"sm": 12,
+					"md": 6,
+					"lg": 4
+				},
+				"stationSlave1": {
+					"newLine": true,
+					"type": "checkbox",
+					"hidden": "data.stationType !== 'deltapro' && data.stationType !== 'deltamax' && data.stationType !== 'delta2max' && data.stationType !== 'delta'",
+					"label": "battery on slave 1",
+					"sm": 12,
+					"md": 6,
+					"lg": 4
+				},
+				"stationSlave2": {
+					"type": "checkbox",
+					"hidden": "data.stationType !== 'deltapro' && data.stationType !== 'deltamax' && data.stationType !== 'delta2max' ",
+					"label": "battery on slave 2",
+					"sm": 12,
+					"md": 6,
+					"lg": 4
+				},
+				"_debugpstation": {
+					"newLine": true,
+					"type": "header",
+					"text": "Powerstation DEBUG settings",
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"size": 3
+				},
+				"msgStateCreationPstation": {
+					"type": "checkbox",
+					"label": "msgStateCreationPstation",
+					"sm": 12,
+					"md": 6,
+					"lg": 4
+				},
+				"msgUpdatePstation": {
+					"type": "checkbox",
+					"label": "msgUpdatePstation",
+					"sm": 12,
+					"md": 6,
+					"lg": 4
+				},
+				"msgUpdateValuePstation": {
+					"type": "checkbox",
+					"label": "msgUpdateValuePstation",
+					"sm": 12,
+					"md": 6,
+					"lg": 4
+				},
+				"msgSetGetPstation": {
+					"type": "checkbox",
+					"label": "msgSetGetPstation",
+					"sm": 12,
+					"md": 6,
+					"lg": 4
+				},
+				"msgCmdPstation": {
+					"type": "checkbox",
+					"label": "msgCmdPstation",
+					"sm": 12,
+					"md": 6,
+					"lg": 4
+				},
+				"_debugpstream": {
+					"newLine": true,
+					"type": "header",
+					"text": "Powerstream DEBUG settings",
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"size": 3
+				},
+				"msgStateCreationPstream": {
+					"type": "checkbox",
+					"label": "msgStateCreationPstream",
+					"sm": 12,
+					"md": 6,
+					"lg": 4
+				},
+				"msgUpdatePstream": {
+					"type": "checkbox",
+					"label": "msgUpdatePstream",
+					"sm": 12,
+					"md": 6,
+					"lg": 4
+				},
+				"msgUpdateValuePstream": {
+					"type": "checkbox",
+					"label": "msgUpdateValuePstream",
+					"sm": 12,
+					"md": 6,
+					"lg": 4
+				},
+				"msgSetGetPstream": {
+					"type": "checkbox",
+					"label": "msgSetGetPstream",
+					"sm": 12,
+					"md": 6,
+					"lg": 4
+				},
+				"msgCmdPstream": {
+					"type": "checkbox",
+					"label": "msgCmdPstream",
+					"sm": 12,
+					"md": 6,
+					"lg": 4
+				}
+			}
 		},
-		"userName": {
-			"type": "text",
-			"hidden": "true",
-			"label": "ecoflow account name / email  ",
-			"newLine": false
-		},
-		"userPassword": {
-			"type": "password",
-			"hidden": "true",
-			"visible": true,
-			"label": "user password",
-			"newLine": false
-		},
-		"_connection": {
-			"newLine": true,
-			"type": "header",
-			"text": "Connection settings",
-			"sm": 12,
-			"md": 12,
-			"lg": 12,
-			"size": 3
-		},
-		"mqttUrl": {
-			"type": "text",
-			"label": "mqtt broker",
-			"newLine": false
-		},
-		"mqttPort": {
-			"type": "text",
-			"label": "mqtt port",
-			"newLine": false
-		},
-		"_auth": {
-			"newLine": true,
-			"type": "header",
-			"text": "MQTT Authentication settings",
-			"sm": 12,
-			"md": 12,
-			"lg": 12,
-			"size": 3
-		},
-		"mqttUserId": {
-			"type": "text",
-			"label": "mqtt userId",
-			"newLine": false
-		},
-		"mqttUserName": {
-			"type": "text",
-			"label": "mqtt user name",
-			"newLine": false
-		},
-		"mqttPwd": {
-			"type": "password",
-			"visible": true,
-			"label": "mqtt pwd",
-			"newLine": false
-		},
-		"mqttClientId": {
-			"type": "text",
-			"label": "mqtt clientId",
-			"newLine": false
-		},
-		"_create": {
-			"type": "sendTo",
-			"label": "Create Login Data",
-			"hidden": "data.type !== 'client'",
-			"command": "create",
-			"variant": "outlined",
-			"useNative": true,
-			"jsonData": "{\"user\": \"${data.userName}\", \"pass\": \"${data.userPassword}\"}}"
-		},
-		"_test": {
-			"type": "sendTo",
-			"hidden": "true",
-			"label": "Test connection",
-			"command": "test",
-			"variant": "contained",
-			"jsonData": "{\"user\": \"${data.mqttUserName}\", \"pass\": \"${data.mqttPwd}\", \"url\": \"${data.mqttUrl}\", \"port\": ${data.mqttPort}, \"clientId\": \"${data.mqttClientId}\"}"
-		},
-		"_devicepstream": {
-			"newLine": true,
-			"type": "header",
-			"text": "Powerstream Device settings",
-			"sm": 12,
-			"md": 12,
-			"lg": 12,
-			"size": 3
-		},
-		"streamName": {
-			"type": "text",
-			"label": "device Name",
-			"newLine": false
-		},
-		"streamId": {
-			"type": "text",
-			"label": "device Id",
-			"newLine": false
-		},
-		"streamType": {
-			"type": "select",
-			"options": [
-				{ "value": "none", "label": "none" },
-				{ "value": "pstream600", "label": "Powerstream 600W" },
-				{ "value": "pstream800", "label": "Powerstream 800W" }
-			],
-			"label": "Powerstream Type",
-			"sm": 12,
-			"md": 6,
-			"lg": 4
-		},
-		"_devicepstation": {
-			"newLine": true,
-			"type": "header",
-			"text": "Powerstation Device settings",
-			"sm": 12,
-			"md": 12,
-			"lg": 12,
-			"size": 3
-		},
-		"stationName": {
-			"type": "text",
-			"label": "device Name",
-			"newLine": false
-		},
-		"stationId": {
-			"type": "text",
-			"label": "device Id",
-			"newLine": false
-		},
-		"stationType": {
-			"type": "select",
-			"options": [
-				{ "value": "none", "label": "none" },
-				{ "value": "deltamini", "label": "Delta Mini 882Wh" },
-				{ "value": "delta", "label": "Delta 1260Wh" },
-				{ "value": "deltamax", "label": "Delta Max 1600/2000" },
-				{ "value": "deltapro", "label": "Delta Pro" },
-				{ "value": "delta2", "label": "Delta 2" },
-				{ "value": "delta2max", "label": "Delta 2 Max" }
-			],
-			"label": "Powerstation Type",
-			"sm": 12,
-			"md": 6,
-			"lg": 4
-		},
-		"stationSlave1": {
-			"newLine": true,
-			"type": "checkbox",
-			"hidden": "data.stationType !== 'deltapro' && data.stationType !== 'deltamax' && data.stationType !== 'delta2max' && data.stationType !== 'delta'",
-			"label": "battery on slave 1",
-			"sm": 12,
-			"md": 6,
-			"lg": 4
-		},
-		"stationSlave2": {
-			"type": "checkbox",
-			"hidden": "data.stationType !== 'deltapro' && data.stationType !== 'deltamax' && data.stationType !== 'delta2max' ",
-			"label": "battery on slave 2",
-			"sm": 12,
-			"md": 6,
-			"lg": 4
-		},
-		"_debugpstation": {
-			"newLine": true,
-			"type": "header",
-			"text": "Powerstation DEBUG settings",
-			"sm": 12,
-			"md": 12,
-			"lg": 12,
-			"size": 3
-		},
-		"msgStateCreationPstation": {
-			"type": "checkbox",
-			"label": "msgStateCreationPstation",
-			"sm": 12,
-			"md": 6,
-			"lg": 4
-		},
-		"msgUpdatePstation": {
-			"type": "checkbox",
-			"label": "msgUpdatePstation",
-			"sm": 12,
-			"md": 6,
-			"lg": 4
-		},
-		"msgUpdateValuePstation": {
-			"type": "checkbox",
-			"label": "msgUpdateValuePstation",
-			"sm": 12,
-			"md": 6,
-			"lg": 4
-		},
-		"msgSetGetPstation": {
-			"type": "checkbox",
-			"label": "msgSetGetPstation",
-			"sm": 12,
-			"md": 6,
-			"lg": 4
-		},
-		"msgCmdPstation": {
-			"type": "checkbox",
-			"label": "msgCmdPstation",
-			"sm": 12,
-			"md": 6,
-			"lg": 4
-		},
-		"_debugpstream": {
-			"newLine": true,
-			"type": "header",
-			"text": "Powerstream DEBUG settings",
-			"sm": 12,
-			"md": 12,
-			"lg": 12,
-			"size": 3
-		},
-		"msgStateCreationPstream": {
-			"type": "checkbox",
-			"label": "msgStateCreationPstream",
-			"sm": 12,
-			"md": 6,
-			"lg": 4
-		},
-		"msgUpdatePstream": {
-			"type": "checkbox",
-			"label": "msgUpdatePstream",
-			"sm": 12,
-			"md": 6,
-			"lg": 4
-		},
-		"msgUpdateValuePstream": {
-			"type": "checkbox",
-			"label": "msgUpdateValuePstream",
-			"sm": 12,
-			"md": 6,
-			"lg": 4
-		},
-		"msgSetGetPstream": {
-			"type": "checkbox",
-			"label": "msgSetGetPstream",
-			"sm": 12,
-			"md": 6,
-			"lg": 4
-		},
-		"msgCmdPstream": {
-			"type": "checkbox",
-			"label": "msgCmdPstream",
-			"sm": 12,
-			"md": 6,
-			"lg": 4
+		"tab_2": {
+			"type": "panel",
+			"label": "Devices (TesT area)",
+			"items": {
+				"pstremHeader": {
+					"newLine": true,
+					"type": "header",
+					"text": "Power Stream Devices",
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"size": 3
+				},
+				"introTable1Txt1": {
+					"type": "staticText",
+					"text": "This is a classic table with some elements. Add rows by clicking at + sign. <br>Columns Unique Text and Restructured Text have built in validations and error messages.",
+					"newLine": true
+				},
+				"pstreams": {
+					"sm": 12,
+					"newLine": true,
+					"type": "table",
+					"items": [
+						{
+							"type": "text",
+							"width": "20%",
+							"title": "name",
+							"attr": "streamName",
+							"filter": false,
+							"sort": false,
+							"default": "My Pstream1"
+						},
+						{
+							"type": "text",
+							"width": "20%",
+							"title": "id",
+							"attr": "streamId",
+							"filter": false,
+							"sort": false,
+							"default": "HW51"
+						},
+						{
+							"type": "select",
+							"width": "20%",
+							"options": [
+								{ "value": "none", "label": "none" },
+								{ "value": "pstream600", "label": "Powerstream 600W" },
+								{ "value": "pstream800", "label": "Powerstream 800W" }
+							],
+							"title": "Powerstream Type",
+							"attr": "streamType",
+							"filter": false,
+							"sort": false,
+							"default": "none"
+						}
+					]
+				},
+				"pstationHeader": {
+					"newLine": true,
+					"type": "header",
+					"text": "Power Station Devices",
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"size": 3
+				},
+				"pstations": {
+					"sm": 12,
+					"newLine": true,
+					"type": "table",
+					"label": "Powerstations",
+					"items": [
+						{
+							"type": "text",
+							"attr": "stationName",
+							"width": "20%",
+							"title": "name",
+
+							"filter": false,
+							"sort": false,
+							"default": "My Station#1"
+						},
+						{
+							"type": "text",
+							"width": "20%",
+							"title": "id",
+							"attr": "stationId",
+							"filter": false,
+							"sort": false,
+							"default": "DAExxxx"
+						},
+						{
+							"type": "select",
+							"width": "30%",
+							"options": [
+								{ "value": "none", "label": "none" },
+								{ "value": "deltamini", "label": "Delta Mini (882Wh)" },
+								{ "value": "delta", "label": "Delta (1260Wh)" },
+								{ "value": "deltamax", "label": "Delta Max (1600/2000)" },
+								{ "value": "deltapro", "label": "Delta Pro" },
+								{ "value": "delta2", "label": "Delta 2" },
+								{ "value": "delta2max", "label": "Delta 2 Max" }
+							],
+							"title": "Power Station Type",
+							"attr": "stationType",
+							"filter": false,
+							"sort": false,
+							"default": "none"
+						},
+						{
+							"type": "checkbox",
+							"title": "Slave 1",
+							"width": "10%",
+							"hidden": "data.stationType !== 'deltapro' && data.stationType !== 'deltamax' && data.stationType !== 'delta2max' && data.stationType !== 'delta'",
+							"attr": "stationSlave1",
+							"filter": false,
+							"sort": false,
+							"default": false
+						},
+						{
+							"type": "checkbox",
+							"title": "Slave 2",
+							"width": "10%",
+							"hidden": "data.stationType !== 'deltapro' && data.stationType !== 'deltamax' && data.stationType !== 'delta2max' ",
+							"attr": "stationSlave12",
+							"filter": false,
+							"sort": false,
+							"default": false
+						}
+					]
+				}
+			}
 		}
 	}
 }
