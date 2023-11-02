@@ -70,7 +70,7 @@
 		],
 		"globalDependencies": [
 			{
-				"admin": ">=5.0.0"
+				"admin": ">=6.12.0"
 			}
 		]
 	},
@@ -85,14 +85,6 @@
 		"mqttClientId": "ANDRIOD-...",
 		"mqttUrl": "mqtts://mqtt.ecoflow.com",
 		"mqttPort": 8883,
-		"stationId": "DAEBZ5xxx",
-		"stationType": "none",
-		"stationName": "My Station",
-		"stationSlave1": false,
-		"stationSlave2": false,
-		"streamId": "HW51Zxxxx",
-		"streamType": "none",
-		"streamName": "Powerstream Balkon",
 		"pstreams": [],
 		"pstations": [],
 		"msgStateCreationPstation": false,

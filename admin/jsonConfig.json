@@ -95,89 +95,6 @@
 					"variant": "contained",
 					"jsonData": "{\"user\": \"${data.mqttUserName}\", \"pass\": \"${data.mqttPwd}\", \"url\": \"${data.mqttUrl}\", \"port\": ${data.mqttPort}, \"clientId\": \"${data.mqttClientId}\"}"
 				},
-				"_devicepstream": {
-					"newLine": true,
-					"type": "header",
-					"text": "Powerstream Device settings",
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"size": 3
-				},
-				"streamName": {
-					"type": "text",
-					"label": "device Name",
-					"newLine": false
-				},
-				"streamId": {
-					"type": "text",
-					"label": "device Id",
-					"newLine": false
-				},
-				"streamType": {
-					"type": "select",
-					"options": [
-						{ "value": "none", "label": "none" },
-						{ "value": "pstream600", "label": "Powerstream 600W" },
-						{ "value": "pstream800", "label": "Powerstream 800W" }
-					],
-					"label": "Powerstream Type",
-					"sm": 12,
-					"md": 6,
-					"lg": 4
-				},
-				"_devicepstation": {
-					"newLine": true,
-					"type": "header",
-					"text": "Powerstation Device settings",
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"size": 3
-				},
-				"stationName": {
-					"type": "text",
-					"label": "device Name",
-					"newLine": false
-				},
-				"stationId": {
-					"type": "text",
-					"label": "device Id",
-					"newLine": false
-				},
-				"stationType": {
-					"type": "select",
-					"options": [
-						{ "value": "none", "label": "none" },
-						{ "value": "deltamini", "label": "Delta Mini 882Wh" },
-						{ "value": "delta", "label": "Delta 1260Wh" },
-						{ "value": "deltamax", "label": "Delta Max 1600/2000" },
-						{ "value": "deltapro", "label": "Delta Pro" },
-						{ "value": "delta2", "label": "Delta 2" },
-						{ "value": "delta2max", "label": "Delta 2 Max" }
-					],
-					"label": "Powerstation Type",
-					"sm": 12,
-					"md": 6,
-					"lg": 4
-				},
-				"stationSlave1": {
-					"newLine": true,
-					"type": "checkbox",
-					"hidden": "data.stationType !== 'deltapro' && data.stationType !== 'deltamax' && data.stationType !== 'delta2max' && data.stationType !== 'delta'",
-					"label": "battery on slave 1",
-					"sm": 12,
-					"md": 6,
-					"lg": 4
-				},
-				"stationSlave2": {
-					"type": "checkbox",
-					"hidden": "data.stationType !== 'deltapro' && data.stationType !== 'deltamax' && data.stationType !== 'delta2max' ",
-					"label": "battery on slave 2",
-					"sm": 12,
-					"md": 6,
-					"lg": 4
-				},
 				"_debugpstation": {
 					"newLine": true,
 					"type": "header",
@@ -270,7 +187,7 @@
 		},
 		"tab_2": {
 			"type": "panel",
-			"label": "Devices (TesT area)",
+			"label": "Device(s) Configuration",
 			"items": {
 				"pstremHeader": {
 					"newLine": true,

@@ -37,12 +37,8 @@ class EcoflowMqtt extends utils.Adapter {
 		this.mqttPort = 8883;
 		this.mqttProtocol = 'mqtts://';
 		this.mqttUrl = 'mqtt-e.ecoflow.com';
-		this.pstreamId = null;
-		this.pstreamType = null;
 		this.pstreamStates = null;
 		this.pstreamStatesDict = null;
-		this.pstationId = null;
-		this.pstationType = null;
 		this.pstationStates = null;
 		this.pstationStatesDict = null;
 		this.pstationCmd = null;
@@ -68,14 +64,10 @@ class EcoflowMqtt extends utils.Adapter {
 			this.mqttProtocol = 'mqtts://';
 			this.mqttUrl = this.config.mqttUrl || 'mqtt-e.ecoflow.com';
 			this.pstreams = {};
-			this.pstations = {};
-			this.pstreamId = this.config.streamId;
-			this.pstreamType = this.config.streamType;
 			this.pstreamStates = require('./lib/ecoflow_data.js').pstreamStates;
 			this.pstreamStatesDict = require('./lib/ecoflow_data.js').pstreamStatesDict['pstream'];
 			this.pstreamCmd = require('./lib/ecoflow_data.js').pstreamCmd['pstream'];
-			this.pstationId = this.config.stationId;
-			this.pstationType = this.config.stationType;
+			this.pstations = {};
 			this.pstationStates = require('./lib/ecoflow_data.js').pstationStates;
 			this.pstationStatesDict = require('./lib/ecoflow_data.js').pstationStatesDict;
 			this.pstationCmd = require('./lib/ecoflow_data.js').pstationCmd;
@@ -84,8 +76,8 @@ class EcoflowMqtt extends utils.Adapter {
 
 			//modify this.pstationStates
 			this.log.info('your configration:');
-			this.log.info('powerstream  ->' + this.pstreamType);
-			this.log.info('powerstation ->' + this.pstationType);
+			this.log.info('powerstream  -> ' + JSON.stringify(this.config.pstreams));
+			this.log.info('powerstation -> ' + JSON.stringify(this.config.pstations));
 			try {
 				//loop durch alle pstreams
 				if (this.config.pstreams.length > 0) {
@@ -97,263 +89,282 @@ class EcoflowMqtt extends utils.Adapter {
 							this.pstreams[id] = {};
 							this.pstreams[id]['pstreamType'] = type;
 							this.pstreams[id]['pstreamName'] = name;
-						}
-					}
-					this.log.info('testing ->' + JSON.stringify(this.pstreams));
-				}
-				if (this.pstreamType && this.pstreamType !== 'pstream800' && this.pstreamStates) {
-					const streamupd = require('./lib/ecoflow_data.js').pstreamRanges['pstream600'];
-					this.log.debug('pstream upd ' + JSON.stringify(streamupd));
-					if (Object.keys(streamupd).length > 0) {
-						for (let channel in streamupd) {
-							for (let type in streamupd[channel]) {
-								for (let state in streamupd[channel][type]) {
-									for (let value in streamupd[channel][type][state]) {
-										this.pstreamStates[channel][type][state][value] =
-											streamupd[channel][type][state][value];
-										this.log.debug(
-											'manipulate ' +
-												this.pstreamStates[channel][type][state][value] +
-												' -- ' +
-												streamupd[channel][type][state][value]
-										);
-									}
-								}
-							}
-						}
-					} else {
-						this.log.debug('streamupd not possible ->' + this.pstreamType);
-					}
-				}
-				//loop durch alle pstations
-				if (this.pstationType && this.pstationType !== 'none' && this.pstationStates) {
-					const stationupd = require('./lib/ecoflow_data.js').pstationRanges[this.pstationType];
-					this.log.debug('pstation upd ' + JSON.stringify(stationupd));
-					if (stationupd) {
-						if (Object.keys(stationupd).length > 0) {
-							for (let channel in stationupd) {
-								for (let type in stationupd[channel]) {
-									for (let state in stationupd[channel][type]) {
-										for (let value in stationupd[channel][type][state]) {
-											this.pstationStates[channel][type][state][value] =
-												stationupd[channel][type][state][value];
-											this.log.debug(
-												'manipulate ' +
-													this.pstationStates[channel][type][state][value] +
-													' -- ' +
-													stationupd[channel][type][state][value]
-											);
+
+							let pstreamStates = require('./lib/ecoflow_data.js').pstreamStates;
+							// manipulation of ranges when 600W version
+							if (type !== 'pstream800' && this.pstreamStates) {
+								const streamupd = require('./lib/ecoflow_data.js').pstreamRanges['pstream600'];
+								this.log.debug('pstream upd ' + JSON.stringify(streamupd));
+								if (Object.keys(streamupd).length > 0) {
+									for (let channel in streamupd) {
+										for (let type in streamupd[channel]) {
+											for (let state in streamupd[channel][type]) {
+												for (let value in streamupd[channel][type][state]) {
+													pstreamStates[channel][type][state][value] =
+														streamupd[channel][type][state][value];
+													this.log.debug(
+														'manipulate ' +
+															pstreamStates[channel][type][state][value] +
+															' -- ' +
+															streamupd[channel][type][state][value]
+													);
+												}
+											}
 										}
 									}
+								} else {
+									this.log.debug('streamupd not possible ->' + this.pstreamType);
 								}
 							}
+							//create pstream objects
+							if (id && pstreamStates && this.pstreamStatesDict && name) {
+								this.log.info('pstream state creation' + type + ' for Id ' + id);
+								try {
+									if (this.config.msgStateCreationPstream) {
+										this.log.debug('____________________________________________');
+										this.log.debug('create  device ' + id);
+									}
+									await this.setObjectNotExistsAsync(id, {
+										type: 'device',
+										common: {
+											name: name,
+											role: 'device'
+										},
+										native: {}
+									});
+									for (let part in this.pstreamStatesDict) {
+										if (this.config.msgStateCreationPstream) {
+											this.log.debug('____________________________________________');
+											this.log.debug('create  channel ' + part);
+										}
+										await myutils.createMyChannel(this, id, part, part, 'channel');
+										for (let key in this.pstreamStatesDict[part]) {
+											let type = this.pstreamStatesDict[part][key]['entity'];
+											if (pstreamStates[part][type][key]) {
+												await myutils.createMyState(
+													this,
+													id,
+													part,
+													key,
+													pstreamStates[part][type][key]
+												);
+											} else {
+												this.log.debug(
+													'not created/mismatch ->' + part + ' ' + key + ' ' + type
+												);
+											}
+										}
+									}
+									this.log.info('pstream states created for ' + id + ' / ' + type + ' / ' + name);
+								} catch (error) {
+									this.log.error('create states powerstream ->' + error);
+								}
+							} else {
+								this.log.warn(
+									id +
+										'states -> ' +
+										pstreamStates +
+										' dict -> ' +
+										this.pstreamStatesDict +
+										' type -> ' +
+										type
+								);
+								this.log.warn(
+									'if in other message "type -> none" then no(none) powerstream is defined and this message is void'
+								);
+							}
 						} else {
-							this.log.error('streamupd not possible');
+							this.log.warn('"none" or no configuration, you can delete the row in the table');
 						}
-					} else {
-						this.log.warn('did not get stationupd');
 					}
-				} else {
-					this.log.error(
-						'pstationType not set -> ' +
-							this.pstationType +
-							'or no pstationStates -> ' +
-							this.pstationStates
-					);
+				}
+
+				//loop durch alle pstations
+				if (this.config.pstations.length > 0) {
+					for (let psta = 0; psta < this.config.pstations.length; psta++) {
+						const type = this.config.pstations[psta]['pstationType'];
+						if (type !== 'none' && type !== '') {
+							const id = this.config.pstations[psta]['pstationId'];
+							const name = this.config.pstations[psta]['pstationName'];
+							this.pstations[id] = {};
+							this.pstations[id]['pstationType'] = type;
+							this.pstations[id]['pstationName'] = name;
+
+							const pstationStates = require('./lib/ecoflow_data.js').pstationStates;
+
+							//loop durch alle pstations
+							if (type !== 'none' && pstationStates) {
+								const stationupd = require('./lib/ecoflow_data.js').pstationRanges[type];
+								this.log.debug('pstation upd ' + JSON.stringify(stationupd));
+								if (stationupd) {
+									if (Object.keys(stationupd).length > 0) {
+										for (let channel in stationupd) {
+											for (let type in stationupd[channel]) {
+												for (let state in stationupd[channel][type]) {
+													for (let value in stationupd[channel][type][state]) {
+														pstationStates[channel][type][state][value] =
+															stationupd[channel][type][state][value];
+														this.log.debug(
+															'manipulate ' +
+																pstationStates[channel][type][state][value] +
+																' -- ' +
+																stationupd[channel][type][state][value]
+														);
+													}
+												}
+											}
+										}
+									} else {
+										this.log.error('stration upd not possible');
+									}
+								} else {
+									this.log.warn('did not get stationupd');
+								}
+							} else {
+								this.log.error(
+									'pstationType not set -> ' + type + 'or no pstationStates -> ' + this.pstationStates
+								);
+							}
+							//create pstation objects
+							const pstationStatesDict = this.pstationStatesDict[type];
+
+							if (type !== 'none' && pstationStates && pstationStatesDict) {
+								this.log.info('pstation state creation ' + type + ' for Id ' + id);
+								try {
+									if (this.config.msgStateCreationPstation) {
+										this.log.debug('____________________________________________');
+										this.log.debug('create  device ' + id);
+									}
+									await this.setObjectNotExistsAsync(id, {
+										type: 'device',
+										common: {
+											name: name,
+											role: 'device'
+										},
+										native: {}
+									});
+									for (let part in pstationStatesDict) {
+										if (this.config.msgStateCreationPstation) {
+											this.log.debug('____________________________________________');
+											this.log.debug('create  channel ' + part);
+										}
+										await myutils.createMyChannel(this, id, part, part, 'channel');
+										for (let key in pstationStatesDict[part]) {
+											let type = pstationStatesDict[part][key]['entity'];
+											if (type !== 'icon') {
+												if (pstationStates[part][type][key]) {
+													await myutils.createMyState(
+														this,
+														id,
+														part,
+														key,
+														pstationStates[part][type][key]
+													);
+												} else {
+													this.log.info(
+														'not created/mismatch ->' + part + ' ' + key + ' ' + type
+													);
+												}
+											}
+										}
+									}
+									this.log.info('pstation states created for ' + id + ' / ' + type + ' / ' + name);
+									//first additional battery
+									if (this.config.pstations[psta]['pstationSlave1']) {
+										if (this.config.msgStateCreationPstation) {
+											this.log.debug('____________________________________________');
+											this.log.debug('create  channel ' + 'bmsSlave1');
+										}
+										await myutils.createMyChannel(this, id, 'bmsSlave1', 'bmsSlave1', 'channel');
+										for (let key in pstationStatesDict['bmsMaster']) {
+											let type = pstationStatesDict['bmsMaster'][key]['entity'];
+											if (type !== 'icon') {
+												if (pstationStates['bmsMaster'][type][key]) {
+													await myutils.createMyState(
+														this,
+														id,
+														'bmsSlave1',
+														key,
+														pstationStates['bmsMaster'][type][key]
+													);
+												} else {
+													this.log.info(
+														'not created/mismatch ' +
+															' bmsSlave1 ->' +
+															' ' +
+															key +
+															' ' +
+															type
+													);
+												}
+											}
+										}
+										this.log.info('pstation add battery #1 states created');
+									}
+									//second additional battery
+									if (this.config.pstations[psta]['pstationSlave2']) {
+										if (this.config.msgStateCreationPstation) {
+											this.log.debug('____________________________________________');
+											this.log.debug('create  channel ' + 'bmsSlave2');
+										}
+										await myutils.createMyChannel(this, id, 'bmsSlave2', 'bmsSlave2', 'channel');
+										for (let key in this.pstationStatesDict['bmsMaster']) {
+											let type = this.pstationStatesDict['bmsMaster'][key]['entity'];
+											if (type !== 'icon') {
+												if (this.pstationStates['bmsMaster'][type][key]) {
+													await myutils.createMyState(
+														this,
+														id,
+														'bmsSlave2',
+														key,
+														this.pstationStates['bmsMaster'][type][key]
+													);
+												} else {
+													this.log.info(
+														'not created/mismatch ' +
+															'bmsSlave2 ->' +
+															' ' +
+															key +
+															' ' +
+															type
+													);
+												}
+											}
+										}
+										this.log.info('pstation add battery #2 states created');
+									}
+								} catch (error) {
+									this.log.error('create states powerstation ' + error);
+								}
+							} else {
+								this.log.error(
+									'something empty ID->' +
+										id +
+										'states -> ' +
+										pstationStates +
+										' dict -> ' +
+										this.pstationStatesDict +
+										' type -> ' +
+										type
+								);
+							}
+						}
+					}
 				}
 			} catch (error) {
-				this.log.error('modification went wrong ->' + error);
+				this.log.error('modification or state creation went wrong ->' + error);
 			}
 		} catch (error) {
 			this.log.error('read config ' + error);
 		}
 
-		//create pstream objects
-		if (
-			this.pstreamType !== 'none' &&
-			this.pstreamId &&
-			this.pstreamStates &&
-			this.pstreamStatesDict &&
-			this.pstreamType
-		) {
-			this.log.info('pstream state creation' + this.pstreamType + ' for Id ' + this.pstreamId);
-			try {
-				if (this.config.msgStateCreationPstream) {
-					this.log.debug('____________________________________________');
-					this.log.debug('create  device ' + this.pstreamId);
-				}
-				await this.setObjectNotExistsAsync(this.pstreamId, {
-					type: 'device',
-					common: {
-						name: this.config.streamName,
-						role: 'device'
-					},
-					native: {}
-				});
-				for (let part in this.pstreamStatesDict) {
-					if (this.config.msgStateCreationPstream) {
-						this.log.debug('____________________________________________');
-						this.log.debug('create  channel ' + part);
-					}
-					await myutils.createMyChannel(this, this.pstreamId, part, part, 'channel');
-					for (let key in this.pstreamStatesDict[part]) {
-						let type = this.pstreamStatesDict[part][key]['entity'];
-						if (this.pstreamStates[part][type][key]) {
-							await myutils.createMyState(
-								this,
-								this.pstreamId,
-								part,
-								key,
-								this.pstreamStates[part][type][key]
-							);
-						} else {
-							this.log.debug('not created/mismatch ->' + part + ' ' + key + ' ' + type);
-						}
-					}
-				}
-				this.log.info('pstream states created');
-			} catch (error) {
-				this.log.error('create states powerstream ->' + error);
-			}
-		} else {
-			this.log.warn(
-				this.pstreamId +
-					'states -> ' +
-					this.pstreamStates +
-					' dict -> ' +
-					this.pstreamStatesDict +
-					' type -> ' +
-					this.pstreamType
-			);
-			this.log.warn(
-				'if in other message "type -> none" then no(none) powerstream is defined and this message is void'
-			);
-		}
-
-		//create pstation objects
-		if (
-			this.pstationType !== 'none' &&
-			this.pstationId &&
-			this.pstationStates &&
-			this.pstationStatesDict &&
-			this.pstationType
-		) {
-			this.log.info('pstation state creation ' + this.pstationType + ' for Id ' + this.pstationId);
-			try {
-				if (this.config.msgStateCreationPstation) {
-					this.log.debug('____________________________________________');
-					this.log.debug('create  device ' + this.pstationId);
-				}
-				await this.setObjectNotExistsAsync(this.pstationId, {
-					type: 'device',
-					common: {
-						name: this.config.stationName,
-						role: 'device'
-					},
-					native: {}
-				});
-				for (let part in this.pstationStatesDict) {
-					if (this.config.msgStateCreationPstation) {
-						this.log.debug('____________________________________________');
-						this.log.debug('create  channel ' + part);
-					}
-					await myutils.createMyChannel(this, this.pstationId, part, part, 'channel');
-					for (let key in this.pstationStatesDict[part]) {
-						let type = this.pstationStatesDict[part][key]['entity'];
-						if (type !== 'icon') {
-							if (this.pstationStates[part][type][key]) {
-								await myutils.createMyState(
-									this,
-									this.pstationId,
-									part,
-									key,
-									this.pstationStates[part][type][key]
-								);
-							} else {
-								this.log.info('not created/mismatch ->' + part + ' ' + key + ' ' + type);
-							}
-						}
-					}
-				}
-				this.log.info('pstation states created');
-				//first additional battery
-				if (this.config.stationSlave1) {
-					if (this.config.msgStateCreationPstation) {
-						this.log.debug('____________________________________________');
-						this.log.debug('create  channel ' + 'bmsSlave1');
-					}
-					await myutils.createMyChannel(this, this.pstationId, 'bmsSlave1', 'bmsSlave1', 'channel');
-					for (let key in this.pstationStatesDict['bmsMaster']) {
-						let type = this.pstationStatesDict['bmsMaster'][key]['entity'];
-						if (type !== 'icon') {
-							if (this.pstationStates['bmsMaster'][type][key]) {
-								await myutils.createMyState(
-									this,
-									this.pstationId,
-									'bmsSlave1',
-									key,
-									this.pstationStates['bmsMaster'][type][key]
-								);
-							} else {
-								this.log.info('not created/mismatch ' + ' bmsSlave1 ->' + ' ' + key + ' ' + type);
-							}
-						}
-					}
-					this.log.info('pstation add battery #1 states created');
-				}
-				//second additional battery
-				if (this.config.stationSlave2) {
-					if (this.config.msgStateCreationPstation) {
-						this.log.debug('____________________________________________');
-						this.log.debug('create  channel ' + 'bmsSlave2');
-					}
-					await myutils.createMyChannel(this, this.pstationId, 'bmsSlave2', 'bmsSlave2', 'channel');
-					for (let key in this.pstationStatesDict['bmsMaster']) {
-						let type = this.pstationStatesDict['bmsMaster'][key]['entity'];
-						if (type !== 'icon') {
-							if (this.pstationStates['bmsMaster'][type][key]) {
-								await myutils.createMyState(
-									this,
-									this.pstationId,
-									'bmsSlave2',
-									key,
-									this.pstationStates['bmsMaster'][type][key]
-								);
-							} else {
-								this.log.info('not created/mismatch ' + 'bmsSlave2 ->' + ' ' + key + ' ' + type);
-							}
-						}
-					}
-					this.log.info('pstation add battery #1 states created');
-				}
-			} catch (error) {
-				this.log.error('create states powerstation ' + error);
-			}
-		} else {
-			this.log.error(
-				'something empty ID->' +
-					this.pstationId +
-					'states -> ' +
-					this.pstationStates +
-					' dict -> ' +
-					this.pstationStatesDict +
-					' type -> ' +
-					this.pstationType
-			);
-		}
 		//additional states for observance
 		myutils.createInfoStates(this);
 
 		//create subscription topics
 		let topics;
 		if (this.mqttUserId.length > 0) {
-			topics = ef.createSubscribeTopics(
-				this.mqttUserId,
-				this.pstreamType,
-				this.pstreamId,
-				this.pstationType,
-				this.pstationId
-			);
+			topics = ef.createSubscribeTopics(this.mqttUserId, this.pstreams, this.pstations);
 		}
 		this.log.debug('subscription topics ' + JSON.stringify(topics));
 
@@ -389,42 +400,52 @@ class EcoflowMqtt extends utils.Adapter {
 					// this.log.debug(topic + ' got ' + message.toString());
 					if (topic.includes('/app/device/property/')) {
 						topic = topic.replace('/app/device/property/', '');
-						if (topic === this.pstreamId) {
-							let msgdecode = ef.pstreamDecode(this, message);
-							if (this.config.msgUpdatePstream) {
-								this.log.debug('pstream: ' + JSON.stringify(msgdecode));
-							}
-							if (msgdecode !== null && typeof msgdecode === 'object') {
-								if (Object.keys(msgdecode).length > 0) {
-									await ef.storeStreamPayload(
-										this,
-										this.pstreamStatesDict,
-										this.pstreamStates,
-										topic,
-										msgdecode
-									);
+						if (this.pstreams && this.pstreamStatesDict && this.pstreamStates) {
+							if (this.pstreams[topic]) {
+								let msgdecode = ef.pstreamDecode(this, message);
+								if (this.config.msgUpdatePstream) {
+									this.log.debug('pstream: ' + JSON.stringify(msgdecode));
 								}
+								if (msgdecode !== null && typeof msgdecode === 'object') {
+									if (Object.keys(msgdecode).length > 0) {
+										await ef.storeStreamPayload(
+											this,
+											this.pstreamStatesDict,
+											this.pstreamStates,
+											topic,
+											msgdecode
+										);
+									}
+								}
+								this.msgCountPstream++;
+								await this.setStateAsync('info.msgCountPstream', {
+									val: this.msgCountPstream,
+									ack: true
+								});
 							}
-							this.msgCountPstream++;
-							await this.setStateAsync('info.msgCountPstream', { val: this.msgCountPstream, ack: true });
-						} else if (topic === this.pstationId) {
-							if (this.config.msgUpdatePstation) {
-								this.log.debug('pstation: ' + message.toString());
+						}
+						if (this.pstations && this.pstationStatesDict && this.pstationStates) {
+							if (this.pstations[topic]) {
+								if (this.config.msgUpdatePstation) {
+									this.log.debug('pstation: ' + message.toString());
+								}
+
+								const type = this.pstations[topic]['pstationType'];
+								const dict = this.pstationStatesDict[type];
+								await ef.storeStationPayload(
+									this,
+									dict,
+									this.pstationStates,
+									topic,
+									JSON.parse(message.toString())
+								);
+
+								this.msgCountPstation++;
+								await this.setStateAsync('info.msgCountPstation', {
+									val: this.msgCountPstation,
+									ack: true
+								});
 							}
-							await ef.storeStationPayload(
-								this,
-								this.pstationStatesDict,
-								this.pstationStates,
-								topic,
-								JSON.parse(message.toString())
-							);
-							this.msgCountPstation++;
-							await this.setStateAsync('info.msgCountPstation', {
-								val: this.msgCountPstation,
-								ack: true
-							});
-						} else {
-							this.log.debug('unknown topic, not matching IDs');
 						}
 					} else {
 						//other msg -> get or set
@@ -453,68 +474,82 @@ class EcoflowMqtt extends utils.Adapter {
 							msgtype = 'unknown msgtype';
 						}
 						if (msgtype === 'set') {
-							if (topic === this.pstreamId) {
-								if (this.config.msgSetGetPstream) {
-									this.log.debug('received set -> ' + Buffer.from(message).toString('hex'));
-									//ef.pstreamDecode()
+							if (this.pstreams) {
+								if (this.pstreams[topic]) {
+									if (this.config.msgSetGetPstream) {
+										this.log.debug('received set -> ' + Buffer.from(message).toString('hex'));
+										//ef.pstreamDecode()
+									}
 								}
-							} else if (topic === this.pstationId) {
-								if (this.config.msgSetGetPstation) {
-									let setmsg = JSON.parse(message.toString());
-									if (setmsg.params) {
-										let key = setmsg.params.id;
-										switch (key) {
-											case 40:
-											case 68:
-											case 72:
-												//Lebenszeichen der APP?
+							}
+							if (this.pstations) {
+								if (this.pstations[topic]) {
+									if (this.config.msgSetGetPstation) {
+										let setmsg = JSON.parse(message.toString());
+										if (setmsg.params) {
+											let key = setmsg.params.id;
+											switch (key) {
+												case 40:
+												case 68:
+												case 72:
+													//Lebenszeichen der APP?
 
-												break;
-											default:
-												this.log.debug(topic + ' ->set ' + key + '  ' + JSON.stringify(setmsg));
-												break;
+													break;
+												default:
+													this.log.debug(
+														topic + ' ->set ' + key + '  ' + JSON.stringify(setmsg)
+													);
+													break;
+											}
+										} else {
+											this.log.debug(topic + ' ->set w/o params' + JSON.stringify(setmsg));
 										}
-									} else {
-										this.log.debug(topic + ' ->set w/o params' + JSON.stringify(setmsg));
 									}
 								}
 							}
 						} else {
-							if (topic === this.pstreamId) {
-								if (this.config.msgSetGetPstream) {
-									this.log.debug(
-										'received ' + msgtype + ' -> ' + Buffer.from(message).toString('hex')
-									);
-								}
-								if (msgtype === 'get_reply') {
-									let msgdecode = ef.pstreamDecode(this, message);
-									if (this.config.msgUpdatePstream) {
-										this.log.debug('pstream get_reply: ' + JSON.stringify(msgdecode));
+							if (this.pstreams && this.pstreamStatesDict && this.pstreamStates) {
+								if (this.pstreams[topic]) {
+									if (this.config.msgSetGetPstream) {
+										this.log.debug(
+											'received ' + msgtype + ' -> ' + Buffer.from(message).toString('hex')
+										);
 									}
-									if (msgdecode !== null && typeof msgdecode === 'object') {
-										if (Object.keys(msgdecode).length > 0) {
-											await ef.storeStreamPayload(
-												this,
-												this.pstreamStatesDict,
-												this.pstreamStates,
-												topic,
-												msgdecode
-											);
+									if (msgtype === 'get_reply') {
+										let msgdecode = ef.pstreamDecode(this, message);
+										if (this.config.msgUpdatePstream) {
+											this.log.debug('pstream get_reply: ' + JSON.stringify(msgdecode));
+										}
+										if (msgdecode !== null && typeof msgdecode === 'object') {
+											if (Object.keys(msgdecode).length > 0) {
+												await ef.storeStreamPayload(
+													this,
+													this.pstreamStatesDict,
+													this.pstreamStates,
+													topic,
+													msgdecode
+												);
+											}
 										}
 									}
 								}
-							} else if (topic === this.pstationId) {
-								if (this.config.msgSetGetPstation) {
-									this.log.debug(topic + ' received ' + msgtype + '-> ' + message.toString());
-								}
-								if (msgtype === 'get_reply') {
-									await ef.storeStationPayload(
-										this,
-										this.pstationStatesDict,
-										this.pstationStates,
-										topic,
-										JSON.parse(message.toString())
-									);
+							}
+							if (this.pstations && this.pstationStatesDict && this.pstationStates) {
+								if (this.pstations[topic]) {
+									if (this.config.msgSetGetPstation) {
+										this.log.debug(topic + ' received ' + msgtype + '-> ' + message.toString());
+									}
+									if (msgtype === 'get_reply') {
+										const type = this.pstations[topic]['pstationType'];
+										const dict = this.pstationStatesDict[type];
+										await ef.storeStationPayload(
+											this,
+											dict,
+											this.pstationStates,
+											topic,
+											JSON.parse(message.toString())
+										);
+									}
 								}
 							}
 						}
@@ -581,75 +616,70 @@ class EcoflowMqtt extends utils.Adapter {
 				const item = idsplit[4];
 				this.log.info('(ack=false) ->cmd : channel ' + channel + ' state ' + item);
 				const topic = '/app/' + this.mqttUserId + '/' + device + '/thing/property/set';
-
-				if (this.pstreamType && this.pstreamCmd) {
-					if (device === this.pstreamId) {
-						const msgBuf = ef.prepareStreamCmd(
-							this,
-							this.pstreamId,
-							this.pstreamType,
-							item,
-							state.val,
-							this.pstreamCmd[channel][item]
-						);
-						this.log.debug('msgBuf ' + msgBuf);
-						this.log.debug('Modifizierter Hex-String:' + Buffer.from(msgBuf).toString('hex'));
-
-						if (this.client) {
-							this.client.publish(topic, msgBuf, { qos: 1 }, (error) => {
-								if (error) {
-									this.log.error('Fehler beim Veröffentlichen der MQTT-Nachricht: ' + error);
-								} else {
-									if (this.config.msgCmdPstream) {
-										this.log.debug('Die MQTT-Nachricht wurde erfolgreich veröffentlicht.');
-									}
-								}
-							});
-						}
-					}
-				} else {
-					this.log.warn(
-						'pstreamType -> ' +
-							JSON.stringify(this.pstreamType) +
-							' or pstreamCmd problematic -> ' +
-							JSON.stringify(this.pstreamCmd)
-					);
-				}
-				if (this.pstationType && this.pstationCmd) {
-					if (device === this.pstationId) {
-						const msg = await ef.prepareStationCmd(
-							this,
-							this.pstationId,
-							this.pstationType,
-							item,
-							state.val,
-							this.pstationCmd[channel][item]
-						);
-						if (Object.keys(msg).length > 0) {
-							this.log.debug('publish  ' + topic);
-							this.log.debug('publish  ' + JSON.stringify(msg));
+				let type = '';
+				if (this.pstreams && this.pstreamCmd) {
+					if (this.pstreams[device]) {
+						type = this.pstreams[device]['pstreamType'];
+						const cmd = this.pstreamCmd[type];
+						if (type !== '' && type !== 'none' && cmd) {
+							const msgBuf = ef.prepareStreamCmd(this, device, type, item, state.val, cmd[channel][item]);
+							this.log.debug('msgBuf ' + msgBuf);
+							this.log.debug('Modifizierter Hex-String:' + Buffer.from(msgBuf).toString('hex'));
 
 							if (this.client) {
-								this.client.publish(topic, JSON.stringify(msg), { qos: 1 }, (error) => {
+								this.client.publish(topic, msgBuf, { qos: 1 }, (error) => {
 									if (error) {
-										this.log.error('Fehler beim Veröffentlichen der MQTT-Nachricht: ' + error);
+										this.log.error('Error when publishing the MQTT message:: ' + error);
 									} else {
-										if (this.config.msgCmdPstation) {
-											this.log.debug('Die MQTT-Nachricht wurde erfolgreich veröffentlicht.');
+										if (this.config.msgCmdPstream) {
+											this.log.debug('Message succesfully published.');
 										}
 									}
 								});
 							}
-						} else {
-							this.log.debug('nothing to send ' + id + state);
 						}
 					}
 				} else {
 					this.log.warn(
-						'pstationType -> ' +
-							JSON.stringify(this.pstationType) +
-							' or pstationCmd problematic -> ' +
-							JSON.stringify(this.pstationCmd)
+						'pstreamType -> ' + type + ' or pstreamCmd problematic -> ' + JSON.stringify(this.pstreamCmd)
+					);
+				}
+				if (this.pstations && this.pstationCmd) {
+					if (this.pstations[device]) {
+						type = this.pstations[device]['pstreamType'];
+						const cmd = this.pstationCmd[type];
+						if (type !== '' && type !== 'none' && cmd) {
+							const msg = await ef.prepareStationCmd(
+								this,
+								device,
+								type,
+								item,
+								state.val,
+								cmd[channel][item]
+							);
+							if (Object.keys(msg).length > 0) {
+								this.log.debug('publish  ' + topic);
+								this.log.debug('publish  ' + JSON.stringify(msg));
+
+								if (this.client) {
+									this.client.publish(topic, JSON.stringify(msg), { qos: 1 }, (error) => {
+										if (error) {
+											this.log.error('Error when publishing the MQTT message: ' + error);
+										} else {
+											if (this.config.msgCmdPstation) {
+												this.log.debug('Message succesfully published.');
+											}
+										}
+									});
+								}
+							} else {
+								this.log.debug('nothing to send ' + id + state);
+							}
+						}
+					}
+				} else {
+					this.log.warn(
+						'pstationType -> ' + type + ' or pstationCmd problematic -> ' + JSON.stringify(this.pstationCmd)
 					);
 				}
 			}
@@ -737,21 +767,21 @@ class EcoflowMqtt extends utils.Adapter {
 					// Set timeout for connection
 					const timeout = setTimeout(() => {
 						_client.end();
-						this.sendTo(obj.from, obj.command, 'timeout', obj.callback);
+						this.sendTo(obj.from, obj.command, { result: 'timeout' }, obj.callback);
 					}, 2000);
 
 					// If connected, return success
 					_client.on('connect', () => {
 						_client.end();
 						clearTimeout(timeout);
-						this.sendTo(obj.from, obj.command, 'connected', obj.callback);
+						this.sendTo(obj.from, obj.command, { result: 'connected' }, obj.callback);
 					});
 					// If connected, return success
 					_client.on('error', (err) => {
 						_client.end();
 						clearTimeout(timeout);
 						this.log.warn(`Error on mqtt test: ${err}`);
-						this.sendTo(obj.from, obj.command, 'error', obj.callback);
+						this.sendTo(obj.from, obj.command, { error: err }, obj.callback);
 					});
 				}
 				break;
@@ -763,21 +793,21 @@ class EcoflowMqtt extends utils.Adapter {
 					// Set timeout for connection
 					const timeout = setTimeout(() => {
 						this.mqttClient.end();
-						this.sendTo(obj.from, obj.command, 'timeout', obj.callback);
+						this.sendTo(obj.from, obj.command, { result: 'timeout' }, obj.callback);
 					}, 2000);
 
 					// If connected, return success
 					this.mqttClient.on('connect', () => {
 						this.mqttClient.end();
 						clearTimeout(timeout);
-						this.sendTo(obj.from, obj.command, 'connected', obj.callback);
+						this.sendTo(obj.from, obj.command, { result: 'connected' }, obj.callback);
 					});
 					// If connected, return success
 					this.mqttClient.on('error', (err) => {
 						this.mqttClient.end();
 						clearTimeout(timeout);
 						this.log.warn(`Error on mqtt test: ${err}`);
-						this.sendTo(obj.from, obj.command, 'error', obj.callback);
+						this.sendTo(obj.from, obj.command, { error: err }, obj.callback);
 					});
 				}
 				break;
