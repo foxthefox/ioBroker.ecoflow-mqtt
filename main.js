@@ -66,7 +66,7 @@ class EcoflowMqtt extends utils.Adapter {
 			this.pstreams = {};
 			this.pstreamStates = require('./lib/ecoflow_data.js').pstreamStates;
 			this.pstreamStatesDict = require('./lib/ecoflow_data.js').pstreamStatesDict['pstream'];
-			this.pstreamCmd = require('./lib/ecoflow_data.js').pstreamCmd['pstream'];
+			this.pstreamCmd = require('./lib/ecoflow_data.js').pstreamCmd;
 			this.pstations = {};
 			this.pstationStates = require('./lib/ecoflow_data.js').pstationStates;
 			this.pstationStatesDict = require('./lib/ecoflow_data.js').pstationStatesDict;
@@ -368,12 +368,6 @@ class EcoflowMqtt extends utils.Adapter {
 
 		//additional states for observance
 		myutils.createInfoStates(this);
-
-		//test additional subscription
-		for (let id in this.pstations) {
-			this.subscribeStates(id + '.inv.cfgAcWorkMode');
-			this.subscribeStates(id + '.inv.chgPauseFlag');
-		}
 
 		//create subscription topics
 		let topics;
