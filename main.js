@@ -762,30 +762,35 @@ class EcoflowMqtt extends utils.Adapter {
 			case 'create':
 				if (obj.callback && obj.message) {
 					this.log.info('send msg create');
+					const userpwd = JSON.parse(obj.message);
 
-					try {
-						const login = await ef.getEcoFlowMqttCredits(this, obj.message.user, obj.message.pass);
-						/*
-					let result = {
-						native: {
-							mqttUserId: login.UserID,
-							mqttUserName: login.User,
-							mqttPwd: login.Password,
-							mqttClientId: login.clientID
+					if (userpwd.user && userpwd.pass) {
+						try {
+							const login = await ef.getEcoFlowMqttCredits(this, userpwd.user, userpwd.pass);
+							/*
+						let result = {
+							native: {
+								mqttUserId: login.UserID,
+								mqttUserName: login.User,
+								mqttPwd: login.Password,
+								mqttClientId: login.clientID
+							}
+						};
+						*/
+							this.sendTo(obj.from, obj.command, { error: JSON.stringify(login) }, obj.callback);
+						} catch (error) {
+							this.log.error(error); //
+							this.sendTo(
+								obj.from,
+								obj.command,
+								{
+									error: 'Error getting mqtt credentials. See log for more information.'
+								},
+								obj.callback
+							);
 						}
-					};
-					*/
-						this.sendTo(obj.from, obj.command, { error: JSON.stringify(login) }, obj.callback);
-					} catch (error) {
-						this.log.error(error); //
-						this.sendTo(
-							obj.from,
-							obj.command,
-							{
-								error: 'Error getting mqtt credentials. See log for more information.'
-							},
-							obj.callback
-						);
+					} else {
+						this.sendTo(obj.from, obj.command, { error: 'user and pwd are undefined' }, obj.callback);
 					}
 				}
 				break;
