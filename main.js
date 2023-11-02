@@ -677,9 +677,16 @@ class EcoflowMqtt extends utils.Adapter {
 				switch (type) {
 					case 'stream':
 						if (devicetype !== '' && devicetype !== 'none' && cmd) {
-							const msgBuf = ef.prepareStreamCmd(this, device, type, item, state.val, cmd[channel][item]);
+							const msgBuf = ef.prepareStreamCmd(
+								this,
+								device,
+								devicetype,
+								item,
+								state.val,
+								cmd[channel][item]
+							);
 							this.log.debug('msgBuf ' + msgBuf);
-							this.log.debug('Modifizierter Hex-String:' + Buffer.from(msgBuf).toString('hex'));
+							this.log.debug('converted  Hex-String:' + Buffer.from(msgBuf).toString('hex'));
 
 							if (this.client) {
 								this.client.publish(topic, msgBuf, { qos: 1 }, (error) => {
