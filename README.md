@@ -40,18 +40,21 @@ In Admin Page the mqqt credentials for the mqqt Broker need to be inserted.
 There are 3 possibilities:
 1. by script https://github.com/mmiller7/ecoflow-withoutflow/blob/main/cloud-mqtt/ecoflow_get_mqtt_login.sh
 2. by website https://energychain.github.io/site_ecoflow_mqtt_credentials/
-
-
 3. (pending feature) by adapters own alogorithm (pressing the button), for this the ecoflow username and password is necessary.
+until now you have to copy the values from the pop-up window into temporary editor and the in the authentication settings
 
 The mqqt Broker settings are default and usually need no modification.
 
+Use the second tab "Device(s) Configuration" for adding your equipment.
+
 Parametrizing the Powerstream:
+* add a new row
 * set the deviceID of Powerstream as shown in the app, something like "HW51...."
 * give it a name
 * select the version (600W or 800W)
 
 Parametrizing the Powerstation:
+* add a new row
 * set the deviceID of Powerstation as shown in the app, string varies by type of device
 * give it a name
 * select the device type
@@ -59,7 +62,10 @@ Parametrizing the Powerstation:
 
 
 ## Changelog
-### 0.0.1
+### 0.0.2 WIP
+* (foxthefox) 
+
+### 0.0.1 (npm)
 * (foxthefox) initial release
 
 ## License
