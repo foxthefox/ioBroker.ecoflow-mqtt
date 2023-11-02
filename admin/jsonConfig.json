@@ -31,8 +31,8 @@
 					"label": "Create Login Data",
 					"command": "create",
 					"variant": "outlined",
-					"useNative": true,
-					"jsonData": "{\"user\": \"${data.userName}\", \"pass\": \"${data.userPassword}\"}}"
+					"jsonData": "{\"user\": \"${data.userName}\", \"pass\": \"${data.userPassword}\"}",
+					"useNative": true
 				},
 				"_connection": {
 					"newLine": true,
