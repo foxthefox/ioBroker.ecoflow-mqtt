@@ -780,9 +780,19 @@ class EcoflowMqtt extends utils.Adapter {
 								}
 							};
 
-							this.sendTo(obj.from, obj.command, result, obj.callback);
+							//this.sendTo(obj.from, obj.command, result, obj.callback);
+							this.sendTo(
+								obj.from,
+								obj.command,
+								{
+									errorr:
+										'This is a workaround and no fault. Please copy each value into the MQTT credential settings. ' +
+										JSON.stringify(result.native)
+								},
+								obj.callback
+							);
 						} catch (error) {
-							this.log.error(error); //
+							this.log.error(error);
 							this.sendTo(
 								obj.from,
 								obj.command,
