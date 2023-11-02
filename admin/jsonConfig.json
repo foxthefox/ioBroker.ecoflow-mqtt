@@ -197,7 +197,7 @@
 			"type": "panel",
 			"label": "Device(s) Configuration",
 			"items": {
-				"pstremHeader": {
+				"_pstremHeader": {
 					"newLine": true,
 					"type": "header",
 					"text": "Power Stream Configuration",
@@ -206,7 +206,7 @@
 					"lg": 12,
 					"size": 3
 				},
-				"introTable1Txt1": {
+				"_introTable1Txt1": {
 					"type": "staticText",
 					"text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have no device, delete the added line item",
 					"newLine": true
@@ -251,7 +251,7 @@
 						}
 					]
 				},
-				"pstationHeader": {
+				"_pstationHeader": {
 					"newLine": true,
 					"type": "header",
 					"text": "Power Station Configuration",
@@ -260,7 +260,7 @@
 					"lg": 12,
 					"size": 3
 				},
-				"introTable1Txt2": {
+				"_introTable1Txt2": {
 					"type": "staticText",
 					"text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have additional batteries connected, check the slave port#. If you have no device, delete the added line item",
 					"newLine": true
