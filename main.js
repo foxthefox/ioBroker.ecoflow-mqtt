@@ -655,7 +655,7 @@ class EcoflowMqtt extends utils.Adapter {
 					if (this.pstreams[device]) {
 						devicetype = this.pstreams[device]['pstreamType'];
 						type = 'stream';
-						cmd = this.pstreamCmd[type];
+						cmd = this.pstreamCmd[devicetype];
 					}
 				} else {
 					this.log.warn('pstreams -> ' + this.pstreams + ' or pstreamCmd problematic -> ' + this.pstreamCmd);
@@ -722,7 +722,7 @@ class EcoflowMqtt extends utils.Adapter {
 									});
 								}
 							} else {
-								this.log.debug('nothing to send ' + id + state);
+								this.log.debug('nothing to send ' + devicetype + cmd);
 							}
 						} else {
 							this.log.debug('nothing send ' + devicetype + '  ' + JSON.stringify(cmd));
