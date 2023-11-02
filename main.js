@@ -572,7 +572,7 @@ class EcoflowMqtt extends utils.Adapter {
 				});
 				this.client.on('error', (error) => {
 					this.setState('info.connection', false, true);
-					this.log.error('Fehler bei der Ecoflow MQTT-Verbindung:' + error);
+					this.log.error('Error inconnection to Ecoflow MQTT-Broker:' + error);
 				});
 
 				this.client.on('reconnect', async () => {
@@ -631,6 +631,7 @@ class EcoflowMqtt extends utils.Adapter {
 					if (this.pstreams[device]) {
 						type = this.pstreams[device]['pstreamType'];
 						const cmd = this.pstreamCmd[type];
+						this.log.debug(type + ' pstream cmd ' + JSON.stringify(cmd));
 						if (type !== '' && type !== 'none' && cmd) {
 							const msgBuf = ef.prepareStreamCmd(this, device, type, item, state.val, cmd[channel][item]);
 							this.log.debug('msgBuf ' + msgBuf);
@@ -647,7 +648,13 @@ class EcoflowMqtt extends utils.Adapter {
 									}
 								});
 							}
+						} else {
+							this.log.debug('nothing to send ' + type + '   ' + JSON.stringify(cmd));
 						}
+					} else {
+						this.log.warn(
+							'pstream device -> ' + device + ' not in pstreams -> ' + JSON.stringify(this.pstreams)
+						);
 					}
 				} else {
 					this.log.warn(
@@ -656,8 +663,9 @@ class EcoflowMqtt extends utils.Adapter {
 				}
 				if (this.pstations && this.pstationCmd) {
 					if (this.pstations[device]) {
-						type = this.pstations[device]['pstreamType'];
+						type = this.pstations[device]['pstationType'];
 						const cmd = this.pstationCmd[type];
+						this.log.debug('pstation cmd ' + JSON.stringify(cmd));
 						if (type !== '' && type !== 'none' && cmd) {
 							const msg = await ef.prepareStationCmd(
 								this,
@@ -685,7 +693,13 @@ class EcoflowMqtt extends utils.Adapter {
 							} else {
 								this.log.debug('nothing to send ' + id + state);
 							}
+						} else {
+							this.log.debug('nothing send ' + type + '  ' + JSON.stringify(cmd));
 						}
+					} else {
+						this.log.warn(
+							'pstation device -> ' + device + ' not in pstations -> ' + JSON.stringify(this.pstations)
+						);
 					}
 				} else {
 					this.log.warn(
