@@ -785,7 +785,7 @@ class EcoflowMqtt extends utils.Adapter {
 								obj.from,
 								obj.command,
 								{
-									errorr:
+									error:
 										'This is a workaround and no fault. Please copy each value into the MQTT credential settings. ' +
 										JSON.stringify(result.native)
 								},
