@@ -65,23 +65,35 @@
 				"mqttUserId": {
 					"type": "text",
 					"label": "mqtt userId",
-					"newLine": false
+					"newLine": false,
+					"sm": 12,
+					"md": 6,
+					"lg": 4
 				},
 				"mqttUserName": {
 					"type": "text",
 					"label": "mqtt user name",
-					"newLine": false
+					"newLine": false,
+					"sm": 12,
+					"md": 6,
+					"lg": 4
 				},
 				"mqttPwd": {
 					"type": "password",
 					"visible": true,
 					"label": "mqtt pwd",
-					"newLine": false
+					"newLine": true,
+					"sm": 12,
+					"md": 6,
+					"lg": 4
 				},
 				"mqttClientId": {
 					"type": "text",
 					"label": "mqtt clientId",
-					"newLine": false
+					"newLine": false,
+					"sm": 12,
+					"md": 6,
+					"lg": 4
 				},
 				"_test": {
 					"type": "sendTo",

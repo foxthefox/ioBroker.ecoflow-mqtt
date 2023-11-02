@@ -753,18 +753,19 @@ class EcoflowMqtt extends utils.Adapter {
 	//  */
 	async onMessage(obj) {
 		this.log.info('send command');
-		this.log.info('obj' + JSON.stringify(obj.message));
-		this.log.info('obj' + obj.message);
+		this.log.info('obj ' + JSON.stringify(obj.message));
+		this.log.info('obj ' + obj.message);
 		if (!obj || !obj.command) {
 			return;
 		}
 		switch (obj.command) {
 			case 'create':
-				this.log.info('send msg create');
+				if (obj.callback && obj.message) {
+					this.log.info('send msg create');
 
-				try {
-					const login = await ef.getEcoFlowMqttCredits(this, obj.message.user, obj.message.pass);
-					/*
+					try {
+						const login = await ef.getEcoFlowMqttCredits(this, obj.message.user, obj.message.pass);
+						/*
 					let result = {
 						native: {
 							mqttUserId: login.UserID,
@@ -774,17 +775,18 @@ class EcoflowMqtt extends utils.Adapter {
 						}
 					};
 					*/
-					this.sendTo(obj.from, obj.command, { error: JSON.stringify(login) }, obj.callback);
-				} catch (error) {
-					this.log.error(error); //
-					this.sendTo(
-						obj.from,
-						obj.command,
-						{
-							error: 'Error getting mqtt credentials. See log for more information.'
-						},
-						obj.callback
-					);
+						this.sendTo(obj.from, obj.command, { error: JSON.stringify(login) }, obj.callback);
+					} catch (error) {
+						this.log.error(error); //
+						this.sendTo(
+							obj.from,
+							obj.command,
+							{
+								error: 'Error getting mqtt credentials. See log for more information.'
+							},
+							obj.callback
+						);
+					}
 				}
 				break;
 

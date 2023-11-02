@@ -74,8 +74,8 @@
 			}
 		]
 	},
-	"protectedNative": [ "userPassword" ],
-	"encryptedNative": [ "userPassword" ],
+	"protectedNative": [ "userName", "userPassword", "mqttUserId", "mqttPwd", "mqttClientId" ],
+	"encryptedNative": [ "userPassword", "mqttPwd" ],
 	"native": {
 		"userName": "userEmail",
 		"userPassword": "pw",
