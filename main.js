@@ -769,18 +769,18 @@ class EcoflowMqtt extends utils.Adapter {
 					this.log.info('obj ' + obj.message);
 					if (user && pwd) {
 						try {
-							// const login = await ef.getEcoFlowMqttCredits(this, user, pwd);
+							const login = await ef.getEcoFlowMqttCredits(this, user, pwd);
 
 							let result = {
 								native: {
-									mqttUserId: 'login.UserID',
-									mqttUserName: 'login.User',
-									mqttPwd: 'login.Password',
-									mqttClientId: 'login.clientID'
+									mqttUserId: login.UserID,
+									mqttUserName: login.User,
+									mqttPwd: login.Password,
+									mqttClientId: login.clientID
 								}
 							};
 
-							this.sendTo(obj.from, obj.command, { error: JSON.stringify(login) }, obj.callback);
+							this.sendTo(obj.from, obj.command, { error: JSON.stringify(result) }, obj.callback);
 						} catch (error) {
 							this.log.error(error); //
 							this.sendTo(
