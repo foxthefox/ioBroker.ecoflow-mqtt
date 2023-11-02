@@ -113,12 +113,12 @@ class EcoflowMqtt extends utils.Adapter {
 										}
 									}
 								} else {
-									this.log.debug('streamupd not possible ->' + this.pstreamType);
+									this.log.debug('streamupd not possible ->' + type);
 								}
 							}
 							//create pstream objects
 							if (id && pstreamStates && this.pstreamStatesDict && name) {
-								this.log.info('pstream state creation' + type + ' for Id ' + id);
+								this.log.info('start pstream state creation ->' + type + ' for Id ' + id);
 								try {
 									if (this.config.msgStateCreationPstream) {
 										this.log.debug('____________________________________________');
@@ -229,7 +229,7 @@ class EcoflowMqtt extends utils.Adapter {
 							const pstationStatesDict = this.pstationStatesDict[type];
 
 							if (type !== 'none' && pstationStates && pstationStatesDict) {
-								this.log.info('pstation state creation ' + type + ' for Id ' + id);
+								this.log.info('start pstation state creation ->' + type + ' for Id ' + id);
 								try {
 									if (this.config.msgStateCreationPstation) {
 										this.log.debug('____________________________________________');
@@ -311,13 +311,13 @@ class EcoflowMqtt extends utils.Adapter {
 										for (let key in this.pstationStatesDict['bmsMaster']) {
 											let type = this.pstationStatesDict['bmsMaster'][key]['entity'];
 											if (type !== 'icon') {
-												if (this.pstationStates['bmsMaster'][type][key]) {
+												if (pstationStates['bmsMaster'][type][key]) {
 													await myutils.createMyState(
 														this,
 														id,
 														'bmsSlave2',
 														key,
-														this.pstationStates['bmsMaster'][type][key]
+														pstationStates['bmsMaster'][type][key]
 													);
 												} else {
 													this.log.info(

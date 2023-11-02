@@ -29,6 +29,15 @@
 					"label": "user password",
 					"newLine": false
 				},
+				"_create": {
+					"type": "sendTo",
+					"label": "Create Login Data",
+					"hidden": "data.type !== 'client'",
+					"command": "create",
+					"variant": "outlined",
+					"useNative": true,
+					"jsonData": "{\"user\": \"${data.userName}\", \"pass\": \"${data.userPassword}\"}}"
+				},
 				"_connection": {
 					"newLine": true,
 					"type": "header",
@@ -77,15 +86,6 @@
 					"type": "text",
 					"label": "mqtt clientId",
 					"newLine": false
-				},
-				"_create": {
-					"type": "sendTo",
-					"label": "Create Login Data",
-					"hidden": "data.type !== 'client'",
-					"command": "create",
-					"variant": "outlined",
-					"useNative": true,
-					"jsonData": "{\"user\": \"${data.userName}\", \"pass\": \"${data.userPassword}\"}}"
 				},
 				"_test": {
 					"type": "sendTo",
