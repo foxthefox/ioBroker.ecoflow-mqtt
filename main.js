@@ -762,9 +762,10 @@ class EcoflowMqtt extends utils.Adapter {
 			case 'create':
 				if (obj.callback && obj.message) {
 					this.log.info('send msg create');
+					this.log.debug(obj.message.user + obj.message.pass);
 					const userpwd = JSON.parse(obj.message);
-
-					if (userpwd.user && userpwd.pass) {
+					this.log.debug(userpwd);
+					if (obj.message.user && obj.message.pass) {
 						try {
 							const login = await ef.getEcoFlowMqttCredits(this, userpwd.user, userpwd.pass);
 							/*
