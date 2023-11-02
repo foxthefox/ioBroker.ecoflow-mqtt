@@ -101,7 +101,7 @@ class EcoflowMqtt extends utils.Adapter {
 											for (let state in streamupd[channel][type]) {
 												for (let value in streamupd[channel][type][state]) {
 													this.log.debug(
-														'manipulate ' +
+														'manipulate: ' +
 															channel +
 															'/' +
 															state +
@@ -206,14 +206,18 @@ class EcoflowMqtt extends utils.Adapter {
 											for (let type in stationupd[channel]) {
 												for (let state in stationupd[channel][type]) {
 													for (let value in stationupd[channel][type][state]) {
-														pstationStates[channel][type][state][value] =
-															stationupd[channel][type][state][value];
 														this.log.debug(
-															'manipulate ' +
+															'manipulate: ' +
+																channel +
+																'/' +
+																state +
+																' old--new ' +
 																pstationStates[channel][type][state][value] +
 																' -- ' +
 																stationupd[channel][type][state][value]
 														);
+														pstationStates[channel][type][state][value] =
+															stationupd[channel][type][state][value];
 													}
 												}
 											}
@@ -546,10 +550,10 @@ class EcoflowMqtt extends utils.Adapter {
 							}
 							if (this.pstations && this.pstationStatesDict && this.pstationStates) {
 								if (this.pstations[topic]) {
-									if (this.config.msgSetGetPstation) {
-										this.log.debug(topic + ' received ' + msgtype + '-> ' + message.toString());
-									}
 									if (msgtype === 'get_reply') {
+										if (this.config.msgSetGetPstation) {
+											this.log.debug(topic + ' received ' + msgtype + '-> ' + message.toString());
+										}
 										const type = this.pstations[topic]['pstationType'];
 										const dict = this.pstationStatesDict[type];
 										await ef.storeStationPayload(
@@ -559,6 +563,30 @@ class EcoflowMqtt extends utils.Adapter {
 											topic,
 											JSON.parse(message.toString())
 										);
+									} else if (msgtype === 'set_reply') {
+										let setmsg = JSON.parse(message.toString());
+										if (setmsg.data) {
+											let key = setmsg.data.id;
+											switch (key) {
+												case 40:
+												case 68:
+												case 72:
+													//Lebenszeichen der APP?
+
+													break;
+												default:
+													if (this.config.msgSetGetPstation) {
+														this.log.debug(
+															topic + ' received ' + msgtype + '-> ' + message.toString()
+														);
+													}
+													break;
+											}
+										}
+									} else {
+										if (this.config.msgSetGetPstation) {
+											this.log.debug(topic + ' received ' + msgtype + '-> ' + message.toString());
+										}
 									}
 								}
 							}
@@ -626,13 +654,43 @@ class EcoflowMqtt extends utils.Adapter {
 				const item = idsplit[4];
 				this.log.info('(ack=false) ->cmd : channel ' + channel + ' state ' + item);
 				const topic = '/app/' + this.mqttUserId + '/' + device + '/thing/property/set';
+				let devicetype = '';
 				let type = '';
+				let cmd = null;
 				if (this.pstreams && this.pstreamCmd) {
 					if (this.pstreams[device]) {
-						type = this.pstreams[device]['pstreamType'];
-						const cmd = this.pstreamCmd[type];
-						this.log.debug(type + ' pstream cmd ' + JSON.stringify(cmd));
-						if (type !== '' && type !== 'none' && cmd) {
+						devicetype = this.pstreams[device]['pstreamType'];
+						type = 'stream';
+						cmd = this.pstreamCmd[type];
+					} else {
+						this.log.warn(
+							'pstream device -> ' + device + ' not in pstreams -> ' + JSON.stringify(this.pstreams)
+						);
+					}
+				} else {
+					this.log.warn('pstreams -> ' + this.pstreams + ' or pstreamCmd problematic -> ' + this.pstreamCmd);
+				}
+				if (this.pstations && this.pstationCmd) {
+					if (this.pstations[device]) {
+						devicetype = this.pstations[device]['pstationType'];
+						type = 'station';
+						cmd = this.pstationCmd[devicetype];
+					} else {
+						this.log.warn(
+							'pstation device -> ' + device + ' not in pstations -> ' + JSON.stringify(this.pstations)
+						);
+					}
+				} else {
+					this.log.warn(
+						'pstations -> ' +
+							this.pstations +
+							' or pstationCmd problematic -> ' +
+							JSON.stringify(this.pstationCmd)
+					);
+				}
+				switch (type) {
+					case 'stream':
+						if (devicetype !== '' && devicetype !== 'none' && cmd) {
 							const msgBuf = ef.prepareStreamCmd(this, device, type, item, state.val, cmd[channel][item]);
 							this.log.debug('msgBuf ' + msgBuf);
 							this.log.debug('Modifizierter Hex-String:' + Buffer.from(msgBuf).toString('hex'));
@@ -649,28 +707,15 @@ class EcoflowMqtt extends utils.Adapter {
 								});
 							}
 						} else {
-							this.log.debug('nothing to send ' + type + '   ' + JSON.stringify(cmd));
+							this.log.debug('nothing to send ' + devicetype + '   ' + JSON.stringify(cmd));
 						}
-					} else {
-						this.log.warn(
-							'pstream device -> ' + device + ' not in pstreams -> ' + JSON.stringify(this.pstreams)
-						);
-					}
-				} else {
-					this.log.warn(
-						'pstreamType -> ' + type + ' or pstreamCmd problematic -> ' + JSON.stringify(this.pstreamCmd)
-					);
-				}
-				if (this.pstations && this.pstationCmd) {
-					if (this.pstations[device]) {
-						type = this.pstations[device]['pstationType'];
-						const cmd = this.pstationCmd[type];
-						this.log.debug('pstation cmd ' + JSON.stringify(cmd));
-						if (type !== '' && type !== 'none' && cmd) {
+						break;
+					case 'station':
+						if (devicetype !== '' && devicetype !== 'none' && cmd) {
 							const msg = await ef.prepareStationCmd(
 								this,
 								device,
-								type,
+								devicetype,
 								item,
 								state.val,
 								cmd[channel][item]
@@ -694,17 +739,11 @@ class EcoflowMqtt extends utils.Adapter {
 								this.log.debug('nothing to send ' + id + state);
 							}
 						} else {
-							this.log.debug('nothing send ' + type + '  ' + JSON.stringify(cmd));
+							this.log.debug('nothing send ' + devicetype + '  ' + JSON.stringify(cmd));
 						}
-					} else {
-						this.log.warn(
-							'pstation device -> ' + device + ' not in pstations -> ' + JSON.stringify(this.pstations)
-						);
-					}
-				} else {
-					this.log.warn(
-						'pstationType -> ' + type + ' or pstationCmd problematic -> ' + JSON.stringify(this.pstationCmd)
-					);
+						break;
+					default:
+						break;
 				}
 			}
 		} else {
