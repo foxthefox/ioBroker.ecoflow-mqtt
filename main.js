@@ -763,8 +763,8 @@ class EcoflowMqtt extends utils.Adapter {
 				if (obj.callback && obj.message) {
 					this.log.info('send msg create mqtt data');
 
-					const user = obj.message.user;
-					const pwd = obj.message.pass;
+					const user = obj.message['user'];
+					const pwd = obj.message['pass'];
 					this.log.debug(user + pwd);
 					if (user && pwd) {
 						try {
