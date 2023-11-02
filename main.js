@@ -100,14 +100,18 @@ class EcoflowMqtt extends utils.Adapter {
 										for (let type in streamupd[channel]) {
 											for (let state in streamupd[channel][type]) {
 												for (let value in streamupd[channel][type][state]) {
-													pstreamStates[channel][type][state][value] =
-														streamupd[channel][type][state][value];
 													this.log.debug(
 														'manipulate ' +
+															channel +
+															'/' +
+															state +
+															' old--new ' +
 															pstreamStates[channel][type][state][value] +
 															' -- ' +
 															streamupd[channel][type][state][value]
 													);
+													pstreamStates[channel][type][state][value] =
+														streamupd[channel][type][state][value];
 												}
 											}
 										}
@@ -360,6 +364,12 @@ class EcoflowMqtt extends utils.Adapter {
 
 		//additional states for observance
 		myutils.createInfoStates(this);
+
+		//test additional subscription
+		for (let id in this.pstations) {
+			this.subscribeStates(id + '.inv.cfgAcWorkMode');
+			this.subscribeStates(id + '.inv.chgPauseFlag');
+		}
 
 		//create subscription topics
 		let topics;
@@ -695,7 +705,7 @@ class EcoflowMqtt extends utils.Adapter {
 	//  * Using this method requires "common.messagebox" property to be set to true in io-package.json
 	//  * @param {ioBroker.Message} obj
 	//  */
-	onMessage(obj) {
+	async onMessage(obj) {
 		this.log.info('send command');
 		this.log.info('obj' + JSON.stringify(obj.message));
 		this.log.info('obj' + obj.message);
@@ -705,48 +715,31 @@ class EcoflowMqtt extends utils.Adapter {
 		switch (obj.command) {
 			case 'create':
 				this.log.info('send msg create');
-				// e.g. send email or pushover or whatever
-				this.log.info('msg ' + this.config.mqttUserName);
-				this.log.info('msg ' + this.config.mqttUserId);
-				this.log.info('msg ' + this.config.mqttPwd);
-				this.log.info('msg ' + this.config.mqttClientId);
-				/*
-				this.updateConfig({
-					mqttUserName: 'login.User',
-					mqttPwd: 'login.Password',
-					mqttClientId: 'login.clientID'
-				});
-				*/
 
-				/**
-				if (this.mqttDevice === '' && this.mqttUser === '' && this.mqttPwd === '') {
-					try {
-						let login = getEcoFlowMqttCredits(this, this.efUser, this.efPwd);
-						this.config.mqttUser = login.User;
-						this.config.mqttPwd = login.Password;
-						this.config.mqttDevice = login.clientID;
-					} catch (error) {
-						this.log.debug(error); //
-						throw new Error(
-							'Ein Fehler bei der Ermittlung der Zugangsdaten ist aufgetreten. Bitte prüfe die Zugangsdaten.'
-						);
-					}
+				try {
+					let login = await ef.getEcoFlowMqttCredits(this, obj.message.user, obj.message.pass);
+					/*
+					let result = {
+						native: {
+							mqttUserId: login.UserId,
+							mqttUserName: login.User,
+							mqttPwd: login.Password,
+							mqttClientId: login.clientID
+						}
+					};
+					*/
+					this.sendTo(obj.from, obj.command, { error: JSON.stringify(login) }, obj.callback);
+				} catch (error) {
+					this.log.error(error); //
+					this.sendTo(
+						obj.from,
+						obj.command,
+						{
+							error: 'Error getting mqtt credentials. See log for more information.'
+						},
+						obj.callback
+					);
 				}
-				*/
-				let result = {
-					native: {
-						mqttUserId: '1232445564356',
-						mqttUserName: 'login.User',
-						mqttPwd: 'login.Password',
-						mqttClientId: 'login.clientID'
-					},
-					reloadBrowser: true
-				};
-				this.sendTo(obj.from, obj.command, result, obj.callback);
-				// Send response in callback if required
-				//this.sendTo(obj.from, obj.command, 'close admin page and reopen', obj.callback);
-				//if (obj.callback) this.sendTo(obj.from, obj.command, 'Message received', obj.callback);
-				//if (obj.callback) this.sendTo(obj.from, obj.command, result, obj.callback);
 				break;
 
 			case 'test': {

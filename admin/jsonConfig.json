@@ -8,7 +8,6 @@
 			"items": {
 				"_userdata": {
 					"newLine": true,
-					"hidden": "true",
 					"type": "header",
 					"text": "User Data",
 					"sm": 12,
@@ -18,13 +17,11 @@
 				},
 				"userName": {
 					"type": "text",
-					"hidden": "true",
 					"label": "ecoflow account name / email  ",
 					"newLine": false
 				},
 				"userPassword": {
 					"type": "password",
-					"hidden": "true",
 					"visible": true,
 					"label": "user password",
 					"newLine": false
@@ -32,7 +29,6 @@
 				"_create": {
 					"type": "sendTo",
 					"label": "Create Login Data",
-					"hidden": "data.type !== 'client'",
 					"command": "create",
 					"variant": "outlined",
 					"useNative": true,
@@ -304,7 +300,7 @@
 							"type": "checkbox",
 							"title": "Slave 1",
 							"width": "10%",
-							"hidden": "data.stationType !== 'deltapro' && data.stationType !== 'deltamax' && data.stationType !== 'delta2max' && data.stationType !== 'delta' && data.stationType !== 'delta2'",
+							"hidden": "data.pstationType !== 'deltapro' && data.pstationType !== 'deltamax' && data.pstationType !== 'delta2max' && data.pstationType !== 'delta' && data.pstationType !== 'delta2'",
 							"attr": "stationSlave1",
 							"filter": false,
 							"sort": false,
@@ -314,7 +310,7 @@
 							"type": "checkbox",
 							"title": "Slave 2",
 							"width": "10%",
-							"hidden": "data.stationType !== 'deltapro' && data.stationType !== 'deltamax' && data.stationType !== 'delta2max' ",
+							"hidden": "data.pstationType !== 'deltapro' && data.pstationType !== 'deltamax' && data.pstationType !== 'delta2max' ",
 							"attr": "stationSlave12",
 							"filter": false,
 							"sort": false,
