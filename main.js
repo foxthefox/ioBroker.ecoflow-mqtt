@@ -662,10 +662,6 @@ class EcoflowMqtt extends utils.Adapter {
 						devicetype = this.pstreams[device]['pstreamType'];
 						type = 'stream';
 						cmd = this.pstreamCmd[type];
-					} else {
-						this.log.warn(
-							'pstream device -> ' + device + ' not in pstreams -> ' + JSON.stringify(this.pstreams)
-						);
 					}
 				} else {
 					this.log.warn('pstreams -> ' + this.pstreams + ' or pstreamCmd problematic -> ' + this.pstreamCmd);
@@ -675,10 +671,6 @@ class EcoflowMqtt extends utils.Adapter {
 						devicetype = this.pstations[device]['pstationType'];
 						type = 'station';
 						cmd = this.pstationCmd[devicetype];
-					} else {
-						this.log.warn(
-							'pstation device -> ' + device + ' not in pstations -> ' + JSON.stringify(this.pstations)
-						);
 					}
 				} else {
 					this.log.warn(
@@ -781,7 +773,7 @@ class EcoflowMqtt extends utils.Adapter {
 						}
 					};
 					*/
-					this.sendTo(obj.from, obj.command, { error: JSON.stringify(login) }, obj.callback);
+					this.sendTo(obj.from, obj.command, { message: JSON.stringify(login) }, obj.callback);
 				} catch (error) {
 					this.log.error(error); //
 					this.sendTo(
