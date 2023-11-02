@@ -4,7 +4,7 @@
 	"items": {
 		"tab_1": {
 			"type": "panel",
-			"label": "Static",
+			"label": "Credentials & Debug Settings",
 			"items": {
 				"_userdata": {
 					"newLine": true,
