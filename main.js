@@ -753,8 +753,8 @@ class EcoflowMqtt extends utils.Adapter {
 	//  */
 	async onMessage(obj) {
 		this.log.info('send command');
-		this.log.info('obj ' + JSON.stringify(obj.message));
-		this.log.info('obj ' + obj.message);
+		//this.log.info('obj ' + JSON.stringify(obj));
+		//this.log.info('obj ' + obj.message);
 		if (!obj || !obj.command) {
 			return;
 		}
@@ -762,11 +762,8 @@ class EcoflowMqtt extends utils.Adapter {
 			case 'create':
 				if (obj.callback && obj.message) {
 					this.log.info('send msg create mqtt data');
-					this.log.info('obj ' + JSON.stringify(obj));
 					const user = obj.message['user'];
 					const pwd = obj.message['pass'];
-					this.log.debug('userpwd' + user + pwd);
-					this.log.info('obj ' + obj.message);
 					if (user && pwd) {
 						try {
 							const login = await ef.getEcoFlowMqttCredits(this, user, pwd);
@@ -786,7 +783,7 @@ class EcoflowMqtt extends utils.Adapter {
 								obj.command,
 								{
 									error:
-										'This is a workaround and no fault. Please copy each value into the MQTT credential settings. ' +
+										'This is a workaround and no fault. Please copy each value into the MQTT Authentication settings. ' +
 										JSON.stringify(result.native)
 								},
 								obj.callback
