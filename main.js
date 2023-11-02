@@ -780,7 +780,7 @@ class EcoflowMqtt extends utils.Adapter {
 								}
 							};
 
-							this.sendTo(obj.from, obj.command, { error: JSON.stringify(result) }, obj.callback);
+							this.sendTo(obj.from, obj.command, result, obj.callback);
 						} catch (error) {
 							this.log.error(error); //
 							this.sendTo(
