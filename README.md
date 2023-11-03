@@ -62,8 +62,10 @@ Parametrizing the Powerstation:
 
 
 ## Changelog
-### 0.0.2 WIP
-* (foxthefox) 
+### 0.0.2
+* (foxthefox) pv2DcChgCurrent as level in delta2max
+* (foxthefox) *pv2DcChgCurrent with range 4-8 and step 2
+* (foxthefox) chgPauseFlag as switch in delta2max
 
 ### 0.0.1 (npm)
 * (foxthefox) initial release
