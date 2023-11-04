@@ -103,8 +103,10 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
+
 ## Disclaimer
 This open-source software is not affiliated with or endorsed by the company Ecoflow in any way. 
 Use of the software is at your own risk and discretion, and I assume no liability for any potential 
 damages or issues that may arise from using the software. It is important to be aware that using 
 this open-source software comes without direct support or guarantees from the company Ecoflow.
+
