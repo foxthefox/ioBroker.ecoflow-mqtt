@@ -64,6 +64,9 @@ Parametrizing the Powerstation:
 
 
 ## Changelog
+### 0.0.6
+* (foxthefox) 
+
 ### 0.0.5
 * (foxthefox) cfgDcChgCurrent/pv2DcChgCurrent again with min=0, seems that there comes 0 at a certein telegram and causing warning
 * (foxthefox) energy values (yield per day) for powerstream
