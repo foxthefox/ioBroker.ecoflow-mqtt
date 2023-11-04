@@ -1,6 +1,6 @@
 {
 	"name": "iobroker.ecoflow-mqtt",
-	"version": "0.0.1",
+	"version": "0.0.3",
 	"description": "connects to ecoflow products",
 	"author": {
 		"name": "foxthefox",
@@ -8,13 +8,7 @@
 	},
 	"homepage": "https://github.com/foxthefox/ioBroker.ecoflow-mqtt",
 	"license": "MIT",
-	"keywords": [
-		"ecoflow",
-		"powerstream",
-		"powerstation",
-		"delta",
-		"river"
-	],
+	"keywords": [ "ecoflow", "powerstream", "powerstation", "delta", "river" ],
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/foxthefox/ioBroker.ecoflow-mqtt.git"

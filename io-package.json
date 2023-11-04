@@ -1,142 +1,131 @@
 {
-    "common": {
-        "name": "ecoflow-mqtt",
-        "version": "0.0.1",
-        "news": {
-            "0.0.1": {
-                "en": "initial release",
-                "de": "Erstveröffentlichung",
-                "ru": "Начальная версия",
-                "pt": "lançamento inicial",
-                "nl": "Eerste uitgave",
-                "fr": "Première version",
-                "it": "Versione iniziale",
-                "es": "Versión inicial",
-                "pl": "Pierwsze wydanie",
-                "uk": "Початкова версія",
-                "zh-cn": "首次出版"
-            }
-        },
-        "title": "ecoflow",
-        "titleLang": {
-            "en": "ecoflow",
-            "de": "Ecoflow",
-            "ru": "экопоток",
-            "pt": "ecofluxo",
-            "nl": "ecostroom",
-            "fr": "écoflux",
-            "it": "ecoflusso",
-            "es": "ecoflujo",
-            "pl": "ekoprzepływ",
-            "uk": "екопотік",
-            "zh-cn": "生态流"
-        },
-        "desc": {
-            "en": "connects to ecoflow products",
-            "de": "verbindet sich mit Ecoflow-Produkten",
-            "ru": "подключается к продуктам Ecoflow",
-            "pt": "conecta-se a produtos ecoflow",
-            "nl": "koppelt aan ecoflow-producten",
-            "fr": "se connecte aux produits ecoflow",
-            "it": "si collega ai prodotti ecoflow",
-            "es": "se conecta a productos ecoflow",
-            "pl": "łączy się z produktami ecoflow",
-            "uk": "підключається до продуктів ecoflow",
-            "zh-cn": "连接至 Ecoflow 产品"
-        },
-        "authors": [
-            "foxthefox <foxthefox@wysiwis.net>"
-        ],
-        "keywords": [
-            "ecoflow",
-            "powerstream",
-            "powerstation",
-            "delta",
-            "river"
-        ],
-        "license": "MIT",
-        "platform": "Javascript/Node.js",
-        "main": "main.js",
-        "icon": "ecoflow-mqtt.png",
-        "enabled": true,
-        "extIcon": "https://raw.githubusercontent.com/foxthefox/ioBroker.ecoflow-mqtt/main/admin/ecoflow-mqtt.png",
-        "readme": "https://github.com/foxthefox/ioBroker.ecoflow-mqtt/blob/main/README.md",
-        "loglevel": "debug",
-        "mode": "daemon",
-        "type": "iot-systems",
-        "compact": true,
-        "messagebox": true,
-        "connectionType": "cloud",
-        "dataSource": "push",
-        "adminUI": {
-            "config": "json"
-        },
-        "dependencies": [
-            {
-                "js-controller": ">=3.3.22"
-            }
-        ],
-        "globalDependencies": [
-            {
-                "admin": ">=6.12.2"
-            }
-        ]
-    },
-    "protectedNative": [
-        "userName",
-        "userPassword",
-        "mqttUserId",
-        "mqttPwd",
-        "mqttClientId"
-    ],
-    "encryptedNative": [
-        "userPassword",
-        "mqttPwd"
-    ],
-    "native": {
-        "userName": "userEmail",
-        "userPassword": "pw",
-        "mqttUserId": "15xxx",
-        "mqttUserName": "app-....",
-        "mqttPwd": "xxxx",
-        "mqttClientId": "ANDRIOD-...",
-        "mqttUrl": "mqtts://mqtt.ecoflow.com",
-        "mqttPort": 8883,
-        "pstreams": [],
-        "pstations": [],
-        "msgStateCreationPstation": false,
-        "msgUpdatePstation": false,
-        "msgUpdateValuePstation": false,
-        "msgSetGetPstation": true,
-        "msgCmdPstation": true,
-        "msgStateCreationPstream": false,
-        "msgUpdatePstream": false,
-        "msgUpdateValuePstream": false,
-        "msgSetGetPstream": false,
-        "msgCmdPstream": false
-    },
-    "objects": [],
-    "instanceObjects": [
-        {
-            "_id": "info",
-            "type": "channel",
-            "common": {
-                "name": "Information"
-            },
-            "native": {}
-        },
-        {
-            "_id": "info.connection",
-            "type": "state",
-            "common": {
-                "role": "indicator.connected",
-                "name": "Device or service connected",
-                "type": "boolean",
-                "read": true,
-                "write": false,
-                "def": false
-            },
-            "native": {}
-        }
-    ]
+	"common": {
+		"name": "ecoflow-mqtt",
+		"version": "0.0.3",
+		"news": {
+			"0.0.3": {
+				"en": "initial release"
+			},
+			"0.0.2": {
+				"en": "first changes for delta2max"
+			},
+			"0.0.1": {
+				"en": "initial release",
+				"de": "Erstveröffentlichung",
+				"ru": "Начальная версия",
+				"pt": "lançamento inicial",
+				"nl": "Eerste uitgave",
+				"fr": "Première version",
+				"it": "Versione iniziale",
+				"es": "Versión inicial",
+				"pl": "Pierwsze wydanie",
+				"uk": "Початкова версія",
+				"zh-cn": "首次出版"
+			}
+		},
+		"title": "ecoflow",
+		"titleLang": {
+			"en": "ecoflow",
+			"de": "Ecoflow",
+			"ru": "экопоток",
+			"pt": "ecofluxo",
+			"nl": "ecostroom",
+			"fr": "écoflux",
+			"it": "ecoflusso",
+			"es": "ecoflujo",
+			"pl": "ekoprzepływ",
+			"uk": "екопотік",
+			"zh-cn": "生态流"
+		},
+		"desc": {
+			"en": "connects to ecoflow products",
+			"de": "verbindet sich mit Ecoflow-Produkten",
+			"ru": "подключается к продуктам Ecoflow",
+			"pt": "conecta-se a produtos ecoflow",
+			"nl": "koppelt aan ecoflow-producten",
+			"fr": "se connecte aux produits ecoflow",
+			"it": "si collega ai prodotti ecoflow",
+			"es": "se conecta a productos ecoflow",
+			"pl": "łączy się z produktami ecoflow",
+			"uk": "підключається до продуктів ecoflow",
+			"zh-cn": "连接至 Ecoflow 产品"
+		},
+		"authors": [ "foxthefox <foxthefox@wysiwis.net>" ],
+		"keywords": [ "ecoflow", "powerstream", "powerstation", "delta", "river" ],
+		"license": "MIT",
+		"platform": "Javascript/Node.js",
+		"main": "main.js",
+		"icon": "ecoflow-mqtt.png",
+		"enabled": true,
+		"extIcon": "https://raw.githubusercontent.com/foxthefox/ioBroker.ecoflow-mqtt/main/admin/ecoflow-mqtt.png",
+		"readme": "https://github.com/foxthefox/ioBroker.ecoflow-mqtt/blob/main/README.md",
+		"loglevel": "debug",
+		"mode": "daemon",
+		"type": "iot-systems",
+		"compact": true,
+		"messagebox": true,
+		"connectionType": "cloud",
+		"dataSource": "push",
+		"adminUI": {
+			"config": "json"
+		},
+		"dependencies": [
+			{
+				"js-controller": ">=3.3.22"
+			}
+		],
+		"globalDependencies": [
+			{
+				"admin": ">=6.12.0"
+			}
+		]
+	},
+	"protectedNative": [ "userName", "userPassword", "mqttUserId", "mqttPwd", "mqttClientId" ],
+	"encryptedNative": [ "userPassword", "mqttPwd" ],
+	"native": {
+		"userName": "userEmail",
+		"userPassword": "pw",
+		"mqttUserId": "15xxx",
+		"mqttUserName": "app-....",
+		"mqttPwd": "xxxx",
+		"mqttClientId": "ANDRIOD-...",
+		"mqttUrl": "mqtts://mqtt.ecoflow.com",
+		"mqttPort": 8883,
+		"pstreams": [],
+		"pstations": [],
+		"msgStateCreationPstation": false,
+		"msgUpdatePstation": false,
+		"msgUpdateValuePstation": false,
+		"msgSetGetPstation": true,
+		"msgCmdPstation": true,
+		"msgStateCreationPstream": false,
+		"msgUpdatePstream": false,
+		"msgUpdateValuePstream": false,
+		"msgSetGetPstream": false,
+		"msgCmdPstream": false
+	},
+	"objects": [],
+	"instanceObjects": [
+		{
+			"_id": "info",
+			"type": "channel",
+			"common": {
+				"name": "Information"
+			},
+			"native": {}
+		},
+		{
+			"_id": "info.connection",
+			"type": "state",
+			"common": {
+				"role": "indicator.connected",
+				"name": "Device or service connected",
+				"type": "boolean",
+				"read": true,
+				"write": false,
+				"def": false
+			},
+			"native": {}
+		}
+	]
 }

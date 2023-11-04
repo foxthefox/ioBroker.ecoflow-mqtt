@@ -31,6 +31,8 @@ The adapter is based on the work of:
 
 Install the adapter from github.
 
+![some mor details](doc/en/installation.md)
+
 In Admin Page the mqqt credentials for the mqqt Broker need to be inserted.
 * UserName - something like "app-...."
 * UserID - a 19 digit number
@@ -62,8 +64,18 @@ Parametrizing the Powerstation:
 
 
 ## Changelog
-### 0.0.2 WIP
-* (foxthefox) 
+### 0.0.3
+* (foxthefox) requirement for admin 6.12.2 -> 6.12.0
+* (foxthefox) iverter_heartbeat pv1InputCur, pv2InputCur factor corrected now 0.1
+* (foxthefox) ems.chgAmp factor 0.0001 ( seemed too high by factor 10 )
+* (foxthefox) bmsMaster.tagChgAmp factor 0.0001 ( seemed too high by factor 10 )
+* (foxthefox) delta2max command for cfgDcChgCurrent/pv2DcChgCurrent changed
+* (foxthefox) ensuring that commanded bppowerSoc value is always minimum 5% higher than the ems.minDsgSoc, also putting actual minDsgSoc into the command
+
+### 0.0.2
+* (foxthefox) pv2DcChgCurrent as level in delta2max
+* (foxthefox) *pv2DcChgCurrent with range 4-8 and step 2
+* (foxthefox) chgPauseFlag as switch in delta2max
 
 ### 0.0.1 (npm)
 * (foxthefox) initial release
@@ -90,3 +102,9 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+## Disclaimer
+This open-source software is not affiliated with or endorsed by the company Ecoflow in any way. 
+Use of the software is at your own risk and discretion, and I assume no liability for any potential 
+damages or issues that may arise from using the software. It is important to be aware that using 
+this open-source software comes without direct support or guarantees from the company Ecoflow.
