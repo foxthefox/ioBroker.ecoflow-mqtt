@@ -1,10 +1,13 @@
 {
 	"common": {
 		"name": "ecoflow-mqtt",
-		"version": "0.0.3",
+		"version": "0.0.4",
 		"news": {
+			"0.0.4": {
+				"en": "next adjustments"
+			},
 			"0.0.3": {
-				"en": "initial release"
+				"en": "some adjustments"
 			},
 			"0.0.2": {
 				"en": "first changes for delta2max"

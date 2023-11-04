@@ -64,6 +64,9 @@ Parametrizing the Powerstation:
 
 
 ## Changelog
+### 0.0.4
+* (foxthefox) new switch inverter_heartbeat.feedPriority
+
 ### 0.0.3
 * (foxthefox) requirement for admin 6.12.2 -> 6.12.0
 * (foxthefox) iverter_heartbeat pv1InputCur, pv2InputCur factor corrected now 0.1
