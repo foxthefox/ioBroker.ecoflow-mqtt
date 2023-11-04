@@ -65,7 +65,7 @@ Parametrizing the Powerstation:
 
 ## Changelog
 ### 0.0.4
-* (foxthefox) new switch inverter_heartbeat.feedPriority
+* (foxthefox) new switch inverter_heartbeat.feedPriority (handling the excessive solar energy when battery is full)
 
 ### 0.0.3
 * (foxthefox) requirement for admin 6.12.2 -> 6.12.0
