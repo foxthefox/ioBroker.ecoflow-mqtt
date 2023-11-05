@@ -1,0 +1,57 @@
+# States for  {{uppercase device}}
+### version: {{version}}
+
+{{#each data}}
+## {{uppercase @key}}
+
+{{#each this}}
+### {{uppercase @key}}
+{{#ifeq @key  'number'}}
+| State  |      Min     |      Max     |  Unit |  Mult |  Name |
+|----------|:-------------:|:-------------:|:------:|:-----:|-----|
+{{#each this}}
+{{#with this}}
+|{{@key}}|{{this.min}} | {{this.max}} | {{this.unit_of_measurement}} | {{this.mult}} |  {{this.name}} |
+{{/with}}
+{{/each}}
+{{/ifeq}}
+
+{{#ifeq @key  'level'}}
+| State  |      Min     |     Max     |  Unit |  Mult |  Name |
+|----------|:-------------:|:-------------:|:------:|:-----:|-----|
+{{#each this}}
+{{#with this}}
+|{{@key}}| {{this.min}} | {{this.max}} | {{this.unit_of_measurement}} | {{this.mult}} |  {{this.name}} |
+{{/with}}
+{{/each}}
+{{/ifeq}}
+{{#ifeq @key  'switch'}}
+| State  |      off    |  on |  Name |
+|----------|:-------------:|:------:|------|
+{{#each this}}
+{{#with this}}
+|{{@key}}| {{this.payload_off}} | {{this.payload_on}} | {{this.name}} |
+{{/with}}
+{{/each}}
+{{/ifeq}}
+{{#ifeq @key  'diagnostic'}}
+| State  |     Name |  values |
+|----------|:-------------:|------|
+{{#each this}}
+{{#with this}}
+|{{@key}}| {{this.name}} | {{this.values}} |
+{{/with}}
+{{/each}}
+{{/ifeq}}
+{{#ifeq @key  'string'}}
+| State  |  Name |
+|----------|------|
+{{#each this}}
+{{#with this}}
+|{{@key}}| {{this.name}} |
+{{/with}}
+{{/each}}
+{{/ifeq}}
+
+{{/each}}
+{{/each}}
