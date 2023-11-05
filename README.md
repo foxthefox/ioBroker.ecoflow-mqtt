@@ -66,11 +66,18 @@ Parametrizing the Powerstation:
 
 ### Powerstation
 ![Delta Mini]('./doc/devices/deltamini.md)
+
 ![Delta]('./doc/devices/delta.md)
+
 ![Delta Max]('./doc/devices/deltamax.md)
+
 ![Delta Pro]('./doc/devices/deltapro.md)
+
 ![Delta2]('./doc/devices/delta2.md)
+
 ![Delta2 Max]('./doc/devices/delta2max.md)
+
+River series is started, but lacking on information.
 
 ### Powerstream
 ![Powerstream]('./doc/devices/pstream600.md)
