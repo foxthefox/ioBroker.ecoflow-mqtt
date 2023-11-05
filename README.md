@@ -86,7 +86,7 @@ The 800W version is also implemented and only difference ist the 800W maximum po
 
 ## Changelog
 ### 0.0.7
-* (foxthefox) WIP
+* (foxthefox) jsonUI wrong attr for additional battery corrected
 
 ### 0.0.6
 * (foxthefox) device doc

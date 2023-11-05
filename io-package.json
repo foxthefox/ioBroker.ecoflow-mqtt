@@ -1,143 +1,220 @@
 {
-	"common": {
-		"name": "ecoflow-mqtt",
-		"version": "0.0.7",
-		"news": {
-			"0.0.7": {
-				"en": "next adjustments, including device docs"
-			},
-			"0.0.6": {
-				"en": "next adjustments"
-			},
-			"0.0.5": {
-				"en": "next adjustments, new energy values fpr powerstream"
-			},
-			"0.0.4": {
-				"en": "feedPriority added powerstream"
-			},
-			"0.0.3": {
-				"en": "some adjustments"
-			},
-			"0.0.2": {
-				"en": "first changes for delta2max"
-			},
-			"0.0.1": {
-				"en": "initial release",
-				"de": "Erstveröffentlichung",
-				"ru": "Начальная версия",
-				"pt": "lançamento inicial",
-				"nl": "Eerste uitgave",
-				"fr": "Première version",
-				"it": "Versione iniziale",
-				"es": "Versión inicial",
-				"pl": "Pierwsze wydanie",
-				"uk": "Початкова версія",
-				"zh-cn": "首次出版"
-			}
-		},
-		"title": "ecoflow",
-		"titleLang": {
-			"en": "ecoflow",
-			"de": "Ecoflow",
-			"ru": "экопоток",
-			"pt": "ecofluxo",
-			"nl": "ecostroom",
-			"fr": "écoflux",
-			"it": "ecoflusso",
-			"es": "ecoflujo",
-			"pl": "ekoprzepływ",
-			"uk": "екопотік",
-			"zh-cn": "生态流"
-		},
-		"desc": {
-			"en": "connects to ecoflow products",
-			"de": "verbindet sich mit Ecoflow-Produkten",
-			"ru": "подключается к продуктам Ecoflow",
-			"pt": "conecta-se a produtos ecoflow",
-			"nl": "koppelt aan ecoflow-producten",
-			"fr": "se connecte aux produits ecoflow",
-			"it": "si collega ai prodotti ecoflow",
-			"es": "se conecta a productos ecoflow",
-			"pl": "łączy się z produktami ecoflow",
-			"uk": "підключається до продуктів ecoflow",
-			"zh-cn": "连接至 Ecoflow 产品"
-		},
-		"authors": [ "foxthefox <foxthefox@wysiwis.net>" ],
-		"keywords": [ "ecoflow", "powerstream", "powerstation", "delta", "river" ],
-		"license": "MIT",
-		"platform": "Javascript/Node.js",
-		"main": "main.js",
-		"icon": "ecoflow-mqtt.png",
-		"enabled": true,
-		"extIcon": "https://raw.githubusercontent.com/foxthefox/ioBroker.ecoflow-mqtt/main/admin/ecoflow-mqtt.png",
-		"readme": "https://github.com/foxthefox/ioBroker.ecoflow-mqtt/blob/main/README.md",
-		"loglevel": "debug",
-		"mode": "daemon",
-		"type": "iot-systems",
-		"compact": true,
-		"messagebox": true,
-		"connectionType": "cloud",
-		"dataSource": "push",
-		"adminUI": {
-			"config": "json"
-		},
-		"dependencies": [
-			{
-				"js-controller": ">=3.3.22"
-			}
-		],
-		"globalDependencies": [
-			{
-				"admin": ">=6.12.0"
-			}
-		]
-	},
-	"protectedNative": [ "userName", "userPassword", "mqttUserId", "mqttPwd", "mqttClientId" ],
-	"encryptedNative": [ "userPassword", "mqttPwd" ],
-	"native": {
-		"userName": "userEmail",
-		"userPassword": "pw",
-		"mqttUserId": "15xxx",
-		"mqttUserName": "app-....",
-		"mqttPwd": "xxxx",
-		"mqttClientId": "ANDRIOD-...",
-		"mqttUrl": "mqtts://mqtt.ecoflow.com",
-		"mqttPort": 8883,
-		"pstreams": [],
-		"pstations": [],
-		"msgStateCreationPstation": false,
-		"msgUpdatePstation": false,
-		"msgUpdateValuePstation": false,
-		"msgSetGetPstation": true,
-		"msgCmdPstation": true,
-		"msgStateCreationPstream": false,
-		"msgUpdatePstream": false,
-		"msgUpdateValuePstream": false,
-		"msgSetGetPstream": false,
-		"msgCmdPstream": false
-	},
-	"objects": [],
-	"instanceObjects": [
-		{
-			"_id": "info",
-			"type": "channel",
-			"common": {
-				"name": "Information"
-			},
-			"native": {}
-		},
-		{
-			"_id": "info.connection",
-			"type": "state",
-			"common": {
-				"role": "indicator.connected",
-				"name": "Device or service connected",
-				"type": "boolean",
-				"read": true,
-				"write": false,
-				"def": false
-			},
-			"native": {}
-		}
-	]
+    "common": {
+        "name": "ecoflow-mqtt",
+        "version": "0.0.7",
+        "news": {
+            "0.0.7": {
+                "en": "jsonUI wrong attr for additional battery corrected",
+                "de": "jsonUI falsches Attribut für zusätzliche Batterie korrigiert",
+                "ru": "Исправлен неправильный атрибут jsonUI для дополнительной батареи",
+                "pt": "jsonUI atributo errado para bateria adicional corrigido",
+                "nl": "jsonUI verkeerde attr voor extra batterij gecorrigeerd",
+                "fr": "jsonUI mauvais attr pour la batterie supplémentaire corrigé",
+                "it": "Attr errato jsonUI per batteria aggiuntiva corretto",
+                "es": "Se corrigió el atributo incorrecto de jsonUI para batería adicional",
+                "pl": "Poprawiono błędny atrybut jsonUI dla dodatkowej baterii",
+                "uk": "Виправлено неправильний атрибут jsonUI для додаткової батареї",
+                "zh-cn": "纠正了额外电池的 jsonUI 错误属性"
+            },
+            "0.0.6": {
+                "en": "next adjustments, including device docs",
+                "de": "nächste Anpassungen, inklusive Gerätedokumentation",
+                "ru": "следующие корректировки, включая документацию по устройствам",
+                "pt": "próximos ajustes, incluindo documentos do dispositivo",
+                "nl": "volgende aanpassingen, inclusief apparaatdocumentatie",
+                "fr": "prochains ajustements, y compris la documentation sur l'appareil",
+                "it": "prossimi aggiustamenti, inclusi i documenti del dispositivo",
+                "es": "próximos ajustes, incluidos los documentos del dispositivo",
+                "pl": "kolejne poprawki, w tym dokumentacja urządzenia",
+                "uk": "наступні коригування, включаючи документи пристрою",
+                "zh-cn": "下一步调整，包括设备文档"
+            },
+            "0.0.5": {
+                "en": "next adjustments, new energy values fpr powerstream",
+                "de": "Nächste Anpassungen, neue Energiewerte für Strom",
+                "ru": "следующие корректировки, новые значения энергии для powerstream",
+                "pt": "próximos ajustes, novos valores energéticos fpr powerstream",
+                "nl": "volgende aanpassingen, nieuwe energiewaarden fpr powerstream",
+                "fr": "prochains ajustements, nouvelles valeurs d'énergie pour powerstream",
+                "it": "prossimi adeguamenti, nuovi valori energetici per powerstream",
+                "es": "próximos ajustes, nuevos valores energéticos para powerstream",
+                "pl": "kolejne korekty, nowe wartości energii fpr powerstream",
+                "uk": "наступні налаштування, нові значення енергії fpr powerstream",
+                "zh-cn": "下一步调整，新能源价值观fpr powerstream"
+            },
+            "0.0.4": {
+                "en": "feedPriority added powerstream",
+                "de": "FeedPriority hat Powerstream hinzugefügt",
+                "ru": "FeedPriority добавил поток энергии",
+                "pt": "feedPriority adicionado powerstream",
+                "nl": "feedPriority heeft powerstream toegevoegd",
+                "fr": "feedPriority a ajouté un flux de puissance",
+                "it": "feedPriority ha aggiunto powerstream",
+                "es": "feedPriority agregado powerstream",
+                "pl": "FeedPriority dodał strumień mocy",
+                "uk": "feedPriority додав потужний потік",
+                "zh-cn": "feedPriority 增加了动力流"
+            },
+            "0.0.3": {
+                "en": "some adjustments",
+                "de": "einige Anpassungen",
+                "ru": "некоторые корректировки",
+                "pt": "alguns ajustes",
+                "nl": "enkele aanpassingen",
+                "fr": "quelques ajustements",
+                "it": "alcuni aggiustamenti",
+                "es": "algunos ajustes",
+                "pl": "pewne korekty",
+                "uk": "деякі коригування",
+                "zh-cn": "一些调整"
+            },
+            "0.0.2": {
+                "en": "first changes for delta2max",
+                "de": "erste Änderungen für delta2max",
+                "ru": "первые изменения для delta2max",
+                "pt": "primeiras mudanças para delta2max",
+                "nl": "eerste wijzigingen voor delta2max",
+                "fr": "premiers changements pour delta2max",
+                "it": "prime modifiche per delta2max",
+                "es": "primeros cambios para delta2max",
+                "pl": "pierwsze zmiany dla delta2max",
+                "uk": "перші зміни для delta2max",
+                "zh-cn": "delta2max 的第一个变化"
+            },
+            "0.0.1": {
+                "en": "initial release",
+                "de": "Erstveröffentlichung",
+                "ru": "Начальная версия",
+                "pt": "lançamento inicial",
+                "nl": "Eerste uitgave",
+                "fr": "Première version",
+                "it": "Versione iniziale",
+                "es": "Versión inicial",
+                "pl": "Pierwsze wydanie",
+                "uk": "Початкова версія",
+                "zh-cn": "首次出版"
+            }
+        },
+        "title": "ecoflow",
+        "titleLang": {
+            "en": "ecoflow",
+            "de": "Ecoflow",
+            "ru": "экопоток",
+            "pt": "ecofluxo",
+            "nl": "ecostroom",
+            "fr": "écoflux",
+            "it": "ecoflusso",
+            "es": "ecoflujo",
+            "pl": "ekoprzepływ",
+            "uk": "екопотік",
+            "zh-cn": "生态流"
+        },
+        "desc": {
+            "en": "connects to ecoflow products",
+            "de": "verbindet sich mit Ecoflow-Produkten",
+            "ru": "подключается к продуктам Ecoflow",
+            "pt": "conecta-se a produtos ecoflow",
+            "nl": "koppelt aan ecoflow-producten",
+            "fr": "se connecte aux produits ecoflow",
+            "it": "si collega ai prodotti ecoflow",
+            "es": "se conecta a productos ecoflow",
+            "pl": "łączy się z produktami ecoflow",
+            "uk": "підключається до продуктів ecoflow",
+            "zh-cn": "连接至 Ecoflow 产品"
+        },
+        "authors": [
+            "foxthefox <foxthefox@wysiwis.net>"
+        ],
+        "keywords": [
+            "ecoflow",
+            "powerstream",
+            "powerstation",
+            "delta",
+            "river"
+        ],
+        "license": "MIT",
+        "platform": "Javascript/Node.js",
+        "main": "main.js",
+        "icon": "ecoflow-mqtt.png",
+        "enabled": true,
+        "extIcon": "https://raw.githubusercontent.com/foxthefox/ioBroker.ecoflow-mqtt/main/admin/ecoflow-mqtt.png",
+        "readme": "https://github.com/foxthefox/ioBroker.ecoflow-mqtt/blob/main/README.md",
+        "loglevel": "debug",
+        "mode": "daemon",
+        "type": "iot-systems",
+        "compact": true,
+        "messagebox": true,
+        "connectionType": "cloud",
+        "dataSource": "push",
+        "adminUI": {
+            "config": "json"
+        },
+        "dependencies": [
+            {
+                "js-controller": ">=3.3.22"
+            }
+        ],
+        "globalDependencies": [
+            {
+                "admin": ">=6.12.0"
+            }
+        ]
+    },
+    "protectedNative": [
+        "userName",
+        "userPassword",
+        "mqttUserId",
+        "mqttPwd",
+        "mqttClientId"
+    ],
+    "encryptedNative": [
+        "userPassword",
+        "mqttPwd"
+    ],
+    "native": {
+        "userName": "userEmail",
+        "userPassword": "pw",
+        "mqttUserId": "15xxx",
+        "mqttUserName": "app-....",
+        "mqttPwd": "xxxx",
+        "mqttClientId": "ANDRIOD-...",
+        "mqttUrl": "mqtts://mqtt.ecoflow.com",
+        "mqttPort": 8883,
+        "pstreams": [],
+        "pstations": [],
+        "msgStateCreationPstation": false,
+        "msgUpdatePstation": false,
+        "msgUpdateValuePstation": false,
+        "msgSetGetPstation": true,
+        "msgCmdPstation": true,
+        "msgStateCreationPstream": false,
+        "msgUpdatePstream": false,
+        "msgUpdateValuePstream": false,
+        "msgSetGetPstream": false,
+        "msgCmdPstream": false
+    },
+    "objects": [],
+    "instanceObjects": [
+        {
+            "_id": "info",
+            "type": "channel",
+            "common": {
+                "name": "Information"
+            },
+            "native": {}
+        },
+        {
+            "_id": "info.connection",
+            "type": "state",
+            "common": {
+                "role": "indicator.connected",
+                "name": "Device or service connected",
+                "type": "boolean",
+                "read": true,
+                "write": false,
+                "def": false
+            },
+            "native": {}
+        }
+    ]
 }
