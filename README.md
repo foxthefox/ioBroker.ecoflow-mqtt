@@ -86,7 +86,7 @@ The 800W version is also implemented and only difference ist the 800W maximum po
 
 ## Changelog
 ### 0.0.8
-* (foxthefox)
+* (foxthefox) Delta2Max mppt.outVol mult=0.001 instead 0.1
 
 ### 0.0.7
 * (foxthefox) jsonUI wrong attr for additional battery corrected
