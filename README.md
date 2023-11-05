@@ -62,6 +62,20 @@ Parametrizing the Powerstation:
 * select the device type
 * if additional battery pack is connected, check the port number where it is connected
 
+## Implemented Devices
+
+### Powerstation
+![Delta Mini]('./doc/devices/deltamini.md)
+![Delta]('./doc/devices/delta.md)
+![Delta Max]('./doc/devices/deltamax.md)
+![Delta Pro]('./doc/devices/deltapro.md)
+![Delta2]('./doc/devices/delta2.md)
+![Delta2 Max]('./doc/devices/delta2max.md)
+
+### Powerstream
+![Powerstream]('./doc/devices/pstream600.md)
+
+The 800W version is also implemented and only difference ist the 800W maximum power.
 
 ## Changelog
 ### 0.0.6
