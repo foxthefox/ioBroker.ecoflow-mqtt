@@ -278,7 +278,7 @@ class EcoflowMqtt extends utils.Adapter {
 									}
 									this.log.info('pstation states created for ' + id + ' / ' + type + ' / ' + name);
 									//first additional battery
-									if (this.config.pstations[psta]['pstationSlave1']) {
+									if (this.config.pstations[psta]['pstationsSlave1']) {
 										if (this.config.msgStateCreationPstation) {
 											this.log.debug('____________________________________________');
 											this.log.debug('create  channel ' + 'bmsSlave1');
@@ -310,7 +310,7 @@ class EcoflowMqtt extends utils.Adapter {
 										this.log.info('pstation add battery #1 states created');
 									}
 									//second additional battery
-									if (this.config.pstations[psta]['pstationSlave2']) {
+									if (this.config.pstations[psta]['pstationsSlave2']) {
 										if (this.config.msgStateCreationPstation) {
 											this.log.debug('____________________________________________');
 											this.log.debug('create  channel ' + 'bmsSlave2');

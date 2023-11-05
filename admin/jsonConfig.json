@@ -313,7 +313,7 @@
 							"title": "Slave 1",
 							"width": "10%",
 							"hidden": "data.pstationType !== 'deltapro' && data.pstationType !== 'deltamax' && data.pstationType !== 'delta2max' && data.pstationType !== 'delta' && data.pstationType !== 'delta2'",
-							"attr": "pstationSlave1",
+							"attr": "pstationsSlave1",
 							"filter": false,
 							"sort": false,
 							"default": false
