@@ -1,9 +1,16 @@
 # States for  DELTAMINI
 ### version: 0.0.6
 
-## BMSMASTER
+[bmsMaster](#bmsMaster)
+[ems](#ems)
+[inv](#inv)
+[mppt](#mppt)
+[pd](#pd)
 
-### NUMBER
+
+## bmsMaster
+
+### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |amp|0 | 13 | A | 0.001 |  Current |
@@ -27,7 +34,7 @@
 |vol|0 | 60 | V | 0.001 |  Voltage |
 
 
-### STRING
+### string
 
 | State  |  Name |
 |----------|------|
@@ -38,7 +45,7 @@
 |soh| Health status |
 |sysVer| System version |
 
-### DIAGNOSTIC
+### diagnostic
 
 | State  |     Name |  values |
 |----------|:-------------:|------|
@@ -46,9 +53,9 @@
 |errCode| Global error code | {0:OK?} |
 |type| BMS type | {1:Lithium battery,2:Oil-powered} |
 
-## EMS
+## ems
 
-### STRING
+### string
 
 | State  |  Name |
 |----------|------|
@@ -62,7 +69,7 @@
 |openBmsIdx| Open BMS index |
 |openUpsFlag| UPS mode enable flag |
 
-### DIAGNOSTIC
+### diagnostic
 
 | State  |     Name |  values |
 |----------|:-------------:|------|
@@ -71,7 +78,7 @@
 |dsgCmd| Discharge switch | {0:off,1:on,2:2?} |
 |emsIsNormalFlag| Energy storage state: 0: sleep; 1: normal | {0:sleep,1:normal} |
 
-### NUMBER
+### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |chgAmp|0 | 100 | A | 0.0001 |  Charging current |
@@ -84,16 +91,16 @@
 |paraVolMin|0 | 60 | V | 0.001 |  Minimum parallel voltage |
 
 
-### LEVEL
+### level
 
 | State  |      Min     |     Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |maxChargeSoc| 50 | 100 | % | 1 |  Charge upper limit |
 |minDsgSoc| 0 | 30 | % | 1 |  Discharge lower limit |
 
-## INV
+## inv
 
-### DIAGNOSTIC
+### diagnostic
 
 | State  |     Name |  values |
 |----------|:-------------:|------|
@@ -104,7 +111,7 @@
 |dischargeType| Discharging type | {0:no discharge?,1:AC discharging,2:PR,3:BC} |
 |fanState| Fan state | {0:disabled,1:Level 1,2:Level 2,3:Level 3} |
 
-### NUMBER
+### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |acInAmp|0 | 13 | A | 0.001 |  Inverter input current |
@@ -122,7 +129,7 @@
 |outputWatts|0 | 4000 | W | 1 |  Discharging power |
 
 
-### SWITCH
+### switch
 
 | State  |      off    |  on |  Name |
 |----------|:-------------:|:------:|------|
@@ -130,7 +137,7 @@
 |cfgAcWorkMode| full power | mute | AC charging mode |
 |cfgAcXboost| off | on | X-Boost switch |
 
-### STRING
+### string
 
 | State  |  Name |
 |----------|------|
@@ -139,16 +146,16 @@
 |invType| PSDR model code |
 |sysVer| System version |
 
-### LEVEL
+### level
 
 | State  |      Min     |     Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |cfgSlowChgWatts| 200 | 800 | W | 1 |  Maximum charging power for AC slow charging (W) |
 |cfgStandbyMin| 0 | 720 | min | 1 |  AC standby time /min 0 Never standby 720 Default value |
 
-## MPPT
+## mppt
 
-### NUMBER
+### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |carOutAmp|0 | 13 | A | 0.01 |  Car charging output current |
@@ -168,13 +175,13 @@
 |outWatts|0 | 500 | W | 0.1 |  PV output power |
 
 
-### SWITCH
+### switch
 
 | State  |      off    |  on |  Name |
 |----------|:-------------:|:------:|------|
 |carState| off | on | Car charger switch setting |
 
-### DIAGNOSTIC
+### diagnostic
 
 | State  |     Name |  values |
 |----------|:-------------:|------|
@@ -185,29 +192,29 @@
 |dc24vState| DCDC24 switch state | {0:off,1:on} |
 |xt60ChgType| XT60 charging type | {0:not detected,1:MPPT,2:adapter} |
 
-### LEVEL
+### level
 
 | State  |      Min     |     Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |cfgDcChgCurrent| 0 | 8 | A | 0.001 |  On-board charging current |
 
-### STRING
+### string
 
 | State  |  Name |
 |----------|------|
 |faultCode| Error code: byte0: mppt_fault; byte1: car_fault; byte2: dc24v_fault |
 |swVer| Version number |
 
-## PD
+## pd
 
-### SWITCH
+### switch
 
 | State  |      off    |  on |  Name |
 |----------|:-------------:|:------:|------|
 |beepState| normal | quiet | Beep status |
 |dcOutState| off | on | DC button state |
 
-### DIAGNOSTIC
+### diagnostic
 
 | State  |     Name |  values |
 |----------|:-------------:|------|
@@ -217,7 +224,7 @@
 |sysChgDsgState| Charging/discharging state on screen | {0:discharged,1:charged} |
 |wifiAutoRcvy| Wi-Fi auto mode | {0:default mode (STA),1:The Wi-Fi network is automatically restored to the last mode (STA/AP) after powering on} |
 
-### NUMBER
+### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |carTemp|0 | 80 | °C | 1 |  CAR temperature |
@@ -248,7 +255,7 @@
 |wattsOutSum|0 | 500 | W | 1 |  Total output power |
 
 
-### STRING
+### string
 
 | State  |  Name |
 |----------|------|
@@ -259,7 +266,7 @@
 |wifiVer| Wi-Fi version |
 |wirelessWatts| Wireless charging output power (W): Reserved, not available |
 
-### LEVEL
+### level
 
 | State  |      Min     |     Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|

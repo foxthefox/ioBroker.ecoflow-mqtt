@@ -2,10 +2,15 @@
 ### version: {{version}}
 
 {{#each data}}
-## {{uppercase @key}}
+[{{@key}}](#{{@key}})
+{{/each}}
+
+
+{{#each data}}
+## {{@key}}
 
 {{#each this}}
-### {{uppercase @key}}
+### {{@key}}
 {{#ifeq @key  'number'}}
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|

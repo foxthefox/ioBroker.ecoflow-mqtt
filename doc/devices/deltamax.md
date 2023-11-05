@@ -1,9 +1,16 @@
 # States for  DELTAMAX
 ### version: 0.0.6
 
-## BMSMASTER
+[bmsMaster](#bmsMaster)
+[ems](#ems)
+[inv](#inv)
+[mppt](#mppt)
+[pd](#pd)
 
-### NUMBER
+
+## bmsMaster
+
+### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |f32ShowSoc|0 | 100 | % | 1 |  SOC |
@@ -27,7 +34,7 @@
 |cycles|0 | 6000 | cycles | 1 |  Number of cycles |
 
 
-### STRING
+### string
 
 | State  |  Name |
 |----------|------|
@@ -38,7 +45,7 @@
 |num| BMS number |
 |openBmsIdx| Battery pack enable state |
 
-### DIAGNOSTIC
+### diagnostic
 
 | State  |     Name |  values |
 |----------|:-------------:|------|
@@ -46,9 +53,9 @@
 |errCode| Global error code | {0:OK?} |
 |cellId| Battery capacity type | {1:2.5 Ah per battery,2:2 Ah per battery} |
 
-## EMS
+## ems
 
-### DIAGNOSTIC
+### diagnostic
 
 | State  |     Name |  values |
 |----------|:-------------:|------|
@@ -57,7 +64,7 @@
 |emsIsNormalFlag| Energy storage state: 0: sleep; 1: normal | {0:sleep,1:normal} |
 |dsgCmd| Discharge switch | {0:off,1:on,2:2?} |
 
-### LEVEL
+### level
 
 | State  |      Min     |     Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
@@ -66,7 +73,7 @@
 |maxChargeSoc| 50 | 100 | % | 1 |  Charge upper limit |
 |maxCloseOilEbSoc| 50 | 100 | % | 1 |  The lower threshold of smart generator auto off Range: 0~100 |
 
-### NUMBER
+### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |paraVolMax|0 | 60 | V | 0.001 |  Maximum parallel voltage |
@@ -79,7 +86,7 @@
 |chgAmp|0 | 100 | A | 0.0001 |  Charging current |
 
 
-### STRING
+### string
 
 | State  |  Name |
 |----------|------|
@@ -93,9 +100,9 @@
 |fanLevel| Fan level |
 |bms2Online| BMS online signal: BIT0: hardware online signal; BIT1: software online signal |
 
-## INV
+## inv
 
-### NUMBER
+### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |dcInVol|0 | 60 | V | 0.001 |  DC input voltage |
@@ -113,7 +120,7 @@
 |invOutAmp|0 | 13 | A | 0.001 |  Inverter output current |
 
 
-### SWITCH
+### switch
 
 | State  |      off    |  on |  Name |
 |----------|:-------------:|:------:|------|
@@ -122,7 +129,7 @@
 |cfgAcXboost| off | on | X-Boost switch |
 |chgPauseFlag| not stopped? | charge stopped | AC Charging Pause |
 
-### STRING
+### string
 
 | State  |  Name |
 |----------|------|
@@ -131,14 +138,14 @@
 |invType| PSDR model code |
 |sysVer| System version |
 
-### LEVEL
+### level
 
 | State  |      Min     |     Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |cfgStandbyMin| 0 | 720 | min | 1 |  AC standby time /min 0 Never standby 720 Default value |
 |cfgSlowChgWatts| 200 | 2000 | W | 1 |  Maximum charging power for AC slow charging (W) |
 
-### DIAGNOSTIC
+### diagnostic
 
 | State  |     Name |  values |
 |----------|:-------------:|------|
@@ -149,9 +156,9 @@
 |acPassByAutoEn| acPassByAutoEn | {0:0?,1:1?} |
 |dischargeType| Discharging type | {0:no discharge?,1:AC discharging,2:PR,3:BC} |
 
-## MPPT
+## mppt
 
-### NUMBER
+### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |carOutVol|0 | 60 | V | 0.1 |  Car charging output voltage |
@@ -171,20 +178,20 @@
 |dc24vTemp|0 | 80 | °C | 1 |  DCDC24V temperature |
 
 
-### SWITCH
+### switch
 
 | State  |      off    |  on |  Name |
 |----------|:-------------:|:------:|------|
 |carState| off | on | Car charger switch setting |
 
-### STRING
+### string
 
 | State  |  Name |
 |----------|------|
 |faultCode| Error code: byte0: mppt_fault; byte1: car_fault; byte2: dc24v_fault |
 |swVer| Version number |
 
-### DIAGNOSTIC
+### diagnostic
 
 | State  |     Name |  values |
 |----------|:-------------:|------|
@@ -195,15 +202,15 @@
 |cfgChgType| Configured charging type: This parameter is valid when xt60_chg_type is 0. | {0:auto,1:MPPT,2:adapter} |
 |chgState| Charging state | {0:disabled,1:charging,2:standby (DC charging stopped during AC charging)} |
 
-### LEVEL
+### level
 
 | State  |      Min     |     Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |cfgDcChgCurrent| 0 | 8 | A | 0.001 |  On-board charging current |
 
-## PD
+## pd
 
-### NUMBER
+### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |wattsInSum|0 | 500 | W | 1 |  Total input power |
@@ -234,7 +241,7 @@
 |usb2Watts|0 | 500 | W | 0.1 |  Common usb2 output power |
 
 
-### STRING
+### string
 
 | State  |  Name |
 |----------|------|
@@ -244,14 +251,14 @@
 |sysVer| System version |
 |wifiRssi| Wi-Fi signal intensity |
 
-### LEVEL
+### level
 
 | State  |      Min     |     Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |standByMode| 0 | 5999 | min | 1 |  Device standby time /min 0 Never standby 5999 Max value |
 |lcdOffSec| 0 | 1800 | s | 1 |  LCD screen-off duration: 0: never off |
 
-### DIAGNOSTIC
+### diagnostic
 
 | State  |     Name |  values |
 |----------|:-------------:|------|
@@ -260,7 +267,7 @@
 |sysChgDsgState| Charging/discharging state on screen | {0:discharged,1:charged} |
 |errCode| Global error code | {0:OK?} |
 
-### SWITCH
+### switch
 
 | State  |      off    |  on |  Name |
 |----------|:-------------:|:------:|------|
