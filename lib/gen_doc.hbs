@@ -3,6 +3,7 @@
 
 {{#each data}}
 [{{@key}}](#{{@key}})
+
 {{/each}}
 
 
@@ -22,20 +23,20 @@
 {{/ifeq}}
 
 {{#ifeq @key  'level'}}
-| State  |      Min     |     Max     |  Unit |  Mult |  Name |
-|----------|:-------------:|:-------------:|:------:|:-----:|-----|
+| State  |      Min     |     Max     |  Unit |  Mult |  Name |  cmd |
+|----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
 {{#each this}}
 {{#with this}}
-|{{@key}}| {{this.min}} | {{this.max}} | {{this.unit_of_measurement}} | {{this.mult}} |  {{this.name}} |
+|{{@key}}| {{this.min}} | {{this.max}} | {{this.unit_of_measurement}} | {{this.mult}} |  {{this.name}} | {{this.cmd}} |
 {{/with}}
 {{/each}}
 {{/ifeq}}
 {{#ifeq @key  'switch'}}
-| State  |      off    |  on |  Name |
-|----------|:-------------:|:------:|------|
+| State  |      off    |  on |  Name |  cmd |
+|----------|:-------------:|:------:|------|------|
 {{#each this}}
 {{#with this}}
-|{{@key}}| {{this.payload_off}} | {{this.payload_on}} | {{this.name}} |
+|{{@key}}| {{this.payload_off}} | {{this.payload_on}} | {{this.name}} | {{this.cmd}} |
 {{/with}}
 {{/each}}
 {{/ifeq}}

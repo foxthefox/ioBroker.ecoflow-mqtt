@@ -2,10 +2,15 @@
 ### version: 0.0.6
 
 [bmsMaster](#bmsMaster)
+
 [ems](#ems)
+
 [inv](#inv)
+
 [mppt](#mppt)
+
 [pd](#pd)
+
 
 
 ## bmsMaster
@@ -66,12 +71,12 @@
 
 ### level
 
-| State  |      Min     |     Max     |  Unit |  Mult |  Name |
-|----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|minDsgSoc| 0 | 30 | % | 1 |  Discharge lower limit |
-|minOpenOilEbSoc| 0 | 30 | % | 1 |  The upper threshold of smart generator auto on Range: 0~100 |
-|maxChargeSoc| 50 | 100 | % | 1 |  Charge upper limit |
-|maxCloseOilEbSoc| 50 | 100 | % | 1 |  The lower threshold of smart generator auto off Range: 0~100 |
+| State  |      Min     |     Max     |  Unit |  Mult |  Name |  cmd |
+|----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
+|minDsgSoc| 0 | 30 | % | 1 |  Discharge lower limit | {from:Android,operateType:TCP,id:38454960,lang:en-us,params:{id:51,minDsgSoc:25},version:1.0} |
+|minOpenOilEbSoc| 0 | 30 | % | 1 |  The upper threshold of smart generator auto on Range: 0~100 | {from:Android,operateType:TCP,id:878666957,lang:en-us,params:{id:52,openOilSoc:0},version:1.0} |
+|maxChargeSoc| 50 | 100 | % | 1 |  Charge upper limit | {from:Android,operateType:TCP,id:38461351,lang:en-us,params:{id:49,maxChgSoc:95},version:1.0} |
+|maxCloseOilEbSoc| 50 | 100 | % | 1 |  The lower threshold of smart generator auto off Range: 0~100 | {from:Android,operateType:TCP,id:878673259,lang:en-us,params:{id:53,closeOilSoc:84},version:1.0} |
 
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
@@ -122,12 +127,12 @@
 
 ### switch
 
-| State  |      off    |  on |  Name |
-|----------|:-------------:|:------:|------|
-|cfgAcWorkMode| full power | mute | AC charging mode |
-|cfgAcEnabled| off | on | AC discharge switch setting |
-|cfgAcXboost| off | on | X-Boost switch |
-|chgPauseFlag| not stopped? | charge stopped | AC Charging Pause |
+| State  |      off    |  on |  Name |  cmd |
+|----------|:-------------:|:------:|------|------|
+|cfgAcWorkMode| full power | mute | AC charging mode |  |
+|cfgAcEnabled| off | on | AC discharge switch setting | {from:Android,operateType:TCP,id:554272649,lang:en-us,params:{id:66,enabled:1},version:1.0} |
+|cfgAcXboost| off | on | X-Boost switch | {from:Android,operateType:TCP,id:602507362,lang:en-us,params:{id:66,xboost:1},version:1.0} |
+|chgPauseFlag| not stopped? | charge stopped | AC Charging Pause | {from:Android,operateType:TCP,id:747329085,lang:en-us,params:{id:69,chgPause:1},version:1.0} |
 
 ### string
 
@@ -140,10 +145,10 @@
 
 ### level
 
-| State  |      Min     |     Max     |  Unit |  Mult |  Name |
-|----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|cfgStandbyMin| 0 | 720 | min | 1 |  AC standby time /min 0 Never standby 720 Default value |
-|cfgSlowChgWatts| 200 | 2000 | W | 1 |  Maximum charging power for AC slow charging (W) |
+| State  |      Min     |     Max     |  Unit |  Mult |  Name |  cmd |
+|----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
+|cfgStandbyMin| 0 | 720 | min | 1 |  AC standby time /min 0 Never standby 720 Default value | {from:Android,operateType:TCP,id:153750799,lang:en-us,params:{id:153,standByMins:360},version:1.0} |
+|cfgSlowChgWatts| 200 | 2000 | W | 1 |  Maximum charging power for AC slow charging (W) | {from:Android,operateType:TCP,id:747329085,lang:en-us,params:{id:69,slowChgPower:300},version:1.0} |
 
 ### diagnostic
 
@@ -180,9 +185,9 @@
 
 ### switch
 
-| State  |      off    |  on |  Name |
-|----------|:-------------:|:------:|------|
-|carState| off | on | Car charger switch setting |
+| State  |      off    |  on |  Name |  cmd |
+|----------|:-------------:|:------:|------|------|
+|carState| off | on | Car charger switch setting | {from:Android,operateType:TCP,id:639503104,lang:en-us,params:{id:81,enabled:1},version:1.0} |
 
 ### string
 
@@ -204,9 +209,9 @@
 
 ### level
 
-| State  |      Min     |     Max     |  Unit |  Mult |  Name |
-|----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|cfgDcChgCurrent| 0 | 8 | A | 0.001 |  On-board charging current |
+| State  |      Min     |     Max     |  Unit |  Mult |  Name |  cmd |
+|----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
+|cfgDcChgCurrent| 0 | 8 | A | 0.001 |  On-board charging current | {from:Android,operateType:TCP,id:787426012,lang:en-us,params:{id:71,currMa:6000},version:1.0} |
 
 ## pd
 
@@ -253,10 +258,10 @@
 
 ### level
 
-| State  |      Min     |     Max     |  Unit |  Mult |  Name |
-|----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|standByMode| 0 | 5999 | min | 1 |  Device standby time /min 0 Never standby 5999 Max value |
-|lcdOffSec| 0 | 1800 | s | 1 |  LCD screen-off duration: 0: never off |
+| State  |      Min     |     Max     |  Unit |  Mult |  Name |  cmd |
+|----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
+|standByMode| 0 | 5999 | min | 1 |  Device standby time /min 0 Never standby 5999 Max value | {from:Android,operateType:TCP,id:119032574,lang:en-us,params:{id:33,standByMode:360},version:1.0} |
+|lcdOffSec| 0 | 1800 | s | 1 |  LCD screen-off duration: 0: never off | {from:Android,operateType:TCP,id:93980337,lang:en-us,params:{id:39,lcdTime:1800},version:1.0} |
 
 ### diagnostic
 
@@ -269,8 +274,8 @@
 
 ### switch
 
-| State  |      off    |  on |  Name |
-|----------|:-------------:|:------:|------|
-|beepState| normal | quiet | Beep status |
-|dcOutState| off | on | DC button state |
+| State  |      off    |  on |  Name |  cmd |
+|----------|:-------------:|:------:|------|------|
+|beepState| normal | quiet | Beep status | {from:Android,operateType:TCP,id:834553333,lang:en-us,params:{id:38,enabled:1},version:1.0} |
+|dcOutState| off | on | DC button state | {from:Android,operateType:TCP,id:689699572,lang:en-us,params:{id:34,enabled:1},version:1.0} |
 
