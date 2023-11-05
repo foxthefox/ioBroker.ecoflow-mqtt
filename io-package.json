@@ -1,8 +1,11 @@
 {
 	"common": {
 		"name": "ecoflow-mqtt",
-		"version": "0.0.6",
+		"version": "0.0.7",
 		"news": {
+			"0.0.7": {
+				"en": "next adjustments, including device docs"
+			},
 			"0.0.6": {
 				"en": "next adjustments"
 			},

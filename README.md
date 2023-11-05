@@ -85,6 +85,9 @@ River series is started, but lacking on information.
 The 800W version is also implemented and only difference ist the 800W maximum power.
 
 ## Changelog
+### 0.0.7
+* (foxthefox) WIP
+
 ### 0.0.6
 * (foxthefox) device doc
 * (foxthefox) fgDcChgCurrent/pv2DcChgCurrent changed back to start at 4A
