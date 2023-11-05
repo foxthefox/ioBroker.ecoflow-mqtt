@@ -65,28 +65,28 @@ Parametrizing the Powerstation:
 ## Implemented Devices
 
 ### Powerstation
-![Delta Mini]('./doc/devices/deltamini.md)
+![Delta Mini](./doc/devices/deltamini.md)
 
-![Delta]('./doc/devices/delta.md)
+![Delta](./doc/devices/delta.md)
 
-![Delta Max]('./doc/devices/deltamax.md)
+![Delta Max](./doc/devices/deltamax.md)
 
-![Delta Pro]('./doc/devices/deltapro.md)
+![Delta Pro](./doc/devices/deltapro.md)
 
-![Delta2]('./doc/devices/delta2.md)
+![Delta2](./doc/devices/delta2.md)
 
-![Delta2 Max]('./doc/devices/delta2max.md)
+![Delta2 Max](./doc/devices/delta2max.md)
 
 River series is started, but lacking on information.
 
 ### Powerstream
-![Powerstream]('./doc/devices/pstream600.md)
+![Powerstream](./doc/devices/pstream600.md)
 
 The 800W version is also implemented and only difference ist the 800W maximum power.
 
 ## Changelog
 ### 0.0.6
-* (foxthefox) devie doc
+* (foxthefox) device doc
 
 ### 0.0.5
 * (foxthefox) cfgDcChgCurrent/pv2DcChgCurrent again with min=0, seems that there comes 0 at a certein telegram and causing warning
