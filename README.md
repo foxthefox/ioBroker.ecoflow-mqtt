@@ -85,6 +85,15 @@ River series is started, but lacking on information.
 The 800W version is also implemented and only difference ist the 800W maximum power.
 
 ## Changelog
+### 0.0.8
+* (foxthefox) Delta2Max mppt.outVol mult=0.001 instead 0.1
+* (foxthefox) handling additional battery for Delta2Max
+* (foxthefox) pd.dsgPowerAC -> mult 0.001 Delta2Max
+* (foxthefox) pd.chgPowerAC -> mult 0.001 Delta2Max
+* (foxthefox) inv.acChgRatedPower -> max 4000W
+* (foxthefox) inv.FastChgWatts -> max 2400W
+* (foxthefox) chgwatts Delta 2 -> min 50W
+
 ### 0.0.7
 * (foxthefox) jsonUI wrong attr for additional battery corrected
 

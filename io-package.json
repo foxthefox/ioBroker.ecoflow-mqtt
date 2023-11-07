@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "ecoflow-mqtt",
-        "version": "0.0.7",
+        "version": "0.0.8",
         "news": {
+            "0.0.8": {
+                "en": "correction",
+                "de": "Korrektur",
+                "ru": "исправление",
+                "pt": "correção",
+                "nl": "correctie",
+                "fr": "correction",
+                "it": "correzione",
+                "es": "corrección",
+                "pl": "korekta",
+                "uk": "корекція",
+                "zh-cn": "更正"
+            },
             "0.0.7": {
                 "en": "jsonUI wrong attr for additional battery corrected",
                 "de": "jsonUI falsches Attribut für zusätzliche Batterie korrigiert",
