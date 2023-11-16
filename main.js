@@ -776,18 +776,7 @@ class EcoflowMqtt extends utils.Adapter {
 									mqttClientId: login.clientID
 								}
 							};
-
-							//this.sendTo(obj.from, obj.command, result, obj.callback);
-							this.sendTo(
-								obj.from,
-								obj.command,
-								{
-									error:
-										'This is a workaround and no fault. Please copy each value into the MQTT Authentication settings. ' +
-										JSON.stringify(result.native)
-								},
-								obj.callback
-							);
+							this.sendTo(obj.from, obj.command, result, obj.callback);
 						} catch (error) {
 							this.log.error(error);
 							this.sendTo(

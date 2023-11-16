@@ -42,8 +42,7 @@ In Admin Page the mqqt credentials for the mqqt Broker need to be inserted.
 There are 3 possibilities:
 1. by script https://github.com/mmiller7/ecoflow-withoutflow/blob/main/cloud-mqtt/ecoflow_get_mqtt_login.sh
 2. by website https://energychain.github.io/site_ecoflow_mqtt_credentials/
-3. (pending feature) by adapters own alogorithm (pressing the button), for this the ecoflow username and password is necessary.
-until now you have to copy the values from the pop-up window into temporary editor and the in the authentication settings
+3. by adapters own alogorithm (pressing the button), for this the ecoflow username and password is necessary.
 
 The mqqt Broker settings are default and usually need no modification.
 
@@ -85,6 +84,10 @@ River series is started, but lacking on information.
 The 800W version is also implemented and only difference ist the 800W maximum power.
 
 ## Changelog
+### 0.0.9
+* (foxthefox) final version of credential creation, at least 6.12.3 for admin required
+* (foxthefox) 
+
 ### 0.0.8
 * (foxthefox) Delta2Max mppt.outVol mult=0.001 instead 0.1
 * (foxthefox) handling additional battery for Delta2Max
