@@ -416,15 +416,14 @@ class EcoflowMqtt extends utils.Adapter {
 								}
 								if (msgdecode !== null && typeof msgdecode === 'object') {
 									if (Object.keys(msgdecode).length > 0) {
-										for (const prop in msgdecode) {
-											await ef.storeStreamPayload(
-												this,
-												this.pstreamStatesDict,
-												this.pstreamStates,
-												topic,
-												msgdecode[prop]
-											);
-										}
+										//storeStreamPayload handles multiple objects
+										await ef.storeStreamPayload(
+											this,
+											this.pstreamStatesDict,
+											this.pstreamStates,
+											topic,
+											msgdecode
+										);
 									}
 								}
 								this.msgCountPstream++;
