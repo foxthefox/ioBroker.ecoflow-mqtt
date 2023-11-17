@@ -86,7 +86,8 @@ The 800W version is also implemented and only difference ist the 800W maximum po
 ## Changelog
 ### 0.0.9
 * (foxthefox) final version of credential creation, at least 6.12.3 for admin required
-* (foxthefox) 
+* (foxthefox) pd.wattsInSum max=4000W, pd.wattsOutSum max=4000W
+* (foxthefox) unknwon59 -> batChargingTime, battMin -> batDischargingTime
 
 ### 0.0.8
 * (foxthefox) Delta2Max mppt.outVol mult=0.001 instead 0.1
