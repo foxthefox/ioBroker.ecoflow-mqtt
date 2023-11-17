@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "ecoflow-mqtt",
-        "version": "0.0.8",
+        "version": "0.0.9",
         "news": {
+            "0.0.9": {
+                "en": "final credential creation and take over; corrections",
+                "de": "endgültige Credential-Erstellung und -Übernahme; Korrekturen",
+                "ru": "окончательное создание учетных данных и принятие на себя ответственности; исправления",
+                "pt": "criação e controle da credencial final; correções",
+                "nl": "definitieve creatie en overname van referenties; correcties",
+                "fr": "création des informations d'identification finales et prise en charge ; corrections",
+                "it": "creazione e acquisizione delle credenziali finali; correzioni",
+                "es": "creación y toma de posesión de la credencial final; correcciones",
+                "pl": "ostateczne utworzenie i przejęcie uprawnień; poprawki",
+                "uk": "остаточне створення та прийняття облікових даних; виправлення",
+                "zh-cn": "最终凭证创建和接管；更正"
+            },
             "0.0.8": {
                 "en": "correction",
                 "de": "Korrektur",
@@ -108,6 +121,48 @@
                 "zh-cn": "首次出版"
             }
         },
+        "messages": [
+            {
+                "condition": {
+                    "operand": "and",
+                    "rules": [
+                        "oldVersion<0.0.8",
+                        "newVersion>=0.0.9"
+                    ]
+                },
+                "title": {
+                    "en": "Important notice!",
+                    "de": "Wichtiger Hinweis!",
+                    "ru": "Важное замечание!",
+                    "pt": "Notícia importante!",
+                    "nl": "Belangrijke mededeling!",
+                    "fr": "Avis important!",
+                    "it": "Avviso IMPORTANTE!",
+                    "es": "Noticia importante!",
+                    "pl": "Ważna uwaga!",
+                    "uk": "Погода!",
+                    "zh-cn": "重要通知!"
+                },
+                "text": {
+                    "en": "In order to work properly the adapter requires ioBroker.admin >=6.12.3. Please ensure this boundary condition. You can do this by enabling expert settings and installation from npm as source. ",
+                    "de": "Damit der Adapter ordnungsgemäß funktioniert, ist ioBroker.admin >=6.12.3 erforderlich. Bitte achten Sie auf diese Randbedingung. Sie können dies tun, indem Sie Experteneinstellungen und die Installation von npm als Quelle aktivieren.",
+                    "ru": "Для правильной работы адаптера требуется ioBroker.admin >=6.12.3. Пожалуйста, обеспечьте это граничное условие. Это можно сделать, включив экспертные настройки и установив их из npm в качестве источника.",
+                    "pt": "Para funcionar corretamente, o adaptador requer ioBroker.admin >=6.12.3. Por favor, garanta esta condição de limite. Você pode fazer isso habilitando configurações avançadas e instalação do npm como fonte.",
+                    "nl": "Om goed te kunnen werken heeft de adapter ioBroker.admin >=6.12.3 nodig. Zorg ervoor dat deze randvoorwaarde aanwezig is. Dit kunt u doen door expertinstellingen en installatie vanuit npm als bron in te schakelen.",
+                    "fr": "Pour fonctionner correctement, l'adaptateur nécessite ioBroker.admin >=6.12.3. Veuillez vous assurer de cette condition aux limites. Vous pouvez le faire en activant les paramètres experts et l'installation à partir de npm comme source.",
+                    "it": "Per funzionare correttamente l'adattatore richiede ioBroker.admin >=6.12.3. Si prega di garantire questa condizione al contorno. Puoi farlo abilitando le impostazioni avanzate e l'installazione da npm come sorgente.",
+                    "es": "Para funcionar correctamente, el adaptador requiere ioBroker.admin >=6.12.3. Asegúrese de que se cumpla esta condición límite. Puede hacerlo habilitando la configuración experta y la instalación desde npm como fuente.",
+                    "pl": "Do poprawnego działania adapter wymaga ioBroker.admin >=6.12.3. Proszę zapewnić ten warunek brzegowy. Możesz to zrobić, włączając ustawienia eksperckie i instalację z npm jako źródła.",
+                    "uk": "Для належної роботи адаптеру потрібен ioBroker.admin >=6.12.3. Будь ласка, переконайтеся в цій граничній умові. Ви можете зробити це, увімкнувши експертні налаштування та інсталяцію з npm як джерела.",
+                    "zh-cn": "为了正常工作，适配器需要 ioBroker.admin >=6.12.3。请确保这个边界条件。您可以通过启用专家设置并从 npm 作为源进行安装来实现此目的。"
+                },
+                "level": "warn",
+                "buttons": [
+                    "ok",
+                    "cancel"
+                ]
+            }
+        ],
         "title": "ecoflow",
         "titleLang": {
             "en": "ecoflow",
@@ -169,7 +224,7 @@
         ],
         "globalDependencies": [
             {
-                "admin": ">=6.12.0"
+                "admin": ">=6.12.3"
             }
         ]
     },
