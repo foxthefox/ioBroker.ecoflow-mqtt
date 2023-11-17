@@ -84,6 +84,9 @@ River series is started, but lacking on information.
 The 800W version is also implemented and only difference ist the 800W maximum power.
 
 ## Changelog
+### 0.0.10
+* (foxthefox) unknown pstream message debug possibility
+
 ### 0.0.9
 * (foxthefox) final version of credential creation, at least 6.12.3 for admin required
 * (foxthefox) pd.wattsInSum max=4000W, pd.wattsOutSum max=4000W
@@ -104,7 +107,7 @@ The 800W version is also implemented and only difference ist the 800W maximum po
 
 ### 0.0.6
 * (foxthefox) device doc
-* (foxthefox) fgDcChgCurrent/pv2DcChgCurrent changed back to start at 4A
+* (foxthefox) cfgDcChgCurrent/pv2DcChgCurrent changed back to start at 4A
 
 ### 0.0.5
 * (foxthefox) cfgDcChgCurrent/pv2DcChgCurrent again with min=0, seems that there comes 0 at a certein telegram and causing warning
