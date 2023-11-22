@@ -86,6 +86,7 @@ The 800W version is also implemented and only difference ist the 800W maximum po
 ## Changelog
 ### 0.0.10
 * (foxthefox) unknown pstream message debug possibility
+* (foxthefox) inv.outTemp max=90°C, iverter_heartbeat.pv1/2inputWatts max=600W
 
 ### 0.0.9
 * (foxthefox) final version of credential creation, at least 6.12.3 for admin required
