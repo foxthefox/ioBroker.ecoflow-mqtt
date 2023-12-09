@@ -190,6 +190,64 @@
 					"sm": 12,
 					"md": 6,
 					"lg": 4
+				},
+				"msgUnknownMsgPstream": {
+					"type": "checkbox",
+					"label": "msgUnknownMsgPstream",
+					"sm": 12,
+					"md": 6,
+					"lg": 4
+				},
+				"_debugplug": {
+					"newLine": true,
+					"type": "header",
+					"text": "Smart Plug DEBUG settings",
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"size": 3
+				},
+				"msgStateCreationPlug": {
+					"type": "checkbox",
+					"label": "msgStateCreationPlug",
+					"sm": 12,
+					"md": 6,
+					"lg": 4
+				},
+				"msgUpdatePlug": {
+					"type": "checkbox",
+					"label": "msgUpdatePlug",
+					"sm": 12,
+					"md": 6,
+					"lg": 4
+				},
+				"msgUpdateValuePlug": {
+					"type": "checkbox",
+					"label": "msgUpdateValuePlug",
+					"sm": 12,
+					"md": 6,
+					"lg": 4
+				},
+				"msgSetGetPlug": {
+					"type": "checkbox",
+					"label": "msgSetGetPlug",
+					"sm": 12,
+					"md": 6,
+					"lg": 4
+				},
+				"msgCmdPlug": {
+					"type": "checkbox",
+					"label": "msgCmdPlug",
+					"sm": 12,
+					"md": 6,
+					"lg": 4
+				},
+				"msgUnknownMsgPlug": {
+					"type": "checkbox",
+					"label": "msgUnknownMsgPlug",
+					"sm": 12,
+					"md": 6,
+					"lg": 4
 				}
 			}
 		},
@@ -327,6 +385,56 @@
 							"filter": false,
 							"sort": false,
 							"default": false
+						}
+					]
+				},
+				"_plugHeader": {
+					"newLine": true,
+					"type": "header",
+					"text": "Plug Configuration",
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"size": 3
+				},
+				"_introTable1Txt3": {
+					"type": "staticText",
+					"text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have no device, delete the added line item",
+					"newLine": true
+				},
+				"plugs": {
+					"sm": 12,
+					"newLine": true,
+					"type": "table",
+					"label": "My configured Plug(s)",
+					"items": [
+						{
+							"type": "text",
+							"width": "20%",
+							"title": "name",
+							"attr": "plugName",
+							"filter": false,
+							"sort": false,
+							"default": "My Plug1"
+						},
+						{
+							"type": "text",
+							"width": "20%",
+							"title": "id",
+							"attr": "plugId",
+							"filter": false,
+							"sort": false,
+							"default": "HW52"
+						},
+						{
+							"type": "select",
+							"width": "20%",
+							"options": [ { "value": "none", "label": "none" }, { "value": "plug", "label": "Plug" } ],
+							"title": "Plug Type",
+							"attr": "plugType",
+							"filter": false,
+							"sort": false,
+							"default": "none"
 						}
 					]
 				}

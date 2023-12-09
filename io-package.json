@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "ecoflow-mqtt",
-        "version": "0.0.9",
+        "version": "0.0.10",
         "news": {
+            "0.0.10": {
+                "en": "corrections, new support of smart plugs",
+                "de": "Korrekturen, neue Unterstützung von Smart Plugs",
+                "ru": "исправления, новая поддержка умных розеток",
+                "pt": "correções, novo suporte para plugues inteligentes",
+                "nl": "correcties, nieuwe ondersteuning van slimme stekkers",
+                "fr": "corrections, nouveau support des prises intelligentes",
+                "it": "correzioni, nuovo supporto delle prese intelligenti",
+                "es": "correcciones, nuevo soporte de enchufes inteligentes",
+                "pl": "poprawki, nowa obsługa inteligentnych wtyczek",
+                "uk": "виправлення, нова підтримка розумних розеток",
+                "zh-cn": "更正，新支持智能插头"
+            },
             "0.0.9": {
                 "en": "final credential creation and take over; corrections",
                 "de": "endgültige Credential-Erstellung und -Übernahme; Korrekturen",
@@ -163,7 +176,6 @@
                 ]
             }
         ],
-        "title": "ecoflow",
         "titleLang": {
             "en": "ecoflow",
             "de": "Ecoflow",
@@ -250,6 +262,7 @@
         "mqttPort": 8883,
         "pstreams": [],
         "pstations": [],
+        "plugs": [],
         "msgStateCreationPstation": false,
         "msgUpdatePstation": false,
         "msgUpdateValuePstation": false,
@@ -259,7 +272,14 @@
         "msgUpdatePstream": false,
         "msgUpdateValuePstream": false,
         "msgSetGetPstream": false,
-        "msgCmdPstream": false
+        "msgCmdPstream": false,
+        "msgUnknownMsgPstream": false,
+        "msgStateCreationPlug": false,
+        "msgUpdatePlug": false,
+        "msgUpdateValuePlug": false,
+        "msgSetGetPlug": false,
+        "msgCmdPlug": false,
+        "msgUnknownMsgPlug": false
     },
     "objects": [],
     "instanceObjects": [
