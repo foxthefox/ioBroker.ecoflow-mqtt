@@ -28,6 +28,7 @@ class EcoflowMqtt extends utils.Adapter {
 		});
 		this.mqttClient = null;
 		this.msgCountPstream = 0;
+		this.msgCountPlug = 0;
 		this.msgCountPstation = 0;
 		this.msgReconnects = 0;
 		this.mqttUserId = '';
@@ -42,6 +43,9 @@ class EcoflowMqtt extends utils.Adapter {
 		this.pstationStates = null;
 		this.pstationStatesDict = null;
 		this.pstationCmd = null;
+		this.plugStates = null;
+		this.plugStatesDict = null;
+		this.plugCmd = null;
 		this.on('ready', this.onReady.bind(this));
 		this.on('stateChange', this.onStateChange.bind(this));
 		// this.on('objectChange', this.onObjectChange.bind(this));
@@ -65,7 +69,7 @@ class EcoflowMqtt extends utils.Adapter {
 			this.mqttUrl = this.config.mqttUrl || 'mqtt-e.ecoflow.com';
 			this.pstreams = {};
 			this.pstreamStates = require('./lib/ecoflow_data.js').pstreamStates;
-			this.pstreamStatesDict = require('./lib/ecoflow_data.js').pstreamStatesDict['pstream'];
+			this.pstreamStatesDict = require('./lib/ecoflow_data.js').pstreamStatesDict;
 			this.pstreamCmd = require('./lib/ecoflow_data.js').pstreamCmd;
 			this.pstations = {};
 			this.pstationStates = require('./lib/ecoflow_data.js').pstationStates;
@@ -78,6 +82,7 @@ class EcoflowMqtt extends utils.Adapter {
 			this.log.info('your configration:');
 			this.log.info('powerstream  -> ' + JSON.stringify(this.config.pstreams));
 			this.log.info('powerstation -> ' + JSON.stringify(this.config.pstations));
+			this.log.info('smartplugs   -> ' + JSON.stringify(this.config.plugs));
 			try {
 				//loop durch alle pstreams
 				if (this.config.pstreams.length > 0) {
@@ -121,7 +126,8 @@ class EcoflowMqtt extends utils.Adapter {
 								}
 							}
 							//create pstream objects
-							if (id && pstreamStates && this.pstreamStatesDict && name) {
+							const pstreamStatesDict = this.pstationStatesDict[type];
+							if (id && pstreamStates && pstreamStatesDict && name) {
 								this.log.info('start pstream state creation ->' + type + ' for Id ' + id);
 								try {
 									if (this.config.msgStateCreationPstream) {
@@ -136,14 +142,14 @@ class EcoflowMqtt extends utils.Adapter {
 										},
 										native: {}
 									});
-									for (let part in this.pstreamStatesDict) {
+									for (let part in pstreamStatesDict) {
 										if (this.config.msgStateCreationPstream) {
 											this.log.debug('____________________________________________');
 											this.log.debug('create  channel ' + part);
 										}
 										await myutils.createMyChannel(this, id, part, part, 'channel');
-										for (let key in this.pstreamStatesDict[part]) {
-											let type = this.pstreamStatesDict[part][key]['entity'];
+										for (let key in pstreamStatesDict[part]) {
+											let type = pstreamStatesDict[part][key]['entity'];
 											if (pstreamStates[part][type][key]) {
 												await myutils.createMyState(
 													this,
@@ -169,7 +175,7 @@ class EcoflowMqtt extends utils.Adapter {
 										'states -> ' +
 										pstreamStates +
 										' dict -> ' +
-										this.pstreamStatesDict +
+										pstreamStatesDict +
 										' type -> ' +
 										type
 								);
@@ -183,6 +189,83 @@ class EcoflowMqtt extends utils.Adapter {
 					}
 				}
 
+				//loop durch alle plugs
+				//wird auch in pstreams geschrieben, da hier auch protobuf benutzt wird
+				if (this.config.plugs.length > 0) {
+					for (let pstr = 0; pstr < this.config.plugs.length; pstr++) {
+						const type = this.config.plugs[pstr]['plugType'];
+						if (type !== 'none' && type !== '') {
+							const id = this.config.plugs[pstr]['plugId'];
+							const name = this.config.plugs[pstr]['plugName'];
+							this.pstreams[id] = {};
+							this.pstreams[id]['plugType'] = type;
+							this.pstreams[id]['plugName'] = name;
+
+							//const pstreamStates = require('./lib/ecoflow_data.js').pstreamStates;
+
+							const pstreamStatesDict = this.pstationStatesDict[type];
+							//create pstream objects
+							if (id && pstreamStates && pstreamStatesDict && name) {
+								this.log.info('start plug state creation ->' + type + ' for Id ' + id);
+								try {
+									if (this.config.msgStateCreationPlug) {
+										this.log.debug('____________________________________________');
+										this.log.debug('create  device ' + id);
+									}
+									await this.setObjectNotExistsAsync(id, {
+										type: 'device',
+										common: {
+											name: name,
+											role: 'device'
+										},
+										native: {}
+									});
+									for (let part in pstreamStatesDict) {
+										if (this.config.msgStateCreationPlug) {
+											this.log.debug('____________________________________________');
+											this.log.debug('create  channel ' + part);
+										}
+										await myutils.createMyChannel(this, id, part, part, 'channel');
+										for (let key in pstreamStatesDict[part]) {
+											let type = pstreamStatesDict[part][key]['entity'];
+											if (pstreamStates[part][type][key]) {
+												await myutils.createMyState(
+													this,
+													id,
+													part,
+													key,
+													pstreamStates[part][type][key]
+												);
+											} else {
+												this.log.debug(
+													'not created/mismatch ->' + part + ' ' + key + ' ' + type
+												);
+											}
+										}
+									}
+									this.log.info('plug states created for ' + id + ' / ' + type + ' / ' + name);
+								} catch (error) {
+									this.log.error('create states plug ->' + error);
+								}
+							} else {
+								this.log.warn(
+									id +
+										'states -> ' +
+										pstreamStates +
+										' dict -> ' +
+										pstreamStatesDict +
+										' type -> ' +
+										type
+								);
+								this.log.warn(
+									'if in other message "type -> none" then no(none) powerstream is defined and this message is void'
+								);
+							}
+						} else {
+							this.log.warn('"none" or no configuration, you can delete the row in the table');
+						}
+					}
+				}
 				//loop durch alle pstations
 				if (this.config.pstations.length > 0) {
 					for (let psta = 0; psta < this.config.pstations.length; psta++) {
@@ -370,9 +453,10 @@ class EcoflowMqtt extends utils.Adapter {
 		myutils.createInfoStates(this);
 
 		//create subscription topics
-		let topics;
+		let topics = [];
 		if (this.mqttUserId.length > 0) {
-			topics = ef.createSubscribeTopics(this.mqttUserId, this.pstreams, this.pstations);
+			topics = topics.concat(ef.createSubscribeTopics(this.mqttUserId, this.pstreams));
+			topics = topics.concat(ef.createSubscribeTopics(this.mqttUserId, this.pstations));
 		}
 		this.log.debug('subscription topics ' + JSON.stringify(topics));
 
@@ -411,7 +495,10 @@ class EcoflowMqtt extends utils.Adapter {
 						if (this.pstreams && this.pstreamStatesDict && this.pstreamStates) {
 							if (this.pstreams[topic]) {
 								let msgdecode = ef.pstreamDecode(this, message);
-								if (this.config.msgUpdatePstream) {
+								// wenn es kein plug ist, dann ist es einer der pstreams
+								if (this.config.msgUpdatePlug && this.pstreams[topic]['type'] === 'plug') {
+									this.log.debug('plug: ' + JSON.stringify(msgdecode));
+								} else if (this.config.msgUpdatePstream) {
 									this.log.debug('pstream: ' + JSON.stringify(msgdecode));
 								}
 								if (msgdecode !== null && typeof msgdecode === 'object') {
@@ -426,11 +513,20 @@ class EcoflowMqtt extends utils.Adapter {
 										);
 									}
 								}
-								this.msgCountPstream++;
-								await this.setStateAsync('info.msgCountPstream', {
-									val: this.msgCountPstream,
-									ack: true
-								});
+								// wenn es kein plug ist, dann ist es einer der pstreams
+								if (this.pstreams[topic]['type'] === 'plug') {
+									this.msgCountPlug++;
+									await this.setStateAsync('info.msgCountPlug', {
+										val: this.msgCountPlug,
+										ack: true
+									});
+								} else {
+									this.msgCountPstream++;
+									await this.setStateAsync('info.msgCountPstream', {
+										val: this.msgCountPstream,
+										ack: true
+									});
+								}
 							}
 						}
 						if (this.pstations && this.pstationStatesDict && this.pstationStates) {
@@ -484,7 +580,12 @@ class EcoflowMqtt extends utils.Adapter {
 						}
 						if (msgtype === 'set') {
 							if (this.pstreams) {
-								if (this.pstreams[topic]) {
+								if (this.pstreams[topic] && this.pstreams[topic]['type'] === 'plug') {
+									if (this.config.msgSetGetPlug) {
+										this.log.debug('received set -> ' + Buffer.from(message).toString('hex'));
+										//ef.pstreamDecode()
+									}
+								} else if (this.pstreams[topic]) {
 									if (this.config.msgSetGetPstream) {
 										this.log.debug('received set -> ' + Buffer.from(message).toString('hex'));
 										//ef.pstreamDecode()
@@ -518,10 +619,36 @@ class EcoflowMqtt extends utils.Adapter {
 							}
 						} else {
 							if (this.pstreams && this.pstreamStatesDict && this.pstreamStates) {
-								if (this.pstreams[topic]) {
+								if (this.pstreams[topic] && this.pstreams[topic]['type'] === 'plug') {
+									if (this.config.msgSetGetPlug) {
+										this.log.debug(
+											'plug received ' + msgtype + ' -> ' + Buffer.from(message).toString('hex')
+										);
+									}
+									if (msgtype === 'get_reply') {
+										let msgdecode = ef.pstreamDecode(this, message);
+										if (this.config.msgUpdatePlug) {
+											this.log.debug('plug get_reply: ' + JSON.stringify(msgdecode));
+										}
+										if (msgdecode !== null && typeof msgdecode === 'object') {
+											if (Object.keys(msgdecode).length > 0) {
+												await ef.storeStreamPayload(
+													this,
+													this.pstreamStatesDict,
+													this.pstreamStates,
+													topic,
+													msgdecode
+												);
+											}
+										}
+									}
+								} else if (this.pstreams[topic]) {
 									if (this.config.msgSetGetPstream) {
 										this.log.debug(
-											'received ' + msgtype + ' -> ' + Buffer.from(message).toString('hex')
+											'pstream received ' +
+												msgtype +
+												' -> ' +
+												Buffer.from(message).toString('hex')
 										);
 									}
 									if (msgtype === 'get_reply') {
@@ -655,7 +782,7 @@ class EcoflowMqtt extends utils.Adapter {
 				if (this.pstreams && this.pstreamCmd) {
 					if (this.pstreams[device]) {
 						devicetype = this.pstreams[device]['pstreamType'];
-						type = 'stream';
+						type = 'stream'; //includes also plugs
 						cmd = this.pstreamCmd[devicetype];
 					}
 				} else {
@@ -694,7 +821,9 @@ class EcoflowMqtt extends utils.Adapter {
 									if (error) {
 										this.log.error('Error when publishing the MQTT message:: ' + error);
 									} else {
-										if (this.config.msgCmdPstream) {
+										if (this.config.msgCmdPlug && type === 'plug') {
+											this.log.debug('Message succesfully published.');
+										} else if (this.config.msgCmdPstream) {
 											this.log.debug('Message succesfully published.');
 										}
 									}

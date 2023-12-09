@@ -4,7 +4,7 @@
 		"version": "0.0.10",
 		"news": {
 			"0.0.10": {
-				"en": "corrections"
+				"en": "corrections, new support of smart plugs"
 			},
 			"0.0.9": {
 				"en": "final credential creation and take over; corrections",
@@ -160,7 +160,6 @@
 				"buttons": [ "ok", "cancel" ]
 			}
 		],
-		"title": "ecoflow",
 		"titleLang": {
 			"en": "ecoflow",
 			"de": "Ecoflow",
@@ -230,6 +229,7 @@
 		"mqttPort": 8883,
 		"pstreams": [],
 		"pstations": [],
+		"plugs": [],
 		"msgStateCreationPstation": false,
 		"msgUpdatePstation": false,
 		"msgUpdateValuePstation": false,
@@ -240,7 +240,13 @@
 		"msgUpdateValuePstream": false,
 		"msgSetGetPstream": false,
 		"msgCmdPstream": false,
-		"msgUnknownMsgPstream": false
+		"msgUnknownMsgPstream": false,
+		"msgStateCreationPlug": false,
+		"msgUpdatePlug": false,
+		"msgUpdateValuePlug": false,
+		"msgSetGetPlug": false,
+		"msgCmdPlug": false,
+		"msgUnknownMsgPlug": false
 	},
 	"objects": [],
 	"instanceObjects": [
