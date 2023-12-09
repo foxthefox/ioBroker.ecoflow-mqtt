@@ -126,7 +126,7 @@ class EcoflowMqtt extends utils.Adapter {
 								}
 							}
 							//create pstream objects
-							const pstreamStatesDict = this.pstationStatesDict[type];
+							const pstreamStatesDict = this.pstationStatesDict['pstream'];
 							if (id && pstreamStates && pstreamStatesDict && name) {
 								this.log.info('start pstream state creation ->' + type + ' for Id ' + id);
 								try {
@@ -201,10 +201,10 @@ class EcoflowMqtt extends utils.Adapter {
 							this.pstreams[id]['plugType'] = type;
 							this.pstreams[id]['plugName'] = name;
 
-							//const pstreamStates = require('./lib/ecoflow_data.js').pstreamStates;
+							const pstreamStates = require('./lib/ecoflow_data.js').pstreamStates;
 
-							const pstreamStatesDict = this.pstationStatesDict[type];
-							//create pstream objects
+							const pstreamStatesDict = this.pstationStatesDict['plug'];
+							//create plug objects
 							if (id && pstreamStates && pstreamStatesDict && name) {
 								this.log.info('start plug state creation ->' + type + ' for Id ' + id);
 								try {
@@ -258,7 +258,7 @@ class EcoflowMqtt extends utils.Adapter {
 										type
 								);
 								this.log.warn(
-									'if in other message "type -> none" then no(none) powerstream is defined and this message is void'
+									'if in other message "type -> none" then no(none) plug is defined and this message is void'
 								);
 							}
 						} else {
