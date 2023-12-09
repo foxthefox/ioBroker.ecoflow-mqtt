@@ -198,8 +198,8 @@ class EcoflowMqtt extends utils.Adapter {
 							const id = this.config.plugs[pstr]['plugId'];
 							const name = this.config.plugs[pstr]['plugName'];
 							this.pstreams[id] = {};
-							this.pstreams[id]['plugType'] = type;
-							this.pstreams[id]['plugName'] = name;
+							this.pstreams[id]['pstreamType'] = type;
+							this.pstreams[id]['pstreamName'] = name;
 
 							const plugStates = require('./lib/ecoflow_data.js').pstreamStates;
 							const plugStatesDict = this.pstreamStatesDict['plug'];
