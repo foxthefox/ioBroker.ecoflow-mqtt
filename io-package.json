@@ -1,308 +1,289 @@
 {
-    "common": {
-        "name": "ecoflow-mqtt",
-        "version": "0.0.10",
-        "news": {
-            "0.0.10": {
-                "en": "corrections, new support of smart plugs",
-                "de": "Korrekturen, neue Unterstützung von Smart Plugs",
-                "ru": "исправления, новая поддержка умных розеток",
-                "pt": "correções, novo suporte para plugues inteligentes",
-                "nl": "correcties, nieuwe ondersteuning van slimme stekkers",
-                "fr": "corrections, nouveau support des prises intelligentes",
-                "it": "correzioni, nuovo supporto delle prese intelligenti",
-                "es": "correcciones, nuevo soporte de enchufes inteligentes",
-                "pl": "poprawki, nowa obsługa inteligentnych wtyczek",
-                "uk": "виправлення, нова підтримка розумних розеток",
-                "zh-cn": "更正，新支持智能插头"
-            },
-            "0.0.9": {
-                "en": "final credential creation and take over; corrections",
-                "de": "endgültige Credential-Erstellung und -Übernahme; Korrekturen",
-                "ru": "окончательное создание учетных данных и принятие на себя ответственности; исправления",
-                "pt": "criação e controle da credencial final; correções",
-                "nl": "definitieve creatie en overname van referenties; correcties",
-                "fr": "création des informations d'identification finales et prise en charge ; corrections",
-                "it": "creazione e acquisizione delle credenziali finali; correzioni",
-                "es": "creación y toma de posesión de la credencial final; correcciones",
-                "pl": "ostateczne utworzenie i przejęcie uprawnień; poprawki",
-                "uk": "остаточне створення та прийняття облікових даних; виправлення",
-                "zh-cn": "最终凭证创建和接管；更正"
-            },
-            "0.0.8": {
-                "en": "correction",
-                "de": "Korrektur",
-                "ru": "исправление",
-                "pt": "correção",
-                "nl": "correctie",
-                "fr": "correction",
-                "it": "correzione",
-                "es": "corrección",
-                "pl": "korekta",
-                "uk": "корекція",
-                "zh-cn": "更正"
-            },
-            "0.0.7": {
-                "en": "jsonUI wrong attr for additional battery corrected",
-                "de": "jsonUI falsches Attribut für zusätzliche Batterie korrigiert",
-                "ru": "Исправлен неправильный атрибут jsonUI для дополнительной батареи",
-                "pt": "jsonUI atributo errado para bateria adicional corrigido",
-                "nl": "jsonUI verkeerde attr voor extra batterij gecorrigeerd",
-                "fr": "jsonUI mauvais attr pour la batterie supplémentaire corrigé",
-                "it": "Attr errato jsonUI per batteria aggiuntiva corretto",
-                "es": "Se corrigió el atributo incorrecto de jsonUI para batería adicional",
-                "pl": "Poprawiono błędny atrybut jsonUI dla dodatkowej baterii",
-                "uk": "Виправлено неправильний атрибут jsonUI для додаткової батареї",
-                "zh-cn": "纠正了额外电池的 jsonUI 错误属性"
-            },
-            "0.0.6": {
-                "en": "next adjustments, including device docs",
-                "de": "nächste Anpassungen, inklusive Gerätedokumentation",
-                "ru": "следующие корректировки, включая документацию по устройствам",
-                "pt": "próximos ajustes, incluindo documentos do dispositivo",
-                "nl": "volgende aanpassingen, inclusief apparaatdocumentatie",
-                "fr": "prochains ajustements, y compris la documentation sur l'appareil",
-                "it": "prossimi aggiustamenti, inclusi i documenti del dispositivo",
-                "es": "próximos ajustes, incluidos los documentos del dispositivo",
-                "pl": "kolejne poprawki, w tym dokumentacja urządzenia",
-                "uk": "наступні коригування, включаючи документи пристрою",
-                "zh-cn": "下一步调整，包括设备文档"
-            },
-            "0.0.5": {
-                "en": "next adjustments, new energy values fpr powerstream",
-                "de": "Nächste Anpassungen, neue Energiewerte für Strom",
-                "ru": "следующие корректировки, новые значения энергии для powerstream",
-                "pt": "próximos ajustes, novos valores energéticos fpr powerstream",
-                "nl": "volgende aanpassingen, nieuwe energiewaarden fpr powerstream",
-                "fr": "prochains ajustements, nouvelles valeurs d'énergie pour powerstream",
-                "it": "prossimi adeguamenti, nuovi valori energetici per powerstream",
-                "es": "próximos ajustes, nuevos valores energéticos para powerstream",
-                "pl": "kolejne korekty, nowe wartości energii fpr powerstream",
-                "uk": "наступні налаштування, нові значення енергії fpr powerstream",
-                "zh-cn": "下一步调整，新能源价值观fpr powerstream"
-            },
-            "0.0.4": {
-                "en": "feedPriority added powerstream",
-                "de": "FeedPriority hat Powerstream hinzugefügt",
-                "ru": "FeedPriority добавил поток энергии",
-                "pt": "feedPriority adicionado powerstream",
-                "nl": "feedPriority heeft powerstream toegevoegd",
-                "fr": "feedPriority a ajouté un flux de puissance",
-                "it": "feedPriority ha aggiunto powerstream",
-                "es": "feedPriority agregado powerstream",
-                "pl": "FeedPriority dodał strumień mocy",
-                "uk": "feedPriority додав потужний потік",
-                "zh-cn": "feedPriority 增加了动力流"
-            },
-            "0.0.3": {
-                "en": "some adjustments",
-                "de": "einige Anpassungen",
-                "ru": "некоторые корректировки",
-                "pt": "alguns ajustes",
-                "nl": "enkele aanpassingen",
-                "fr": "quelques ajustements",
-                "it": "alcuni aggiustamenti",
-                "es": "algunos ajustes",
-                "pl": "pewne korekty",
-                "uk": "деякі коригування",
-                "zh-cn": "一些调整"
-            },
-            "0.0.2": {
-                "en": "first changes for delta2max",
-                "de": "erste Änderungen für delta2max",
-                "ru": "первые изменения для delta2max",
-                "pt": "primeiras mudanças para delta2max",
-                "nl": "eerste wijzigingen voor delta2max",
-                "fr": "premiers changements pour delta2max",
-                "it": "prime modifiche per delta2max",
-                "es": "primeros cambios para delta2max",
-                "pl": "pierwsze zmiany dla delta2max",
-                "uk": "перші зміни для delta2max",
-                "zh-cn": "delta2max 的第一个变化"
-            },
-            "0.0.1": {
-                "en": "initial release",
-                "de": "Erstveröffentlichung",
-                "ru": "Начальная версия",
-                "pt": "lançamento inicial",
-                "nl": "Eerste uitgave",
-                "fr": "Première version",
-                "it": "Versione iniziale",
-                "es": "Versión inicial",
-                "pl": "Pierwsze wydanie",
-                "uk": "Початкова версія",
-                "zh-cn": "首次出版"
-            }
-        },
-        "messages": [
-            {
-                "condition": {
-                    "operand": "and",
-                    "rules": [
-                        "oldVersion<0.0.8",
-                        "newVersion>=0.0.9"
-                    ]
-                },
-                "title": {
-                    "en": "Important notice!",
-                    "de": "Wichtiger Hinweis!",
-                    "ru": "Важное замечание!",
-                    "pt": "Notícia importante!",
-                    "nl": "Belangrijke mededeling!",
-                    "fr": "Avis important!",
-                    "it": "Avviso IMPORTANTE!",
-                    "es": "Noticia importante!",
-                    "pl": "Ważna uwaga!",
-                    "uk": "Погода!",
-                    "zh-cn": "重要通知!"
-                },
-                "text": {
-                    "en": "In order to work properly the adapter requires ioBroker.admin >=6.12.3. Please ensure this boundary condition. You can do this by enabling expert settings and installation from npm as source. ",
-                    "de": "Damit der Adapter ordnungsgemäß funktioniert, ist ioBroker.admin >=6.12.3 erforderlich. Bitte achten Sie auf diese Randbedingung. Sie können dies tun, indem Sie Experteneinstellungen und die Installation von npm als Quelle aktivieren.",
-                    "ru": "Для правильной работы адаптера требуется ioBroker.admin >=6.12.3. Пожалуйста, обеспечьте это граничное условие. Это можно сделать, включив экспертные настройки и установив их из npm в качестве источника.",
-                    "pt": "Para funcionar corretamente, o adaptador requer ioBroker.admin >=6.12.3. Por favor, garanta esta condição de limite. Você pode fazer isso habilitando configurações avançadas e instalação do npm como fonte.",
-                    "nl": "Om goed te kunnen werken heeft de adapter ioBroker.admin >=6.12.3 nodig. Zorg ervoor dat deze randvoorwaarde aanwezig is. Dit kunt u doen door expertinstellingen en installatie vanuit npm als bron in te schakelen.",
-                    "fr": "Pour fonctionner correctement, l'adaptateur nécessite ioBroker.admin >=6.12.3. Veuillez vous assurer de cette condition aux limites. Vous pouvez le faire en activant les paramètres experts et l'installation à partir de npm comme source.",
-                    "it": "Per funzionare correttamente l'adattatore richiede ioBroker.admin >=6.12.3. Si prega di garantire questa condizione al contorno. Puoi farlo abilitando le impostazioni avanzate e l'installazione da npm come sorgente.",
-                    "es": "Para funcionar correctamente, el adaptador requiere ioBroker.admin >=6.12.3. Asegúrese de que se cumpla esta condición límite. Puede hacerlo habilitando la configuración experta y la instalación desde npm como fuente.",
-                    "pl": "Do poprawnego działania adapter wymaga ioBroker.admin >=6.12.3. Proszę zapewnić ten warunek brzegowy. Możesz to zrobić, włączając ustawienia eksperckie i instalację z npm jako źródła.",
-                    "uk": "Для належної роботи адаптеру потрібен ioBroker.admin >=6.12.3. Будь ласка, переконайтеся в цій граничній умові. Ви можете зробити це, увімкнувши експертні налаштування та інсталяцію з npm як джерела.",
-                    "zh-cn": "为了正常工作，适配器需要 ioBroker.admin >=6.12.3。请确保这个边界条件。您可以通过启用专家设置并从 npm 作为源进行安装来实现此目的。"
-                },
-                "level": "warn",
-                "buttons": [
-                    "ok",
-                    "cancel"
-                ]
-            }
-        ],
-        "titleLang": {
-            "en": "ecoflow",
-            "de": "Ecoflow",
-            "ru": "экопоток",
-            "pt": "ecofluxo",
-            "nl": "ecostroom",
-            "fr": "écoflux",
-            "it": "ecoflusso",
-            "es": "ecoflujo",
-            "pl": "ekoprzepływ",
-            "uk": "екопотік",
-            "zh-cn": "生态流"
-        },
-        "desc": {
-            "en": "connects to ecoflow products",
-            "de": "verbindet sich mit Ecoflow-Produkten",
-            "ru": "подключается к продуктам Ecoflow",
-            "pt": "conecta-se a produtos ecoflow",
-            "nl": "koppelt aan ecoflow-producten",
-            "fr": "se connecte aux produits ecoflow",
-            "it": "si collega ai prodotti ecoflow",
-            "es": "se conecta a productos ecoflow",
-            "pl": "łączy się z produktami ecoflow",
-            "uk": "підключається до продуктів ecoflow",
-            "zh-cn": "连接至 Ecoflow 产品"
-        },
-        "authors": [
-            "foxthefox <foxthefox@wysiwis.net>"
-        ],
-        "keywords": [
-            "ecoflow",
-            "powerstream",
-            "powerstation",
-            "delta",
-            "river"
-        ],
-        "license": "MIT",
-        "platform": "Javascript/Node.js",
-        "main": "main.js",
-        "icon": "ecoflow-mqtt.png",
-        "enabled": true,
-        "extIcon": "https://raw.githubusercontent.com/foxthefox/ioBroker.ecoflow-mqtt/main/admin/ecoflow-mqtt.png",
-        "readme": "https://github.com/foxthefox/ioBroker.ecoflow-mqtt/blob/main/README.md",
-        "loglevel": "debug",
-        "mode": "daemon",
-        "type": "iot-systems",
-        "compact": true,
-        "messagebox": true,
-        "connectionType": "cloud",
-        "dataSource": "push",
-        "adminUI": {
-            "config": "json"
-        },
-        "dependencies": [
-            {
-                "js-controller": ">=3.3.22"
-            }
-        ],
-        "globalDependencies": [
-            {
-                "admin": ">=6.12.3"
-            }
-        ]
-    },
-    "protectedNative": [
-        "userName",
-        "userPassword",
-        "mqttUserId",
-        "mqttPwd",
-        "mqttClientId"
-    ],
-    "encryptedNative": [
-        "userPassword",
-        "mqttPwd"
-    ],
-    "native": {
-        "userName": "userEmail",
-        "userPassword": "pw",
-        "mqttUserId": "15xxx",
-        "mqttUserName": "app-....",
-        "mqttPwd": "xxxx",
-        "mqttClientId": "ANDRIOD-...",
-        "mqttUrl": "mqtts://mqtt.ecoflow.com",
-        "mqttPort": 8883,
-        "pstreams": [],
-        "pstations": [],
-        "plugs": [],
-        "msgStateCreationPstation": false,
-        "msgUpdatePstation": false,
-        "msgUpdateValuePstation": false,
-        "msgSetGetPstation": true,
-        "msgCmdPstation": true,
-        "msgStateCreationPstream": false,
-        "msgUpdatePstream": false,
-        "msgUpdateValuePstream": false,
-        "msgSetGetPstream": false,
-        "msgCmdPstream": false,
-        "msgUnknownMsgPstream": false,
-        "msgStateCreationPlug": false,
-        "msgUpdatePlug": false,
-        "msgUpdateValuePlug": false,
-        "msgSetGetPlug": false,
-        "msgCmdPlug": false,
-        "msgUnknownMsgPlug": false
-    },
-    "objects": [],
-    "instanceObjects": [
-        {
-            "_id": "info",
-            "type": "channel",
-            "common": {
-                "name": "Information"
-            },
-            "native": {}
-        },
-        {
-            "_id": "info.connection",
-            "type": "state",
-            "common": {
-                "role": "indicator.connected",
-                "name": "Device or service connected",
-                "type": "boolean",
-                "read": true,
-                "write": false,
-                "def": false
-            },
-            "native": {}
-        }
-    ]
+	"common": {
+		"name": "ecoflow-mqtt",
+		"version": "0.0.11",
+		"news": {
+			"0.0.11": {
+				"en": "corrections"
+			},
+			"0.0.10": {
+				"en": "corrections, new support of smart plugs",
+				"de": "Korrekturen, neue Unterstützung von Smart Plugs",
+				"ru": "исправления, новая поддержка умных розеток",
+				"pt": "correções, novo suporte para plugues inteligentes",
+				"nl": "correcties, nieuwe ondersteuning van slimme stekkers",
+				"fr": "corrections, nouveau support des prises intelligentes",
+				"it": "correzioni, nuovo supporto delle prese intelligenti",
+				"es": "correcciones, nuevo soporte de enchufes inteligentes",
+				"pl": "poprawki, nowa obsługa inteligentnych wtyczek",
+				"uk": "виправлення, нова підтримка розумних розеток",
+				"zh-cn": "更正，新支持智能插头"
+			},
+			"0.0.9": {
+				"en": "final credential creation and take over; corrections",
+				"de": "endgültige Credential-Erstellung und -Übernahme; Korrekturen",
+				"ru": "окончательное создание учетных данных и принятие на себя ответственности; исправления",
+				"pt": "criação e controle da credencial final; correções",
+				"nl": "definitieve creatie en overname van referenties; correcties",
+				"fr": "création des informations d'identification finales et prise en charge ; corrections",
+				"it": "creazione e acquisizione delle credenziali finali; correzioni",
+				"es": "creación y toma de posesión de la credencial final; correcciones",
+				"pl": "ostateczne utworzenie i przejęcie uprawnień; poprawki",
+				"uk": "остаточне створення та прийняття облікових даних; виправлення",
+				"zh-cn": "最终凭证创建和接管；更正"
+			},
+			"0.0.8": {
+				"en": "correction",
+				"de": "Korrektur",
+				"ru": "исправление",
+				"pt": "correção",
+				"nl": "correctie",
+				"fr": "correction",
+				"it": "correzione",
+				"es": "corrección",
+				"pl": "korekta",
+				"uk": "корекція",
+				"zh-cn": "更正"
+			},
+			"0.0.7": {
+				"en": "jsonUI wrong attr for additional battery corrected",
+				"de": "jsonUI falsches Attribut für zusätzliche Batterie korrigiert",
+				"ru": "Исправлен неправильный атрибут jsonUI для дополнительной батареи",
+				"pt": "jsonUI atributo errado para bateria adicional corrigido",
+				"nl": "jsonUI verkeerde attr voor extra batterij gecorrigeerd",
+				"fr": "jsonUI mauvais attr pour la batterie supplémentaire corrigé",
+				"it": "Attr errato jsonUI per batteria aggiuntiva corretto",
+				"es": "Se corrigió el atributo incorrecto de jsonUI para batería adicional",
+				"pl": "Poprawiono błędny atrybut jsonUI dla dodatkowej baterii",
+				"uk": "Виправлено неправильний атрибут jsonUI для додаткової батареї",
+				"zh-cn": "纠正了额外电池的 jsonUI 错误属性"
+			},
+			"0.0.6": {
+				"en": "next adjustments, including device docs",
+				"de": "nächste Anpassungen, inklusive Gerätedokumentation",
+				"ru": "следующие корректировки, включая документацию по устройствам",
+				"pt": "próximos ajustes, incluindo documentos do dispositivo",
+				"nl": "volgende aanpassingen, inclusief apparaatdocumentatie",
+				"fr": "prochains ajustements, y compris la documentation sur l'appareil",
+				"it": "prossimi aggiustamenti, inclusi i documenti del dispositivo",
+				"es": "próximos ajustes, incluidos los documentos del dispositivo",
+				"pl": "kolejne poprawki, w tym dokumentacja urządzenia",
+				"uk": "наступні коригування, включаючи документи пристрою",
+				"zh-cn": "下一步调整，包括设备文档"
+			},
+			"0.0.5": {
+				"en": "next adjustments, new energy values fpr powerstream",
+				"de": "Nächste Anpassungen, neue Energiewerte für Strom",
+				"ru": "следующие корректировки, новые значения энергии для powerstream",
+				"pt": "próximos ajustes, novos valores energéticos fpr powerstream",
+				"nl": "volgende aanpassingen, nieuwe energiewaarden fpr powerstream",
+				"fr": "prochains ajustements, nouvelles valeurs d'énergie pour powerstream",
+				"it": "prossimi adeguamenti, nuovi valori energetici per powerstream",
+				"es": "próximos ajustes, nuevos valores energéticos para powerstream",
+				"pl": "kolejne korekty, nowe wartości energii fpr powerstream",
+				"uk": "наступні налаштування, нові значення енергії fpr powerstream",
+				"zh-cn": "下一步调整，新能源价值观fpr powerstream"
+			},
+			"0.0.4": {
+				"en": "feedPriority added powerstream",
+				"de": "FeedPriority hat Powerstream hinzugefügt",
+				"ru": "FeedPriority добавил поток энергии",
+				"pt": "feedPriority adicionado powerstream",
+				"nl": "feedPriority heeft powerstream toegevoegd",
+				"fr": "feedPriority a ajouté un flux de puissance",
+				"it": "feedPriority ha aggiunto powerstream",
+				"es": "feedPriority agregado powerstream",
+				"pl": "FeedPriority dodał strumień mocy",
+				"uk": "feedPriority додав потужний потік",
+				"zh-cn": "feedPriority 增加了动力流"
+			},
+			"0.0.3": {
+				"en": "some adjustments",
+				"de": "einige Anpassungen",
+				"ru": "некоторые корректировки",
+				"pt": "alguns ajustes",
+				"nl": "enkele aanpassingen",
+				"fr": "quelques ajustements",
+				"it": "alcuni aggiustamenti",
+				"es": "algunos ajustes",
+				"pl": "pewne korekty",
+				"uk": "деякі коригування",
+				"zh-cn": "一些调整"
+			},
+			"0.0.2": {
+				"en": "first changes for delta2max",
+				"de": "erste Änderungen für delta2max",
+				"ru": "первые изменения для delta2max",
+				"pt": "primeiras mudanças para delta2max",
+				"nl": "eerste wijzigingen voor delta2max",
+				"fr": "premiers changements pour delta2max",
+				"it": "prime modifiche per delta2max",
+				"es": "primeros cambios para delta2max",
+				"pl": "pierwsze zmiany dla delta2max",
+				"uk": "перші зміни для delta2max",
+				"zh-cn": "delta2max 的第一个变化"
+			},
+			"0.0.1": {
+				"en": "initial release",
+				"de": "Erstveröffentlichung",
+				"ru": "Начальная версия",
+				"pt": "lançamento inicial",
+				"nl": "Eerste uitgave",
+				"fr": "Première version",
+				"it": "Versione iniziale",
+				"es": "Versión inicial",
+				"pl": "Pierwsze wydanie",
+				"uk": "Початкова версія",
+				"zh-cn": "首次出版"
+			}
+		},
+		"messages": [
+			{
+				"condition": {
+					"operand": "and",
+					"rules": [ "oldVersion<0.0.8", "newVersion>=0.0.9" ]
+				},
+				"title": {
+					"en": "Important notice!",
+					"de": "Wichtiger Hinweis!",
+					"ru": "Важное замечание!",
+					"pt": "Notícia importante!",
+					"nl": "Belangrijke mededeling!",
+					"fr": "Avis important!",
+					"it": "Avviso IMPORTANTE!",
+					"es": "Noticia importante!",
+					"pl": "Ważna uwaga!",
+					"uk": "Погода!",
+					"zh-cn": "重要通知!"
+				},
+				"text": {
+					"en": "In order to work properly the adapter requires ioBroker.admin >=6.12.3. Please ensure this boundary condition. You can do this by enabling expert settings and installation from npm as source. ",
+					"de": "Damit der Adapter ordnungsgemäß funktioniert, ist ioBroker.admin >=6.12.3 erforderlich. Bitte achten Sie auf diese Randbedingung. Sie können dies tun, indem Sie Experteneinstellungen und die Installation von npm als Quelle aktivieren.",
+					"ru": "Для правильной работы адаптера требуется ioBroker.admin >=6.12.3. Пожалуйста, обеспечьте это граничное условие. Это можно сделать, включив экспертные настройки и установив их из npm в качестве источника.",
+					"pt": "Para funcionar corretamente, o adaptador requer ioBroker.admin >=6.12.3. Por favor, garanta esta condição de limite. Você pode fazer isso habilitando configurações avançadas e instalação do npm como fonte.",
+					"nl": "Om goed te kunnen werken heeft de adapter ioBroker.admin >=6.12.3 nodig. Zorg ervoor dat deze randvoorwaarde aanwezig is. Dit kunt u doen door expertinstellingen en installatie vanuit npm als bron in te schakelen.",
+					"fr": "Pour fonctionner correctement, l'adaptateur nécessite ioBroker.admin >=6.12.3. Veuillez vous assurer de cette condition aux limites. Vous pouvez le faire en activant les paramètres experts et l'installation à partir de npm comme source.",
+					"it": "Per funzionare correttamente l'adattatore richiede ioBroker.admin >=6.12.3. Si prega di garantire questa condizione al contorno. Puoi farlo abilitando le impostazioni avanzate e l'installazione da npm come sorgente.",
+					"es": "Para funcionar correctamente, el adaptador requiere ioBroker.admin >=6.12.3. Asegúrese de que se cumpla esta condición límite. Puede hacerlo habilitando la configuración experta y la instalación desde npm como fuente.",
+					"pl": "Do poprawnego działania adapter wymaga ioBroker.admin >=6.12.3. Proszę zapewnić ten warunek brzegowy. Możesz to zrobić, włączając ustawienia eksperckie i instalację z npm jako źródła.",
+					"uk": "Для належної роботи адаптеру потрібен ioBroker.admin >=6.12.3. Будь ласка, переконайтеся в цій граничній умові. Ви можете зробити це, увімкнувши експертні налаштування та інсталяцію з npm як джерела.",
+					"zh-cn": "为了正常工作，适配器需要 ioBroker.admin >=6.12.3。请确保这个边界条件。您可以通过启用专家设置并从 npm 作为源进行安装来实现此目的。"
+				},
+				"level": "warn",
+				"buttons": [ "ok", "cancel" ]
+			}
+		],
+		"titleLang": {
+			"en": "ecoflow",
+			"de": "Ecoflow",
+			"ru": "экопоток",
+			"pt": "ecofluxo",
+			"nl": "ecostroom",
+			"fr": "écoflux",
+			"it": "ecoflusso",
+			"es": "ecoflujo",
+			"pl": "ekoprzepływ",
+			"uk": "екопотік",
+			"zh-cn": "生态流"
+		},
+		"desc": {
+			"en": "connects to ecoflow products",
+			"de": "verbindet sich mit Ecoflow-Produkten",
+			"ru": "подключается к продуктам Ecoflow",
+			"pt": "conecta-se a produtos ecoflow",
+			"nl": "koppelt aan ecoflow-producten",
+			"fr": "se connecte aux produits ecoflow",
+			"it": "si collega ai prodotti ecoflow",
+			"es": "se conecta a productos ecoflow",
+			"pl": "łączy się z produktami ecoflow",
+			"uk": "підключається до продуктів ecoflow",
+			"zh-cn": "连接至 Ecoflow 产品"
+		},
+		"authors": [ "foxthefox <foxthefox@wysiwis.net>" ],
+		"keywords": [ "ecoflow", "powerstream", "powerstation", "delta", "river" ],
+		"license": "MIT",
+		"platform": "Javascript/Node.js",
+		"main": "main.js",
+		"icon": "ecoflow-mqtt.png",
+		"enabled": true,
+		"extIcon": "https://raw.githubusercontent.com/foxthefox/ioBroker.ecoflow-mqtt/main/admin/ecoflow-mqtt.png",
+		"readme": "https://github.com/foxthefox/ioBroker.ecoflow-mqtt/blob/main/README.md",
+		"loglevel": "debug",
+		"mode": "daemon",
+		"type": "iot-systems",
+		"compact": true,
+		"messagebox": true,
+		"connectionType": "cloud",
+		"dataSource": "push",
+		"tier": 3,
+		"adminUI": {
+			"config": "json"
+		},
+		"dependencies": [
+			{
+				"js-controller": ">=3.3.22"
+			}
+		],
+		"globalDependencies": [
+			{
+				"admin": ">=6.12.3"
+			}
+		]
+	},
+	"protectedNative": [ "userName", "userPassword", "mqttUserId", "mqttPwd", "mqttClientId" ],
+	"encryptedNative": [ "userPassword", "mqttPwd" ],
+	"native": {
+		"userName": "userEmail",
+		"userPassword": "pw",
+		"mqttUserId": "15xxx",
+		"mqttUserName": "app-....",
+		"mqttPwd": "xxxx",
+		"mqttClientId": "ANDRIOD-...",
+		"mqttUrl": "mqtts://mqtt.ecoflow.com",
+		"mqttPort": 8883,
+		"pstreams": [],
+		"pstations": [],
+		"plugs": [],
+		"msgStateCreationPstation": false,
+		"msgUpdatePstation": false,
+		"msgUpdateValuePstation": false,
+		"msgSetGetPstation": true,
+		"msgCmdPstation": true,
+		"msgStateCreationPstream": false,
+		"msgUpdatePstream": false,
+		"msgUpdateValuePstream": false,
+		"msgSetGetPstream": false,
+		"msgCmdPstream": false,
+		"msgUnknownMsgPstream": false,
+		"msgStateCreationPlug": false,
+		"msgUpdatePlug": false,
+		"msgUpdateValuePlug": false,
+		"msgSetGetPlug": false,
+		"msgCmdPlug": false,
+		"msgUnknownMsgPlug": false
+	},
+	"objects": [],
+	"instanceObjects": [
+		{
+			"_id": "info",
+			"type": "channel",
+			"common": {
+				"name": "Information"
+			},
+			"native": {}
+		},
+		{
+			"_id": "info.connection",
+			"type": "state",
+			"common": {
+				"role": "indicator.connected",
+				"name": "Device or service connected",
+				"type": "boolean",
+				"read": true,
+				"write": false,
+				"def": false
+			},
+			"native": {}
+		}
+	]
 }

@@ -84,6 +84,9 @@ River series is started, but lacking on information.
 The 800W version is also implemented and only difference ist the 800W maximum power.
 
 ## Changelog
+### 0.0.11
+* (foxthefox)
+
 ### 0.0.10
 * (foxthefox) unknown pstream message debug possibility
 * (foxthefox) inv.outTemp max=90°C, inverter_heartbeat.pv1/2inputWatts max=600W
