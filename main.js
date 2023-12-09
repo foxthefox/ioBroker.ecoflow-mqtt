@@ -97,7 +97,7 @@ class EcoflowMqtt extends utils.Adapter {
 
 							let pstreamStates = require('./lib/ecoflow_data.js').pstreamStates;
 							// manipulation of ranges when 600W version
-							if (type !== 'pstream800' && this.pstreamStates) {
+							if (type !== 'pstream800' && pstreamStates) {
 								const streamupd = require('./lib/ecoflow_data.js').pstreamRanges['pstream600'];
 								this.log.debug('pstream upd ' + JSON.stringify(streamupd));
 								if (Object.keys(streamupd).length > 0) {
@@ -126,7 +126,7 @@ class EcoflowMqtt extends utils.Adapter {
 								}
 							}
 							//create pstream objects
-							const pstreamStatesDict = this.pstationStatesDict['pstream'];
+							const pstreamStatesDict = this.pstreamStatesDict['pstream'];
 							if (id && pstreamStates && pstreamStatesDict && name) {
 								this.log.info('start pstream state creation ->' + type + ' for Id ' + id);
 								try {
@@ -201,11 +201,11 @@ class EcoflowMqtt extends utils.Adapter {
 							this.pstreams[id]['plugType'] = type;
 							this.pstreams[id]['plugName'] = name;
 
-							const pstreamStates = require('./lib/ecoflow_data.js').pstreamStates;
+							const plugStates = require('./lib/ecoflow_data.js').pstreamStates;
+							const plugStatesDict = this.pstreamStatesDict['plug'];
 
-							const pstreamStatesDict = this.pstationStatesDict['plug'];
 							//create plug objects
-							if (id && pstreamStates && pstreamStatesDict && name) {
+							if (id && plugStates && plugStatesDict && name) {
 								this.log.info('start plug state creation ->' + type + ' for Id ' + id);
 								try {
 									if (this.config.msgStateCreationPlug) {
@@ -220,21 +220,21 @@ class EcoflowMqtt extends utils.Adapter {
 										},
 										native: {}
 									});
-									for (let part in pstreamStatesDict) {
+									for (let part in plugStatesDict) {
 										if (this.config.msgStateCreationPlug) {
 											this.log.debug('____________________________________________');
 											this.log.debug('create  channel ' + part);
 										}
 										await myutils.createMyChannel(this, id, part, part, 'channel');
-										for (let key in pstreamStatesDict[part]) {
-											let type = pstreamStatesDict[part][key]['entity'];
-											if (pstreamStates[part][type][key]) {
+										for (let key in plugStatesDict[part]) {
+											let type = plugStatesDict[part][key]['entity'];
+											if (plugStates[part][type][key]) {
 												await myutils.createMyState(
 													this,
 													id,
 													part,
 													key,
-													pstreamStates[part][type][key]
+													plugStates[part][type][key]
 												);
 											} else {
 												this.log.debug(
@@ -249,13 +249,7 @@ class EcoflowMqtt extends utils.Adapter {
 								}
 							} else {
 								this.log.warn(
-									id +
-										'states -> ' +
-										pstreamStates +
-										' dict -> ' +
-										pstreamStatesDict +
-										' type -> ' +
-										type
+									id + ' states -> ' + plugStates + ' dict -> ' + plugStatesDict + ' type -> ' + type
 								);
 								this.log.warn(
 									'if in other message "type -> none" then no(none) plug is defined and this message is void'
@@ -434,7 +428,7 @@ class EcoflowMqtt extends utils.Adapter {
 										'states -> ' +
 										pstationStates +
 										' dict -> ' +
-										this.pstationStatesDict +
+										pstationStatesDict +
 										' type -> ' +
 										type
 								);
