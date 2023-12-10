@@ -495,12 +495,27 @@ class EcoflowMqtt extends utils.Adapter {
 								} else if (this.config.msgUpdatePstream) {
 									this.log.debug('pstream: ' + JSON.stringify(msgdecode));
 								}
-								if (msgdecode !== null && typeof msgdecode === 'object') {
+								if (
+									msgdecode !== null &&
+									typeof msgdecode === 'object' &&
+									this.pstreams[topic]['type'] === 'plug'
+								) {
 									if (Object.keys(msgdecode).length > 0) {
 										//storeStreamPayload handles multiple objects
 										await ef.storeStreamPayload(
 											this,
-											this.pstreamStatesDict,
+											this.pstreamStatesDict['plug'],
+											this.pstreamStates,
+											topic,
+											msgdecode
+										);
+									}
+								} else if (msgdecode !== null && typeof msgdecode === 'object') {
+									if (Object.keys(msgdecode).length > 0) {
+										//storeStreamPayload handles multiple objects
+										await ef.storeStreamPayload(
+											this,
+											this.pstreamStatesDict['pstream'],
 											this.pstreamStates,
 											topic,
 											msgdecode
@@ -624,11 +639,25 @@ class EcoflowMqtt extends utils.Adapter {
 										if (this.config.msgUpdatePlug) {
 											this.log.debug('plug get_reply: ' + JSON.stringify(msgdecode));
 										}
-										if (msgdecode !== null && typeof msgdecode === 'object') {
+										if (
+											msgdecode !== null &&
+											typeof msgdecode === 'object' &&
+											this.pstreams[topic]['type'] === 'plug'
+										) {
 											if (Object.keys(msgdecode).length > 0) {
 												await ef.storeStreamPayload(
 													this,
-													this.pstreamStatesDict,
+													this.pstreamStatesDict['plug'],
+													this.pstreamStates,
+													topic,
+													msgdecode
+												);
+											}
+										} else if (msgdecode !== null && typeof msgdecode === 'object') {
+											if (Object.keys(msgdecode).length > 0) {
+												await ef.storeStreamPayload(
+													this,
+													this.pstreamStatesDict['pstream'],
 													this.pstreamStates,
 													topic,
 													msgdecode
@@ -650,11 +679,25 @@ class EcoflowMqtt extends utils.Adapter {
 										if (this.config.msgUpdatePstream) {
 											this.log.debug('pstream get_reply: ' + JSON.stringify(msgdecode));
 										}
-										if (msgdecode !== null && typeof msgdecode === 'object') {
+										if (
+											msgdecode !== null &&
+											typeof msgdecode === 'object' &&
+											this.pstreams[topic]['type'] === 'plug'
+										) {
 											if (Object.keys(msgdecode).length > 0) {
 												await ef.storeStreamPayload(
 													this,
-													this.pstreamStatesDict,
+													this.pstreamStatesDict['plug'],
+													this.pstreamStates,
+													topic,
+													msgdecode
+												);
+											}
+										} else if (msgdecode !== null && typeof msgdecode === 'object') {
+											if (Object.keys(msgdecode).length > 0) {
+												await ef.storeStreamPayload(
+													this,
+													this.pstreamStatesDict['pstream'],
 													this.pstreamStates,
 													topic,
 													msgdecode
