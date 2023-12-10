@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "ecoflow-mqtt",
-        "version": "0.0.10",
+        "version": "0.0.11",
         "news": {
+            "0.0.11": {
+                "en": "corrections",
+                "de": "Korrekturen",
+                "ru": "исправления",
+                "pt": "correções",
+                "nl": "correcties",
+                "fr": "corrections",
+                "it": "correzioni",
+                "es": "correcciones",
+                "pl": "poprawki",
+                "uk": "виправлення",
+                "zh-cn": "更正"
+            },
             "0.0.10": {
                 "en": "corrections, new support of smart plugs",
                 "de": "Korrekturen, neue Unterstützung von Smart Plugs",
@@ -226,6 +239,7 @@
         "messagebox": true,
         "connectionType": "cloud",
         "dataSource": "push",
+        "tier": 3,
         "adminUI": {
             "config": "json"
         },
