@@ -85,7 +85,7 @@ The 800W version is also implemented and only difference ist the 800W maximum po
 
 ## Changelog
 ### 0.0.11
-* (foxthefox)
+* (foxthefox) correction this.pstreamStatesDict to cope with pstream and plug
 
 ### 0.0.10
 * (foxthefox) unknown pstream message debug possibility
