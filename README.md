@@ -83,7 +83,18 @@ River series is started, but lacking on information.
 
 The 800W version is also implemented and only difference ist the 800W maximum power.
 
+### Smart Plugs
+doc to be done
+
+
 ## Changelog
+### 0.0.12
+* (foxthefox) new command brightness for plugs
+* (foxthefox) correction of factors for plugs
+* (foxthefox) powerstream  bpType with value as texts
+* (foxthefox) DELTA 2 factors corrected
+* (foxthefox) naming of watth1...8
+
 ### 0.0.11
 * (foxthefox) correction this.pstreamStatesDict to cope with pstream and plug
 
