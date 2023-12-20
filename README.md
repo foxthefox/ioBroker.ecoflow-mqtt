@@ -61,6 +61,12 @@ Parametrizing the Powerstation:
 * select the device type
 * if additional battery pack is connected, check the port number where it is connected
 
+Parametrizing the Smart Plug:
+* add a new row
+* set the deviceID of Smart Plug as shown in the app, something like "HW52...."
+* give it a name
+* set the type to "plug"
+
 ## Implemented Devices
 
 ### Powerstation
