@@ -1,5 +1,5 @@
-# States for  PSTREAM600
-### version: 0.0.6
+# States for  PSTREAM
+### version: 0.0.12
 
 [inverter_heartbeat](#inverter_heartbeat)
 
@@ -17,12 +17,12 @@
 |pv1InputVolt|0 | 60 | V | 0.1 |  PV1 input voltage |
 |pv1OpVolt|0 | 62 | V | 0.01 |  PV1 operation voltage |
 |pv1InputCur|0 | 13 | A | 0.1 |  PV1 input current |
-|pv1InputWatts|0 | 500 | W | 0.1 |  PV1 input power |
+|pv1InputWatts|0 | 600 | W | 0.1 |  PV1 input power |
 |pv1Temp|0 | 80 | °C | 0.1 |  PV1 mppt temperature |
 |pv2InputVolt|0 | 60 | V | 0.1 |  PV2 input voltage |
 |pv2OpVolt|0 | 62 | V | 0.01 |  PV2 operation voltage |
 |pv2InputCur|0 | 13 | A | 0.1 |  PV2 input current |
-|pv2InputWatts|0 | 500 | W | 0.1 |  PV2 input power |
+|pv2InputWatts|0 | 600 | W | 0.1 |  PV2 input power |
 |pv2Temp|0 | 80 | °C | 0.1 |  PV2 mppt temperature |
 |batInputVolt|0 | 60 | V | 0.1 |  Battery input voltage |
 |batOpVolt|0 | 62 | V | 0.1 |  Battery operation voltage |
@@ -45,7 +45,8 @@
 |chargeTime|0 | 143999 | min | 1 |  Battery charge time |
 |heartbeatFrequency|0 | 20 | 1/s | 1 |  Inverter heartbeat |
 |dynamicWatts|0 | 600 | W | 0.1 |  Dynamic Power |
-|batMinutes|0 | 144000 | min | 1 |  Battery Minutes |
+|batChargingTime|0 | 144000 | min | 1 |  Battery Charging Time |
+|batDischargingTime|0 | 144000 | min | 1 |  Battery Discharging Time |
 
 
 ### level
@@ -68,7 +69,7 @@
 
 | State  |     Name |  values |
 |----------|:-------------:|------|
-|invErrCode| Inverter Error Code | {0:OK,4096:no voltage,4160:4160,8192:8192,12288:12288} |
+|invErrCode| Inverter Error Code | {0:OK,8:high voltage?,72:no voltage?,4096:no voltage,4160:4160,8192:8192,12288:12288} |
 |invWarnCode| Inverter Warning Code | {0:0} |
 |pv1ErrCode| PV1 Error Code | {0:0,128:128,130:130,256:256,384:384} |
 |pv1WarnCode| PV1 Warning Code | {0:0} |
@@ -83,8 +84,8 @@
 |pv1Status| PV1 Status | {1:1,2:2,3:3,4:4,6:6,7:7} |
 |pv2Status| PV2 Status | {1:1,2:2,3:3,4:4,6:6,7:7} |
 |batStatus| Battery Status | {5:5} |
-|llcStatus| llc Status | {1:1,2:2,3:3,5:5,6:6} |
-|invStatus| Inverter Status | {1:synced,2:2,6:6,11:disconnected} |
+|llcStatus| llc Status | {1:idle,2:starting/check logic,3:3,5:5,6:6} |
+|invStatus| Inverter Status | {1:synced/idle,2:starting/check inv. logic,6:successful grid connection,11:disconnected} |
 |invRelayStatus| Inverter Relay Status | {0:on,8:8,16:16,17:17,18:18,24:24} |
 |pv1RelayStatus| PV1 Relay Status | {0:0} |
 |pv2RelayStatus| PV2 Relay Status | {0:0} |
@@ -94,10 +95,8 @@
 
 | State  |  Name |
 |----------|------|
-|bpType| Batterypack Type |
 |installCountry| Install Country |
 |installTown| Install Town |
-|Unknown59| Unknown59 |
 
 ## InverterHeartbeat2
 
@@ -163,13 +162,13 @@
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|watth1|0 | 6000 | Wh | 1 |  Energy #1 |
-|watth2|0 | 6000 | Wh | 1 |  Energy #2 |
-|watth3|0 | 6000 | Wh | 1 |  Energy #3 |
-|watth4|0 | 6000 | Wh | 1 |  Energy #4 |
+|watth1|0 | 6000 | Wh | 1 |  Energy to house loads |
+|watth2|0 | 6000 | Wh | 1 |  Energy to smart plugs |
+|watth3|0 | 6000 | Wh | 1 |  Energy to battery |
+|watth4|0 | 6000 | Wh | 1 |  Energy from battery |
 |watth5|0 | 6000 | Wh | 1 |  Energy #5 |
-|watth6|0 | 6000 | Wh | 1 |  Energy #6 |
-|watth7|0 | 6000 | Wh | 1 |  Energy #7 |
-|watth8|0 | 6000 | Wh | 1 |  Energy #8 |
+|watth6|0 | 6000 | Wh | 1 |  Energy of smart plug |
+|watth7|0 | 6000 | Wh | 1 |  Energy from solar PV1 |
+|watth8|0 | 6000 | Wh | 1 |  Energy from solar PV2 |
 
 

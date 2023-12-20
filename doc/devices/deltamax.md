@@ -1,5 +1,5 @@
 # States for  DELTAMAX
-### version: 0.0.6
+### version: 0.0.12
 
 [bmsMaster](#bmsMaster)
 
@@ -117,7 +117,7 @@
 |invOutFreq|0 | 62 | Hz | 1 |  Inverter output frequency |
 |cfgFastChgWatts|200 | 2200 | W | 1 |  Maximum charging power for AC fast charging (W) |
 |acInAmp|0 | 13 | A | 0.001 |  Inverter input current |
-|outTemp|0 | 80 | °C | 1 |  Inverter temperature |
+|outTemp|0 | 90 | °C | 1 |  Inverter temperature |
 |invOutVol|0 | 250 | V | 0.001 |  Actual inverter output voltage |
 |acInVol|0 | 250 | V | 0.001 |  Inverter input voltage |
 |inputWatts|0 | 4000 | W | 1 |  Charging power |
@@ -218,7 +218,7 @@
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|wattsInSum|0 | 500 | W | 1 |  Total input power |
+|wattsInSum|0 | 4000 | W | 1 |  Total input power |
 |typec2Watts|0 | 500 | W | 1 |  Typec2 output power |
 |usb1Watts|0 | 500 | W | 0.1 |  Common usb1 output power |
 |chgPowerDc|0 | 65000 | kWh | 0.001 |  Cumulative DC power charged (adapter) |
@@ -228,7 +228,7 @@
 |carUsedTime|0 | 143999 | min | 0.0166 |  Car use time |
 |typec1Watts|0 | 500 | W | 1 |  Typec1 output power |
 |soc|0 | 100 | % | 1 |  Displayed SOC |
-|wattsOutSum|0 | 500 | W | 1 |  Total output power |
+|wattsOutSum|0 | 4000 | W | 1 |  Total output power |
 |invUsedTime|0 | 143999 | min | 0.0166 |  Inverter use time |
 |typec1Temp|0 | 80 | °C | 1 |  Type-C 1 temperature |
 |dsgPowerAc|0 | 65000 | kWh | 0.001 |  Cumulative AC power discharged |
