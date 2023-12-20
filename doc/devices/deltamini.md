@@ -1,5 +1,5 @@
 # States for  DELTAMINI
-### version: 0.0.6
+### version: 0.0.12
 
 [bmsMaster](#bmsMaster)
 
@@ -130,7 +130,7 @@
 |invOutAmp|0 | 13 | A | 0.001 |  Inverter output current |
 |invOutFreq|0 | 62 | Hz | 1 |  Inverter output frequency |
 |invOutVol|0 | 250 | V | 0.001 |  Actual inverter output voltage |
-|outTemp|0 | 80 | °C | 1 |  Inverter temperature |
+|outTemp|0 | 90 | °C | 1 |  Inverter temperature |
 |outputWatts|0 | 4000 | W | 1 |  Discharging power |
 
 
@@ -256,8 +256,8 @@
 |usb2Watts|0 | 500 | W | 0.1 |  Common usb2 output power |
 |usbUsedTime|0 | 143999 | min | 0.0166 |  USB use time |
 |usbqcUsedTime|0 | 143999 | min | 0.0166 |  USB QC use time |
-|wattsInSum|0 | 500 | W | 1 |  Total input power |
-|wattsOutSum|0 | 500 | W | 1 |  Total output power |
+|wattsInSum|0 | 4000 | W | 1 |  Total input power |
+|wattsOutSum|0 | 4000 | W | 1 |  Total output power |
 
 
 ### string

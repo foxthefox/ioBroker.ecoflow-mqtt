@@ -1,5 +1,5 @@
 # States for  DELTA2MAX
-### version: 0.0.6
+### version: 0.0.12
 
 [bmsMaster](#bmsMaster)
 
@@ -111,7 +111,7 @@
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|FastChgWatts|200 | 2200 | W | 1 |  Maximum charging power for AC fast charging (W) |
+|FastChgWatts|200 | 2400 | W | 1 |  Maximum charging power for AC fast charging (W) |
 |acInAmp|0 | 13 | A | 0.001 |  Inverter input current |
 |acInFreq|0 | 62 | Hz | 1 |  Inverter input frequency |
 |acInVol|0 | 250 | V | 0.001 |  Inverter input voltage |
@@ -122,9 +122,9 @@
 |invOutAmp|0 | 13 | A | 0.001 |  Inverter output current |
 |invOutFreq|0 | 62 | Hz | 1 |  Inverter output frequency |
 |invOutVol|0 | 250 | V | 0.001 |  Actual inverter output voltage |
-|outTemp|0 | 80 | °C | 1 |  Inverter temperature |
+|outTemp|0 | 90 | °C | 1 |  Inverter temperature |
 |outputWatts|0 | 4000 | W | 1 |  Discharging power |
-|acChgRatedPower|0 | 1800 | W | 1 |  AC charge rated power |
+|acChgRatedPower|0 | 4000 | W | 1 |  AC charge rated power |
 |standbyMin|0 | 1440 | min | 1 |  AC standby time /min 0 Never standby 720 Default value |
 
 
@@ -169,20 +169,20 @@
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|carOutAmp|0 | 13 | A | 0.01 |  Car charging output current |
-|carOutVol|0 | 60 | V | 0.1 |  Car charging output voltage |
+|carOutAmp|0 | 13 | A | 0.001 |  Car charging output current |
+|carOutVol|0 | 15 | V | 0.001 |  Car charging output voltage |
 |carOutWatts|0 | 500 | W | 0.1 |  Car charging output power |
 |carTemp|0 | 80 | °C | 1 |  Car charging temperature |
 |dc24vTemp|0 | 80 | °C | 1 |  DCDC24V temperature |
 |dcdc12vAmp|0 | 13 | A | 0.01 |  DC12V30A output current, which is valid only for DELTA Pro |
 |dcdc12vVol|0 | 60 | V | 0.1 |  DC12V30A output voltage, which is valid only for DELTA Pro |
 |dcdc12vWatts|0 | 500 | W | 0.1 |  DC12V30A output power, which is valid only for DELTA Pro |
-|inAmp|0 | 13 | A | 0.01 |  PV input current |
-|inVol|0 | 150 | V | 0.1 |  PV input voltage |
+|inAmp|0 | 13 | A | 0.001 |  PV input current |
+|inVol|0 | 150 | V | 0.001 |  PV input voltage |
 |inWatts|0 | 500 | W | 0.1 |  PV input power |
 |mpptTemp|0 | 80 | °C | 1 |  MPPT temperature |
 |outAmp|0 | 13 | A | 0.01 |  PV output current |
-|outVol|0 | 60 | V | 0.1 |  PV output voltage |
+|outVol|0 | 60 | V | 0.001 |  PV output voltage |
 |outWatts|0 | 500 | W | 0.1 |  PV output power |
 |pv2InAmp|0 | 13 | A | 0.01 |  PV input current |
 |pv2InVol|0 | 150 | V | 0.1 |  PV input voltage |
@@ -274,11 +274,11 @@
 |carTemp|0 | 80 | °C | 1 |  CAR temperature |
 |carUsedTime|0 | 143999 | min | 0.0166 |  Car use time |
 |carWatts|0 | 500 | W | 0.1 |  CAR output power |
-|chgPowerAC|0 | 4000 | W | 0.1 |  Charge Power AC |
+|chgPowerAC|0 | 4000 | W | 0.001 |  Charge Power AC |
 |chgPowerDC|0 | 4000 | W | 0.1 |  Charge Power DC |
 |chgSunPower|0 | 65000 | kWh | 0.001 |  Cumulative solar power charged |
 |dcInUsedTime|0 | 143999 | min | 0.0166 |  DC charging time |
-|dsgPowerAC|0 | 4000 | W | 0.1 |  Discharge Power AC |
+|dsgPowerAC|0 | 4000 | W | 0.001 |  Discharge Power AC |
 |dsgPowerDC|0 | 4000 | W | 0.1 |  Discharge Power DC |
 |invUsedTime|0 | 143999 | min | 0.0166 |  Inverter use time |
 |mpptUsedTime|0 | 143999 | min | 0.0166 |  MPPT use time |
@@ -295,8 +295,8 @@
 |usb2Watts|0 | 500 | W | 0.1 |  Common usb2 output power |
 |usbUsedTime|0 | 143999 | min | 0.0166 |  USB use time |
 |usbqcUsedTime|0 | 143999 | min | 0.0166 |  USB QC use time |
-|wattsInSum|0 | 500 | W | 1 |  Total input power |
-|wattsOutSum|0 | 500 | W | 1 |  Total output power |
+|wattsInSum|0 | 4000 | W | 1 |  Total input power |
+|wattsOutSum|0 | 4000 | W | 1 |  Total output power |
 |XT150Watts1|0 | 1000 | W | 1 |  XT150 (1) Watts |
 |XT150Watts2|0 | 1000 | W | 1 |  XT150 (2) Watts |
 |invInWatts|0 | 3600 | W | 1 |  Inverter Input  Watts |

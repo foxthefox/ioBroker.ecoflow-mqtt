@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "ecoflow-mqtt",
-        "version": "0.0.11",
+        "version": "0.0.12",
         "news": {
+            "0.0.12": {
+                "en": "corrections of factors, plug evaluation, added doc for plug",
+                "de": "Korrekturen von Faktoren, Steckerbewertung, Dokument für Stecker hinzugefügt",
+                "ru": "корректировка коэффициентов, оценка плагина, добавлена ​​документация по плагину",
+                "pt": "correções de fatores, avaliação de plug, documento adicionado para plug",
+                "nl": "correcties van factoren, plug-evaluatie, toegevoegd document voor plug",
+                "fr": "corrections de facteurs, évaluation du plug, ajout de la doc pour le plug",
+                "it": "correzioni di fattori, valutazione plug, aggiunta documentazione per plug",
+                "es": "correcciones de factores, evaluación de enchufe, documento agregado para enchufe",
+                "pl": "poprawki współczynników, ocena wtyczki, dodany dokument dotyczący wtyczki",
+                "uk": "коригування факторів, оцінка плагіну, доданий документ для плагіна",
+                "zh-cn": "因素修正、插头评估、添加插头文档"
+            },
             "0.0.11": {
                 "en": "corrections",
                 "de": "Korrekturen",

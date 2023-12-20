@@ -1,5 +1,5 @@
 # States for  DELTA2
-### version: 0.0.6
+### version: 0.0.12
 
 [bmsMaster](#bmsMaster)
 
@@ -133,9 +133,9 @@
 |invOutAmp|0 | 13 | A | 0.001 |  Inverter output current |
 |invOutFreq|0 | 62 | Hz | 1 |  Inverter output frequency |
 |invOutVol|0 | 250 | V | 0.001 |  Actual inverter output voltage |
-|outTemp|0 | 80 | °C | 1 |  Inverter temperature |
+|outTemp|0 | 90 | °C | 1 |  Inverter temperature |
 |outputWatts|0 | 4000 | W | 1 |  Discharging power |
-|FastChgWatts|200 | 2200 | W | 1 |  Maximum charging power for AC fast charging (W) |
+|FastChgWatts|200 | 2400 | W | 1 |  Maximum charging power for AC fast charging (W) |
 |SlowChgWatts|200 | 1000 | W | 1 |  Maximum charging power for AC slow charging (W) |
 |standbyMins|0 | 1440 | min | 1 |  AC standby time /min 0 Never standby 720 Default value |
 
@@ -154,16 +154,16 @@
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|carOutAmp|0 | 13 | A | 0.01 |  Car charging output current |
-|carOutVol|0 | 60 | V | 0.1 |  Car charging output voltage |
+|carOutAmp|0 | 13 | A | 0.001 |  Car charging output current |
+|carOutVol|0 | 15 | V | 0.001 |  Car charging output voltage |
 |carOutWatts|0 | 500 | W | 0.1 |  Car charging output power |
 |carTemp|0 | 80 | °C | 1 |  Car charging temperature |
 |dc24vTemp|0 | 80 | °C | 1 |  DCDC24V temperature |
 |dcdc12vAmp|0 | 13 | A | 0.01 |  DC12V30A output current, which is valid only for DELTA Pro |
 |dcdc12vVol|0 | 60 | V | 0.1 |  DC12V30A output voltage, which is valid only for DELTA Pro |
 |dcdc12vWatts|0 | 500 | W | 0.1 |  DC12V30A output power, which is valid only for DELTA Pro |
-|inAmp|0 | 13 | A | 0.01 |  PV input current |
-|inVol|0 | 150 | V | 0.1 |  PV input voltage |
+|inAmp|0 | 13 | A | 0.001 |  PV input current |
+|inVol|0 | 150 | V | 0.001 |  PV input voltage |
 |inWatts|0 | 500 | W | 0.1 |  PV input power |
 |mpptTemp|0 | 80 | °C | 1 |  MPPT temperature |
 |outAmp|0 | 13 | A | 0.01 |  PV output current |
@@ -209,7 +209,7 @@
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
 |acStandbyMins| 0 | 720 | min | 1 |  AC standby time /min 0 Never standby 720 Default value | {valName:standbyMins,moduleType:5,operateType:standbyTime,params:{standbyMins:720}} |
 |carStandbyMin| 0 | 720 | min | 1 |  CAR standby time /min 0 Never standby 720 Default value | {valName:standbyMins,moduleType:5,operateType:carStandby,params:{standbyMins:720}} |
-|cfgChgWatts| 200 | 1200 | W | 1 |  Maximum charging power for charging (W) ? | {valName:chgWatts,moduleType:5,operateType:acChgCfg,params:{chgWatts:200,chgPauseFlag:255}} |
+|cfgChgWatts| 50 | 1200 | W | 1 |  Maximum charging power for charging (W) ? | {valName:chgWatts,moduleType:5,operateType:acChgCfg,params:{chgWatts:200,chgPauseFlag:255}} |
 |dcChgCurrent| 4 | 8 | A | 0.001 |  On-board charging current | {valName:dcChgCfg,moduleType:5,operateType:dcChgCfg,params:{dcChgCfg:8000}} |
 
 ## pd
@@ -250,8 +250,8 @@
 |usb2Watts|0 | 500 | W | 0.1 |  Common usb2 output power |
 |usbUsedTime|0 | 143999 | min | 0.0166 |  USB use time |
 |usbqcUsedTime|0 | 143999 | min | 0.0166 |  USB QC use time |
-|wattsInSum|0 | 500 | W | 1 |  Total input power |
-|wattsOutSum|0 | 500 | W | 1 |  Total output power |
+|wattsInSum|0 | 4000 | W | 1 |  Total input power |
+|wattsOutSum|0 | 4000 | W | 1 |  Total output power |
 |acAutoOutPause|0 | 255 | s (0-255?) | 1 |  AC Auto out Pause |
 |chgPowerAC|0 | 4000 | W | 0.1 |  Charge Power AC |
 |chgPowerDC|0 | 4000 | W | 0.1 |  Charge Power DC |

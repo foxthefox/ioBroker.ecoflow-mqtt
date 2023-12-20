@@ -72,7 +72,7 @@ class EcoflowMqtt extends utils.Adapter {
 			this.pstreamStatesDict = require('./lib/ecoflow_data.js').pstreamStatesDict;
 			this.pstreamCmd = require('./lib/ecoflow_data.js').pstreamCmd;
 			this.pstations = {};
-			this.pstationStates = require('./lib/ecoflow_data.js').pstationStates;
+			//this.pstationStates = require('./lib/ecoflow_data.js').pstationStates;
 			this.pstationStatesDict = require('./lib/ecoflow_data.js').pstationStatesDict;
 			this.pstationCmd = require('./lib/ecoflow_data.js').pstationCmd;
 
@@ -262,6 +262,7 @@ class EcoflowMqtt extends utils.Adapter {
 				}
 				//loop durch alle pstations
 				if (this.config.pstations.length > 0) {
+					//loop durch alle pstations
 					for (let psta = 0; psta < this.config.pstations.length; psta++) {
 						const type = this.config.pstations[psta]['pstationType'];
 						if (type !== 'none' && type !== '') {
@@ -273,7 +274,6 @@ class EcoflowMqtt extends utils.Adapter {
 
 							const pstationStates = require('./lib/ecoflow_data.js').pstationStates;
 
-							//loop durch alle pstations
 							if (type !== 'none' && pstationStates) {
 								const stationupd = require('./lib/ecoflow_data.js').pstationRanges[type];
 								this.log.debug('pstation upd ' + JSON.stringify(stationupd));
@@ -299,6 +299,9 @@ class EcoflowMqtt extends utils.Adapter {
 												}
 											}
 										}
+										if (!this.pstationStates[type]) {
+											this.pstationStates[type] = pstationStates;
+										}
 									} else {
 										this.log.error('stration upd not possible');
 									}
@@ -307,7 +310,7 @@ class EcoflowMqtt extends utils.Adapter {
 								}
 							} else {
 								this.log.error(
-									'pstationType not set -> ' + type + 'or no pstationStates -> ' + this.pstationStates
+									'pstationType not set -> ' + type + 'or no pstationStates -> ' + pstationStates
 								);
 							}
 							//create pstation objects
@@ -549,7 +552,7 @@ class EcoflowMqtt extends utils.Adapter {
 								await ef.storeStationPayload(
 									this,
 									dict,
-									this.pstationStates,
+									this.pstationStates[type],
 									topic,
 									JSON.parse(message.toString())
 								);
@@ -718,7 +721,7 @@ class EcoflowMqtt extends utils.Adapter {
 										await ef.storeStationPayload(
 											this,
 											dict,
-											this.pstationStates,
+											this.pstationStates[type],
 											topic,
 											JSON.parse(message.toString())
 										);
