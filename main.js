@@ -17,6 +17,8 @@ const { debug } = require('console');
 // Load your modules here, e.g.:
 // const fs = require("fs");
 
+let recon_timer = null;
+
 class EcoflowMqtt extends utils.Adapter {
 	/**
 	 * @param {Partial<utils.AdapterOptions>} [options={}]
@@ -40,7 +42,7 @@ class EcoflowMqtt extends utils.Adapter {
 		this.mqttUrl = 'mqtt-e.ecoflow.com';
 		this.pstreamStates = null;
 		this.pstreamStatesDict = null;
-		this.pstationStates = null;
+		this.pstationStates = {};
 		this.pstationStatesDict = null;
 		this.pstationCmd = null;
 		this.plugStates = null;
@@ -478,6 +480,7 @@ class EcoflowMqtt extends utils.Adapter {
 								}
 							});
 						}
+						//loop for requesting last quotas
 					} else {
 						this.log.debug('no topics for subscription');
 					}
@@ -562,6 +565,36 @@ class EcoflowMqtt extends utils.Adapter {
 									val: this.msgCountPstation,
 									ack: true
 								});
+								/*
+								if(recon_timer)clearTimeout(recon_timer)
+								recon_timer = setTimeout(
+									() => {
+										this.log.debug('no telegrams from powerstation')
+										
+										if (this.client) {
+											this.client.end();
+										}
+										if (this.client) {
+											this.client.on('connect', () => {
+												this.log.debug('reconnected');
+												this.msgReconnects++;
+												if (topics.length > 0) {
+													if (this.client) {
+														this.client.subscribe(topics, (err) => {
+															if (!err) {
+																this.log.debug('subscribed the topics');
+															}
+														});
+													}
+												} else {
+													this.log.debug('no topics for subscription');
+												}
+												this.setState('info.connection', true, true);
+											});
+										}
+									}, 30000
+								)
+								*/
 							}
 						}
 					} else {
@@ -789,6 +822,7 @@ class EcoflowMqtt extends utils.Adapter {
 			// clearTimeout(timeout2);
 			// ...
 			// clearInterval(interval1);
+			clearTimeout(recon_timer);
 			if (this.client) {
 				this.client.end();
 			}
