@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "ecoflow-mqtt",
-        "version": "0.0.12",
+        "version": "0.0.13",
         "news": {
+            "0.0.13": {
+                "en": "corrections, more logging, watth5 for plugs, option detection of no updates from mqtt -> reconnection",
+                "de": "Korrekturen, mehr Protokollierung, Watth5 für Plugs, Option Erkennung von fehlenden Updates von mqtt -> Wiederverbindung",
+                "ru": "исправления, дополнительные журналы, wath5 для плагинов, опция обнаружения отсутствия обновлений из mqtt -> переподключение",
+                "pt": "correções, mais registros, watth5 para plugs, opção de detecção de nenhuma atualização do mqtt -> reconexão",
+                "nl": "correcties, meer loggen, watth5 voor pluggen, optie detectie van geen updates van mqtt -> herverbinding",
+                "fr": "corrections, plus de journalisation, watth5 pour les plugs, option détection d'absence de mise à jour depuis mqtt -> reconnexion",
+                "it": "correzioni, ulteriore registrazione, watth5 per i plug, opzione rilevamento di assenza di aggiornamenti da mqtt -> riconnessione",
+                "es": "correcciones, más registros, wath5 para enchufes, opción de detección de no actualizaciones desde mqtt -> reconexión",
+                "pl": "poprawki, więcej logowania, watth5 dla wtyczek, opcja wykrywania braku aktualizacji z mqtt -> ponowne połączenie",
+                "uk": "виправлення, більше журналювання, watth5 для плагінів, опція виявлення відсутності оновлень від mqtt -> повторне підключення",
+                "zh-cn": "更正、更多日志记录、插头的 watth5、选项检测 mqtt 没有更新 -> 重新连接"
+            },
             "0.0.12": {
                 "en": "corrections of factors, plug evaluation, added doc for plug",
                 "de": "Korrekturen von Faktoren, Steckerbewertung, Dokument für Stecker hinzugefügt",
@@ -287,6 +300,7 @@
         "mqttClientId": "ANDRIOD-...",
         "mqttUrl": "mqtts://mqtt.ecoflow.com",
         "mqttPort": 8883,
+        "enableMqttReconnect": false,
         "pstreams": [],
         "pstations": [],
         "plugs": [],

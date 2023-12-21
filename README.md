@@ -61,6 +61,12 @@ Parametrizing the Powerstation:
 * select the device type
 * if additional battery pack is connected, check the port number where it is connected
 
+Parametrizing the Smart Plug:
+* add a new row
+* set the deviceID of Smart Plug as shown in the app, something like "HW52...."
+* give it a name
+* set the type to "plug"
+
 ## Implemented Devices
 
 ### Powerstation
@@ -88,6 +94,12 @@ The 800W version is also implemented and only difference ist the 800W maximum po
 
 
 ## Changelog
+### 0.0.13
+* (foxthefox) correction for changing of factors for pstations
+* (foxthefox) watth5 for plugs
+* (foxthefox) more logging pstream/plug
+* (foxthefox) optional detection of no updates from mqtt server -> reconnection
+
 ### 0.0.12
 * (foxthefox) new command brightness for plugs
 * (foxthefox) correction of factors for plugs
