@@ -95,7 +95,10 @@ The 800W version is also implemented and only difference ist the 800W maximum po
 
 ## Changelog
 ### 0.0.13
-* (foxthefox) detection of no updates from mqtt server -> reconnection
+* (foxthefox) correction for changing of factors for pstations
+* (foxthefox) watth5 for plugs
+* (foxthefox) more logging pstream/plug
+* (foxthefox) optional detection of no updates from mqtt server -> reconnection
 
 ### 0.0.12
 * (foxthefox) new command brightness for plugs

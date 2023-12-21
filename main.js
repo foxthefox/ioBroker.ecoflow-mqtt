@@ -480,7 +480,7 @@ class EcoflowMqtt extends utils.Adapter {
 								}
 							});
 						}
-						//loop for requesting last quotas
+						//loop and timeout for requesting last quotas
 					} else {
 						this.log.debug('no topics for subscription');
 					}
@@ -490,302 +490,193 @@ class EcoflowMqtt extends utils.Adapter {
 				this.client.on('message', async (topic, message) => {
 					// message is Buffer
 					// this.log.debug(topic + ' got ' + message.toString());
+					let msgtype = '';
 					if (topic.includes('/app/device/property/')) {
+						msgtype = 'update';
 						topic = topic.replace('/app/device/property/', '');
-						if (this.pstreams && this.pstreamStatesDict && this.pstreamStates) {
-							if (this.pstreams[topic]) {
-								let msgdecode = ef.pstreamDecode(this, message);
-								// wenn es kein plug ist, dann ist es einer der pstreams
-								if (this.config.msgUpdatePlug && this.pstreams[topic]['type'] === 'plug') {
-									this.log.debug('plug: ' + JSON.stringify(msgdecode));
-								} else if (this.config.msgUpdatePstream) {
-									this.log.debug('pstream: ' + JSON.stringify(msgdecode));
-								}
-								if (
-									msgdecode !== null &&
-									typeof msgdecode === 'object' &&
-									this.pstreams[topic]['type'] === 'plug'
-								) {
-									if (Object.keys(msgdecode).length > 0) {
-										//storeStreamPayload handles multiple objects
-										await ef.storeStreamPayload(
-											this,
-											this.pstreamStatesDict['plug'],
-											this.pstreamStates,
-											topic,
-											msgdecode
-										);
-									}
-								} else if (msgdecode !== null && typeof msgdecode === 'object') {
-									if (Object.keys(msgdecode).length > 0) {
-										//storeStreamPayload handles multiple objects
-										await ef.storeStreamPayload(
-											this,
-											this.pstreamStatesDict['pstream'],
-											this.pstreamStates,
-											topic,
-											msgdecode
-										);
-									}
-								}
-								// wenn es kein plug ist, dann ist es einer der pstreams
-								if (this.pstreams[topic]['type'] === 'plug') {
-									this.msgCountPlug++;
-									await this.setStateAsync('info.msgCountPlug', {
-										val: this.msgCountPlug,
-										ack: true
-									});
-								} else {
-									this.msgCountPstream++;
-									await this.setStateAsync('info.msgCountPstream', {
-										val: this.msgCountPstream,
-										ack: true
-									});
-								}
+					} else if (topic.includes('get_reply')) {
+						msgtype = 'get_reply';
+						topic = topic
+							.replace('/app/' + this.mqttUserId + '/', '')
+							.replace('/thing/property/get_reply', '');
+					} else if (topic.includes('get')) {
+						msgtype = 'get';
+						topic = topic.replace('/app/' + this.mqttUserId + '/', '').replace('/thing/property/get', '');
+					} else if (topic.includes('set_reply')) {
+						msgtype = 'set_reply';
+						topic = topic
+							.replace('/app/' + this.mqttUserId + '/', '')
+							.replace('/thing/property/set_reply', '');
+					} else if (topic.includes('set')) {
+						msgtype = 'set';
+						topic = topic.replace('/app/' + this.mqttUserId + '/', '').replace('/thing/property/set', '');
+					} else {
+						msgtype = 'unknown msgtype';
+					}
+
+					let devtype = '';
+					if (this.pstreams && this.pstations) {
+						if (this.pstations[topic]) {
+							devtype = this.pstations[topic]['pstationType'];
+						} else if (this.pstreams[topic]) {
+							switch (this.pstreams[topic]['pstreamType']) {
+								case 'plug':
+									devtype = 'plug';
+									break;
+								case 'pstream600':
+								case 'pstream800':
+									devtype = 'pstream';
+									break;
+								default:
+									break;
 							}
 						}
-						if (this.pstations && this.pstationStatesDict && this.pstationStates) {
-							if (this.pstations[topic]) {
-								if (this.config.msgUpdatePstation) {
-									this.log.debug('pstation: ' + message.toString());
-								}
+					}
 
-								const type = this.pstations[topic]['pstationType'];
-								const dict = this.pstationStatesDict[type];
-								await ef.storeStationPayload(
-									this,
-									dict,
-									this.pstationStates[type],
-									topic,
-									JSON.parse(message.toString())
-								);
-
-								this.msgCountPstation++;
-								await this.setStateAsync('info.msgCountPstation', {
-									val: this.msgCountPstation,
-									ack: true
-								});
-								/*
-								if(recon_timer)clearTimeout(recon_timer)
-								recon_timer = setTimeout(
-									() => {
-										this.log.debug('no telegrams from powerstation')
-										
-										if (this.client) {
-											this.client.end();
-										}
-										if (this.client) {
-											this.client.on('connect', () => {
-												this.log.debug('reconnected');
-												this.msgReconnects++;
-												if (topics.length > 0) {
-													if (this.client) {
-														this.client.subscribe(topics, (err) => {
-															if (!err) {
-																this.log.debug('subscribed the topics');
-															}
-														});
-													}
-												} else {
-													this.log.debug('no topics for subscription');
-												}
-												this.setState('info.connection', true, true);
-											});
-										}
-									}, 30000
-								)
-								*/
+					if (devtype === 'pstream' || devtype === 'plug') {
+						if (this.pstreamStatesDict && this.pstreamStates) {
+							let msgdecode = ef.pstreamDecode(this, message);
+							if (
+								(this.config.msgUpdateValuePstream && devtype === 'pstream') ||
+								(this.config.msgUpdateValuePlug && devtype === 'plug')
+							) {
+								this.log.debug(topic + '  ' + devtype + ' data update : ' + JSON.stringify(msgdecode));
 							}
+							if (
+								(this.config.msgSetGetPlug && devtype === 'plug') ||
+								(this.config.msgSetGetPstream && devtype === 'pstream')
+							) {
+								this.log.debug(
+									topic +
+										' ' +
+										devtype +
+										' received ' +
+										msgtype +
+										' -> ' +
+										Buffer.from(message).toString('hex')
+								);
+							}
+							if (msgtype === 'update' || msgtype === 'get_reply') {
+								if (msgdecode !== null && typeof msgdecode === 'object') {
+									if (Object.keys(msgdecode).length > 0) {
+										//storeStreamPayload handles multiple objects
+										await ef.storeStreamPayload(
+											this,
+											this.pstreamStatesDict[devtype],
+											this.pstreamStates,
+											topic,
+											msgdecode,
+											devtype
+										);
+									}
+								}
+							} else {
+								//ef.pstreamDecode()
+							}
+						}
+						if (devtype === 'plug') {
+							this.msgCountPlug++;
+							await this.setStateAsync('info.msgCountPlug', {
+								val: this.msgCountPlug,
+								ack: true
+							});
+						} else if (devtype === 'pstream') {
+							this.msgCountPstream++;
+							await this.setStateAsync('info.msgCountPstream', {
+								val: this.msgCountPstream,
+								ack: true
+							});
 						}
 					} else {
-						//other msg -> get or set
-						let msgtype = '';
-						if (topic.includes('get_reply')) {
-							msgtype = 'get_reply';
-							topic = topic
-								.replace('/app/' + this.mqttUserId + '/', '')
-								.replace('/thing/property/get_reply', '');
-						} else if (topic.includes('get')) {
-							msgtype = 'get';
-							topic = topic
-								.replace('/app/' + this.mqttUserId + '/', '')
-								.replace('/thing/property/get', '');
-						} else if (topic.includes('set_reply')) {
-							msgtype = 'set_reply';
-							topic = topic
-								.replace('/app/' + this.mqttUserId + '/', '')
-								.replace('/thing/property/set_reply', '');
-						} else if (topic.includes('set')) {
-							msgtype = 'set';
-							topic = topic
-								.replace('/app/' + this.mqttUserId + '/', '')
-								.replace('/thing/property/set', '');
-						} else {
-							msgtype = 'unknown msgtype';
+						if (this.config.msgUpdatePstation && msgtype === 'update') {
+							this.log.debug(topic + '  ' + devtype + ' data update : ' + message.toString());
 						}
-						if (msgtype === 'set') {
-							if (this.pstreams) {
-								if (this.pstreams[topic] && this.pstreams[topic]['type'] === 'plug') {
-									if (this.config.msgSetGetPlug) {
-										this.log.debug('received set -> ' + Buffer.from(message).toString('hex'));
-										//ef.pstreamDecode()
-									}
-								} else if (this.pstreams[topic]) {
-									if (this.config.msgSetGetPstream) {
-										this.log.debug('received set -> ' + Buffer.from(message).toString('hex'));
-										//ef.pstreamDecode()
-									}
-								}
-							}
-							if (this.pstations) {
-								if (this.pstations[topic]) {
-									if (this.config.msgSetGetPstation) {
-										let setmsg = JSON.parse(message.toString());
-										if (setmsg.params) {
-											let key = setmsg.params.id;
-											switch (key) {
-												case 40:
-												case 68:
-												case 72:
-													//Lebenszeichen der APP?
+						if (this.config.msgSetGetPstation && (msgtype === 'set' || msgtype === 'set_reply')) {
+							let setmsg = JSON.parse(message.toString());
+							if (setmsg.params) {
+								let key = setmsg.params.id;
+								switch (key) {
+									case 40:
+									case 68:
+									case 72:
+										//Lebenszeichen der APP?
 
-													break;
-												default:
-													this.log.debug(
-														topic + ' ->set ' + key + '  ' + JSON.stringify(setmsg)
-													);
-													break;
-											}
-										} else {
-											this.log.debug(topic + ' ->set w/o params' + JSON.stringify(setmsg));
-										}
-									}
-								}
-							}
-						} else {
-							if (this.pstreams && this.pstreamStatesDict && this.pstreamStates) {
-								if (this.pstreams[topic] && this.pstreams[topic]['type'] === 'plug') {
-									if (this.config.msgSetGetPlug) {
+										break;
+									default:
 										this.log.debug(
-											'plug received ' + msgtype + ' -> ' + Buffer.from(message).toString('hex')
-										);
-									}
-									if (msgtype === 'get_reply') {
-										let msgdecode = ef.pstreamDecode(this, message);
-										if (this.config.msgUpdatePlug) {
-											this.log.debug('plug get_reply: ' + JSON.stringify(msgdecode));
-										}
-										if (
-											msgdecode !== null &&
-											typeof msgdecode === 'object' &&
-											this.pstreams[topic]['type'] === 'plug'
-										) {
-											if (Object.keys(msgdecode).length > 0) {
-												await ef.storeStreamPayload(
-													this,
-													this.pstreamStatesDict['plug'],
-													this.pstreamStates,
-													topic,
-													msgdecode
-												);
-											}
-										} else if (msgdecode !== null && typeof msgdecode === 'object') {
-											if (Object.keys(msgdecode).length > 0) {
-												await ef.storeStreamPayload(
-													this,
-													this.pstreamStatesDict['pstream'],
-													this.pstreamStates,
-													topic,
-													msgdecode
-												);
-											}
-										}
-									}
-								} else if (this.pstreams[topic]) {
-									if (this.config.msgSetGetPstream) {
-										this.log.debug(
-											'pstream received ' +
-												msgtype +
+											topic +
+												'  ' +
+												devtype +
 												' -> ' +
-												Buffer.from(message).toString('hex')
+												msgtype +
+												' ' +
+												key +
+												'  ' +
+												JSON.stringify(setmsg)
 										);
-									}
-									if (msgtype === 'get_reply') {
-										let msgdecode = ef.pstreamDecode(this, message);
-										if (this.config.msgUpdatePstream) {
-											this.log.debug('pstream get_reply: ' + JSON.stringify(msgdecode));
-										}
-										if (
-											msgdecode !== null &&
-											typeof msgdecode === 'object' &&
-											this.pstreams[topic]['type'] === 'plug'
-										) {
-											if (Object.keys(msgdecode).length > 0) {
-												await ef.storeStreamPayload(
-													this,
-													this.pstreamStatesDict['plug'],
-													this.pstreamStates,
-													topic,
-													msgdecode
-												);
-											}
-										} else if (msgdecode !== null && typeof msgdecode === 'object') {
-											if (Object.keys(msgdecode).length > 0) {
-												await ef.storeStreamPayload(
-													this,
-													this.pstreamStatesDict['pstream'],
-													this.pstreamStates,
-													topic,
-													msgdecode
-												);
-											}
-										}
-									}
+										break;
 								}
+							} else {
+								this.log.debug(topic + ' ->set w/o params' + JSON.stringify(setmsg));
 							}
-							if (this.pstations && this.pstationStatesDict && this.pstationStates) {
-								if (this.pstations[topic]) {
-									if (msgtype === 'get_reply') {
-										if (this.config.msgSetGetPstation) {
-											this.log.debug(topic + ' received ' + msgtype + '-> ' + message.toString());
-										}
-										const type = this.pstations[topic]['pstationType'];
-										const dict = this.pstationStatesDict[type];
-										await ef.storeStationPayload(
-											this,
-											dict,
-											this.pstationStates[type],
-											topic,
-											JSON.parse(message.toString())
-										);
-									} else if (msgtype === 'set_reply') {
-										let setmsg = JSON.parse(message.toString());
-										if (setmsg.data) {
-											let key = setmsg.data.id;
-											switch (key) {
-												case 40:
-												case 68:
-												case 72:
-													//Lebenszeichen der APP?
+						}
+						if (this.config.msgSetGetPstation && msgtype === 'get_reply') {
+							this.log.debug(
+								topic + '  ' + devtype + ' received ' + msgtype + '-> ' + message.toString()
+							);
+						}
+						if (
+							this.pstationStatesDict &&
+							this.pstationStates &&
+							(msgtype === 'get_reply' || msgtype === 'update')
+						) {
+							const dict = this.pstationStatesDict[devtype];
+							await ef.storeStationPayload(
+								this,
+								dict,
+								this.pstationStates[devtype],
+								topic,
+								JSON.parse(message.toString())
+							);
+						}
+						this.msgCountPstation++;
+						await this.setStateAsync('info.msgCountPstation', {
+							val: this.msgCountPstation,
+							ack: true
+						});
+					}
+					//reconnection trial
+					if (this.config.enableMqttReconnect) {
+						if (recon_timer) clearTimeout(recon_timer);
+						recon_timer = setTimeout(() => {
+							this.log.debug('no telegrams from devices');
 
-													break;
-												default:
-													if (this.config.msgSetGetPstation) {
-														this.log.debug(
-															topic + ' received ' + msgtype + '-> ' + message.toString()
-														);
-													}
-													break;
-											}
+							if (this.client) {
+								this.client.end();
+							}
+							if (this.client) {
+								this.client.on('connect', async () => {
+									this.log.debug('reconnected');
+									this.msgReconnects++;
+									await this.setStateAsync('info.msgReconnects', {
+										val: this.msgReconnects,
+										ack: true
+									});
+									if (topics.length > 0) {
+										if (this.client) {
+											this.client.subscribe(topics, (err) => {
+												if (!err) {
+													this.log.debug('subscribed the topics');
+												}
+											});
 										}
 									} else {
-										if (this.config.msgSetGetPstation) {
-											this.log.debug(topic + ' received ' + msgtype + '-> ' + message.toString());
-										}
+										this.log.debug('no topics for subscription');
 									}
-								}
+									this.setState('info.connection', true, true);
+								});
 							}
-						}
+						}, 300 * 1000); //5min
 					}
 				});
 
@@ -822,7 +713,7 @@ class EcoflowMqtt extends utils.Adapter {
 			// clearTimeout(timeout2);
 			// ...
 			// clearInterval(interval1);
-			clearTimeout(recon_timer);
+			if (recon_timer) clearTimeout(recon_timer);
 			if (this.client) {
 				this.client.end();
 			}

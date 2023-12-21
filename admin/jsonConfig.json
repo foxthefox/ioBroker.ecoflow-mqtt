@@ -95,6 +95,14 @@
 					"md": 6,
 					"lg": 4
 				},
+				"enableMqttReconnect": {
+					"type": "checkbox",
+					"label": "enable mqtt reconnection (5min)",
+					"newLine": true,
+					"sm": 12,
+					"md": 6,
+					"lg": 4
+				},
 				"_test": {
 					"type": "sendTo",
 					"hidden": "true",
