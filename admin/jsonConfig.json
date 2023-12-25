@@ -366,7 +366,11 @@
 								{ "value": "deltamax", "label": "Delta Max (1600/2000)" },
 								{ "value": "deltapro", "label": "Delta Pro" },
 								{ "value": "delta2", "label": "Delta 2" },
-								{ "value": "delta2max", "label": "Delta 2 Max" }
+								{ "value": "delta2max", "label": "Delta 2 Max" },
+								{ "value": "rivermax", "label": "River Max" },
+								{ "value": "riverpro", "label": "River Pro" },
+								{ "value": "river2max", "label": "River 2 Max" },
+								{ "value": "river2pro", "label": "River 2 Pro" }
 							],
 							"title": "Power Station Type",
 							"attr": "pstationType",
@@ -440,6 +444,118 @@
 							"options": [ { "value": "none", "label": "none" }, { "value": "plug", "label": "Plug" } ],
 							"title": "Plug Type",
 							"attr": "plugType",
+							"filter": false,
+							"sort": false,
+							"default": "none"
+						}
+					]
+				}
+			}
+		},
+		"tab_3": {
+			"type": "panel",
+			"label": "Wave / Glacier Configuration",
+			"items": {
+				"_waveHeader": {
+					"newLine": true,
+					"type": "header",
+					"text": "Wave Configuration",
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"size": 3
+				},
+				"_introTable1Txt1": {
+					"type": "staticText",
+					"text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have no device, delete the added line item",
+					"newLine": true
+				},
+				"waves": {
+					"sm": 12,
+					"newLine": true,
+					"type": "table",
+					"label": "My configured Wave(s)",
+					"items": [
+						{
+							"type": "text",
+							"width": "20%",
+							"title": "name",
+							"attr": "pstationName",
+							"filter": false,
+							"sort": false,
+							"default": "My Wave1"
+						},
+						{
+							"type": "text",
+							"width": "20%",
+							"title": "id",
+							"attr": "pstationId",
+							"filter": false,
+							"sort": false,
+							"default": "KT21.."
+						},
+						{
+							"type": "select",
+							"width": "20%",
+							"options": [
+								{ "value": "none", "label": "none" },
+								{ "value": "wave", "label": "Wave Air Con" }
+							],
+							"title": "Wave Type",
+							"attr": "pstationType",
+							"filter": false,
+							"sort": false,
+							"default": "none"
+						}
+					]
+				},
+				"_glacierHeader": {
+					"newLine": true,
+					"type": "header",
+					"text": "Glacier Configuration",
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"size": 3
+				},
+				"_glacierTable1Txt1": {
+					"type": "staticText",
+					"text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have no device, delete the added line item",
+					"newLine": true
+				},
+				"glaciers": {
+					"sm": 12,
+					"newLine": true,
+					"type": "table",
+					"label": "My configured Glacier(s)",
+					"items": [
+						{
+							"type": "text",
+							"width": "20%",
+							"title": "name",
+							"attr": "pstationName",
+							"filter": false,
+							"sort": false,
+							"default": "My Glacier1"
+						},
+						{
+							"type": "text",
+							"width": "20%",
+							"title": "id",
+							"attr": "pstationId",
+							"filter": false,
+							"sort": false,
+							"default": "BX11.."
+						},
+						{
+							"type": "select",
+							"width": "20%",
+							"options": [
+								{ "value": "none", "label": "none" },
+								{ "value": "glacier", "label": "Glacier Cooler" }
+							],
+							"title": "Glacier Type",
+							"attr": "pstationType",
 							"filter": false,
 							"sort": false,
 							"default": "none"
