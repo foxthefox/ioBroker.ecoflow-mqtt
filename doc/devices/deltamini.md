@@ -1,5 +1,5 @@
 # States for  DELTAMINI
-### version: 0.0.12
+### version: 0.0.14
 
 [bmsMaster](#bmsMaster)
 
@@ -10,6 +10,8 @@
 [mppt](#mppt)
 
 [pd](#pd)
+
+[info](#info)
 
 
 
@@ -277,4 +279,12 @@
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
 |lcdOffSec| 0 | 1800 | s | 1 |  LCD screen-off duration: 0: never off | {from:Android,operateType:TCP,id:93980337,lang:en-us,params:{id:39,lcdTime:1800},version:1.0} |
 |standByMode| 0 | 5999 | min | 1 |  Device standby time /min 0 Never standby 5999 Max value | {from:Android,operateType:TCP,id:119032574,lang:en-us,params:{id:33,standByMode:360},version:1.0} |
+
+## info
+
+### switch
+
+| State  |      off    |  on |  Name |  cmd |
+|----------|:-------------:|:------:|------|------|
+|latestQuotas| no trigger | trigger | Get latest Quotas |  |
 

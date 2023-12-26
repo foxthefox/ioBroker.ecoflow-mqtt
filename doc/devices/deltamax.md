@@ -1,5 +1,5 @@
 # States for  DELTAMAX
-### version: 0.0.12
+### version: 0.0.14
 
 [bmsMaster](#bmsMaster)
 
@@ -10,6 +10,8 @@
 [mppt](#mppt)
 
 [pd](#pd)
+
+[info](#info)
 
 
 
@@ -278,4 +280,12 @@
 |----------|:-------------:|:------:|------|------|
 |beepState| normal | quiet | Beep status | {from:Android,operateType:TCP,id:834553333,lang:en-us,params:{id:38,enabled:1},version:1.0} |
 |dcOutState| off | on | DC button state | {from:Android,operateType:TCP,id:689699572,lang:en-us,params:{id:34,enabled:1},version:1.0} |
+
+## info
+
+### switch
+
+| State  |      off    |  on |  Name |  cmd |
+|----------|:-------------:|:------:|------|------|
+|latestQuotas| no trigger | trigger | Get latest Quotas |  |
 

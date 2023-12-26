@@ -1,5 +1,5 @@
 # States for  DELTAPRO
-### version: 0.0.12
+### version: 0.0.14
 
 [bmsMaster](#bmsMaster)
 
@@ -10,6 +10,8 @@
 [pd](#pd)
 
 [mppt](#mppt)
+
+[info](#info)
 
 
 
@@ -290,4 +292,12 @@
 | State  |      Min     |     Max     |  Unit |  Mult |  Name |  cmd |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
 |cfgDcChgCurrent| 4 | 13 | A | 0.001 |  On-board charging current | {from:Android,operateType:TCP,id:787426012,lang:en-us,params:{id:71,currMa:6000},version:1.0} |
+
+## info
+
+### switch
+
+| State  |      off    |  on |  Name |  cmd |
+|----------|:-------------:|:------:|------|------|
+|latestQuotas| no trigger | trigger | Get latest Quotas |  |
 
