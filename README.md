@@ -25,6 +25,7 @@ The adapter is based on the work of:
 * https://github.com/tolwi/hassio-ecoflow-cloud
 * https://haus-automatisierung.com/hardware/2023/02/13/ecoflow-river-2-usv-batteriespeicher.html
 * https://forum.iobroker.net/topic/66743/ecoflow-connector-script-zur-dynamischen-leistungsanpassung
+* https://konkludenz.de/en/making-ecoflow-wave2-smart-home-capable-with-node-red-and-mqtt
 
 
 ## Installation and Configuration
@@ -33,7 +34,7 @@ Install the adapter from github.
 
 ![some mor details](doc/en/installation.md)
 
-In Admin Page the mqqt credentials for the mqqt Broker need to be inserted.
+In Admin Page (first tab) the mqqt credentials for the mqqt Broker need to be inserted.
 * UserName - something like "app-...."
 * UserID - a 19 digit number
 * UserPassword - an alphanumeric
@@ -67,9 +68,27 @@ Parametrizing the Smart Plug:
 * give it a name
 * set the type to "plug"
 
+Use the third tab "Wave / Glacier Configuration" for adding your equipment.
+
+Parametrizing the Wave :
+* add a new row
+* set the deviceID of Smart Plug as shown in the app, something like "KT21ZCH..."
+* give it a name
+* set the type to "plug"
+
+Parametrizing the Glacier:
+* add a new row
+* set the deviceID of Smart Plug as shown in the app, something like "BX11ZCB..."
+* give it a name
+* set the type to "plug"
+
 ## Implemented Devices
 
 ### Powerstation
+![River Max](./doc/devices/rivermax.md)
+
+![River Pro](./doc/devices/riverpro.md)
+
 ![Delta Mini](./doc/devices/deltamini.md)
 
 ![Delta](./doc/devices/delta.md)
@@ -78,11 +97,13 @@ Parametrizing the Smart Plug:
 
 ![Delta Pro](./doc/devices/deltapro.md)
 
-![Delta2](./doc/devices/delta2.md)
+![River 2 Max](./doc/devices/river2max.md)
 
-![Delta2 Max](./doc/devices/delta2max.md)
+![River 2 Pro](./doc/devices/river2pro.md)
 
-River series is started, but lacking on information.
+![Delta 2](./doc/devices/delta2.md)
+
+![Delta 2 Max](./doc/devices/delta2max.md)
 
 ### Powerstream
 ![Powerstream](./doc/devices/pstream600.md)
@@ -92,8 +113,20 @@ The 800W version is also implemented and only difference ist the 800W maximum po
 ### Smart Plugs
 ![Smart Plug](./doc/devices/plug.md)
 
+### Wave Air conditioner
+![Wave](./doc/devices/wave.md)
+
+### Glacier cooling box
+![Glacier](./doc/devices/glacier.md)
 
 ## Changelog
+### 0.0.14
+* (foxthefox) new implementation of River 2 Pro, River 2 Max, River Pro, River Max
+* (foxthefox) new feature get "lastQuotas"
+* (foxthefox) recfactoring of protobuf encoding
+* (foxthefox) watth5=daily energy plug, watth6=on time plug
+* (foxthefox) plug_heartbeat new values unknown16...19
+
 ### 0.0.13
 * (foxthefox) correction for changing of factors for pstations
 * (foxthefox) watth5 for plugs

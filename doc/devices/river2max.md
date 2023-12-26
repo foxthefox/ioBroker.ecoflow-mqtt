@@ -1,4 +1,4 @@
-# States for  DELTA2
+# States for  RIVER2MAX
 ### version: 0.0.14
 
 [bmsMaster](#bmsMaster)
@@ -37,7 +37,6 @@
 |tagChgAmp|0 | 100 | A | 0.0001 |  Target charging current |
 |temp|0 | 80 | °C | 1 |  Temperature |
 |vol|0 | 60 | V | 0.001 |  Voltage |
-|OCV|0 | 60 | V | 0.001 |  Open Circuit Voltage |
 
 
 ### string
@@ -61,6 +60,16 @@
 
 ## ems
 
+### diagnostic
+
+| State  |     Name |  values |
+|----------|:-------------:|------|
+|bmsIsConnt| bmsIsConnt | {0:0?,1:1?} |
+|bmsWarState| BMS warning state: bit0: hi_temp; bit1: low_temp; bit2: overload; bit3: chg_flag | {0:no warning?,1:hi_temp,2:low_temp,4:overload,8:chg_flag} |
+|chgCmd| Charge switch | {0:off,1:on,2:2?} |
+|dsgCmd| Discharge switch | {0:off,1:on,2:2?} |
+|emsIsNormalFlag| Energy storage state: 0: sleep; 1: normal | {0:sleep,1:normal} |
+
 ### string
 
 | State  |  Name |
@@ -68,9 +77,9 @@
 |bmsModel| BMS model |
 |chgState| Charging state |
 |fanLevel| Fan level |
+|maxAvailNum| Maximum available quantity |
 |openBmsIdx| Open BMS index |
 |openUpsFlag| UPS mode enable flag |
-|maxAvailNum| Maximum available quantity |
 
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
@@ -85,24 +94,12 @@
 |paraVolMin|0 | 60 | V | 0.001 |  Minimum parallel voltage |
 
 
-### diagnostic
-
-| State  |     Name |  values |
-|----------|:-------------:|------|
-|chgCmd| Charge switch | {0:off,1:on,2:2?} |
-|dsgCmd| Discharge switch | {0:off,1:on,2:2?} |
-|emsIsNormalFlag| Energy storage state: 0: sleep; 1: normal | {0:sleep,1:normal} |
-|bmsIsConnt| bmsIsConnt | {0:0?,1:1?} |
-|bmsWarState| BMS warning state: bit0: hi_temp; bit1: low_temp; bit2: overload; bit3: chg_flag | {0:no warning?,1:hi_temp,2:low_temp,4:overload,8:chg_flag} |
-
 ### level
 
 | State  |      Min     |     Max     |  Unit |  Mult |  Name |  cmd |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
 |maxChargeSoc| 50 | 100 | % | 1 |  Charge upper limit | {valName:maxChgSoc,moduleType:2,operateType:upsConfig,params:{maxChgSoc:90}} |
 |minDsgSoc| 0 | 30 | % | 1 |  Discharge lower limit | {valName:minDsgSoc,moduleType:2,operateType:dsgCfg,params:{minDsgSoc:30}} |
-|maxCloseOilEb| 50 | 100 | % | 1 |  The lower threshold of smart generator auto off Range: 0~100 | {valName:closeOilSoc,moduleType:2,operateType:closeOilSoc,params:{closeOilSoc:90}} |
-|minOpenOilEb| 0 | 30 | % | 1 |  The upper threshold of smart generator auto on Range: 0~100 | {valName:openOilSoc,moduleType:2,operateType:openOilSoc,params:{openOilSoc:40}} |
 
 ## inv
 
@@ -111,12 +108,8 @@
 | State  |     Name |  values |
 |----------|:-------------:|------|
 |acDipSwitch| AC fast/slow charging dip switch | {0:unknown,1:fast charging mode,2:slow charging mode} |
-|cfgAcEnabled| AC discharge switch setting | {0:off,1:on} |
 |cfgAcOutFreq| Inverter output frequency (Hz) | {1:50 Hz,2:60 Hz,255:ignored} |
-|cfgAcWorkMode| AC charging mode | {0:full power,1:mute} |
-|cfgAcXboost| X-Boost switch | {0:off,1:on,ff:ignored} |
 |chargerType| Charger type | {0:no charging,1:AC charging,2:DC adapter charging,3:solar charging,4:CC,5:BC} |
-|chgPauseFlag| AC charging pause flag | {0:no pause?,1:charging stopped} |
 |dischargeType| Discharging type | {0:no discharge?,1:AC discharging,2:PR,3:BC} |
 |fanState| Fan state | {0:disabled,1:Level 1,2:Level 2,3:Level 3} |
 
@@ -135,21 +128,46 @@
 |invOutVol|0 | 250 | V | 0.001 |  Actual inverter output voltage |
 |outTemp|0 | 90 | °C | 1 |  Inverter temperature |
 |outputWatts|0 | 4000 | W | 1 |  Discharging power |
-|FastChgWatts|200 | 2400 | W | 1 |  Maximum charging power for AC fast charging (W) |
-|SlowChgWatts|200 | 1000 | W | 1 |  Maximum charging power for AC slow charging (W) |
 |standbyMins|0 | 1440 | min | 1 |  AC standby time /min 0 Never standby 720 Default value |
 
+
+### switch
+
+| State  |      off    |  on |  Name |  cmd |
+|----------|:-------------:|:------:|------|------|
+|cfgAcEnabled| off | on | AC discharge switch setting | {valName:enabled,moduleType:3,operateType:acOutCfg,params:{enabled:1}} |
+|cfgAcWorkMode| full power | mute | AC charging mode | {} |
+|cfgAcXboost| off | on | X-Boost switch | {valName:xboost,moduleType:3,operateType:acOutCfg,params:{xboost:1}} |
+|chgPauseFlag| not stopped? | charge stopped | AC Charging Pause | {valName:chgPauseFlag,moduleType:3,operateType:acOutCfg,params:{chgPauseFlag:1}} |
 
 ### string
 
 | State  |  Name |
 |----------|------|
+|cfgAcOutVol| Inverter output voltage (V): 0xffffffff: ignored |
 |errCode| Global error code |
 |invType| PSDR model code |
 |sysVer| System version |
-|cfgAcOutVol| Inverter output voltage (V): 0xffffffff: ignored |
 
 ## mppt
+
+### level
+
+| State  |      Min     |     Max     |  Unit |  Mult |  Name |  cmd |
+|----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
+|acStandbyMins| 0 | 720 | min | 1 |  AC standby time /min 0 Never standby 720 Default value | {valName:standbyMins,moduleType:5,operateType:acStandby,params:{standbyMins:720}} |
+|carStandbyMin| 0 | 720 | min | 1 |  CAR standby time /min 0 Never standby 720 Default value | {valName:standbyMins,moduleType:5,operateType:standbyTime,params:{standbyMins:720}} |
+|cfgChgWatts| 50 | 660 | W | 1 |  Maximum charging power for charging (W) ? | {valName:chgWatts,moduleType:5,operateType:acChgCfg,params:{chgWatts:200}} |
+|dcChgCurrent| 4 | 8 | A | 0.001 |  On-board charging current | {valName:dcChgCfg,moduleType:5,operateType:dcChgCfg,params:{dcChgCfg:8000,dcChgCfg2:8000}} |
+
+### switch
+
+| State  |      off    |  on |  Name |  cmd |
+|----------|:-------------:|:------:|------|------|
+|beepState| normal | quiet | Beep status | {valName:enabled,moduleType:5,operateType:quietCfg,params:{enabled:1}} |
+|carState| off | on | Car charger switch setting | {valName:enabled,moduleType:5,operateType:mpptCar,params:{enabled:1}} |
+|cfgAcEnabled| off | on | AC discharge switch setting |  |
+|cfgAcXboost| off | on | X-Boost switch |  |
 
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
@@ -167,31 +185,22 @@
 |inWatts|0 | 500 | W | 0.1 |  PV input power |
 |mpptTemp|0 | 80 | °C | 1 |  MPPT temperature |
 |outAmp|0 | 13 | A | 0.01 |  PV output current |
-|outVol|0 | 60 | V | 0.1 |  PV output voltage |
+|outVol|0 | 60 | V | 0.001 |  PV output voltage |
 |outWatts|0 | 500 | W | 0.1 |  PV output power |
 |powStandbyMin|0 | 720 | min | 1 |  Power standby time /min 0 Never standby 720 Default value ? |
 |scrStandbyMin|0 | 720 | min | 1 |  SCR standby time /min 0 Never standby 720 Default value ? |
 
 
-### switch
-
-| State  |      off    |  on |  Name |  cmd |
-|----------|:-------------:|:------:|------|------|
-|carState| off | on | Car charger switch setting | {valName:enabled,moduleType:5,operateType:mpptCar,params:{enabled:1}} |
-|beepState| normal | quiet | Beep status | {valName:enabled,moduleType:5,operateType:quietMode,params:{enabled:1}} |
-|cfgAcEnabled| off | on | AC discharge switch setting | {valName:enabled,moduleType:5,operateType:acOutCfg,params:{enabled:1}} |
-|cfgAcXboost| off | on | X-Boost switch | {valName:xboost,moduleType:5,operateType:acOutCfg,params:{xboost:1}} |
-
 ### diagnostic
 
 | State  |     Name |  values |
 |----------|:-------------:|------|
+|cfgAcOutFreq| Inverter output frequency (Hz) | {1:50 Hz,2:60 Hz,255:ignored} |
 |cfgChgType| Configured charging type: This parameter is valid when xt60_chg_type is 0. | {0:auto,1:MPPT,2:adapter} |
 |chgPauseFlag| PV charging pause flag | {0:not stopped ?,1:charging stopped} |
 |chgState| Charging state | {0:disabled,1:charging,2:standby (DC charging stopped during AC charging)} |
 |chgType| Actual charging type | {0:null,1:adapter (adapter/DC source),2:MPPT (solar),3:AC (mains supply),4:gas,5:wind} |
 |dc24vState| DCDC24 switch state | {0:off,1:on} |
-|cfgAcOutFreq| Inverter output frequency (Hz) | {1:50 Hz,2:60 Hz,255:ignored} |
 |dischargeType| Discharging type | {0:no discharge?,1:AC discharging,2:PR,3:BC} |
 |x60ChgType| XT60 charging type | {0:not detected,1:MPPT,2:adapter} |
 
@@ -199,42 +208,32 @@
 
 | State  |  Name |
 |----------|------|
+|cfgAcOutVol| Inverter output voltage (V): 0xffffffff: ignored |
 |faultCode| Error code: byte0: mppt_fault; byte1: car_fault; byte2: dc24v_fault |
 |swVer| Version number |
-|cfgAcOutVol| Inverter output voltage (V): 0xffffffff: ignored |
-
-### level
-
-| State  |      Min     |     Max     |  Unit |  Mult |  Name |  cmd |
-|----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
-|acStandbyMins| 0 | 720 | min | 1 |  AC standby time /min 0 Never standby 720 Default value | {valName:standbyMins,moduleType:5,operateType:standbyTime,params:{standbyMins:720}} |
-|carStandbyMin| 0 | 720 | min | 1 |  CAR standby time /min 0 Never standby 720 Default value | {valName:standbyMins,moduleType:5,operateType:carStandby,params:{standbyMins:720}} |
-|cfgChgWatts| 50 | 1200 | W | 1 |  Maximum charging power for charging (W) ? | {valName:chgWatts,moduleType:5,operateType:acChgCfg,params:{chgWatts:200,chgPauseFlag:255}} |
-|dcChgCurrent| 4 | 8 | A | 0.001 |  On-board charging current | {valName:dcChgCfg,moduleType:5,operateType:dcChgCfg,params:{dcChgCfg:8000}} |
 
 ## pd
 
-### diagnostic
+### switch
 
-| State  |     Name |  values |
-|----------|:-------------:|------|
-|carState| CAR button state: 0: off; 1: on | {0:off,1:on} |
-|errCode| Global error code | {0:OK?} |
-|wifiAutoRcvy| Wi-Fi auto mode | {0:default mode (STA),1:The Wi-Fi network is automatically restored to the last mode (STA/AP) after powering on} |
-|acAutoOnCfg| AC Auto On Cfg | {0:off?,1:on?} |
-|acEnabled| AC enabled | {0:off,1:on} |
-|beepMode| Beep mode | {0:normal?,1:quit?} |
-|chargerType| Charger type | {0:no charging,1:AC charging,2:DC adapter charging,3:solar charging,4:CC,5:BC} |
-|chgDsgState| Charging/discharging state on screen | {0:discharged,1:charged} |
+| State  |      off    |  on |  Name |  cmd |
+|----------|:-------------:|:------:|------|------|
+|acAutoOutConfig| off | on | AC auto out Config | {} |
+|dcOutState| off | on | DC button state | {valName:enabled,moduleType:1,operateType:dcOutCfg,params:{enabled:1}} |
 
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
+|acAutoOutPause|0 | 255 | s (0-255?) | 1 |  AC Auto out Pause |
 |carTemp|0 | 80 | °C | 1 |  CAR temperature |
 |carUsedTime|0 | 143999 | min | 0.0166 |  Car use time |
 |carWatts|0 | 500 | W | 0.1 |  CAR output power |
+|chgPowerAC|0 | 4000 | W | 0.001 |  Charge Power AC |
+|chgPowerDC|0 | 4000 | W | 0.1 |  Charge Power DC |
 |chgSunPower|0 | 65000 | kWh | 0.001 |  Cumulative solar power charged |
 |dcInUsedTime|0 | 143999 | min | 0.0166 |  DC charging time |
+|dsgPowerAC|0 | 4000 | W | 0.001 |  Discharge Power AC |
+|dsgPowerDC|0 | 4000 | W | 0.1 |  Discharge Power DC |
 |invUsedTime|0 | 143999 | min | 0.0166 |  Inverter use time |
 |minAcoutSoc|0 | 255 | % (0-255?) | 1 |  minimum AC out SOC |
 |mpptUsedTime|0 | 143999 | min | 0.0166 |  MPPT use time |
@@ -246,54 +245,48 @@
 |typec1Watts|0 | 500 | W | 1 |  Typec1 output power |
 |typec2Temp|0 | 80 | °C | 1 |  Type-C 2 temperature |
 |typec2Watts|0 | 500 | W | 1 |  Typec2 output power |
+|typecChaWatts|0 | 500 | W | 0.1 |  PD? charging power |
+|typecUsedTime|0 | 143999 | min | 0.0166 |  Type-C use time |
 |usb1Watts|0 | 500 | W | 0.1 |  Common usb1 output power |
 |usb2Watts|0 | 500 | W | 0.1 |  Common usb2 output power |
 |usbUsedTime|0 | 143999 | min | 0.0166 |  USB use time |
 |usbqcUsedTime|0 | 143999 | min | 0.0166 |  USB QC use time |
 |wattsInSum|0 | 4000 | W | 1 |  Total input power |
 |wattsOutSum|0 | 4000 | W | 1 |  Total output power |
-|acAutoOutPause|0 | 255 | s (0-255?) | 1 |  AC Auto out Pause |
-|chgPowerAC|0 | 4000 | W | 0.1 |  Charge Power AC |
-|chgPowerDC|0 | 4000 | W | 0.1 |  Charge Power DC |
-|dsgPowerAC|0 | 4000 | W | 0.1 |  Discharge Power AC |
-|dsgPowerDC|0 | 4000 | W | 0.1 |  Discharge Power DC |
-|inWatts|0 | 500 | W | 0.1 |  PD? input power |
-|inputWatts|0 | 4000 | W | 0.1 |  Input power |
-|outWatts|0 | 500 | W | 0.1 |  PD? output power |
-|outputWatts|0 | 4000 | W | 0.1 |  Output power |
-|typecUsedTime|0 | 143999 | min | 0.0166 |  Type-C use time |
 
 
-### switch
+### diagnostic
 
-| State  |      off    |  on |  Name |  cmd |
-|----------|:-------------:|:------:|------|------|
-|dcOutState| off | on | DC button state | {valName:enabled,moduleType:1,operateType:dcOutCfg,params:{enabled:1}} |
-|acAutoOutConfig| off | on | AC auto out Config | {valName:acAutoOutConfig,moduleType:1,operateType:acAutoOutConfig,params:{acAutoOutConfig:1,minAcOutSoc:5}} |
-|pvChgPrioSet| off | on | PV Chg Prio Set | {valName:pvChangeSet,moduleType:1,operateType:pvChangePrio,params:{pvChangeSet:1}} |
-
-### string
-
-| State  |  Name |
-|----------|------|
-|ext3p8Port| Infinity port |
-|ext4p8Port| Extra battery port. Only the status of the leftmost port can be identified. |
-|extRj45Port| RJ45 port |
-|hysteresisAdd| hysteresis add |
-|model| Product model |
-|sysVer| System version |
-|wifiRssi| Wi-Fi signal intensity |
-|wifiVer| Wi-Fi version |
-|brightLevel| LCD brightness level: 0-3 |
-|relaySwitchCnt| relayswitchcnt status or cnt? |
-|watchIsConfig| watchIsConfig |
-|wireWatts| Wireless charging output power (W): Reserved, not available |
+| State  |     Name |  values |
+|----------|:-------------:|------|
+|beepMode| Beep mode | {0:normal?,1:quit?} |
+|carState| CAR button state: 0: off; 1: on | {0:off,1:on} |
+|chgDsgState| Charging/discharging state on screen | {0:discharged,1:charged} |
+|errCode| Global error code | {0:OK?} |
+|wifiAutoRcvy| Wi-Fi auto mode | {0:default mode (STA),1:The Wi-Fi network is automatically restored to the last mode (STA/AP) after powering on} |
 
 ### level
 
 | State  |      Min     |     Max     |  Unit |  Mult |  Name |  cmd |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
+|bpPowerSoc| 0 | 100 | % | 1 |  Backup Power SOC | {valName:bpPowerSoc,moduleType:1,operateType:watthConfig,params:{isConfig:1,bpPowerSoc:55,minDsgSoc:0,minChgSoc:0}} |
 |lcdOffSec| 0 | 1800 | s | 1 |  LCD screen-off duration: 0: never off | {valName:delayOff,moduleType:1,operateType:lcdCfg,params:{brighLevel:255,delayOff:300}} |
-|bpPowerSoc| 0 | 100 | % | 1 |  Backup Power SOC | {valName:bpPowerSoc,moduleType:1,operateType:watthConfig,params:{bpPowerSoc:55}} |
-|standbyMin| 0 | 720 | min | 1 |  Standby time /min 0 Never standby 720 Default value ? | {valName:standbyMin,moduleType:1,operateType:standbyTime,params:{standbyMin:720}} |
+|standbyMin| 0 | 720 | min | 1 |  Standby time /min 0 Never standby 720 Default value ? | {} |
+
+### string
+
+| State  |  Name |
+|----------|------|
+|brightLevel| LCD brightness level: 0-3 |
+|ext3p8Port| Infinity port |
+|ext4p8Port| Extra battery port. Only the status of the leftmost port can be identified. |
+|extRj45Port| RJ45 port |
+|hysteresisAdd| hysteresis add |
+|model| Product model |
+|relaySwitchCnt| relayswitchcnt status or cnt? |
+|sysVer| System version |
+|watchIsConfig| watchIsConfig |
+|wifiRssi| Wi-Fi signal intensity |
+|wifiVer| Wi-Fi version |
+|wireWatts| Wireless charging output power (W): Reserved, not available |
 

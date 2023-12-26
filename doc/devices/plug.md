@@ -1,9 +1,11 @@
 # States for  PLUG
-### version: 0.0.12
+### version: 0.0.14
 
 [plug_heartbeat](#plug_heartbeat)
 
 [energy](#energy)
+
+[info](#info)
 
 
 
@@ -22,6 +24,10 @@
 |----------|------|
 |country| Install Country |
 |town| Install Town |
+|unknown16| unknown16 |
+|unknown17| unknown17 |
+|unknown18| unknown18 |
+|unknown19| unknown19 |
 
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
@@ -54,6 +60,15 @@
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|watth6|0 | 60000 | Wh | 1 |  Energy of smart plug |
+|watth5|0 | 60000 | Wh | 1 |  Energy of smart plug |
+|watth6|0 | 60000 | min | 1 |  Smart plug ON time |
 
+
+## info
+
+### switch
+
+| State  |      off    |  on |  Name |  cmd |
+|----------|:-------------:|:------:|------|------|
+|latestQuotas| no trigger | trigger | Get latest Quotas | {cmdFunc:20,cmdId:1,dataLen:0} |
 

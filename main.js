@@ -18,6 +18,7 @@ const { debug } = require('console');
 // const fs = require("fs");
 
 let recon_timer = null;
+let wait_recon = null;
 
 class EcoflowMqtt extends utils.Adapter {
 	/**
@@ -655,28 +656,30 @@ class EcoflowMqtt extends utils.Adapter {
 								this.client.end();
 							}
 							if (this.client) {
-								this.client.on('connect', async () => {
-									this.log.debug('reconnected');
-									this.msgReconnects++;
-									await this.setStateAsync('info.msgReconnects', {
-										val: this.msgReconnects,
-										ack: true
-									});
-									if (topics.length > 0) {
-										if (this.client) {
-											this.client.subscribe(topics, (err) => {
-												if (!err) {
-													this.log.debug('subscribed the topics');
-												}
-											});
+								wait_recon = setTimeout(async () => {
+									this.client.on('connect', async () => {
+										this.log.debug('reconnected');
+										this.msgReconnects++;
+										await this.setStateAsync('info.msgReconnects', {
+											val: this.msgReconnects,
+											ack: true
+										});
+										if (topics.length > 0) {
+											if (this.client) {
+												this.client.subscribe(topics, (err) => {
+													if (!err) {
+														this.log.debug('subscribed the topics');
+													}
+												});
+											}
+										} else {
+											this.log.debug('no topics for subscription');
 										}
-									} else {
-										this.log.debug('no topics for subscription');
-									}
-									this.setState('info.connection', true, true);
-								});
+										this.setState('info.connection', true, true);
+									});
+								}, 2000); // waiting time after client.end()
 							}
-						}, 300 * 1000); //5min
+						}, 30 * 1000); // retrigger time
 					}
 				});
 
@@ -714,6 +717,7 @@ class EcoflowMqtt extends utils.Adapter {
 			// ...
 			// clearInterval(interval1);
 			if (recon_timer) clearTimeout(recon_timer);
+			if (wait_recon) clearTimeout(wait_recon);
 			if (this.client) {
 				this.client.end();
 			}
@@ -740,7 +744,14 @@ class EcoflowMqtt extends utils.Adapter {
 				const channel = idsplit[3];
 				const item = idsplit[4];
 				this.log.info('(ack=false) ->cmd : channel ' + channel + ' state ' + item);
-				const topic = '/app/' + this.mqttUserId + '/' + device + '/thing/property/set';
+				let topic = '';
+				if (item === 'lastQuotas') {
+					topic = '/app/' + this.mqttUserId + '/' + device + '/thing/property/get';
+					//reset of switch
+					await this.setStateAsync(device + '.' + channel + '.' + item, false, true);
+				} else {
+					topic = '/app/' + this.mqttUserId + '/' + device + '/thing/property/set';
+				}
 				let devicetype = '';
 				let type = '';
 				let cmd = null;

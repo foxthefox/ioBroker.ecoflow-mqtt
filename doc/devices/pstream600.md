@@ -1,11 +1,13 @@
 # States for  PSTREAM
-### version: 0.0.12
+### version: 0.0.14
 
 [inverter_heartbeat](#inverter_heartbeat)
 
 [InverterHeartbeat2](#InverterHeartbeat2)
 
 [energy](#energy)
+
+[info](#info)
 
 
 
@@ -76,6 +78,7 @@
 |pv2ErrCode| PV2 Error Code | {0:0,128:128,130:130,256:256,384:384} |
 |pv2WarningCode| PV2 Warning Code | {0:0} |
 |batErrCode| Battery Error Code | {0:0,4:4,8:8} |
+|bpType| Batterypack Type | {0:no battery,1:secondary pack,2:primary pack,3:primary pack} |
 |batWarningCode| Battery Warning Code | {0:0} |
 |llcErrCode| llc Error Code | {0:0,1:1} |
 |llcWarningCode| llc Warning Code | {0:0} |
@@ -166,9 +169,17 @@
 |watth2|0 | 6000 | Wh | 1 |  Energy to smart plugs |
 |watth3|0 | 6000 | Wh | 1 |  Energy to battery |
 |watth4|0 | 6000 | Wh | 1 |  Energy from battery |
-|watth5|0 | 6000 | Wh | 1 |  Energy #5 |
-|watth6|0 | 6000 | Wh | 1 |  Energy of smart plug |
+|watth5|0 | 60000 | Wh | 1 |  Energy of smart plug |
+|watth6|0 | 1440 | min | 1 |  Smart plug ON time |
 |watth7|0 | 6000 | Wh | 1 |  Energy from solar PV1 |
 |watth8|0 | 6000 | Wh | 1 |  Energy from solar PV2 |
 
+
+## info
+
+### switch
+
+| State  |      off    |  on |  Name |  cmd |
+|----------|:-------------:|:------:|------|------|
+|latestQuotas| no trigger | trigger | Get latest Quotas | {cmdFunc:20,cmdId:1,dataLen:0} |
 
