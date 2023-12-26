@@ -25,6 +25,7 @@ The adapter is based on the work of:
 * https://github.com/tolwi/hassio-ecoflow-cloud
 * https://haus-automatisierung.com/hardware/2023/02/13/ecoflow-river-2-usv-batteriespeicher.html
 * https://forum.iobroker.net/topic/66743/ecoflow-connector-script-zur-dynamischen-leistungsanpassung
+* https://konkludenz.de/en/making-ecoflow-wave2-smart-home-capable-with-node-red-and-mqtt
 
 
 ## Installation and Configuration
@@ -123,8 +124,8 @@ The 800W version is also implemented and only difference ist the 800W maximum po
 * (foxthefox) new implementation of River 2 Pro, River 2 Max, River Pro, River Max
 * (foxthefox) new feature get "lastQuotas"
 * (foxthefox) recfactoring of protobuf encoding
-* (foxthefox) new implementation of Wave Air conditioner
-* (foxthefox) new implementation of Glacier cooling box
+* (foxthefox) watth5=daily energy plug, watth6=on time plug
+* (foxthefox) plug_heartbeat new values unknown16...19
 
 ### 0.0.13
 * (foxthefox) correction for changing of factors for pstations
