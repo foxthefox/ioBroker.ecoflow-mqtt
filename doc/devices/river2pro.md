@@ -66,7 +66,7 @@
 | State  |     Name |  values |
 |----------|:-------------:|------|
 |wifiAutoRcvy| Wi-Fi auto mode | {0:default mode (STA),1:The Wi-Fi network is automatically restored to the last mode (STA/AP) after powering on} |
-|beepMode| Beep mode | {0:normal?,1:quit?} |
+|beepMode| Beep mode | {0:normal,1:quiet} |
 |errCode| Global error code | {0:OK?} |
 |chgDsgState| Charging/discharging state on screen | {0:discharged,1:charged} |
 |carState| CAR button state: 0: off; 1: on | {0:off,1:on} |
@@ -181,16 +181,16 @@
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |carOutVol|0 | 15 | V | 0.001 |  Car charging output voltage |
 |carTemp|0 | 80 | °C | 1 |  Car charging temperature |
-|outWatts|0 | 500 | W | 0.1 |  PV output power |
+|outWatts|0 | 500 | W | 1 |  PV output power |
 |carOutAmp|0 | 13 | A | 0.001 |  Car charging output current |
-|outAmp|0 | 13 | A | 0.01 |  PV output current |
+|outAmp|0 | 13 | A | 0.001 |  PV output current |
 |dcdc12vWatts|0 | 500 | W | 0.1 |  DC12V30A output power, which is valid only for DELTA Pro |
 |powStandbyMin|0 | 720 | min | 1 |  Power standby time /min 0 Never standby 720 Default value ? |
-|inWatts|0 | 500 | W | 0.1 |  PV input power |
+|inWatts|0 | 500 | W | 1 |  PV input power |
 |dcdc12vVol|0 | 60 | V | 0.1 |  DC12V30A output voltage, which is valid only for DELTA Pro |
 |inAmp|0 | 13 | A | 0.001 |  PV input current |
 |scrStandbyMin|0 | 720 | min | 1 |  SCR standby time /min 0 Never standby 720 Default value ? |
-|inVol|0 | 150 | V | 0.001 |  PV input voltage |
+|inVol|0 | 55 | V | 0.001 |  PV input voltage |
 |carOutWatts|0 | 500 | W | 0.1 |  Car charging output power |
 |mpptTemp|0 | 80 | °C | 1 |  MPPT temperature |
 |outVol|0 | 60 | V | 0.001 |  PV output voltage |

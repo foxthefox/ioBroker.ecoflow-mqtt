@@ -116,10 +116,15 @@ The 800W version is also implemented and only difference ist the 800W maximum po
 ### Wave Air conditioner
 ![Wave](./doc/devices/wave.md)
 
-### Glacier cooling box
+### Glacier refrigerator
 ![Glacier](./doc/devices/glacier.md)
 
 ## Changelog
+### 0.0.15
+* (foxthefox) new implementation of Wave Air conditioner
+* (foxthefox) new implementation of Glacier refrigerator
+* (foxthefox) correction of factors for delta2/delta2max/river2pro/river2max (mppt.?Vol, mppt.?Amp, mppt.?Watts)
+
 ### 0.0.14
 * (foxthefox) new implementation of River 2 Pro, River 2 Max, River Pro, River Max
 * (foxthefox) new feature get "lastQuotas"

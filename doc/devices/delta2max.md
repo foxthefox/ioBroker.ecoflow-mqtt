@@ -179,14 +179,14 @@
 |dcdc12vWatts|0 | 500 | W | 0.1 |  DC12V30A output power, which is valid only for DELTA Pro |
 |inAmp|0 | 13 | A | 0.001 |  PV input current |
 |inVol|0 | 150 | V | 0.001 |  PV input voltage |
-|inWatts|0 | 500 | W | 0.1 |  PV input power |
+|inWatts|0 | 500 | W | 1 |  PV input power |
 |mpptTemp|0 | 80 | °C | 1 |  MPPT temperature |
-|outAmp|0 | 13 | A | 0.01 |  PV output current |
+|outAmp|0 | 13 | A | 0.001 |  PV output current |
 |outVol|0 | 60 | V | 0.001 |  PV output voltage |
-|outWatts|0 | 500 | W | 0.1 |  PV output power |
+|outWatts|0 | 500 | W | 1 |  PV output power |
 |pv2InAmp|0 | 13 | A | 0.01 |  PV input current |
 |pv2InVol|0 | 150 | V | 0.1 |  PV input voltage |
-|pv2InWatts|0 | 500 | W | 0.1 |  PV input power |
+|pv2InWatts|0 | 500 | W | 1 |  PV input power |
 |pv2MpptTemp|0 | 80 | °C | 1 |  MPPT temperature |
 
 
@@ -218,7 +218,7 @@
 |pv2ChgPauseFlag| PV charging pause flag | {0:not stopped ?,1:charging stopped?} |
 |pv2ChgState| Charging state | {0:disabled?,1:charging?,2:standby (DC charging stopped during AC charging)?} |
 |pv2ChgType| Actual charging type | {0:null?,1:adapter (adapter/DC source)?,2:MPPT (solar)?,3:AC (mains supply)?,4:gas?,5:wind?} |
-|pv2Xt60ChgType| XT60 charging type | {0:not detected?,1:MPPT?,2:adapter?} |
+|pv2Xt60ChgType| XT60 charging type | {0:not detected,1:MPPT?,2:adapter?} |
 
 ### string
 
@@ -234,7 +234,7 @@
 | State  |     Name |  values |
 |----------|:-------------:|------|
 |acAutoOnCfg| AC Auto On Cfg | {0:off?,1:on?} |
-|beepMode| Beep mode | {0:normal?,1:quit?} |
+|beepMode| Beep mode | {0:normal,1:quiet} |
 |carState| CAR button state: 0: off; 1: on | {0:off,1:on} |
 |chgDsgState| Charging/discharging state on screen | {0:discharged,1:charged} |
 |errCode| Global error code | {0:OK?} |

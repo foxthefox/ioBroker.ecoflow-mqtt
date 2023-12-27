@@ -181,12 +181,12 @@
 |dcdc12vVol|0 | 60 | V | 0.1 |  DC12V30A output voltage, which is valid only for DELTA Pro |
 |dcdc12vWatts|0 | 500 | W | 0.1 |  DC12V30A output power, which is valid only for DELTA Pro |
 |inAmp|0 | 13 | A | 0.001 |  PV input current |
-|inVol|0 | 150 | V | 0.001 |  PV input voltage |
-|inWatts|0 | 500 | W | 0.1 |  PV input power |
+|inVol|0 | 55 | V | 0.001 |  PV input voltage |
+|inWatts|0 | 500 | W | 1 |  PV input power |
 |mpptTemp|0 | 80 | °C | 1 |  MPPT temperature |
-|outAmp|0 | 13 | A | 0.01 |  PV output current |
+|outAmp|0 | 13 | A | 0.001 |  PV output current |
 |outVol|0 | 60 | V | 0.001 |  PV output voltage |
-|outWatts|0 | 500 | W | 0.1 |  PV output power |
+|outWatts|0 | 500 | W | 1 |  PV output power |
 |powStandbyMin|0 | 720 | min | 1 |  Power standby time /min 0 Never standby 720 Default value ? |
 |scrStandbyMin|0 | 720 | min | 1 |  SCR standby time /min 0 Never standby 720 Default value ? |
 
@@ -259,7 +259,7 @@
 
 | State  |     Name |  values |
 |----------|:-------------:|------|
-|beepMode| Beep mode | {0:normal?,1:quit?} |
+|beepMode| Beep mode | {0:normal,1:quiet} |
 |carState| CAR button state: 0: off; 1: on | {0:off,1:on} |
 |chgDsgState| Charging/discharging state on screen | {0:discharged,1:charged} |
 |errCode| Global error code | {0:OK?} |

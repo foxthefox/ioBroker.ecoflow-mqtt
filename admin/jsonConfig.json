@@ -354,7 +354,7 @@
 							"attr": "pstationId",
 							"filter": false,
 							"sort": false,
-							"default": "DAExxxx"
+							"default": "Dxxxx/Rxxxx"
 						},
 						{
 							"type": "select",
