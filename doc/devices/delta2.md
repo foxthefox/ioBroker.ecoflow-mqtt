@@ -1,5 +1,5 @@
 # States for  DELTA2
-### version: 0.0.14
+### version: 0.0.15
 
 [bmsMaster](#bmsMaster)
 
@@ -66,7 +66,6 @@
 | State  |  Name |
 |----------|------|
 |bmsModel| BMS model |
-|chgState| Charging state |
 |fanLevel| Fan level |
 |openBmsIdx| Open BMS index |
 |openUpsFlag| UPS mode enable flag |
@@ -90,6 +89,7 @@
 | State  |     Name |  values |
 |----------|:-------------:|------|
 |chgCmd| Charge switch | {0:off,1:on,2:2?} |
+|chgState| Charging state | {0:disabled,1:CC,2:CV,3:UPS,4:PARA 0x55: Charging error} |
 |dsgCmd| Discharge switch | {0:off,1:on,2:2?} |
 |emsIsNormalFlag| Energy storage state: 0: sleep; 1: normal | {0:sleep,1:normal} |
 |bmsIsConnt| bmsIsConnt | {0:0?,1:1?} |
@@ -163,12 +163,12 @@
 |dcdc12vVol|0 | 60 | V | 0.1 |  DC12V30A output voltage, which is valid only for DELTA Pro |
 |dcdc12vWatts|0 | 500 | W | 0.1 |  DC12V30A output power, which is valid only for DELTA Pro |
 |inAmp|0 | 13 | A | 0.001 |  PV input current |
-|inVol|0 | 150 | V | 0.001 |  PV input voltage |
-|inWatts|0 | 500 | W | 0.1 |  PV input power |
+|inVol|0 | 60 | V | 0.001 |  PV input voltage |
+|inWatts|0 | 500 | W | 1 |  PV input power |
 |mpptTemp|0 | 80 | °C | 1 |  MPPT temperature |
-|outAmp|0 | 13 | A | 0.01 |  PV output current |
-|outVol|0 | 60 | V | 0.1 |  PV output voltage |
-|outWatts|0 | 500 | W | 0.1 |  PV output power |
+|outAmp|0 | 13 | A | 0.001 |  PV output current |
+|outVol|0 | 60 | V | 0.001 |  PV output voltage |
+|outWatts|0 | 500 | W | 1 |  PV output power |
 |powStandbyMin|0 | 720 | min | 1 |  Power standby time /min 0 Never standby 720 Default value ? |
 |scrStandbyMin|0 | 720 | min | 1 |  SCR standby time /min 0 Never standby 720 Default value ? |
 
@@ -220,12 +220,16 @@
 |----------|:-------------:|------|
 |carState| CAR button state: 0: off; 1: on | {0:off,1:on} |
 |errCode| Global error code | {0:OK?} |
+|ext3p8Port| Infinity port / 3+8 ports | {0:NULL,1:CC,2:PR,3:SP (BC)} |
+|ext4p8Port| Extra battery port. Only the status of the leftmost port can be identified. | {0:NULL,1:Extra battery,2:Smart generator} |
+|extRj45Port| RJ45 port | {0:NULL,1:RC(BLE_CTL)} |
 |wifiAutoRcvy| Wi-Fi auto mode | {0:default mode (STA),1:The Wi-Fi network is automatically restored to the last mode (STA/AP) after powering on} |
 |acAutoOnCfg| AC Auto On Cfg | {0:off?,1:on?} |
 |acEnabled| AC enabled | {0:off,1:on} |
-|beepMode| Beep mode | {0:normal?,1:quit?} |
+|beepMode| Beep mode | {0:normal,1:quiet} |
 |chargerType| Charger type | {0:no charging,1:AC charging,2:DC adapter charging,3:solar charging,4:CC,5:BC} |
-|chgDsgState| Charging/discharging state on screen | {0:discharged,1:charged} |
+|chgDsgState| Charging/discharging state on screen | {0:discharging,1:charging} |
+|watchIsConfig| Power management configuration:  | {0:disable,1:enable} |
 
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
@@ -253,8 +257,8 @@
 |wattsInSum|0 | 4000 | W | 1 |  Total input power |
 |wattsOutSum|0 | 4000 | W | 1 |  Total output power |
 |acAutoOutPause|0 | 255 | s (0-255?) | 1 |  AC Auto out Pause |
-|chgPowerAC|0 | 4000 | W | 0.1 |  Charge Power AC |
-|chgPowerDC|0 | 4000 | W | 0.1 |  Charge Power DC |
+|chgPowerAC|0 | 65000 | kWh | 0.001 |  Cumulative AC power charged for PD (wall socket) |
+|chgPowerDC|0 | 65000 | kWh | 0.001 |  Cumulative DC power charged for PD (adapter) |
 |dsgPowerAC|0 | 4000 | W | 0.1 |  Discharge Power AC |
 |dsgPowerDC|0 | 4000 | W | 0.1 |  Discharge Power DC |
 |inWatts|0 | 500 | W | 0.1 |  PD? input power |
@@ -276,24 +280,20 @@
 
 | State  |  Name |
 |----------|------|
-|ext3p8Port| Infinity port |
-|ext4p8Port| Extra battery port. Only the status of the leftmost port can be identified. |
-|extRj45Port| RJ45 port |
-|hysteresisAdd| hysteresis add |
+|hysteresisAdd| Hysteresis SOC |
 |model| Product model |
 |sysVer| System version |
 |wifiRssi| Wi-Fi signal intensity |
 |wifiVer| Wi-Fi version |
 |brightLevel| LCD brightness level: 0-3 |
-|relaySwitchCnt| relayswitchcnt status or cnt? |
-|watchIsConfig| watchIsConfig |
+|relaySwitchCnt| Number of relay disconnections |
 |wireWatts| Wireless charging output power (W): Reserved, not available |
 
 ### level
 
 | State  |      Min     |     Max     |  Unit |  Mult |  Name |  cmd |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
-|lcdOffSec| 0 | 1800 | s | 1 |  LCD screen-off duration: 0: never off | {valName:delayOff,moduleType:1,operateType:lcdCfg,params:{brighLevel:255,delayOff:300}} |
+|lcdOffSec| 0 | 1800 | s | 1 |  LCD screen-off duration: 0: never off | {valName:delayOff,moduleType:1,operateType:lcdCfg,params:{brighLevel:3,delayOff:300}} |
 |bpPowerSoc| 0 | 100 | % | 1 |  Backup Power SOC | {valName:bpPowerSoc,moduleType:1,operateType:watthConfig,params:{bpPowerSoc:55}} |
 |standbyMin| 0 | 720 | min | 1 |  Standby time /min 0 Never standby 720 Default value ? | {valName:standbyMin,moduleType:1,operateType:standbyTime,params:{standbyMin:720}} |
 

@@ -1,5 +1,5 @@
 # States for  RIVER2PRO
-### version: 0.0.14
+### version: 0.0.15
 
 [pd](#pd)
 
@@ -23,7 +23,7 @@
 |wattsInSum|0 | 4000 | W | 1 |  Total input power |
 |dcInUsedTime|0 | 143999 | min | 0.0166 |  DC charging time |
 |dsgPowerDC|0 | 4000 | W | 0.1 |  Discharge Power DC |
-|chgPowerDC|0 | 4000 | W | 0.1 |  Charge Power DC |
+|chgPowerDC|0 | 65000 | kWh | 0.001 |  Cumulative DC power charged for PD (adapter) |
 |remainTime|0 | 143999 | min | 1 |  Time remaining (min) &gt; 0: remaining charging time; time remaining (min) &lt; 0: remaining discharging time |
 |typecUsedTime|0 | 143999 | min | 0.0166 |  Type-C use time |
 |typec2Watts|0 | 500 | W | 1 |  Typec2 output power |
@@ -36,7 +36,7 @@
 |usb1Watts|0 | 500 | W | 0.1 |  Common usb1 output power |
 |dsgPowerAC|0 | 4000 | W | 0.001 |  Discharge Power AC |
 |qcUsb2Watts|0 | 500 | W | 0.1 |  Quick charge usb2 output power |
-|chgPowerAC|0 | 4000 | W | 0.001 |  Charge Power AC |
+|chgPowerAC|0 | 65000 | kWh | 0.001 |  Cumulative AC power charged for PD (wall socket) |
 |carWatts|0 | 500 | W | 0.1 |  CAR output power |
 |typec2Temp|0 | 80 | °C | 1 |  Type-C 2 temperature |
 |carUsedTime|0 | 143999 | min | 0.0166 |  Car use time |
@@ -45,6 +45,8 @@
 |soc|0 | 100 | % | 1 |  Displayed SOC |
 |invUsedTime|0 | 143999 | min | 0.0166 |  Inverter use time |
 |typecChaWatts|0 | 500 | W | 0.1 |  PD? charging power |
+|acAutoOutPause|0 | 255 | s (0-255?) | 1 |  AC Auto out Pause |
+|minAcoutSoc|0 | 255 | % (0-255?) | 1 |  minimum AC out SOC |
 
 
 ### string
@@ -52,24 +54,27 @@
 | State  |  Name |
 |----------|------|
 |wifiVer| Wi-Fi version |
-|ext3p8Port| Infinity port |
 |model| Product model |
-|ext4p8Port| Extra battery port. Only the status of the leftmost port can be identified. |
 |brightLevel| LCD brightness level: 0-3 |
 |wifiRssi| Wi-Fi signal intensity |
 |wireWatts| Wireless charging output power (W): Reserved, not available |
-|extRj45Port| RJ45 port |
 |sysVer| System version |
+|hysteresisAdd| Hysteresis SOC |
+|relaySwitchCnt| Number of relay disconnections |
 
 ### diagnostic
 
 | State  |     Name |  values |
 |----------|:-------------:|------|
+|ext3p8Port| Infinity port / 3+8 ports | {0:NULL,1:CC,2:PR,3:SP (BC)} |
 |wifiAutoRcvy| Wi-Fi auto mode | {0:default mode (STA),1:The Wi-Fi network is automatically restored to the last mode (STA/AP) after powering on} |
-|beepMode| Beep mode | {0:normal?,1:quit?} |
+|beepMode| Beep mode | {0:normal,1:quiet} |
+|ext4p8Port| Extra battery port. Only the status of the leftmost port can be identified. | {0:NULL,1:Extra battery,2:Smart generator} |
+|extRj45Port| RJ45 port | {0:NULL,1:RC(BLE_CTL)} |
 |errCode| Global error code | {0:OK?} |
-|chgDsgState| Charging/discharging state on screen | {0:discharged,1:charged} |
+|chgDsgState| Charging/discharging state on screen | {0:discharging,1:charging} |
 |carState| CAR button state: 0: off; 1: on | {0:off,1:on} |
+|watchIsConfig| Power management configuration:  | {0:disable,1:enable} |
 
 ### level
 
@@ -77,12 +82,14 @@
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
 |standbyMin| 0 | 720 | min | 1 |  Standby time /min 0 Never standby 720 Default value ? | {} |
 |lcdOffSec| 0 | 1800 | s | 1 |  LCD screen-off duration: 0: never off | {valName:delayOff,moduleType:1,operateType:lcdCfg,params:{brighLevel:255,delayOff:300}} |
+|bpPowerSoc| 0 | 100 | % | 1 |  Backup Power SOC |  |
 
 ### switch
 
 | State  |      off    |  on |  Name |  cmd |
 |----------|:-------------:|:------:|------|------|
 |dcOutState| off | on | DC button state | {valName:enabled,moduleType:1,operateType:dcOutCfg,params:{enabled:1}} |
+|acAutoOutConfig| off | on | AC auto out Config |  |
 
 ## bmsMaster
 
@@ -181,16 +188,16 @@
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |carOutVol|0 | 15 | V | 0.001 |  Car charging output voltage |
 |carTemp|0 | 80 | °C | 1 |  Car charging temperature |
-|outWatts|0 | 500 | W | 0.1 |  PV output power |
+|outWatts|0 | 500 | W | 1 |  PV output power |
 |carOutAmp|0 | 13 | A | 0.001 |  Car charging output current |
-|outAmp|0 | 13 | A | 0.01 |  PV output current |
+|outAmp|0 | 13 | A | 0.001 |  PV output current |
 |dcdc12vWatts|0 | 500 | W | 0.1 |  DC12V30A output power, which is valid only for DELTA Pro |
 |powStandbyMin|0 | 720 | min | 1 |  Power standby time /min 0 Never standby 720 Default value ? |
-|inWatts|0 | 500 | W | 0.1 |  PV input power |
+|inWatts|0 | 230 | W | 1 |  PV input power |
 |dcdc12vVol|0 | 60 | V | 0.1 |  DC12V30A output voltage, which is valid only for DELTA Pro |
 |inAmp|0 | 13 | A | 0.001 |  PV input current |
 |scrStandbyMin|0 | 720 | min | 1 |  SCR standby time /min 0 Never standby 720 Default value ? |
-|inVol|0 | 150 | V | 0.001 |  PV input voltage |
+|inVol|0 | 55 | V | 0.001 |  PV input voltage |
 |carOutWatts|0 | 500 | W | 0.1 |  Car charging output power |
 |mpptTemp|0 | 80 | °C | 1 |  MPPT temperature |
 |outVol|0 | 60 | V | 0.001 |  PV output voltage |

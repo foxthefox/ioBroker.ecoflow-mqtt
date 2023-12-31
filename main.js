@@ -85,9 +85,21 @@ class EcoflowMqtt extends utils.Adapter {
 			this.log.info('your configration:');
 			this.log.info('powerstream  -> ' + JSON.stringify(this.config.pstreams));
 			this.log.info('powerstation -> ' + JSON.stringify(this.config.pstations));
-			this.log.info('smartplugs   -> ' + JSON.stringify(this.config.plugs));
+			this.log.info('smartplug    -> ' + JSON.stringify(this.config.plugs));
+			this.log.info('wave         -> ' + JSON.stringify(this.config.waves));
+			this.log.info('glacier      -> ' + JSON.stringify(this.config.glaciers));
 			try {
-				//loop durch alle pstreams
+				//loop durch alle pstreams und plugs
+				let protobufdevices = [];
+				if (this.config.pstreams.length > 0) {
+					protobufdevices.concat(this.config.pstreams);
+				}
+				if (this.config.plugs.length > 0) {
+					protobufdevices.concat(this.config.plugs);
+				}
+				// Zusammenfassung beider IFs
+				// plugType -> pstreamType etc.
+
 				if (this.config.pstreams.length > 0) {
 					for (let pstr = 0; pstr < this.config.pstreams.length; pstr++) {
 						const type = this.config.pstreams[pstr]['pstreamType'];
@@ -264,13 +276,23 @@ class EcoflowMqtt extends utils.Adapter {
 					}
 				}
 				//loop durch alle pstations
+				let jsondevices = [];
 				if (this.config.pstations.length > 0) {
+					jsondevices.concat(this.config.pstations);
+				}
+				if (this.config.waves.length > 0) {
+					jsondevices.concat(this.config.waves);
+				}
+				if (this.config.glaciers.length > 0) {
+					jsondevices.concat(this.config.glaciers);
+				}
+				if (jsondevices.length > 0) {
 					//loop durch alle pstations
-					for (let psta = 0; psta < this.config.pstations.length; psta++) {
-						const type = this.config.pstations[psta]['pstationType'];
+					for (let psta = 0; psta < jsondevices.length; psta++) {
+						const type = jsondevices[psta]['pstationType'];
 						if (type !== 'none' && type !== '') {
-							const id = this.config.pstations[psta]['pstationId'];
-							const name = this.config.pstations[psta]['pstationName'];
+							const id = jsondevices[psta]['pstationId'];
+							const name = jsondevices[psta]['pstationName'];
 							this.pstations[id] = {};
 							this.pstations[id]['pstationType'] = type;
 							this.pstations[id]['pstationName'] = name;
@@ -306,7 +328,7 @@ class EcoflowMqtt extends utils.Adapter {
 											this.pstationStates[type] = pstationStates;
 										}
 									} else {
-										this.log.error('stration upd not possible');
+										this.log.error('station upd not possible');
 									}
 								} else {
 									this.log.warn('did not get stationupd');
@@ -361,7 +383,7 @@ class EcoflowMqtt extends utils.Adapter {
 									}
 									this.log.info('pstation states created for ' + id + ' / ' + type + ' / ' + name);
 									//first additional battery
-									if (this.config.pstations[psta]['pstationsSlave1']) {
+									if (jsondevices[psta]['pstationsSlave1']) {
 										if (this.config.msgStateCreationPstation) {
 											this.log.debug('____________________________________________');
 											this.log.debug('create  channel ' + 'bmsSlave1');
@@ -393,7 +415,7 @@ class EcoflowMqtt extends utils.Adapter {
 										this.log.info('pstation add battery #1 states created');
 									}
 									//second additional battery
-									if (this.config.pstations[psta]['pstationsSlave2']) {
+									if (jsondevices[psta]['pstationsSlave2']) {
 										if (this.config.msgStateCreationPstation) {
 											this.log.debug('____________________________________________');
 											this.log.debug('create  channel ' + 'bmsSlave2');

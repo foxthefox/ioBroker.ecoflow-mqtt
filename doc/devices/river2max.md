@@ -1,5 +1,5 @@
 # States for  RIVER2MAX
-### version: 0.0.14
+### version: 0.0.15
 
 [bmsMaster](#bmsMaster)
 
@@ -67,6 +67,7 @@
 |bmsIsConnt| bmsIsConnt | {0:0?,1:1?} |
 |bmsWarState| BMS warning state: bit0: hi_temp; bit1: low_temp; bit2: overload; bit3: chg_flag | {0:no warning?,1:hi_temp,2:low_temp,4:overload,8:chg_flag} |
 |chgCmd| Charge switch | {0:off,1:on,2:2?} |
+|chgState| Charging state | {0:disabled,1:CC,2:CV,3:UPS,4:PARA 0x55: Charging error} |
 |dsgCmd| Discharge switch | {0:off,1:on,2:2?} |
 |emsIsNormalFlag| Energy storage state: 0: sleep; 1: normal | {0:sleep,1:normal} |
 
@@ -75,7 +76,6 @@
 | State  |  Name |
 |----------|------|
 |bmsModel| BMS model |
-|chgState| Charging state |
 |fanLevel| Fan level |
 |maxAvailNum| Maximum available quantity |
 |openBmsIdx| Open BMS index |
@@ -181,12 +181,12 @@
 |dcdc12vVol|0 | 60 | V | 0.1 |  DC12V30A output voltage, which is valid only for DELTA Pro |
 |dcdc12vWatts|0 | 500 | W | 0.1 |  DC12V30A output power, which is valid only for DELTA Pro |
 |inAmp|0 | 13 | A | 0.001 |  PV input current |
-|inVol|0 | 150 | V | 0.001 |  PV input voltage |
-|inWatts|0 | 500 | W | 0.1 |  PV input power |
+|inVol|0 | 50 | V | 0.001 |  PV input voltage |
+|inWatts|0 | 230 | W | 1 |  PV input power |
 |mpptTemp|0 | 80 | °C | 1 |  MPPT temperature |
-|outAmp|0 | 13 | A | 0.01 |  PV output current |
+|outAmp|0 | 13 | A | 0.001 |  PV output current |
 |outVol|0 | 60 | V | 0.001 |  PV output voltage |
-|outWatts|0 | 500 | W | 0.1 |  PV output power |
+|outWatts|0 | 500 | W | 1 |  PV output power |
 |powStandbyMin|0 | 720 | min | 1 |  Power standby time /min 0 Never standby 720 Default value ? |
 |scrStandbyMin|0 | 720 | min | 1 |  SCR standby time /min 0 Never standby 720 Default value ? |
 
@@ -228,8 +228,8 @@
 |carTemp|0 | 80 | °C | 1 |  CAR temperature |
 |carUsedTime|0 | 143999 | min | 0.0166 |  Car use time |
 |carWatts|0 | 500 | W | 0.1 |  CAR output power |
-|chgPowerAC|0 | 4000 | W | 0.001 |  Charge Power AC |
-|chgPowerDC|0 | 4000 | W | 0.1 |  Charge Power DC |
+|chgPowerAC|0 | 65000 | kWh | 0.001 |  Cumulative AC power charged for PD (wall socket) |
+|chgPowerDC|0 | 65000 | kWh | 0.001 |  Cumulative DC power charged for PD (adapter) |
 |chgSunPower|0 | 65000 | kWh | 0.001 |  Cumulative solar power charged |
 |dcInUsedTime|0 | 143999 | min | 0.0166 |  DC charging time |
 |dsgPowerAC|0 | 4000 | W | 0.001 |  Discharge Power AC |
@@ -259,10 +259,14 @@
 
 | State  |     Name |  values |
 |----------|:-------------:|------|
-|beepMode| Beep mode | {0:normal?,1:quit?} |
+|beepMode| Beep mode | {0:normal,1:quiet} |
 |carState| CAR button state: 0: off; 1: on | {0:off,1:on} |
-|chgDsgState| Charging/discharging state on screen | {0:discharged,1:charged} |
+|chgDsgState| Charging/discharging state on screen | {0:discharging,1:charging} |
 |errCode| Global error code | {0:OK?} |
+|ext3p8Port| Infinity port / 3+8 ports | {0:NULL,1:CC,2:PR,3:SP (BC)} |
+|ext4p8Port| Extra battery port. Only the status of the leftmost port can be identified. | {0:NULL,1:Extra battery,2:Smart generator} |
+|extRj45Port| RJ45 port | {0:NULL,1:RC(BLE_CTL)} |
+|watchIsConfig| Power management configuration:  | {0:disable,1:enable} |
 |wifiAutoRcvy| Wi-Fi auto mode | {0:default mode (STA),1:The Wi-Fi network is automatically restored to the last mode (STA/AP) after powering on} |
 
 ### level
@@ -278,14 +282,10 @@
 | State  |  Name |
 |----------|------|
 |brightLevel| LCD brightness level: 0-3 |
-|ext3p8Port| Infinity port |
-|ext4p8Port| Extra battery port. Only the status of the leftmost port can be identified. |
-|extRj45Port| RJ45 port |
-|hysteresisAdd| hysteresis add |
+|hysteresisAdd| Hysteresis SOC |
 |model| Product model |
-|relaySwitchCnt| relayswitchcnt status or cnt? |
+|relaySwitchCnt| Number of relay disconnections |
 |sysVer| System version |
-|watchIsConfig| watchIsConfig |
 |wifiRssi| Wi-Fi signal intensity |
 |wifiVer| Wi-Fi version |
 |wireWatts| Wireless charging output power (W): Reserved, not available |
