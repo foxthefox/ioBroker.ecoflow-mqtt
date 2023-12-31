@@ -82,6 +82,15 @@ Parametrizing the Glacier:
 * give it a name
 * set the type to "plug"
 
+## data point update
+
+If settings to a data point are changed in the new version of adapter (e.g. name, unit, max value) the change is not effective until you:
+- stop the adapter instance
+- delete the respective datapoint or the whole object structure of the adapter instance
+- start the adapter instance
+
+During startup the datapoints are created, but not changed when existing.
+
 ## Implemented Devices
 
 ### Powerstation
@@ -113,17 +122,28 @@ The 800W version is also implemented and only difference ist the 800W maximum po
 ### Smart Plugs
 ![Smart Plug](./doc/devices/plug.md)
 
-### Wave Air conditioner
+### Wave 2 Air conditioner
 ![Wave](./doc/devices/wave.md)
 
 ### Glacier refrigerator
 ![Glacier](./doc/devices/glacier.md)
 
+## ToDo
+* check pstream value changes to 0 if pdata must be omitted
+* ems for river2pro -> after feedback
+* cleanup pstream/plugs creation
+* check forgotten boundary conditions for commands (inhibit cmd, or additional value)
+
+
 ## Changelog
 ### 0.0.15
-* (foxthefox) new implementation of Wave Air conditioner
+* (foxthefox) new implementation of Wave 2 Air conditioner
 * (foxthefox) new implementation of Glacier refrigerator
 * (foxthefox) correction of factors for delta2/delta2max/river2pro/river2max (mppt.?Vol, mppt.?Amp, mppt.?Watts)
+* (foxthefox) some shifting from string to diagnostics
+* (foxthefox) some updates to max values
+* (foxthefox) delta2/delta2max pd.chgPowerAC and pd.chgPowerDC changed from power to energy 
+* (foxthefox) correction of plug_heartbeat values, protobuf shifts from snake_case to camelCase
 
 ### 0.0.14
 * (foxthefox) new implementation of River 2 Pro, River 2 Max, River Pro, River Max

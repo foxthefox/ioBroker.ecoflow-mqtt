@@ -1,5 +1,5 @@
 # States for  DELTA2MAX
-### version: 0.0.14
+### version: 0.0.15
 
 [bmsMaster](#bmsMaster)
 
@@ -70,6 +70,7 @@
 |bmsIsConnt| bmsIsConnt | {0:0?,1:1?} |
 |bmsWarState| BMS warning state: bit0: hi_temp; bit1: low_temp; bit2: overload; bit3: chg_flag | {0:no warning?,1:hi_temp,2:low_temp,4:overload,8:chg_flag} |
 |chgCmd| Charge switch | {0:off,1:on,2:2?} |
+|chgState| Charging state | {0:disabled,1:CC,2:CV,3:UPS,4:PARA 0x55: Charging error} |
 |dsgCmd| Discharge switch | {0:off,1:on,2:2?} |
 |emsIsNormalFlag| Energy storage state: 0: sleep; 1: normal | {0:sleep,1:normal} |
 
@@ -78,7 +79,6 @@
 | State  |  Name |
 |----------|------|
 |bmsModel| BMS model |
-|chgState| Charging state |
 |fanLevel| Fan level |
 |maxAvailNum| Maximum available quantity |
 |openBmsIdx| Open BMS index |
@@ -178,14 +178,14 @@
 |dcdc12vVol|0 | 60 | V | 0.1 |  DC12V30A output voltage, which is valid only for DELTA Pro |
 |dcdc12vWatts|0 | 500 | W | 0.1 |  DC12V30A output power, which is valid only for DELTA Pro |
 |inAmp|0 | 13 | A | 0.001 |  PV input current |
-|inVol|0 | 150 | V | 0.001 |  PV input voltage |
+|inVol|0 | 60 | V | 0.001 |  PV input voltage |
 |inWatts|0 | 500 | W | 1 |  PV input power |
 |mpptTemp|0 | 80 | °C | 1 |  MPPT temperature |
 |outAmp|0 | 13 | A | 0.001 |  PV output current |
 |outVol|0 | 60 | V | 0.001 |  PV output voltage |
 |outWatts|0 | 500 | W | 1 |  PV output power |
-|pv2InAmp|0 | 13 | A | 0.01 |  PV input current |
-|pv2InVol|0 | 150 | V | 0.1 |  PV input voltage |
+|pv2InAmp|0 | 13 | A | 0.001 |  PV input current |
+|pv2InVol|0 | 150 | V | 0.001 |  PV input voltage |
 |pv2InWatts|0 | 500 | W | 1 |  PV input power |
 |pv2MpptTemp|0 | 80 | °C | 1 |  MPPT temperature |
 
@@ -215,9 +215,9 @@
 |dc24vState| DCDC24 switch state | {0:off,1:on} |
 |x60ChgType| XT60 charging type | {0:not detected,1:MPPT,2:adapter} |
 |pv2CfgChgType| Configured charging type: This parameter is valid when xt60_chg_type is 0. | {0:auto?,1:MPPT?,2:adapter?} |
-|pv2ChgPauseFlag| PV charging pause flag | {0:not stopped ?,1:charging stopped?} |
-|pv2ChgState| Charging state | {0:disabled?,1:charging?,2:standby (DC charging stopped during AC charging)?} |
-|pv2ChgType| Actual charging type | {0:null?,1:adapter (adapter/DC source)?,2:MPPT (solar)?,3:AC (mains supply)?,4:gas?,5:wind?} |
+|pv2ChgPauseFlag| PV charging pause flag | {0:not stopped,1:charging stopped} |
+|pv2ChgState| Charging state | {0:disabled,1:charging,2:standby (DC charging stopped during AC charging)} |
+|pv2ChgType| Actual charging type | {0:null,1:adapter (adapter/DC source),2:MPPT (solar),3:AC (mains supply),4:gas,5:wind} |
 |pv2Xt60ChgType| XT60 charging type | {0:not detected,1:MPPT?,2:adapter?} |
 
 ### string
@@ -236,20 +236,21 @@
 |acAutoOnCfg| AC Auto On Cfg | {0:off?,1:on?} |
 |beepMode| Beep mode | {0:normal,1:quiet} |
 |carState| CAR button state: 0: off; 1: on | {0:off,1:on} |
-|chgDsgState| Charging/discharging state on screen | {0:discharged,1:charged} |
+|chgDsgState| Charging/discharging state on screen | {0:discharging,1:charging} |
 |errCode| Global error code | {0:OK?} |
+|watchIsConfig| Power management configuration:  | {0:disable,1:enable} |
 |wifiAutoRcvy| Wi-Fi auto mode | {0:default mode (STA),1:The Wi-Fi network is automatically restored to the last mode (STA/AP) after powering on} |
 |bmsKitState| bms Kit State | {0:0?,1:1?} |
 |otherKitState| other Kit State | {0:0?,1:1?} |
-|pv1ChargeType| Charger type | {0:0?,1:1?,2:2?} |
-|pv2ChargeType| Charger type | {0:0?,1:1?,2:2?} |
+|pv1ChargeType| Charger type | {0:none,1:adapter,2:solar panel} |
+|pv2ChargeType| Charger type | {0:none,1:adapter,2:solar panel} |
 |pvChargePrioSet| Charger type | {0:power supply prio?,1:charge prio?} |
 
 ### level
 
 | State  |      Min     |     Max     |  Unit |  Mult |  Name |  cmd |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
-|bppowerSoc| 0 | 100 | % | 1 |  Backup Power SOC | {valName:bpPowerSoc,moduleType:1,operateType:watthConfig,params:{isConfig:1,bpPowerSoc:55,minDsgSoc:0,minChgSoc:0}} |
+|bppowerSoc| 0 | 100 | % | 1 |  Backup Power SOC | {valName:bpPowerSoc,moduleType:1,operateType:watthConfig,params:{isConfig:1,bpPowerSoc:55,minDsgSoc:255,minChgSoc:255}} |
 |lcdOffSec| 0 | 1800 | s | 1 |  LCD screen-off duration: 0: never off | {valName:delayOff,moduleType:1,operateType:lcdCfg,params:{brighLevel:255,delayOff:300}} |
 |standbyMin| 0 | 720 | min | 1 |  Standby time /min 0 Never standby 720 Default value ? | {valName:standbyMin,moduleType:1,operateType:standbyTime,params:{standbyMin:720}} |
 
@@ -258,11 +259,10 @@
 | State  |  Name |
 |----------|------|
 |brightLevel| LCD brightness level: 0-3 |
-|hysteresisAdd| hysteresis add |
+|hysteresisAdd| Hysteresis SOC |
 |model| Product model |
-|relaySwitchCnt| relayswitchcnt status or cnt? |
+|relaySwitchCnt| Number of relay disconnections |
 |sysVer| System version |
-|watchIsConfig| watchIsConfig |
 |wifiRssi| Wi-Fi signal intensity |
 |wifiVer| Wi-Fi version |
 |wireWatts| Wireless charging output power (W): Reserved, not available |
@@ -274,8 +274,8 @@
 |carTemp|0 | 80 | °C | 1 |  CAR temperature |
 |carUsedTime|0 | 143999 | min | 0.0166 |  Car use time |
 |carWatts|0 | 500 | W | 0.1 |  CAR output power |
-|chgPowerAC|0 | 4000 | W | 0.001 |  Charge Power AC |
-|chgPowerDC|0 | 4000 | W | 0.1 |  Charge Power DC |
+|chgPowerAC|0 | 65000 | kWh | 0.001 |  Cumulative AC power charged for PD (wall socket) |
+|chgPowerDC|0 | 65000 | kWh | 0.001 |  Cumulative DC power charged for PD (adapter) |
 |chgSunPower|0 | 65000 | kWh | 0.001 |  Cumulative solar power charged |
 |dcInUsedTime|0 | 143999 | min | 0.0166 |  DC charging time |
 |dsgPowerAC|0 | 4000 | W | 0.001 |  Discharge Power AC |
@@ -304,6 +304,7 @@
 |minAcSoc|0 | 255 | % (0-255?) | 1 |  minimum AC out SOC |
 |pv1ChargeWatts|0 | 1000 | W | 1 |  PV1 charge Watts |
 |pv2ChargeWatts|0 | 1000 | W | 1 |  PV2 charge Watts |
+|minAcoutSoc|0 | 255 | % (0-255?) | 1 |  minimum AC out SOC |
 
 
 ### switch

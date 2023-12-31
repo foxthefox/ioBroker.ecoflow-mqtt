@@ -1,5 +1,5 @@
 # States for  DELTAPRO
-### version: 0.0.14
+### version: 0.0.15
 
 [bmsMaster](#bmsMaster)
 
@@ -70,6 +70,7 @@
 |bmsWarningState| BMS warning state: bit0: hi_temp; bit1: low_temp; bit2: overload; bit3: chg_flag | {0:no warning?,1:hi_temp,2:low_temp,4:overload,8:chg_flag} |
 |emsIsNormalFlag| Energy storage state: 0: sleep; 1: normal | {0:sleep,1:normal} |
 |dsgCmd| Discharge switch | {0:off,1:on,2:2?} |
+|chgState| Charging state | {0:disabled,1:CC,2:CV,3:UPS,4:PARA 0x55: Charging error} |
 
 ### level
 
@@ -103,7 +104,6 @@
 |bms1Online| BMS online signal: BIT0: hardware online signal; BIT1: software online signal |
 |bmsModel| BMS model |
 |openUpsFlag| UPS mode enable flag |
-|chgState| Charging state |
 |fanLevel| Fan level |
 |bms2Online| BMS online signal: BIT0: hardware online signal; BIT1: software online signal |
 
@@ -203,17 +203,13 @@
 | State  |  Name |
 |----------|------|
 |wifiVer| Wi-Fi version |
-|extRj45Port| RJ45 port |
 |wirelessWatts| Wireless charging output power (W): Reserved, not available |
-|ext3p8Port| Infinity port |
 |model| Product model |
-|ext4p8Port| Extra battery port. Only the status of the leftmost port can be identified. |
 |lcdBrightness| delta max special |
 |sysVer| System version |
 |wifiRssi| Wi-Fi signal intensity |
-|watthisconfig| watthisconfig |
 |relayswitchcnt| relayswitchcnt status or cnt? |
-|hysteresisAdd| hysteresis add |
+|hysteresisAdd| Hysteresis SOC |
 
 ### level
 
@@ -227,11 +223,15 @@
 
 | State  |     Name |  values |
 |----------|:-------------:|------|
+|extRj45Port| RJ45 port | {0:NULL,1:RC(BLE_CTL)} |
+|ext3p8Port| Infinity port / 3+8 ports | {0:NULL,1:CC,2:PR,3:SP (BC)} |
 |carState| CAR button state: 0: off; 1: on | {0:off,1:on} |
 |wifiAutoRcvy| Wi-Fi auto mode | {0:default mode (STA),1:The Wi-Fi network is automatically restored to the last mode (STA/AP) after powering on} |
+|ext4p8Port| Extra battery port. Only the status of the leftmost port can be identified. | {0:NULL,1:Extra battery,2:Smart generator} |
 |iconRechgTimeMode| Charge icon mode | {0:normal,1:blinking} |
 |sysChgDsgState| Charging/discharging state on screen | {0:discharged,1:charged} |
 |errCode| Global error code | {0:OK?} |
+|watthisconfig| Power management configuration | {0:disable,1:enable} |
 
 ### switch
 
@@ -246,7 +246,7 @@
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|carOutVol|0 | 60 | V | 0.1 |  Car charging output voltage |
+|carOutVol|0 | 15 | V | 0.1 |  Car charging output voltage |
 |carTemp|0 | 80 | °C | 1 |  Car charging temperature |
 |outWatts|0 | 500 | W | 0.1 |  PV output power |
 |carOutAmp|0 | 13 | A | 0.01 |  Car charging output current |
@@ -255,7 +255,7 @@
 |inWatts|0 | 500 | W | 0.1 |  PV input power |
 |dcdc12vVol|0 | 60 | V | 0.1 |  DC12V30A output voltage, which is valid only for DELTA Pro |
 |inAmp|0 | 13 | A | 0.01 |  PV input current |
-|inVol|0 | 150 | V | 0.1 |  PV input voltage |
+|inVol|0 | 100 | V | 0.1 |  PV input voltage |
 |carOutWatts|0 | 500 | W | 0.1 |  Car charging output power |
 |mpptTemp|0 | 80 | °C | 1 |  MPPT temperature |
 |outVol|0 | 60 | V | 0.1 |  PV output voltage |
