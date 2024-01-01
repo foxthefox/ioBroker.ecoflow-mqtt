@@ -1,6 +1,6 @@
 {
 	"name": "iobroker.ecoflow-mqtt",
-	"version": "0.0.15",
+	"version": "0.0.16",
 	"description": "connects to ecoflow products",
 	"author": {
 		"name": "foxthefox",
