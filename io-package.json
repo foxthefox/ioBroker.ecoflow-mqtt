@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "ecoflow-mqtt",
-        "version": "0.0.15",
+        "version": "0.0.16",
         "news": {
+            "0.0.16": {
+                "en": "correction for array of devices, cause of 'loosing' power stations",
+                "de": "Korrektur für eine Reihe von Geräten, Ursache für den „Verlust“ von Kraftwerken",
+                "ru": "поправка на набор устройств, причина \"потери\" электростанций",
+                "pt": "correção para conjunto de dispositivos, causa da 'perda' de usinas de energia",
+                "nl": "correctie voor reeks apparaten, oorzaak van 'verliesende' elektriciteitscentrales",
+                "fr": "correction pour un ensemble d'appareils, cause de la « perte » des centrales électriques",
+                "it": "correzione per la serie di dispositivi, causa della \"perdita\" delle centrali elettriche",
+                "es": "Corrección por variedad de dispositivos, causa de la \"pérdida\" de las centrales eléctricas.",
+                "pl": "korekta układu urządzeń, przyczyna „gubienia” elektrowni",
+                "uk": "поправка на масив приладів, причину «втрат» електростанцій",
+                "zh-cn": "修正设备阵列、“失去”发电站的原因"
+            },
             "0.0.15": {
                 "en": "new implementations Wave, Glacier; corrections",
                 "de": "neue Implementierungen Wave, Glacier; Korrekturen",

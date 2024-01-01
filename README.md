@@ -133,9 +133,12 @@ The 800W version is also implemented and only difference ist the 800W maximum po
 * ems for river2pro -> after feedback
 * cleanup pstream/plugs creation
 * check forgotten boundary conditions for commands (inhibit cmd, or additional value)
-
+* cyclic lastQuotas call
 
 ## Changelog
+### 0.0.15
+* (foxthefox) correction for array of devices, cause of "loosing" power stations
+
 ### 0.0.15
 * (foxthefox) new implementation of Wave 2 Air conditioner
 * (foxthefox) new implementation of Glacier refrigerator

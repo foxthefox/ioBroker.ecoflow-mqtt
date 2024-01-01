@@ -276,16 +276,8 @@ class EcoflowMqtt extends utils.Adapter {
 					}
 				}
 				//loop durch alle pstations
-				let jsondevices = [];
-				if (this.config.pstations.length > 0) {
-					jsondevices.concat(this.config.pstations);
-				}
-				if (this.config.waves.length > 0) {
-					jsondevices.concat(this.config.waves);
-				}
-				if (this.config.glaciers.length > 0) {
-					jsondevices.concat(this.config.glaciers);
-				}
+
+				const jsondevices = [].concat(this.config.pstations, this.config.waves, this.config.glaciers);
 				if (jsondevices.length > 0) {
 					//loop durch alle pstations
 					for (let psta = 0; psta < jsondevices.length; psta++) {
