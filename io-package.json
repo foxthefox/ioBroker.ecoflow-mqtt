@@ -3,6 +3,19 @@
         "name": "ecoflow-mqtt",
         "version": "0.0.16",
         "news": {
+            "0.0.17": {
+                "en": "added ems objects for River2Pro",
+                "de": "Ems-Objekte für River2Pro hinzugefügt",
+                "ru": "добавлены объекты ems для River2Pro",
+                "pt": "adicionados objetos ems para River2Pro",
+                "nl": "ems-objecten toegevoegd voor River2Pro",
+                "fr": "ajout d'objets ems pour River2Pro",
+                "it": "aggiunti oggetti ems per River2Pro",
+                "es": "Se agregaron objetos ems para River2Pro.",
+                "pl": "dodano obiekty ems dla River2Pro",
+                "uk": "додано об’єкти ems для River2Pro",
+                "zh-cn": "为 River2Pro 添加 ems 对象"
+            },
             "0.0.16": {
                 "en": "correction for array of devices, cause of 'loosing' power stations",
                 "de": "Korrektur für eine Reihe von Geräten, Ursache für den „Verlust“ von Kraftwerken",

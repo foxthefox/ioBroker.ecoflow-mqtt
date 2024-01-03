@@ -130,13 +130,15 @@ The 800W version is also implemented and only difference ist the 800W maximum po
 
 ## ToDo
 * check pstream value changes to 0 if pdata must be omitted
-* ems for river2pro -> after feedback
 * cleanup pstream/plugs creation
 * check forgotten boundary conditions for commands (inhibit cmd, or additional value)
 * cyclic lastQuotas call
 
 ## Changelog
-### 0.0.15
+### 0.0.17
+* (foxthefox) added ems objects for River2Pro
+
+### 0.0.16
 * (foxthefox) correction for array of devices, cause of "loosing" power stations
 
 ### 0.0.15
@@ -224,7 +226,7 @@ The 800W version is also implemented and only difference ist the 800W maximum po
 ## License
 MIT License
 
-Copyright (c) 2023 foxthefox <foxthefox@wysiwis.net>
+Copyright (c) 2023-2024 foxthefox <foxthefox@wysiwis.net>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
