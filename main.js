@@ -699,7 +699,7 @@ class EcoflowMqtt extends utils.Adapter {
 
 				this.client.on('close', () => {
 					this.setState('info.connection', false, true);
-					this.log.info('ecfolow connection closed');
+					this.log.info('ecoflow connection closed');
 				});
 				this.client.on('error', (error) => {
 					this.setState('info.connection', false, true);
