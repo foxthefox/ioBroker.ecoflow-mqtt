@@ -206,6 +206,14 @@
 					"md": 6,
 					"lg": 4
 				},
+				"showHex": {
+					"type": "checkbox",
+					"label": "showHex",
+					"sm": 12,
+					"md": 6,
+					"lg": 4
+				},
+
 				"_debugplug": {
 					"newLine": true,
 					"type": "header",
