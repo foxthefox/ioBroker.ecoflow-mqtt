@@ -765,10 +765,11 @@ class EcoflowMqtt extends utils.Adapter {
 				const item = idsplit[4];
 				this.log.info('(ack=false) ->cmd : channel ' + channel + ' state ' + item);
 				let topic = '';
-				if (item === 'lastQuotas') {
+				if (item === 'latestQuotas') {
 					topic = '/app/' + this.mqttUserId + '/' + device + '/thing/property/get';
 					//reset of switch
-					await this.setStateAsync(device + '.' + channel + '.' + item, false, true);
+					// not needed we trigger at 0 and 1
+					// await this.setStateAsync(device + '.' + channel + '.' + item, false, true);
 				} else {
 					topic = '/app/' + this.mqttUserId + '/' + device + '/thing/property/set';
 				}
