@@ -135,8 +135,13 @@ The 800W version is also implemented and only difference ist the 800W maximum po
 * cyclic lastQuotas call
 
 ## Changelog
+### 0.0.18
+* (foxthefox) correction of wrong version number io io-package.json
+
 ### 0.0.17
 * (foxthefox) added ems objects for River2Pro
+* (foxthefox) more logging to pstream decode
+* (foxthefox) spelling correction for latestQuotas 
 
 ### 0.0.16
 * (foxthefox) correction for array of devices, cause of "loosing" power stations
