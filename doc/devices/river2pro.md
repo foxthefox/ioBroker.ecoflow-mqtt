@@ -1,5 +1,5 @@
 # States for  RIVER2PRO
-### version: 0.0.15
+### version: 0.0.16
 
 [pd](#pd)
 
@@ -8,6 +8,8 @@
 [inv](#inv)
 
 [mppt](#mppt)
+
+[ems](#ems)
 
 [info](#info)
 
@@ -243,6 +245,51 @@
 |carStandbyMin| 0 | 720 | min | 1 |  CAR standby time /min 0 Never standby 720 Default value | {valName:standbyMins,moduleType:5,operateType:standbyTime,params:{standbyMins:720}} |
 |dcChgCurrent| 4 | 8 | A | 0.001 |  On-board charging current | {valName:dcChgCfg,moduleType:5,operateType:dcChgCfg,params:{dcChgCfg:8000}} |
 |cfgChgWatts| 100 | 940 | W | 1 |  Maximum charging power for charging (W) ? | {valName:chgWatts,moduleType:5,operateType:acChgCfg,params:{chgWatts:100,chgPauseFlag:255}} |
+
+## ems
+
+### diagnostic
+
+| State  |     Name |  values |
+|----------|:-------------:|------|
+|dsgCmd| Discharge switch | {0:off,1:on,2:2?} |
+|chgState| Charging state | {0:disabled,1:CC,2:CV,3:UPS,4:PARA 0x55: Charging error} |
+|chgCmd| Charge switch | {0:off,1:on,2:2?} |
+|emsIsNormalFlag| Energy storage state: 0: sleep; 1: normal | {0:sleep,1:normal} |
+|bmsWarState| BMS warning state: bit0: hi_temp; bit1: low_temp; bit2: overload; bit3: chg_flag | {0:no warning?,1:hi_temp,2:low_temp,4:overload,8:chg_flag} |
+
+### number
+| State  |      Min     |      Max     |  Unit |  Mult |  Name |
+|----------|:-------------:|:-------------:|:------:|:-----:|-----|
+|chgVol|0 | 150 | V | 0.001 |  Charging voltage |
+|chgRemainTime|0 | 143999 | min | 1 |  Remaining charging time |
+|f32LcdShowSoc|0 | 100 | % | 1 |  SOC on LCD |
+|paraVolMax|0 | 60 | V | 0.001 |  Maximum parallel voltage |
+|lcdShowSoc|0 | 100 | % | 1 |  SOC on LCD |
+|chgAmp|0 | 100 | A | 0.0001 |  Charging current |
+|paraVolMin|0 | 60 | V | 0.001 |  Minimum parallel voltage |
+|dsgRemainTime|0 | 143999 | min | 1 |  Remaining discharging time |
+
+
+### level
+
+| State  |      Min     |     Max     |  Unit |  Mult |  Name |  cmd |
+|----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
+|maxChargeSoc| 50 | 100 | % | 1 |  Charge upper limit | {valName:maxChgSoc,moduleType:2,operateType:upsConfig,params:{maxChgSoc:90}} |
+|minDsgSoc| 0 | 30 | % | 1 |  Discharge lower limit | {valName:minDsgSoc,moduleType:2,operateType:dsgCfg,params:{minDsgSoc:5}} |
+|minOpenOilEb| 0 | 30 | % | 1 |  The upper threshold of smart generator auto on Range: 0~100 |  |
+|maxCloseOilEb| 50 | 100 | % | 1 |  The lower threshold of smart generator auto off Range: 0~100 |  |
+
+### string
+
+| State  |  Name |
+|----------|------|
+|bmsModel| BMS model |
+|openUpsFlag| UPS mode enable flag |
+|openBmsIdx| Open BMS index |
+|maxAvailNum| Maximum available quantity |
+|bmsIsConnt| BMS online signal: BIT0: hardware online signal; BIT1: software online signal |
+|fanLevel| Fan level |
 
 ## info
 

@@ -551,16 +551,7 @@ class EcoflowMqtt extends utils.Adapter {
 					if (devtype === 'pstream' || devtype === 'plug') {
 						if (this.pstreamStatesDict && this.pstreamStates) {
 							let msgdecode = ef.pstreamDecode(this, message);
-							if (
-								(this.config.msgUpdateValuePstream && devtype === 'pstream') ||
-								(this.config.msgUpdateValuePlug && devtype === 'plug')
-							) {
-								this.log.debug(topic + '  ' + devtype + ' data update : ' + JSON.stringify(msgdecode));
-							}
-							if (
-								(this.config.msgSetGetPlug && devtype === 'plug') ||
-								(this.config.msgSetGetPstream && devtype === 'pstream')
-							) {
+							if (this.config.showHex) {
 								this.log.debug(
 									topic +
 										' ' +
@@ -569,6 +560,21 @@ class EcoflowMqtt extends utils.Adapter {
 										msgtype +
 										' -> ' +
 										Buffer.from(message).toString('hex')
+								);
+							}
+
+							if (
+								(this.config.msgUpdateValuePstream && devtype === 'pstream' && msgtype === 'update') ||
+								(this.config.msgUpdateValuePlug && devtype === 'plug' && msgtype === 'update')
+							) {
+								this.log.debug(topic + '  ' + devtype + ' data update : ' + JSON.stringify(msgdecode));
+							}
+							if (
+								(this.config.msgSetGetPlug && devtype === 'plug' && msgtype !== 'update') ||
+								(this.config.msgSetGetPstream && devtype === 'pstream' && msgtype !== 'update')
+							) {
+								this.log.debug(
+									topic + ' ' + devtype + ' received ' + msgtype + ' -> ' + JSON.stringify(msgdecode)
 								);
 							}
 							if (msgtype === 'update' || msgtype === 'get_reply') {
@@ -699,7 +705,7 @@ class EcoflowMqtt extends utils.Adapter {
 
 				this.client.on('close', () => {
 					this.setState('info.connection', false, true);
-					this.log.info('ecfolow connection closed');
+					this.log.info('ecoflow connection closed');
 				});
 				this.client.on('error', (error) => {
 					this.setState('info.connection', false, true);
@@ -759,10 +765,11 @@ class EcoflowMqtt extends utils.Adapter {
 				const item = idsplit[4];
 				this.log.info('(ack=false) ->cmd : channel ' + channel + ' state ' + item);
 				let topic = '';
-				if (item === 'lastQuotas') {
+				if (item === 'latestQuotas') {
 					topic = '/app/' + this.mqttUserId + '/' + device + '/thing/property/get';
 					//reset of switch
-					await this.setStateAsync(device + '.' + channel + '.' + item, false, true);
+					// not needed we trigger at 0 and 1
+					// await this.setStateAsync(device + '.' + channel + '.' + item, false, true);
 				} else {
 					topic = '/app/' + this.mqttUserId + '/' + device + '/thing/property/set';
 				}
