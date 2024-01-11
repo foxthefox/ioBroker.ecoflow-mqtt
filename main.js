@@ -427,9 +427,10 @@ class EcoflowMqtt extends utils.Adapter {
 									this.log.debug('subscribed the topics');
 									//loop and timeout for requesting last quotas
 									try {
-										for (let device in this.pdevices) {
-											this.log.debug(JSON.stringify(this.pdevices));
-											const devtype = device['devType'];
+										this.log.debug(JSON.stringify(this.pdevices));
+
+										for (const [ device, value ] of Object.entries(this.pdevices)) {
+											const devtype = value['devType'];
 											if (
 												devtype === 'pstream600' ||
 												devtype === 'pstream800' ||
