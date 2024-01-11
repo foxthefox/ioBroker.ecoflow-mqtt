@@ -13,6 +13,7 @@ const mqtt = require('mqtt');
 
 const { isObject } = require('util');
 const { debug } = require('console');
+const { json } = require('stream/consumers');
 
 // Load your modules here, e.g.:
 // const fs = require("fs");
@@ -428,16 +429,21 @@ class EcoflowMqtt extends utils.Adapter {
 							});
 						}
 						//loop and timeout for requesting last quotas
-						for (let device in this.pdevices) {
-							const devtype = device['devType'];
-							if (devtype.includes('p')) {
-								const value = await this.getStateAsync(device + '.info.latestQuotas');
-								await this.setStateAsync(
-									device + '.info.latestQuotas',
-									value.val === true ? false : true,
-									false
-								);
+						try {
+							for (let device in this.pdevices) {
+								this.log.debug(JSON.stringify(this.pdevices));
+								const devtype = device['devType'];
+								if (devtype === 'pstream600' || devtype === 'pstream800' || devtype === 'plug') {
+									const value = await this.getStateAsync(device + '.info.latestQuotas');
+									await this.setStateAsync(
+										device + '.info.latestQuotas',
+										value.val === true ? false : true,
+										false
+									);
+								}
 							}
+						} catch (error) {
+							this.log.debug('' + error);
 						}
 					} else {
 						this.log.debug('no topics for subscription');
