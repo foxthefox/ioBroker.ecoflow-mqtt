@@ -134,6 +134,7 @@ class EcoflowMqtt extends utils.Adapter {
 												}
 											}
 										}
+										//we have to store the states individually, because same state can have different ranges, factors in different devices
 									} else {
 										this.log.error('device states upd not possible');
 									}
@@ -159,17 +160,18 @@ class EcoflowMqtt extends utils.Adapter {
 								pdevicesStatesDict = require('./lib/ecoflow_data.js').pstationStatesDict[origdevtype];
 								pdevicesCmd = require('./lib/ecoflow_data.js').pstationCmd[origdevtype];
 							}
+							this.log.debug('devtype ' + devtype);
+							this.log.debug('devStates ' + JSON.stringify(pdevicesStatesDict));
+							this.log.debug('devStates ' + JSON.stringify(pdevicesCmd));
 							//create device objects
 							//we store only the dict from used components
 							if (!this.pdevicesStatesDict[origdevtype]) {
 								this.pdevicesStatesDict[origdevtype] = pdevicesStatesDict;
 							}
-							//we have to store the states individually, because same state can have different ranges, factors in different devices
 							if (!this.pdevicesStates[origdevtype]) {
 								this.pdevicesStates[origdevtype] = ef.statesFromDict(devStates, pdevicesStatesDict);
 							}
 							this.log.debug('devStates' + JSON.stringify(this.pdevicesStates[origdevtype]));
-
 							//we store only the cmd from used components
 							if (!this.pdevicesCmd[origdevtype]) {
 								this.pdevicesCmd[origdevtype] = pdevicesCmd;
@@ -348,8 +350,8 @@ class EcoflowMqtt extends utils.Adapter {
 											this.log.debug('create  channel ' + 'bmsSlave2');
 										}
 										await myutils.createMyChannel(this, id, 'bmsSlave2', 'bmsSlave2', 'channel');
-										for (let key in this.pdevicesStatesDict['bmsMaster']) {
-											let type = this.pdevicesStatesDict['bmsMaster'][key]['entity'];
+										for (let key in pdevicesStatesDict['bmsMaster']) {
+											let type = pdevicesStatesDict['bmsMaster'][key]['entity'];
 											if (type !== 'icon') {
 												if (devStates['bmsMaster'][type][key]) {
 													await myutils.createMyState(
