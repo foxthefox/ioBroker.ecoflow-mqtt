@@ -417,7 +417,7 @@ class EcoflowMqtt extends utils.Adapter {
 			try {
 				this.client = mqtt.connect(this.mqttUrl + ':' + this.mqttPort, optionsMqtt);
 
-				this.client.on('connect', () => {
+				this.client.on('connect', async () => {
 					this.log.debug('connected');
 					if (topics.length > 0) {
 						if (this.client) {
@@ -428,6 +428,16 @@ class EcoflowMqtt extends utils.Adapter {
 							});
 						}
 						//loop and timeout for requesting last quotas
+						for (let item in this.pdevices) {
+							if (item['devType'].includes('p')) {
+								const value = await this.getStateAsync(device + '.info.latestQuotas');
+								await this.setStateAsync(
+									device + '.info.latestQuotas',
+									value.val === true ? false : true,
+									false
+								);
+							}
+						}
 					} else {
 						this.log.debug('no topics for subscription');
 					}
