@@ -168,6 +168,8 @@ class EcoflowMqtt extends utils.Adapter {
 							if (!this.pdevicesStates[origdevtype]) {
 								this.pdevicesStates[origdevtype] = ef.statesFromDict(devStates, pdevicesStatesDict);
 							}
+							this.log.debug('devStates' + JSON.stringify(this.pdevicesStates[origdevtype]));
+
 							//we store only the cmd from used components
 							if (!this.pdevicesCmd[origdevtype]) {
 								this.pdevicesCmd[origdevtype] = pdevicesCmd;
