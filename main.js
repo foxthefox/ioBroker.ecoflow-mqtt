@@ -148,7 +148,7 @@ class EcoflowMqtt extends utils.Adapter {
 							//create pdevices objects
 							const origdevtype = devtype;
 							if (devtype === 'pstream600' || devtype === 'pstream800') {
-								devtype === 'pstream';
+								devtype = 'pstream';
 							}
 
 							let pdevicesStatesDict = null;
@@ -160,9 +160,6 @@ class EcoflowMqtt extends utils.Adapter {
 								pdevicesStatesDict = require('./lib/ecoflow_data.js').pstationStatesDict[origdevtype];
 								pdevicesCmd = require('./lib/ecoflow_data.js').pstationCmd[origdevtype];
 							}
-							this.log.debug('devtype ' + devtype);
-							this.log.debug('devStates ' + JSON.stringify(pdevicesStatesDict));
-							this.log.debug('devStates ' + JSON.stringify(pdevicesCmd));
 							//create device objects
 							//we store only the dict from used components
 							if (!this.pdevicesStatesDict[origdevtype]) {
@@ -171,7 +168,6 @@ class EcoflowMqtt extends utils.Adapter {
 							if (!this.pdevicesStates[origdevtype]) {
 								this.pdevicesStates[origdevtype] = ef.statesFromDict(devStates, pdevicesStatesDict);
 							}
-							this.log.debug('devStates' + JSON.stringify(this.pdevicesStates[origdevtype]));
 							//we store only the cmd from used components
 							if (!this.pdevicesCmd[origdevtype]) {
 								this.pdevicesCmd[origdevtype] = pdevicesCmd;
