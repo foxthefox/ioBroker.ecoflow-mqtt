@@ -422,29 +422,35 @@ class EcoflowMqtt extends utils.Adapter {
 					this.log.debug('connected');
 					if (topics.length > 0) {
 						if (this.client) {
-							this.client.subscribe(topics, (err) => {
+							this.client.subscribe(topics, async (err) => {
 								if (!err) {
 									this.log.debug('subscribed the topics');
+									//loop and timeout for requesting last quotas
+									try {
+										for (let device in this.pdevices) {
+											this.log.debug(JSON.stringify(this.pdevices));
+											const devtype = device['devType'];
+											if (
+												devtype === 'pstream600' ||
+												devtype === 'pstream800' ||
+												devtype === 'plug'
+											) {
+												this.log.debug(device + ' -> latestQuotas requested');
+												const value = await this.getStateAsync(device + '.info.latestQuotas');
+												await this.setStateAsync(
+													device + '.info.latestQuotas',
+													value.val === true ? false : true,
+													false
+												);
+											}
+										}
+									} catch (error) {
+										this.log.debug('' + error);
+									}
+								} else {
+									this.log.warn('could not subscribe to topics ' + err);
 								}
 							});
-						}
-						//loop and timeout for requesting last quotas
-						try {
-							for (let device in this.pdevices) {
-								this.log.debug(JSON.stringify(this.pdevices));
-								const devtype = device['devType'];
-								if (devtype === 'pstream600' || devtype === 'pstream800' || devtype === 'plug') {
-									this.log.debug(device + ' -> latestQuotas requested');
-									const value = await this.getStateAsync(device + '.info.latestQuotas');
-									await this.setStateAsync(
-										device + '.info.latestQuotas',
-										value.val === true ? false : true,
-										false
-									);
-								}
-							}
-						} catch (error) {
-							this.log.debug('' + error);
 						}
 					} else {
 						this.log.debug('no topics for subscription');
