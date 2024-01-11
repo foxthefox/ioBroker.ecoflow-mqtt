@@ -729,18 +729,18 @@ class EcoflowMqtt extends utils.Adapter {
 				let cmd = null;
 
 				if (this.pdevices && this.pdevicesCmd) {
-					if (this.pdevices[topic]) {
-						switch (this.pdevices[topic]['devType']) {
+					if (this.pdevices[device]) {
+						switch (this.pdevices[device]['devType']) {
 							case 'pstream600':
 							case 'pstream800':
 							case 'plug':
-								devicetype = this.pdevices[topic]['devType'];
+								devicetype = this.pdevices[device]['devType'];
 								type = 'stream'; //includes also plugs
 								cmd = this.pdevicesCmd[devicetype];
 								break;
 							default:
 								// all other is not protobuf
-								devicetype = this.pdevices[topic]['devType'];
+								devicetype = this.pdevices[device]['devType'];
 								type = 'station'; //includes also glacier, wave
 								cmd = this.pdevicesCmd[devicetype];
 								break;
