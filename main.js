@@ -428,8 +428,9 @@ class EcoflowMqtt extends utils.Adapter {
 							});
 						}
 						//loop and timeout for requesting last quotas
-						for (let item in this.pdevices) {
-							if (item['devType'].includes('p')) {
+						for (let device in this.pdevices) {
+							const devtype = device['devType'];
+							if (devtype.includes('p')) {
 								const value = await this.getStateAsync(device + '.info.latestQuotas');
 								await this.setStateAsync(
 									device + '.info.latestQuotas',
