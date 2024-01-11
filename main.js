@@ -434,6 +434,7 @@ class EcoflowMqtt extends utils.Adapter {
 								this.log.debug(JSON.stringify(this.pdevices));
 								const devtype = device['devType'];
 								if (devtype === 'pstream600' || devtype === 'pstream800' || devtype === 'plug') {
+									this.log.debug(device + ' -> latestQuotas requested');
 									const value = await this.getStateAsync(device + '.info.latestQuotas');
 									await this.setStateAsync(
 										device + '.info.latestQuotas',
