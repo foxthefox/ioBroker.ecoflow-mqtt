@@ -734,7 +734,7 @@ class EcoflowMqtt extends utils.Adapter {
 							case 'pstream600':
 							case 'pstream800':
 							case 'plug':
-								devicetype = this.pdevices[device]['devType'];
+								devicetype = this.pdevices[topic]['devType'];
 								type = 'stream'; //includes also plugs
 								cmd = this.pdevicesCmd[devicetype];
 								break;
@@ -748,7 +748,7 @@ class EcoflowMqtt extends utils.Adapter {
 					} else {
 						this.log.warn(
 							'pdevices -> ' +
-								this.pdevices +
+								JSON.stringify(this.pdevices) +
 								' or pdevicesCmd problematic -> ' +
 								JSON.stringify(this.pdevicesCmd)
 						);
