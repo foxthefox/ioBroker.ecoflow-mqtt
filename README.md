@@ -130,12 +130,17 @@ The 800W version is also implemented and only difference ist the 800W maximum po
 
 ## ToDo
 * check pstream value changes to 0 if pdata must be omitted
-* cleanup pstream/plugs creation
 * check forgotten boundary conditions for commands (inhibit cmd, or additional value)
 * cyclic lastQuotas call
 
 ## Changelog
-### 0.0.18
+### 0.0.19
+* (foxthefox) better error handling of incomplete messages from pstream
+* (foxthefox) added indication of time tasks
+* (foxthefox) cleanup pstream/plugs creation (both are protobuf)
+* (foxthefox) further refactoring of code -> devices must be again defined !
+
+### 0.0.18 (npm)
 * (foxthefox) correction of wrong version number io io-package.json
 
 ### 0.0.17
