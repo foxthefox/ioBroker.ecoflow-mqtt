@@ -131,7 +131,6 @@ The 800W version is also implemented and only difference ist the 800W maximum po
 ## ToDo
 * check pstream value changes to 0 if pdata must be omitted
 * check forgotten boundary conditions for commands (inhibit cmd, or additional value)
-* cyclic lastQuotas call
 
 ## Changelog
 ### 0.0.19
@@ -139,6 +138,11 @@ The 800W version is also implemented and only difference ist the 800W maximum po
 * (foxthefox) added indication of time tasks
 * (foxthefox) cleanup pstream/plugs creation (both are protobuf)
 * (foxthefox) further refactoring of code -> devices must be again defined !
+* (foxthefox) differentiation between actual energy values and historical
+* (foxthefox) getAllTimeTask for powerstations in structure info
+* (foxthefox) initial lastQuotas after adapter start for powerstream and plug
+* (foxthefox) interpreted unknown values have now clear names
+* (foxthefox) cyclic lastQuotas call instead of forced disconnect and reconnect (reconnects value only for checking, if stays with 0/null adapter has still mqtt telegrams)
 
 ### 0.0.18 (npm)
 * (foxthefox) correction of wrong version number io io-package.json

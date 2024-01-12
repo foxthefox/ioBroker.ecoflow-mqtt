@@ -97,7 +97,7 @@
 				},
 				"enableMqttReconnect": {
 					"type": "checkbox",
-					"label": "enable mqtt reconnection (5min)",
+					"label": "enable check for reconnects (10min)",
 					"newLine": true,
 					"sm": 12,
 					"md": 6,

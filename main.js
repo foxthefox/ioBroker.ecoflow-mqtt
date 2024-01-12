@@ -19,7 +19,7 @@ const { json } = require('stream/consumers');
 // const fs = require("fs");
 
 let recon_timer = null;
-let wait_recon = null;
+let lastQuotInterval = null;
 
 class EcoflowMqtt extends utils.Adapter {
 	/**
@@ -425,29 +425,11 @@ class EcoflowMqtt extends utils.Adapter {
 							this.client.subscribe(topics, async (err) => {
 								if (!err) {
 									this.log.debug('subscribed the topics');
-									//loop and timeout for requesting last quotas
-									try {
-										this.log.debug(JSON.stringify(this.pdevices));
-
-										for (const [ device, value ] of Object.entries(this.pdevices)) {
-											const devtype = value['devType'];
-											if (
-												devtype === 'pstream600' ||
-												devtype === 'pstream800' ||
-												devtype === 'plug'
-											) {
-												this.log.debug(device + ' -> latestQuotas requested');
-												const value = await this.getStateAsync(device + '.info.latestQuotas');
-												await this.setStateAsync(
-													device + '.info.latestQuotas',
-													value.val === true ? false : true,
-													false
-												);
-											}
-										}
-									} catch (error) {
-										this.log.debug('' + error);
-									}
+									//initial and interval for requesting last quotas
+									await ef.getLastQuotas(this, this.pdevices);
+									lastQuotInterval = setInterval(async () => {
+										await ef.getLastQuotas(this, this.pdevices);
+									}, 300 * 1000); // lastQuot every 5min
 								} else {
 									this.log.warn('could not subscribe to topics ' + err);
 								}
@@ -504,26 +486,32 @@ class EcoflowMqtt extends utils.Adapter {
 								this.log.debug('pstreamDecode call ->' + error);
 							}
 
-							if (this.config.showHex) {
-								this.log.debug(
-									topic +
-										' ' +
-										devtype +
-										' received ' +
-										msgtype +
-										' -> ' +
-										Buffer.from(message).toString('hex')
-								);
-							}
-
-							if (
-								this.config.msgUpdateValuePstream &&
-								(devtype === 'pstream600' || devtype === 'pstream800') &&
-								msgtype === 'update'
-							) {
+							if (this.config.msgUpdateValuePstream && msgtype === 'update') {
+								if (this.config.showHex) {
+									this.log.debug(
+										topic +
+											' ' +
+											devtype +
+											' received ' +
+											msgtype +
+											' -> ' +
+											Buffer.from(message).toString('hex')
+									);
+								}
 								this.log.debug(topic + '  ' + devtype + ' data update : ' + JSON.stringify(msgdecode));
 							}
-							if (this.config.msgSetGetPlug && devtype === 'plug' && msgtype !== 'update') {
+							if (this.config.msgSetGetPstream && msgtype !== 'update') {
+								if (this.config.showHex) {
+									this.log.debug(
+										topic +
+											' ' +
+											devtype +
+											' received ' +
+											msgtype +
+											' -> ' +
+											Buffer.from(message).toString('hex')
+									);
+								}
 								this.log.debug(
 									topic + ' ' + devtype + ' received ' + msgtype + ' -> ' + JSON.stringify(msgdecode)
 								);
@@ -620,37 +608,14 @@ class EcoflowMqtt extends utils.Adapter {
 					//reconnection trial
 					if (this.config.enableMqttReconnect) {
 						if (recon_timer) clearTimeout(recon_timer);
-						recon_timer = setTimeout(() => {
-							this.log.debug('no telegrams from devices');
-
-							if (this.client) {
-								this.client.end();
-							}
-							if (this.client) {
-								wait_recon = setTimeout(async () => {
-									this.client.on('connect', async () => {
-										this.log.debug('reconnected');
-										this.msgReconnects++;
-										await this.setStateAsync('info.msgReconnects', {
-											val: this.msgReconnects,
-											ack: true
-										});
-										if (topics.length > 0) {
-											if (this.client) {
-												this.client.subscribe(topics, (err) => {
-													if (!err) {
-														this.log.debug('subscribed the topics');
-													}
-												});
-											}
-										} else {
-											this.log.debug('no topics for subscription');
-										}
-										this.setState('info.connection', true, true);
-									});
-								}, 2000); // waiting time after client.end()
-							}
-						}, 30 * 1000); // retrigger time
+						recon_timer = setTimeout(async () => {
+							this.log.debug('no telegrams from devices within 10min');
+							this.msgReconnects++;
+							await this.setStateAsync('info.msgReconnects', {
+								val: this.msgReconnects,
+								ack: true
+							});
+						}, 600 * 1000); // retrigger time
 					}
 				});
 
@@ -665,11 +630,9 @@ class EcoflowMqtt extends utils.Adapter {
 
 				this.client.on('reconnect', async () => {
 					this.log.debug('Reconnecting to Ecoflow MQTT broker...');
-					this.msgReconnects++;
-					await this.setStateAsync('info.msgCountPstream', { val: this.msgReconnects, ack: true });
 				});
 			} catch (error) {
-				this.log.error('create states powerstation ' + error);
+				this.log.error('create mqtt client handling ' + error);
 			}
 		} else {
 			this.log.warn('check your mqtt credentials, they seem too short');
@@ -688,7 +651,7 @@ class EcoflowMqtt extends utils.Adapter {
 			// ...
 			// clearInterval(interval1);
 			if (recon_timer) clearTimeout(recon_timer);
-			if (wait_recon) clearTimeout(wait_recon);
+			if (lastQuotInterval) clearInterval(lastQuotInterval);
 			if (this.client) {
 				this.client.end();
 			}
@@ -766,17 +729,16 @@ class EcoflowMqtt extends utils.Adapter {
 								state.val,
 								cmd[channel][item]
 							);
-							this.log.debug('msgBuf ' + msgBuf);
-							this.log.debug('converted  Hex-String:' + Buffer.from(msgBuf).toString('hex'));
+							if (this.config.msgCmdPstream && this.config.showHex) {
+								this.log.debug('converted  Hex-String:' + Buffer.from(msgBuf).toString('hex'));
+							}
 
 							if (this.client) {
 								this.client.publish(topic, msgBuf, { qos: 1 }, (error) => {
 									if (error) {
 										this.log.error('Error when publishing the MQTT message:: ' + error);
 									} else {
-										if (this.config.msgCmdPlug && type === 'plug') {
-											this.log.debug('Message succesfully published.');
-										} else if (this.config.msgCmdPstream) {
+										if (this.config.msgCmdPstream) {
 											this.log.debug('Message succesfully published.');
 										}
 									}
@@ -797,8 +759,10 @@ class EcoflowMqtt extends utils.Adapter {
 								cmd[channel][item]
 							);
 							if (Object.keys(msg).length > 0) {
-								this.log.debug('publish  ' + topic);
-								this.log.debug('publish  ' + JSON.stringify(msg));
+								if (this.config.msgCmdPstation) {
+									this.log.debug('publish  ' + topic);
+									this.log.debug('publish  ' + JSON.stringify(msg));
+								}
 
 								if (this.client) {
 									this.client.publish(topic, JSON.stringify(msg), { qos: 1 }, (error) => {
