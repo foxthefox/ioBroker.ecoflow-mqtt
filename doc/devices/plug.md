@@ -27,7 +27,6 @@
 |unknown16| unknown16 |
 |unknown17| unknown17 |
 |unknown18| unknown18 |
-|unknown19| unknown19 |
 |unknown20| unknown20 |
 |unknown21| unknown21 |
 |unknown22| unknown22 |
@@ -56,8 +55,10 @@
 |volt|0 | 250 | V | 1 |  Plug AC voltage |
 |watts|0 | 2500 | W | 0.1 |  Plug AC power |
 |heartbeatFrequency|0 | 20 | 1/s | 1 |  Plug heartbeat |
+|uptime|0 | 9999999 | s | 1 |  Smart plug uptime |
+|cntDevices|0 | 20 | pcs | 1 |  Amount of PowerStream/Plugs |
 |streamOutputPower|0 | 800 | W | 0.1 |  Power Stream output power |
-|streamPowerPlugs|0 | 800 | W | 0.1 |  Power Stream output for plugs |
+|powerPlugs|0 | 1000 | W | 0.1 |  Power of plugs |
 |wifiRssi|-90 | 10 | dBm | 1 |  wifi RSSI |
 
 

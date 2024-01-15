@@ -143,7 +143,7 @@
 |X_Unknown_41| X_Unknown_41 |
 |X_Unknown_42| X_Unknown_42 |
 |X_Unknown_43| X_Unknown_43 |
-|X_Unknown_44| X_Unknown_44 |
+|plugsConn_44| X_Unknown_44 |
 |X_Unknown_47| X_Unknown_47 |
 |unixtime_48| X_Unknown_48 |
 |X_Unknown_49| X_Unknown_49 |
@@ -156,9 +156,10 @@
 |upperLimit|60 | 100 | % | 1 |  Charging upper limit |
 |lowerLimit|0 | 30 | % | 1 |  Discharging lower limit |
 |baseLoad|0 | 800 | W | 0.1 |  Home base load |
-|streamPowPlugsPos|0 | 800 | W | 0.1 |  Power to plugs from PowerStream |
+|powerPlugsPos|0 | 10000 | W | 0.1 |  Power of plugs |
 |uptime|0 | 9999999 | s | 1 |  Power Stream uptime |
 |gridWatt|0 | 10000 | W | 0.1 |  Power from Grid |
+|powerPlugsNeg|0 | 10000 | W | 0.1 |  Power of plugs (-) |
 |wifiRssi|-90 | 10 | dBm | 1 |  wifi RSSI |
 
 
