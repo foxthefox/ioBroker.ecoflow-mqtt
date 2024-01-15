@@ -139,10 +139,11 @@ The 800W version is also implemented and only difference ist the 800W maximum po
 * (foxthefox) cleanup pstream/plugs creation (both are protobuf)
 * (foxthefox) further refactoring of code -> devices must be again defined !
 * (foxthefox) differentiation between actual energy values and historical
-* (foxthefox) getAllTimeTask for powerstations in structure info
+* (foxthefox) getAllTaskCfg for powerstations in structure info
 * (foxthefox) initial lastQuotas after adapter start for powerstream and plug
 * (foxthefox) interpreted unknown values have now clear names
-* (foxthefox) cyclic lastQuotas call instead of forced disconnect and reconnect (reconnects value only for checking, if stays with 0/null adapter has still mqtt telegrams)
+* (foxthefox) cyclic latestQuotas call instead of forced disconnect and reconnect (reconnects value only for checking, if stays with 0/null adapter has still mqtt telegrams)
+* (foxthefox) new data points for deltamax
 
 ### 0.0.18 (npm)
 * (foxthefox) correction of wrong version number io io-package.json

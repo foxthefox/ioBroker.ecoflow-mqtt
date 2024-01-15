@@ -1,5 +1,5 @@
 # States for  DELTA
-### version: 0.0.16
+### version: 0.0.19
 
 [bmsMaster](#bmsMaster)
 
@@ -26,7 +26,7 @@
 |temp|0 | 80 | °C | 1 |  Temperature |
 |maxCellTemp|0 | 80 | °C | 1 |  Maximum cell temperature |
 |vol|0 | 60 | V | 0.001 |  Voltage |
-|amp|0 | 13 | A | 0.001 |  Current |
+|amp|0 | 25 | A | 0.001 |  Current |
 |outputWatts|0 | 4000 | W | 0.1 |  Output power |
 |soc|0 | 100 | % | 1 |  Remaining battery percentage |
 |minCellTemp|0 | 80 | °C | 1 |  Minimum cell temperature |
@@ -286,5 +286,6 @@
 
 | State  |      off    |  on |  Name |  cmd |
 |----------|:-------------:|:------:|------|------|
-|latestQuotas| no trigger | trigger | Get latest Quotas |  |
+|latestQuotas| no trigger | trigger | Get latest Quotas | {from:iOS,operateType:latestQuotas,id:83154039,lang:de-de,params:{},version:1.0} |
+|getAllTaskCfg| no trigger | trigger | Get all tasks | {from:iOS,operateType:getAllTaskCfg,id:83154039,lang:de-de,params:{},version:1.0} |
 

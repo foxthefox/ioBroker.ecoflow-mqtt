@@ -1,11 +1,13 @@
 # States for  RIVERPRO
-### version: 0.0.16
+### version: 0.0.19
 
 [bmsMaster](#bmsMaster)
 
 [inv](#inv)
 
 [pd](#pd)
+
+[info](#info)
 
 
 
@@ -14,7 +16,7 @@
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|amp|0 | 13 | A | 0.001 |  Current |
+|amp|0 | 25 | A | 0.001 |  Current |
 |cycles|0 | 6000 | cycles | 1 |  Number of cycles |
 |fullCap|0 | 80000 | mAh | 1 |  Full capacity |
 |maxCellTemp|0 | 80 | °C | 1 |  Maximum cell temperature |
@@ -160,4 +162,13 @@
 | State  |      Min     |     Max     |  Unit |  Mult |  Name |  cmd |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
 |standByMode| 0 | 5999 | min | 1 |  Device standby time /min 0 Never standby 5999 Max value | {from:Android,operateType:TCP,id:119032574,lang:en-us,params:{id:33,standByMode:360},version:1.0} |
+
+## info
+
+### switch
+
+| State  |      off    |  on |  Name |  cmd |
+|----------|:-------------:|:------:|------|------|
+|latestQuotas| no trigger | trigger | Get latest Quotas | {from:iOS,operateType:latestQuotas,id:83154039,lang:de-de,params:{},version:1.0} |
+|getAllTaskCfg| no trigger | trigger | Get all tasks | {from:iOS,operateType:getAllTaskCfg,id:83154039,lang:de-de,params:{},version:1.0} |
 

@@ -1,5 +1,5 @@
 # States for  PLUG
-### version: 0.0.16
+### version: 0.0.19
 
 [plug_heartbeat](#plug_heartbeat)
 
@@ -40,15 +40,11 @@
 |unknown29| unknown29 |
 |unknown30| unknown30 |
 |unknown31| unknown31 |
-|cntPlugs_32| count of included plugs |
-|streamPower_33| PS delivery power |
-|sumInclPlugs_34| sum power of included plugs *10 |
 |unknown35| unknown35 |
 |unknown36| unknown36 |
 |unknown37| unknown37 |
 |unknown38| unknown38 |
 |unknown39| unknown39 |
-|unknown40| unknown40 |
 
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
@@ -60,6 +56,9 @@
 |volt|0 | 250 | V | 1 |  Plug AC voltage |
 |watts|0 | 2500 | W | 0.1 |  Plug AC power |
 |heartbeatFrequency|0 | 20 | 1/s | 1 |  Plug heartbeat |
+|streamOutputPower|0 | 800 | W | 0.1 |  Power Stream output power |
+|streamPowerPlugs|0 | 800 | W | 0.1 |  Power Stream output for plugs |
+|wifiRssi|-90 | 10 | dBm | 1 |  wifi RSSI |
 
 
 ### switch
@@ -67,7 +66,7 @@
 | State  |      off    |  on |  Name |  cmd |
 |----------|:-------------:|:------:|------|------|
 |switch| off | on | Plug Switch | {cmdFunc:2,cmdId:129,dataLen:2} |
-|mesh_enable| off | on | Plug Mesh enable | {cmdFunc:2,cmdId:138,dataLen:2} |
+|meshEnable| off | on | Plug Mesh enable | {cmdFunc:2,cmdId:138,dataLen:2} |
 
 ### level
 

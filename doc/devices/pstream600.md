@@ -1,5 +1,5 @@
 # States for  PSTREAM
-### version: 0.0.16
+### version: 0.0.19
 
 [inverter_heartbeat](#inverter_heartbeat)
 
@@ -43,8 +43,6 @@
 |invFreq|0 | 52 | Hz | 0.1 |  Inverter AC frequency |
 |invDcCur|0 | 20 | A | 0.001 |  Inverter DC input current |
 |ratedPower|0 | 600 | W | 0.1 |  Inverter rated power |
-|dischTime|0 | 143999 | min | 1 |  Battery discharge time |
-|chargeTime|0 | 143999 | min | 1 |  Battery charge time |
 |heartbeatFrequency|0 | 20 | 1/s | 1 |  Inverter heartbeat |
 |dynamicWatts|0 | 600 | W | 0.1 |  Dynamic Power |
 |batChargingTime|0 | 144000 | min | 1 |  Battery Charging Time |
@@ -107,19 +105,14 @@
 
 | State  |  Name |
 |----------|------|
-|X_Unknown_1| X_Unknown_1 |
-|X_Unknown_2| X_Unknown_2 |
-|X_Unknown_3| X_Unknown_3 |
-|X_Unknown_4| X_Unknown_4 |
+|pv1_active_1| X_Unknown_1 |
+|pv1_status_2| X_Unknown_2 |
+|pv2_active_3| X_Unknown_3 |
+|pv2_status_4| X_Unknown_4 |
 |X_Unknown_5| X_Unknown_5 |
-|X_Unknown_6| X_Unknown_6 |
-|upperLimit_7| X_Unknown_7 |
-|lowerLimit_8| X_Unknown_8 |
-|X_Unknown_9| X_Unknown_9 |
-|X_Unknown_10| X_Unknown_10 |
+|status_9| X_Unknown_9 |
+|status_10| X_Unknown_10 |
 |X_Unknown_11| X_Unknown_11 |
-|baseLoad_12| X_Unknown_12 |
-|X_Unknown_13| X_Unknown_13 |
 |X_Unknown_14| X_Unknown_14 |
 |X_Unknown_15| X_Unknown_15 |
 |X_Unknown_16| X_Unknown_16 |
@@ -138,7 +131,6 @@
 |X_Unknown_29| X_Unknown_29 |
 |X_Unknown_30| X_Unknown_30 |
 |X_Unknown_31| X_Unknown_31 |
-|uptime_32| X_Unknown_32 |
 |X_Unknown_33| X_Unknown_33 |
 |X_Unknown_34| X_Unknown_34 |
 |X_Unknown_35| X_Unknown_35 |
@@ -151,14 +143,23 @@
 |X_Unknown_42| X_Unknown_42 |
 |X_Unknown_43| X_Unknown_43 |
 |X_Unknown_44| X_Unknown_44 |
-|gridWatt_45| X_Unknown_45 |
-|X_Unknown_46| X_Unknown_46 |
 |X_Unknown_47| X_Unknown_47 |
 |X_Unknown_48| X_Unknown_48 |
 |X_Unknown_49| X_Unknown_49 |
 |unixtime_50| X_Unknown_50 |
 |X_Unknown_51| X_Unknown_51 |
-|X_Unknown_52| X_Unknown_52 |
+
+### number
+| State  |      Min     |      Max     |  Unit |  Mult |  Name |
+|----------|:-------------:|:-------------:|:------:|:-----:|-----|
+|upperLimit|60 | 100 | % | 1 |  Charging upper limit |
+|lowerLimit|0 | 30 | % | 1 |  Discharging lower limit |
+|baseLoad|0 | 800 | W | 1 |  Home base load |
+|streamPowPlugsPos|0 | 800 | W | 0.1 |  Power to plugs from PowerStream |
+|uptime|0 | 9999999 | s | 1 |  Power Stream uptime |
+|gridWatt|0 | 10000 | W | 0.1 |  Power from Grid |
+|wifiRssi|-90 | 10 | dBm | 1 |  wifi RSSI |
+
 
 ## energy
 
