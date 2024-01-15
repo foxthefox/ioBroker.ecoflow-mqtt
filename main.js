@@ -739,7 +739,7 @@ class EcoflowMqtt extends utils.Adapter {
 										this.log.error('Error when publishing the MQTT message:: ' + error);
 									} else {
 										if (this.config.msgCmdPstream) {
-											this.log.debug('Message succesfully published.');
+											this.log.debug(topic + ' Message succesfully published.');
 										}
 									}
 								});
@@ -770,7 +770,7 @@ class EcoflowMqtt extends utils.Adapter {
 											this.log.error('Error when publishing the MQTT message: ' + error);
 										} else {
 											if (this.config.msgCmdPstation) {
-												this.log.debug('Message succesfully published.');
+												this.log.debug(topic + ' Message succesfully published.');
 											}
 										}
 									});
