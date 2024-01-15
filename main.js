@@ -77,6 +77,7 @@ class EcoflowMqtt extends utils.Adapter {
 			this.log.info('smartplug    -> ' + JSON.stringify(this.config.plugs));
 			this.log.info('wave         -> ' + JSON.stringify(this.config.waves));
 			this.log.info('glacier      -> ' + JSON.stringify(this.config.glaciers));
+
 			try {
 				//loop durch alle Geräte
 
@@ -486,7 +487,7 @@ class EcoflowMqtt extends utils.Adapter {
 								this.log.debug('pstreamDecode call ->' + error);
 							}
 
-							if (this.config.msgUpdateValuePstream && msgtype === 'update') {
+							if (this.config.msgUpdatePstream && msgtype === 'update') {
 								if (this.config.showHex) {
 									this.log.debug(
 										topic +
