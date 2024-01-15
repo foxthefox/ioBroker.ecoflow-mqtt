@@ -105,11 +105,12 @@
 
 | State  |  Name |
 |----------|------|
-|pv1_active_1| X_Unknown_1 |
-|pv1_status_2| X_Unknown_2 |
-|pv2_active_3| X_Unknown_3 |
-|pv2_status_4| X_Unknown_4 |
+|pv1Active_1| X_Unknown_1 |
+|pv1Status_2| X_Unknown_2 |
+|pv2Active_3| X_Unknown_3 |
+|pv2Status_4| X_Unknown_4 |
 |X_Unknown_5| X_Unknown_5 |
+|status_6| X_Unknown_6 |
 |status_9| X_Unknown_9 |
 |status_10| X_Unknown_10 |
 |X_Unknown_11| X_Unknown_11 |
@@ -144,7 +145,7 @@
 |X_Unknown_43| X_Unknown_43 |
 |X_Unknown_44| X_Unknown_44 |
 |X_Unknown_47| X_Unknown_47 |
-|X_Unknown_48| X_Unknown_48 |
+|unixtime_48| X_Unknown_48 |
 |X_Unknown_49| X_Unknown_49 |
 |unixtime_50| X_Unknown_50 |
 |X_Unknown_51| X_Unknown_51 |
@@ -154,7 +155,7 @@
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |upperLimit|60 | 100 | % | 1 |  Charging upper limit |
 |lowerLimit|0 | 30 | % | 1 |  Discharging lower limit |
-|baseLoad|0 | 800 | W | 1 |  Home base load |
+|baseLoad|0 | 800 | W | 0.1 |  Home base load |
 |streamPowPlugsPos|0 | 800 | W | 0.1 |  Power to plugs from PowerStream |
 |uptime|0 | 9999999 | s | 1 |  Power Stream uptime |
 |gridWatt|0 | 10000 | W | 0.1 |  Power from Grid |
