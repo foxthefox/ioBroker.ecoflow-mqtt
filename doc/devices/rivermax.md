@@ -1,11 +1,13 @@
 # States for  RIVERMAX
-### version: 0.0.16
+### version: 0.0.19
 
 [inv](#inv)
 
 [bmsMaster](#bmsMaster)
 
 [pd](#pd)
+
+[info](#info)
 
 
 
@@ -72,7 +74,7 @@
 |vol|0 | 60 | V | 0.001 |  Voltage |
 |minCellVol|0 | 60 | V | 0.001 |  Minimum cell voltage |
 |soc|0 | 100 | % | 1 |  Remaining battery percentage |
-|amp|0 | 13 | A | 0.001 |  Current |
+|amp|0 | 25 | A | 0.001 |  Current |
 |minCellTemp|0 | 80 | °C | 1 |  Minimum cell temperature |
 |minMosTemp|0 | 80 | °C | 1 |  Minimum MOS temperature |
 |maxCellVol|0 | 60 | V | 0.001 |  Maximum cell voltage |
@@ -152,4 +154,13 @@
 | State  |      Min     |     Max     |  Unit |  Mult |  Name |  cmd |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
 |standByMode| 0 | 5999 | min | 1 |  Device standby time /min 0 Never standby 5999 Max value | {from:Android,operateType:TCP,id:119032574,lang:en-us,params:{id:33,standByMode:360},version:1.0} |
+
+## info
+
+### switch
+
+| State  |      off    |  on |  Name |  cmd |
+|----------|:-------------:|:------:|------|------|
+|latestQuotas| no trigger | trigger | Get latest Quotas | {from:iOS,operateType:latestQuotas,id:83154039,lang:de-de,params:{},version:1.0} |
+|getAllTaskCfg| no trigger | trigger | Get all tasks | {from:iOS,operateType:getAllTaskCfg,id:83154039,lang:de-de,params:{},version:1.0} |
 

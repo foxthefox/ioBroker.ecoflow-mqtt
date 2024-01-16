@@ -97,7 +97,7 @@
 				},
 				"enableMqttReconnect": {
 					"type": "checkbox",
-					"label": "enable mqtt reconnection (5min)",
+					"label": "enable check for reconnects (10min)",
 					"newLine": true,
 					"sm": 12,
 					"md": 6,
@@ -111,46 +111,55 @@
 					"variant": "contained",
 					"jsonData": "{\"user\": \"${data.mqttUserName}\", \"pass\": \"${data.mqttPwd}\", \"url\": \"${data.mqttUrl}\", \"port\": ${data.mqttPort}, \"clientId\": \"${data.mqttClientId}\"}"
 				},
-				"_debugpstation": {
+				"_debugcommon": {
 					"newLine": true,
 					"type": "header",
-					"text": "Powerstation DEBUG settings",
+					"text": "common DEBUG settings",
 					"sm": 12,
 					"md": 12,
 					"lg": 12,
 					"size": 3
 				},
-				"msgStateCreationPstation": {
+				"msgStateCreation": {
 					"type": "checkbox",
-					"label": "msgStateCreationPstation",
+					"label": "msgStateCreation",
 					"sm": 12,
 					"md": 6,
 					"lg": 4
 				},
+				"_debugpstation": {
+					"newLine": true,
+					"type": "header",
+					"text": "Powerstation / Wave / Glacier DEBUG settings",
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"size": 3
+				},
 				"msgUpdatePstation": {
 					"type": "checkbox",
-					"label": "msgUpdatePstation",
+					"label": "msgUpdate",
 					"sm": 12,
 					"md": 6,
 					"lg": 4
 				},
 				"msgUpdateValuePstation": {
 					"type": "checkbox",
-					"label": "msgUpdateValuePstation",
+					"label": "msgUpdateValue",
 					"sm": 12,
 					"md": 6,
 					"lg": 4
 				},
 				"msgSetGetPstation": {
 					"type": "checkbox",
-					"label": "msgSetGetPstation",
+					"label": "msgSetGet",
 					"sm": 12,
 					"md": 6,
 					"lg": 4
 				},
 				"msgCmdPstation": {
 					"type": "checkbox",
-					"label": "msgCmdPstation",
+					"label": "msgCmd",
 					"sm": 12,
 					"md": 6,
 					"lg": 4
@@ -158,50 +167,43 @@
 				"_debugpstream": {
 					"newLine": true,
 					"type": "header",
-					"text": "Powerstream DEBUG settings",
+					"text": "Powerstream/ SmartPlug DEBUG settings",
 					"sm": 12,
 					"md": 12,
 					"lg": 12,
 					"size": 3
 				},
-				"msgStateCreationPstream": {
-					"type": "checkbox",
-					"label": "msgStateCreationPstream",
-					"sm": 12,
-					"md": 6,
-					"lg": 4
-				},
 				"msgUpdatePstream": {
 					"type": "checkbox",
-					"label": "msgUpdatePstream",
+					"label": "msgUpdate",
 					"sm": 12,
 					"md": 6,
 					"lg": 4
 				},
 				"msgUpdateValuePstream": {
 					"type": "checkbox",
-					"label": "msgUpdateValuePstream",
+					"label": "msgUpdateValue",
 					"sm": 12,
 					"md": 6,
 					"lg": 4
 				},
 				"msgSetGetPstream": {
 					"type": "checkbox",
-					"label": "msgSetGetPstream",
+					"label": "msgSetGet",
 					"sm": 12,
 					"md": 6,
 					"lg": 4
 				},
 				"msgCmdPstream": {
 					"type": "checkbox",
-					"label": "msgCmdPstream",
+					"label": "msgCmd",
 					"sm": 12,
 					"md": 6,
 					"lg": 4
 				},
 				"msgUnknownMsgPstream": {
 					"type": "checkbox",
-					"label": "msgUnknownMsgPstream",
+					"label": "msgUnknownMsg",
 					"sm": 12,
 					"md": 6,
 					"lg": 4
@@ -209,58 +211,6 @@
 				"showHex": {
 					"type": "checkbox",
 					"label": "showHex",
-					"sm": 12,
-					"md": 6,
-					"lg": 4
-				},
-
-				"_debugplug": {
-					"newLine": true,
-					"type": "header",
-					"text": "Smart Plug DEBUG settings",
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"size": 3
-				},
-				"msgStateCreationPlug": {
-					"type": "checkbox",
-					"label": "msgStateCreationPlug",
-					"sm": 12,
-					"md": 6,
-					"lg": 4
-				},
-				"msgUpdatePlug": {
-					"type": "checkbox",
-					"label": "msgUpdatePlug",
-					"sm": 12,
-					"md": 6,
-					"lg": 4
-				},
-				"msgUpdateValuePlug": {
-					"type": "checkbox",
-					"label": "msgUpdateValuePlug",
-					"sm": 12,
-					"md": 6,
-					"lg": 4
-				},
-				"msgSetGetPlug": {
-					"type": "checkbox",
-					"label": "msgSetGetPlug",
-					"sm": 12,
-					"md": 6,
-					"lg": 4
-				},
-				"msgCmdPlug": {
-					"type": "checkbox",
-					"label": "msgCmdPlug",
-					"sm": 12,
-					"md": 6,
-					"lg": 4
-				},
-				"msgUnknownMsgPlug": {
-					"type": "checkbox",
-					"label": "msgUnknownMsgPlug",
 					"sm": 12,
 					"md": 6,
 					"lg": 4
@@ -295,7 +245,7 @@
 							"type": "text",
 							"width": "20%",
 							"title": "name",
-							"attr": "pstreamName",
+							"attr": "devName",
 							"filter": false,
 							"sort": false,
 							"default": "My Pstream1"
@@ -304,7 +254,7 @@
 							"type": "text",
 							"width": "20%",
 							"title": "id",
-							"attr": "pstreamId",
+							"attr": "devId",
 							"filter": false,
 							"sort": false,
 							"default": "HW51"
@@ -318,7 +268,7 @@
 								{ "value": "pstream800", "label": "Powerstream 800W" }
 							],
 							"title": "Powerstream Type",
-							"attr": "pstreamType",
+							"attr": "devType",
 							"filter": false,
 							"sort": false,
 							"default": "none"
@@ -347,7 +297,7 @@
 					"items": [
 						{
 							"type": "text",
-							"attr": "pstationName",
+							"attr": "devName",
 							"width": "20%",
 							"title": "Name",
 
@@ -359,7 +309,7 @@
 							"type": "text",
 							"width": "20%",
 							"title": "id",
-							"attr": "pstationId",
+							"attr": "devId",
 							"filter": false,
 							"sort": false,
 							"default": "Dxxxx/Rxxxx"
@@ -381,7 +331,7 @@
 								{ "value": "river2pro", "label": "River 2 Pro" }
 							],
 							"title": "Power Station Type",
-							"attr": "pstationType",
+							"attr": "devType",
 							"filter": false,
 							"sort": false,
 							"default": "none"
@@ -390,7 +340,7 @@
 							"type": "checkbox",
 							"title": "Slave 1",
 							"width": "10%",
-							"hidden": "data.pstationType !== 'deltapro' && data.pstationType !== 'deltamax' && data.pstationType !== 'delta2max' && data.pstationType !== 'delta' && data.pstationType !== 'delta2'",
+							"hidden": "data.devType !== 'deltapro' && data.devType !== 'deltamax' && data.devType !== 'delta2max' && data.devType !== 'delta' && data.devType !== 'delta2'",
 							"attr": "pstationsSlave1",
 							"filter": false,
 							"sort": false,
@@ -400,7 +350,7 @@
 							"type": "checkbox",
 							"title": "Slave 2",
 							"width": "10%",
-							"hidden": "data.pstationType !== 'deltapro' && data.pstationType !== 'deltamax' && data.pstationType !== 'delta2max' ",
+							"hidden": "data.devType !== 'deltapro' && data.devType !== 'deltamax' && data.devType !== 'delta2max' ",
 							"attr": "pstationsSlave2",
 							"filter": false,
 							"sort": false,
@@ -432,7 +382,7 @@
 							"type": "text",
 							"width": "20%",
 							"title": "name",
-							"attr": "plugName",
+							"attr": "devName",
 							"filter": false,
 							"sort": false,
 							"default": "My Plug1"
@@ -441,7 +391,7 @@
 							"type": "text",
 							"width": "20%",
 							"title": "id",
-							"attr": "plugId",
+							"attr": "devId",
 							"filter": false,
 							"sort": false,
 							"default": "HW52"
@@ -451,7 +401,7 @@
 							"width": "20%",
 							"options": [ { "value": "none", "label": "none" }, { "value": "plug", "label": "Plug" } ],
 							"title": "Plug Type",
-							"attr": "plugType",
+							"attr": "devType",
 							"filter": false,
 							"sort": false,
 							"default": "none"
@@ -488,7 +438,7 @@
 							"type": "text",
 							"width": "20%",
 							"title": "name",
-							"attr": "pstationName",
+							"attr": "devName",
 							"filter": false,
 							"sort": false,
 							"default": "My Wave1"
@@ -497,7 +447,7 @@
 							"type": "text",
 							"width": "20%",
 							"title": "id",
-							"attr": "pstationId",
+							"attr": "devId",
 							"filter": false,
 							"sort": false,
 							"default": "KT21.."
@@ -510,7 +460,7 @@
 								{ "value": "wave", "label": "Wave Air Con" }
 							],
 							"title": "Wave Type",
-							"attr": "pstationType",
+							"attr": "devType",
 							"filter": false,
 							"sort": false,
 							"default": "none"
@@ -541,7 +491,7 @@
 							"type": "text",
 							"width": "20%",
 							"title": "name",
-							"attr": "pstationName",
+							"attr": "devName",
 							"filter": false,
 							"sort": false,
 							"default": "My Glacier1"
@@ -550,7 +500,7 @@
 							"type": "text",
 							"width": "20%",
 							"title": "id",
-							"attr": "pstationId",
+							"attr": "devId",
 							"filter": false,
 							"sort": false,
 							"default": "BX11.."
@@ -563,7 +513,7 @@
 								{ "value": "glacier", "label": "Glacier Cooler" }
 							],
 							"title": "Glacier Type",
-							"attr": "pstationType",
+							"attr": "devType",
 							"filter": false,
 							"sort": false,
 							"default": "none"

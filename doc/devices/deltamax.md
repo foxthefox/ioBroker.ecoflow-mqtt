@@ -1,5 +1,5 @@
 # States for  DELTAMAX
-### version: 0.0.16
+### version: 0.0.19
 
 [bmsMaster](#bmsMaster)
 
@@ -26,7 +26,7 @@
 |temp|0 | 80 | °C | 1 |  Temperature |
 |maxCellTemp|0 | 80 | °C | 1 |  Maximum cell temperature |
 |vol|0 | 60 | V | 0.001 |  Voltage |
-|amp|0 | 13 | A | 0.001 |  Current |
+|amp|0 | 25 | A | 0.001 |  Current |
 |outputWatts|0 | 4000 | W | 0.1 |  Output power |
 |soc|0 | 100 | % | 1 |  Remaining battery percentage |
 |minCellTemp|0 | 80 | °C | 1 |  Minimum cell temperature |
@@ -39,6 +39,7 @@
 |minCellVol|0 | 60 | V | 0.001 |  Minimum cell voltage |
 |fullCap|0 | 80000 | mAh | 1 |  Full capacity |
 |cycles|0 | 6000 | cycles | 1 |  Number of cycles |
+|maxVolDiff|0 | 500 | mV | 0.001 |  Maximum cell voltage difference |
 
 
 ### string
@@ -59,6 +60,8 @@
 |type| BMS type | {1:Lithium battery,2:Oil-powered} |
 |errCode| Global error code | {0:OK?} |
 |cellId| Battery capacity type | {1:2.5 Ah per battery,2:2 Ah per battery} |
+|balanceState| Balance State | {0:0&#x3D;OK?,1:1?,2:2?} |
+|mosState| Battery capacity type | {0:0?,1:1?,2:2?,3:3?} |
 
 ## ems
 
@@ -287,5 +290,6 @@
 
 | State  |      off    |  on |  Name |  cmd |
 |----------|:-------------:|:------:|------|------|
-|latestQuotas| no trigger | trigger | Get latest Quotas |  |
+|latestQuotas| no trigger | trigger | Get latest Quotas | {from:iOS,operateType:latestQuotas,id:83154039,lang:de-de,params:{},version:1.0} |
+|getAllTaskCfg| no trigger | trigger | Get all tasks | {from:iOS,operateType:getAllTaskCfg,id:83154039,lang:de-de,params:{},version:1.0} |
 

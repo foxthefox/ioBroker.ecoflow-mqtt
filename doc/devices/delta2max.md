@@ -1,5 +1,5 @@
 # States for  DELTA2MAX
-### version: 0.0.16
+### version: 0.0.19
 
 [bmsMaster](#bmsMaster)
 
@@ -11,6 +11,8 @@
 
 [pd](#pd)
 
+[info](#info)
+
 
 
 ## bmsMaster
@@ -18,7 +20,7 @@
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|amp|0 | 13 | A | 0.001 |  Current |
+|amp|0 | 25 | A | 0.001 |  Current |
 |cycles|0 | 6000 | cycles | 1 |  Number of cycles |
 |designCap|0 | 80000 | mAh | 1 |  Design capacity |
 |f32ShowSoc|0 | 100 | % | 1 |  SOC |
@@ -313,4 +315,13 @@
 |----------|:-------------:|:------:|------|------|
 |dcOutState| off | on | DC button state | {valName:enabled,moduleType:1,operateType:dcOutCfg,params:{enabled:1}} |
 |newAcAutoOnCfg| off | on | AC auto out Config | {valName:enabled,moduleType:1,operateType:newAcAutoOnCfg,params:{enabled:1,minAcSoc:5}} |
+
+## info
+
+### switch
+
+| State  |      off    |  on |  Name |  cmd |
+|----------|:-------------:|:------:|------|------|
+|latestQuotas| no trigger | trigger | Get latest Quotas | {valName:,operateType:latestQuotas,params:{},version:1.0} |
+|getAllTaskCfg| no trigger | trigger | Get all tasks | {valName:,moduleType:1,operateType:getAllTaskCfg,params:{}} |
 

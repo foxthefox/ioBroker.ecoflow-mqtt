@@ -1,5 +1,5 @@
 # States for  GLACIER
-### version: 0.0.16
+### version: 0.0.19
 
 [pd](#pd)
 
@@ -169,7 +169,7 @@
 |minCellTmp|0 | 60 | °C | 1 |  Minimum cell temperature |
 |maxCellTmp|0 | 60 | °C | 1 |  Maximum cell temperature |
 |remainTime|0 | 143999 | min | 1 |  Time remaining |
-|amp|0 | 13 | A | 0.001 |  Current |
+|amp|0 | 25 | A | 0.001 |  Current |
 
 
 ### string

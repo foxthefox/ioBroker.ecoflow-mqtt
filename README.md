@@ -129,13 +129,23 @@ The 800W version is also implemented and only difference ist the 800W maximum po
 ![Glacier](./doc/devices/glacier.md)
 
 ## ToDo
-* check pstream value changes to 0 if pdata must be omitted
-* cleanup pstream/plugs creation
 * check forgotten boundary conditions for commands (inhibit cmd, or additional value)
-* cyclic lastQuotas call
 
 ## Changelog
-### 0.0.18
+### 0.0.19
+* (foxthefox) better error handling of incomplete messages from pstream
+* (foxthefox) added indication of time tasks
+* (foxthefox) cleanup pstream/plugs creation (both are protobuf)
+* (foxthefox) further refactoring of code -> devices must be again defined !
+* (foxthefox) differentiation between actual energy values and historical
+* (foxthefox) getAllTaskCfg for powerstations in structure info
+* (foxthefox) initial lastQuotas after adapter start for powerstream and plug
+* (foxthefox) interpreted unknown values have now clear names
+* (foxthefox) cyclic latestQuotas call instead of forced disconnect and reconnect (reconnects value only for checking, if stays with 0/null adapter has still mqtt telegrams)
+* (foxthefox) new data points for deltamax
+* (foxthefox) corrected pstream value changes to 0 (numbers), pdata must be omitted
+
+### 0.0.18 (npm)
 * (foxthefox) correction of wrong version number io io-package.json
 
 ### 0.0.17

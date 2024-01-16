@@ -1,5 +1,5 @@
 # States for  PLUG
-### version: 0.0.16
+### version: 0.0.19
 
 [plug_heartbeat](#plug_heartbeat)
 
@@ -27,7 +27,6 @@
 |unknown16| unknown16 |
 |unknown17| unknown17 |
 |unknown18| unknown18 |
-|unknown19| unknown19 |
 |unknown20| unknown20 |
 |unknown21| unknown21 |
 |unknown22| unknown22 |
@@ -39,16 +38,12 @@
 |unknown28| unknown28 |
 |unknown29| unknown29 |
 |unknown30| unknown30 |
-|unknown31| unknown31 |
-|cntPlugs_32| count of included plugs |
-|streamPower_33| PS delivery power |
-|sumInclPlugs_34| sum power of included plugs *10 |
+|streamConn_31| unknown31 |
 |unknown35| unknown35 |
 |unknown36| unknown36 |
 |unknown37| unknown37 |
-|unknown38| unknown38 |
-|unknown39| unknown39 |
-|unknown40| unknown40 |
+|unixtime_38| unknown38 |
+|dynWattEnable_39| unknown39 |
 
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
@@ -60,6 +55,11 @@
 |volt|0 | 250 | V | 1 |  Plug AC voltage |
 |watts|0 | 2500 | W | 0.1 |  Plug AC power |
 |heartbeatFrequency|0 | 20 | 1/s | 1 |  Plug heartbeat |
+|uptime|0 | 9999999 | s | 1 |  Smart plug uptime |
+|cntDevices|0 | 20 | pcs | 1 |  Amount of PowerStream/Plugs |
+|streamOutputPower|0 | 800 | W | 0.1 |  Power Stream output power |
+|powerPlugs|0 | 1000 | W | 0.1 |  Power of plugs |
+|wifiRssi|-90 | 10 | dBm | 1 |  wifi RSSI |
 
 
 ### switch
@@ -67,7 +67,7 @@
 | State  |      off    |  on |  Name |  cmd |
 |----------|:-------------:|:------:|------|------|
 |switch| off | on | Plug Switch | {cmdFunc:2,cmdId:129,dataLen:2} |
-|mesh_enable| off | on | Plug Mesh enable | {cmdFunc:2,cmdId:138,dataLen:2} |
+|meshEnable| off | on | Plug Mesh enable | {cmdFunc:2,cmdId:138,dataLen:2} |
 
 ### level
 

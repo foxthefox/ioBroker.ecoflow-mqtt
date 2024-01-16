@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "ecoflow-mqtt",
-        "version": "0.0.18",
+        "version": "0.0.19",
         "news": {
+            "0.0.19": {
+                "en": "better error handling of incomplete messages from pstream; added indication of time tasks, code refactoring",
+                "de": "bessere Fehlerbehandlung unvollständiger Nachrichten von pstream; Anzeige von Zeitaufgaben und Code-Refactoring hinzugefügt",
+                "ru": "улучшенная обработка ошибок неполных сообщений от pstream; добавлена ​​индикация времени выполнения задач, рефакторинг кода",
+                "pt": "melhor tratamento de erros de mensagens incompletas do pstream; indicação adicional de tarefas de tempo, refatoração de código",
+                "nl": "betere foutafhandeling van onvolledige berichten van pstream; toegevoegde indicatie van tijdtaken, refactoring van code",
+                "fr": "meilleure gestion des erreurs des messages incomplets de pstream ; ajout d'une indication des tâches temporelles, refactorisation du code",
+                "it": "migliore gestione degli errori dei messaggi incompleti da pstream; aggiunta indicazione delle attività temporali, refactoring del codice",
+                "es": "mejor manejo de errores de mensajes incompletos de pstream; indicación adicional de tareas de tiempo, refactorización de código",
+                "pl": "lepsza obsługa błędów niekompletnych wiadomości z pstream; dodano wskazanie zadań czasowych, refaktoryzację kodu",
+                "uk": "покращена обробка помилок незавершених повідомлень з pstream; додана індикація часу завдань, рефакторинг коду",
+                "zh-cn": "更好地处理来自 pstream 的不完整消息的错误；添加时间任务指示、代码重构"
+            },
             "0.0.18": {
                 "en": "correction of wrong version number io io-package.json",
                 "de": "Korrektur der falschen Versionsnummer io io-package.json",
@@ -371,12 +384,11 @@
         "plugs": [],
         "waves": [],
         "glaciers": [],
-        "msgStateCreationPstation": false,
+        "msgStateCreation": false,
         "msgUpdatePstation": false,
         "msgUpdateValuePstation": false,
         "msgSetGetPstation": true,
         "msgCmdPstation": true,
-        "msgStateCreationPstream": false,
         "msgUpdatePstream": false,
         "msgUpdateValuePstream": false,
         "msgSetGetPstream": false,
