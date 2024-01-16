@@ -38,12 +38,12 @@
 |unknown28| unknown28 |
 |unknown29| unknown29 |
 |unknown30| unknown30 |
-|unknown31| unknown31 |
+|streamConn_31| unknown31 |
 |unknown35| unknown35 |
 |unknown36| unknown36 |
 |unknown37| unknown37 |
-|unknown38| unknown38 |
-|unknown39| unknown39 |
+|unixtime_38| unknown38 |
+|dynWattEnable_39| unknown39 |
 
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |

@@ -158,7 +158,7 @@
 |baseLoad|0 | 800 | W | 0.1 |  Home base load |
 |powerPlugsPos|0 | 10000 | W | 0.1 |  Power of plugs |
 |uptime|0 | 9999999 | s | 1 |  Power Stream uptime |
-|gridWatt|0 | 10000 | W | 0.1 |  Power from Grid |
+|gridWatt_45|0 | 10000 | W | 0.1 |  Power from Grid |
 |powerPlugsNeg|0 | 10000 | W | 0.1 |  Power of plugs (-) |
 |wifiRssi|-90 | 10 | dBm | 1 |  wifi RSSI |
 
@@ -172,8 +172,6 @@
 |watth2|0 | 6000 | Wh | 1 |  Energy to smart plugs |
 |watth3|0 | 6000 | Wh | 1 |  Energy to battery |
 |watth4|0 | 6000 | Wh | 1 |  Energy from battery |
-|watth5|0 | 60000 | Wh | 1 |  Energy of smart plug |
-|watth6|0 | 1440 | min | 1 |  Smart plug ON time |
 |watth7|0 | 6000 | Wh | 1 |  Energy from solar PV1 |
 |watth8|0 | 6000 | Wh | 1 |  Energy from solar PV2 |
 

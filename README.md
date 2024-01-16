@@ -129,7 +129,6 @@ The 800W version is also implemented and only difference ist the 800W maximum po
 ![Glacier](./doc/devices/glacier.md)
 
 ## ToDo
-* check pstream value changes to 0 if pdata must be omitted
 * check forgotten boundary conditions for commands (inhibit cmd, or additional value)
 
 ## Changelog
@@ -144,6 +143,7 @@ The 800W version is also implemented and only difference ist the 800W maximum po
 * (foxthefox) interpreted unknown values have now clear names
 * (foxthefox) cyclic latestQuotas call instead of forced disconnect and reconnect (reconnects value only for checking, if stays with 0/null adapter has still mqtt telegrams)
 * (foxthefox) new data points for deltamax
+* (foxthefox) corrected pstream value changes to 0 (numbers), pdata must be omitted
 
 ### 0.0.18 (npm)
 * (foxthefox) correction of wrong version number io io-package.json
