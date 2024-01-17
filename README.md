@@ -132,7 +132,10 @@ The 800W version is also implemented and only difference ist the 800W maximum po
 * check forgotten boundary conditions for commands (inhibit cmd, or additional value)
 
 ## Changelog
-### 0.0.19
+### 0.0.20
+* (foxthefox) first additional integration tests
+
+### 0.0.19 (npm)
 * (foxthefox) better error handling of incomplete messages from pstream
 * (foxthefox) added indication of time tasks
 * (foxthefox) cleanup pstream/plugs creation (both are protobuf)
