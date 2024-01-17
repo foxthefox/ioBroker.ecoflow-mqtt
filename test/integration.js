@@ -468,6 +468,9 @@ tests.integration(path.join(__dirname, '..'), {
 					}
 				}
 			});
+			after(() => {
+				console.log('test finished');
+			});
 		}); //suite
 	} //defineAdditionalTests
 });
