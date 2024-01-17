@@ -1,7 +1,7 @@
 {
 	"code": "0",
 	"data": {
-		"sn": "R351ZEB4HF3A0360",
+		"sn": "R351ZEB4xxxxxx",
 		"productType": 81,
 		"model": 1,
 		"online": 1,
@@ -21,7 +21,7 @@
 			"bms_slave_bmsSlaveStatus_2.balanceState": 0,
 			"bms_slave_bmsSlaveStatus_1.maxCellVol": 3329,
 			"bms_slave_bmsSlaveStatus_1.soc": 75,
-			"bms_slave_bmsSlaveStatus_1.packSn": "R361Z1B4HF5A0360",
+			"bms_slave_bmsSlaveStatus_1.packSn": "R361Z1B4xxxx",
 			"bms_slave_bmsSlaveStatus_1.num": 1,
 			"inv.invOutFreq": 0,
 			"bms_bmsStatus.vol": 52856,
@@ -144,7 +144,7 @@
 					"f32Soc": 74.5,
 					"soc": 75,
 					"avaFlag": 1,
-					"sn": "R361Z1B4HF5A0360",
+					"sn": "R361Z1Bxxxxxx",
 					"detail": 4,
 					"type": 81,
 					"loadVer": 33619974
@@ -156,7 +156,7 @@
 					"f32Soc": 0,
 					"soc": 0,
 					"avaFlag": 1,
-					"sn": "HW51ZEH4SF5R3047",
+					"sn": "HW51ZEHxxxxxxxx",
 					"detail": 1,
 					"type": 75,
 					"loadVer": 83886338
