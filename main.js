@@ -47,6 +47,7 @@ class EcoflowMqtt extends utils.Adapter {
 		this.pdevicesStatesDict = {};
 		this.pdevicesStates = {};
 		this.pdevicesCmd = {};
+		this.quotas = {};
 
 		this.on('ready', this.onReady.bind(this));
 		this.on('stateChange', this.onStateChange.bind(this));
@@ -801,7 +802,7 @@ class EcoflowMqtt extends utils.Adapter {
 	//  */
 	async onMessage(obj) {
 		this.log.info('send command');
-		this.log.info('obj ' + JSON.stringify(obj));
+		//this.log.info('obj ' + JSON.stringify(obj));
 		//this.log.info('obj ' + obj.message);
 		if (!obj || !obj.command) {
 			return;
@@ -845,19 +846,15 @@ class EcoflowMqtt extends utils.Adapter {
 			case 'quota':
 				if (obj.callback && obj.message) {
 					this.log.info('send msg quota data');
-					const id = obj.message['devId'];
-					if (id) {
-						this.sendTo(
-							obj.from,
-							obj.command,
-							{
-								error: 'got id' + id
-							},
-							obj.callback
-						);
-					} else {
-						this.sendTo(obj.from, obj.command, { error: 'no Id' }, obj.callback);
-					}
+					const quotas = JSON.stringify(this.quotas);
+					this.sendTo(
+						obj.from,
+						obj.command,
+						{
+							error: 'device data:' + quotas
+						},
+						obj.callback
+					);
 				}
 				break;
 			case 'test': {

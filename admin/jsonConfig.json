@@ -127,6 +127,16 @@
 					"md": 6,
 					"lg": 4
 				},
+				"getQuota": {
+					"type": "sendTo",
+					"hidden": "false",
+					"label": "Debug Quotas",
+					"command": "quota",
+					"variant": "contained",
+					"sm": 12,
+					"md": 6,
+					"lg": 4
+				},
 				"_debugpstation": {
 					"newLine": true,
 					"type": "header",
@@ -272,14 +282,6 @@
 							"filter": false,
 							"sort": false,
 							"default": "none"
-						},
-						{
-							"type": "sendTo",
-							"hidden": "false",
-							"label": "Debug Quotas",
-							"command": "quota",
-							"variant": "contained",
-							"jsonData": "{\"devId\": \"${data.devId}\"}"
 						}
 					]
 				},
@@ -363,23 +365,6 @@
 							"filter": false,
 							"sort": false,
 							"default": false
-						},
-						{
-							"type": "checkbox",
-							"attr": "quotachk1",
-							"width": "5% ",
-							"title": "checkbox",
-							"tooltip": "Click on it",
-							"filter": false,
-							"sort": false,
-							"default": true
-						},
-						{
-							"type": "textSendTo",
-							"label": "lblStationId",
-							"command": "textSendTo1",
-							"jsonData": "{\"devId\": \"${data.devId}\"}",
-							"alsoDependsOn": [ "quotachk1" ]
 						}
 					]
 				},
@@ -430,14 +415,6 @@
 							"filter": false,
 							"sort": false,
 							"default": "none"
-						},
-						{
-							"type": "sendTo",
-							"hidden": "false",
-							"label": "Debug Quotas",
-							"command": "quota",
-							"variant": "contained",
-							"jsonData": "{\"devId\": \"${data.devId}\"}"
 						}
 					]
 				}
@@ -497,14 +474,6 @@
 							"filter": false,
 							"sort": false,
 							"default": "none"
-						},
-						{
-							"type": "sendTo",
-							"hidden": "false",
-							"label": "Debug Quotas",
-							"command": "quota",
-							"variant": "contained",
-							"jsonData": "{\"devId\": \"${data.devId}\"}"
 						}
 					]
 				},
@@ -558,14 +527,6 @@
 							"filter": false,
 							"sort": false,
 							"default": "none"
-						},
-						{
-							"type": "sendTo",
-							"hidden": "false",
-							"label": "Debug Quotas",
-							"command": "quota",
-							"variant": "contained",
-							"jsonData": "{\"devId\": \"${data.devId}\"}"
 						}
 					]
 				}
