@@ -127,6 +127,14 @@
 					"md": 6,
 					"lg": 4
 				},
+				"getQuota": {
+					"type": "sendTo",
+					"hidden": "false",
+					"label": "Debug Quotas",
+					"command": "quota",
+					"variant": "contained",
+					"jsonData": "{\"quota\": \"now\"}"
+				},
 				"_debugpstation": {
 					"newLine": true,
 					"type": "header",

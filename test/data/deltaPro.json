@@ -18,7 +18,6 @@
 		"bmsMaster.type": 1,
 		"bmsMaster.minCellTemp": 22,
 		"bmsMaster.errCode": 0,
-		"latestTimeStamp": 1698058625198,
 		"bmsMaster.maxMosTemp": 24,
 		"bmsMaster.tagChgAmp": 48000,
 		"bmsMaster.maxCellVol": 3320,

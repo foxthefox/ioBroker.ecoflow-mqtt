@@ -1,0 +1,188 @@
+bms_bmsStatus.hwVersion 	int 	Hardware version, for example, V0.1.1; 6 bytes
+mppt.faultCode 	int 	Error code: byte0: mppt_fault; byte1: car_fault; byte2: dc24v_fault
+mppt.dc24vState 	int 	DCDC24V switch status: 0: off; 1: on
+pd.wattsInSum 	int 	Total input power (W)
+bms_emsStatus.maxChargeSoc 	int 	Maximum charging SOC
+pd.wifiVer 	int 	Wi-Fi version
+inv.cfgAcWorkMode 	int 	AC charging mode: 0: full power; 1: mute
+bms_bmsStatus.designCap 	int 	Design capacity (mAh)
+bms_bmsStatus.temp 	int 	Temperature (℃)
+bms_bmsStatus.f32ShowSoc 	int 	Battery level SOC_float
+pd.bpPowerSoc 	int 	Backup reserve percentage
+bms_bmsStatus.outputWatts 	int 	Output power
+pd.beepMode 	int 	PD BEEP mode: 0: Normal; 1: Mute
+mppt.pv2ChgPauseFlag 	int 	PV2 charging pause flag bit: 1: charging stopped
+pd.typec2Watts 	int 	Type-C 2 output power (W)
+inv.outputWatts 	int 	Discharging power (W)
+bms_bmsStatus.vol 	int 	Voltage (mV)
+pd.pv1ChargeWatts 	int 	PV1 power
+inv.invOutFreq 	int 	Inverter output frequency (Hz): 50 or 60;
+mppt.inAmp 	int 	PV1 input current (mA)
+bms_emsStatus.bmsIsConnt 	int 	BMS online signal: BIT0: hardware online signal; BIT1: software online signal
+bms_bmsStatus.maxVolDiff 	int 	Cell voltage difference
+mppt.pv2ChgState 	int 	PV2 charging status: 0: disabled; 1: charging; 2: standby (DC charging stopped during AC charging)
+pd.XT150Watts1 	int 	XT150 No. 1 interface power (W): -: output; +: input
+bms_emsStatus.dsgCmd 	int 	Discharge command
+bms_bmsStatus.fullCap 	int 	Full capacity (mAh)
+mppt.inVol 	int 	PV1 input voltage (mV)
+pd.XT150Watts2 	int 	XT150 No. 2 interface power (W): -: output; +: input
+bms_emsStatus.chgVol 	int 	Charging voltage
+bms_bmsStatus.balanceState 	int 	Balance status
+pd.icoBytes 	int 	ICO flag bit
+inv.fanState 	int 	Fan status: 0: disabled; 1: Level 1; 2: Level 2; 3: Level 3
+inv.acChgRatedPower 	int 	AC charging power
+pd.usb1Watts 	int 	Common USB1 output power (W)
+inv.cfgAcXboost 	int 	X-Boost switch: 0: off; 1: on
+inv.outTemp 	int 	INV temperature (℃)
+mppt.res 	int 	Reserve 4 bytes
+mppt.dcdc12vAmp 	int 	Anderson output current: The actual current is amplified 100 times. This parameter is valid only for DELTA Pro.
+inv.invOutVol 	int 	Inverter actual output voltage (mV)
+bms_bmsStatus.errCode 	int 	BMS error code
+mppt.pv2MpptTemp 	int 	PV2 input power: The actual voltage is amplified 10 times.
+bms_emsStatus.chgAmp 	int 	Charging current
+inv.inputWatts 	int 	Charging power (W)
+bms_emsStatus.chgState 	int 	Charging state: 0: disabled; 1: CC 2: CV 3: UPS 4: PARA 0x55: Charging error
+bms_bmsStatus.inputWatts 	int 	Input power
+mppt.pv2CfgChgType 	int 	Charging type configured for PV2: This parameter is valid when pv2_xt60_chg_type is 0. 0: auto; 1: MPPT; 2: adapter
+pd.watchIsConfig 	int 	Power management configuration: 0: disable; 1: enable
+bms_emsStatus.openBmsIdx 	int 	BMS enable index: bit0: host (#1); bit1: #2; bit2: #3
+pd.typec2Temp 	int 	Type-C 2 temperature (℃)
+pd.carUsedTime 	int 	CAR port use time (s)
+pd.typec1Watts 	int 	Type-C 1 output power (W)
+pd.chgDsgState 	int 	Charging/discharging status on screen: 1: discharging; 2: charging
+inv.chgPauseFlag 	int 	AC charging pause flag: 1: charging stopped
+inv.acInFreq 	int 	Inverter input frequency (Hz)
+mppt.carStandbyMin 	int 	Auto shutdown when there is no load: 0: never shut down; default value: 12 x 60 min, unit: minute
+pd.pv2ChargeType 	int 	PV2 charging type: 0: none; 1: adapter; 2: solar panel
+pd.otherKitState 	int 	GNP:bit0-1
+pd.soc 	int 	Show SOC
+inv.invOutAmp 	int 	Inverter output current (mA)
+bms_emsStatus.fanLevel 	int 	Fan level
+mppt.carOutVol 	int 	Car charging output voltage (mV): The actual voltage is amplified 10 times.
+inv.standbyMin 	int 	Auto shutdown when there is no load: 0: never shut down, default value: 12 x 60 min, unit: minute
+mppt.pv2ChgType 	int 	Actual PV2 charging type: 0: null; 1: adapter (adapter/DC); 2: MPPT (solar power); 3: AC (mains supply); 4: gas; 5: wind
+inv.dcInVol 	int 	DC input voltage (mV)
+pd.acAutoPause 	int 	Whether the new AC Always On feature suspends enabling AC due to manual operations
+pd.dsgPowerDC 	int 	Cumulative DC power discharged for PD (Wh)
+inv.SlowChgWatts 	int 	Maximum charging power for AC slow charging (W): DELTA2000 (100 W–700 W); DELTA MINI (TBD); DELTA3000 (TBD)
+inv.dcInAmp 	int 	DC input current (mA)
+mppt.carOutAmp 	int 	Car charging output current (mA): The actual current is amplified 100 times.
+pd.typecUsedTime 	int 	Type-C use time (s)
+inv.prBalanceMode 	int 	0: current balance; 1: voltage balance
+bms_bmsStatus.remainCap 	int 	Remaining capacity (mAh)
+pd.brightLevel 	int 	PD LCD brightness level: 0–3
+inv.dcInTemp 	int 	DC temperature (℃)
+mppt.pv2InVol 	int 	PV2 input voltage: The actual voltage is amplified 10 times.
+pd.acAutoOnCfg 	int 	AC Always On: 0: none; 1: enable AC Always On
+bms_emsStatus.maxAvailNum 	int 	Maximum available quantity
+mppt.dcdc12vVol 	int 	Anderson output voltage: The actual voltage is amplified 10 times. This parameter is valid only for DELTA Pro.
+pd.newAcAutoOnCfg 	int 	New AC Always On configuration: 0: disable; 1: enable
+bms_emsStatus.maxCloseOilEb 	int 	SOC for turning off Smart Generator
+pd.minAcSoc 	int 	Minimum SOC for enabling the new AC Always On feature
+pd.wattsOutSum 	int 	Total output power (W)
+mppt.carOutWatts 	int 	Car charging output power (W): The actual power is amplified 10 times.
+pd.relaySwitchCnt 	int 	Number of relay disconnections
+bms_bmsStatus.recv 	int 	Reserved bytes
+mppt.outVol 	int 	PV output voltage (mV): The actual voltage is amplified 10 times.
+bms_emsStatus.f32LcdShowSoc 	int 	SOC value displayed on LCD: used for showing the SOC value with a decimal point
+inv.cfgAcEnabled 	int 	AC switch: 0: off; 1: on
+bms_emsStatus.paraVolMax 	int 	Maximum voltage when two devices work in parallel
+mppt.chgType 	int 	Actual PV1 charging type: 0: null; 1: adapter (adapter/DC); 2: MPPT (solar power); 3: AC (mains supply); 4: gas; 5: wind
+pd.pv1ChargeType 	int 	PV1 charging type: 0: none; 1: adapter; 2: solar panel
+bms_bmsStatus.bmsFault 	int 	BMS permanent fault
+inv.acDipSwitch 	int 	AC fast/slow charging dip switch: 0: unknown; 1: fast charging mode; 2: slow charging mode
+mppt.cfgChgType 	int 	Charging type configured for PV1: This parameter is valid when xt60_chg_type is 0. 0: auto; 1: MPPT; 2: adapter
+inv.acPassbyAutoEn 	int 	AC bypass auto start: 0: disable; 1: enable
+bms_emsStatus.paraVolMin 	int 	Minimum voltage when two devices work in parallel
+inv.dischargeType 	int 	Discharging type: 1: AC discharging; 2: PR; 3: BC
+mppt.chgState 	int 	PV1 charging status: 0: disabled; 1: charging; 2: standby (DC charging stopped during AC charging)
+pd.carState 	int 	PD CAR button status: 0: off; 1: on
+pd.invUsedTime 	int 	Inverter use time (s)
+bms_emsStatus.bmsWarState 	int 	BMS warning state: bit0: hi_temp; bit1: low_temp; bit2: overload; bit3: chg_flag
+mppt.carState 	int 	Car charging switch state: 0: off; 1: on
+pd.typec1Temp 	int 	Type-C 1 temperature (℃)
+bms_bmsStatus.sysVer 	int 	BMS version
+pd.dcInUsedTime 	int 	DC charging time (s)
+mppt.carTemp 	int 	Car charging temperature (℃)
+pd.model 	int 	PD product model
+bms_bmsStatus.minCellVol 	int 	Minimum cell voltage
+bms_bmsStatus.cycles 	int 	Number of cycles
+mppt.outWatts 	int 	PV output power (W): The actual power is amplified 10 times.
+pd.wifiAutoRcvy 	int 	The Wi-Fi network is automatically restored to the last mode after being powering on.
+pd.remainTime 	int 	PD available time (min) > 0: time remaining before full charging; PD available time (min) < 0: time remaining before full discharging
+bms_bmsStatus.maxCellVol 	int 	Maximum cell voltage
+bms_bmsStatus.type 	int 	BMS type: 1: lithium battery; 2: oil-powered
+bms_bmsStatus.maxCellTemp 	int 	Maximum cell temperature
+mppt.outAmp 	int 	PV output voltage (mA): The actual current is amplified 100 times.
+bms_bmsStatus.cellId 	int 	Cell material LI/LFP/LA, battery capacity type: 1: 2.5 Ah per battery; 2: 2 Ah per battery
+bms_bmsStatus.cellTemp 	int 	Cell temperature
+bms_bmsStatus.minMosTemp 	int 	Minimum MOS temperature
+mppt.chgPauseFlag 	int 	PV charging pause flag bit: 1: charging stopped
+bms_emsStatus.minOpenOilEb 	int 	SOC for turning on Smart Generator
+pd.hysteresisAdd 	int 	Hysteresis SOC
+inv.chargerType 	int 	Charger type: 1: AC charging; 2: DC adapter charging; 3: solar charging; 4: CC; 5: BC
+pd.chgSunPower 	int 	Cumulative solar power charged for PD (Wh)
+pd.carTemp 	int 	PD CAR temperature (℃)
+bms_bmsStatus.cellVol 	int 	Cell voltage
+bms_bmsStatus.bqSysStatReg 	int 	BQ hardware protection register
+inv.acInAmp 	int 	Inverter input current (mA)
+pd.pvChargePrioSet 	int 	Prioritize solar power usage: 1: prioritize solar power usage
+bms_emsStatus.chgRemainTime 	int 	Remaining charging time (min)
+bms_bmsStatus.openBmsIdx 	int 	Battery pack enabling status
+pd.dsgPowerAC 	int 	Cumulative AC power discharged (Wh)
+pd.qcUsb2Watts 	int 	qc_usb2 output power (W)
+bms_bmsStatus.num 	int 	BMS No.: 0–2
+pd.wireWatts 	int 	Wireless charging output power (W)
+bms_bmsStatus.mosState 	int 	Charging/discharging MOS status
+mppt.pv2InAmp 	int 	PV2 input current: The current voltage is amplified 100 times.
+pd.chgPowerAC 	int 	Cumulative AC power charged for PD (Wh) (wall socket)
+pd.lcdOffSec 	int 	PD LCD screen-off duration: 0: never off (unit: second)
+bms_bmsStatus.soc 	int 	Battery level
+inv.acInVol 	int 	Inverter input voltage (mV)
+inv.FastChgWatts 	int 	Maximum charging power for AC fast charging (W): DELTA2000 (100 W–1400 W); DELTA MINI (TBD); DELTA3000 (TBD)
+mppt.pv2Xt60ChgType 	int 	PV2 XT60 charging type: 0: not detected; 1: MPPT; 2: adapter
+pd.sysVer 	int 	PD system version
+mppt.pv2DcChgCurrent 	int 	PV2 DC current
+mppt.dc24vTemp 	int 	DCDC24V temperature (℃)
+pd.invInWatts 	int 	Inverter input power
+bms_emsStatus.chgCmd 	int 	Charge command
+bms_bmsStatus.tagChgAmp 	int 	Target charging current
+bms_bmsStatus.maxMosTemp 	int 	Maximum MOS temperature
+pd.qcUsb1Watts 	int 	qc_usb1 output power (W)
+pd.reserved 	int 	Reserve 2 bytes for PD
+mppt.pv2InWatts 	int 	PV2 input power: The actual voltage is amplified 10 times.
+bms_bmsStatus.minCellTemp 	int 	Minimum cell temperature
+pd.chgPowerDC 	int 	Cumulative DC power charged for PD (Wh) (adapter)
+mppt.swVer 	int 	MPPT version number
+pd.standbyMin 	int 	PD standby duration before auto shutdown (min): 0: never go into standby; maximum value: 5999 minutes (99 hours and 59 minutes)
+mppt.x60ChgType 	int 	PV1 XT60 charging type: 0: not detected; 1: MPPT; 2: adapter
+inv.cfgAcOutFreq 	int 	Output frequency configured for the inverter (Hz)
+bms_bmsStatus.soh 	int 	Health status
+inv.errCode 	int 	INV error code
+bms_emsStatus.openUpsFlag 	int 	UPS mode enable flag
+mppt.dcdc12vWatts 	int 	Anderson output power: The actual current is amplified 100 times. This parameter is valid only for DELTA Pro.
+bms_emsStatus.minDsgSoc 	int 	Minimum discharging SOC
+pd.usbqcUsedTime 	int 	USB QC use time (s)
+bms_bmsStatus.remainTime 	int 	Time remaining
+pd.dcOutState 	int 	PD DC button status: 0: off; 1: on
+mppt.inWatts 	int 	PV1 input power (W)
+pd.bmsKitState 	int 	bms_kit_state[0]: upgradeable interface; bms_kit_state[1]: non-upgradeable interface
+bms_emsStatus.emsIsNormalFlag 	int 	0: sleep 1: normal
+pd.usbUsedTime 	int 	USB use time (s)
+pd.mpptUsedTime 	int 	MPPT use time (s)
+inv.reserved 	int 	Reserve 8 bytes
+mppt.mpptTemp 	int 	PV1 MPPT temperature (℃)
+pd.wifiRssi 	int 	Wi-Fi signal strength
+bms_bmsStatus.amp 	int 	Current (mA)
+inv.invType 	int 	PSDR model code (corresponds to dip Switch and high-low voltage switch)
+bms_emsStatus.lcdShowSoc 	int 	SOC value displayed on LCD
+inv.cfgAcOutVol 	int 	Output voltage configured for the inverter (V)
+bms_emsStatus.bmsModel 	int 	BMS product model
+pd.errCode 	int 	PD error code
+pd.pv2ChargeWatts 	int 	PV2 power
+pd.carWatts 	int 	CAR output power (W)
+pd.usb2Watts 	int 	Common USB2 output power for PD (W)
+mppt.dcChgCurrent 	int 	Maximum DC charging current (mA)
+pd.invOutWatts 	int 	Inverter output power
+bms_emsStatus.dsgRemainTime 	int 	Remaining discharging time (min)
+inv.sysVer 	int 	INV system version

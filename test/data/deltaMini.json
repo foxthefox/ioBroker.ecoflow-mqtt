@@ -1,5 +1,5 @@
 {
-	"bms": {
+	"bmsMaster": {
 		"bmsMaster.amp": -117,
 		"bmsMaster.bmsFault": 0,
 		"bmsMaster.bqSysStatReg": 128,
@@ -87,7 +87,7 @@
 		"inv.sysVer": 16843013,
 		"latestTimeStamp": 1690847518801
 	},
-	"mmpt": {
+	"mppt": {
 		"mppt.carOutAmp": 17,
 		"mppt.carOutVol": 11,
 		"mppt.carOutWatts": 1,

@@ -1,0 +1,161 @@
+mppt.faultCode 	int 	Error code: byte0: mppt_fault; byte1: car_fault; byte2: dc24v_fault "swVer":"uint32", //mppt version number
+mppt.dc24vState 	int 	DCDC 24 V switch status: 0: off; 1: on
+pd.wattsInSum 	int 	Total input power (W) [key indicator]
+bms_emsStatus.maxChargeSoc 	int 	Maximum charging SOC
+pd.wifiVer 	int 	Wi-Fi version: 0x00000405 = V0.4.5
+inv.cfgAcWorkMode 	int 	AC charging mode: 0: full power; 1: mute
+bms_bmsStatus.designCap 	int 	Design capacity (mAh)
+bms_bmsStatus.temp 	int 	Temperature (℃)
+bms_bmsStatus.f32ShowSoc 	float 	Battery level SOC_float
+pd.beepMode 	int 	BEEP mode: 0: Normal; 1: Silent
+bms_bmsStatus.outputWatts 	int 	Output power
+pd.typec2Watts 	int 	Type-C 2 output power (W)
+inv.outputWatts 	int 	Discharging power (W)
+bms_bmsStatus.vol 	int 	Voltage (mV)
+inv.invOutFreq 	int 	Inverter output frequency (Hz): 50 or 60;
+mppt.inAmp 	int 	PV input current (mA)
+bms_emsStatus.bmsIsConnt 	[int] 	BMS in-place signal (3 byte): BIT0: Hardware in-place signal; BIT1: Software in-place signal
+bms_emsStatus.dsgCmd 	int 	Discharge command
+bms_bmsStatus.fullCap 	int 	Full capacity (mAh)
+mppt.inVol 	int 	PV input voltage (mV)
+bms_emsStatus.chgVol 	int 	Charging voltage
+pd.icoBytes 	int 	ICO flag bit: BYTE0-BYTE13
+inv.fanState 	int 	Fan status: 0: disabled; 1: Level 1; 2: Level 2; 3: Level 3
+pd.usb1Watts 	int 	Common USB1 output power (W)
+inv.cfgAcXboost 	int 	X-Boost switch: 0: off; 1: on
+inv.outTemp 	int 	INV temperature (℃)
+mppt.cfgAcEnabled 	int 	AC switch: 0: off; 1: on
+mppt.res 	[int] 	Reserve 10 bytes
+mppt.dcdc12vAmp 	int 	DC 12 V 30 A output current (mA)
+inv.invOutVol 	int 	Inverter actual output voltage (mV)
+pd.extRj45Port 	int 	RJ45 port: 0: NULL; 1: RC(BLE_CTL)
+bms_emsStatus.chgAmp 	int 	Charging current
+bms_bmsStatus.errCode 	int 	Global error code
+inv.inputWatts 	int 	Charging power (W)
+mppt.cfgAcOutVol 	int 	Output voltage configured for the inverter (V)
+bms_emsStatus.chgState 	int 	Charging status
+bms_bmsStatus.inputWatts 	int 	Input power [key indicator]
+bms_emsStatus.openBmsIdx 	int 	Battery pack enabling status
+pd.typec2Temp 	int 	Type-C 2 temperature (℃)
+pd.carUsedTime 	int 	CAR use time (s)
+pd.typec1Watts 	int 	Type-C 1 output power (W) [key indicator]
+pd.chgDsgState 	int 	Charging/discharging status on screen: 1: discharging; 2: charging
+inv.chgPauseFlag 	int 	PV charging pause flag bit: 1: charging stopped
+inv.acInFreq 	int 	Inverter input frequency (Hz)
+mppt.carStandbyMin 	int 	Auto shutdown when there is no load: 0: Never shut down; default value: 12*60mins; unit: min [key indicator]
+pd.soc 	int 	Display SOC [key indicator]
+inv.invOutAmp 	int 	Inverter output current (mA)
+bms_emsStatus.fanLevel 	int 	Fan level
+mppt.cfgAcOutFreq 	int 	Output frequency configured for the inverter (Hz)
+mppt.carOutVol 	int 	Car charger output voltage (mV)
+inv.dcInVol 	int 	DC input voltage (mV)
+pd.ext3p8Port 	int 	3+8 ports: 0: NULL; 1: CC; 2: PR; 3: SP (BC)
+mppt.cfgAcXboost 	int 	X-Boost switch: 1: On; 0: Off [key indicator]
+pd.dsgPowerDC 	int 	Cumulative DC discharge capacity (Wh)
+inv.dcInAmp 	int 	DC input current (mA)
+pd.typecUsedTime 	int 	Type-C use time (s)
+mppt.carOutAmp 	int 	Car charger output current (mA)
+bms_bmsStatus.remainCap 	int 	Remaining capacity (mAh)
+pd.brightLevel 	int 	LCD brightness level: 0-3 levels
+inv.dcInTemp 	int 	DC temperature (℃)
+bms_emsStatus.maxAvailNum 	int 	Maximum available quantity
+bms_emsStatus.maxCloseOilEb 	int 	Disable SOC of Smart Generator [key indicator]
+mppt.dcdc12vVol 	int 	DC 12 V 30 A output voltage (mV)
+pd.wattsOutSum 	int 	Total output power (W) [key indicator]
+mppt.scrStandbyMin 	int 	Auto shutdown when there is no load: 0: never shut down, default value: 12 x 60 mins, unit: minutes
+mppt.carOutWatts 	int 	Car charger output power (W)
+bms_emsStatus.f32LcdShowSoc 	float 	SoC value displayed on LCD - used for displaying SOC with decimal point [key indicator]
+inv.cfgAcEnabled 	int 	AC switch: 0: off; 1: on
+mppt.outVol 	int 	PV output voltage (mV)
+bms_emsStatus.paraVolMax 	int 	Maximum voltage when two devices work in parallel
+mppt.chgType 	int 	Actual charging type: 0: null; 1: Adapter (adapter/DC power); 2: MPPT (solar energy); 3: AC (grid charging); 4: Gas (petrol and electricity); 5: Wind (wind power) [key indicator]
+bms_bmsStatus.bmsFault 	int 	BMS permanent fault
+inv.acDipSwitch 	int 	AC fast/slow charging dip switch: 0: unknown; 1: fast charging mode; 2: slow charging mode
+mppt.cfgChgType 	int 	Configured charging type, which is valid when xt60_chg_type is 0: 0: Auto; 1: MPPT; 2: Adapter
+bms_emsStatus.paraVolMin 	int 	Minimum voltage when two devices work in parallel
+inv.standbyMins 	int 	Auto shutdown when there is no load: 0: never shut down, default value: 12 x 60 mins, unit: minutes
+inv.dischargeType 	int 	Discharging type: 1: AC discharging; 2: PR; 3: BC
+pd.carState 	int 	CAR button status: 0: OFF; 1: ON
+mppt.chgState 	int 	Charging status: 0: Off; 1: Charging; 2: Standby (during AC charging, DC charging stops)
+pd.invUsedTime 	int 	Inverter use time (s)
+bms_emsStatus.bmsWarState 	int 	BMS warning state: bit0: hi_temp; bit1: low_temp; bit2: overload; bit3: chg_flag
+mppt.carState 	int 	Car charger switch status: 0: Off; 1: On [key indicator]
+mppt.dischargeType 	int 	Discharging type: 1: AC discharging; 2: PR; 3: BC
+pd.typec1Temp 	int 	Type-C 1 temperature (℃)
+pd.dcInUsedTime 	int 	DC charging time (s)
+bms_bmsStatus.sysVer 	int 	System version
+mppt.carTemp 	int 	Car charging temperature (℃)
+pd.model 	int 	Product model: see ems_model enumeration for details
+bms_bmsStatus.minCellVol 	int 	Minimum cell voltage
+bms_bmsStatus.cycles 	int 	Number of cycles
+mppt.outWatts 	int 	PV output power (W)
+pd.wifiAutoRcvy 	int 	1: Wi-Fi automatically restores the last usage mode (STA/AP) after being powered on; 0: Default mode (STA)
+pd.remainTime 	int 	Available time (min): >0: Time remaining before full charging; <0: Time remaining before full discharge [key indicator]
+bms_bmsStatus.maxCellVol 	int 	Maximum cell voltage
+bms_bmsStatus.type 	int 	BMS type: 1: lithium battery; 2: oil-powered
+bms_bmsStatus.maxCellTemp 	int 	Maximum cell temperature
+mppt.outAmp 	int 	PV output current (mA)
+pd.ext4p8Port 	int 	4+8 ports; only supports left port status identification: 0: NULL; 1: Extra battery; 2: Smart generator
+bms_bmsStatus.cellId 	int 	Cell material LI/LFP/LA, battery capacity type: 1: 2.5 Ah per battery; 2: 2 Ah per battery
+bms_bmsStatus.minMosTemp 	int 	Minimum MOS temperature
+mppt.chgPauseFlag 	int 	PV charging pause flag bit: 1: charging stopped
+bms_emsStatus.minOpenOilEb 	int 	Enable SOC of Smart Generator [key indicator]
+mppt.acStandbyMins 	int 	Auto shutdown when there is no load: 0: Never shut down; default: 12*60mins; unit: min [key indicator]
+mppt.powStandbyMin 	int 	Auto shutdown when there is no load: 0: Never shut down; default: 12*60mins; unit: min
+inv.chargerType 	int 	Charger type: 1: AC charging; 2: DC adapter charging; 3: solar charging; 4: CC; 5: BC
+pd.chgSunPower 	int 	Cumulative solar charge capacity (Wh)
+pd.carTemp 	int 	CAR temperature (℃)
+bms_bmsStatus.bqSysStatReg 	int 	BQ hardware protection register
+inv.acInAmp 	int 	Inverter input current (mA)
+bms_emsStatus.chgRemainTime 	int 	Remaining charging time (min)
+pd.dsgPowerAC 	int 	Cumulative AC power discharged (Wh)
+bms_bmsStatus.openBmsIdx 	int 	Battery pack enabling status
+pd.qcUsb2Watts 	int 	qc_usb2 output power (W)
+pd.wireWatts 	int 	Wireless charging output power (W); reserved and not in use
+bms_bmsStatus.num 	int 	BMS number: 0–2
+pd.chgPowerAC 	int 	Cumulative AC charge (wall socket) (Wh)
+pd.lcdOffSec 	int 	LCD screen timeout: 0: Always on [key indicator]
+bms_bmsStatus.soc 	int 	Battery level
+inv.acInVol 	int 	Inverter input voltage (mV)
+inv.FastChgWatts 	int 	Maximum charging power for AC fast charging (W)
+mppt.beepState 	int 	Buzzer status: 0: Default; 1: Silent mode [Key Indicators]
+pd.sysVer 	int 	System version: 0x0102002F = V1.2.0.47
+mppt.dc24vTemp 	int 	DCDC 24 V temperature (℃)
+bms_emsStatus.chgCmd 	int 	Charge command
+bms_bmsStatus.tagChgAmp 	int 	Target charging current
+bms_bmsStatus.maxMosTemp 	int 	Maximum MOS temperature
+mppt.cfgChgWatts 	int 	AC maximum charging power (W) [key indicator]
+pd.qcUsb1Watts 	int 	qc_usb1 output power (W)
+pd.reserved 	int 	Reserve 2 bytes
+bms_bmsStatus.minCellTemp 	int 	Minimum cell temperature
+pd.chgPowerDC 	int 	Cumulative DC charge (adapter) (Wh)
+pd.standbyMin 	int 	Standby auto shutdown time (min): 0: Never standby; maximum 5999 minutes (99 hours and 59 minutes) [key indicator]
+mppt.swVer 	int 	MPPT version number
+inv.cfgAcOutFreq 	int 	Configured output frequency for inverter (Hz) [key indicator]
+mppt.x60ChgType 	int 	XT60 paddle status: 0: Not detected; 1: MPPT; 2: Adapter
+bms_bmsStatus.soh 	int 	Health status
+inv.errCode 	int 	Global error code
+bms_emsStatus.openUpsFlag 	int 	UPS mode enable flag
+bms_emsStatus.minDsgSoc 	int 	Minimum discharge SoC [key indicator]
+mppt.dcdc12vWatts 	int 	DC 12 V 30 A output power (W)
+pd.usbqcUsedTime 	int 	USB QC use time (s)
+pd.dcOutState 	int 	DC button status: 0: OFF; 1: ON [key indicator]
+bms_bmsStatus.remainTime 	int 	Time remaining
+bms_emsStatus.emsIsNormalFlag 	int 	0:sleep 1:normal
+mppt.inWatts 	int 	PV input power (W) [key indicator]
+pd.usbUsedTime 	int 	USB use time (s)
+pd.mpptUsedTime 	int 	MPPT use time (s)
+inv.reserved 	[int] 	Reserve 8 bytes
+mppt.mpptTemp 	int 	MPPT temperature (℃)
+pd.wifiRssi 	int 	Wi-Fi signal strength
+bms_bmsStatus.amp 	int 	Current (mA)
+inv.invType 	int 	PSDR model code (corresponds to dip Switch and high-low voltage switch)
+bms_emsStatus.lcdShowSoc 	int 	SoC value displayed on LCD [key indicator]
+inv.cfgAcOutVol 	int 	Output voltage configured for the inverter (V)
+bms_emsStatus.bmsModel 	int 	BMS model [key indicator]
+pd.errCode 	int 	Global error code
+pd.carWatts 	int 	Car output power (W) [key indicator]
+pd.usb2Watts 	int 	Normal USB2 output power (W)
+mppt.dcChgCurrent 	int 	DC maximum charging current (mA) [key indicator]
+bms_emsStatus.dsgRemainTime 	int 	Remaining discharging time (min)
+inv.sysVer 	int 	System version

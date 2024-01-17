@@ -1,0 +1,158 @@
+pd.exhaustTmp 	int 	Exhaust pipe wall temperature
+pd.errBms 	int 	BMS fault code
+pd.tempCoolTime 	[int] 	Length of time when the actual temperature of the cooling zone falls in each interval: COOL_ ZONE_ MAX*TEMP_ COOL_ MAX
+pd.errPd 	int 	PD fault code
+bms_bmsStatus.designCap 	int 	Design capacity (mAh)
+bms_bmsStatus.f32ShowSoc 	float 	Battery level SOC
+pd.iceTm 	int 	Duration of the current ice making (for app and LCD effect display)
+pd.batTime 	int 	Unit: min; a negative value indicates a discharging time, and positive value indicates a charging time
+bms_bmsStatus.minMosTmp 	int 	Minimum MOS temperature
+bms_bmsStatus.vol 	int 	Voltage (mV)
+bms_emsStatus.closeOilEbSocMax 	int 	SOC for turning off Smart Generator
+pd.appSensorAdv 	[int] 	Duration of sensor blocking: SENSOR_ADV_MAX
+pd.errorTimePower 	[int] 	Duration of each type of fault in the POWER module: ERROR_MAX_POWER
+pd.fsmState 	int 	Real-time running status
+bms_emsStatus.bmsIsConnt 	int 	BMS online signal: BIT0: hardware online signal; BIT1: software online signal
+pd.tempWater 	int 	Water temperature of the ice making zone: the data is 10 times the actual temperature value
+bms_emsStatus.dsgCmd 	int 	Discharge command
+bms_bmsStatus.fullCap 	int 	Full capacity (mAh)
+pd.motorWait 	int 	Waiting for compressor: 0: No need to wait; 1: Need to wait
+bms_emsStatus.chgVol 	int 	Charging voltage
+pd.A12Val 	int 	12 V auxiliary supply voltage
+pd.pwrState 	int 	0: Powered off; 1: Powered on
+pd.coolZoneDoubleCount 	int 	Count of dual temperature zones
+pd.buttonLong 	[int] 	Count of long presses: USER_BEHAVIOR_BUTTON_MAX
+pd.coolMode 	int 	0: Normal; 1: Eco
+bms_emsStatus.openBmsIdx 	int 	BMS enable index: bit0: host (#1); bit1: #2; bit2: #3
+bms_emsStatus.dsgRemain 	int 	Remaining discharging time (min)
+pd.coolCoverCount 	int 	Count of cooling zone openings
+pd.tempIceTime 	[int] 	Length of time when temperature of the ice-making zone falls in each interval: TEMP_ICE_MAX
+pd.bldcDntWork 	int 	Compressor work limit: 0: Allow to work; 1: Do not allow to work
+pd.networkTypeCount 	[int] 	Count of being networked: NETWORK_TYPE_MAX
+pd.errBldc 	int 	BLDC fault code
+pd.motorCur 	int 	mA
+pd.waterLine 	int 	Ice making zone water level: 0-3 levels
+pd.sensorAdv 	int 	Sensor detection blocking. Refer to @ST_SENSOR for data explanation. Bit: 1: Blocked; 0: Unblocked.
+pd.powerXt60Count 	[int] 	Count of each type of power supply on XT60: POWER_TYPE_MAX
+pd.flagAmbintReady 	int 	Ambient temperature reliability: 0: Unreliable; 1: Reliable
+bms_bmsStatus.remainCap 	int 	Remaining capacity (mAh)
+pd.batFlag 	int 	Battery pack in-place status: 0: Not in place; 1: In place
+pd.networkTypeTime 	[int] 	Duration of being networked: NETWORK_TYPE_MAX
+bms_emsStatus.maxAvailNum 	int 	Maximum available quantity
+pd.emsChgFlg 	int 	EMS charging flag
+pd.errorCountPower 	[int] 	Count of each type of fault in POWER module: ERROR_MAX_POWER
+pd.appOpCountDeIce 	int 	Count of ice detaching through app
+bms_bmsStatus.tmp 	int 	Temperature (℃)
+pd.xt150InState 	int 	0:no input, 1:has input
+pd.powerXt60Time 	[int] 	Duration of each type of power supply on XT60: POWER_TYPE_MAX
+bms_bmsStatus.outWatts 	int 	Output power
+bms_emsStatus.paraVolMax 	int 	Maximum voltage when battery packs work in parallel
+bms_bmsStatus.bmsFault 	int 	BMS permanent fault
+pd.dntMakeIceDevice 	int 	Count of pressing the ice making button when ice making is disabled
+bms_emsStatus.paraVolMin 	int 	Minimum voltage when battery packs work in parallel
+pd.doorStat 	int 	Door status detection. 1: Open; 0: Closed
+pd.appOpCountBeepOff 	int 	Count of turning off buzzer through app
+pd.appOpCountPowerOn 	int 	Count of powering on through app
+pd.errLcd 	int 	Fault code displayed on LCD screen
+pd.countinueMakeIceMax 	int 	Maximum count of consecutive ice making
+pd.tmpMSet 	int 	Combined temperature zone settings (valid when the partition is removed)
+pd.runState 	int 	Operating status: 0: Normal (24 V output, 40 V output); 1: Charging suspended (or when there is no input) (24 V off, 40 V output); 2: Standby (24 V off, 40 V off)
+pd.workFsmCount 	[int] 	Count of entering each state of state machine: USER_BEHAVIOR_FSM_MAX
+pd.appOpCountPowerOff 	int 	Count of powering off through app
+pd.appOpCountDntMakeIce 	int 	Count of ice making through app when ice making is disabled
+bms_bmsStatus.err 	int 	Global error code
+pd.powerBatInCount 	int 	Count of battery pack in place
+pd.icePercent 	int 	Ice making progress (%)
+bms_bmsStatus.cycles 	int 	Number of cycles
+bms_bmsStatus.minCellVol 	int 	Minimum cell voltage
+bms_emsStatus.lcdSoc 	int 	SoC value displayed on LCD
+pd.errorCountBldc 	[int] 	Count of each type of fault in BLDC module: ERROR_MAX_BLDC
+pd.beepEn 	int 	0: Buzzer disabled; 1: Buzzer enabled
+bms_bmsStatus.maxCellVol 	int 	Maximum cell voltage
+bms_bmsStatus.maxMosTmp 	int 	Maximum MOS temperature
+bms_emsStatus.emsFlag 	int 	0: sleep 1: normal
+bms_bmsStatus.type 	int 	BMS type: 1: Lithium battery; 2: Oil powered
+pd.fanLvl 	int 	Fan level
+bms_bmsStatus.cellId 	int 	Cell material LI/LFP/LA
+bms_bmsStatus.inWatts 	int 	Input power
+bms_bmsStatus.bqStatReg 	int 	BQ hardware protection register
+pd.powerBatInTime 	int 	Duration of battery pack in place
+pd.ambientTmp 	int 	Ambient temperature
+pd.workModeCount 	int 	Count of entering each work mode; WORK_MODE_MAX
+pd.warnInfo 	int 	Warning: BIT0: Over-temperature; BIT1: Under-temperature; BIT2: Overload; BIT3: Charging error; BIT4: Fan error; BIT5: BLCD communication error
+pd.errorCountBms 	[int] 	Count of each type of fault in BMS module: ERROR_MAX_PD
+pd.powerPbLevel 	int 	Battery protection level
+pd.pwrPbEn 	int 	Battery protection switch: 0: Disable; 1: Enable
+pd.coolZoneSingleTime 	int 	Single temperature zone duration
+pd.chgType 	int 	Charger type //Charger type: 0: NULL; 1: XT150 charging; 2: Adapter charging (hardware detection); 3: Car charging (hardware detection); 4: Solar panel charging (hardware detection); 5: Car charging (software detection); 6: Solar panel charging (software detection); 7: Input source cannot be identified (0xff): the charging cable is connected, but it actually does not work due to charging being disabled.
+bms_bmsStatus.openBmsIdx 	int 	Battery pack status: 0: Not enabled; 1: Enabled
+pd.resvP 	[int] 	Reserve 5 bytes
+pd.chargeXt60Time 	[int] 	Duration of each type of charging power supply on XT60: POWER_TYPE_MAX
+pd.chargeXt60Count 	[int] 	Count of each type of charging power supply on XT60: POWER_TYPE_MAX
+bms_bmsStatus.num 	int 	BMS number: 0-2
+pd.errorTimeBms 	[int] 	Duration of each type of fault in BMS module: ERROR_MAX_BMS
+pd.makeIceCount 	int 	Total count of ice making
+pd.threeWayState 	int 	Refrigerant flow direction flag bit
+bms_bmsStatus.soc 	int 	Battery level
+bms_emsStatus.fanLvl 	int 	Fan level
+pd.tmpAver 	int 	Real-time temperature of single temperature zone, amplified 10 times
+bms_emsStatus.chgRemain 	int 	Remaining charging time (min)
+pd.sensor 	int 	Sensor status; refer to @ST_SENSOR for data explanation; bit 1: Error; bit 0: Normal
+pd.flagTwoZone 	int 	Partition detection
+pd.xt60InState 	int 	0: no input, 1: has input
+pd.appOpTimeBlTime 	[int] 	Screen timeout set through app: BL_TIME_MAX
+pd.tmpUnit 	int 	0: Celsius; 1: Fahrenheit
+bms_emsStatus.chgCmd 	int 	Charge command
+bms_bmsStatus.tagChgAmp 	int 	Target charging current
+pd.tmpRSet 	int 	Right temperature zone setting value (works when partition is inserted)
+pd.appOpCountWorkMode 	[int] 	Count of each work mode set through app: WORK_MODE_MAX
+bms_emsStatus.openOilEbSocMin 	int 	SoC for turning on Smart Generator
+pd.iceAlert 	int 	Ice taking reminder: 0: Do not remind; 1: Remind
+pd.carBatLow 	int 	Car charger battery protection reminder: 0: Do not remind; 1: Remind
+pd.tmpR 	int 	Real-time temperature of the right temperature zone, amplified 10 times
+pd.batPct 	int 	Battery level (%)
+bms_bmsStatus.ver 	int 	System version
+pd.errorTimePd 	[int] 	Duration of each type of fault in PD module: ERROR_MAX_PD
+pd.iceTmTag 	int 	The ice making target time (used for app and LCD effect display)
+pd.chargeWorkCount 	int 	Count of working while charging
+pd.coolCoverTime 	int 	Duration of cooling zone being opened
+bms_bmsStatus.minCellTmp 	int 	Minimum cell temperature
+pd.tmpL 	int 	Real-time temperature of the left temperature zone, amplified 10 times
+bms_bmsStatus.soh 	int 	Health status
+pd.resvD 	[int] 	Reserve 1 byte
+pd.powerBatOutTime 	int 	Duration of battery pack not in place
+pd.resvB 	[int] 	Reserve 2 bytes
+pd.chargeWorkTime 	int 	Duration of working while charging
+bms_emsStatus.minDsgSoc 	int 	Minimum discharging SOC
+bms_bmsStatus.maxCellTmp 	int 	Maximum cell temperature
+pd.workFsmTime 	[int] 	Running duration of state machine under each state: USER_BEHAVIOR_FSM_MAX
+pd.motorVol 	int 	mv
+bms_emsStatus.warnState 	int 	BMS warning state: bit0: hi_temp; bit1: low_temp; bit2: overload; bit3: chg_flag
+pd.appOpCountBlTime 	[int] 	Count of setting different screen timeout through app: BL_TIME_MAX
+pd.workModeTime 	[int] 	Running duration of each work mode; WORK_MODE_MAX
+pd.coolZoneSingleCount 	int 	Count of single temperature zone
+bms_bmsStatus.remainTime 	int 	Time remaining
+pd.coolZoneDoubleTime 	int 	Duration of dual temperature zone
+pd.tempAmbientTime 	[int] 	Length of time when ambient temperature falls in each interval: TEMP_AMBIENT_MAX
+pd.err 	int 	Error code
+pd.bmsInFlag 	int 	BMS in-place flag, detected through BMS->PD heartbeat packet: 0: Not in place; 1: In place
+pd.tempCoolSetTime 	[int] 	Length of time when the set temperature of the cooling zone falls in each interval: COOL_ZONE_MAX*TEMP_COOL_SET_MAX
+bms_emsStatus.upsFlag 	int 	UPS mode enable flag
+pd.errorCountPd 	[int] 	Count of each fault in PD module: ERROR_MAX_PD
+pd.buttonShort 	[int] 	Count of short pressings: USER_BEHAVIOR_BUTTON_MAX
+pd.threeWayState 	int 	Refrigerant flow direction flag bit
+pd.tmpLSet 	int 	Set temperature of the left temperature zone (valid when partition is inserted)
+pd.motorSpeed 	int 	Motor speed
+bms_bmsStatus.amp 	int 	Current (mA)
+pd.blTime 	int 	Screen timeout (unit: sec)
+pd.motorWat 	int 	w
+bms_emsStatus.bmsModel 	int 	BMS model
+pd.errCode 	int 	Error code
+pd.countinueMakeIceAve 	int 	Average count of consecutive ice making actions
+pd.appOpCountTempUnitC 	int 	Count of setting degrees in Celsius through app
+pd.appOpCountTempUnitF 	int 	Count of setting degrees in Fahrenheit through app
+pd.bldcDntIce 	int 	Ice making limit on compressor: 0: Ice making is allowed; 1: Ice making is not allowed
+bms_emsStatus.maxChgSoc 	int 	Maximum charging SOC
+pd.appOpCountBeepOn 	int 	Count of enabling buzzer through app
+pd.errPwr 	int 	POWER fault code
+pd.iceMkMode 	int 	Large/small ice cube status: 0: Small ice cube (in preparation); 1: Large ice cube (in preparation); 2: Small ice cube (ice making in progress; cannot be changed); 3: Large ice cube (ice making in progress)

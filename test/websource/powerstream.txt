@@ -1,0 +1,70 @@
+20_1.batInputCur 	int 	BAT input current: 0.1 A; positive for discharging and negative for charging
+20_1.llcWarningCode 	int 	LLC warning code
+20_1.pv2InputCur 	int 	PV2 input current: 0.1 A
+20_1.batErrCode 	int 	BAT error code
+20_1.batOpVolt 	int 	BAT output voltage: 0.1 V
+20_1.installTown 	int 	City
+20_1.invErrCode 	int 	Micro-inverter AC error code
+20_1.invStatue 	int 	Micro-inverter INV operating status: 1: IDEL; 2: START; ...check inv_logic; 6: successful grid connection
+20_1.pv2InputWatts 	int 	PV2 input power: 0.1 W
+20_1.batWarningCode 	int 	BAT warning code
+20_1.pv2Statue 	int 	Micro-inverter PV2 operating status
+20_1.invOutputCur 	int 	INV input current: 0.1 A; positive for discharging and negative for charging
+20_1.pv2Temp 	int 	PV2 temperature: 0.1°C
+20_1.ratedPower 	int 	Rated power
+20_1.pv1InputVolt 	int 	PV1 input voltage: 0.1 V
+20_1.pv1OpVolt 	int 	PV1 output voltage: 0.1 V
+20_1.bpType 	int 	Battery type: 0: no battery; 1: secondary pack; 2: primary pack; 3: primary pack
+20_1.invRelayStatus 	int 	Micro-inverter relay status
+20_1.pv1RelayStatus 	int 	Micro-inverter relay status
+20_1.lowerLimit 	int 	Discharge limit
+20_1.batInputWatts 	int 	BAT input power: 0.1 W; positive for discharging and negative for charging
+20_1.invTemp 	int 	INV temperature: 0.1°C
+20_1.invOnOff 	int 	Micro-inverter switch: 0: off; 1: on
+20_1.pv1Temp 	int 	PV1 temperature: 0.1°C
+20_1.supplyPriority 	int 	Power supply priority: 0: prioritize power supply; 1: prioritize power storage
+20_1.dsgRemainTime 	int 	Remaining discharging time
+20_1.batTemp 	int 	BAT temperature: 0.1°C
+20_1.llcStatue 	int 	Micro-inverter LLC operating status: 1: IDEL; 2: START; ...check inv_logic
+20_1.pv2ErrCode 	int 	PV2 error code
+20_1.pv1ErrCode 	int 	Micro-inverter PV1 error code
+20_1.invWarnCode 	int 	Micro-inverter AC warning code
+20_1.invOutputWatts 	int 	INV input power: 0.1 W; positive for discharging and negative for charging
+20_1.permanentWatts 	int 	Custom load power (power of loads not connected to smart plugs)
+20_1.chgRemainTime 	int 	Remaining charging time
+20_1.dynamicWatts 	int 	Dynamic power adjustment
+20_1.invOpVolt 	int 	INV output voltage: 0.1 V; ac_voltage
+20_1.pv2WarningCode 	int 	PV2 warning code
+20_1.wirelessErrCode 	int 	Micro-inverter Wireless error code
+20_1.invFreq 	int 	INV frequency: 0.1 Hz
+20_1.pv1InputCur 	int 	PV1 input current: 0.1 A
+20_1.llcInputVolt 	int 	LLC input voltage: 0.1 V
+20_1.llcOpVolt 	int 	LLC output voltage: 0.1 V
+20_1.installCountry 	int 	Country
+20_1.pv1Statue 	int 	Micro-inverter PV1 operating status
+20_1.llcTemp 	int 	LLC temperature: 0.1°C
+20_1.batStatue 	int 	Micro-inverter BAT operating status
+20_1.invBrightness 	int 	Micro-inverter LED brightness adjustment
+20_1.invInputVolt 	int 	INV input voltage: 0.1 V; DC voltage
+20_1.pv2RelayStatus 	int 	Micro-inverter relay status
+20_1.pv2OpVolt 	int 	PV2 output voltage: 0.1 V
+20_1.pv1WarnCode 	int 	Micro-inverter PV1 warning code
+20_1.llcErrCode 	int 	LLC error code
+20_1.updateTime 	int 	Change time
+20_1.pv1InputWatts 	int 	PV1 input power: 0.1 W
+20_1.wirelessWarnCode 	int 	Micro-inverter Wireless warning code
+20_1.pv2InputVolt 	int 	PV2 input voltage: 0.1 V
+20_1.batSoc 	int 	Battery level
+20_1.heartbeatFrequency 	int 	Micro-inverter heartbeat frequency
+20_1.batInputVolt 	int 	BAT input voltage: 0.1 V
+20_1.upperLimit 	int 	Charge Level
+20_134.task 	json 	Scheduled task
+20_134.taskIndex 	int 	Task coding
+20_134.type 	int 	Task type: 1: prioritize power supply; 2: prioritize power storage
+20_134.type 	json 	Time configuration
+20_134.type 	boolean 	Whether to enable: 0: no; 1: yes
+20_134.type 	boolean 	Whether to configure: 0: no; 1: yes
+20_134.type 	int 	mode == 1, bit0-bit6 represents Monday to Saturday respectively; mode == 2, bit0-bit30 represents the 1st to the 31st
+20_134.type 	int 	Scheduled mode: 0: daily; 1: weekly; 2: monthly; 3: do not repeat
+20_134.type 	int 	Task start time
+20_134.type 	int 	Task end time

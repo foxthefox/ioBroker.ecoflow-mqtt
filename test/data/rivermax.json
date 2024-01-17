@@ -85,7 +85,7 @@
 		"pd.typecTemp": 32,
 		"pd.invUsedTime": 3202220
 	},
-	"params": {
+	"bms2": {
 		"bmsMaster.cellVol": [ null, null, null, null, null, null, null, null ],
 		"bmsMaster.minCellTemp": 39,
 		"bmsMaster.remainCap": 6088,
