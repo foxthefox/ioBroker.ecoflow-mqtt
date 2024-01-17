@@ -801,7 +801,7 @@ class EcoflowMqtt extends utils.Adapter {
 	//  */
 	async onMessage(obj) {
 		this.log.info('send command');
-		//this.log.info('obj ' + JSON.stringify(obj));
+		this.log.info('obj ' + JSON.stringify(obj));
 		//this.log.info('obj ' + obj.message);
 		if (!obj || !obj.command) {
 			return;
@@ -842,6 +842,24 @@ class EcoflowMqtt extends utils.Adapter {
 				}
 				break;
 
+			case 'quota':
+				if (obj.callback && obj.message) {
+					this.log.info('send msg quota data');
+					const id = obj.message['devId'];
+					if (id) {
+						this.sendTo(
+							obj.from,
+							obj.command,
+							{
+								error: 'got id' + id
+							},
+							obj.callback
+						);
+					} else {
+						this.sendTo(obj.from, obj.command, { error: 'no Id' }, obj.callback);
+					}
+				}
+				break;
 			case 'test': {
 				// Try to connect to mqtt broker
 				if (obj.callback && obj.message) {

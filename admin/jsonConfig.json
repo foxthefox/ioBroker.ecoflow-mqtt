@@ -272,6 +272,14 @@
 							"filter": false,
 							"sort": false,
 							"default": "none"
+						},
+						{
+							"type": "sendTo",
+							"hidden": "false",
+							"label": "Debug Quotas",
+							"command": "quota",
+							"variant": "contained",
+							"jsonData": "{\"devId\": \"${data.devId}\"}"
 						}
 					]
 				},
@@ -355,6 +363,14 @@
 							"filter": false,
 							"sort": false,
 							"default": false
+						},
+						{
+							"type": "sendTo",
+							"hidden": "false",
+							"label": "Debug Quotas",
+							"command": "quota",
+							"variant": "contained",
+							"jsonData": "{\"devId\": \"${data.devId}\"}"
 						}
 					]
 				},
@@ -405,6 +421,14 @@
 							"filter": false,
 							"sort": false,
 							"default": "none"
+						},
+						{
+							"type": "sendTo",
+							"hidden": "false",
+							"label": "Debug Quotas",
+							"command": "quota",
+							"variant": "contained",
+							"jsonData": "{\"devId\": \"${data.devId}\"}"
 						}
 					]
 				}
@@ -464,6 +488,14 @@
 							"filter": false,
 							"sort": false,
 							"default": "none"
+						},
+						{
+							"type": "sendTo",
+							"hidden": "false",
+							"label": "Debug Quotas",
+							"command": "quota",
+							"variant": "contained",
+							"jsonData": "{\"devId\": \"${data.devId}\"}"
 						}
 					]
 				},
@@ -517,6 +549,14 @@
 							"filter": false,
 							"sort": false,
 							"default": "none"
+						},
+						{
+							"type": "sendTo",
+							"hidden": "false",
+							"label": "Debug Quotas",
+							"command": "quota",
+							"variant": "contained",
+							"jsonData": "{\"devId\": \"${data.devId}\"}"
 						}
 					]
 				}
