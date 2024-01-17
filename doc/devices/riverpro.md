@@ -1,5 +1,5 @@
 # States for  RIVERPRO
-### version: 0.0.19
+### version: 0.0.20
 
 [bmsMaster](#bmsMaster)
 
@@ -40,6 +40,7 @@
 |bmsFault| BMS permanent fault |
 |openBmsIdx| Battery pack enable state |
 |sysVer| System version |
+|bqSysStatReg| BQ hardware protection register |
 
 ### diagnostic
 

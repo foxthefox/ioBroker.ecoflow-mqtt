@@ -1,5 +1,5 @@
 # States for  GLACIER
-### version: 0.0.19
+### version: 0.0.20
 
 [pd](#pd)
 
@@ -151,12 +151,12 @@
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|designCap|0 | 80000 | mAh | 1 |  Design capacity |
+|designCap|0 | 13800 | mAh | 1 |  Design capacity |
 |f32ShowSoc|0 | 100 | % | 1 |  SOC |
 |minMosTmp|0 | 80 | °C | 1 |  Minimum MOS temperature |
 |vol|0 | 60 | V | 0.001 |  Voltage |
-|fullCap|0 | 80000 | mAh | 1 |  Full capacity |
-|remainCap|0 | 80000 | mAh | 1 |  Remaining capacity |
+|fullCap|0 | 13800 | mAh | 1 |  Full capacity |
+|remainCap|0 | 13800 | mAh | 1 |  Remaining capacity |
 |tmp|0 | 60 | °C | 1 |  Temperature |
 |outWatts|0 | 500 | W | 1 |  Output power |
 |cycles|0 | 6000 | cycles | 1 |  Number of cycles |
