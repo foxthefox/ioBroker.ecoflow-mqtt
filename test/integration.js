@@ -181,10 +181,10 @@ tests.integration(path.join(__dirname, '..'), {
 						await harness.objects.getObject(
 							'ecoflow-mqtt.0.HW52ZDH4SF12345.' + channel + '.' + state,
 							function(err, obj) {
-								if (err) console.error('TEST' + channel + '.' + state + ' -> ' + err);
+								if (err) console.error('plug TEST' + channel + '.' + state + ' -> ' + err);
 
 								if (!obj) {
-									console.error('state ' + channel + '.' + state + ' not set');
+									console.error('plug state ' + channel + '.' + state + ' not set');
 								}
 								expect(obj).to.exist;
 							}
@@ -199,10 +199,10 @@ tests.integration(path.join(__dirname, '..'), {
 						await harness.objects.getObject(
 							'ecoflow-mqtt.0.HW51ZOH4SF412345.' + channel + '.' + state,
 							function(err, obj) {
-								if (err) console.error('TEST' + channel + '.' + state + ' -> ' + err);
+								if (err) console.error('pstream600 TEST' + channel + '.' + state + ' -> ' + err);
 
 								if (!obj) {
-									console.error('state ' + channel + '.' + state + ' not set');
+									console.error('pstream600 state ' + channel + '.' + state + ' not set');
 								}
 								expect(obj).to.exist;
 							}
@@ -217,10 +217,10 @@ tests.integration(path.join(__dirname, '..'), {
 						await harness.objects.getObject(
 							'ecoflow-mqtt.0.HW51ZOH5SF412345.' + channel + '.' + state,
 							function(err, obj) {
-								if (err) console.error('TEST' + channel + '.' + state + ' -> ' + err);
+								if (err) console.error('pstream800 TEST' + channel + '.' + state + ' -> ' + err);
 
 								if (!obj) {
-									console.error('state ' + channel + '.' + state + ' not set');
+									console.error('pstream800 state ' + channel + '.' + state + ' not set');
 								}
 								expect(obj).to.exist;
 							}
@@ -236,10 +236,10 @@ tests.integration(path.join(__dirname, '..'), {
 							await harness.objects.getObject(
 								'ecoflow-mqtt.0.DAABZ5ZE4112345.' + channel + '.' + state,
 								function(err, obj) {
-									if (err) console.error('TEST' + channel + '.' + state + ' -> ' + err);
+									if (err) console.error('deltamini TEST' + channel + '.' + state + ' -> ' + err);
 
 									if (!obj) {
-										console.error('state ' + channel + '.' + state + ' not set');
+										console.error('deltamini state ' + channel + '.' + state + ' not set');
 									}
 									expect(obj).to.exist;
 								}
@@ -256,10 +256,10 @@ tests.integration(path.join(__dirname, '..'), {
 							await harness.objects.getObject(
 								'ecoflow-mqtt.0.DABBZ5ZE4112345.' + channel + '.' + state,
 								function(err, obj) {
-									if (err) console.error('TEST' + channel + '.' + state + ' -> ' + err);
+									if (err) console.error('delta TEST' + channel + '.' + state + ' -> ' + err);
 
 									if (!obj) {
-										console.error('state ' + channel + '.' + state + ' not set');
+										console.error('delta state ' + channel + '.' + state + ' not set');
 									}
 									expect(obj).to.exist;
 								}
@@ -276,10 +276,10 @@ tests.integration(path.join(__dirname, '..'), {
 							await harness.objects.getObject(
 								'ecoflow-mqtt.0.DAEBZ5ZE4112345.' + channel + '.' + state,
 								function(err, obj) {
-									if (err) console.error('TEST' + channel + '.' + state + ' -> ' + err);
+									if (err) console.error('deltamax TEST' + channel + '.' + state + ' -> ' + err);
 
 									if (!obj) {
-										console.error('state ' + channel + '.' + state + ' not set');
+										console.error('deltamax state ' + channel + '.' + state + ' not set');
 									}
 									expect(obj).to.exist;
 								}
@@ -296,10 +296,10 @@ tests.integration(path.join(__dirname, '..'), {
 							await harness.objects.getObject(
 								'ecoflow-mqtt.0.DECBZ5ZE4112345.' + channel + '.' + state,
 								function(err, obj) {
-									if (err) console.error('TEST' + channel + '.' + state + ' -> ' + err);
+									if (err) console.error('deltapro TEST' + channel + '.' + state + ' -> ' + err);
 
 									if (!obj) {
-										console.error('state ' + channel + '.' + state + ' not set');
+										console.error('deltapro state ' + channel + '.' + state + ' not set');
 									}
 									expect(obj).to.exist;
 								}
@@ -316,10 +316,10 @@ tests.integration(path.join(__dirname, '..'), {
 							await harness.objects.getObject(
 								'ecoflow-mqtt.0.R331ZEB4ZEA12345.' + channel + '.' + state,
 								function(err, obj) {
-									if (err) console.error('TEST' + channel + '.' + state + ' -> ' + err);
+									if (err) console.error('delta2 TEST' + channel + '.' + state + ' -> ' + err);
 
 									if (!obj) {
-										console.error('state ' + channel + '.' + state + ' not set');
+										console.error('delta2 state ' + channel + '.' + state + ' not set');
 									}
 									expect(obj).to.exist;
 								}
@@ -336,10 +336,10 @@ tests.integration(path.join(__dirname, '..'), {
 							await harness.objects.getObject(
 								'ecoflow-mqtt.0.R351ZFB4HF6L12345.' + channel + '.' + state,
 								function(err, obj) {
-									if (err) console.error('TEST' + channel + '.' + state + ' -> ' + err);
+									if (err) console.error('delta2max TEST' + channel + '.' + state + ' -> ' + err);
 
 									if (!obj) {
-										console.error('state ' + channel + '.' + state + ' not set');
+										console.error('delta2max state ' + channel + '.' + state + ' not set');
 									}
 									expect(obj).to.exist;
 								}
@@ -356,10 +356,10 @@ tests.integration(path.join(__dirname, '..'), {
 							await harness.objects.getObject(
 								'ecoflow-mqtt.0.R621ZEB4XEC12345.' + channel + '.' + state,
 								function(err, obj) {
-									if (err) console.error('TEST' + channel + '.' + state + ' -> ' + err);
+									if (err) console.error('river2pro TEST' + channel + '.' + state + ' -> ' + err);
 
 									if (!obj) {
-										console.error('state ' + channel + '.' + state + ' not set');
+										console.error('river2pro state ' + channel + '.' + state + ' not set');
 									}
 									expect(obj).to.exist;
 								}
@@ -376,10 +376,10 @@ tests.integration(path.join(__dirname, '..'), {
 							await harness.objects.getObject(
 								'ecoflow-mqtt.0.R521ZEB4XEC12345.' + channel + '.' + state,
 								function(err, obj) {
-									if (err) console.error('TEST' + channel + '.' + state + ' -> ' + err);
+									if (err) console.error('river2max TEST' + channel + '.' + state + ' -> ' + err);
 
 									if (!obj) {
-										console.error('state ' + channel + '.' + state + ' not set');
+										console.error('river2max state ' + channel + '.' + state + ' not set');
 									}
 									expect(obj).to.exist;
 								}
@@ -396,10 +396,10 @@ tests.integration(path.join(__dirname, '..'), {
 							await harness.objects.getObject(
 								'ecoflow-mqtt.0.R421ZEB4XEC12345.' + channel + '.' + state,
 								function(err, obj) {
-									if (err) console.error('TEST' + channel + '.' + state + ' -> ' + err);
+									if (err) console.error('riverpro TEST' + channel + '.' + state + ' -> ' + err);
 
 									if (!obj) {
-										console.error('state ' + channel + '.' + state + ' not set');
+										console.error('riverpro state ' + channel + '.' + state + ' not set');
 									}
 									expect(obj).to.exist;
 								}
@@ -416,10 +416,10 @@ tests.integration(path.join(__dirname, '..'), {
 							await harness.objects.getObject(
 								'ecoflow-mqtt.0.R321ZEB4XEC12345.' + channel + '.' + state,
 								function(err, obj) {
-									if (err) console.error('TEST' + channel + '.' + state + ' -> ' + err);
+									if (err) console.error('rivermax TEST' + channel + '.' + state + ' -> ' + err);
 
 									if (!obj) {
-										console.error('state ' + channel + '.' + state + ' not set');
+										console.error('rivermax state ' + channel + '.' + state + ' not set');
 									}
 									expect(obj).to.exist;
 								}
@@ -436,10 +436,10 @@ tests.integration(path.join(__dirname, '..'), {
 							await harness.objects.getObject(
 								'ecoflow-mqtt.0.KT21ZCH2ZF112345.' + channel + '.' + state,
 								function(err, obj) {
-									if (err) console.error('TEST' + channel + '.' + state + ' -> ' + err);
+									if (err) console.error('wave2 TEST' + channel + '.' + state + ' -> ' + err);
 
 									if (!obj) {
-										console.error('state ' + channel + '.' + state + ' not set');
+										console.error('wave2 state ' + channel + '.' + state + ' not set');
 									}
 									expect(obj).to.exist;
 								}
@@ -456,10 +456,10 @@ tests.integration(path.join(__dirname, '..'), {
 							await harness.objects.getObject(
 								'ecoflow-mqtt.0.BX11ZFB5EF412345.' + channel + '.' + state,
 								function(err, obj) {
-									if (err) console.error('TEST' + channel + '.' + state + ' -> ' + err);
+									if (err) console.error('glacier TEST' + channel + '.' + state + ' -> ' + err);
 
 									if (!obj) {
-										console.error('state ' + channel + '.' + state + ' not set');
+										console.error('glacier state ' + channel + '.' + state + ' not set');
 									}
 									expect(obj).to.exist;
 								}

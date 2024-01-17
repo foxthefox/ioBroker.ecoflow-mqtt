@@ -134,6 +134,7 @@ The 800W version is also implemented and only difference ist the 800W maximum po
 ## Changelog
 ### 0.0.20
 * (foxthefox) first additional integration tests
+* (foxthefox) corrections in data model
 
 ### 0.0.19 (npm)
 * (foxthefox) better error handling of incomplete messages from pstream
