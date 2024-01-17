@@ -1,0 +1,1 @@
+	DCEBZ8xxxxx ->set 94 {"from":"iOS","operateType":"TCP","id":"539162328","lang":"de-de","params":{"bpPowerSoc":54,"id":94,"isConfig":1,"minDsgSoc":21,"maxChgSoc":100},"version":"1.0"}

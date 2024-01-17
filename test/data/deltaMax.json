@@ -212,5 +212,37 @@
 		"pd.iconRcMode": 0,
 		"pd.iconWirelessChgState": 0,
 		"pd.iconSolarPanelMode": 0
+	},
+	"kit": {
+		"latestTimeStamp": 1698657921919,
+		"kit.maxKitNum": 2,
+		"kit.availableDataLen": 83,
+		"kit.productInfoDetails": [
+			{
+				"procedureState": 0,
+				"appVersion": 0,
+				"productDetail": 0,
+				"soc": 0,
+				"curPower": 0,
+				"f32Soc": 0,
+				"protocolAvaiFlag": 0,
+				"sn": "",
+				"loaderVersion": 0,
+				"productType": 0
+			},
+			{
+				"procedureState": 1,
+				"appVersion": 83886769,
+				"productDetail": 1,
+				"soc": 0,
+				"curPower": -62,
+				"f32Soc": 0,
+				"protocolAvaiFlag": 1,
+				"sn": "HW51ZOH4SF4U1217",
+				"loaderVersion": 83886338,
+				"productType": 75
+			}
+		],
+		"kit.protocolVersion": 1
 	}
 }

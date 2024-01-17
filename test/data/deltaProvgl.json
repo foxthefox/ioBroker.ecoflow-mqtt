@@ -1,5 +1,5 @@
 {
-	"bms": {
+	"bmsMaster": {
 		"bmsMaster.amp": -4591,
 		"bmsMaster.bmsFault": 0,
 		"bmsMaster.bqSysStatReg": 128,

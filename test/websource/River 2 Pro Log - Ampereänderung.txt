@@ -1,0 +1,42 @@
+
+ecoflow-mqtt.0
+2024-01-03 11:48:58.807	debug	R621ZEB4XECV1192 ->set w/o params{"id":584641041,"version":"1.0","operateType":"setRtcTime","moduleType":5,"time":1028907831,"code":"0","data":{"ack":0}}
+
+ecoflow-mqtt.0
+2024-01-03 11:48:58.534	debug	R621ZEB4XECV1192 river2pro -> set undefined {"from":"Android","id":"584641041","moduleType":5,"operateType":"setRtcTime","params":{"sec":58,"min":48,"week":3,"month":1,"hour":11,"year":2024,"day":3},"version":"1.0"}
+
+ecoflow-mqtt.0
+2024-01-03 11:48:58.510	debug	R621ZEB4XECV1192 river2pro -> set undefined {"from":"Android","id":"584631040","moduleType":1,"operateType":"getAllTaskCfg","params":{},"version":"1.0"}
+
+ecoflow-mqtt.0
+2024-01-03 11:48:55.781	info	state ecoflow-mqtt.0.R621ZEB4XECV1192.mppt.dcChgCurrent changed: 0 (ack = true)
+
+ecoflow-mqtt.0
+2024-01-03 11:48:55.778	warn	State value to set for "ecoflow-mqtt.0.R621ZEB4XECV1192.mppt.dcChgCurrent" has value "0" less than min "4"
+
+ecoflow-mqtt.0
+2024-01-03 11:48:55.114	debug	R621ZEB4XECV1192 ->set w/o params{"id":877607619,"version":"1.0","operateType":"dcChgCfg","moduleType":5,"time":1028904201,"code":"0","data":{"ack":1}}
+
+ecoflow-mqtt.0
+2024-01-03 11:48:54.866	debug	R621ZEB4XECV1192 river2pro -> set undefined {"from":"Android","lang":"en-us","id":"877607619","moduleType":5,"operateType":"dcChgCfg","version":"1.0","params":{"dcChgCfg":4},"moduleSn":"R621ZEB4XECV1192"}
+
+ecoflow-mqtt.0
+2024-01-03 11:48:54.865	debug	Message succesfully published.
+
+ecoflow-mqtt.0
+2024-01-03 11:48:54.847	debug	publish {"from":"Android","lang":"en-us","id":"877607619","moduleType":5,"operateType":"dcChgCfg","version":"1.0","params":{"dcChgCfg":4},"moduleSn":"R621ZEB4XECV1192"}
+
+ecoflow-mqtt.0
+2024-01-03 11:48:54.847	debug	publish /app/1737151623052382210/R621ZEB4XECV1192/thing/property/set
+
+ecoflow-mqtt.0
+2024-01-03 11:48:54.847	info	(ack=false) ->cmd : channel mppt state dcChgCurrent
+
+ecoflow-mqtt.0
+2024-01-03 11:48:54.847	info	state ecoflow-mqtt.0.R621ZEB4XECV1192.mppt.dcChgCurrent changed: 4 (ack = false)
+
+ecoflow-mqtt.0
+2024-01-03 11:48:51.215	debug	payload from R621ZEB4XECV1192 was: {"addr":0,"cmdFunc":0,"cmdId":0,"id":1628161381756043500,"version":"1.0","timestamp":1704278931,"moduleType":"2","params":{"bms_emsStatus.dsgCmd":1,"bms_emsStatus.chgVol":21,"bms_emsStatus.chgRemainTime":5999,"bms_emsStatus.f32LcdShowSoc":100,"bms_emsStatus.maxChargeSoc":100,"bms_emsStatus.paraVolMax":0,"bms_emsStatus.lcdShowSoc":100,"bms_emsStatus.bmsModel":0,"bms_emsStatus.chgAmp":0,"bms_emsStatus.chgState":0,"bms_emsStatus.openUpsFlag":0,"bms_emsStatus.openBmsIdx":0,"bms_emsStatus.minDsgSoc":0,"bms_emsStatus.paraVolMin":0,"bms_emsStatus.minOpenOilEb":0,"bms_emsStatus.chgCmd":2,"bms_emsStatus.maxAvailNum":0,"bms_emsStatus.maxCloseOilEb":0,"bms_emsStatus.emsIsNormalFlag":1,"bms_emsStatus.bmsIsConnt":[0,0,0],"bms_emsStatus.bmsWarState":0,"bms_emsStatus.dsgRemainTime":5999,"bms_emsStatus.fanLevel":0}}
+
+ecoflow-mqtt.0
+2024-01-03 11:48:51.215	debug	store JSON payload TypeError: Cannot read properties of undefined (reading 'dsgCmd')

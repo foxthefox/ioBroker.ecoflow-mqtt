@@ -365,12 +365,21 @@
 							"default": false
 						},
 						{
-							"type": "sendTo",
-							"hidden": "false",
-							"label": "Debug Quotas",
-							"command": "quota",
-							"variant": "contained",
-							"jsonData": "{\"devId\": \"${data.devId}\"}"
+							"type": "checkbox",
+							"attr": "quotachk1",
+							"width": "5% ",
+							"title": "checkbox",
+							"tooltip": "Click on it",
+							"filter": false,
+							"sort": false,
+							"default": true
+						},
+						{
+							"type": "textSendTo",
+							"label": "lblStationId",
+							"command": "textSendTo1",
+							"jsonData": "{\"devId\": \"${data.devId}\"}",
+							"alsoDependsOn": [ "quotachk1" ]
 						}
 					]
 				},

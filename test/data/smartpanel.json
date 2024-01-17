@@ -1,0 +1,55 @@
+{
+	"smartpanel": {
+		"heartbeat": {
+			"backupCmdChCtrlInfos": [
+				{
+					"powCh": 0,
+					"ctrlSta": 0,
+					"ctrlMode": 0,
+					"priority": 0
+				},
+				{
+					"powCh": 0,
+					"ctrlSta": 0,
+					"ctrlMode": 0,
+					"priority": 0
+				}
+			],
+			"gridDayWatth": 0.0011695987,
+			"backupFullCap": 64862,
+			"workTime": 28391040,
+			"backupBatPer": 71,
+			"backupDayWatth": 0.21446681,
+			"id": 2,
+			"energyInfos": [
+				{
+					"dischargeTime": 9214,
+					"mulPackNum": 0,
+					"stateBean": {
+						"isPowerOutput": 0,
+						"isConnect": 1,
+						"isEnable": 0,
+						"isGridCharge": 0,
+						"isMpptCharge": 0,
+						"isAcOpen": 0
+					},
+					"outputPower": 0,
+					"lcdInputWatts": 0,
+					"fullCap": 80000,
+					"chargeTime": 143999,
+					"emsChgFlag": 0,
+					"type": 14,
+					"emsBatTemp": 25,
+					"ratePower": 3600,
+					"batteryPercentage": 71,
+					"oilPackNum": 0
+				}
+			]
+		},
+		"epsModeInfo": {
+			"eps": false,
+			"cmdSet": 11,
+			"id": 25
+		}
+	}
+}

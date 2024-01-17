@@ -1,0 +1,18 @@
+
+nicht online rückmeldung
+ecoflow-mqtt.0
+	2023-10-31 07:54:05.716	debug	DAEBZ5ZE4151148 received get_reply-> {"id":273792412,"version":"1.0","operateType":"latestQuotas","code":"0","data":{"productType":13,"model":3,"online":0,"productSkuId":1484056109068062722},"message":"设备不在线"}
+ecoflow-mqtt.0
+	2023-10-31 07:54:05.714	debug	DAEBZ5ZE4151148 received get-> {"from":"iOS","operateType":"latestQuotas","id":"273792412","lang":"de-de","params":{},"version":"1.0"}
+ecoflow-mqtt.0
+	2023-10-31 07:54:05.524	debug	DAEBZ5ZE4151148 received get_reply-> {"id":273626505,"version":"1.0","operateType":"latestQuotas","code":"0","data":{"productType":13,"model":3,"online":0,"productSkuId":1484056109068062722},"message":"设备不在线"}
+ecoflow-mqtt.0
+	2023-10-31 07:54:05.520	debug	DAEBZ5ZE4151148 received get_reply-> {"id":273587715,"version":"1.0","operateType":"latestQuotas","code":"0","data":{"productType":13,"model":3,"online":0,"productSkuId":1484056109068062722},"message":"设备不在线"}
+ecoflow-mqtt.0
+	2023-10-31 07:54:05.519	debug	DAEBZ5ZE4151148 received get-> {"from":"iOS","operateType":"latestQuotas","id":"273626505","lang":"de-de","params":{},"version":"1.0"}
+ecoflow-mqtt.0
+	2023-10-31 07:54:05.519	debug	DAEBZ5ZE4151148 received get-> {"from":"iOS","operateType":"latestQuotas","id":"273587715","lang":"de-de","params":{},"version":"1.0"}
+ecoflow-mqtt.0
+	2023-10-31 07:54:02.178	debug	DAEBZ5ZE4151148 received get_reply-> {"id":270591146,"version":"1.0","operateType":"latestQuotas","code":"0","data":{"productType":13,"model":3,"online":0,"productSkuId":1484056109068062722},"message":"设备不在线"}
+ecoflow-mqtt.0
+	2023-10-31 07:54:02.165	debug	DAEBZ5ZE4151148 received get-> {"from":"iOS","operateType":"latestQuotas","lang":"de-de","params":{},"version":"1.0","id":"270591146"}
