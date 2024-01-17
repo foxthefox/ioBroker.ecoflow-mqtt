@@ -1,5 +1,5 @@
 # States for  DELTA2
-### version: 0.0.19
+### version: 0.0.20
 
 [bmsMaster](#bmsMaster)
 
