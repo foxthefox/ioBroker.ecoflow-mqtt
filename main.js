@@ -428,9 +428,9 @@ class EcoflowMqtt extends utils.Adapter {
 								if (!err) {
 									this.log.debug('subscribed the topics');
 									//initial and interval for requesting last quotas
-									await ef.getLastQuotas(this, this.pdevices);
+									await ef.getLastProtobufQuotas(this, this.pdevices);
 									lastQuotInterval = setInterval(async () => {
-										await ef.getLastQuotas(this, this.pdevices);
+										await ef.getLastProtobufQuotas(this, this.pdevices);
 									}, 300 * 1000); // lastQuot every 5min
 								} else {
 									this.log.warn('could not subscribe to topics ' + err);
@@ -846,15 +846,23 @@ class EcoflowMqtt extends utils.Adapter {
 			case 'quota':
 				if (obj.callback && obj.message) {
 					this.log.info('send msg quota data');
-					const quotas = JSON.stringify(this.quotas);
-					this.sendTo(
-						obj.from,
-						obj.command,
-						{
-							error: 'device data:' + quotas
-						},
-						obj.callback
-					);
+					await ef.getLastJSONQuotas(this, this.pdevices);
+					const timeout = setTimeout(() => {
+						try {
+							const quotas = JSON.stringify(this.quotas);
+							this.sendTo(
+								obj.from,
+								obj.command,
+								{
+									error: 'device data:' + quotas
+								},
+								obj.callback
+							);
+						} catch (error) {
+							this.log.debug('send quota req ->' + error);
+							clearTimeout(timeout);
+						}
+					}, 2000);
 				}
 				break;
 			case 'test': {
