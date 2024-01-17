@@ -133,10 +133,7 @@
 					"label": "Debug Quotas",
 					"command": "quota",
 					"variant": "contained",
-					"jsonData": "{\"quota\"}",
-					"sm": 12,
-					"md": 6,
-					"lg": 4
+					"jsonData": "{\"quota\": \"now\"}"
 				},
 				"_debugpstation": {
 					"newLine": true,

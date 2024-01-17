@@ -136,6 +136,7 @@ The 800W version is also implemented and only difference ist the 800W maximum po
 * (foxthefox) first additional integration tests
 * (foxthefox) corrections in data model
 * (foxthefox) new datapoints for glacier
+* (foxthefox) new button in config for 'debug quotas' (retrieving data for all JSON-devices and displaying it)
 
 ### 0.0.19 (npm)
 * (foxthefox) better error handling of incomplete messages from pstream
