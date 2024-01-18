@@ -418,6 +418,15 @@ class EcoflowMqtt extends utils.Adapter {
 		};
 		if (optionsMqtt.clientId.length > 18 && optionsMqtt.username.length > 18 && optionsMqtt.password.length > 18) {
 			try {
+				this.log.info('going to connect to mqtt broker');
+				this.log.debug('your mqtt configration:');
+				this.log.debug('user          -> ' + this.mqttUserId);
+				this.log.debug('name          -> ' + this.mqttUserName);
+				this.log.debug('client        -> ' + this.mqttClientId);
+				this.log.debug('port          -> ' + this.mqttPort);
+				this.log.debug('url           -> ' + this.mqttUrl);
+				this.log.debug('ptotocol      -> ' + this.mqttProtocol);
+
 				this.client = mqtt.connect(this.mqttUrl + ':' + this.mqttPort, optionsMqtt);
 
 				this.client.on('connect', async () => {

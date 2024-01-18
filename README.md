@@ -132,7 +132,10 @@ The 800W version is also implemented and only difference ist the 800W maximum po
 * check forgotten boundary conditions for commands (inhibit cmd, or additional value)
 
 ## Changelog
-### 0.0.20
+### 0.0.21 
+* (foxthefox) more debug on connection
+
+### 0.0.20 (npm)
 * (foxthefox) first additional integration tests
 * (foxthefox) corrections in data model
 * (foxthefox) new datapoints for glacier
