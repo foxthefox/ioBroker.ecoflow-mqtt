@@ -1,6 +1,6 @@
 let states = require('../../lib/ecoflow_data.js').pstationStates;
 
-const device = 'deltamini';
+const device = 'wave2';
 const quota = require('./' + device + '.json');
 let jdevice = quota.data;
 
@@ -19,7 +19,7 @@ for (let combstate in jdevice['quotaMap']) {
 
 	let type = '';
 	for (let i = 0; i < typetest.length; i++) {
-		if (channel === 'bms_bmsStatus') channel = 'bmsMaster';
+		if (channel === 'bms_bmsStatus' || channel === 'bms') channel = 'bmsMaster';
 		if (channel === 'bms_emsStatus') channel = 'ems';
 		console.log(channel + '   ' + typetest[i] + '  ' + state);
 		if (states[channel]) {

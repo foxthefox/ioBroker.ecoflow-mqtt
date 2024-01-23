@@ -1,5 +1,5 @@
 # States for  GLACIER
-### version: 0.0.20
+### version: 0.0.21
 
 [pd](#pd)
 
@@ -107,6 +107,7 @@
 |appOpCountTempUnitF| Count of setting degrees in Fahrenheit through app |
 |appOpCountBeepOn| Count of enabling buzzer through app |
 |err| PD error |
+|appOpCountMakeIce| Count of ice making through app? |
 
 ### diagnostic
 
@@ -132,6 +133,7 @@
 |bldcDntIce| Ice making limit on compressor | {0:Ice making is allowed,1:Ice making is not allowed} |
 |warnInfo| Warning: BIT0: Over-temperature; BIT1: Under-temperature; BIT2: Overload; BIT3: Charging error; BIT4: Fan error; BIT5: BLCD communication error | {1:overtemperature} |
 |fanLvl| Fan level | {0:non-rotation,1:Level 1,2:Level 2,3:Level3,4:Level 4,5:Level 5} |
+|deiceAct| Deice Active? | {0:inactive,1:active} |
 
 ### switch
 
@@ -207,6 +209,7 @@
 |openOilEbSocMin|0 | 30 | % | 1 |  SoC for turning on Smart Generator |
 |minDsgSoc|0 | 30 | % | 1 |  Minimum discharging SOC |
 |maxChgSoc|60 | 100 | % | 1 |  Maximum charging SOC |
+|f32LcdSoc|0 | 100 | % | 1 |  SOC on LCD |
 
 
 ### string

@@ -1,5 +1,5 @@
 # States for  WAVE2
-### version: 0.0.20
+### version: 0.0.21
 
 [pd](#pd)
 
@@ -76,7 +76,8 @@
 |mainMode| 0 | 2 | mode | 1 |  Main mode: 0: Cool; 1: Heat; 2: Fan | {valName:mainMode,moduleType:1,operateType:mainMode,params:{mainMode:1}} |
 |timeSet| 0 | 65535 | min | 1 |  Time set for current mode | {valName:timeSet,moduleType:1,operateType:sacTiming,params:{timeSet:10,timeEn:1}} |
 |wteFthEn| 0 | 3 | mode | 1 |  bit1 (main switch of automatic drainage function): 0: On; 1: Off bit0: (in Cool/Fan mode): 0: Manual drainage; 1: No drainage (in Heat mode): 0: Off; 1: Physical drainage (In Cool/Fan mode: 0: Turn on Manual drainage，1: Turn on No drainage, 2: Turn off Manual drainage, 3 Turn off No drainage In Heat Mode: 0: Turn off, 1: Turn on Manual drainage， 3: Turn off Manual drainage) | {valName:wteFthEn,moduleType:1,operateType:wteFthEn,params:{wteFthEn:3}} |
-|rgbState| 0 | 3 | mode | 1 |  Light strip settings: 0: Follow the screen; 1: Always on; 2: Always off | {valName:powerMode,moduleType:1,operateType:powerMode,params:{powerMode:2}} |
+|rgbState| 0 | 3 | mode | 1 |  Light strip settings: 0: Follow the screen; 1: Always on; 2: Always off | {valName:rgbState,moduleType:1,operateType:rgbState,params:{rgbState:2}} |
+|powerMode| 0 | 3 | mode | 1 |  Remote startup/shutdown (1: Startup; 2: Standby; 3: Shutdown) | {valName:powerMode,moduleType:1,operateType:powerMode,params:{powerMode:2}} |
 
 ### string
 
@@ -128,7 +129,6 @@
 
 | State  |     Name |  values |
 |----------|:-------------:|------|
-|powerMode| Remotely power on/off  | {1:Power on,2:Power off} |
 |bmsBoundFlag| Upper and lower limits on main battery pack charging and discharging | {0:Normal charging and discharging,1:Upper limit on charging} |
 |runSts| bit0 ac_in; bit1 pfc; bit2 llc; bit3 mppt: 1: Run; 0: Not run | {0:OK?} |
 |rlySts| bit0 soft start rly; bit1 ac rly; 1: Closed; 0: Open | {0:OK?} |
@@ -197,6 +197,7 @@
 |pvPowerSupplyCnt| Count of using PV power supply |
 |llcOcpInt| Count of LLC overcurrent |
 |psdrCnt| Communication counter |
+|busCurr| busCurr |
 
 ### diagnostic
 
@@ -303,6 +304,11 @@
 |awakeCnt| Count of pressing button for wakeup |
 |powerOnCnt| Count of pressing button for startup |
 |powerOffCnt| Count of pressing button for shutdown |
+|dsgWattRangeTime| Length of time (sec) when the discharging power falls in each of the four intervals |
+|usbWattRangeTime| Length of time (sec) when the usb power falls in each of the four intervals |
+|typecWattRangeTime| Length of time (sec) when the AC power falls in each of the four intervals |
+|usbUseCnt| Count of using USB |
+|typecUseCnt| Count of using AC |
 
 ### diagnostic
 
