@@ -58,6 +58,15 @@
 {{/with}}
 {{/each}}
 {{/ifeq}}
+{{#ifeq @key  'array'}}
+| State  |  Name |
+|----------|------|
+{{#each this}}
+{{#with this}}
+|{{@key}}| {{this.name}} |
+{{/with}}
+{{/each}}
+{{/ifeq}}
 
 {{/each}}
 {{/each}}

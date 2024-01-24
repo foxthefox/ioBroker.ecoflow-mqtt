@@ -88,7 +88,6 @@
 |deviceName| Name |
 |pdTempSys| Unit of temperature |
 |bmsPid| Product ID of BMS |
-|sacWattRangeTime| Length of time the device power falls in each interval (sec). The intervals include 101 W-200 W, 201 W-300 W, 301 W-400 W, 401 W-500 W, 501 W-600 W, and 601 W-700 W. |
 |mpptSts| PV execution status |
 |bmsErr| BMS error code |
 |powerSts| Power supply status |
@@ -98,7 +97,6 @@
 |lowWindSpeedCnt| Count of setting low wind speed |
 |dmPowerSupplyCnt| Count of using DELTA Max as the power source |
 |CompressorTempCnt| Count of temperature sensor errors at the compressor discharge pipe |
-|envTempRangeCnt| Count of ambient temperature intervals; the range is 0-55 degrees Celsius; each interval covers 5 degrees; it is counted every time the button is pressed to power on. |
 |dp2PowerSupplyCnt| Count of using DELTA 2 as the power source |
 |hotSleepCnt| Count of setting the Sleep mode in Heat mode |
 |hotNormalCnt| Count of setting the Normal mode in Heat mode |
@@ -124,6 +122,13 @@
 |frontBarTempErrCnt| Count of temperature sensor errors at the front copper bar |
 |psdrCnt| Communication counter |
 |coolEcoCnt| Count of setting the ECO mode in Cool mode |
+
+### array
+
+| State  |  Name |
+|----------|------|
+|sacWattRangeTime| Length of time the device power falls in each interval (sec). The intervals include 101 W-200 W, 201 W-300 W, 301 W-400 W, 401 W-500 W, 501 W-600 W, and 601 W-700 W. |
+|envTempRangeCnt| Count of ambient temperature intervals; the range is 0-55 degrees Celsius; each interval covers 5 degrees; it is counted every time the button is pressed to power on. |
 
 ### diagnostic
 
@@ -296,7 +301,6 @@
 | State  |  Name |
 |----------|------|
 |bmsBatErrCode| BMS error code |
-|chgWattRangeTime| Length of time (sec) when the charging power falls in each of the four intervals |
 |bmsHwFlag| Hardware in place |
 |bmsSwFlag| Software in place |
 |sleepCnt| Count of pressing the Sleep button |
@@ -304,11 +308,17 @@
 |awakeCnt| Count of pressing button for wakeup |
 |powerOnCnt| Count of pressing button for startup |
 |powerOffCnt| Count of pressing button for shutdown |
+|usbUseCnt| Count of using USB |
+|typecUseCnt| Count of using AC |
+
+### array
+
+| State  |  Name |
+|----------|------|
+|chgWattRangeTime| Length of time (sec) when the charging power falls in each of the four intervals |
 |dsgWattRangeTime| Length of time (sec) when the discharging power falls in each of the four intervals |
 |usbWattRangeTime| Length of time (sec) when the usb power falls in each of the four intervals |
 |typecWattRangeTime| Length of time (sec) when the AC power falls in each of the four intervals |
-|usbUseCnt| Count of using USB |
-|typecUseCnt| Count of using AC |
 
 ### diagnostic
 

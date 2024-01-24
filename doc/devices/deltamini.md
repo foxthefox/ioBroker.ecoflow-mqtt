@@ -1,5 +1,5 @@
 # States for  DELTAMINI
-### version: 0.0.20
+### version: 0.0.21
 
 [bmsMaster](#bmsMaster)
 
@@ -235,29 +235,29 @@
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |carTemp|0 | 80 | °C | 1 |  CAR temperature |
-|carUsedTime|0 | 143999 | min | 0.0166 |  Car use time |
+|carUsedTime|0 | 9999999 | min | 0.0166 |  Car use time |
 |carWatts|0 | 500 | W | 0.1 |  CAR output power |
 |chgPowerAc|0 | 65000 | kWh | 0.001 |  Cumulative AC power charged (wall socket) |
 |chgPowerDc|0 | 65000 | kWh | 0.001 |  Cumulative DC power charged (adapter) |
 |chgSunPower|0 | 65000 | kWh | 0.001 |  Cumulative solar power charged |
-|dcInUsedTime|0 | 143999 | min | 0.0166 |  DC charging time |
+|dcInUsedTime|0 | 9999999 | min | 0.0166 |  DC charging time |
 |dsgPowerAc|0 | 65000 | kWh | 0.001 |  Cumulative AC power discharged |
 |dsgPowerDc|0 | 65000 | kWh | 0.001 |  Cumulative DC power discharged |
-|invUsedTime|0 | 143999 | min | 0.0166 |  Inverter use time |
-|mpptUsedTime|0 | 143999 | min | 0.0166 |  MPPT use time |
+|invUsedTime|0 | 9999999 | min | 0.0166 |  Inverter use time |
+|mpptUsedTime|0 | 9999999 | min | 0.0166 |  MPPT use time |
 |qcUsb1Watts|0 | 500 | W | 0.1 |  Quick charge usb1 output power |
 |qcUsb2Watts|0 | 500 | W | 0.1 |  Quick charge usb2 output power |
 |remainTime|0 | 143999 | min | 1 |  Time remaining (min) &gt; 0: remaining charging time; time remaining (min) &lt; 0: remaining discharging time |
 |soc|0 | 100 | % | 1 |  Displayed SOC |
-|typccUsedTime|0 | 143999 | min | 0.0166 |  Type-C use time |
+|typccUsedTime|0 | 9999999 | min | 0.0166 |  Type-C use time |
 |typec1Temp|0 | 80 | °C | 1 |  Type-C 1 temperature |
 |typec1Watts|0 | 500 | W | 1 |  Typec1 output power |
 |typec2Temp|0 | 80 | °C | 1 |  Type-C 2 temperature |
 |typec2Watts|0 | 500 | W | 1 |  Typec2 output power |
 |usb1Watts|0 | 500 | W | 0.1 |  Common usb1 output power |
 |usb2Watts|0 | 500 | W | 0.1 |  Common usb2 output power |
-|usbUsedTime|0 | 143999 | min | 0.0166 |  USB use time |
-|usbqcUsedTime|0 | 143999 | min | 0.0166 |  USB QC use time |
+|usbUsedTime|0 | 9999999 | min | 0.0166 |  USB use time |
+|usbqcUsedTime|0 | 9999999 | min | 0.0166 |  USB QC use time |
 |wattsInSum|0 | 4000 | W | 1 |  Total input power |
 |wattsOutSum|0 | 4000 | W | 1 |  Total output power |
 

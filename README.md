@@ -152,8 +152,13 @@ The 800W version is also implemented and only difference ist the 800W maximum po
 * check forgotten boundary conditions for commands (inhibit cmd, or additional value)
 
 ## Changelog
-### 0.0.21 
+### 0.0.21 (npm)
 * (foxthefox) more debug on connection
+* (foxthefox) new datapoints for wave2
+* (foxthefox) correction for max on time values
+* (foxthefox) moved several datapoints from number/string to arrays (mainly wave2/glacier)
+* (foxthefox) moved datapoints from string to arrays (bms*.hwVersion, bms*.hwEdition, bms*.cellVol, bms*.cellTemp, pd.bmsKitState)
+* (foxthefox) plug switch "dynWattEnable" which includes plug for dynamic watts of powerstream
 
 ### 0.0.20 (npm)
 * (foxthefox) first additional integration tests

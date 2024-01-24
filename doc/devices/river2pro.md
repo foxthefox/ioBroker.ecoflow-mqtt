@@ -1,5 +1,5 @@
 # States for  RIVER2PRO
-### version: 0.0.20
+### version: 0.0.21
 
 [pd](#pd)
 
@@ -23,29 +23,29 @@
 |typec1Temp|0 | 80 | °C | 1 |  Type-C 1 temperature |
 |qcUsb1Watts|0 | 500 | W | 0.1 |  Quick charge usb1 output power |
 |wattsInSum|0 | 4000 | W | 1 |  Total input power |
-|dcInUsedTime|0 | 143999 | min | 0.0166 |  DC charging time |
+|dcInUsedTime|0 | 9999999 | min | 0.0166 |  DC charging time |
 |dsgPowerDC|0 | 4000 | W | 0.1 |  Discharge Power DC |
 |chgPowerDC|0 | 65000 | kWh | 0.001 |  Cumulative DC power charged for PD (adapter) |
 |remainTime|0 | 143999 | min | 1 |  Time remaining (min) &gt; 0: remaining charging time; time remaining (min) &lt; 0: remaining discharging time |
-|typecUsedTime|0 | 143999 | min | 0.0166 |  Type-C use time |
+|typecUsedTime|0 | 9999999 | min | 0.0166 |  Type-C use time |
 |typec2Watts|0 | 500 | W | 1 |  Typec2 output power |
-|usbqcUsedTime|0 | 143999 | min | 0.0166 |  USB QC use time |
+|usbqcUsedTime|0 | 9999999 | min | 0.0166 |  USB QC use time |
 |chgSunPower|0 | 65000 | kWh | 0.001 |  Cumulative solar power charged |
 |wattsOutSum|0 | 4000 | W | 1 |  Total output power |
 |carTemp|0 | 80 | °C | 1 |  CAR temperature |
-|usbUsedTime|0 | 143999 | min | 0.0166 |  USB use time |
-|mpptUsedTime|0 | 143999 | min | 0.0166 |  MPPT use time |
+|usbUsedTime|0 | 9999999 | min | 0.0166 |  USB use time |
+|mpptUsedTime|0 | 9999999 | min | 0.0166 |  MPPT use time |
 |usb1Watts|0 | 500 | W | 0.1 |  Common usb1 output power |
 |dsgPowerAC|0 | 4000 | W | 0.001 |  Discharge Power AC |
 |qcUsb2Watts|0 | 500 | W | 0.1 |  Quick charge usb2 output power |
 |chgPowerAC|0 | 65000 | kWh | 0.001 |  Cumulative AC power charged for PD (wall socket) |
 |carWatts|0 | 500 | W | 0.1 |  CAR output power |
 |typec2Temp|0 | 80 | °C | 1 |  Type-C 2 temperature |
-|carUsedTime|0 | 143999 | min | 0.0166 |  Car use time |
+|carUsedTime|0 | 9999999 | min | 0.0166 |  Car use time |
 |typec1Watts|0 | 500 | W | 1 |  Typec1 output power |
 |usb2Watts|0 | 500 | W | 0.1 |  Common usb2 output power |
 |soc|0 | 100 | % | 1 |  Displayed SOC |
-|invUsedTime|0 | 143999 | min | 0.0166 |  Inverter use time |
+|invUsedTime|0 | 9999999 | min | 0.0166 |  Inverter use time |
 |typecChaWatts|0 | 500 | W | 0.1 |  PD? charging power |
 |acAutoOutPause|0 | 255 | s (0-255?) | 1 |  AC Auto out Pause |
 |minAcoutSoc|0 | 255 | % (0-255?) | 1 |  minimum AC out SOC |
@@ -288,8 +288,13 @@
 |openUpsFlag| UPS mode enable flag |
 |openBmsIdx| Open BMS index |
 |maxAvailNum| Maximum available quantity |
-|bmsIsConnt| BMS online signal: BIT0: hardware online signal; BIT1: software online signal |
 |fanLevel| Fan level |
+
+### array
+
+| State  |  Name |
+|----------|------|
+|bmsIsConnt| BMS online signal: BIT0: hardware online signal; BIT1: software online signal |
 
 ## info
 
