@@ -1,5 +1,5 @@
 # States for  DELTAPRO
-### version: 0.0.20
+### version: 0.0.21
 
 [bmsMaster](#bmsMaster)
 
@@ -173,25 +173,25 @@
 |usb1Watts|0 | 500 | W | 0.1 |  Common usb1 output power |
 |chgPowerDc|0 | 65000 | kWh | 0.001 |  Cumulative DC power charged (adapter) |
 |dsgPowerDc|0 | 65000 | kWh | 0.001 |  Cumulative DC power discharged |
-|typccUsedTime|0 | 143999 | min | 0.0166 |  Type-C use time |
+|typccUsedTime|0 | 9999999 | min | 0.0166 |  Type-C use time |
 |typec2Temp|0 | 80 | °C | 1 |  Type-C 2 temperature |
-|carUsedTime|0 | 143999 | min | 0.0166 |  Car use time |
+|carUsedTime|0 | 9999999 | min | 0.0166 |  Car use time |
 |typec1Watts|0 | 500 | W | 1 |  Typec1 output power |
 |soc|0 | 100 | % | 1 |  Displayed SOC |
 |wattsOutSum|0 | 4000 | W | 1 |  Total output power |
-|invUsedTime|0 | 143999 | min | 0.0166 |  Inverter use time |
+|invUsedTime|0 | 9999999 | min | 0.0166 |  Inverter use time |
 |typec1Temp|0 | 80 | °C | 1 |  Type-C 1 temperature |
 |dsgPowerAc|0 | 65000 | kWh | 0.001 |  Cumulative AC power discharged |
-|dcInUsedTime|0 | 143999 | min | 0.0166 |  DC charging time |
+|dcInUsedTime|0 | 9999999 | min | 0.0166 |  DC charging time |
 |chgPowerAc|0 | 65000 | kWh | 0.001 |  Cumulative AC power charged (wall socket) |
 |remainTime|0 | 143999 | min | 1 |  Time remaining (min) &gt; 0: remaining charging time; time remaining (min) &lt; 0: remaining discharging time |
 |chgSunPower|0 | 65000 | kWh | 0.001 |  Cumulative solar power charged |
 |carTemp|0 | 80 | °C | 1 |  CAR temperature |
 |qcUsb2Watts|0 | 500 | W | 0.1 |  Quick charge usb2 output power |
 |qcUsb1Watts|0 | 500 | W | 0.1 |  Quick charge usb1 output power |
-|usbqcUsedTime|0 | 143999 | min | 0.0166 |  USB QC use time |
-|usbUsedTime|0 | 143999 | min | 0.0166 |  USB use time |
-|mpptUsedTime|0 | 143999 | min | 0.0166 |  MPPT use time |
+|usbqcUsedTime|0 | 9999999 | min | 0.0166 |  USB QC use time |
+|usbUsedTime|0 | 9999999 | min | 0.0166 |  USB use time |
+|mpptUsedTime|0 | 9999999 | min | 0.0166 |  MPPT use time |
 |carWatts|0 | 500 | W | 0.1 |  CAR output power |
 |usb2Watts|0 | 500 | W | 0.1 |  Common usb2 output power |
 |minAcoutSoc|0 | 255 | % (0-255?) | 1 |  minimum AC out SOC |

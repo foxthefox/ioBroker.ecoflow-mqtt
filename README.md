@@ -49,38 +49,58 @@ The mqqt Broker settings are default and usually need no modification.
 
 Use the second tab "Device(s) Configuration" for adding your equipment.
 
-Parametrizing the Powerstream:
+<details><summary><i> Parametrizing the Powerstream</i></summary>
+<p>
+
 * add a new row
 * set the deviceID of Powerstream as shown in the app, something like "HW51...."
 * give it a name
 * select the version (600W or 800W)
 
-Parametrizing the Powerstation:
+</p></details>
+
+<details><summary><i>Parametrizing the Powerstation</i></summary>
+<p>
+
 * add a new row
 * set the deviceID of Powerstation as shown in the app, string varies by type of device
 * give it a name
 * select the device type
 * if additional battery pack is connected, check the port number where it is connected
 
-Parametrizing the Smart Plug:
+</p></details>
+
+<details><summary><i>Parametrizing the Smart Plug</i></summary>
+<p>
+
 * add a new row
 * set the deviceID of Smart Plug as shown in the app, something like "HW52...."
 * give it a name
 * set the type to "plug"
 
+</p></details>
+
 Use the third tab "Wave / Glacier Configuration" for adding your equipment.
 
-Parametrizing the Wave :
+<details><summary><i><details><summary><i>Parametrizing the Wave</i></summary>
+<p>
+
 * add a new row
 * set the deviceID of Smart Plug as shown in the app, something like "KT21ZCH..."
 * give it a name
 * set the type to "plug"
 
-Parametrizing the Glacier:
+</p></details>
+
+<details><summary><i>Parametrizing the Glacier</i></summary>
+<p>
+
 * add a new row
 * set the deviceID of Smart Plug as shown in the app, something like "BX11ZCB..."
 * give it a name
 * set the type to "plug"
+
+</p></details>
 
 ## data point update
 
@@ -132,7 +152,15 @@ The 800W version is also implemented and only difference ist the 800W maximum po
 * check forgotten boundary conditions for commands (inhibit cmd, or additional value)
 
 ## Changelog
-### 0.0.20
+### 0.0.21 (npm)
+* (foxthefox) more debug on connection
+* (foxthefox) new datapoints for wave2
+* (foxthefox) deleted max on duration values
+* (foxthefox) moved several datapoints from number/string to arrays (mainly wave2/glacier)
+* (foxthefox) moved datapoints from string to arrays (bms*.hwVersion, bms*.hwEdition, bms*.cellVol, bms*.cellTemp, pd.bmsKitState)
+* (foxthefox) plug switch "dynWattEnable" which includes plug for dynamic watts of powerstream
+
+### 0.0.20 (npm)
 * (foxthefox) first additional integration tests
 * (foxthefox) corrections in data model
 * (foxthefox) new datapoints for glacier

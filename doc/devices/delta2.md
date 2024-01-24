@@ -1,5 +1,5 @@
 # States for  DELTA2
-### version: 0.0.20
+### version: 0.0.21
 
 [bmsMaster](#bmsMaster)
 
@@ -94,7 +94,6 @@
 |chgState| Charging state | {0:disabled,1:CC,2:CV,3:UPS,4:PARA 0x55: Charging error} |
 |dsgCmd| Discharge switch | {0:off,1:on,2:2?} |
 |emsIsNormalFlag| Energy storage state: 0: sleep; 1: normal | {0:sleep,1:normal} |
-|bmsIsConnt| bmsIsConnt | {0:0?,1:1?} |
 |bmsWarState| BMS warning state: bit0: hi_temp; bit1: low_temp; bit2: overload; bit3: chg_flag | {0:no warning?,1:hi_temp,2:low_temp,4:overload,8:chg_flag} |
 
 ### level
@@ -105,6 +104,12 @@
 |minDsgSoc| 0 | 30 | % | 1 |  Discharge lower limit | {valName:minDsgSoc,moduleType:2,operateType:dsgCfg,params:{minDsgSoc:30}} |
 |maxCloseOilEb| 50 | 100 | % | 1 |  The lower threshold of smart generator auto off Range: 0~100 | {valName:closeOilSoc,moduleType:2,operateType:closeOilSoc,params:{closeOilSoc:90}} |
 |minOpenOilEb| 0 | 30 | % | 1 |  The upper threshold of smart generator auto on Range: 0~100 | {valName:openOilSoc,moduleType:2,operateType:openOilSoc,params:{openOilSoc:40}} |
+
+### array
+
+| State  |  Name |
+|----------|------|
+|bmsIsConnt| BMS online signal: BIT0: hardware online signal; BIT1: software online signal |
 
 ## inv
 
@@ -237,13 +242,13 @@
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |carTemp|0 | 80 | °C | 1 |  CAR temperature |
-|carUsedTime|0 | 143999 | min | 0.0166 |  Car use time |
+|carUsedTime|0 | 9999999 | min | 0.0166 |  Car use time |
 |carWatts|0 | 500 | W | 0.1 |  CAR output power |
 |chgSunPower|0 | 65000 | kWh | 0.001 |  Cumulative solar power charged |
-|dcInUsedTime|0 | 143999 | min | 0.0166 |  DC charging time |
-|invUsedTime|0 | 143999 | min | 0.0166 |  Inverter use time |
+|dcInUsedTime|0 | 9999999 | min | 0.0166 |  DC charging time |
+|invUsedTime|0 | 9999999 | min | 0.0166 |  Inverter use time |
 |minAcoutSoc|0 | 255 | % (0-255?) | 1 |  minimum AC out SOC |
-|mpptUsedTime|0 | 143999 | min | 0.0166 |  MPPT use time |
+|mpptUsedTime|0 | 9999999 | min | 0.0166 |  MPPT use time |
 |qcUsb1Watts|0 | 500 | W | 0.1 |  Quick charge usb1 output power |
 |qcUsb2Watts|0 | 500 | W | 0.1 |  Quick charge usb2 output power |
 |remainTime|0 | 143999 | min | 1 |  Time remaining (min) &gt; 0: remaining charging time; time remaining (min) &lt; 0: remaining discharging time |
@@ -254,8 +259,8 @@
 |typec2Watts|0 | 500 | W | 1 |  Typec2 output power |
 |usb1Watts|0 | 500 | W | 0.1 |  Common usb1 output power |
 |usb2Watts|0 | 500 | W | 0.1 |  Common usb2 output power |
-|usbUsedTime|0 | 143999 | min | 0.0166 |  USB use time |
-|usbqcUsedTime|0 | 143999 | min | 0.0166 |  USB QC use time |
+|usbUsedTime|0 | 9999999 | min | 0.0166 |  USB use time |
+|usbqcUsedTime|0 | 9999999 | min | 0.0166 |  USB QC use time |
 |wattsInSum|0 | 4000 | W | 1 |  Total input power |
 |wattsOutSum|0 | 4000 | W | 1 |  Total output power |
 |acAutoOutPause|0 | 255 | s (0-255?) | 1 |  AC Auto out Pause |
@@ -267,7 +272,7 @@
 |inputWatts|0 | 4000 | W | 0.1 |  Input power |
 |outWatts|0 | 500 | W | 0.1 |  PD? output power |
 |outputWatts|0 | 4000 | W | 0.1 |  Output power |
-|typecUsedTime|0 | 143999 | min | 0.0166 |  Type-C use time |
+|typecUsedTime|0 | 9999999 | min | 0.0166 |  Type-C use time |
 
 
 ### switch

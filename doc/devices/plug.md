@@ -1,5 +1,5 @@
 # States for  PLUG
-### version: 0.0.20
+### version: 0.0.21
 
 [plug_heartbeat](#plug_heartbeat)
 
@@ -43,7 +43,6 @@
 |unknown36| unknown36 |
 |unknown37| unknown37 |
 |unixtime_38| unknown38 |
-|dynWattEnable_39| unknown39 |
 
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
@@ -56,7 +55,7 @@
 |watts|0 | 2500 | W | 0.1 |  Plug AC power |
 |heartbeatFrequency|0 | 20 | 1/s | 1 |  Plug heartbeat |
 |uptime|0 | 9999999 | s | 1 |  Smart plug uptime |
-|cntDevices|0 | 20 | pcs | 1 |  Amount of PowerStream/Plugs |
+|cntDevices|0 | 20 | pcs | 1 |  Amount of Plugs connected to PS |
 |streamOutputPower|0 | 800 | W | 0.1 |  Power Stream output power |
 |powerPlugs|0 | 1000 | W | 0.1 |  Power of plugs |
 |wifiRssi|-90 | 10 | dBm | 1 |  wifi RSSI |
@@ -68,6 +67,7 @@
 |----------|:-------------:|:------:|------|------|
 |switch| off | on | Plug Switch | {cmdFunc:2,cmdId:129,dataLen:2} |
 |meshEnable| off | on | Plug Mesh enable | {cmdFunc:2,cmdId:138,dataLen:2} |
+|dynWattEnable| off | on | Dynamic watt enable | {cmdFunc:2,cmdId:142,dataLen:2} |
 
 ### level
 

@@ -1,5 +1,5 @@
 # States for  DELTA2MAX
-### version: 0.0.20
+### version: 0.0.21
 
 [bmsMaster](#bmsMaster)
 
@@ -63,18 +63,21 @@
 |balanceState| Balance State | {0:0&#x3D;OK?,1:1?,2:2?} |
 |mosState| Battery capacity type | {0:0?,1:1?,2:2?,3:3?} |
 
+### array
+
+| State  |  Name |
+|----------|------|
+|cellTemp| Cell temperature |
+|cellVol| Cell voltage |
+|hwVersion| HW version |
+
 ## ems
 
-### diagnostic
+### array
 
-| State  |     Name |  values |
-|----------|:-------------:|------|
-|bmsIsConnt| bmsIsConnt | {0:0?,1:1?} |
-|bmsWarState| BMS warning state: bit0: hi_temp; bit1: low_temp; bit2: overload; bit3: chg_flag | {0:no warning?,1:hi_temp,2:low_temp,4:overload,8:chg_flag} |
-|chgCmd| Charge switch | {0:off,1:on,2:2?} |
-|chgState| Charging state | {0:disabled,1:CC,2:CV,3:UPS,4:PARA 0x55: Charging error} |
-|dsgCmd| Discharge switch | {0:off,1:on,2:2?} |
-|emsIsNormalFlag| Energy storage state: 0: sleep; 1: normal | {0:sleep,1:normal} |
+| State  |  Name |
+|----------|------|
+|bmsIsConnt| BMS online signal: BIT0: hardware online signal; BIT1: software online signal |
 
 ### string
 
@@ -85,6 +88,16 @@
 |maxAvailNum| Maximum available quantity |
 |openBmsIdx| Open BMS index |
 |openUpsFlag| UPS mode enable flag |
+
+### diagnostic
+
+| State  |     Name |  values |
+|----------|:-------------:|------|
+|bmsWarState| BMS warning state: bit0: hi_temp; bit1: low_temp; bit2: overload; bit3: chg_flag | {0:no warning?,1:hi_temp,2:low_temp,4:overload,8:chg_flag} |
+|chgCmd| Charge switch | {0:off,1:on,2:2?} |
+|chgState| Charging state | {0:disabled,1:CC,2:CV,3:UPS,4:PARA 0x55: Charging error} |
+|dsgCmd| Discharge switch | {0:off,1:on,2:2?} |
+|emsIsNormalFlag| Energy storage state: 0: sleep; 1: normal | {0:sleep,1:normal} |
 
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
@@ -242,7 +255,6 @@
 |errCode| Global error code | {0:OK?} |
 |watchIsConfig| Power management configuration:  | {0:disable,1:enable} |
 |wifiAutoRcvy| Wi-Fi auto mode | {0:default mode (STA),1:The Wi-Fi network is automatically restored to the last mode (STA/AP) after powering on} |
-|bmsKitState| bms Kit State | {0:0?,1:1?} |
 |otherKitState| other Kit State | {0:0?,1:1?} |
 |pv1ChargeType| Charger type | {0:none,1:adapter,2:solar panel} |
 |pv2ChargeType| Charger type | {0:none,1:adapter,2:solar panel} |
@@ -274,16 +286,16 @@
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |carTemp|0 | 80 | °C | 1 |  CAR temperature |
-|carUsedTime|0 | 143999 | min | 0.0166 |  Car use time |
+|carUsedTime|0 | 9999999 | min | 0.0166 |  Car use time |
 |carWatts|0 | 500 | W | 0.1 |  CAR output power |
 |chgPowerAC|0 | 65000 | kWh | 0.001 |  Cumulative AC power charged for PD (wall socket) |
 |chgPowerDC|0 | 65000 | kWh | 0.001 |  Cumulative DC power charged for PD (adapter) |
 |chgSunPower|0 | 65000 | kWh | 0.001 |  Cumulative solar power charged |
-|dcInUsedTime|0 | 143999 | min | 0.0166 |  DC charging time |
+|dcInUsedTime|0 | 9999999 | min | 0.0166 |  DC charging time |
 |dsgPowerAC|0 | 4000 | W | 0.001 |  Discharge Power AC |
 |dsgPowerDC|0 | 4000 | W | 0.1 |  Discharge Power DC |
-|invUsedTime|0 | 143999 | min | 0.0166 |  Inverter use time |
-|mpptUsedTime|0 | 143999 | min | 0.0166 |  MPPT use time |
+|invUsedTime|0 | 9999999 | min | 0.0166 |  Inverter use time |
+|mpptUsedTime|0 | 9999999 | min | 0.0166 |  MPPT use time |
 |qcUsb1Watts|0 | 500 | W | 0.1 |  Quick charge usb1 output power |
 |qcUsb2Watts|0 | 500 | W | 0.1 |  Quick charge usb2 output power |
 |remainTime|0 | 143999 | min | 1 |  Time remaining (min) &gt; 0: remaining charging time; time remaining (min) &lt; 0: remaining discharging time |
@@ -292,11 +304,11 @@
 |typec1Watts|0 | 500 | W | 1 |  Typec1 output power |
 |typec2Temp|0 | 80 | °C | 1 |  Type-C 2 temperature |
 |typec2Watts|0 | 500 | W | 1 |  Typec2 output power |
-|typecUsedTime|0 | 143999 | min | 0.0166 |  Type-C use time |
+|typecUsedTime|0 | 9999999 | min | 0.0166 |  Type-C use time |
 |usb1Watts|0 | 500 | W | 0.1 |  Common usb1 output power |
 |usb2Watts|0 | 500 | W | 0.1 |  Common usb2 output power |
-|usbUsedTime|0 | 143999 | min | 0.0166 |  USB use time |
-|usbqcUsedTime|0 | 143999 | min | 0.0166 |  USB QC use time |
+|usbUsedTime|0 | 9999999 | min | 0.0166 |  USB use time |
+|usbqcUsedTime|0 | 9999999 | min | 0.0166 |  USB QC use time |
 |wattsInSum|0 | 4000 | W | 1 |  Total input power |
 |wattsOutSum|0 | 4000 | W | 1 |  Total output power |
 |XT150Watts1|0 | 1000 | W | 1 |  XT150 (1) Watts |
@@ -315,6 +327,12 @@
 |----------|:-------------:|:------:|------|------|
 |dcOutState| off | on | DC button state | {valName:enabled,moduleType:1,operateType:dcOutCfg,params:{enabled:1}} |
 |newAcAutoOnCfg| off | on | AC auto out Config | {valName:enabled,moduleType:1,operateType:newAcAutoOnCfg,params:{enabled:1,minAcSoc:5}} |
+
+### array
+
+| State  |  Name |
+|----------|------|
+|bmsKitState| bms Kit State |
 
 ## info
 

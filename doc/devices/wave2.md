@@ -1,5 +1,5 @@
 # States for  WAVE2
-### version: 0.0.20
+### version: 0.0.21
 
 [pd](#pd)
 
@@ -76,7 +76,8 @@
 |mainMode| 0 | 2 | mode | 1 |  Main mode: 0: Cool; 1: Heat; 2: Fan | {valName:mainMode,moduleType:1,operateType:mainMode,params:{mainMode:1}} |
 |timeSet| 0 | 65535 | min | 1 |  Time set for current mode | {valName:timeSet,moduleType:1,operateType:sacTiming,params:{timeSet:10,timeEn:1}} |
 |wteFthEn| 0 | 3 | mode | 1 |  bit1 (main switch of automatic drainage function): 0: On; 1: Off bit0: (in Cool/Fan mode): 0: Manual drainage; 1: No drainage (in Heat mode): 0: Off; 1: Physical drainage (In Cool/Fan mode: 0: Turn on Manual drainage，1: Turn on No drainage, 2: Turn off Manual drainage, 3 Turn off No drainage In Heat Mode: 0: Turn off, 1: Turn on Manual drainage， 3: Turn off Manual drainage) | {valName:wteFthEn,moduleType:1,operateType:wteFthEn,params:{wteFthEn:3}} |
-|rgbState| 0 | 3 | mode | 1 |  Light strip settings: 0: Follow the screen; 1: Always on; 2: Always off | {valName:powerMode,moduleType:1,operateType:powerMode,params:{powerMode:2}} |
+|rgbState| 0 | 3 | mode | 1 |  Light strip settings: 0: Follow the screen; 1: Always on; 2: Always off | {valName:rgbState,moduleType:1,operateType:rgbState,params:{rgbState:2}} |
+|powerMode| 0 | 3 | mode | 1 |  Remote startup/shutdown (1: Startup; 2: Standby; 3: Shutdown) | {valName:powerMode,moduleType:1,operateType:powerMode,params:{powerMode:2}} |
 
 ### string
 
@@ -87,7 +88,6 @@
 |deviceName| Name |
 |pdTempSys| Unit of temperature |
 |bmsPid| Product ID of BMS |
-|sacWattRangeTime| Length of time the device power falls in each interval (sec). The intervals include 101 W-200 W, 201 W-300 W, 301 W-400 W, 401 W-500 W, 501 W-600 W, and 601 W-700 W. |
 |mpptSts| PV execution status |
 |bmsErr| BMS error code |
 |powerSts| Power supply status |
@@ -97,7 +97,6 @@
 |lowWindSpeedCnt| Count of setting low wind speed |
 |dmPowerSupplyCnt| Count of using DELTA Max as the power source |
 |CompressorTempCnt| Count of temperature sensor errors at the compressor discharge pipe |
-|envTempRangeCnt| Count of ambient temperature intervals; the range is 0-55 degrees Celsius; each interval covers 5 degrees; it is counted every time the button is pressed to power on. |
 |dp2PowerSupplyCnt| Count of using DELTA 2 as the power source |
 |hotSleepCnt| Count of setting the Sleep mode in Heat mode |
 |hotNormalCnt| Count of setting the Normal mode in Heat mode |
@@ -124,11 +123,17 @@
 |psdrCnt| Communication counter |
 |coolEcoCnt| Count of setting the ECO mode in Cool mode |
 
+### array
+
+| State  |  Name |
+|----------|------|
+|sacWattRangeTime| Length of time the device power falls in each interval (sec). The intervals include 101 W-200 W, 201 W-300 W, 301 W-400 W, 401 W-500 W, 501 W-600 W, and 601 W-700 W. |
+|envTempRangeCnt| Count of ambient temperature intervals; the range is 0-55 degrees Celsius; each interval covers 5 degrees; it is counted every time the button is pressed to power on. |
+
 ### diagnostic
 
 | State  |     Name |  values |
 |----------|:-------------:|------|
-|powerMode| Remotely power on/off  | {1:Power on,2:Power off} |
 |bmsBoundFlag| Upper and lower limits on main battery pack charging and discharging | {0:Normal charging and discharging,1:Upper limit on charging} |
 |runSts| bit0 ac_in; bit1 pfc; bit2 llc; bit3 mppt: 1: Run; 0: Not run | {0:OK?} |
 |rlySts| bit0 soft start rly; bit1 ac rly; 1: Closed; 0: Open | {0:OK?} |
@@ -151,35 +156,35 @@
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |acFreq|0 | 60 | Hz | 1 |  AC input frequency |
 |batVolt|0 | 60 | V | 1 |  Battery voltage |
-|acWattsRange0Time|0 | 9000000 | min | 0.00027778 |  Length of time when AC power falls in interval 0 (101 W-200 W) |
-|mpptVolRange0Time|0 | 9000000 | min | 0.00027778 |  Length of time when MPPT power supply voltage falls in interval 0 (11 V-20 V) |
+|acWattsRange0Time|0 |  n/a | min | 0.0166667 |  Length of time when AC power falls in interval 0 (101 W-200 W) |
+|mpptVolRange0Time|0 |  n/a | min | 0.0166667 |  Length of time when MPPT power supply voltage falls in interval 0 (11 V-20 V) |
 |batCurr|0 | 10 | A | 0.001 |  Battery current |
-|acWattsRange4Time|0 | 90000000 | min | 0.00027778 |  Length of time when AC power falls in interval 4 (501 W-600 W) |
+|acWattsRange4Time|0 |  n/a | min | 0.0166667 |  Length of time when AC power falls in interval 4 (501 W-600 W) |
 |fanSts|0 | 4 | level | 1 |  Fan speed level: 0-4; 0 for non-rotation |
-|mpptVolRange3Time|0 | 90000000 | min | 0.00027778 |  Length of time when MPPT power supply voltage falls in interval 3 (41 V-50 V) |
+|mpptVolRange3Time|0 |  n/a | min | 0.0166667 |  Length of time when MPPT power supply voltage falls in interval 3 (41 V-50 V) |
 |batPwrOut|0 | 600 | W | 1 |  Battery output power |
-|mpptVolRange1Time|0 | 9000000 | min | 0.00027778 |  Length of time when MPPT power supply voltage falls in interval 1 (21 V-30 V) |
-|acWattsRange1Time|0 | 90000000 | min | 0.00027778 |  Length of time when AC power falls in interval 1 (201 W-300 W) |
+|mpptVolRange1Time|0 |  n/a | min | 0.0166667 |  Length of time when MPPT power supply voltage falls in interval 1 (21 V-30 V) |
+|acWattsRange1Time|0 |  n/a | min | 0.0166667 |  Length of time when AC power falls in interval 1 (201 W-300 W) |
 |acVoltRms|0 | 250 | V | 0.1 |  RMS value of the AC input voltage |
-|mpptWattsRange0Time|0 | 900000000 | min | 0.00027778 |  Length of time when MPPT power supply falls in interval 0 (101 W-200 W) |
+|mpptWattsRange0Time|0 |  n/a | min | 0.0166667 |  Length of time when MPPT power supply falls in interval 0 (101 W-200 W) |
 |busVol|0 | 60 | V | 0.1 |  Bus voltage |
 |acPwrIn|0 | 700 | W | 1 |  AC input power |
-|acWattsRange5Time|0 | 90000000 | min | 0.00027778 |  Length of time when AC power falls in interval 5 (601 W-700 W) |
+|acWattsRange5Time|0 |  n/a | min | 0.0166667 |  Length of time when AC power falls in interval 5 (601 W-700 W) |
 |mpptCur|0 | 15 | A | 0.001 |  PV current |
-|mpptVolRange2Time|0 | 90000000 | min | 0.00027778 |  Length of time when MPPT power supply voltage falls in interval 2 (31 V-40 V) |
-|mpptWattsRange1Time|0 | 90000000 | min | 0.00027778 |  Length of time when MPPT power supply falls in interval 1 (201 W-300 W) |
+|mpptVolRange2Time|0 |  n/a | min | 0.0166667 |  Length of time when MPPT power supply voltage falls in interval 2 (31 V-40 V) |
+|mpptWattsRange1Time|0 |  n/a | min | 0.0166667 |  Length of time when MPPT power supply falls in interval 1 (201 W-300 W) |
 |acCurrRms|0 | 10 | A | 0.001 |  RMS value of the AC input current |
 |llcCurr|0 | 15 | A | 1 |  LLC output current |
 |busVolt|0 | 60 | V | 1 |  Bus voltage |
-|acWattsRange2Time|0 | 90000000 | min | 0.00027778 |  Length of time when AC power falls in interval 2 (301 W-400 W) |
+|acWattsRange2Time|0 |  n/a | min | 0.0166667 |  Length of time when AC power falls in interval 2 (301 W-400 W) |
 |tempNtc|0 | 60 | °C | 0.1 |  NTC temperature |
 |tempMax|0 | 80 | °C | 1 |  The highest temperature among the four temperatures: MPPT temperature, PFC temperature, LLC high-voltage side temperature, and LLC low-voltage side temperature |
 |tempMin|0 | 80 | °C | 1 |  The minimum temperature value among the four temperatures: MPPT temperature, PFC temperature, LLC high-voltage side temperature, and LLC low-voltage side temperature |
 |mpptVol|0 | 60 | V | 0.01 |  PV voltage |
-|mpptWattsRange2Time|0 | 90000000 | min | 0.00027778 |  Length of time when MPPT power supply falls in interval 2 (301 W-400 W) |
+|mpptWattsRange2Time|0 |  n/a | min | 0.0166667 |  Length of time when MPPT power supply falls in interval 2 (301 W-400 W) |
 |mpptPwr|0 | 400 | W | 1 |  PV input power |
-|mpptVolRange4Time|0 | 9000000 | min | 0.00027778 |  Length of time when MPPT power supply voltage falls in interval 4 (51 V-60 V) |
-|acWattsRange3Time|0 | 9000000 | min | 0.00027778 |  Length of time when AC power falls in interval 3 (401 W-500 W) |
+|mpptVolRange4Time|0 |  n/a | min | 0.0166667 |  Length of time when MPPT power supply voltage falls in interval 4 (51 V-60 V) |
+|acWattsRange3Time|0 |  n/a | min | 0.0166667 |  Length of time when AC power falls in interval 3 (401 W-500 W) |
 
 
 ### string
@@ -197,6 +202,7 @@
 |pvPowerSupplyCnt| Count of using PV power supply |
 |llcOcpInt| Count of LLC overcurrent |
 |psdrCnt| Communication counter |
+|busCurr| busCurr |
 
 ### diagnostic
 
@@ -213,30 +219,30 @@
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |power|0 | 500 | W | 1 |  Motor operating power |
 |motorFsmState|0 | 15 | state | 1 |  Current state of main state machine |
-|windTime|0 | 90000000 | min | 0.00027778 |  Working duration in fan mode |
+|windTime|0 |  n/a | min | 0.0166667 |  Working duration in fan mode |
 |vBus|0 | 13 | V | 0.001 |  Bus voltage feedback |
 |mosTemp|0 | 80 | °C | 1 |  MOS tube temperature feedback |
-|frontFanWorkTime|0 | 9000000 | min | 0.00027778 |  Working duration of front fan |
-|compressorWorkTime|0 | 90000000 | min | 0.00027778 |  Working duration of compressor |
-|coolSleepTime|0 | 90000000 | min | 0.00027778 |  Working duration in the Sleep mode of Cool mode |
+|frontFanWorkTime|0 |  n/a | min | 0.0166667 |  Working duration of front fan |
+|compressorWorkTime|0 |  n/a | min | 0.0166667 |  Working duration of compressor |
+|coolSleepTime|0 |  n/a | min | 0.0166667 |  Working duration in the Sleep mode of Cool mode |
 |setCondFanRpm|0 | 4 | level | 1 |  Set condensing fan speed |
 |setEvapFanRpm|0 | 5 | level | 1 |  Set evaporative fan speed |
-|drainageTime|0 | 90000000 | min | 0.00027778 |  Duration of outward drainage |
-|hotNormalTime|0 | 9000000 | min | 0.00027778 |  Working duration in Normal mode of the Heat mode |
-|hotSleepTime|0 | 9000000 | min | 0.00027778 |  Working duration in the Sleep mode of Heat mode |
+|drainageTime|0 |  n/a | min | 0.0166667 |  Duration of outward drainage |
+|hotNormalTime|0 |  n/a | min | 0.0166667 |  Working duration in Normal mode of the Heat mode |
+|hotSleepTime|0 |  n/a | min | 0.0166667 |  Working duration in the Sleep mode of Heat mode |
 |evapFanRpm|0 | 2000 | rpm | 1 |  Evaporative fan speed feedback |
-|fourWayWorkTime|0 | 9000000 | min | 0.00027778 |  Working duration of four-way valve |
+|fourWayWorkTime|0 |  n/a | min | 0.0166667 |  Working duration of four-way valve |
 |mtrLogicErr|0 | 15 | state | 1 |  Current state of the service state machine |
-|coolMaxTime|0 | 90000000 | min | 0.00027778 |  Working duration in the Max mode of Cool mode |
+|coolMaxTime|0 |  n/a | min | 0.0166667 |  Working duration in the Max mode of Cool mode |
 |setWaterRpm|0 | 1000 | rpm | 1 |  Water pump speed settings |
-|hotEcoTime|0 | 9000000 | min | 0.00027778 |  Working duration in the ECO mode of the Heat mode |
-|hotMaxTime|0 | 9000000 | min | 0.00027778 |  Working duration in the Max mode of Heat mode |
-|backFanWorkTime|0 | 90000000 | min | 0.00027778 |  Working duration of rear fan |
+|hotEcoTime|0 |  n/a | min | 0.0166667 |  Working duration in the ECO mode of the Heat mode |
+|hotMaxTime|0 |  n/a | min | 0.0166667 |  Working duration in the Max mode of Heat mode |
+|backFanWorkTime|0 |  n/a | min | 0.0166667 |  Working duration of rear fan |
 |condeFanRpm|0 | 1000 | rpm | 1 |  Condensing fan speed feedback |
 |setCompressorRpm|0 | 1000 | rpm | 1 |  Compressor speed settings |
-|waterPumpWorkTime|0 | 9000000 | min | 0.00027778 |  Working duration of water pump |
-|coolEcoTime|0 | 9000000 | min | 0.00027778 |  Working duration in the ECO mode of Cool mode |
-|coolNormalTime|0 | 9000000 | min | 0.00027778 |  Working duration in the Normal mode of Cool mode |
+|waterPumpWorkTime|0 |  n/a | min | 0.0166667 |  Working duration of water pump |
+|coolEcoTime|0 |  n/a | min | 0.0166667 |  Working duration in the ECO mode of Cool mode |
+|coolNormalTime|0 |  n/a | min | 0.0166667 |  Working duration in the Normal mode of Cool mode |
 
 
 ### diagnostic
@@ -295,7 +301,6 @@
 | State  |  Name |
 |----------|------|
 |bmsBatErrCode| BMS error code |
-|chgWattRangeTime| Length of time (sec) when the charging power falls in each of the four intervals |
 |bmsHwFlag| Hardware in place |
 |bmsSwFlag| Software in place |
 |sleepCnt| Count of pressing the Sleep button |
@@ -303,6 +308,17 @@
 |awakeCnt| Count of pressing button for wakeup |
 |powerOnCnt| Count of pressing button for startup |
 |powerOffCnt| Count of pressing button for shutdown |
+|usbUseCnt| Count of using USB |
+|typecUseCnt| Count of using AC |
+
+### array
+
+| State  |  Name |
+|----------|------|
+|chgWattRangeTime| Length of time (sec) when the charging power falls in each of the four intervals |
+|dsgWattRangeTime| Length of time (sec) when the discharging power falls in each of the four intervals |
+|usbWattRangeTime| Length of time (sec) when the usb power falls in each of the four intervals |
+|typecWattRangeTime| Length of time (sec) when the AC power falls in each of the four intervals |
 
 ### diagnostic
 

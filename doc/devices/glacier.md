@@ -1,5 +1,5 @@
 # States for  GLACIER
-### version: 0.0.20
+### version: 0.0.21
 
 [pd](#pd)
 
@@ -15,43 +15,61 @@
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |exhaustTmp|0 | 60 | °C | 1 |  Exhaust pipe wall temperature |
-|tempCoolTime|0 | 9000000 | min | 0.00027778 |  Length of time when the actual temperature of the cooling zone falls in each interval: COOL_ ZONE_ MAX*TEMP_ COOL_ MAX |
 |batTime|0 | 5999 | min | 1 |  batTime; a negative value indicates a discharging time, and positive value indicates a charging time |
-|appSensorAdv|0 | 9000000 | min | 0.00027778 |  Duration of sensor blocking: SENSOR_ADV_MAX |
-|errorTimePower|0 | 9000000 | min | 0.00027778 |  Duration of each type of fault in the POWER module: ERROR_MAX_POWER |
 |tempWater|0 | 60 | °C | 0.1 |  Water temperature of the ice making zone |
 |A12Val|0 | 15 | V | 1 |  12 V auxiliary supply voltage |
-|tempIceTime|0 | 9000000 | min | 0.00027778 |  Length of time when temperature of the ice-making zone falls in each interval: TEMP_ICE_MAX |
 |motorCur|0 | 60 | A | 0.001 |  Motor Current |
-|networkTypeTime|0 | 9000000 | min | 0.00027778 |  Duration of being networked: NETWORK_TYPE_MAX |
-|powerXt60Time|0 | 9000000 | min | 0.00027778 |  Duration of each type of power supply on XT60: POWER_TYPE_MAX |
 |tmpM|-20 | 60 | °C | 1 |  Combined temperature zone temperature |
 |icePercent|0 | 100 | % | 1 |  Ice making progress |
-|powerBatInTime|0 | 9000000 | min | 0.00027778 |  Duration of battery pack in place |
+|powerBatInTime|0 |  n/a | min | 0.0166667 |  Duration of battery pack in place |
 |ambientTmp|0 | 60 | °C | 1 |  Ambient temperature |
-|coolZoneSingleTime|0 | 9000000 | min | 0.00027778 |  Single temperature zone duration |
-|chargeXt60Time|0 | 9000000 | min | 0.00027778 |  Duration of each type of charging power supply on XT60: POWER_TYPE_MAX |
-|errorTimeBms|0 | 9000000 | min | 0.00027778 |  Duration of each type of fault in BMS module: ERROR_MAX_BMS |
+|coolZoneSingleTime|0 |  n/a | min | 0.0166667 |  Single temperature zone duration |
 |tmpAver|-20 | 60 | C | 0.1 |  Real-time temperature of single temperature zone |
-|appOpTimeBlTime|0 | 3600 | s | 1 |  Screen timeout set through app: BL_TIME_MAX |
 |batPct|0 | 100 | % | 1 |  Battery level |
-|errorTimePd|0 | 9000000 | min | 0.00027778 |  Duration of each type of fault in PD module: ERROR_MAX_PD |
 |iceTmTag|0 | 1440 | min | 1 |  The ice making target time (used for app and LCD effect display) |
-|coolCoverTime|0 | 9000000 | min | 0.00027778 |  Duration of cooling zone being opened |
-|powerBatOutTime|0 | 9000000 | min | 0.00027778 |  Duration of battery pack not in place |
-|chargeWorkTime|0 | 9000000 | min | 0.00027778 |  Duration of working while charging |
-|workFsmTime|0 | 9000000 | min | 0.00027778 |  Running duration of state machine under each state: USER_BEHAVIOR_FSM_MAX |
+|coolCoverTime|0 |  n/a | min | 0.0166667 |  Duration of cooling zone being opened |
+|powerBatOutTime|0 |  n/a | min | 0.0166667 |  Duration of battery pack not in place |
+|chargeWorkTime|0 |  n/a | min | 0.0166667 |  Duration of working while charging |
 |motorVol|0 | 60 | V | 1 |  Motor voltage |
-|workModeTime|0 | 9000000 | min | 0.00027778 |  Running duration of each work mode; WORK_MODE_MAX |
-|coolZoneDoubleTime|0 | 9000000 | min | 0.00027778 |  Duration of dual temperature zone |
-|tempAmbientTime|0 | 9000000 | min | 0.00027778 |  Length of time when ambient temperature falls in each interval: TEMP_AMBIENT_MAX |
-|tempCoolSetTime|0 | 9000000 | min | 0.00027778 |  Length of time when the set temperature of the cooling zone falls in each interval: COOL_ZONE_MAX*TEMP_COOL_SET_MAX |
+|coolZoneDoubleTime|0 |  n/a | min | 0.0166667 |  Duration of dual temperature zone |
 |motorSpeed|0 | 2000 | rpm | 1 |  Motor speed |
 |motorWat|0 | 600 | W | 1 |  Motor power |
 |iceTm|0 | 1440 | min | 1 |  Duration of the current ice making (for app and LCD effect display) |
 |tmpR|-20 | 60 | °C | 1 |  Actual Right temperature zone value |
 |tmpL|-20 | 60 | °C | 1 |  Actual temperature of the left temperature zone |
 
+
+### array
+
+| State  |  Name |
+|----------|------|
+|tempCoolTime| Length of time when the actual temperature of the cooling zone falls in each interval: COOL_ ZONE_ MAX*TEMP_ COOL_ MAX |
+|appSensorAdv| Duration of sensor blocking: SENSOR_ADV_MAX |
+|errorTimePower| Duration of each type of fault in the POWER module: ERROR_MAX_POWER |
+|tempIceTime| Length of time when temperature of the ice-making zone falls in each interval: TEMP_ICE_MAX |
+|networkTypeTime| Duration of being networked: NETWORK_TYPE_MAX |
+|powerXt60Time| Duration of each type of power supply on XT60: POWER_TYPE_MAX |
+|chargeXt60Time| Duration of each type of charging power supply on XT60: POWER_TYPE_MAX |
+|errorTimeBms| Duration of each type of fault in BMS module: ERROR_MAX_BMS |
+|appOpTimeBlTime| Screen timeout set through app: BL_TIME_MAX |
+|errorTimePd| Duration of each type of fault in PD module: ERROR_MAX_PD |
+|workFsmTime| Running duration of state machine under each state: USER_BEHAVIOR_FSM_MAX |
+|workModeTime| Running duration of each work mode; WORK_MODE_MAX |
+|tempAmbientTime| Length of time when ambient temperature falls in each interval: TEMP_AMBIENT_MAX |
+|tempCoolSetTime| Length of time when the set temperature of the cooling zone falls in each interval: COOL_ZONE_MAX*TEMP_COOL_SET_MAX |
+|buttonLong| Count of long presses: USER_BEHAVIOR_BUTTON_MAX |
+|networkTypeCount| Count of being networked: NETWORK_TYPE_MAX |
+|powerXt60Count| Count of each type of power supply on XT60: POWER_TYPE_MAX |
+|errorCountPower| Count of each type of fault in POWER module: ERROR_MAX_POWER |
+|workFsmCount| Count of entering each state of state machine: USER_BEHAVIOR_FSM_MAX |
+|workModeCount| Count of entering each work mode; WORK_MODE_MAX |
+|errorCountBms| Count of each type of fault in BMS module: ERROR_MAX_PD |
+|chargeXt60Count| Count of each type of charging power supply on XT60: POWER_TYPE_MAX |
+|appOpCountWorkMode| Count of each work mode set through app: WORK_MODE_MAX |
+|appOpCountBlTime| Count of setting different screen timeout through app: BL_TIME_MAX |
+|errorCountPd| Count of each fault in PD module: ERROR_MAX_PD |
+|buttonShort| Count of short pressings: USER_BEHAVIOR_BUTTON_MAX |
+|errorTimeBldc| array errors? |
 
 ### level
 
@@ -77,36 +95,24 @@
 |errCode| Error code |
 |errPwr| POWER fault code |
 |coolZoneDoubleCount| Count of dual temperature zones |
-|buttonLong| Count of long presses: USER_BEHAVIOR_BUTTON_MAX |
 |coolCoverCount| Count of cooling zone openings |
-|networkTypeCount| Count of being networked: NETWORK_TYPE_MAX |
-|powerXt60Count| Count of each type of power supply on XT60: POWER_TYPE_MAX |
-|errorCountPower| Count of each type of fault in POWER module: ERROR_MAX_POWER |
 |appOpCountDeIce| Count of ice detaching through app |
 |dntMakeIceDevice| Count of pressing the ice making button when ice making is disabled |
 |appOpCountBeepOff| Count of turning off buzzer through app |
 |appOpCountPowerOn| Count of powering on through app |
 |countinueMakeIceMax| Maximum count of consecutive ice making |
-|workFsmCount| Count of entering each state of state machine: USER_BEHAVIOR_FSM_MAX |
 |appOpCountPowerOff| Count of powering off through app |
 |appOpCountDntMakeIce| Count of ice making through app when ice making is disabled |
 |powerBatInCount| Count of battery pack in place |
-|errorCountBldc| Count of each type of fault in BLDC module: ERROR_MAX_BLDC |
-|workModeCount| Count of entering each work mode; WORK_MODE_MAX |
-|errorCountBms| Count of each type of fault in BMS module: ERROR_MAX_PD |
-|chargeXt60Count| Count of each type of charging power supply on XT60: POWER_TYPE_MAX |
 |makeIceCount| Total count of ice making |
-|appOpCountWorkMode| Count of each work mode set through app: WORK_MODE_MAX |
 |chargeWorkCount| Count of working while charging |
-|appOpCountBlTime| Count of setting different screen timeout through app: BL_TIME_MAX |
 |coolZoneSingleCount| Count of single temperature zone |
-|errorCountPd| Count of each fault in PD module: ERROR_MAX_PD |
-|buttonShort| Count of short pressings: USER_BEHAVIOR_BUTTON_MAX |
 |countinueMakeIceAve| Average count of consecutive ice making actions |
 |appOpCountTempUnitC| Count of setting degrees in Celsius through app |
 |appOpCountTempUnitF| Count of setting degrees in Fahrenheit through app |
 |appOpCountBeepOn| Count of enabling buzzer through app |
 |err| PD error |
+|appOpCountMakeIce| Count of ice making through app? |
 
 ### diagnostic
 
@@ -132,6 +138,7 @@
 |bldcDntIce| Ice making limit on compressor | {0:Ice making is allowed,1:Ice making is not allowed} |
 |warnInfo| Warning: BIT0: Over-temperature; BIT1: Under-temperature; BIT2: Overload; BIT3: Charging error; BIT4: Fan error; BIT5: BLCD communication error | {1:overtemperature} |
 |fanLvl| Fan level | {0:non-rotation,1:Level 1,2:Level 2,3:Level3,4:Level 4,5:Level 5} |
+|deiceAct| Deice Active? | {0:inactive,1:active} |
 
 ### switch
 
@@ -207,13 +214,19 @@
 |openOilEbSocMin|0 | 30 | % | 1 |  SoC for turning on Smart Generator |
 |minDsgSoc|0 | 30 | % | 1 |  Minimum discharging SOC |
 |maxChgSoc|60 | 100 | % | 1 |  Maximum charging SOC |
+|f32LcdSoc|0 | 100 | % | 1 |  SOC on LCD |
 
+
+### array
+
+| State  |  Name |
+|----------|------|
+|bmsIsConnt| BMS online signal: BIT0: hardware online signal; BIT1: software online signal |
 
 ### string
 
 | State  |  Name |
 |----------|------|
-|bmsIsConnt| BMS online signal: BIT0: hardware online signal; BIT1: software online signal |
 |openBmsIdx| Open BMS index |
 |warnState| BMS warning state: bit0: hi_temp; bit1: low_temp; bit2: overload; bit3: chg_flag |
 |upsFlag| UPS mode enable flag |
