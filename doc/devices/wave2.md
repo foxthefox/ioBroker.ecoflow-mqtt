@@ -156,35 +156,35 @@
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |acFreq|0 | 60 | Hz | 1 |  AC input frequency |
 |batVolt|0 | 60 | V | 1 |  Battery voltage |
-|acWattsRange0Time|0 | 9000000 | min | 0.00027778 |  Length of time when AC power falls in interval 0 (101 W-200 W) |
-|mpptVolRange0Time|0 | 9000000 | min | 0.00027778 |  Length of time when MPPT power supply voltage falls in interval 0 (11 V-20 V) |
+|acWattsRange0Time|0 |  n/a | min | 0.0166667 |  Length of time when AC power falls in interval 0 (101 W-200 W) |
+|mpptVolRange0Time|0 |  n/a | min | 0.0166667 |  Length of time when MPPT power supply voltage falls in interval 0 (11 V-20 V) |
 |batCurr|0 | 10 | A | 0.001 |  Battery current |
-|acWattsRange4Time|0 | 90000000 | min | 0.00027778 |  Length of time when AC power falls in interval 4 (501 W-600 W) |
+|acWattsRange4Time|0 |  n/a | min | 0.0166667 |  Length of time when AC power falls in interval 4 (501 W-600 W) |
 |fanSts|0 | 4 | level | 1 |  Fan speed level: 0-4; 0 for non-rotation |
-|mpptVolRange3Time|0 | 90000000 | min | 0.00027778 |  Length of time when MPPT power supply voltage falls in interval 3 (41 V-50 V) |
+|mpptVolRange3Time|0 |  n/a | min | 0.0166667 |  Length of time when MPPT power supply voltage falls in interval 3 (41 V-50 V) |
 |batPwrOut|0 | 600 | W | 1 |  Battery output power |
-|mpptVolRange1Time|0 | 9000000 | min | 0.00027778 |  Length of time when MPPT power supply voltage falls in interval 1 (21 V-30 V) |
-|acWattsRange1Time|0 | 90000000 | min | 0.00027778 |  Length of time when AC power falls in interval 1 (201 W-300 W) |
+|mpptVolRange1Time|0 |  n/a | min | 0.0166667 |  Length of time when MPPT power supply voltage falls in interval 1 (21 V-30 V) |
+|acWattsRange1Time|0 |  n/a | min | 0.0166667 |  Length of time when AC power falls in interval 1 (201 W-300 W) |
 |acVoltRms|0 | 250 | V | 0.1 |  RMS value of the AC input voltage |
-|mpptWattsRange0Time|0 | 900000000 | min | 0.00027778 |  Length of time when MPPT power supply falls in interval 0 (101 W-200 W) |
+|mpptWattsRange0Time|0 |  n/a | min | 0.0166667 |  Length of time when MPPT power supply falls in interval 0 (101 W-200 W) |
 |busVol|0 | 60 | V | 0.1 |  Bus voltage |
 |acPwrIn|0 | 700 | W | 1 |  AC input power |
-|acWattsRange5Time|0 | 90000000 | min | 0.00027778 |  Length of time when AC power falls in interval 5 (601 W-700 W) |
+|acWattsRange5Time|0 |  n/a | min | 0.0166667 |  Length of time when AC power falls in interval 5 (601 W-700 W) |
 |mpptCur|0 | 15 | A | 0.001 |  PV current |
-|mpptVolRange2Time|0 | 90000000 | min | 0.00027778 |  Length of time when MPPT power supply voltage falls in interval 2 (31 V-40 V) |
-|mpptWattsRange1Time|0 | 90000000 | min | 0.00027778 |  Length of time when MPPT power supply falls in interval 1 (201 W-300 W) |
+|mpptVolRange2Time|0 |  n/a | min | 0.0166667 |  Length of time when MPPT power supply voltage falls in interval 2 (31 V-40 V) |
+|mpptWattsRange1Time|0 |  n/a | min | 0.0166667 |  Length of time when MPPT power supply falls in interval 1 (201 W-300 W) |
 |acCurrRms|0 | 10 | A | 0.001 |  RMS value of the AC input current |
 |llcCurr|0 | 15 | A | 1 |  LLC output current |
 |busVolt|0 | 60 | V | 1 |  Bus voltage |
-|acWattsRange2Time|0 | 90000000 | min | 0.00027778 |  Length of time when AC power falls in interval 2 (301 W-400 W) |
+|acWattsRange2Time|0 |  n/a | min | 0.0166667 |  Length of time when AC power falls in interval 2 (301 W-400 W) |
 |tempNtc|0 | 60 | °C | 0.1 |  NTC temperature |
 |tempMax|0 | 80 | °C | 1 |  The highest temperature among the four temperatures: MPPT temperature, PFC temperature, LLC high-voltage side temperature, and LLC low-voltage side temperature |
 |tempMin|0 | 80 | °C | 1 |  The minimum temperature value among the four temperatures: MPPT temperature, PFC temperature, LLC high-voltage side temperature, and LLC low-voltage side temperature |
 |mpptVol|0 | 60 | V | 0.01 |  PV voltage |
-|mpptWattsRange2Time|0 | 90000000 | min | 0.00027778 |  Length of time when MPPT power supply falls in interval 2 (301 W-400 W) |
+|mpptWattsRange2Time|0 |  n/a | min | 0.0166667 |  Length of time when MPPT power supply falls in interval 2 (301 W-400 W) |
 |mpptPwr|0 | 400 | W | 1 |  PV input power |
-|mpptVolRange4Time|0 | 9000000 | min | 0.00027778 |  Length of time when MPPT power supply voltage falls in interval 4 (51 V-60 V) |
-|acWattsRange3Time|0 | 9000000 | min | 0.00027778 |  Length of time when AC power falls in interval 3 (401 W-500 W) |
+|mpptVolRange4Time|0 |  n/a | min | 0.0166667 |  Length of time when MPPT power supply voltage falls in interval 4 (51 V-60 V) |
+|acWattsRange3Time|0 |  n/a | min | 0.0166667 |  Length of time when AC power falls in interval 3 (401 W-500 W) |
 
 
 ### string
@@ -219,30 +219,30 @@
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |power|0 | 500 | W | 1 |  Motor operating power |
 |motorFsmState|0 | 15 | state | 1 |  Current state of main state machine |
-|windTime|0 | 90000000 | min | 0.00027778 |  Working duration in fan mode |
+|windTime|0 |  n/a | min | 0.0166667 |  Working duration in fan mode |
 |vBus|0 | 13 | V | 0.001 |  Bus voltage feedback |
 |mosTemp|0 | 80 | °C | 1 |  MOS tube temperature feedback |
-|frontFanWorkTime|0 | 9000000 | min | 0.00027778 |  Working duration of front fan |
-|compressorWorkTime|0 | 90000000 | min | 0.00027778 |  Working duration of compressor |
-|coolSleepTime|0 | 90000000 | min | 0.00027778 |  Working duration in the Sleep mode of Cool mode |
+|frontFanWorkTime|0 |  n/a | min | 0.0166667 |  Working duration of front fan |
+|compressorWorkTime|0 |  n/a | min | 0.0166667 |  Working duration of compressor |
+|coolSleepTime|0 |  n/a | min | 0.0166667 |  Working duration in the Sleep mode of Cool mode |
 |setCondFanRpm|0 | 4 | level | 1 |  Set condensing fan speed |
 |setEvapFanRpm|0 | 5 | level | 1 |  Set evaporative fan speed |
-|drainageTime|0 | 90000000 | min | 0.00027778 |  Duration of outward drainage |
-|hotNormalTime|0 | 9000000 | min | 0.00027778 |  Working duration in Normal mode of the Heat mode |
-|hotSleepTime|0 | 9000000 | min | 0.00027778 |  Working duration in the Sleep mode of Heat mode |
+|drainageTime|0 |  n/a | min | 0.0166667 |  Duration of outward drainage |
+|hotNormalTime|0 |  n/a | min | 0.0166667 |  Working duration in Normal mode of the Heat mode |
+|hotSleepTime|0 |  n/a | min | 0.0166667 |  Working duration in the Sleep mode of Heat mode |
 |evapFanRpm|0 | 2000 | rpm | 1 |  Evaporative fan speed feedback |
-|fourWayWorkTime|0 | 9000000 | min | 0.00027778 |  Working duration of four-way valve |
+|fourWayWorkTime|0 |  n/a | min | 0.0166667 |  Working duration of four-way valve |
 |mtrLogicErr|0 | 15 | state | 1 |  Current state of the service state machine |
-|coolMaxTime|0 | 90000000 | min | 0.00027778 |  Working duration in the Max mode of Cool mode |
+|coolMaxTime|0 |  n/a | min | 0.0166667 |  Working duration in the Max mode of Cool mode |
 |setWaterRpm|0 | 1000 | rpm | 1 |  Water pump speed settings |
-|hotEcoTime|0 | 9000000 | min | 0.00027778 |  Working duration in the ECO mode of the Heat mode |
-|hotMaxTime|0 | 9000000 | min | 0.00027778 |  Working duration in the Max mode of Heat mode |
-|backFanWorkTime|0 | 90000000 | min | 0.00027778 |  Working duration of rear fan |
+|hotEcoTime|0 |  n/a | min | 0.0166667 |  Working duration in the ECO mode of the Heat mode |
+|hotMaxTime|0 |  n/a | min | 0.0166667 |  Working duration in the Max mode of Heat mode |
+|backFanWorkTime|0 |  n/a | min | 0.0166667 |  Working duration of rear fan |
 |condeFanRpm|0 | 1000 | rpm | 1 |  Condensing fan speed feedback |
 |setCompressorRpm|0 | 1000 | rpm | 1 |  Compressor speed settings |
-|waterPumpWorkTime|0 | 9000000 | min | 0.00027778 |  Working duration of water pump |
-|coolEcoTime|0 | 9000000 | min | 0.00027778 |  Working duration in the ECO mode of Cool mode |
-|coolNormalTime|0 | 9000000 | min | 0.00027778 |  Working duration in the Normal mode of Cool mode |
+|waterPumpWorkTime|0 |  n/a | min | 0.0166667 |  Working duration of water pump |
+|coolEcoTime|0 |  n/a | min | 0.0166667 |  Working duration in the ECO mode of Cool mode |
+|coolNormalTime|0 |  n/a | min | 0.0166667 |  Working duration in the Normal mode of Cool mode |
 
 
 ### diagnostic

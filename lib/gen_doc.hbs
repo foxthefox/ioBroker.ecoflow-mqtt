@@ -17,7 +17,7 @@
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 {{#each this}}
 {{#with this}}
-|{{@key}}|{{this.min}} | {{this.max}} | {{this.unit_of_measurement}} | {{this.mult}} |  {{this.name}} |
+|{{@key}}|{{this.min}} | {{#if this.max}}{{this.max}} {{else}} n/a {{/if}}| {{this.unit_of_measurement}} | {{this.mult}} |  {{this.name}} |
 {{/with}}
 {{/each}}
 {{/ifeq}}

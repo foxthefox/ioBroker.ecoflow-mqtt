@@ -44,7 +44,7 @@
 |invDcCur|0 | 20 | A | 0.001 |  Inverter DC input current |
 |ratedPower|0 | 600 | W | 0.1 |  Inverter rated power |
 |heartbeatFrequency|0 | 20 | 1/s | 1 |  Inverter heartbeat |
-|dynamicWatts|0 | 600 | W | 0.1 |  Dynamic Power |
+|dynamicWatts|0 | 10000 | W | 0.1 |  Dynamic Power |
 |batChargingTime|0 | 144000 | min | 1 |  Battery Charging Time |
 |batDischargingTime|0 | 144000 | min | 1 |  Battery Discharging Time |
 

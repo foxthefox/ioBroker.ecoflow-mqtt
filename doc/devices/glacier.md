@@ -21,17 +21,17 @@
 |motorCur|0 | 60 | A | 0.001 |  Motor Current |
 |tmpM|-20 | 60 | °C | 1 |  Combined temperature zone temperature |
 |icePercent|0 | 100 | % | 1 |  Ice making progress |
-|powerBatInTime|0 | 9000000 | min | 0.00027778 |  Duration of battery pack in place |
+|powerBatInTime|0 |  n/a | min | 0.0166667 |  Duration of battery pack in place |
 |ambientTmp|0 | 60 | °C | 1 |  Ambient temperature |
-|coolZoneSingleTime|0 | 9000000 | min | 0.00027778 |  Single temperature zone duration |
+|coolZoneSingleTime|0 |  n/a | min | 0.0166667 |  Single temperature zone duration |
 |tmpAver|-20 | 60 | C | 0.1 |  Real-time temperature of single temperature zone |
 |batPct|0 | 100 | % | 1 |  Battery level |
 |iceTmTag|0 | 1440 | min | 1 |  The ice making target time (used for app and LCD effect display) |
-|coolCoverTime|0 | 9000000 | min | 0.00027778 |  Duration of cooling zone being opened |
-|powerBatOutTime|0 | 9000000 | min | 0.00027778 |  Duration of battery pack not in place |
-|chargeWorkTime|0 | 9000000 | min | 0.00027778 |  Duration of working while charging |
+|coolCoverTime|0 |  n/a | min | 0.0166667 |  Duration of cooling zone being opened |
+|powerBatOutTime|0 |  n/a | min | 0.0166667 |  Duration of battery pack not in place |
+|chargeWorkTime|0 |  n/a | min | 0.0166667 |  Duration of working while charging |
 |motorVol|0 | 60 | V | 1 |  Motor voltage |
-|coolZoneDoubleTime|0 | 9000000 | min | 0.00027778 |  Duration of dual temperature zone |
+|coolZoneDoubleTime|0 |  n/a | min | 0.0166667 |  Duration of dual temperature zone |
 |motorSpeed|0 | 2000 | rpm | 1 |  Motor speed |
 |motorWat|0 | 600 | W | 1 |  Motor power |
 |iceTm|0 | 1440 | min | 1 |  Duration of the current ice making (for app and LCD effect display) |
