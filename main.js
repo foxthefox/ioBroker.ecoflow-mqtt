@@ -669,10 +669,11 @@ class EcoflowMqtt extends utils.Adapter {
 				this.log.debug('port          -> ' + this.config.haMqttPort);
 				this.log.debug('url           -> ' + this.config.haMqttUrl);
 				this.log.debug('ptotocol      -> ' + this.config.haMqttProtocol);
+				this.log.debug('devices       -> ' + JSON.stringify(this.haDevices));
 
 				const optionsHaMqtt = {
 					port: this.config.haMqttPort || 1883,
-					username: this.config.haMqttUserId.haMqttUserPWd,
+					username: this.config.haMqttUserId,
 					password: this.config.haMqttUserPWd
 				};
 
@@ -692,6 +693,14 @@ class EcoflowMqtt extends utils.Adapter {
 						this.log.debug('sent autodiscovery objects to HA');
 
 						if (this.haDevices.length > 0) {
+							let topics = [ '/#' ];
+							this.haClient.subscribe(topics, async (err) => {
+								if (!err) {
+									this.log.debug('subscribed the topics HA');
+								} else {
+									this.log.warn('could not subscribe to topics HA ' + err);
+								}
+							});
 						} else {
 							this.log.debug('no topics for subscription HA');
 						}
