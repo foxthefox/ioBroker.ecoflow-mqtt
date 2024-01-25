@@ -49,6 +49,7 @@ class EcoflowMqtt extends utils.Adapter {
 		this.pdevicesStates = {};
 		this.pdevicesCmd = {};
 		this.quotas = {};
+		this.haDevices = null;
 
 		this.on('ready', this.onReady.bind(this));
 		this.on('stateChange', this.onStateChange.bind(this));
@@ -681,22 +682,27 @@ class EcoflowMqtt extends utils.Adapter {
 				);
 
 				this.haClient.on('connect', async () => {
-					this.log.debug('connected');
+					this.log.debug('HA connected');
 
 					if (this.haDevices.length > 0) {
 						//send autodiscovery
+						if (this.config.msgHaAutoDiscovery) {
+							this.log.debug('autoconf');
+						}
+						this.log.debug('sent autodiscovery objects to HA');
 
-						this.log.debug('sent autodiscovery objects');
-
-						if (topics.length > 0) {
+						if (this.haDevices.length > 0) {
 						} else {
-							this.log.debug('no topics for subscription');
+							this.log.debug('no topics for subscription HA');
 						}
 						this.setState('info.connection', true, true);
 					}
 				});
 
 				this.haClient.on('message', async (topic, message) => {
+					if (this.config.msgHaIncomming) {
+						this.log.debug('HA msg: ' + JSON.stringify(message));
+					}
 					let devtype = '';
 					if (this.pdevices) {
 						if (this.pdevices[topic]) {
