@@ -280,6 +280,15 @@
 							"filter": false,
 							"sort": false,
 							"default": "none"
+						},
+						{
+							"type": "checkbox",
+							"title": "HA enable",
+							"width": "10%",
+							"attr": "haEnable",
+							"filter": false,
+							"sort": false,
+							"default": false
 						}
 					]
 				},
@@ -363,6 +372,15 @@
 							"filter": false,
 							"sort": false,
 							"default": false
+						},
+						{
+							"type": "checkbox",
+							"title": "HA enable",
+							"width": "10%",
+							"attr": "haEnable",
+							"filter": false,
+							"sort": false,
+							"default": false
 						}
 					]
 				},
@@ -413,6 +431,15 @@
 							"filter": false,
 							"sort": false,
 							"default": "none"
+						},
+						{
+							"type": "checkbox",
+							"title": "HA enable",
+							"width": "10%",
+							"attr": "haEnable",
+							"filter": false,
+							"sort": false,
+							"default": false
 						}
 					]
 				}
@@ -472,6 +499,15 @@
 							"filter": false,
 							"sort": false,
 							"default": "none"
+						},
+						{
+							"type": "checkbox",
+							"title": "HA enable",
+							"width": "10%",
+							"attr": "haEnable",
+							"filter": false,
+							"sort": false,
+							"default": false
 						}
 					]
 				},
@@ -525,8 +561,111 @@
 							"filter": false,
 							"sort": false,
 							"default": "none"
+						},
+						{
+							"type": "checkbox",
+							"title": "HA enable",
+							"width": "10%",
+							"attr": "haEnable",
+							"filter": false,
+							"sort": false,
+							"default": false
 						}
 					]
+				}
+			}
+		},
+		"tab_4": {
+			"type": "panel",
+			"label": "Homeassistant",
+			"items": {
+				"_connection": {
+					"newLine": true,
+					"type": "header",
+					"text": "Connection settings",
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"size": 3
+				},
+				"haMqttEnable": {
+					"type": "checkbox",
+					"label": "enable communication with Homeassistant MQTT Broker",
+					"newLine": true,
+					"sm": 12,
+					"md": 6,
+					"lg": 4
+				},
+				"haMqttProtocol": {
+					"type": "text",
+					"label": "HA mqtt protocol",
+					"newLine": true
+				},
+				"haMqttUrl": {
+					"type": "text",
+					"label": "HA mqtt Url",
+					"newLine": false
+				},
+				"haMqttPort": {
+					"type": "text",
+					"label": "HA mqtt port",
+					"newLine": false
+				},
+				"_auth": {
+					"newLine": true,
+					"type": "header",
+					"text": "Homeassistant MQTT Authentication settings",
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"size": 3
+				},
+				"haMqttUserId": {
+					"type": "text",
+					"label": "HA mqtt user",
+					"newLine": false,
+					"sm": 12,
+					"md": 6,
+					"lg": 4
+				},
+				"haMqttUserPWd": {
+					"type": "password",
+					"visible": true,
+					"label": "HA mqtt pwd",
+					"newLine": false,
+					"sm": 12,
+					"md": 6,
+					"lg": 4
+				},
+				"_debugcommon": {
+					"newLine": true,
+					"type": "header",
+					"text": "HA DEBUG settings",
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"size": 3
+				},
+				"msgHaAutoDiscovery": {
+					"type": "checkbox",
+					"label": "msgHaAutoDiscovery",
+					"sm": 12,
+					"md": 6,
+					"lg": 4
+				},
+				"msgHaIncomming": {
+					"type": "checkbox",
+					"label": "msgHaIncomming",
+					"sm": 12,
+					"md": 6,
+					"lg": 4
+				},
+				"msgHaOutgoing": {
+					"type": "checkbox",
+					"label": "msgHaOutgoing",
+					"sm": 12,
+					"md": 6,
+					"lg": 4
 				}
 			}
 		}

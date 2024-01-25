@@ -1,8 +1,11 @@
 {
 	"common": {
 		"name": "ecoflow-mqtt",
-		"version": "0.0.21",
+		"version": "0.0.22",
 		"news": {
+			"0.0.22": {
+				"en": "homeassistant connector"
+			},
 			"0.0.21": {
 				"en": "improvements, mor debug log"
 			},
@@ -243,8 +246,16 @@
 			}
 		]
 	},
-	"protectedNative": [ "userName", "userPassword", "mqttUserId", "mqttPwd", "mqttClientId" ],
-	"encryptedNative": [ "userPassword", "mqttPwd" ],
+	"protectedNative": [
+		"userName",
+		"userPassword",
+		"mqttUserId",
+		"mqttPwd",
+		"mqttClientId",
+		"haMqttUserId",
+		"haMqttUserPWd"
+	],
+	"encryptedNative": [ "userPassword", "mqttPwd", "haMqttUserPWd" ],
 	"native": {
 		"userName": "userEmail",
 		"userPassword": "pw",
@@ -276,7 +287,16 @@
 		"msgSetGetPlug": false,
 		"msgCmdPlug": false,
 		"msgUnknownMsgPlug": false,
-		"showHex": false
+		"showHex": false,
+		"haMqttUserId": "hamqttuser",
+		"haMqttUserPWd": "hamqttusePWd",
+		"haMqttUrl": "192.x.x.x",
+		"haMqttPort": 1883,
+		"haMqttEnable": false,
+		"haMqttProtocol": "mqtt://",
+		"msgHaAutoDiscovery": false,
+		"msgHaIncomming": false,
+		"msgHaOutgoing": false
 	},
 	"objects": [],
 	"instanceObjects": [

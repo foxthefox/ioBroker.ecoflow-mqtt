@@ -9,6 +9,7 @@
 const utils = require('@iobroker/adapter-core');
 const myutils = require('./lib/adapter_utils.js');
 const ef = require('./lib/ecoflow_utils.js');
+const ha = require('./lib/ha_utils.js');
 const mqtt = require('mqtt');
 
 const { isObject } = require('util');
@@ -96,9 +97,11 @@ class EcoflowMqtt extends utils.Adapter {
 						if (devtype !== 'none' && devtype !== '') {
 							const id = confdevices[psta]['devId'];
 							const name = confdevices[psta]['devName'];
+							const haEnable = confdevices[psta]['haEnable'];
 							this.pdevices[id] = {};
 							this.pdevices[id]['devType'] = devtype;
 							this.pdevices[id]['devName'] = name;
+							this.pdevices[id]['haEnable'] = haEnable;
 
 							let devStates = null;
 							if (devtype === 'pstream600' || devtype === 'pstream800' || devtype === 'plug') {
@@ -399,6 +402,13 @@ class EcoflowMqtt extends utils.Adapter {
 			this.log.error('read config ' + error);
 		}
 
+		//Homeassistant connection
+		if (this.config.haMqttEnable) {
+			this.haDevices = ha.defineHaDevices(this.pdevices);
+			this.log.info('HA communication:');
+			this.log.info('devices  -> ' + JSON.stringify(this.config.pstreams));
+		}
+
 		//additional states for observance
 		myutils.createInfoStates(this);
 
@@ -409,7 +419,7 @@ class EcoflowMqtt extends utils.Adapter {
 		}
 		this.log.debug('subscription topics ' + JSON.stringify(topics));
 
-		//connect
+		//connect to Ecoflow
 		const optionsMqtt = {
 			port: this.mqttPort || 8883,
 			clientId: this.mqttClientId,
@@ -648,6 +658,67 @@ class EcoflowMqtt extends utils.Adapter {
 		} else {
 			this.log.warn('check your mqtt credentials, they seem too short');
 		}
+
+		//connect to Homeassistant
+		if (this.config.haMqttEnable) {
+			try {
+				this.log.info('going to connect to HA mqtt broker');
+				this.log.debug('your HA mqtt configration:');
+				this.log.debug('user          -> ' + this.config.haMqttUserId);
+				this.log.debug('port          -> ' + this.config.haMqttPort);
+				this.log.debug('url           -> ' + this.config.haMqttUrl);
+				this.log.debug('ptotocol      -> ' + this.config.haMqttProtocol);
+				const optionsHaMqtt = {
+					port: this.config.haMqttPort || 1883,
+					username: this.config.haMqttUserId.haMqttUserPWd,
+					password: this.config.
+				};
+
+				this.haClient = mqtt.connect(this.config.haMqttProtocol+this.config.haMqttUrl + ':' + this.config.haMqttPort, optionsHaMqtt);
+
+				this.haClient.on('connect', async () => {
+					this.log.debug('connected');
+
+					if (this.haDevices.length > 0) {
+						//send autodiscovery
+
+						this.log.debug('sent autodiscovery objects');
+
+						if (topics.length > 0) {
+						} else {
+							this.log.debug('no topics for subscription');
+						}
+						this.setState('info.connection', true, true);
+					}
+				});
+
+				this.haClient.on('message', async (topic, message) => {
+					let devtype = '';
+					if (this.pdevices) {
+						if (this.pdevices[topic]) {
+							devtype = this.pdevices[topic]['devType'];
+						} else {
+							this.log.debug(topic + ' not part of configured devices');
+						}
+					}
+					//split message and set the state
+					//must contain /cmd/
+				});
+
+				this.haClient.on('close', () => {
+					this.log.info('HA connection closed');
+				});
+				this.haClient.on('error', (error) => {
+					this.log.error('Error inconnection to HA MQTT-Broker:' + error);
+				});
+
+				this.haClient.on('reconnect', async () => {
+					this.log.debug('Reconnecting to HA MQTT broker...');
+				});
+			} catch (error) {
+				this.log.error('create HA mqtt client handling ' + error);
+			}
+		}
 	}
 
 	/**
@@ -665,6 +736,9 @@ class EcoflowMqtt extends utils.Adapter {
 			if (lastQuotInterval) clearInterval(lastQuotInterval);
 			if (this.client) {
 				this.client.end();
+			}
+			if (this.haClient) {
+				this.haClient.end();
 			}
 			callback();
 		} catch (e) {

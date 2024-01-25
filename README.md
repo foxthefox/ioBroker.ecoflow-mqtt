@@ -82,7 +82,7 @@ Use the second tab "Device(s) Configuration" for adding your equipment.
 
 Use the third tab "Wave / Glacier Configuration" for adding your equipment.
 
-<details><summary><i><details><summary><i>Parametrizing the Wave</i></summary>
+<details><summary><i>Parametrizing the Wave</i></summary>
 <p>
 
 * add a new row
@@ -99,6 +99,22 @@ Use the third tab "Wave / Glacier Configuration" for adding your equipment.
 * set the deviceID of Smart Plug as shown in the app, something like "BX11ZCB..."
 * give it a name
 * set the type to "plug"
+
+</p></details>
+
+Use the forth tab "Homeassistant" for setup of MQTT connection to HA
+
+<details><summary><i>Parametrizing Homeassistant Connector</i></summary>
+<p>
+
+* enable the service
+* set the user settings of the MQTT Broker of HA
+* set the connection parameter of the MQTT Broker of HA
+* select debug settings if required
+
+Modification at HA side:
+* The adapter uses the autodiscovery function in HA, no configuration of datapoints in HA is needed.
+* MQTT add-on ...
 
 </p></details>
 
@@ -143,7 +159,7 @@ The 800W version is also implemented and only difference ist the 800W maximum po
 ![Smart Plug](./doc/devices/plug.md)
 
 ### Wave 2 Air conditioner
-![Wave](./doc/devices/wave.md)
+![Wave2](./doc/devices/wave2.md)
 
 ### Glacier refrigerator
 ![Glacier](./doc/devices/glacier.md)
@@ -152,6 +168,9 @@ The 800W version is also implemented and only difference ist the 800W maximum po
 * check forgotten boundary conditions for commands (inhibit cmd, or additional value)
 
 ## Changelog
+### 0.0.22
+* (foxthefox) Homeassistant Connector
+
 ### 0.0.21 (npm)
 * (foxthefox) more debug on connection
 * (foxthefox) new datapoints for wave2
