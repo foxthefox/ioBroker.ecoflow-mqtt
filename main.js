@@ -668,13 +668,17 @@ class EcoflowMqtt extends utils.Adapter {
 				this.log.debug('port          -> ' + this.config.haMqttPort);
 				this.log.debug('url           -> ' + this.config.haMqttUrl);
 				this.log.debug('ptotocol      -> ' + this.config.haMqttProtocol);
+
 				const optionsHaMqtt = {
 					port: this.config.haMqttPort || 1883,
 					username: this.config.haMqttUserId.haMqttUserPWd,
-					password: this.config.
+					password: this.config.haMqttUserPWd
 				};
 
-				this.haClient = mqtt.connect(this.config.haMqttProtocol+this.config.haMqttUrl + ':' + this.config.haMqttPort, optionsHaMqtt);
+				this.haClient = mqtt.connect(
+					this.config.haMqttProtocol + this.config.haMqttUrl + ':' + this.config.haMqttPort,
+					optionsHaMqtt
+				);
 
 				this.haClient.on('connect', async () => {
 					this.log.debug('connected');
