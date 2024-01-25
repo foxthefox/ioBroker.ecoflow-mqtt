@@ -693,7 +693,7 @@ class EcoflowMqtt extends utils.Adapter {
 						this.log.debug('sent autodiscovery objects to HA');
 
 						if (this.haDevices.length > 0) {
-							let topics = [ '/#' ];
+							let topics = [ 'ecoflow/#' ];
 							this.haClient.subscribe(topics, async (err) => {
 								if (!err) {
 									this.log.debug('subscribed the topics HA');
