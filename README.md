@@ -47,7 +47,7 @@ There are 3 possibilities:
 
 The mqqt Broker settings are default and usually need no modification.
 
-Use the second tab "Device(s) Configuration" for adding your equipment.
+Use the tab "Device(s) Configuration" for adding your power equipment.
 
 <details><summary><i> Parametrizing the Powerstream</i></summary>
 <p>
@@ -80,7 +80,7 @@ Use the second tab "Device(s) Configuration" for adding your equipment.
 
 </p></details>
 
-Use the third tab "Wave / Glacier Configuration" for adding your equipment.
+Use the tab "Wave / Glacier Configuration" for adding your equipment.
 
 <details><summary><i>Parametrizing the Wave</i></summary>
 <p>
@@ -102,7 +102,7 @@ Use the third tab "Wave / Glacier Configuration" for adding your equipment.
 
 </p></details>
 
-Use the forth tab "Homeassistant" for setup of MQTT connection to HA
+Use the tab "Homeassistant" for setup of MQTT connection to HA
 
 <details><summary><i>Parametrizing Homeassistant Connector</i></summary>
 <p>
