@@ -113,7 +113,8 @@ Use the tab "Homeassistant" for setup of MQTT connection to HA
 * select debug settings if required
 
 Modification at HA side:
-* The adapter uses the autodiscovery function in HA, no configuration of datapoints in HA is needed.
+
+* The adapter uses the discovery function in HA, no configuration of datapoints in HA is needed.
 * MQTT add-on ...
 
 </p></details>
@@ -170,6 +171,7 @@ The 800W version is also implemented and only difference ist the 800W maximum po
 ## Changelog
 ### 0.0.22
 * (foxthefox) Homeassistant Connector
+* (foxthefox) uptime no max boundary
 
 ### 0.0.21 (npm)
 * (foxthefox) more debug on connection

@@ -263,7 +263,7 @@
 		"mqttUserName": "app-....",
 		"mqttPwd": "xxxx",
 		"mqttClientId": "ANDRIOD-...",
-		"mqttUrl": "mqtts://mqtt.ecoflow.com",
+		"mqttUrl": "mqtts://mqtt-e.ecoflow.com",
 		"mqttPort": 8883,
 		"enableMqttReconnect": false,
 		"pstreams": [],
@@ -296,7 +296,8 @@
 		"haMqttProtocol": "mqtt://",
 		"msgHaAutoDiscovery": false,
 		"msgHaIncomming": false,
-		"msgHaOutgoing": false
+		"msgHaOutgoing": false,
+		"haTopic": "iob_ef"
 	},
 	"objects": [],
 	"instanceObjects": [

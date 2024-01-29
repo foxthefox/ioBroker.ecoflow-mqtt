@@ -80,6 +80,8 @@ class EcoflowMqtt extends utils.Adapter {
 			this.log.info('smartplug    -> ' + JSON.stringify(this.config.plugs));
 			this.log.info('wave         -> ' + JSON.stringify(this.config.waves));
 			this.log.info('glacier      -> ' + JSON.stringify(this.config.glaciers));
+			//this.log.info('blade      -> ' + JSON.stringify(this.config.blades));
+			//this.log.info('generator      -> ' + JSON.stringify(this.config.generators));
 
 			try {
 				//loop durch alle Geräte
@@ -665,6 +667,7 @@ class EcoflowMqtt extends utils.Adapter {
 			try {
 				this.log.info('going to connect to HA mqtt broker');
 				this.log.debug('your HA mqtt configration:');
+				this.log.debug('topic         -> ' + this.haTopic);
 				this.log.debug('user          -> ' + this.config.haMqttUserId);
 				this.log.debug('port          -> ' + this.config.haMqttPort);
 				this.log.debug('url           -> ' + this.config.haMqttUrl);
@@ -684,16 +687,42 @@ class EcoflowMqtt extends utils.Adapter {
 
 				this.haClient.on('connect', async () => {
 					this.log.debug('HA connected');
-
 					if (this.haDevices.length > 0) {
-						//send autodiscovery
-						if (this.config.msgHaAutoDiscovery) {
-							this.log.debug('autoconf');
+						let topics = [];
+						for (let j = 0; j < this.haDevices.length; j++) {
+							const id = this.haDevices[j];
+							const type = this.pdevices[id]['devType'];
+							const discovery = ha.prepareDiscoveryMessage(
+								this.haDevices[i],
+								type,
+								this.pdevicesStatesDict['type'],
+								this.pdevicesStates['type'],
+								this.config.haTopic,
+								'0.0.22'
+							);
+							if (this.config.msgHaAutoDiscovery) {
+								this.log.debug(id + ' autoconf: ' + JSON.stringify(discovery));
+							}
+							for (let i = 0; i < discovery.length; i++) {
+								this.haClient.publish(
+									discovery[i].topic,
+									String(discovery[i].payload),
+									{ qos: 1 },
+									(error) => {
+										if (error) {
+											this.log.error('Error when publishing the HA MQTT message: ' + error);
+										} else {
+											if (this.config.msgHaAutoDiscovery && i === discovery.length - 1) {
+												this.log.debug('sent ' + i + ' autodiscovery objects to HA for ' + id);
+											}
+										}
+									}
+								);
+							}
+							topics.push(this.config.haTopic + '/' + this.haDevices[j] + '/set/#');
 						}
-						this.log.debug('sent autodiscovery objects to HA');
 
-						if (this.haDevices.length > 0) {
-							let topics = [ 'ecoflow/#' ];
+						if (topics.length > 0) {
 							this.haClient.subscribe(topics, async (err) => {
 								if (!err) {
 									this.log.debug('subscribed the topics HA');
@@ -704,24 +733,26 @@ class EcoflowMqtt extends utils.Adapter {
 						} else {
 							this.log.debug('no topics for subscription HA');
 						}
-						this.setState('info.connection', true, true);
+						// this.setState('HA info.connection', true, true);
 					}
 				});
 
 				this.haClient.on('message', async (topic, message) => {
 					if (this.config.msgHaIncomming) {
-						this.log.debug('HA msg: ' + JSON.stringify(message));
+						this.log.debug('HA msg: ' + topic + ' ' + message.data + ' ' + JSON.stringify(message));
 					}
 					let devtype = '';
 					if (this.pdevices) {
 						if (this.pdevices[topic]) {
 							devtype = this.pdevices[topic]['devType'];
+							//select decoding
+							//select_obj
+							//split message and set the state
+							//must contain /cmd/
 						} else {
 							this.log.debug(topic + ' not part of configured devices');
 						}
 					}
-					//split message and set the state
-					//must contain /cmd/
 				});
 
 				this.haClient.on('close', () => {

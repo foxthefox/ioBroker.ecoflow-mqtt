@@ -596,6 +596,11 @@
 					"md": 6,
 					"lg": 4
 				},
+				"haTopic": {
+					"type": "text",
+					"label": "HA topic prefix",
+					"newLine": false
+				},
 				"haMqttProtocol": {
 					"type": "text",
 					"label": "HA mqtt protocol",
