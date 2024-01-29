@@ -706,7 +706,7 @@ class EcoflowMqtt extends utils.Adapter {
 							for (let i = 0; i < discovery.length; i++) {
 								this.haClient.publish(
 									discovery[i].topic,
-									String(discovery[i].payload),
+									JSON.stringify(discovery[i].payload),
 									{ qos: 1, retain: true },
 									(error) => {
 										if (error) {
