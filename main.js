@@ -700,7 +700,7 @@ class EcoflowMqtt extends utils.Adapter {
 						const iob_payload = {
 							unique_id: 'iob_0_status',
 							device: {
-								identifiers: 'iob_0',
+								identifiers: 'iob_0_status',
 								manufacturer: 'foxthefox',
 								name: 'IOB connector',
 								model: 'ecoflow-mqtt Adapter',
@@ -975,6 +975,30 @@ class EcoflowMqtt extends utils.Adapter {
 						break;
 					default:
 						break;
+				}
+			} else {
+				const idsplit = id.split('.');
+				const device = idsplit[2];
+				const channel = idsplit[3];
+				const item = idsplit[4];
+				if (channel === 'info' && item === 'status') {
+					let oldstatus = await this.getStateAsync(id);
+					if (oldstatus && oldstatus.val !== state.val && this.haClient) {
+						this.haClient.publish(
+							this.config.haTopic + '/' + device + '/info/status',
+							'online',
+							{ qos: 1 },
+							(error) => {
+								if (error) {
+									this.log.error(device + ' error when publishing the HA status message: ' + error);
+								} else {
+									if (this.config.msgHaOutgoing) {
+										this.log.debug(device + 'sent status' + state.val + ' to HA');
+									}
+								}
+							}
+						);
+					}
 				}
 			}
 		} else {
