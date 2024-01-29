@@ -420,7 +420,7 @@ class EcoflowMqtt extends utils.Adapter {
 		if (this.mqttUserId.length > 0) {
 			topics = topics.concat(ef.createSubscribeTopics(this.mqttUserId, this.pdevices));
 		}
-		this.log.debug('subscription topics ' + JSON.stringify(topics));
+		this.log.debug('subscription topics EF ' + JSON.stringify(topics));
 
 		//connect to Ecoflow
 		const optionsMqtt = {
@@ -448,7 +448,7 @@ class EcoflowMqtt extends utils.Adapter {
 						if (this.client) {
 							this.client.subscribe(topics, async (err) => {
 								if (!err) {
-									this.log.debug('subscribed the topics');
+									this.log.debug('subscribed the topics EF');
 									//initial and interval for requesting last quotas
 									await ef.getLastProtobufQuotas(this, this.pdevices);
 									lastQuotInterval = setInterval(async () => {
@@ -723,6 +723,9 @@ class EcoflowMqtt extends utils.Adapter {
 						}
 
 						if (topics.length > 0) {
+							if (this.config.msgHaAutoDiscovery) {
+								this.log.debug('topics: ' + JSON.stringify(topics));
+							}
 							this.haClient.subscribe(topics, async (err) => {
 								if (!err) {
 									this.log.debug('subscribed the topics HA');
