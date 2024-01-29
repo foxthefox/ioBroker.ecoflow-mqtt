@@ -695,8 +695,8 @@ class EcoflowMqtt extends utils.Adapter {
 							const discovery = ha.prepareDiscoveryMessage(
 								this.haDevices[j],
 								type,
-								this.pdevicesStatesDict['type'],
-								this.pdevicesStates['type'],
+								this.pdevicesStatesDict[type],
+								this.pdevicesStates[type],
 								this.config.haTopic,
 								'0.0.22'
 							);
