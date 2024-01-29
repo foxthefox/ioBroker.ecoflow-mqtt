@@ -693,7 +693,7 @@ class EcoflowMqtt extends utils.Adapter {
 							const id = this.haDevices[j];
 							const type = this.pdevices[id]['devType'];
 							const discovery = ha.prepareDiscoveryMessage(
-								this.haDevices[i],
+								this.haDevices[j],
 								type,
 								this.pdevicesStatesDict['type'],
 								this.pdevicesStates['type'],
