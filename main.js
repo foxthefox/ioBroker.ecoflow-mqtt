@@ -721,8 +721,8 @@ class EcoflowMqtt extends utils.Adapter {
 								if (error) {
 									this.log.error('Error when publishing IOB autodiscovery: ' + error);
 								} else {
-									if (this.config.msgHaAutoDiscovery && i === discovery.length - 1) {
-										this.log.debug('sent IOB autodiscovery object to HA for ');
+									if (this.config.msgHaAutoDiscovery) {
+										this.log.debug('sent IOB autodiscovery object to HA');
 									}
 								}
 							}
@@ -735,7 +735,7 @@ class EcoflowMqtt extends utils.Adapter {
 								if (error) {
 									this.log.error('Error when publishing the HA iob online message: ' + error);
 								} else {
-									if (this.config.msgHaAutoDiscovery && i === discovery.length - 1) {
+									if (this.config.msgHaAutoDiscovery) {
 										this.log.debug('sent IOB autodiscovery object to HA for ');
 									}
 								}
