@@ -645,6 +645,7 @@ class EcoflowMqtt extends utils.Adapter {
 
 				this.client.on('close', () => {
 					this.setState('info.connection', false, true);
+					//all info/status auf offline setzen
 					this.log.info('ecoflow connection closed');
 				});
 				this.client.on('error', (error) => {
@@ -677,7 +678,13 @@ class EcoflowMqtt extends utils.Adapter {
 				const optionsHaMqtt = {
 					port: this.config.haMqttPort || 1883,
 					username: this.config.haMqttUserId,
-					password: this.config.haMqttUserPWd
+					password: this.config.haMqttUserPWd,
+					will: {
+						topic: this.config.haTopic + '/iob/info/status',
+						payload: 'offline',
+						qos: 1,
+						retain: false
+					}
 				};
 
 				this.haClient = mqtt.connect(
@@ -688,7 +695,53 @@ class EcoflowMqtt extends utils.Adapter {
 				this.haClient.on('connect', async () => {
 					this.log.debug('HA connected');
 					if (this.haDevices.length > 0) {
-						let topics = [];
+						//iob
+						const iob_topic = 'homeassistant/binary_sensor/iob/status/config';
+						const iob_payload = {
+							unique_id: 'iob_0_status',
+							device: {
+								identifiers: 'iob_0',
+								manufacturer: 'foxthefox',
+								name: 'IOB connector',
+								model: 'ecoflow-mqtt Adapter',
+								sw_version: '0.0.22',
+								suggested_area: 'energy'
+							},
+							device_class: 'connectivity',
+							payload_on: 'online',
+							payload_off: 'offline',
+							state_topic: this.config.haTopic + '/iob/info/status',
+							name: 'ioBroker Connection'
+						};
+						this.haClient.publish(
+							iob_topic,
+							JSON.stringify(iob_payload),
+							{ qos: 1, retain: true },
+							(error) => {
+								if (error) {
+									this.log.error('Error when publishing IOB autodiscovery: ' + error);
+								} else {
+									if (this.config.msgHaAutoDiscovery && i === discovery.length - 1) {
+										this.log.debug('sent IOB autodiscovery object to HA for ');
+									}
+								}
+							}
+						);
+						this.haClient.publish(
+							this.config.haTopic + '/iob/info/status',
+							'online',
+							{ qos: 1 },
+							(error) => {
+								if (error) {
+									this.log.error('Error when publishing the HA iob online message: ' + error);
+								} else {
+									if (this.config.msgHaAutoDiscovery && i === discovery.length - 1) {
+										this.log.debug('sent IOB autodiscovery object to HA for ');
+									}
+								}
+							}
+						);
+
 						for (let j = 0; j < this.haDevices.length; j++) {
 							const id = this.haDevices[j];
 							const type = this.pdevices[id]['devType'];
@@ -702,6 +755,12 @@ class EcoflowMqtt extends utils.Adapter {
 							);
 							if (this.config.msgHaAutoDiscovery) {
 								this.log.debug(id + ' autoconf: ' + JSON.stringify(discovery));
+							}
+							const status = await this.getStateAsync(id + '.info.status');
+							if (status && status.val) {
+								//eventuell zu früh um das zu senden
+								// @ts-ignore
+								discovery.push({ topic: id + '/info/status', payload: status.val });
 							}
 							for (let i = 0; i < discovery.length; i++) {
 								this.haClient.publish(
@@ -719,22 +778,16 @@ class EcoflowMqtt extends utils.Adapter {
 									}
 								);
 							}
-							topics.push(this.config.haTopic + '/' + this.haDevices[j] + '/set/#');
-						}
-
-						if (topics.length > 0) {
-							if (this.config.msgHaAutoDiscovery) {
-								this.log.debug('topics: ' + JSON.stringify(topics));
-							}
-							this.haClient.subscribe(topics, async (err) => {
-								if (!err) {
-									this.log.debug('subscribed the topics HA');
-								} else {
-									this.log.warn('could not subscribe to topics HA ' + err);
+							this.haClient.subscribe(
+								this.config.haTopic + '/' + this.haDevices[j] + '/set/#',
+								async (err) => {
+									if (!err) {
+										this.log.debug('subscribed the topics HA');
+									} else {
+										this.log.warn('could not subscribe to topics HA ' + err);
+									}
 								}
-							});
-						} else {
-							this.log.debug('no topics for subscription HA');
+							);
 						}
 						// this.setState('HA info.connection', true, true);
 					}
@@ -742,7 +795,7 @@ class EcoflowMqtt extends utils.Adapter {
 
 				this.haClient.on('message', async (topic, message) => {
 					if (this.config.msgHaIncomming) {
-						this.log.debug('HA msg: ' + topic + ' ' + message.data + ' ' + JSON.stringify(message));
+						this.log.debug('HA msg: ' + topic + ' ' + message + ' ' + JSON.stringify(message));
 					}
 					let devtype = '';
 					if (this.pdevices) {

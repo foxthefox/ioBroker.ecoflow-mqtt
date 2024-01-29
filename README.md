@@ -172,6 +172,7 @@ The 800W version is also implemented and only difference ist the 800W maximum po
 ### 0.0.22
 * (foxthefox) Homeassistant Connector
 * (foxthefox) uptime no max boundary
+* (foxthefox) several adjustable values which represent a mode or predefined set of settings are now using "states" definition (IOB)
 
 ### 0.0.21 (npm)
 * (foxthefox) more debug on connection
