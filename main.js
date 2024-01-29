@@ -707,7 +707,7 @@ class EcoflowMqtt extends utils.Adapter {
 								this.haClient.publish(
 									discovery[i].topic,
 									String(discovery[i].payload),
-									{ qos: 1 },
+									{ qos: 1, retain: true },
 									(error) => {
 										if (error) {
 											this.log.error('Error when publishing the HA MQTT message: ' + error);
