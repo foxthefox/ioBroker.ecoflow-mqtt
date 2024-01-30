@@ -885,7 +885,6 @@ class EcoflowMqtt extends utils.Adapter {
 					const device = idsplit[1];
 					const channel = idsplit[3];
 					const item = idsplit[4];
-					this.log.debug(' detected ' + device + ' ' + channel + '  ' + item);
 					let devtype = '';
 					if (this.pdevices) {
 						if (this.pdevices[device] && idsplit[2] === 'set') {
@@ -896,7 +895,7 @@ class EcoflowMqtt extends utils.Adapter {
 							//must contain /set/
 							this.log.debug(
 								devtype +
-									'processing ' +
+									': processing ' +
 									device +
 									'  ' +
 									channel +
@@ -906,17 +905,17 @@ class EcoflowMqtt extends utils.Adapter {
 									String(message)
 							);
 							let value;
-							if (this.pdevicesStatesDict[devtype] && this.pdevicesStatesDict[devtype]) {
+							if (this.pdevicesStatesDict[devtype] && this.pdevicesStates) {
 								if (this.pdevicesStatesDict[devtype]['entity'] === 'switch') {
 									value = String(message) === 'ON' ? true : false;
 								} else if (this.pdevicesStatesDict[devtype]['entity'] === 'level') {
-									if (this.pdevicesStatesDict[devtype]['level'][item]['entity_type'] === 'number') {
+									if (this.pdevicesStates[devtype]['level'][item]['entity_type'] === 'number') {
 										value = parseInt(String(message));
 									} else if (
-										this.pdevicesStatesDict[devtype]['level'][item]['entity_type'] === 'select'
+										this.pdevicesStates[devtype]['level'][item]['entity_type'] === 'select'
 									) {
 										try {
-											value = this.pdevicesStatesDict[devtype]['level'][item][String(message)][
+											value = this.pdevicesStates[devtype]['level'][item][String(message)][
 												'select_obj'
 											];
 										} catch (error) {
