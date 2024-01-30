@@ -417,9 +417,9 @@ class EcoflowMqtt extends utils.Adapter {
 			this.log.info('HA communication:');
 			this.log.info('devices  -> ' + JSON.stringify(this.config.pstreams));
 		}
-
-		//additional states for observance
-		myutils.createInfoStates(this);
+		this//additional states for observance
+		.myutils
+			.createInfoStates(this, this.config.haMqttEnable);
 
 		//create subscription topics
 		let topics = [];
@@ -765,6 +765,7 @@ class EcoflowMqtt extends utils.Adapter {
 				);
 
 				this.haClient.on('connect', async () => {
+					await this.setStateAsync('info.haConnection', { val: 'online', ack: true });
 					this.log.debug('HA connected');
 					if (this.haDevices.length > 0) {
 						//iob
@@ -958,6 +959,7 @@ class EcoflowMqtt extends utils.Adapter {
 				});
 
 				this.haClient.on('close', () => {
+					this.setState('info.haConnection', { val: 'online', ack: true });
 					this.log.info('HA connection closed');
 				});
 				this.haClient.on('error', (error) => {
@@ -992,22 +994,12 @@ class EcoflowMqtt extends utils.Adapter {
 				this.haClient.publish(this.config.haTopic + '/iob/info/status', 'offline', { qos: 1 }, (error) => {
 					if (error) {
 						this.log.error('Error when publishing the HA MQTT message: ' + error);
-						this.haClient.end();
 					} else {
 						this.log.debug('sent OFFLINE  to HA for IOB ');
-						this.haClient.end();
 					}
 				});
 
 				for (let i = 0; i < this.haDevices.length; i++) {
-					await ha.publishAsync(
-						this,
-						this.config.haTopic + '/' + this.haDevices[i] + '/info/status',
-						'offline',
-						1
-					);
-
-					/*
 					this.haClient.publish(
 						this.config.haTopic + '/' + this.haDevices[i] + '/info/status',
 						'offline',
@@ -1020,17 +1012,17 @@ class EcoflowMqtt extends utils.Adapter {
 							}
 						}
 					);
-					*/
 				}
 			}
 			if (this.client) {
 				this.client.end();
 			}
-			/*
+
 			if (this.haClient) {
+				await this.setStateAsync('info.haConnection', { val: 'offline', ack: true });
 				this.haClient.end();
 			}
-			*/
+
 			callback();
 		} catch (e) {
 			callback();
