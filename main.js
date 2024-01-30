@@ -561,6 +561,7 @@ class EcoflowMqtt extends utils.Adapter {
 										if (haupdate.length > 0) {
 											this.log.debug(topic + ' ha update ' + JSON.stringify(haupdate));
 											/*
+											if(this.haClient){
 											for (let i = 0; i < haupdate.length; i++) {
 												this.haClient.publish(
 													haupdate[i].topic,
@@ -584,6 +585,8 @@ class EcoflowMqtt extends utils.Adapter {
 													}
 												);
 											}
+											}
+
 											*/
 										}
 									}
@@ -654,27 +657,37 @@ class EcoflowMqtt extends utils.Adapter {
 								dict,
 								this.pdevicesStates[devtype],
 								topic,
-								JSON.parse(message.toString())
+								JSON.parse(message.toString()),
+								this.pdevices[topic]['haEnable']
 							);
 							if (haupdate.length > 0) {
 								this.log.debug(topic + ' ha update ' + JSON.stringify(haupdate));
 								/*
-								for (let i = 0; i < haupdate.length; i++) {
-									this.haClient.publish(
-										haupdate[i].topic,
-										JSON.stringify(haupdate[i].payload),
-										{ qos: 1 },
-										(error) => {
-											if (error) {
-												this.log.error('Error when publishing the HA MQTT message: ' + error);
-											} else {
-												if (this.config.msgHaOutgoing && i === haupdate.length - 1) {
-													this.log.debug('sent ' + i + ' upadate objects to HA for ' + topic);
-												}
+												if(this.haClient){
+											for (let i = 0; i < haupdate.length; i++) {
+												this.haClient.publish(
+													haupdate[i].topic,
+													JSON.stringify(haupdate[i].payload),
+													{ qos: 1 },
+													(error) => {
+														if (error) {
+															this.log.error(
+																'Error when publishing the HA MQTT message: ' + error
+															);
+														} else {
+															if (
+																this.config.msgHaOutgoing &&
+																i === haupdate.length - 1
+															) {
+																this.log.debug(
+																	'sent ' + i + ' update objects to HA for ' + topic
+																);
+															}
+														}
+													}
+												);
 											}
-										}
-									);
-								}
+											}
 								*/
 							}
 						}
