@@ -1220,6 +1220,8 @@ class EcoflowMqtt extends utils.Adapter {
 										} catch (error) {
 											this.log.warn('value not in range ' + value.val + '  ' + update[i].states);
 										}
+									} else if (update[i].entity === 'text') {
+										val = value.val;
 									} else {
 										val = String(value.val);
 									}
