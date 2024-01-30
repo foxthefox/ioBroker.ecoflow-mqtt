@@ -906,10 +906,10 @@ class EcoflowMqtt extends utils.Adapter {
 							);
 							let value;
 							if (this.pdevicesStatesDict[devtype] && this.pdevicesStates) {
-								this.log.debug(this.pdevicesStatesDict[devtype]['entity']);
-								if (this.pdevicesStatesDict[devtype]['entity'] === 'switch') {
+								this.log.debug(this.pdevicesStatesDict[devtype][channel][item]['entity']);
+								if (this.pdevicesStatesDict[devtype][channel][item]['entity'] === 'switch') {
 									value = String(message) === 'ON' ? true : false;
-								} else if (this.pdevicesStatesDict[devtype]['entity'] === 'level') {
+								} else if (this.pdevicesStatesDict[devtype][channel][item]['entity'] === 'level') {
 									this.log.debug(this.pdevicesStates[channel]['level'][item]['entity_type']);
 									if (this.pdevicesStates[channel]['level'][item]['entity_type'] === 'number') {
 										value = parseInt(String(message));
