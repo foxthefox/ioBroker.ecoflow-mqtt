@@ -983,7 +983,12 @@ class EcoflowMqtt extends utils.Adapter {
 				const item = idsplit[4];
 				if (channel === 'info' && item === 'status') {
 					let oldstatus = await this.getStateAsync(id);
-					if (oldstatus && oldstatus.val !== state.val && this.haClient) {
+					if (
+						oldstatus &&
+						oldstatus.val !== state.val &&
+						this.haClient &&
+						this.pdevices[device]['haEnable'] === true
+					) {
 						this.haClient.publish(
 							this.config.haTopic + '/' + device + '/info/status',
 							'online',
