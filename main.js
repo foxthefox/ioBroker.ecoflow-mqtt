@@ -1169,9 +1169,7 @@ class EcoflowMqtt extends utils.Adapter {
 				const channel = idsplit[3];
 				const item = idsplit[4];
 				if (channel === 'info' && item === 'status') {
-					this.log.info(device + 'catched info & state');
 					if (this.haClient && this.pdevices[device]['haEnable'] === true) {
-						this.log.info(device + 'HA upd');
 						this.haClient.publish(
 							this.config.haTopic + '/' + device + '/info/status',
 							String(state.val),
@@ -1186,6 +1184,58 @@ class EcoflowMqtt extends utils.Adapter {
 								}
 							}
 						);
+					}
+					if (this.pdevices && this.pdevicesStatesDict && this.pdevicesStates && this.config.haTopic) {
+						const id = device;
+						const type = this.pdevices[id]['devType'];
+						let bat1 = false;
+						let bat2 = false;
+						if (this.pdevices[id]['pstationsSlave1']) {
+							bat1 = this.pdevices[id]['pstationsSlave1'];
+						}
+						if (this.pdevices[id]['pstationsSlave2']) {
+							bat2 = this.pdevices[id]['pstationsSlave2'];
+						}
+
+						const update = ha.prepareFullHaUpd(
+							id,
+							this.pdevicesStatesDict[type],
+							this.pdevicesStates[type],
+							this.config.haTopic,
+							bat1,
+							bat2
+						);
+						if (this.config.msgHaOutgoing) {
+							this.log.debug(id + ' update: ' + update);
+						}
+						for (let i = 0; i < update.length; i++) {
+							const value = await this.getStateAsync(update[i].getId);
+							if (value && value.val) {
+								let val;
+								if (update[i].entity === 'switch') {
+									val = value.val === true ? 'on' : 'off';
+								} else {
+									val = String(value.val);
+								}
+								this.log.debug('update ' + update[i].topic + ' with ' + val);
+								/*
+								this.haClient.publish(
+									update[i].topic,
+									val,
+									{ qos: 1 },
+									(error) => {
+										if (error) {
+											this.log.error('Error when publishing the HA MQTT message: ' + error);
+										} else {
+											if (this.config.msgHaOutgoing && i === update.length - 1) {
+												this.log.debug('sent ' + i + ' update objects to HA for ' + id);
+											}
+										}
+									}
+								);
+								*/
+							}
+						}
 					}
 				}
 			}
