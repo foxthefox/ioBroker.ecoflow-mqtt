@@ -910,16 +910,18 @@ class EcoflowMqtt extends utils.Adapter {
 								if (this.pdevicesStatesDict[devtype][channel][item]['entity'] === 'switch') {
 									value = String(message) === 'ON' ? true : false;
 								} else if (this.pdevicesStatesDict[devtype][channel][item]['entity'] === 'level') {
-									this.log.debug(this.pdevicesStates[channel]['level'][item]['entity_type']);
-									if (this.pdevicesStates[channel]['level'][item]['entity_type'] === 'number') {
+									this.log.debug(this.pdevicesStates[devtype][channel]['level'][item]['entity_type']);
+									if (
+										this.pdevicesStates[devtype][channel]['level'][item]['entity_type'] === 'number'
+									) {
 										value = parseInt(String(message));
 									} else if (
-										this.pdevicesStates[channel]['level'][item]['entity_type'] === 'select'
+										this.pdevicesStates[devtype][channel]['level'][item]['entity_type'] === 'select'
 									) {
 										try {
-											value = this.pdevicesStates[channel]['level'][item][String(message)][
-												'select_obj'
-											];
+											value = this.pdevicesStates[devtype][channel]['level'][item][
+												String(message)
+											]['select_obj'];
 										} catch (error) {
 											this.log.error(
 												'Wrong selection value ' +
@@ -929,7 +931,9 @@ class EcoflowMqtt extends utils.Adapter {
 													'  ' +
 													channel +
 													' possible is : ' +
-													this.pdevicesStates[channel]['level'][item][String(message)] +
+													this.pdevicesStates[devtype][channel]['level'][item][
+														String(message)
+													] +
 													'   -> ' +
 													error
 											);
