@@ -582,8 +582,7 @@ class EcoflowMqtt extends utils.Adapter {
 																	);
 																	this.log.debug(
 																		'sent ' +
-																			i +
-																			1 +
+																			String(i + 1) +
 																			' update objects to HA for ' +
 																			topic
 																	);
@@ -683,7 +682,10 @@ class EcoflowMqtt extends utils.Adapter {
 															topic + ' ha update ' + JSON.stringify(haupdate)
 														);
 														this.log.debug(
-															'sent ' + i + 1 + ' update objects to HA for ' + topic
+															'sent ' +
+																String(i + 1) +
+																' update objects to HA for ' +
+																topic
 														);
 													}
 												}
@@ -883,6 +885,7 @@ class EcoflowMqtt extends utils.Adapter {
 					const device = idsplit[1];
 					const channel = idsplit[3];
 					const item = idsplit[4];
+					this.log.debug(' detected ' + device + ' ' + channel + '  ' + item);
 					let devtype = '';
 					if (this.pdevices) {
 						if (this.pdevices[device] && idsplit[2] === 'set') {
@@ -892,7 +895,15 @@ class EcoflowMqtt extends utils.Adapter {
 							//split message and set the state
 							//must contain /set/
 							this.log.debug(
-								'processing ' + device + '  ' + channel + '   ' + item + ' value : ' + String(message)
+								devtype +
+									'processing ' +
+									device +
+									'  ' +
+									channel +
+									'   ' +
+									item +
+									' value : ' +
+									String(message)
 							);
 							let value;
 							if (this.pdevicesStatesDict[devtype] && this.pdevicesStatesDict[devtype]) {
