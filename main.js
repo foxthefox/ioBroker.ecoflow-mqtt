@@ -893,24 +893,24 @@ class EcoflowMqtt extends utils.Adapter {
 							//select_obj
 							//split message and set the state
 							//must contain /set/
-							this.log.debug(
-								devtype +
-									': processing ' +
-									device +
-									'  ' +
-									channel +
-									'   ' +
-									item +
-									' value : ' +
-									String(message)
-							);
+							if (this.config.msgHaIncomming) {
+								this.log.debug(
+									devtype +
+										': processing ' +
+										device +
+										'  ' +
+										channel +
+										'   ' +
+										item +
+										' value : ' +
+										String(message)
+								);
+							}
 							let value;
 							if (this.pdevicesStatesDict[devtype] && this.pdevicesStates) {
-								this.log.debug(this.pdevicesStatesDict[devtype][channel][item]['entity']);
 								if (this.pdevicesStatesDict[devtype][channel][item]['entity'] === 'switch') {
-									value = String(message) === 'ON' ? true : false;
+									value = String(message) === 'ON' || String(message) === 'on' ? true : false;
 								} else if (this.pdevicesStatesDict[devtype][channel][item]['entity'] === 'level') {
-									this.log.debug(this.pdevicesStates[devtype][channel]['level'][item]['entity_type']);
 									if (
 										this.pdevicesStates[devtype][channel]['level'][item]['entity_type'] === 'number'
 									) {
@@ -945,8 +945,12 @@ class EcoflowMqtt extends utils.Adapter {
 							} else {
 								this.log.debug('states or dict missing for cmd evaluation');
 							}
-							this.log.debug('value would be ' + value);
-							//await this.setStateAsync(device + '.' + channel + '.' + item, { val: value, ack: false });
+							if (this.config.msgHaIncomming) {
+								this.log.debug(
+									'sending cmd value ' + value + ' to ' + device + '.' + channel + '.' + item
+								);
+							}
+							await this.setStateAsync(device + '.' + channel + '.' + item, { val: value, ack: false });
 						} else {
 							this.log.debug(topic + ' not part of configured devices');
 						}
