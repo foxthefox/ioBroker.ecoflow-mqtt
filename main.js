@@ -987,7 +987,7 @@ class EcoflowMqtt extends utils.Adapter {
 			if (recon_timer) clearTimeout(recon_timer);
 			if (lastQuotInterval) clearInterval(lastQuotInterval);
 			if (this.haClient && this.haDevices) {
-				ha.publishAsync(this, this.config.haTopic + '/iob/info/status', 'offline', 1);
+				await ha.publishAsync(this, this.config.haTopic + '/iob/info/status', 'offline', 1);
 				/*
 				this.haClient.publish(this.config.haTopic + '/iob/info/status', 'offline', { qos: 1 }, (error) => {
 					if (error) {
@@ -998,7 +998,13 @@ class EcoflowMqtt extends utils.Adapter {
 				});
 				*/
 				for (let i = 0; i < this.haDevices.length; i++) {
-					ha.publishAsync(this, this.config.haTopic + '/' + this.haDevices[i] + '/info/status', 'offline', 1);
+					await ha.publishAsync(
+						this,
+						this.config.haTopic + '/' + this.haDevices[i] + '/info/status',
+						'offline',
+						1
+					);
+
 					/*
 					this.haClient.publish(
 						this.config.haTopic + '/' + this.haDevices[i] + '/info/status',
