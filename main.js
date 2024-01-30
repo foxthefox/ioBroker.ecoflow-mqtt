@@ -105,6 +105,12 @@ class EcoflowMqtt extends utils.Adapter {
 							this.pdevices[id]['devType'] = devtype;
 							this.pdevices[id]['devName'] = name;
 							this.pdevices[id]['haEnable'] = haEnable;
+							if (confdevices[psta]['pstationsSlave1']) {
+								this.pdevices[id]['pstationsSlave1'] = confdevices[psta]['pstationsSlave1'];
+							}
+							if (confdevices[psta]['pstationsSlave2']) {
+								this.pdevices[id]['pstationsSlave2'] = confdevices[psta]['pstationsSlave2'];
+							}
 
 							let devStates = null;
 							if (devtype === 'pstream600' || devtype === 'pstream800' || devtype === 'plug') {
@@ -544,7 +550,7 @@ class EcoflowMqtt extends utils.Adapter {
 								if (msgdecode !== null && typeof msgdecode === 'object') {
 									if (Object.keys(msgdecode).length > 0) {
 										//storeStreamPayload handles multiple objects
-										await ef.storeStreamPayload(
+										const haupdate = await ef.storeStreamPayload(
 											this,
 											this.pdevicesStatesDict[devtype],
 											this.pdevicesStates[devtype],
@@ -552,6 +558,34 @@ class EcoflowMqtt extends utils.Adapter {
 											msgdecode,
 											devtype
 										);
+										if (haupdate.length > 0) {
+											this.log.debug(topic + ' ha update ' + JSON.stringify(haupdate));
+											/*
+											for (let i = 0; i < haupdate.length; i++) {
+												this.haClient.publish(
+													haupdate[i].topic,
+													JSON.stringify(haupdate[i].payload),
+													{ qos: 1 },
+													(error) => {
+														if (error) {
+															this.log.error(
+																'Error when publishing the HA MQTT message: ' + error
+															);
+														} else {
+															if (
+																this.config.msgHaOutgoing &&
+																i === haupdate.length - 1
+															) {
+																this.log.debug(
+																	'sent ' + i + ' update objects to HA for ' + topic
+																);
+															}
+														}
+													}
+												);
+											}
+											*/
+										}
 									}
 								}
 							} else {
@@ -615,13 +649,34 @@ class EcoflowMqtt extends utils.Adapter {
 							(msgtype === 'get_reply' || msgtype === 'update')
 						) {
 							const dict = this.pdevicesStatesDict[devtype];
-							await ef.storeStationPayload(
+							const haupdate = await ef.storeStationPayload(
 								this,
 								dict,
 								this.pdevicesStates[devtype],
 								topic,
 								JSON.parse(message.toString())
 							);
+							if (haupdate.length > 0) {
+								this.log.debug(topic + ' ha update ' + JSON.stringify(haupdate));
+								/*
+								for (let i = 0; i < haupdate.length; i++) {
+									this.haClient.publish(
+										haupdate[i].topic,
+										JSON.stringify(haupdate[i].payload),
+										{ qos: 1 },
+										(error) => {
+											if (error) {
+												this.log.error('Error when publishing the HA MQTT message: ' + error);
+											} else {
+												if (this.config.msgHaOutgoing && i === haupdate.length - 1) {
+													this.log.debug('sent ' + i + ' upadate objects to HA for ' + topic);
+												}
+											}
+										}
+									);
+								}
+								*/
+							}
 						}
 						this.msgCountPstation++;
 						await this.setStateAsync('info.msgCountPstation', {
@@ -745,12 +800,23 @@ class EcoflowMqtt extends utils.Adapter {
 						for (let j = 0; j < this.haDevices.length; j++) {
 							const id = this.haDevices[j];
 							const type = this.pdevices[id]['devType'];
+							let bat1 = false;
+							let bat2 = false;
+							if (this.pdevices[id]['pstationsSlave1']) {
+								bat1 = this.pdevices[id]['pstationsSlave1'];
+							}
+							if (this.pdevices[id]['pstationsSlave2']) {
+								bat2 = this.pdevices[id]['pstationsSlave2'];
+							}
+
 							const discovery = ha.prepareDiscoveryMessage(
 								this.haDevices[j],
 								type,
 								this.pdevicesStatesDict[type],
 								this.pdevicesStates[type],
 								this.config.haTopic,
+								bat1,
+								bat2,
 								'0.0.22'
 							);
 							if (this.config.msgHaAutoDiscovery) {
@@ -759,7 +825,7 @@ class EcoflowMqtt extends utils.Adapter {
 							const status = await this.getStateAsync(id + '.info.status');
 							if (status && status.val) {
 								//eventuell zu früh um das zu senden
-								const mode = (status.val = true ? 'online' : 'offline');
+								const mode = status.val === 'online' ? 'online' : 'offline';
 								// @ts-ignore
 								discovery.push({ topic: id + '/info/status', payload: mode });
 							}
@@ -798,14 +864,56 @@ class EcoflowMqtt extends utils.Adapter {
 					if (this.config.msgHaIncomming) {
 						this.log.debug('HA msg: ' + topic + ' ' + message + ' ' + JSON.stringify(message));
 					}
+					const idsplit = topic.split('/');
+					const device = idsplit[1];
+					const channel = idsplit[3];
+					const item = idsplit[4];
 					let devtype = '';
 					if (this.pdevices) {
-						if (this.pdevices[topic]) {
+						if (this.pdevices[device] && idsplit[2] === 'set') {
 							devtype = this.pdevices[topic]['devType'];
 							//select decoding
 							//select_obj
 							//split message and set the state
-							//must contain /cmd/
+							//must contain /set/
+							this.log.debug(
+								'processing ' + device + '  ' + channel + '   ' + item + ' value : ' + String(message)
+							);
+							let value;
+							if (this.pdevicesStatesDict[devtype] && this.pdevicesStatesDict[devtype]) {
+								if (this.pdevicesStatesDict[devtype]['entity'] === 'switch') {
+									value = String(message) === 'ON' ? true : false;
+								} else if (this.pdevicesStatesDict[devtype]['entity'] === 'level') {
+									if (this.pdevicesStatesDict[devtype]['level'][item]['entity_type'] === 'number') {
+										value = parseInt(String(message));
+									} else if (
+										this.pdevicesStatesDict[devtype]['level'][item]['entity_type'] === 'select'
+									) {
+										try {
+											value = this.pdevicesStatesDict[devtype]['level'][item][String(message)][
+												'select_obj'
+											];
+										} catch (error) {
+											this.log.error(
+												'Wrong selection ' +
+													String(message) +
+													' for ' +
+													device +
+													'  ' +
+													channel +
+													'   -> ' +
+													error
+											);
+										}
+									} else {
+										this.log.debug(' ');
+									}
+								}
+							} else {
+								this.log.debug('states or dict missing for cmd evaluation');
+							}
+							this.log.debug('value would be ' + value);
+							//await this.setStateAsync(device + '.' + channel + '.' + item, { val: value, ack: false });
 						} else {
 							this.log.debug(topic + ' not part of configured devices');
 						}
@@ -875,7 +983,7 @@ class EcoflowMqtt extends utils.Adapter {
 					topic = '/app/' + this.mqttUserId + '/' + device + '/thing/property/get';
 					//reset of switch
 					// not needed we trigger at 0 and 1
-					// await this.setStateAsync(device + '.' + channel + '.' + item, false, true);
+					// await this.setStateAsync(device + '.' + channel + '.' + item, {val:false, ack: true});
 				} else {
 					topic = '/app/' + this.mqttUserId + '/' + device + '/thing/property/set';
 				}
@@ -990,7 +1098,7 @@ class EcoflowMqtt extends utils.Adapter {
 						this.haClient &&
 						this.pdevices[device]['haEnable'] === true
 					) {
-						const mode = (state.val = true ? 'online' : 'offline');
+						const mode = state.val === 'online' ? 'online' : 'offline';
 						this.haClient.publish(
 							this.config.haTopic + '/' + device + '/info/status',
 							mode,

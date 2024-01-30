@@ -596,11 +596,6 @@
 					"md": 6,
 					"lg": 4
 				},
-				"haTopic": {
-					"type": "text",
-					"label": "HA topic prefix",
-					"newLine": false
-				},
 				"haMqttProtocol": {
 					"type": "text",
 					"label": "HA mqtt protocol",
@@ -614,6 +609,11 @@
 				"haMqttPort": {
 					"type": "text",
 					"label": "HA mqtt port",
+					"newLine": false
+				},
+				"haTopic": {
+					"type": "text",
+					"label": "HA topic prefix",
 					"newLine": false
 				},
 				"_auth": {
