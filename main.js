@@ -977,7 +977,7 @@ class EcoflowMqtt extends utils.Adapter {
 	 * Is called when adapter shuts down - callback has to be called under any circumstances!
 	 * @param {() => void} callback
 	 */
-	onUnload(callback) {
+	async onUnload(callback) {
 		try {
 			// Here you must clear all timeouts or intervals that may still be active
 			// clearTimeout(timeout1);
@@ -987,6 +987,8 @@ class EcoflowMqtt extends utils.Adapter {
 			if (recon_timer) clearTimeout(recon_timer);
 			if (lastQuotInterval) clearInterval(lastQuotInterval);
 			if (this.haClient && this.haDevices) {
+				await ha.publishAsync(this, this.config.haTopic + '/iob/info/status', 'offline', 1);
+				/*
 				this.haClient.publish(this.config.haTopic + '/iob/info/status', 'offline', { qos: 1 }, (error) => {
 					if (error) {
 						this.log.error('Error when publishing the HA MQTT message: ' + error);
@@ -994,7 +996,15 @@ class EcoflowMqtt extends utils.Adapter {
 						this.log.debug('sent OFFLINE  to HA for IOB ');
 					}
 				});
+				*/
 				for (let i = 0; i < this.haDevices.length; i++) {
+					await ha.publishAsync(
+						this,
+						this.config.haTopic + '/' + this.haDevices[i] + '/info/status',
+						'offline',
+						1
+					);
+					/*
 					this.haClient.publish(
 						this.config.haTopic + '/' + this.haDevices[i] + '/info/status',
 						'offline',
@@ -1007,6 +1017,7 @@ class EcoflowMqtt extends utils.Adapter {
 							}
 						}
 					);
+					*/
 				}
 			}
 			if (this.client) {
