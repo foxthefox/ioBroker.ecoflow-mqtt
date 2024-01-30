@@ -736,7 +736,7 @@ class EcoflowMqtt extends utils.Adapter {
 									this.log.error('Error when publishing the HA iob online message: ' + error);
 								} else {
 									if (this.config.msgHaAutoDiscovery) {
-										this.log.debug('sent IOB autodiscovery object to HA for ');
+										this.log.debug('sent ONLINE for IOB status to HA');
 									}
 								}
 							}
@@ -759,8 +759,9 @@ class EcoflowMqtt extends utils.Adapter {
 							const status = await this.getStateAsync(id + '.info.status');
 							if (status && status.val) {
 								//eventuell zu früh um das zu senden
+								const mode = (status.val = true ? 'online' : 'offline');
 								// @ts-ignore
-								discovery.push({ topic: id + '/info/status', payload: status.val });
+								discovery.push({ topic: id + '/info/status', payload: mode });
 							}
 							for (let i = 0; i < discovery.length; i++) {
 								this.haClient.publish(
@@ -989,16 +990,17 @@ class EcoflowMqtt extends utils.Adapter {
 						this.haClient &&
 						this.pdevices[device]['haEnable'] === true
 					) {
+						const mode = (state.val = true ? 'online' : 'offline');
 						this.haClient.publish(
 							this.config.haTopic + '/' + device + '/info/status',
-							'online',
+							mode,
 							{ qos: 1 },
 							(error) => {
 								if (error) {
 									this.log.error(device + ' error when publishing the HA status message: ' + error);
 								} else {
 									if (this.config.msgHaOutgoing) {
-										this.log.debug(device + 'sent status' + state.val + ' to HA');
+										this.log.debug(device + 'sent status' + mode + ' to HA');
 									}
 								}
 							}
