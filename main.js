@@ -906,14 +906,20 @@ class EcoflowMqtt extends utils.Adapter {
 							);
 							let value;
 							if (this.pdevicesStatesDict[devtype] && this.pdevicesStates) {
+								this.log.debug(this.pdevicesStatesDict[devtype]['entity']);
 								if (this.pdevicesStatesDict[devtype]['entity'] === 'switch') {
 									value = String(message) === 'ON' ? true : false;
 								} else if (this.pdevicesStatesDict[devtype]['entity'] === 'level') {
-									if (this.pdevicesStates['level'][item]['entity_type'] === 'number') {
+									this.log.debug(this.pdevicesStates[channel]['level'][item]['entity_type']);
+									if (this.pdevicesStates[channel]['level'][item]['entity_type'] === 'number') {
 										value = parseInt(String(message));
-									} else if (this.pdevicesStates['level'][item]['entity_type'] === 'select') {
+									} else if (
+										this.pdevicesStates[channel]['level'][item]['entity_type'] === 'select'
+									) {
 										try {
-											value = this.pdevicesStates['level'][item][String(message)]['select_obj'];
+											value = this.pdevicesStates[channel]['level'][item][String(message)][
+												'select_obj'
+											];
 										} catch (error) {
 											this.log.error(
 												'Wrong selection value ' +
@@ -923,7 +929,7 @@ class EcoflowMqtt extends utils.Adapter {
 													'  ' +
 													channel +
 													' possible is : ' +
-													this.pdevicesStates['level'][item][String(message)] +
+													this.pdevicesStates[channel]['level'][item][String(message)] +
 													'   -> ' +
 													error
 											);
