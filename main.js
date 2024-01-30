@@ -556,7 +556,8 @@ class EcoflowMqtt extends utils.Adapter {
 											this.pdevicesStates[devtype],
 											topic,
 											msgdecode,
-											devtype
+											devtype,
+											this.pdevices[topic]['haEnable']
 										);
 										if (haupdate.length > 0) {
 											this.log.debug(topic + ' ha update ' + JSON.stringify(haupdate));
