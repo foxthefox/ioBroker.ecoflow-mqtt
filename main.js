@@ -560,7 +560,6 @@ class EcoflowMqtt extends utils.Adapter {
 											this.pdevices[topic]['haEnable']
 										);
 										if (haupdate.length > 0) {
-											this.log.debug(topic + ' ha update ' + JSON.stringify(haupdate));
 											if (this.haClient) {
 												for (let i = 0; i < haupdate.length; i++) {
 													this.haClient.publish(
@@ -579,8 +578,12 @@ class EcoflowMqtt extends utils.Adapter {
 																	i === haupdate.length - 1
 																) {
 																	this.log.debug(
+																		topic + ' ha update ' + JSON.stringify(haupdate)
+																	);
+																	this.log.debug(
 																		'sent ' +
 																			i +
+																			1 +
 																			' update objects to HA for ' +
 																			topic
 																	);
@@ -663,7 +666,6 @@ class EcoflowMqtt extends utils.Adapter {
 								this.pdevices[topic]['haEnable']
 							);
 							if (haupdate.length > 0) {
-								this.log.debug(topic + ' ha update ' + JSON.stringify(haupdate));
 								if (this.haClient) {
 									for (let i = 0; i < haupdate.length; i++) {
 										this.haClient.publish(
@@ -678,7 +680,10 @@ class EcoflowMqtt extends utils.Adapter {
 												} else {
 													if (this.config.msgHaOutgoing && i === haupdate.length - 1) {
 														this.log.debug(
-															'sent ' + i + ' update objects to HA for ' + topic
+															topic + ' ha update ' + JSON.stringify(haupdate)
+														);
+														this.log.debug(
+															'sent ' + i + 1 + ' update objects to HA for ' + topic
 														);
 													}
 												}
@@ -881,7 +886,7 @@ class EcoflowMqtt extends utils.Adapter {
 					let devtype = '';
 					if (this.pdevices) {
 						if (this.pdevices[device] && idsplit[2] === 'set') {
-							devtype = this.pdevices[topic]['devType'];
+							devtype = this.pdevices[device]['devType'];
 							//select decoding
 							//select_obj
 							//split message and set the state
