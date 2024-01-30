@@ -858,15 +858,20 @@ class EcoflowMqtt extends utils.Adapter {
 							if (status && status.val) {
 								//eventuell zu früh um das zu senden
 								const mode = status.val === 'online' ? 'online' : 'offline';
-								this.haClient.publish(id + '/info/status', mode, { qos: 1 }, (error) => {
-									if (error) {
-										this.log.error('Error when publishing the HA MQTT message: ' + error);
-									} else {
-										if (this.config.msgHaAutoDiscovery) {
-											this.log.debug('sent ' + mode + ' to HA for ' + id);
+								this.haClient.publish(
+									this.config.haTopic + '/' + id + '/info/status',
+									mode,
+									{ qos: 1 },
+									(error) => {
+										if (error) {
+											this.log.error('Error when publishing the HA MQTT message: ' + error);
+										} else {
+											if (this.config.msgHaAutoDiscovery) {
+												this.log.debug('sent ' + mode + ' to HA for ' + id);
+											}
 										}
 									}
-								});
+								);
 							}
 							this.haClient.subscribe(
 								this.config.haTopic + '/' + this.haDevices[j] + '/set/#',
@@ -1164,24 +1169,17 @@ class EcoflowMqtt extends utils.Adapter {
 				const channel = idsplit[3];
 				const item = idsplit[4];
 				if (channel === 'info' && item === 'status') {
-					let oldstatus = await this.getStateAsync(id);
-					if (
-						oldstatus &&
-						oldstatus.val !== state.val &&
-						this.haClient &&
-						this.pdevices[device]['haEnable'] === true
-					) {
-						const mode = state.val === 'online' ? 'online' : 'offline';
+					if (this.haClient && this.pdevices[device]['haEnable'] === true) {
 						this.haClient.publish(
 							this.config.haTopic + '/' + device + '/info/status',
-							mode,
+							state.val,
 							{ qos: 1 },
 							(error) => {
 								if (error) {
 									this.log.error(device + ' error when publishing the HA status message: ' + error);
 								} else {
 									if (this.config.msgHaOutgoing) {
-										this.log.debug(device + 'sent status' + mode + ' to HA');
+										this.log.debug(device + 'sent status' + state.val + ' to HA');
 									}
 								}
 							}
