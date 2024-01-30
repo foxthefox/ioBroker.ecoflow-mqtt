@@ -986,6 +986,29 @@ class EcoflowMqtt extends utils.Adapter {
 			// clearInterval(interval1);
 			if (recon_timer) clearTimeout(recon_timer);
 			if (lastQuotInterval) clearInterval(lastQuotInterval);
+			if (this.haClient && this.haDevices) {
+				this.haClient.publish(this.config.haTopic + '/iob/info/status', 'offline', { qos: 1 }, (error) => {
+					if (error) {
+						this.log.error('Error when publishing the HA MQTT message: ' + error);
+					} else {
+						this.log.debug('sent OFFLINE  to HA for IOB ');
+					}
+				});
+				for (let i = 0; i < this.haDevices.length; i++) {
+					this.haClient.publish(
+						this.config.haTopic + '/' + this.haDevices[i] + '/info/status',
+						'offline',
+						{ qos: 1 },
+						(error) => {
+							if (error) {
+								this.log.error('Error when publishing the HA MQTT message: ' + error);
+							} else {
+								this.log.debug('sent OFFLINE  to HA for ' + this.haDevices[i]);
+							}
+						}
+					);
+				}
+			}
 			if (this.client) {
 				this.client.end();
 			}
