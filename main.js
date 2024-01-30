@@ -836,7 +836,7 @@ class EcoflowMqtt extends utils.Adapter {
 								'0.0.22'
 							);
 							if (this.config.msgHaAutoDiscovery) {
-								this.log.debug(id + ' autoconf: ' + JSON.stringify(discovery));
+								this.log.debug(id + ' autoconf: ' + discovery);
 							}
 							for (let i = 0; i < discovery.length; i++) {
 								this.haClient.publish(
@@ -1168,8 +1168,11 @@ class EcoflowMqtt extends utils.Adapter {
 				const device = idsplit[2];
 				const channel = idsplit[3];
 				const item = idsplit[4];
+				this.log.info('(ack=true) ->upd : channel ' + channel + ' state ' + item);
 				if (channel === 'info' && item === 'status') {
+					this.log.info(device + 'catched info & state');
 					if (this.haClient && this.pdevices[device]['haEnable'] === true) {
+						this.log.info(device + 'HA upd');
 						this.haClient.publish(
 							this.config.haTopic + '/' + device + '/info/status',
 							state.val,
