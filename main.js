@@ -1212,27 +1212,44 @@ class EcoflowMqtt extends utils.Adapter {
 								if (value && value.val) {
 									let val;
 									if (update[i].entity === 'switch') {
-										val = value.val === true ? 'on' : 'off';
+										val =
+											value.val === true
+												? this.pdevicesStates[type][update[i].channel][update[i].type][
+														update[i].item
+													]['payload_on']
+												: this.pdevicesStates[type][update[i].channel][update[i].type][
+														update[i].item
+													]['payload_off'];
+									} else if (update[i].entity === 'select') {
+										try {
+											val = this.pdevicesStates[type][update[i].channel][update[i].type][
+												update[i].item
+											]['states'][String(value.val)];
+										} catch (error) {
+											this.log.warn(
+												'value not in range ' +
+													value.val +
+													'  ' +
+													this.pdevicesStates[type][update[i].channel][update[i].type][
+														update[i].item
+													]['states']
+											);
+										}
 									} else {
 										val = String(value.val);
 									}
-									this.log.debug('update ' + update[i].topic + ' with ' + val);
-									/*
-									this.haClient.publish(
-										update[i].topic,
-										val,
-										{ qos: 1 },
-										(error) => {
-											if (error) {
-												this.log.error('Error when publishing the HA MQTT message: ' + error);
-											} else {
-												if (this.config.msgHaOutgoing && i === update.length - 1) {
-													this.log.debug('sent ' + i + ' update objects to HA for ' + id);
-												}
+									if (this.config.msgHaOutgoing) {
+										this.log.debug('update ' + update[i].topic + ' with ' + val);
+									}
+									this.haClient.publish(update[i].topic, val, { qos: 1 }, (error) => {
+										if (error) {
+											this.log.error('Error when publishing the HA MQTT message: ' + error);
+										} else {
+											if (this.config.msgHaOutgoing && i === update.length - 1) {
+												this.log.debug('sent ' + i + ' update objects to HA for ' + id);
 											}
 										}
-									);
-									*/
+									});
 								}
 							}
 						}
