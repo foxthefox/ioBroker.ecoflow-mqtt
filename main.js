@@ -838,13 +838,6 @@ class EcoflowMqtt extends utils.Adapter {
 							if (this.config.msgHaAutoDiscovery) {
 								this.log.debug(id + ' autoconf: ' + JSON.stringify(discovery));
 							}
-							const status = await this.getStateAsync(id + '.info.status');
-							if (status && status.val) {
-								//eventuell zu früh um das zu senden
-								const mode = status.val === 'online' ? 'online' : 'offline';
-								// @ts-ignore
-								discovery.push({ topic: id + '/info/status', payload: mode });
-							}
 							for (let i = 0; i < discovery.length; i++) {
 								this.haClient.publish(
 									discovery[i].topic,
@@ -860,6 +853,20 @@ class EcoflowMqtt extends utils.Adapter {
 										}
 									}
 								);
+							}
+							const status = await this.getStateAsync(id + '.info.status');
+							if (status && status.val) {
+								//eventuell zu früh um das zu senden
+								const mode = status.val === 'online' ? 'online' : 'offline';
+								this.haClient.publish(id + '/info/status', mode, { qos: 1 }, (error) => {
+									if (error) {
+										this.log.error('Error when publishing the HA MQTT message: ' + error);
+									} else {
+										if (this.config.msgHaAutoDiscovery) {
+											this.log.debug('sent ' + mode + ' to HA for ' + id);
+										}
+									}
+								});
 							}
 							this.haClient.subscribe(
 								this.config.haTopic + '/' + this.haDevices[j] + '/set/#',
