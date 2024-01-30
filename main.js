@@ -909,23 +909,21 @@ class EcoflowMqtt extends utils.Adapter {
 								if (this.pdevicesStatesDict[devtype]['entity'] === 'switch') {
 									value = String(message) === 'ON' ? true : false;
 								} else if (this.pdevicesStatesDict[devtype]['entity'] === 'level') {
-									if (this.pdevicesStates[devtype]['level'][item]['entity_type'] === 'number') {
+									if (this.pdevicesStates['level'][item]['entity_type'] === 'number') {
 										value = parseInt(String(message));
-									} else if (
-										this.pdevicesStates[devtype]['level'][item]['entity_type'] === 'select'
-									) {
+									} else if (this.pdevicesStates['level'][item]['entity_type'] === 'select') {
 										try {
-											value = this.pdevicesStates[devtype]['level'][item][String(message)][
-												'select_obj'
-											];
+											value = this.pdevicesStates['level'][item][String(message)]['select_obj'];
 										} catch (error) {
 											this.log.error(
-												'Wrong selection ' +
+												'Wrong selection value ' +
 													String(message) +
 													' for ' +
 													device +
 													'  ' +
 													channel +
+													' possible is : ' +
+													this.pdevicesStates['level'][item][String(message)] +
 													'   -> ' +
 													error
 											);
