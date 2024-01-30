@@ -417,9 +417,7 @@ class EcoflowMqtt extends utils.Adapter {
 			this.log.info('HA communication:');
 			this.log.info('devices  -> ' + JSON.stringify(this.config.pstreams));
 		}
-		this//additional states for observance
-		.myutils
-			.createInfoStates(this, this.config.haMqttEnable);
+		myutils.createInfoStates(this, this.config.haMqttEnable);
 
 		//create subscription topics
 		let topics = [];
