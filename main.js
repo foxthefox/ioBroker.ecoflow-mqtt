@@ -1211,29 +1211,14 @@ class EcoflowMqtt extends utils.Adapter {
 								const value = await this.getStateAsync(update[i].getId);
 								if (value && value.val) {
 									let val;
+
 									if (update[i].entity === 'switch') {
-										val =
-											value.val === true
-												? this.pdevicesStates[type][update[i].channel][update[i].type][
-														update[i].item
-													]['payload_on']
-												: this.pdevicesStates[type][update[i].channel][update[i].type][
-														update[i].item
-													]['payload_off'];
+										val = value.val === true ? update[i].on : update[i].off;
 									} else if (update[i].entity === 'select') {
 										try {
-											val = this.pdevicesStates[type][update[i].channel][update[i].type][
-												update[i].item
-											]['states'][String(value.val)];
+											val = update[i].states[String(value.val)];
 										} catch (error) {
-											this.log.warn(
-												'value not in range ' +
-													value.val +
-													'  ' +
-													this.pdevicesStates[type][update[i].channel][update[i].type][
-														update[i].item
-													]['states']
-											);
+											this.log.warn('value not in range ' + value.val + '  ' + update[i].states);
 										}
 									} else {
 										val = String(value.val);
