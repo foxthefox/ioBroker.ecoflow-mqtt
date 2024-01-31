@@ -668,7 +668,7 @@ class EcoflowMqtt extends utils.Adapter {
 										if (typeof val === 'string') {
 											this.haClient.publish(
 												haupdate[i].topic,
-												haupdate[i].payload,
+												JSON.stringify(haupdate[i].payload),
 												{ qos: 1 },
 												(error) => {
 													if (error) {
