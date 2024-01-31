@@ -1205,7 +1205,7 @@ class EcoflowMqtt extends utils.Adapter {
 								bat2
 							);
 							if (this.config.msgHaStatusInitial) {
-								this.log.debug(id + ' initial update: ' + update);
+								this.log.debug(id + ' initial update: ' + update.length + ' objects ');
 							}
 							for (let i = 0; i < update.length; i++) {
 								const value = await this.getStateAsync(update[i].getId);
@@ -1226,7 +1226,7 @@ class EcoflowMqtt extends utils.Adapter {
 										val = String(value.val);
 									}
 									if (this.config.msgHaStatusInitial) {
-										this.log.debug('update ' + update[i].topic + ' with ' + val);
+										this.log.debug('update [' + i + ']' + update[i].topic + ' with ' + val);
 									}
 									this.haClient.publish(update[i].topic, val, { qos: 1 }, (error) => {
 										if (error) {
