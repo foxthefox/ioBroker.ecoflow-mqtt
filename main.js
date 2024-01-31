@@ -667,7 +667,7 @@ class EcoflowMqtt extends utils.Adapter {
 									for (let i = 0; i < haupdate.length; i++) {
 										this.haClient.publish(
 											haupdate[i].topic,
-											JSON.stringify(haupdate[i].payload),
+											haupdate[i].payload,
 											{ qos: 1 },
 											(error) => {
 												if (error) {
@@ -1178,7 +1178,7 @@ class EcoflowMqtt extends utils.Adapter {
 								if (error) {
 									this.log.error(device + ' error when publishing the HA status message: ' + error);
 								} else {
-									if (this.config.msgHaOutgoing) {
+									if (this.config.msgHaStatusInitial) {
 										this.log.debug(device + 'sent status' + state.val + ' to HA');
 									}
 								}
@@ -1204,8 +1204,8 @@ class EcoflowMqtt extends utils.Adapter {
 								bat1,
 								bat2
 							);
-							if (this.config.msgHaOutgoing) {
-								this.log.debug(id + ' update: ' + update);
+							if (this.config.msgHaStatusInitial) {
+								this.log.debug(id + ' initial update: ' + update);
 							}
 							for (let i = 0; i < update.length; i++) {
 								const value = await this.getStateAsync(update[i].getId);
@@ -1225,15 +1225,17 @@ class EcoflowMqtt extends utils.Adapter {
 									} else {
 										val = String(value.val);
 									}
-									if (this.config.msgHaOutgoing) {
+									if (this.config.msgHaStatusInitial) {
 										this.log.debug('update ' + update[i].topic + ' with ' + val);
 									}
 									this.haClient.publish(update[i].topic, val, { qos: 1 }, (error) => {
 										if (error) {
 											this.log.error('Error when publishing the HA MQTT message: ' + error);
 										} else {
-											if (this.config.msgHaOutgoing && i === update.length - 1) {
-												this.log.debug('sent ' + i + ' update objects to HA for ' + id);
+											if (this.config.msgHaStatusInitial && i === update.length - 1) {
+												this.log.debug(
+													'sent ' + i + ' initial updates objects to HA for ' + id
+												);
 											}
 										}
 									});

@@ -671,6 +671,13 @@
 					"sm": 12,
 					"md": 6,
 					"lg": 4
+				},
+				"msgHaStatusInitial": {
+					"type": "checkbox",
+					"label": "msgHaStatusInitial",
+					"sm": 12,
+					"md": 6,
+					"lg": 4
 				}
 			}
 		}
