@@ -1233,42 +1233,53 @@ class EcoflowMqtt extends utils.Adapter {
 								const value = await this.getStateAsync(update[i].getId).catch((e) => {
 									this.log.warn('problem getting state for initialization ' + e);
 								});
-								if (value && value.val) {
+								if (value) {
 									let val;
-
-									if (update[i].entity === 'switch') {
-										val = value.val === true ? update[i].on : update[i].off;
-									} else if (update[i].entity === 'select') {
-										try {
-											val = update[i].states[value.val];
-										} catch (error) {
-											this.log.warn('value not in range ' + value.val + '  ' + update[i].states);
-										}
-									} else if (update[i].entity === 'text') {
-										val = value.val;
-									} else {
-										val = String(value.val);
-									}
-									if (this.config.msgHaStatusInitial) {
-										this.log.debug(id + ' update [' + i + '] ' + update[i].topic + ' with ' + val);
-									}
-									if (typeof val === 'string') {
-										this.haClient.publish(update[i].topic, val, { qos: 1 }, (error) => {
-											if (error) {
-												this.log.error('Error when publishing the HA MQTT message: ' + error);
-											} else {
-												if (this.config.msgHaStatusInitial && i === update.length - 1) {
-													this.log.debug(
-														'FINISHED sent ' +
-															i +
-															' initial updates objects to HA for ' +
-															id
-													);
-												}
+									try {
+										if (update[i].entity === 'switch') {
+											val = value.val === true ? update[i].on : update[i].off;
+										} else if (update[i].entity === 'select') {
+											try {
+												val = update[i].states[value.val];
+											} catch (error) {
+												this.log.warn(
+													'value not in range ' + value.val + '  ' + update[i].states
+												);
 											}
-										});
-									} else {
-										this.log.warn('not a STRING ! : ' + update[i].topic + ' with ' + val);
+										} else if (update[i].entity === 'text') {
+											val = value.val;
+										} else {
+											val = String(value.val);
+										}
+										if (this.config.msgHaStatusInitial) {
+											this.log.debug(
+												id + ' update [' + i + '] ' + update[i].topic + ' with ' + val
+											);
+										}
+										if (typeof val === 'string' && val !== 'undefined') {
+											this.haClient.publish(update[i].topic, val, { qos: 1 }, (error) => {
+												if (error) {
+													this.log.error(
+														'Error when publishing the HA MQTT message: ' + error
+													);
+												} else {
+													if (this.config.msgHaStatusInitial && i === update.length - 1) {
+														this.log.debug(
+															'FINISHED sent ' +
+																i +
+																' initial updates objects to HA for ' +
+																id
+														);
+													}
+												}
+											});
+										} else {
+											this.log.warn('not a STRING ! : ' + update[i].topic + ' with ' + val);
+										}
+									} catch (error) {
+										this.log.warn(
+											update[i].getId + ' problem initialiizing HA ' + value.val + '-> ' + error
+										);
 									}
 								} else {
 									missing.push(update[i].getId);
