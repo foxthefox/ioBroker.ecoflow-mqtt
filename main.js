@@ -1223,6 +1223,7 @@ class EcoflowMqtt extends utils.Adapter {
 							);
 							if (this.config.msgHaStatusInitial) {
 								this.log.debug(id + ' initial update: ' + update.length + ' objects ');
+								//this.log.debug(id + ' initial update: ' + JSON.stringify(update));
 							}
 							for (let i = 0; i < update.length; i++) {
 								const value = await this.getStateAsync(update[i].getId);
