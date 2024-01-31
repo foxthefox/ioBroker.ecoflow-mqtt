@@ -1272,6 +1272,7 @@ class EcoflowMqtt extends utils.Adapter {
 									}
 								} else {
 									missing.push(update[i].getId);
+									this.log.warn(update[i].getId + ' getState ' + JSON.stringify(value));
 								}
 							}
 							if (this.config.msgHaStatusInitial && missing.length > 0) {
