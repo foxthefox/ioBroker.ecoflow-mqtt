@@ -665,30 +665,36 @@ class EcoflowMqtt extends utils.Adapter {
 							if (haupdate.length > 0) {
 								if (this.haClient) {
 									for (let i = 0; i < haupdate.length; i++) {
-										this.haClient.publish(
-											haupdate[i].topic,
-											haupdate[i].payload,
-											{ qos: 1 },
-											(error) => {
-												if (error) {
-													this.log.error(
-														'Error when publishing the HA MQTT message: ' + error
-													);
-												} else {
-													if (this.config.msgHaOutgoing && i === haupdate.length - 1) {
-														this.log.debug(
-															topic + ' ha update ' + JSON.stringify(haupdate)
+										if (typeof val === 'string') {
+											this.haClient.publish(
+												haupdate[i].topic,
+												haupdate[i].payload,
+												{ qos: 1 },
+												(error) => {
+													if (error) {
+														this.log.error(
+															'Error when publishing the HA MQTT message: ' + error
 														);
-														this.log.debug(
-															'sent ' +
-																String(i + 1) +
-																' update objects to HA for ' +
-																topic
-														);
+													} else {
+														if (this.config.msgHaOutgoing && i === haupdate.length - 1) {
+															this.log.debug(
+																topic + ' ha update ' + JSON.stringify(haupdate)
+															);
+															this.log.debug(
+																'sent ' +
+																	String(i + 1) +
+																	' update objects to HA for ' +
+																	topic
+															);
+														}
 													}
 												}
-											}
-										);
+											);
+										} else {
+											this.log.warn(
+												'not a string! : ' + haupdate[i].topic + '  ' + haupdate[i].payload
+											);
+										}
 									}
 								}
 							}
@@ -1226,19 +1232,23 @@ class EcoflowMqtt extends utils.Adapter {
 										val = String(value.val);
 									}
 									if (this.config.msgHaStatusInitial) {
-										this.log.debug('update [' + i + ']' + update[i].topic + ' with ' + val);
+										this.log.debug(id + ' update [' + i + '] ' + update[i].topic + ' with ' + val);
 									}
-									this.haClient.publish(update[i].topic, val, { qos: 1 }, (error) => {
-										if (error) {
-											this.log.error('Error when publishing the HA MQTT message: ' + error);
-										} else {
-											if (this.config.msgHaStatusInitial && i === update.length - 1) {
-												this.log.debug(
-													'sent ' + i + ' initial updates objects to HA for ' + id
-												);
+									if (typeof val === 'string') {
+										this.haClient.publish(update[i].topic, val, { qos: 1 }, (error) => {
+											if (error) {
+												this.log.error('Error when publishing the HA MQTT message: ' + error);
+											} else {
+												if (this.config.msgHaStatusInitial && i === update.length - 1) {
+													this.log.debug(
+														'sent ' + i + ' initial updates objects to HA for ' + id
+													);
+												}
 											}
-										}
-									});
+										});
+									} else {
+										this.log.warn('not a STRING ! : ' + update[i].topic + ' with ' + val);
+									}
 								}
 							}
 						}
