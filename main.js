@@ -936,9 +936,14 @@ class EcoflowMqtt extends utils.Adapter {
 							}
 							let value;
 							if (this.pdevicesStatesDict[devtype] && this.pdevicesStates) {
-								if (this.pdevicesStatesDict[devtype][channel][item]['entity'] === 'switch') {
-									value = String(message) === 'ON' || String(message) === 'on' ? true : false;
-								} else if (this.pdevicesStatesDict[devtype][channel][item]['entity'] === 'level') {
+								const type = this.pdevicesStatesDict[devtype][channel][item]['entity'];
+								if (type === 'switch') {
+									const payloadtrue = this.pdevicesStates[devtype][channel]['switch'][item][
+										'payload_on'
+									];
+									//const payloadfalse = this.pdevicesStates[devtype][channel]['switch'][item]['payload_off']
+									value = String(message) === payloadtrue ? true : false;
+								} else if (type === 'level') {
 									if (
 										this.pdevicesStates[devtype][channel]['level'][item]['entity_type'] === 'number'
 									) {
@@ -965,7 +970,7 @@ class EcoflowMqtt extends utils.Adapter {
 											);
 										}
 									} else {
-										this.log.debug(' ');
+										this.log.debug('type level but not number or select ');
 									}
 								}
 							} else {
