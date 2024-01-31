@@ -1225,7 +1225,9 @@ class EcoflowMqtt extends utils.Adapter {
 							}
 							let missing = [];
 							for (let i = 0; i < update.length; i++) {
-								const value = await this.getStateAsync(update[i].getId);
+								const value = await this.getStateAsync(update[i].getId).catch((e) => {
+									this.log.warn('problem getting state for initialization ' + e);
+								});
 								if (value && value.val) {
 									let val;
 
