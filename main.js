@@ -947,9 +947,9 @@ class EcoflowMqtt extends utils.Adapter {
 										this.pdevicesStates[devtype][channel]['level'][item]['entity_type'] === 'select'
 									) {
 										try {
-											value = this.pdevicesStates[devtype][channel]['level'][item][
+											value = this.pdevicesStates[devtype][channel]['level'][item]['select_obj'][
 												String(message)
-											]['select_obj'];
+											];
 										} catch (error) {
 											this.log.error(
 												'Wrong selection value ' +
@@ -959,9 +959,7 @@ class EcoflowMqtt extends utils.Adapter {
 													'  ' +
 													channel +
 													' possible is : ' +
-													this.pdevicesStates[devtype][channel]['level'][item][
-														String(message)
-													] +
+													this.pdevicesStates[devtype][channel]['level'][item]['select_obj'] +
 													'   -> ' +
 													error
 											);
@@ -1225,6 +1223,7 @@ class EcoflowMqtt extends utils.Adapter {
 								this.log.debug(id + ' initial update: ' + update.length + ' objects ');
 								//this.log.debug(id + ' initial update: ' + JSON.stringify(update));
 							}
+							let missing = [];
 							for (let i = 0; i < update.length; i++) {
 								const value = await this.getStateAsync(update[i].getId);
 								if (value && value.val) {
@@ -1264,7 +1263,13 @@ class EcoflowMqtt extends utils.Adapter {
 									} else {
 										this.log.warn('not a STRING ! : ' + update[i].topic + ' with ' + val);
 									}
+								} else {
+									missing.push(update[i].getId);
 								}
+							}
+							if (this.config.msgHaStatusInitial && missing.length > 0) {
+								this.log.debug('Partly FINISHED sent initial updates objects to HA for ' + id);
+								this.log.debug(id + ' missing items ' + JSON.stringify(missing));
 							}
 						}
 					}
