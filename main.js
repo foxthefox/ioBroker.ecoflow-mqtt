@@ -1222,7 +1222,7 @@ class EcoflowMqtt extends utils.Adapter {
 										val = value.val === true ? update[i].on : update[i].off;
 									} else if (update[i].entity === 'select') {
 										try {
-											val = update[i].states[String(value.val)];
+											val = update[i].states[value.val];
 										} catch (error) {
 											this.log.warn('value not in range ' + value.val + '  ' + update[i].states);
 										}
@@ -1241,7 +1241,10 @@ class EcoflowMqtt extends utils.Adapter {
 											} else {
 												if (this.config.msgHaStatusInitial && i === update.length - 1) {
 													this.log.debug(
-														'sent ' + i + ' initial updates objects to HA for ' + id
+														'FINISHED sent ' +
+															i +
+															' initial updates objects to HA for ' +
+															id
 													);
 												}
 											}
