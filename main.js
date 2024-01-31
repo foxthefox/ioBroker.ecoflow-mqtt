@@ -563,7 +563,7 @@ class EcoflowMqtt extends utils.Adapter {
 													if (typeof haupdate[i].payload === 'string') {
 														this.haClient.publish(
 															haupdate[i].topic,
-															JSON.stringify(haupdate[i].payload),
+															haupdate[i].payload,
 															{ qos: 1 },
 															(error) => {
 																if (error) {
@@ -679,7 +679,7 @@ class EcoflowMqtt extends utils.Adapter {
 										if (typeof haupdate[i].payload === 'string') {
 											this.haClient.publish(
 												haupdate[i].topic,
-												JSON.stringify(haupdate[i].payload),
+												haupdate[i].payload,
 												{ qos: 1 },
 												(error) => {
 													if (error) {
