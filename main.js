@@ -560,34 +560,45 @@ class EcoflowMqtt extends utils.Adapter {
 										if (haupdate.length > 0) {
 											if (this.haClient) {
 												for (let i = 0; i < haupdate.length; i++) {
-													this.haClient.publish(
-														haupdate[i].topic,
-														JSON.stringify(haupdate[i].payload),
-														{ qos: 1 },
-														(error) => {
-															if (error) {
-																this.log.error(
-																	'Error when publishing the HA MQTT message: ' +
-																		error
-																);
-															} else {
-																if (
-																	this.config.msgHaOutgoing &&
-																	i === haupdate.length - 1
-																) {
-																	this.log.debug(
-																		topic + ' ha update ' + JSON.stringify(haupdate)
+													if (typeof haupdate[i].payload === 'string') {
+														this.haClient.publish(
+															haupdate[i].topic,
+															JSON.stringify(haupdate[i].payload),
+															{ qos: 1 },
+															(error) => {
+																if (error) {
+																	this.log.error(
+																		'Error when publishing the HA MQTT message: ' +
+																			error
 																	);
-																	this.log.debug(
-																		'sent ' +
-																			String(i + 1) +
-																			' update objects to HA for ' +
-																			topic
-																	);
+																} else {
+																	if (
+																		this.config.msgHaOutgoing &&
+																		i === haupdate.length - 1
+																	) {
+																		this.log.debug(
+																			topic +
+																				' ha update ' +
+																				JSON.stringify(haupdate)
+																		);
+																		this.log.debug(
+																			'sent ' +
+																				String(i + 1) +
+																				' update objects to HA for ' +
+																				topic
+																		);
+																	}
 																}
 															}
-														}
-													);
+														);
+													} else {
+														this.log.warn(
+															'not a string! : ' +
+																haupdate[i].topic +
+																'  ' +
+																haupdate[i].payload
+														);
+													}
 												}
 											}
 										}
@@ -665,7 +676,7 @@ class EcoflowMqtt extends utils.Adapter {
 							if (haupdate.length > 0) {
 								if (this.haClient) {
 									for (let i = 0; i < haupdate.length; i++) {
-										if (typeof val === 'string') {
+										if (typeof haupdate[i].payload === 'string') {
 											this.haClient.publish(
 												haupdate[i].topic,
 												JSON.stringify(haupdate[i].payload),
