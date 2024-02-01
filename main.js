@@ -1082,7 +1082,7 @@ class EcoflowMqtt extends utils.Adapter {
 				await this.setStateAsync('info.haConnection', { val: 'offline', ack: true });
 				this.haClient.end();
 			}
-
+			this.log.info('cleaned everything up...');
 			callback();
 		} catch (e) {
 			callback();
