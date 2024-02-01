@@ -20,7 +20,7 @@
 		"@iobroker/adapter-core": "^3.0.4",
 		"@iobroker/dev-server": "^0.6.0",
 		"mqtt": "^5.3.4",
-		"protobufjs": "^7.2.5"
+		"protobufjs": "^7.2.6"
 	},
 	"devDependencies": {
 		"@alcalzone/release-script": "^3.6.0",
