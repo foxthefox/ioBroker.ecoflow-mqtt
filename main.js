@@ -787,6 +787,13 @@ class EcoflowMqtt extends utils.Adapter {
 				this.haClient.on('connect', async () => {
 					await this.setStateAsync('info.haConnection', { val: 'online', ack: true });
 					await this.setStateAsync('info.haConnAvgLoad', { val: 0, ack: true });
+					this.log.debug('haConnAvgLoad  interval started');
+					haLoadInterval = setInterval(async () => {
+						const msgcnt = this.haCounter - this.haCountMem;
+						this.haCountMem = this.haCounter;
+						this.log.debug('haConnAvgLoad  last 10s' + msgcnt);
+						await this.setStateAsync('info.haConnAvgLoad', { val: msgcnt, ack: true });
+					}, 10 * 1000);
 					this.log.info('HA connected');
 					if (this.haDevices.length > 0) {
 						//iob
@@ -1309,17 +1316,7 @@ class EcoflowMqtt extends utils.Adapter {
 					}
 				}
 				if (channel === 'info' && item === 'haConnection') {
-					this.log.debug('haConnection  ' + state.val);
-					if (state.val == 'online') {
-						//10s Intervall
-						this.log.debug('haConnAvgLoad  interval started');
-						haLoadInterval = setInterval(async () => {
-							const msgcnt = this.haCounter - this.haCountMem;
-							this.haCountMem = this.haCounter;
-							this.log.debug('haConnAvgLoad  last 10s' + msgcnt);
-							await this.setStateAsync('info.haConnAvgLoad', { val: msgcnt, ack: true });
-						}, 10 * 1000);
-					} else {
+					if (state.val == 'offline') {
 						//stop interval
 						if (haLoadInterval) clearInterval(haLoadInterval);
 						await this.setStateAsync('info.haConnAvgLoad', { val: 0, ack: true });
