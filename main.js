@@ -21,6 +21,7 @@ const { json } = require('stream/consumers');
 
 let recon_timer = null;
 let lastQuotInterval = null;
+let haLoadInterval = null;
 
 class EcoflowMqtt extends utils.Adapter {
 	/**
@@ -50,6 +51,8 @@ class EcoflowMqtt extends utils.Adapter {
 		this.pdevicesCmd = {};
 		this.quotas = {};
 		this.haDevices = null;
+		this.haCounter = 0;
+		this.haCountMem = 0;
 
 		this.on('ready', this.onReady.bind(this));
 		this.on('stateChange', this.onStateChange.bind(this));
@@ -572,6 +575,7 @@ class EcoflowMqtt extends utils.Adapter {
 																			error
 																	);
 																} else {
+																	this.haCounter++;
 																	if (
 																		this.config.msgHaOutgoing &&
 																		i === haupdate.length - 1
@@ -687,6 +691,7 @@ class EcoflowMqtt extends utils.Adapter {
 															'Error when publishing the HA MQTT message: ' + error
 														);
 													} else {
+														this.haCounter++;
 														if (this.config.msgHaOutgoing && i === haupdate.length - 1) {
 															this.log.debug(
 																topic + ' ha update ' + JSON.stringify(haupdate)
@@ -809,6 +814,7 @@ class EcoflowMqtt extends utils.Adapter {
 								if (error) {
 									this.log.error('Error when publishing IOB autodiscovery: ' + error);
 								} else {
+									this.haCounter++;
 									if (this.config.msgHaAutoDiscovery) {
 										this.log.debug('sent IOB autodiscovery object to HA');
 									}
@@ -823,6 +829,7 @@ class EcoflowMqtt extends utils.Adapter {
 								if (error) {
 									this.log.error('Error when publishing the HA iob online message: ' + error);
 								} else {
+									this.haCounter++;
 									if (this.config.msgHaAutoDiscovery) {
 										this.log.debug('sent ONLINE for IOB status to HA');
 									}
@@ -864,6 +871,7 @@ class EcoflowMqtt extends utils.Adapter {
 										if (error) {
 											this.log.error('Error when publishing the HA MQTT message: ' + error);
 										} else {
+											this.haCounter++;
 											if (this.config.msgHaAutoDiscovery && i === discovery.length - 1) {
 												this.log.debug('sent ' + i + ' autodiscovery objects to HA for ' + id);
 											}
@@ -883,6 +891,7 @@ class EcoflowMqtt extends utils.Adapter {
 										if (error) {
 											this.log.error('Error when publishing the HA MQTT message: ' + error);
 										} else {
+											this.haCounter++;
 											if (this.config.msgHaAutoDiscovery) {
 												this.log.debug('sent ' + mode + ' to HA for ' + id);
 											}
@@ -1018,6 +1027,7 @@ class EcoflowMqtt extends utils.Adapter {
 			// clearInterval(interval1);
 			if (recon_timer) clearTimeout(recon_timer);
 			if (lastQuotInterval) clearInterval(lastQuotInterval);
+			if (haLoadInterval) clearInterval(haLoadInterval);
 			if (this.haClient && this.haDevices) {
 				// await ha.publishAsync(this, this.config.haTopic + '/iob/info/status', 'offline', 1);
 
@@ -1025,6 +1035,7 @@ class EcoflowMqtt extends utils.Adapter {
 					if (error) {
 						this.log.error('Error when publishing the HA MQTT message: ' + error);
 					} else {
+						this.haCounter++;
 						this.log.debug('sent OFFLINE  to HA for IOB ');
 					}
 				});
@@ -1038,6 +1049,7 @@ class EcoflowMqtt extends utils.Adapter {
 							if (error) {
 								this.log.error('Error when publishing the HA MQTT message: ' + error);
 							} else {
+								this.haCounter++;
 								this.log.debug('sent OFFLINE  to HA for ' + this.haDevices[i]);
 							}
 						}
@@ -1198,9 +1210,8 @@ class EcoflowMqtt extends utils.Adapter {
 								if (error) {
 									this.log.error(device + ' error when publishing the HA status message: ' + error);
 								} else {
-									if (this.config.msgHaStatusInitial) {
-										this.log.debug(device + 'sent status' + state.val + ' to HA');
-									}
+									this.haCounter++;
+									this.log.info(device + 'sent status' + state.val + ' to HA');
 								}
 							}
 						);
@@ -1263,6 +1274,7 @@ class EcoflowMqtt extends utils.Adapter {
 														'Error when publishing the HA MQTT message: ' + error
 													);
 												} else {
+													this.haCounter++;
 													if (this.config.msgHaStatusInitial && i === update.length - 1) {
 														this.log.debug(
 															'FINISHED sent ' +
@@ -1291,6 +1303,20 @@ class EcoflowMqtt extends utils.Adapter {
 								this.log.debug(id + ' missing items ' + JSON.stringify(missing));
 							}
 						}
+					}
+				}
+				if (channel === 'info' && item === 'haConnection') {
+					if ('online') {
+						//10s Intervall
+						setInterval(async () => {
+							const msgcnt = this.haCounter - this.haCountMem;
+							this.haCountMem = this.haCounter;
+							this.setStateAsync('info.haConnAvgLoad', { val: msgcnt, ack: true });
+						}, 10 * 1000);
+					} else {
+						//stop interval
+						if (haLoadInterval) clearInterval(haLoadInterval);
+						this.setStateAsync('info.haConnAvgLoad', { val: 0, ack: true });
 					}
 				}
 			}
