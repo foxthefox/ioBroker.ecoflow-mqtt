@@ -1306,7 +1306,7 @@ class EcoflowMqtt extends utils.Adapter {
 					}
 				}
 				if (channel === 'info' && item === 'haConnection') {
-					if ('online') {
+					if (state.val === 'online') {
 						//10s Intervall
 						setInterval(async () => {
 							const msgcnt = this.haCounter - this.haCountMem;
