@@ -193,7 +193,9 @@ The 800W version is also implemented and only difference ist the 800W maximum po
 * (foxthefox) uptime no max boundary
 * (foxthefox) several adjustable values which represent a mode or predefined set of settings are now using "states" definition (IOB)
 * (foxthefox) changed factor for pd/usb1Watts, usb2Watts, qcUsb1Watts, qcUsb2Watts
-* (foxthefox) info for offline/online status
+* (foxthefox) info for offline/online status with EF cloud
+* (foxthefox) correction for protobuf cmds (dataLen)
+
 
 ### 0.0.21 (npm)
 * (foxthefox) more debug on connection

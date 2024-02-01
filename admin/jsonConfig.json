@@ -658,6 +658,13 @@
 					"md": 6,
 					"lg": 4
 				},
+				"showDiscoveryObject": {
+					"type": "checkbox",
+					"label": "showDiscoveryObject",
+					"sm": 12,
+					"md": 6,
+					"lg": 4
+				},
 				"msgHaIncomming": {
 					"type": "checkbox",
 					"label": "msgHaIncomming",

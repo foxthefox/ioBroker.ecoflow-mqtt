@@ -298,6 +298,7 @@
 		"msgHaIncomming": false,
 		"msgHaOutgoing": false,
 		"msgHaStatusInitial": false,
+		"showDiscoveryObject": false,
 		"haTopic": "iob_ef"
 	},
 	"objects": [],

@@ -866,8 +866,8 @@ class EcoflowMqtt extends utils.Adapter {
 								bat2,
 								'0.0.22'
 							);
-							if (this.config.msgHaAutoDiscovery) {
-								this.log.debug(id + ' autoconf: ' + discovery);
+							if (this.config.showDiscoveryObject) {
+								this.log.debug(id + ' autoconf: ' + JSON.stringify(discovery));
 							}
 							for (let i = 0; i < discovery.length; i++) {
 								this.haClient.publish(
