@@ -420,7 +420,7 @@ class EcoflowMqtt extends utils.Adapter {
 			this.log.info('HA communication:');
 			this.log.info('devices  -> ' + JSON.stringify(this.config.pstreams));
 		}
-		myutils.createInfoStates(this, this.config.haMqttEnable);
+		await myutils.createInfoStates(this, this.config.haMqttEnable);
 
 		//create subscription topics
 		let topics = [];
@@ -450,7 +450,7 @@ class EcoflowMqtt extends utils.Adapter {
 				this.client = mqtt.connect(this.mqttUrl + ':' + this.mqttPort, optionsMqtt);
 
 				this.client.on('connect', async () => {
-					this.log.debug('connected');
+					this.log.info('EF connected');
 					if (topics.length > 0) {
 						if (this.client) {
 							this.client.subscribe(topics, async (err) => {
@@ -786,7 +786,8 @@ class EcoflowMqtt extends utils.Adapter {
 
 				this.haClient.on('connect', async () => {
 					await this.setStateAsync('info.haConnection', { val: 'online', ack: true });
-					this.log.debug('HA connected');
+					await this.setStateAsync('info.haConnAvgLoad', { val: 0, ack: true });
+					this.log.info('HA connected');
 					if (this.haDevices.length > 0) {
 						//iob
 						const iob_topic = 'homeassistant/binary_sensor/iob/status/config';
@@ -879,6 +880,7 @@ class EcoflowMqtt extends utils.Adapter {
 									}
 								);
 							}
+							/*
 							const status = await this.getStateAsync(id + '.info.status');
 							if (status && status.val) {
 								//eventuell zu früh um das zu senden
@@ -899,6 +901,7 @@ class EcoflowMqtt extends utils.Adapter {
 									}
 								);
 							}
+							*/
 							this.haClient.subscribe(
 								this.config.haTopic + '/' + this.haDevices[j] + '/set/#',
 								async (err) => {
@@ -998,7 +1001,7 @@ class EcoflowMqtt extends utils.Adapter {
 				});
 
 				this.haClient.on('close', () => {
-					this.setState('info.haConnection', { val: 'online', ack: true });
+					this.setState('info.haConnection', { val: 'offline', ack: true });
 					this.log.info('HA connection closed');
 				});
 				this.haClient.on('error', (error) => {
@@ -1308,15 +1311,15 @@ class EcoflowMqtt extends utils.Adapter {
 				if (channel === 'info' && item === 'haConnection') {
 					if (state.val === 'online') {
 						//10s Intervall
-						setInterval(async () => {
+						haLoadInterval = setInterval(async () => {
 							const msgcnt = this.haCounter - this.haCountMem;
 							this.haCountMem = this.haCounter;
-							this.setStateAsync('info.haConnAvgLoad', { val: msgcnt, ack: true });
+							await this.setStateAsync('info.haConnAvgLoad', { val: msgcnt, ack: true });
 						}, 10 * 1000);
 					} else {
 						//stop interval
 						if (haLoadInterval) clearInterval(haLoadInterval);
-						this.setStateAsync('info.haConnAvgLoad', { val: 0, ack: true });
+						await this.setStateAsync('info.haConnAvgLoad', { val: 0, ack: true });
 					}
 				}
 			}
