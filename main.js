@@ -791,7 +791,6 @@ class EcoflowMqtt extends utils.Adapter {
 					haLoadInterval = setInterval(async () => {
 						const msgcnt = this.haCounter - this.haCountMem;
 						this.haCountMem = this.haCounter;
-						this.log.debug('haConnAvgLoad  last 10s' + msgcnt);
 						await this.setStateAsync('info.haConnAvgLoad', { val: msgcnt, ack: true });
 					}, 10 * 1000);
 					this.log.info('HA connected');
@@ -1035,9 +1034,18 @@ class EcoflowMqtt extends utils.Adapter {
 			// clearTimeout(timeout2);
 			// ...
 			// clearInterval(interval1);
-			if (recon_timer) clearTimeout(recon_timer);
-			if (lastQuotInterval) clearInterval(lastQuotInterval);
-			if (haLoadInterval) clearInterval(haLoadInterval);
+			if (recon_timer) {
+				clearTimeout(recon_timer);
+				this.log.debug('recon_timer stopped');
+			}
+			if (lastQuotInterval) {
+				clearInterval(lastQuotInterval);
+				this.log.debug('lastQuotInterval  interval stopped');
+			}
+			if (haLoadInterval) {
+				clearInterval(haLoadInterval);
+				this.log.debug('haConnAvgLoad  interval stopped');
+			}
 			if (this.haClient && this.haDevices) {
 				// await ha.publishAsync(this, this.config.haTopic + '/iob/info/status', 'offline', 1);
 
@@ -1221,7 +1229,7 @@ class EcoflowMqtt extends utils.Adapter {
 									this.log.error(device + ' error when publishing the HA status message: ' + error);
 								} else {
 									this.haCounter++;
-									this.log.info(device + 'sent status' + state.val + ' to HA');
+									this.log.info(device + ' sent status ' + state.val + ' to HA');
 								}
 							}
 						);
