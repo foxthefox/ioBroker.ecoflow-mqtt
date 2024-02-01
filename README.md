@@ -119,7 +119,13 @@ Modification at HA side:
 
 </p></details>
 
-## data point update
+## ioBroker adapter functions 
+
+* the defined devices are connected to the adapter via mqtt
+* the adapter filters the incomming messages of the devices. only changed values are stored internally
+* not everything is known, so information to status interpretation may be uncertain, this is mostly marked with trailing "?"
+
+### remarks to update of data point setup (min, max, unit, ....)
 
 If settings to a data point are changed in the new version of adapter (e.g. name, unit, max value) the change is not effective until you:
 - stop the adapter instance
@@ -127,6 +133,19 @@ If settings to a data point are changed in the new version of adapter (e.g. name
 - start the adapter instance
 
 During startup the datapoints are created, but not changed when existing.
+
+## HA connector/gateway
+
+* the MQTT discovery function in HA enables an elegant way of information exchange
+* at each iobroker adapter start all discovery objects are transmitted to HA (even the should retain in HA)
+* iobroker adapter filters the incomming messages of the devices. only changed values are stored internally and transferred to HA.
+* if a value is not set by device data update, it will appear as unknown in HA
+* if the device is reachable, then the availability will be shown in the device connectivity, this is inherited to the "sub-devices" (unavailability is precessed in the same way)
+
+### annotations to functionality
+
+* Due to to the asynchronity of information updates and command transfer sometimes race conditions may be visible. So a switch is commanded and its toggling back and forth before it stays, can be observed.
+* restart of HA may not be recognized correctly in iobroker, so it needs a manual restart of the adapter (WIP)
 
 ## Implemented Devices
 
@@ -170,10 +189,11 @@ The 800W version is also implemented and only difference ist the 800W maximum po
 
 ## Changelog
 ### 0.0.22
-* (foxthefox) Homeassistant Connector
+* (foxthefox) Homeassistant Connector/Gateway
 * (foxthefox) uptime no max boundary
 * (foxthefox) several adjustable values which represent a mode or predefined set of settings are now using "states" definition (IOB)
-* (foxthefox) changeld factor for pd/usb1Watts, usb2Watts, qcUsb1Watts, qcUsb2Watts
+* (foxthefox) changed factor for pd/usb1Watts, usb2Watts, qcUsb1Watts, qcUsb2Watts
+* (foxthefox) info for offline/online status
 
 ### 0.0.21 (npm)
 * (foxthefox) more debug on connection
