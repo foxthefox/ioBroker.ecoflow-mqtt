@@ -1309,11 +1309,14 @@ class EcoflowMqtt extends utils.Adapter {
 					}
 				}
 				if (channel === 'info' && item === 'haConnection') {
-					if (state.val === 'online') {
+					this.log.debug('haConnection  ' + state.val);
+					if (state.val == 'online') {
 						//10s Intervall
+						this.log.debug('haConnAvgLoad  interval started');
 						haLoadInterval = setInterval(async () => {
 							const msgcnt = this.haCounter - this.haCountMem;
 							this.haCountMem = this.haCounter;
+							this.log.debug('haConnAvgLoad  last 10s' + msgcnt);
 							await this.setStateAsync('info.haConnAvgLoad', { val: msgcnt, ack: true });
 						}, 10 * 1000);
 					} else {
