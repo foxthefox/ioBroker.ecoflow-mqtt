@@ -1,5 +1,5 @@
 # States for  GLACIER
-### version: 0.0.21
+### version: 0.0.22
 
 [pd](#pd)
 
@@ -62,6 +62,7 @@
 |powerXt60Count| Count of each type of power supply on XT60: POWER_TYPE_MAX |
 |errorCountPower| Count of each type of fault in POWER module: ERROR_MAX_POWER |
 |workFsmCount| Count of entering each state of state machine: USER_BEHAVIOR_FSM_MAX |
+|errorCountBldc| Count of each type of fault in BLDC module: ERROR_MAX_BLDC |
 |workModeCount| Count of entering each work mode; WORK_MODE_MAX |
 |errorCountBms| Count of each type of fault in BMS module: ERROR_MAX_PD |
 |chargeXt60Count| Count of each type of charging power supply on XT60: POWER_TYPE_MAX |
@@ -166,7 +167,7 @@
 |remainCap|0 | 13800 | mAh | 1 |  Remaining capacity |
 |tmp|0 | 60 | °C | 1 |  Temperature |
 |outWatts|0 | 500 | W | 1 |  Output power |
-|cycles|0 | 6000 | cycles | 1 |  Number of cycles |
+|cycles|0 | 6000 |  | 1 |  Number of cycles |
 |minCellVol|0 | 60 | V | 0.001 |  Minimum cell voltage |
 |maxCellVol|0 | 60 | V | 0.001 |  Maximum cell voltage |
 |maxMosTmp|0 | 80 | °C | 1 |  Maximum MOS temperature |

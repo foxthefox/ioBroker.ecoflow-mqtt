@@ -1,11 +1,9 @@
 # States for  PLUG
-### version: 0.0.21
+### version: 0.0.22
 
 [plug_heartbeat](#plug_heartbeat)
 
 [energy](#energy)
-
-[info](#info)
 
 
 
@@ -53,8 +51,8 @@
 |current|0 | 11 | A | 0.001 |  Plug AC current |
 |volt|0 | 250 | V | 1 |  Plug AC voltage |
 |watts|0 | 2500 | W | 0.1 |  Plug AC power |
-|heartbeatFrequency|0 | 20 | 1/s | 1 |  Plug heartbeat |
-|uptime|0 | 9999999 | s | 1 |  Smart plug uptime |
+|heartbeatFrequency|0 | 20 | Hz | 1 |  Plug heartbeat |
+|uptime|0 |  n/a | s | 1 |  Smart plug uptime |
 |cntDevices|0 | 20 | pcs | 1 |  Amount of Plugs connected to PS |
 |streamOutputPower|0 | 800 | W | 0.1 |  Power Stream output power |
 |powerPlugs|0 | 1000 | W | 0.1 |  Power of plugs |
@@ -66,7 +64,7 @@
 | State  |      off    |  on |  Name |  cmd |
 |----------|:-------------:|:------:|------|------|
 |switch| off | on | Plug Switch | {cmdFunc:2,cmdId:129,dataLen:2} |
-|meshEnable| off | on | Plug Mesh enable | {cmdFunc:2,cmdId:138,dataLen:2} |
+|meshEnable| disabled | enabled | Plug Mesh enable | {cmdFunc:2,cmdId:138,dataLen:2} |
 |dynWattEnable| off | on | Dynamic watt enable | {cmdFunc:2,cmdId:142,dataLen:2} |
 
 ### level
@@ -84,12 +82,4 @@
 |watth5|0 | 60000 | Wh | 1 |  Energy of smart plug |
 |watth6|0 | 1440 | min | 1 |  Smart plug ON time |
 
-
-## info
-
-### switch
-
-| State  |      off    |  on |  Name |  cmd |
-|----------|:-------------:|:------:|------|------|
-|latestQuotas| no trigger | trigger | Get latest Quotas | {cmdFunc:20,cmdId:1,dataLen:0} |
 

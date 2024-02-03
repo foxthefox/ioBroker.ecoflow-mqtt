@@ -80,6 +80,18 @@ Use the tab "Device(s) Configuration" for adding your power equipment.
 
 </p></details>
 
+Use the tab "Generator/SHP Configuration" for adding your power equipment.
+
+<details><summary><i>Parametrizing the Generator</i></summary>
+<p>
+
+* add a new row
+* set the deviceID of Generator as shown in the app, something like "DGEB...."
+* give it a name
+* set the type to "generator"
+
+</p></details>
+
 Use the tab "Wave / Glacier Configuration" for adding your equipment.
 
 <details><summary><i>Parametrizing the Wave</i></summary>
@@ -170,6 +182,9 @@ During startup the datapoints are created, but not changed when existing.
 
 ![Delta 2 Max](./doc/devices/delta2max.md)
 
+### Generator
+![Generator](./doc/devices/generator.md)
+
 ### Powerstream
 ![Powerstream](./doc/devices/pstream600.md)
 
@@ -190,6 +205,7 @@ The 800W version is also implemented and only difference ist the 800W maximum po
 ## Changelog
 ### 0.0.22
 * (foxthefox) Homeassistant Connector/Gateway
+* (foxthefox) added Generator (indication)
 * (foxthefox) uptime no max boundary
 * (foxthefox) several adjustable values which represent a mode or predefined set of settings are now using "states" definition (IOB)
 * (foxthefox) changed factor for pd/usb1Watts, usb2Watts, qcUsb1Watts, qcUsb2Watts

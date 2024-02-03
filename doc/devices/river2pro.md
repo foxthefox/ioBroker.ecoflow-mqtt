@@ -1,5 +1,5 @@
 # States for  RIVER2PRO
-### version: 0.0.21
+### version: 0.0.22
 
 [pd](#pd)
 
@@ -11,8 +11,6 @@
 
 [ems](#ems)
 
-[info](#info)
-
 
 
 ## pd
@@ -21,7 +19,7 @@
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |typec1Temp|0 | 80 | °C | 1 |  Type-C 1 temperature |
-|qcUsb1Watts|0 | 500 | W | 0.1 |  Quick charge usb1 output power |
+|qcUsb1Watts|0 | 500 | W | 1 |  Quick charge usb1 output power |
 |wattsInSum|0 | 4000 | W | 1 |  Total input power |
 |dcInUsedTime|0 | 9999999 | min | 0.0166 |  DC charging time |
 |dsgPowerDC|0 | 4000 | W | 0.1 |  Discharge Power DC |
@@ -35,7 +33,7 @@
 |carTemp|0 | 80 | °C | 1 |  CAR temperature |
 |usbUsedTime|0 | 9999999 | min | 0.0166 |  USB use time |
 |mpptUsedTime|0 | 9999999 | min | 0.0166 |  MPPT use time |
-|usb1Watts|0 | 500 | W | 0.1 |  Common usb1 output power |
+|usb1Watts|0 | 500 | W | 1 |  Common usb1 output power |
 |dsgPowerAC|0 | 4000 | W | 0.001 |  Discharge Power AC |
 |qcUsb2Watts|0 | 500 | W | 0.1 |  Quick charge usb2 output power |
 |chgPowerAC|0 | 65000 | kWh | 0.001 |  Cumulative AC power charged for PD (wall socket) |
@@ -43,7 +41,7 @@
 |typec2Temp|0 | 80 | °C | 1 |  Type-C 2 temperature |
 |carUsedTime|0 | 9999999 | min | 0.0166 |  Car use time |
 |typec1Watts|0 | 500 | W | 1 |  Typec1 output power |
-|usb2Watts|0 | 500 | W | 0.1 |  Common usb2 output power |
+|usb2Watts|0 | 500 | W | 1 |  Common usb2 output power |
 |soc|0 | 100 | % | 1 |  Displayed SOC |
 |invUsedTime|0 | 9999999 | min | 0.0166 |  Inverter use time |
 |typecChaWatts|0 | 500 | W | 0.1 |  PD? charging power |
@@ -113,7 +111,7 @@
 |designCap|0 | 80000 | mAh | 1 |  Design capacity |
 |temp|0 | 80 | °C | 1 |  Temperature |
 |minCellVol|0 | 60 | V | 0.001 |  Minimum cell voltage |
-|cycles|0 | 6000 | cycles | 1 |  Number of cycles |
+|cycles|0 | 6000 |  | 1 |  Number of cycles |
 |f32ShowSoc|0 | 100 | % | 1 |  SOC |
 |outputWatts|0 | 4000 | W | 0.1 |  Output power |
 |maxCellVol|0 | 60 | V | 0.001 |  Maximum cell voltage |
@@ -295,13 +293,4 @@
 | State  |  Name |
 |----------|------|
 |bmsIsConnt| BMS online signal: BIT0: hardware online signal; BIT1: software online signal |
-
-## info
-
-### switch
-
-| State  |      off    |  on |  Name |  cmd |
-|----------|:-------------:|:------:|------|------|
-|latestQuotas| no trigger | trigger | Get latest Quotas | {valName:,operateType:latestQuotas,params:{},version:1.0} |
-|getAllTaskCfg| no trigger | trigger | Get all tasks | {valName:,moduleType:1,operateType:getAllTaskCfg,params:{}} |
 

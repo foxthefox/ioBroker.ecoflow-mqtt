@@ -447,6 +447,74 @@
 		},
 		"tab_3": {
 			"type": "panel",
+			"label": "Generator/SHP Configuration",
+			"items": {
+				"_generatorHeader": {
+					"newLine": true,
+					"type": "header",
+					"text": "Generator Configuration",
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"size": 3
+				},
+				"_introTable1Txt1": {
+					"type": "staticText",
+					"text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have no device, delete the added line item",
+					"newLine": true
+				},
+				"generators": {
+					"sm": 12,
+					"newLine": true,
+					"type": "table",
+					"label": "My configured Generator(s)",
+					"items": [
+						{
+							"type": "text",
+							"width": "20%",
+							"title": "name",
+							"attr": "devName",
+							"filter": false,
+							"sort": false,
+							"default": "My Gen1"
+						},
+						{
+							"type": "text",
+							"width": "20%",
+							"title": "id",
+							"attr": "devId",
+							"filter": false,
+							"sort": false,
+							"default": "DGEB"
+						},
+						{
+							"type": "select",
+							"width": "20%",
+							"options": [
+								{ "value": "none", "label": "none" },
+								{ "value": "generator", "label": "Smart Generator" }
+							],
+							"title": "Generator Type",
+							"attr": "devType",
+							"filter": false,
+							"sort": false,
+							"default": "none"
+						},
+						{
+							"type": "checkbox",
+							"title": "HA enable",
+							"width": "10%",
+							"attr": "haEnable",
+							"filter": false,
+							"sort": false,
+							"default": false
+						}
+					]
+				}
+			}
+		},
+		"tab_4": {
+			"type": "panel",
 			"label": "Wave / Glacier Configuration",
 			"items": {
 				"_waveHeader": {
@@ -575,7 +643,7 @@
 				}
 			}
 		},
-		"tab_4": {
+		"tab_5": {
 			"type": "panel",
 			"label": "Homeassistant",
 			"items": {

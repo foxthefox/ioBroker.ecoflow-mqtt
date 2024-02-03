@@ -1,5 +1,5 @@
 # States for  RIVER2MAX
-### version: 0.0.21
+### version: 0.0.22
 
 [bmsMaster](#bmsMaster)
 
@@ -11,8 +11,6 @@
 
 [pd](#pd)
 
-[info](#info)
-
 
 
 ## bmsMaster
@@ -21,7 +19,7 @@
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |amp|0 | 25 | A | 0.001 |  Current |
-|cycles|0 | 6000 | cycles | 1 |  Number of cycles |
+|cycles|0 | 6000 |  | 1 |  Number of cycles |
 |designCap|0 | 80000 | mAh | 1 |  Design capacity |
 |f32ShowSoc|0 | 100 | % | 1 |  SOC |
 |fullCap|0 | 80000 | mAh | 1 |  Full capacity |
@@ -244,7 +242,7 @@
 |invUsedTime|0 | 9999999 | min | 0.0166 |  Inverter use time |
 |minAcoutSoc|0 | 255 | % (0-255?) | 1 |  minimum AC out SOC |
 |mpptUsedTime|0 | 9999999 | min | 0.0166 |  MPPT use time |
-|qcUsb1Watts|0 | 500 | W | 0.1 |  Quick charge usb1 output power |
+|qcUsb1Watts|0 | 500 | W | 1 |  Quick charge usb1 output power |
 |qcUsb2Watts|0 | 500 | W | 0.1 |  Quick charge usb2 output power |
 |remainTime|0 | 143999 | min | 1 |  Time remaining (min) &gt; 0: remaining charging time; time remaining (min) &lt; 0: remaining discharging time |
 |soc|0 | 100 | % | 1 |  Displayed SOC |
@@ -254,8 +252,8 @@
 |typec2Watts|0 | 500 | W | 1 |  Typec2 output power |
 |typecChaWatts|0 | 500 | W | 0.1 |  PD? charging power |
 |typecUsedTime|0 | 9999999 | min | 0.0166 |  Type-C use time |
-|usb1Watts|0 | 500 | W | 0.1 |  Common usb1 output power |
-|usb2Watts|0 | 500 | W | 0.1 |  Common usb2 output power |
+|usb1Watts|0 | 500 | W | 1 |  Common usb1 output power |
+|usb2Watts|0 | 500 | W | 1 |  Common usb2 output power |
 |usbUsedTime|0 | 9999999 | min | 0.0166 |  USB use time |
 |usbqcUsedTime|0 | 9999999 | min | 0.0166 |  USB QC use time |
 |wattsInSum|0 | 4000 | W | 1 |  Total input power |
@@ -296,13 +294,4 @@
 |wifiRssi| Wi-Fi signal intensity |
 |wifiVer| Wi-Fi version |
 |wireWatts| Wireless charging output power (W): Reserved, not available |
-
-## info
-
-### switch
-
-| State  |      off    |  on |  Name |  cmd |
-|----------|:-------------:|:------:|------|------|
-|latestQuotas| no trigger | trigger | Get latest Quotas | {valName:,operateType:latestQuotas,params:{}} |
-|getAllTaskCfg| no trigger | trigger | Get all tasks | {valName:,moduleType:1,operateType:getAllTaskCfg,params:{}} |
 

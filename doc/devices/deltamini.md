@@ -1,5 +1,5 @@
 # States for  DELTAMINI
-### version: 0.0.21
+### version: 0.0.22
 
 [bmsMaster](#bmsMaster)
 
@@ -11,8 +11,6 @@
 
 [pd](#pd)
 
-[info](#info)
-
 
 
 ## bmsMaster
@@ -21,7 +19,7 @@
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |amp|0 | 25 | A | 0.001 |  Current |
-|cycles|0 | 6000 | cycles | 1 |  Number of cycles |
+|cycles|0 | 6000 |  | 1 |  Number of cycles |
 |designCap|0 | 80000 | mAh | 1 |  Design capacity |
 |f32ShowSoc|0 | 100 | % | 1 |  SOC |
 |fullCap|0 | 80000 | mAh | 1 |  Full capacity |
@@ -245,7 +243,7 @@
 |dsgPowerDc|0 | 65000 | kWh | 0.001 |  Cumulative DC power discharged |
 |invUsedTime|0 | 9999999 | min | 0.0166 |  Inverter use time |
 |mpptUsedTime|0 | 9999999 | min | 0.0166 |  MPPT use time |
-|qcUsb1Watts|0 | 500 | W | 0.1 |  Quick charge usb1 output power |
+|qcUsb1Watts|0 | 500 | W | 1 |  Quick charge usb1 output power |
 |qcUsb2Watts|0 | 500 | W | 0.1 |  Quick charge usb2 output power |
 |remainTime|0 | 143999 | min | 1 |  Time remaining (min) &gt; 0: remaining charging time; time remaining (min) &lt; 0: remaining discharging time |
 |soc|0 | 100 | % | 1 |  Displayed SOC |
@@ -254,8 +252,8 @@
 |typec1Watts|0 | 500 | W | 1 |  Typec1 output power |
 |typec2Temp|0 | 80 | °C | 1 |  Type-C 2 temperature |
 |typec2Watts|0 | 500 | W | 1 |  Typec2 output power |
-|usb1Watts|0 | 500 | W | 0.1 |  Common usb1 output power |
-|usb2Watts|0 | 500 | W | 0.1 |  Common usb2 output power |
+|usb1Watts|0 | 500 | W | 1 |  Common usb1 output power |
+|usb2Watts|0 | 500 | W | 1 |  Common usb2 output power |
 |usbUsedTime|0 | 9999999 | min | 0.0166 |  USB use time |
 |usbqcUsedTime|0 | 9999999 | min | 0.0166 |  USB QC use time |
 |wattsInSum|0 | 4000 | W | 1 |  Total input power |
@@ -279,13 +277,4 @@
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
 |lcdOffSec| 0 | 1800 | s | 1 |  LCD screen-off duration: 0: never off | {from:Android,operateType:TCP,id:93980337,lang:en-us,params:{id:39,lcdTime:1800},version:1.0} |
 |standByMode| 0 | 5999 | min | 1 |  Device standby time /min 0 Never standby 5999 Max value | {from:Android,operateType:TCP,id:119032574,lang:en-us,params:{id:33,standByMode:360},version:1.0} |
-
-## info
-
-### switch
-
-| State  |      off    |  on |  Name |  cmd |
-|----------|:-------------:|:------:|------|------|
-|latestQuotas| no trigger | trigger | Get latest Quotas | {from:iOS,operateType:latestQuotas,id:83154039,lang:de-de,params:{},version:1.0} |
-|getAllTaskCfg| no trigger | trigger | Get all tasks | {from:iOS,operateType:getAllTaskCfg,id:83154039,lang:de-de,params:{},version:1.0} |
 

@@ -271,6 +271,7 @@
 		"plugs": [],
 		"waves": [],
 		"glaciers": [],
+		"generators": [],
 		"msgStateCreation": false,
 		"msgUpdatePstation": false,
 		"msgUpdateValuePstation": false,

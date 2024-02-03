@@ -1,13 +1,11 @@
 # States for  PSTREAM
-### version: 0.0.21
+### version: 0.0.22
 
 [inverter_heartbeat](#inverter_heartbeat)
 
 [InverterHeartbeat2](#InverterHeartbeat2)
 
 [energy](#energy)
-
-[info](#info)
 
 
 
@@ -43,7 +41,7 @@
 |invFreq|0 | 52 | Hz | 0.1 |  Inverter AC frequency |
 |invDcCur|0 | 20 | A | 0.001 |  Inverter DC input current |
 |ratedPower|0 | 600 | W | 0.1 |  Inverter rated power |
-|heartbeatFrequency|0 | 20 | 1/s | 1 |  Inverter heartbeat |
+|heartbeatFrequency|0 | 20 | Hz | 1 |  Inverter heartbeat |
 |dynamicWatts|0 | 10000 | W | 0.1 |  Dynamic Power |
 |batChargingTime|0 | 144000 | min | 1 |  Battery Charging Time |
 |batDischargingTime|0 | 144000 | min | 1 |  Battery Discharging Time |
@@ -157,7 +155,7 @@
 |lowerLimit|0 | 30 | % | 1 |  Discharging lower limit |
 |baseLoad|0 | 800 | W | 0.1 |  Home base load |
 |powerPlugsPos|0 | 10000 | W | 0.1 |  Power of plugs |
-|uptime|0 | 9999999 | s | 1 |  Power Stream uptime |
+|uptime|0 |  n/a | s | 1 |  Power Stream uptime |
 |gridWatt_45|0 | 10000 | W | 0.1 |  Power from Grid |
 |powerPlugsNeg|0 | 10000 | W | 0.1 |  Power of plugs (-) |
 |wifiRssi|-90 | 10 | dBm | 1 |  wifi RSSI |
@@ -175,12 +173,4 @@
 |watth7|0 | 6000 | Wh | 1 |  Energy from solar PV1 |
 |watth8|0 | 6000 | Wh | 1 |  Energy from solar PV2 |
 
-
-## info
-
-### switch
-
-| State  |      off    |  on |  Name |  cmd |
-|----------|:-------------:|:------:|------|------|
-|latestQuotas| no trigger | trigger | Get latest Quotas | {cmdFunc:20,cmdId:1,dataLen:0} |
 

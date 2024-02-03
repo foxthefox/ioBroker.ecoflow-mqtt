@@ -1,5 +1,5 @@
 # States for  DELTAPRO
-### version: 0.0.21
+### version: 0.0.22
 
 [bmsMaster](#bmsMaster)
 
@@ -10,8 +10,6 @@
 [pd](#pd)
 
 [mppt](#mppt)
-
-[info](#info)
 
 
 
@@ -38,7 +36,7 @@
 |remainTime|0 | 143999 | min | 1 |  Time remaining |
 |minCellVol|0 | 60 | V | 0.001 |  Minimum cell voltage |
 |fullCap|0 | 80000 | mAh | 1 |  Full capacity |
-|cycles|0 | 6000 | cycles | 1 |  Number of cycles |
+|cycles|0 | 6000 |  | 1 |  Number of cycles |
 
 
 ### string
@@ -170,7 +168,7 @@
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |wattsInSum|0 | 4000 | W | 1 |  Total input power |
 |typec2Watts|0 | 500 | W | 1 |  Typec2 output power |
-|usb1Watts|0 | 500 | W | 0.1 |  Common usb1 output power |
+|usb1Watts|0 | 500 | W | 1 |  Common usb1 output power |
 |chgPowerDc|0 | 65000 | kWh | 0.001 |  Cumulative DC power charged (adapter) |
 |dsgPowerDc|0 | 65000 | kWh | 0.001 |  Cumulative DC power discharged |
 |typccUsedTime|0 | 9999999 | min | 0.0166 |  Type-C use time |
@@ -188,12 +186,12 @@
 |chgSunPower|0 | 65000 | kWh | 0.001 |  Cumulative solar power charged |
 |carTemp|0 | 80 | °C | 1 |  CAR temperature |
 |qcUsb2Watts|0 | 500 | W | 0.1 |  Quick charge usb2 output power |
-|qcUsb1Watts|0 | 500 | W | 0.1 |  Quick charge usb1 output power |
+|qcUsb1Watts|0 | 500 | W | 1 |  Quick charge usb1 output power |
 |usbqcUsedTime|0 | 9999999 | min | 0.0166 |  USB QC use time |
 |usbUsedTime|0 | 9999999 | min | 0.0166 |  USB use time |
 |mpptUsedTime|0 | 9999999 | min | 0.0166 |  MPPT use time |
 |carWatts|0 | 500 | W | 0.1 |  CAR output power |
-|usb2Watts|0 | 500 | W | 0.1 |  Common usb2 output power |
+|usb2Watts|0 | 500 | W | 1 |  Common usb2 output power |
 |minAcoutSoc|0 | 255 | % (0-255?) | 1 |  minimum AC out SOC |
 |acautooutPause|0 | 255 | s (0-255?) | 1 |  AC Auto out Pause |
 
@@ -292,13 +290,4 @@
 | State  |      Min     |     Max     |  Unit |  Mult |  Name |  cmd |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
 |cfgDcChgCurrent| 4 | 13 | A | 0.001 |  On-board charging current | {from:Android,operateType:TCP,id:787426012,lang:en-us,params:{id:71,currMa:6000},version:1.0} |
-
-## info
-
-### switch
-
-| State  |      off    |  on |  Name |  cmd |
-|----------|:-------------:|:------:|------|------|
-|latestQuotas| no trigger | trigger | Get latest Quotas | {from:iOS,operateType:latestQuotas,id:83154039,lang:de-de,params:{},version:1.0} |
-|getAllTaskCfg| no trigger | trigger | Get all tasks | {from:iOS,operateType:getAllTaskCfg,id:83154039,lang:de-de,params:{},version:1.0} |
 
