@@ -135,8 +135,8 @@
 | State  |     Name |  values |
 |----------|:-------------:|------|
 |bmsBoundFlag| Upper and lower limits on main battery pack charging and discharging | {0:Normal charging and discharging,1:Upper limit on charging} |
-|runSts| bit0 ac_in; bit1 pfc; bit2 llc; bit3 mppt: 1: Run; 0: Not run | {0:OK?} |
-|rlySts| bit0 soft start rly; bit1 ac rly; 1: Closed; 0: Open | {0:OK?} |
+|runSts| Run status | {0:not run?,1:AC_IN run,2:PFC run,4:LLC run,8:MPPT run} |
+|rlySts| Relay status | {0:OK?,1:soft start rly closed?,2:ac rly closed?} |
 |timeEn| Timer enable status | {0:Timer off,1:Timer on} |
 |setFanVal| Fan speed | {0:Low,1:Medium,2:High} |
 |bmsUnderVoltage| Battery undervoltage flag bit | {0:Normal,1:Undervoltage} |
@@ -144,7 +144,7 @@
 |mpptWork| MPPT operating status | {1:Car charging,2:Solar charging} |
 |refEn| Cool/Heat enabling flag | {0:Cool/Heat mode cannot be set,1:Cool/Heat mode can be set} |
 |pdMainMode| Set mode | {0:Cool,1:Heat,2:Fan} |
-|powerSrc| Input source: bit0: AC; bit1: MPTT; bit2: Battery main pack; bit3: Battery slave pack | {0:OK?} |
+|powerSrc| Input source | {0:OK?,1:AC,2:MPPT,4:Battery main pack,8:Battery slave pack} |
 |subMode| Set sub-mode  | {0:Max,1:Sleep,2:Eco,3:Manual} |
 |fanSts| Fan speed level | {0:non-rotation,1:Level 1,2:Level 2,3:Level3,4:Level 4} |
 |errCode| Global error code | {0:OK?} |
@@ -208,9 +208,9 @@
 
 | State  |     Name |  values |
 |----------|:-------------:|------|
-|runSts| bit0 ac_in; bit1 pfc; bit2 llc; bit3 mppt: 1: Run; 0: Not run | {0:OK?} |
+|runSts| Run status | {0:not run?,1:AC_IN run?,2:PFC run?,4:LLC run?,8:MPPT run?} |
 |mpptWork| MPPT operating status | {1:Car charging,2:Solar charging} |
-|rlySts| bit0 soft start rly; bit1 ac rly; 1: Closed; 0: Open | {0:OK?} |
+|rlySts| Relay status | {0:Open?,1:soft start rly closed?,2:ac rly closed?} |
 
 ## motor
 

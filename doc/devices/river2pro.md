@@ -57,7 +57,7 @@
 |model| Product model |
 |brightLevel| LCD brightness level: 0-3 |
 |wifiRssi| Wi-Fi signal intensity |
-|wireWatts| Wireless charging output power (W): Reserved, not available |
+|wireWatts| Wireless charging output power (W) |
 |sysVer| System version |
 |hysteresisAdd| Hysteresis SOC |
 |relaySwitchCnt| Number of relay disconnections |
@@ -73,7 +73,7 @@
 |extRj45Port| RJ45 port | {0:NULL,1:RC(BLE_CTL)} |
 |errCode| Global error code | {0:OK?} |
 |chgDsgState| Charging/discharging state on screen | {0:discharging,1:charging} |
-|carState| CAR button state: 0: off; 1: on | {0:off,1:on} |
+|carState| CAR button state | {0:off,1:on} |
 |watchIsConfig| Power management configuration:  | {0:disable,1:enable} |
 
 ### level
@@ -220,6 +220,7 @@
 | State  |     Name |  values |
 |----------|:-------------:|------|
 |dischargeType| Discharging type | {0:no discharge?,1:AC discharging,2:PR,3:BC} |
+|faultCode| Error code | {0:OK?,1:mppt_fault,2:car_fault,4:dc24v_fault} |
 |dc24vState| DCDC24 switch state | {0:off,1:on} |
 |x60ChgType| XT60 charging type | {0:not detected,1:MPPT,2:adapter} |
 |chgType| Actual charging type | {0:null,1:adapter (adapter/DC source),2:MPPT (solar),3:AC (mains supply),4:gas,5:wind} |
@@ -231,9 +232,8 @@
 
 | State  |  Name |
 |----------|------|
-|faultCode| Error code: byte0: mppt_fault; byte1: car_fault; byte2: dc24v_fault |
 |swVer| Version number |
-|cfgAcOutVol| Inverter output voltage (V): 0xffffffff: ignored |
+|cfgAcOutVol| Inverter output voltage (mV) |
 
 ### level
 
@@ -254,7 +254,7 @@
 |chgState| Charging state | {0:disabled,1:CC,2:CV,3:UPS,4:PARA 0x55: Charging error} |
 |chgCmd| Charge switch | {0:off,1:on,2:2?} |
 |emsIsNormalFlag| Energy storage state: 0: sleep; 1: normal | {0:sleep,1:normal} |
-|bmsWarState| BMS warning state: bit0: hi_temp; bit1: low_temp; bit2: overload; bit3: chg_flag | {0:no warning?,1:hi_temp,2:low_temp,4:overload,8:chg_flag} |
+|bmsWarState| BMS warning state | {0:no warning?,1:hi_temp,2:low_temp,4:overload,8:chg_flag} |
 
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
@@ -292,5 +292,5 @@
 
 | State  |  Name |
 |----------|------|
-|bmsIsConnt| BMS online signal: BIT0: hardware online signal; BIT1: software online signal |
+|bmsIsConnt| BMS online signal |
 

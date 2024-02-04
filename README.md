@@ -135,6 +135,7 @@ Modification at HA side:
 
 * the defined devices are connected to the adapter via mqtt
 * the adapter filters the incomming messages of the devices. only changed values are stored internally
+* if the App prevents adjusting at a certain condition, when known it is replicated (e.g. inverter ON when below minimum battery charge is prevented, you can see a warning in the log )
 * not everything is known, so information to status interpretation may be uncertain, this is mostly marked with trailing "?"
 
 ### remarks to update of data point setup (min, max, unit, ....)
@@ -160,6 +161,15 @@ During startup the datapoints are created, but not changed when existing.
 * restart of HA may not be recognized correctly in iobroker, so it needs a manual restart of the adapter (WIP)
 
 ## Implemented Devices
+
+some explanation to the device data
+* number -> data point with numeric value
+* level -> adjustable data point with numeric value, sometimes also selections which have numeric representation
+* switch -> adjustable data point boolean
+* diagnostic -> boolean or multi state data point transferred to text
+* string -> datapoint as text only
+* array -> datapoint with array
+
 
 ### Powerstation
 ![River Max](./doc/devices/rivermax.md)
@@ -211,6 +221,8 @@ The 800W version is also implemented and only difference ist the 800W maximum po
 * (foxthefox) changed factor for pd/usb1Watts, usb2Watts, qcUsb1Watts, qcUsb2Watts
 * (foxthefox) info for offline/online status with EF cloud
 * (foxthefox) correction for protobuf cmds (dataLen)
+* (foxthefox) some strings are now diagnostic
+* (foxthefox) X_unknown_15/17/34 are now numbers
 
 
 ### 0.0.21 (npm)

@@ -64,7 +64,7 @@
 
 | State  |  Name |
 |----------|------|
-|bmsIsConnt| BMS online signal: BIT0: hardware online signal; BIT1: software online signal |
+|bmsIsConnt| BMS online signal |
 
 ### string
 
@@ -80,7 +80,7 @@
 
 | State  |     Name |  values |
 |----------|:-------------:|------|
-|bmsWarState| BMS warning state: bit0: hi_temp; bit1: low_temp; bit2: overload; bit3: chg_flag | {0:no warning?,1:hi_temp,2:low_temp,4:overload,8:chg_flag} |
+|bmsWarState| BMS warning state | {0:no warning?,1:hi_temp,2:low_temp,4:overload,8:chg_flag} |
 |chgCmd| Charge switch | {0:off,1:on,2:2?} |
 |chgState| Charging state | {0:disabled,1:CC,2:CV,3:UPS,4:PARA 0x55: Charging error} |
 |dsgCmd| Discharge switch | {0:off,1:on,2:2?} |
@@ -207,14 +207,14 @@
 |chgType| Actual charging type | {0:null,1:adapter (adapter/DC source),2:MPPT (solar),3:AC (mains supply),4:gas,5:wind} |
 |dc24vState| DCDC24 switch state | {0:off,1:on} |
 |dischargeType| Discharging type | {0:no discharge?,1:AC discharging,2:PR,3:BC} |
+|faultCode| Error code | {0:OK?,1:mppt_fault,2:car_fault,4:dc24v_fault} |
 |x60ChgType| XT60 charging type | {0:not detected,1:MPPT,2:adapter} |
 
 ### string
 
 | State  |  Name |
 |----------|------|
-|cfgAcOutVol| Inverter output voltage (V): 0xffffffff: ignored |
-|faultCode| Error code: byte0: mppt_fault; byte1: car_fault; byte2: dc24v_fault |
+|cfgAcOutVol| Inverter output voltage (mV) |
 |swVer| Version number |
 
 ## pd
@@ -265,7 +265,7 @@
 | State  |     Name |  values |
 |----------|:-------------:|------|
 |beepMode| Beep mode | {0:normal,1:quiet} |
-|carState| CAR button state: 0: off; 1: on | {0:off,1:on} |
+|carState| CAR button state | {0:off,1:on} |
 |chgDsgState| Charging/discharging state on screen | {0:discharging,1:charging} |
 |errCode| Global error code | {0:OK?} |
 |ext3p8Port| Infinity port / 3+8 ports | {0:NULL,1:CC,2:PR,3:SP (BC)} |
@@ -293,5 +293,5 @@
 |sysVer| System version |
 |wifiRssi| Wi-Fi signal intensity |
 |wifiVer| Wi-Fi version |
-|wireWatts| Wireless charging output power (W): Reserved, not available |
+|wireWatts| Wireless charging output power (W) |
 

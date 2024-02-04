@@ -113,9 +113,7 @@
 |status_10| X_Unknown_10 |
 |X_Unknown_11| X_Unknown_11 |
 |X_Unknown_14| X_Unknown_14 |
-|X_Unknown_15| X_Unknown_15 |
 |X_Unknown_16| X_Unknown_16 |
-|X_Unknown_17| X_Unknown_17 |
 |X_Unknown_18| X_Unknown_18 |
 |X_Unknown_19| X_Unknown_19 |
 |X_Unknown_20| X_Unknown_20 |
@@ -131,7 +129,6 @@
 |X_Unknown_30| X_Unknown_30 |
 |X_Unknown_31| X_Unknown_31 |
 |X_Unknown_33| X_Unknown_33 |
-|X_Unknown_34| X_Unknown_34 |
 |X_Unknown_35| X_Unknown_35 |
 |X_Unknown_36| X_Unknown_36 |
 |X_Unknown_37| X_Unknown_37 |
@@ -155,7 +152,10 @@
 |lowerLimit|0 | 30 | % | 1 |  Discharging lower limit |
 |baseLoad|0 | 800 | W | 0.1 |  Home base load |
 |powerPlugsPos|0 | 10000 | W | 0.1 |  Power of plugs |
+|X_Unknown_15|-100 | 100 |  | 1 |  X_Unknown_15 |
+|X_Unknown_17|0 | 100 |  | 0.0001 |  X_Unknown_17 |
 |uptime|0 |  n/a | s | 1 |  Power Stream uptime |
+|X_Unknown_34|-100 | 100 |  | 1 |  X_Unknown_34 |
 |gridWatt_45|0 | 10000 | W | 0.1 |  Power from Grid |
 |powerPlugsNeg|0 | 10000 | W | 0.1 |  Power of plugs (-) |
 |wifiRssi|-90 | 10 | dBm | 1 |  wifi RSSI |

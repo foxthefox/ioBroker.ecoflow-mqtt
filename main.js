@@ -768,7 +768,7 @@ class EcoflowMqtt extends utils.Adapter {
 								identifiers: 'iob_0_status',
 								manufacturer: 'foxthefox',
 								name: 'IOB connector',
-								model: 'ecoflow-mqtt Adapter',
+								model: 'iob.ecoflow-mqtt adapter',
 								sw_version: version,
 								suggested_area: 'energy'
 							},

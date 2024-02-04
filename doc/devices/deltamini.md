@@ -60,28 +60,28 @@
 
 ## ems
 
+### diagnostic
+
+| State  |     Name |  values |
+|----------|:-------------:|------|
+|bms0Online| BMS0 online signal | {0:not online?,1:HW online,2:SW online,3:HW-SW online} |
+|bms1Online| BMS1 online signal | {0:not online?,1:HW online,2:SW online,3:HW-SW online} |
+|bms2Online| BMS2 online signal | {0:not online?,1:HW online,2:SW online,3:HW-SW online} |
+|bmsWarningState| BMS warning state | {0:no warning?,1:hi_temp,2:low_temp,4:overload,8:chg_flag} |
+|chgCmd| Charge switch | {0:off,1:on,2:2?} |
+|chgState| Charging state | {0:disabled,1:CC,2:CV,3:UPS,4:PARA 0x55: Charging error} |
+|dsgCmd| Discharge switch | {0:off,1:on,2:2?} |
+|emsIsNormalFlag| Energy storage state: 0: sleep; 1: normal | {0:sleep,1:normal} |
+
 ### string
 
 | State  |  Name |
 |----------|------|
-|bms0Online| BMS online signal: BIT0: hardware online signal; BIT1: software online signal |
-|bms1Online| BMS online signal: BIT0: hardware online signal; BIT1: software online signal |
-|bms2Online| BMS online signal: BIT0: hardware online signal; BIT1: software online signal |
 |bmsModel| BMS model |
 |fanLevel| Fan level |
 |maxAvailableNum| Maximum available quantity |
 |openBmsIdx| Open BMS index |
 |openUpsFlag| UPS mode enable flag |
-
-### diagnostic
-
-| State  |     Name |  values |
-|----------|:-------------:|------|
-|bmsWarningState| BMS warning state: bit0: hi_temp; bit1: low_temp; bit2: overload; bit3: chg_flag | {0:no warning?,1:hi_temp,2:low_temp,4:overload,8:chg_flag} |
-|chgCmd| Charge switch | {0:off,1:on,2:2?} |
-|chgState| Charging state | {0:disabled,1:CC,2:CV,3:UPS,4:PARA 0x55: Charging error} |
-|dsgCmd| Discharge switch | {0:off,1:on,2:2?} |
-|emsIsNormalFlag| Energy storage state: 0: sleep; 1: normal | {0:sleep,1:normal} |
 
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
@@ -195,6 +195,7 @@
 |chgState| Charging state | {0:disabled,1:charging,2:standby (DC charging stopped during AC charging)} |
 |chgType| Actual charging type | {0:null,1:adapter (adapter/DC source),2:MPPT (solar),3:AC (mains supply),4:gas,5:wind} |
 |dc24vState| DCDC24 switch state | {0:off,1:on} |
+|faultCode| Error code | {0:OK?,1:mppt_fault,2:car_fault,4:dc24v_fault} |
 |xt60ChgType| XT60 charging type | {0:not detected,1:MPPT,2:adapter} |
 
 ### level
@@ -207,7 +208,6 @@
 
 | State  |  Name |
 |----------|------|
-|faultCode| Error code: byte0: mppt_fault; byte1: car_fault; byte2: dc24v_fault |
 |swVer| Version number |
 
 ## pd
@@ -223,7 +223,7 @@
 
 | State  |     Name |  values |
 |----------|:-------------:|------|
-|carState| CAR button state: 0: off; 1: on | {0:off,1:on} |
+|carState| CAR button state | {0:off,1:on} |
 |errCode| Global error code | {0:OK?} |
 |iconRechgTimeMode| Charge icon mode | {0:normal,1:blinking} |
 |sysChgDsgState| Charging/discharging state on screen | {0:discharged,1:charged} |
@@ -269,7 +269,7 @@
 |sysVer| System version |
 |wifiRssi| Wi-Fi signal intensity |
 |wifiVer| Wi-Fi version |
-|wirelessWatts| Wireless charging output power (W): Reserved, not available |
+|wirelessWatts| Wireless charging output power (W) |
 
 ### level
 
