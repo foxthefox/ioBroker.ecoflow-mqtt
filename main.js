@@ -798,7 +798,7 @@ class EcoflowMqtt extends utils.Adapter {
 							'HA INIT'
 						);
 
-						ha.subscribe(this, 'homeassitant/status');
+						ha.subscribe(this, 'homeassitant/status', 'HA INIT');
 
 						for (let j = 0; j < this.haDevices.length; j++) {
 							const id = this.haDevices[j];
@@ -857,7 +857,7 @@ class EcoflowMqtt extends utils.Adapter {
 								);
 							}
 							*/
-							ha.subscribe(this, this.config.haTopic + '/' + this.haDevices[j] + '/set/#');
+							ha.subscribe(this, this.config.haTopic + '/' + this.haDevices[j] + '/set/#', 'HA INIT');
 						}
 						// this.setState('HA info.connection', true, true);
 					}

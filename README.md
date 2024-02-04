@@ -80,7 +80,7 @@ Use the tab "Device(s) Configuration" for adding your power equipment.
 
 </p></details>
 
-Use the tab "Generator/SHP Configuration" for adding your power equipment.
+Use the tab "Generator / SHP Configuration" for adding your power equipment.
 
 <details><summary><i>Parametrizing the Generator</i></summary>
 <p>

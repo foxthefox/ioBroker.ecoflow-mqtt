@@ -447,7 +447,7 @@
 		},
 		"tab_3": {
 			"type": "panel",
-			"label": "Generator/SHP Configuration",
+			"label": "Generator / SHP Configuration",
 			"items": {
 				"_generatorHeader": {
 					"newLine": true,
