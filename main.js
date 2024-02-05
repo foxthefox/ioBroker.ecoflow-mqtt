@@ -21,6 +21,7 @@ const { json } = require('stream/consumers');
 
 let recon_timer = null;
 let lastQuotInterval = null;
+let recon_timer_long = null;
 let haLoadInterval = null;
 
 const version = require('./io-package.json').common.version;
@@ -438,7 +439,11 @@ class EcoflowMqtt extends utils.Adapter {
 			port: this.mqttPort || 8883,
 			clientId: this.mqttClientId,
 			username: this.mqttUserName,
-			password: this.mqttPwd
+			password: this.mqttPwd,
+			keepalive: 60,
+			reconnectPeriod: 5,
+			clean: true
+			//manualConnect: true
 		};
 		if (optionsMqtt.clientId.length > 18 && optionsMqtt.username.length > 18 && optionsMqtt.password.length > 18) {
 			try {
@@ -481,29 +486,11 @@ class EcoflowMqtt extends utils.Adapter {
 				this.client.on('message', async (topic, message) => {
 					// message is Buffer
 					// this.log.debug(topic + ' got ' + message.toString());
-					let msgtype = '';
-					if (topic.includes('/app/device/property/')) {
-						msgtype = 'update';
-						topic = topic.replace('/app/device/property/', '');
-					} else if (topic.includes('get_reply')) {
-						msgtype = 'get_reply';
-						topic = topic
-							.replace('/app/' + this.mqttUserId + '/', '')
-							.replace('/thing/property/get_reply', '');
-					} else if (topic.includes('get')) {
-						msgtype = 'get';
-						topic = topic.replace('/app/' + this.mqttUserId + '/', '').replace('/thing/property/get', '');
-					} else if (topic.includes('set_reply')) {
-						msgtype = 'set_reply';
-						topic = topic
-							.replace('/app/' + this.mqttUserId + '/', '')
-							.replace('/thing/property/set_reply', '');
-					} else if (topic.includes('set')) {
-						msgtype = 'set';
-						topic = topic.replace('/app/' + this.mqttUserId + '/', '').replace('/thing/property/set', '');
-					} else {
-						msgtype = 'unknown msgtype';
-					}
+
+					const msgtop = ef.getIdFromTopic(topic, this.mqttUserId);
+					const msgtype = msgtop.msg;
+					//this topic only contains the id of device
+					topic = msgtop.topic;
 
 					let devtype = '';
 					if (this.pdevices) {
@@ -688,6 +675,7 @@ class EcoflowMqtt extends utils.Adapter {
 					//reconnection trial
 					if (this.config.enableMqttReconnect) {
 						if (recon_timer) clearTimeout(recon_timer);
+						// online check
 						recon_timer = setTimeout(async () => {
 							this.log.debug('no telegrams from devices within 10min');
 							this.msgReconnects++;
@@ -735,6 +723,8 @@ class EcoflowMqtt extends utils.Adapter {
 					port: this.config.haMqttPort || 1883,
 					username: this.config.haMqttUserId,
 					password: this.config.haMqttUserPWd,
+					keepAlive: 60,
+					reconnectPeriod: 5,
 					will: {
 						topic: this.config.haTopic + '/iob/info/status',
 						payload: 'offline',
@@ -960,15 +950,17 @@ class EcoflowMqtt extends utils.Adapter {
 					}
 				});
 
-				this.haClient.on('close', () => {
-					this.setState('info.haConnection', { val: 'offline', ack: true });
+				this.haClient.on('close', async () => {
+					await this.setStateAsync('info.haConnection', { val: 'offline', ack: true });
 					this.log.info('HA connection closed');
 				});
-				this.haClient.on('error', (error) => {
+				this.haClient.on('error', async (error) => {
+					await this.setStateAsync('info.haConnection', { val: 'error', ack: true });
 					this.log.error('Error inconnection to HA MQTT-Broker:' + error);
 				});
 
 				this.haClient.on('reconnect', async () => {
+					await this.setStateAsync('info.haConnection', { val: 'reconnect', ack: true });
 					this.log.debug('Reconnecting to HA MQTT broker...');
 				});
 			} catch (error) {
@@ -1171,6 +1163,21 @@ class EcoflowMqtt extends utils.Adapter {
 				const channel = idsplit[3];
 				const item = idsplit[4];
 				if (channel === 'info' && item === 'status') {
+					const cnt = await this.getStateAsync('info.cntDevOnline');
+					if (state.val === 'online' && cnt) {
+						if (cnt.val === 0) {
+							//stop recon_timer_long
+							//start recon_timer
+						}
+						await this.setStateAsync('info.cntDevOnline', { val: cnt.val++, ack: true });
+					} else if (state.val === 'offline' && cnt) {
+						if (cnt.val === 1) {
+							//stop recon_timer
+							//start recon_timer_long
+						}
+						await this.setStateAsync('info.cntDevOnline', { val: cnt.val--, ack: true });
+					}
+
 					if (this.haClient && this.pdevices[device]['haEnable'] === true) {
 						ha.publish(
 							this,
