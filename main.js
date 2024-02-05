@@ -1164,18 +1164,23 @@ class EcoflowMqtt extends utils.Adapter {
 				const item = idsplit[4];
 				if (channel === 'info' && item === 'status') {
 					const cnt = await this.getStateAsync('info.cntDevOnline');
-					if (state.val === 'online' && cnt) {
-						if (cnt.val === 0) {
+
+					let devcount = cnt.val;
+
+					if (state.val === 'online') {
+						if (devcount === 0) {
 							//stop recon_timer_long
 							//start recon_timer
 						}
-						await this.setStateAsync('info.cntDevOnline', { val: cnt.val++, ack: true });
-					} else if (state.val === 'offline' && cnt) {
-						if (cnt.val === 1) {
+						devcount++;
+						await this.setStateAsync('info.cntDevOnline', { val: devcount, ack: true });
+					} else if (state.val === 'offline') {
+						if (devcount === 1) {
 							//stop recon_timer
 							//start recon_timer_long
 						}
-						await this.setStateAsync('info.cntDevOnline', { val: cnt.val--, ack: true });
+						devcount--;
+						await this.setStateAsync('info.cntDevOnline', { val: devcount, ack: true });
 					}
 
 					if (this.haClient && this.pdevices[device]['haEnable'] === true) {
