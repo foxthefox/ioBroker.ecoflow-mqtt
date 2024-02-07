@@ -710,6 +710,14 @@
 					"md": 6,
 					"lg": 4
 				},
+				"haDiscoveryRetain": {
+					"type": "checkbox",
+					"label": "send retained msg for discovery",
+					"newLine": true,
+					"sm": 12,
+					"md": 6,
+					"lg": 4
+				},
 				"_debugcommon": {
 					"newLine": true,
 					"type": "header",

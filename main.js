@@ -773,7 +773,7 @@ class EcoflowMqtt extends utils.Adapter {
 							'IOB',
 							iob_topic,
 							JSON.stringify(iob_payload),
-							{ qos: 1, retain: true },
+							{ qos: 1, retain: this.config.haDiscoveryRetain || false },
 							this.config.msgHaAutoDiscovery,
 							'HA INIT'
 						);
@@ -820,7 +820,7 @@ class EcoflowMqtt extends utils.Adapter {
 								this,
 								id,
 								discovery,
-								{ qos: 1, retain: true },
+								{ qos: 1, retain: this.config.haDiscoveryRetain || false },
 								this.config.msgHaAutoDiscovery,
 								'HA INIT'
 							);
