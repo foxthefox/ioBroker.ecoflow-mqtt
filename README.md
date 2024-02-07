@@ -224,6 +224,7 @@ supply priority -> 0/false = prioritized grid supply; 1/true = prioritized batte
 * (foxthefox) correction for protobuf cmds (dataLen)
 * (foxthefox) some strings are now diagnostic
 * (foxthefox) X_unknown_15/17/34 are now numbers
+* (foxthefox) skip telegrams where openBmsIdx=0, bqSysStatReg=0
 
 
 ### 0.0.21 (npm)
