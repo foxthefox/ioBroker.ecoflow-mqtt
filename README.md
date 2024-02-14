@@ -212,6 +212,7 @@ supply priority -> 0/false = prioritized grid supply; 1/true = prioritized batte
 
 ## ToDo
 * check forgotten boundary conditions for commands (inhibit cmd, or additional value)
+* check beep command if reversing needed
 
 ## Changelog
 ### 0.0.22
