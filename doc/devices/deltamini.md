@@ -138,7 +138,7 @@
 
 | State  |      off    |  on |  Name |  cmd |
 |----------|:-------------:|:------:|------|------|
-|cfgAcEnabled| off | on | AC discharge switch setting | {from:Android,operateType:TCP,id:554272649,lang:en-us,params:{id:66,enabled:1},version:1.0} |
+|cfgAcEnabled| off | on | AC discharge (INV) switch setting | {from:Android,operateType:TCP,id:554272649,lang:en-us,params:{id:66,enabled:1},version:1.0} |
 |cfgAcWorkMode| full power | mute | AC charging mode |  |
 |cfgAcXboost| off | on | X-Boost switch | {from:Android,operateType:TCP,id:602507362,lang:en-us,params:{id:66,xboost:1},version:1.0} |
 

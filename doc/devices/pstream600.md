@@ -156,7 +156,7 @@
 |X_Unknown_17|0 | 100 |  | 0.0001 |  X_Unknown_17 |
 |uptime|0 |  n/a | s | 1 |  Power Stream uptime |
 |X_Unknown_34|-100 | 100 |  | 1 |  X_Unknown_34 |
-|gridWatt_45|0 | 10000 | W | 0.1 |  Power from Grid |
+|gridWatt_45|0 | 10000 | W | 0.1 |  Power to Grid |
 |powerPlugsNeg|0 | 10000 | W | 0.1 |  Power of plugs (-) |
 |wifiRssi|-90 | 10 | dBm | 1 |  wifi RSSI |
 

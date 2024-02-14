@@ -140,7 +140,7 @@
 
 | State  |      off    |  on |  Name |  cmd |
 |----------|:-------------:|:------:|------|------|
-|cfgAcEnabled| off | on | AC discharge switch setting | {valName:enabled,moduleType:3,operateType:acOutCfg,params:{enabled:1}} |
+|cfgAcEnabled| off | on | AC discharge (INV) switch setting | {valName:enabled,moduleType:3,operateType:acOutCfg,params:{enabled:1}} |
 |cfgAcWorkMode| full power | mute | AC charging mode | {} |
 |cfgAcXboost| off | on | X-Boost switch | {valName:xboost,moduleType:3,operateType:acOutCfg,params:{xboost:1}} |
 |chgPauseFlag| not stopped? | charge stopped | AC Charging Pause | {valName:chgPauseFlag,moduleType:3,operateType:acOutCfg,params:{chgPauseFlag:1}} |
