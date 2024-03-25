@@ -94,24 +94,24 @@
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |powCh_0|0 | 9 |  | 1 |  Channel number #1 |
 |priority_0|0 | 9 |  | 1 |  Priority channel #1 |
-|powCh_1|0 | 9 |  | 1 |  Channel number #1 |
-|priority_1|0 | 9 |  | 1 |  Priority channel #1 |
-|powCh_2|0 | 9 |  | 1 |  Channel number #1 |
-|priority_2|0 | 9 |  | 1 |  Priority channel #1 |
-|powCh_3|0 | 9 |  | 1 |  Channel number #1 |
-|priority_3|0 | 9 |  | 1 |  Priority channel #1 |
-|powCh_4|0 | 9 |  | 1 |  Channel number #1 |
-|priority_4|0 | 9 |  | 1 |  Priority channel #1 |
-|powCh_5|0 | 9 |  | 1 |  Channel number #1 |
-|priority_5|0 | 9 |  | 1 |  Priority channel #1 |
-|powCh_6|0 | 9 |  | 1 |  Channel number #1 |
-|priority_6|0 | 9 |  | 1 |  Priority channel #1 |
-|powCh_7|0 | 9 |  | 1 |  Channel number #1 |
-|priority_7|0 | 9 |  | 1 |  Priority channel #1 |
-|powCh_8|0 | 9 |  | 1 |  Channel number #1 |
-|priority_8|0 | 9 |  | 1 |  Priority channel #1 |
-|powCh_9|0 | 9 |  | 1 |  Channel number #1 |
-|priority_9|0 | 9 |  | 1 |  Priority channel #1 |
+|powCh_1|0 | 9 |  | 1 |  Channel number #2 |
+|priority_1|0 | 9 |  | 1 |  Priority channel #2 |
+|powCh_2|0 | 9 |  | 1 |  Channel number #3 |
+|priority_2|0 | 9 |  | 1 |  Priority channel #3 |
+|powCh_3|0 | 9 |  | 1 |  Channel number #4 |
+|priority_3|0 | 9 |  | 1 |  Priority channel #4 |
+|powCh_4|0 | 9 |  | 1 |  Channel number #5 |
+|priority_4|0 | 9 |  | 1 |  Priority channel #5 |
+|powCh_5|0 | 9 |  | 1 |  Channel number #6 |
+|priority_5|0 | 9 |  | 1 |  Priority channel #6 |
+|powCh_6|0 | 9 |  | 1 |  Channel number #7 |
+|priority_6|0 | 9 |  | 1 |  Priority channel #7 |
+|powCh_7|0 | 9 |  | 1 |  Channel number #8 |
+|priority_7|0 | 9 |  | 1 |  Priority channel #8 |
+|powCh_8|0 | 9 |  | 1 |  Channel number #9 |
+|priority_8|0 | 9 |  | 1 |  Priority channel #9 |
+|powCh_9|0 | 9 |  | 1 |  Channel number #10 |
+|priority_9|0 | 9 |  | 1 |  Priority channel #10 |
 
 
 ### level
