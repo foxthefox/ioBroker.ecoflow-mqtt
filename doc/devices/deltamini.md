@@ -1,5 +1,5 @@
 # States for  DELTAMINI
-### version: 0.0.21
+### version: 0.0.22
 
 [bmsMaster](#bmsMaster)
 
@@ -11,8 +11,6 @@
 
 [pd](#pd)
 
-[info](#info)
-
 
 
 ## bmsMaster
@@ -21,7 +19,7 @@
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |amp|0 | 25 | A | 0.001 |  Current |
-|cycles|0 | 6000 | cycles | 1 |  Number of cycles |
+|cycles|0 | 6000 |  | 1 |  Number of cycles |
 |designCap|0 | 80000 | mAh | 1 |  Design capacity |
 |f32ShowSoc|0 | 100 | % | 1 |  SOC |
 |fullCap|0 | 80000 | mAh | 1 |  Full capacity |
@@ -62,28 +60,28 @@
 
 ## ems
 
+### diagnostic
+
+| State  |     Name |  values |
+|----------|:-------------:|------|
+|bms0Online| BMS0 online signal | {0:not online?,1:HW online,2:SW online,3:HW-SW online} |
+|bms1Online| BMS1 online signal | {0:not online?,1:HW online,2:SW online,3:HW-SW online} |
+|bms2Online| BMS2 online signal | {0:not online?,1:HW online,2:SW online,3:HW-SW online} |
+|bmsWarningState| BMS warning state | {0:no warning?,1:hi_temp,2:low_temp,4:overload,8:chg_flag} |
+|chgCmd| Charge switch | {0:off,1:on,2:2?} |
+|chgState| Charging state | {0:disabled,1:CC,2:CV,3:UPS,4:PARA 0x55: Charging error} |
+|dsgCmd| Discharge switch | {0:off,1:on,2:2?} |
+|emsIsNormalFlag| Energy storage state: 0: sleep; 1: normal | {0:sleep,1:normal} |
+
 ### string
 
 | State  |  Name |
 |----------|------|
-|bms0Online| BMS online signal: BIT0: hardware online signal; BIT1: software online signal |
-|bms1Online| BMS online signal: BIT0: hardware online signal; BIT1: software online signal |
-|bms2Online| BMS online signal: BIT0: hardware online signal; BIT1: software online signal |
 |bmsModel| BMS model |
 |fanLevel| Fan level |
 |maxAvailableNum| Maximum available quantity |
 |openBmsIdx| Open BMS index |
 |openUpsFlag| UPS mode enable flag |
-
-### diagnostic
-
-| State  |     Name |  values |
-|----------|:-------------:|------|
-|bmsWarningState| BMS warning state: bit0: hi_temp; bit1: low_temp; bit2: overload; bit3: chg_flag | {0:no warning?,1:hi_temp,2:low_temp,4:overload,8:chg_flag} |
-|chgCmd| Charge switch | {0:off,1:on,2:2?} |
-|chgState| Charging state | {0:disabled,1:CC,2:CV,3:UPS,4:PARA 0x55: Charging error} |
-|dsgCmd| Discharge switch | {0:off,1:on,2:2?} |
-|emsIsNormalFlag| Energy storage state: 0: sleep; 1: normal | {0:sleep,1:normal} |
 
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
@@ -140,7 +138,7 @@
 
 | State  |      off    |  on |  Name |  cmd |
 |----------|:-------------:|:------:|------|------|
-|cfgAcEnabled| off | on | AC discharge switch setting | {from:Android,operateType:TCP,id:554272649,lang:en-us,params:{id:66,enabled:1},version:1.0} |
+|cfgAcEnabled| off | on | AC discharge (INV) switch setting | {from:Android,operateType:TCP,id:554272649,lang:en-us,params:{id:66,enabled:1},version:1.0} |
 |cfgAcWorkMode| full power | mute | AC charging mode |  |
 |cfgAcXboost| off | on | X-Boost switch | {from:Android,operateType:TCP,id:602507362,lang:en-us,params:{id:66,xboost:1},version:1.0} |
 
@@ -197,6 +195,7 @@
 |chgState| Charging state | {0:disabled,1:charging,2:standby (DC charging stopped during AC charging)} |
 |chgType| Actual charging type | {0:null,1:adapter (adapter/DC source),2:MPPT (solar),3:AC (mains supply),4:gas,5:wind} |
 |dc24vState| DCDC24 switch state | {0:off,1:on} |
+|faultCode| Error code | {0:OK?,1:mppt_fault,2:car_fault,4:dc24v_fault} |
 |xt60ChgType| XT60 charging type | {0:not detected,1:MPPT,2:adapter} |
 
 ### level
@@ -209,7 +208,6 @@
 
 | State  |  Name |
 |----------|------|
-|faultCode| Error code: byte0: mppt_fault; byte1: car_fault; byte2: dc24v_fault |
 |swVer| Version number |
 
 ## pd
@@ -225,7 +223,7 @@
 
 | State  |     Name |  values |
 |----------|:-------------:|------|
-|carState| CAR button state: 0: off; 1: on | {0:off,1:on} |
+|carState| CAR button state | {0:off,1:on} |
 |errCode| Global error code | {0:OK?} |
 |iconRechgTimeMode| Charge icon mode | {0:normal,1:blinking} |
 |sysChgDsgState| Charging/discharging state on screen | {0:discharged,1:charged} |
@@ -245,7 +243,7 @@
 |dsgPowerDc|0 | 65000 | kWh | 0.001 |  Cumulative DC power discharged |
 |invUsedTime|0 | 9999999 | min | 0.0166 |  Inverter use time |
 |mpptUsedTime|0 | 9999999 | min | 0.0166 |  MPPT use time |
-|qcUsb1Watts|0 | 500 | W | 0.1 |  Quick charge usb1 output power |
+|qcUsb1Watts|0 | 500 | W | 1 |  Quick charge usb1 output power |
 |qcUsb2Watts|0 | 500 | W | 0.1 |  Quick charge usb2 output power |
 |remainTime|0 | 143999 | min | 1 |  Time remaining (min) &gt; 0: remaining charging time; time remaining (min) &lt; 0: remaining discharging time |
 |soc|0 | 100 | % | 1 |  Displayed SOC |
@@ -254,8 +252,8 @@
 |typec1Watts|0 | 500 | W | 1 |  Typec1 output power |
 |typec2Temp|0 | 80 | °C | 1 |  Type-C 2 temperature |
 |typec2Watts|0 | 500 | W | 1 |  Typec2 output power |
-|usb1Watts|0 | 500 | W | 0.1 |  Common usb1 output power |
-|usb2Watts|0 | 500 | W | 0.1 |  Common usb2 output power |
+|usb1Watts|0 | 500 | W | 1 |  Common usb1 output power |
+|usb2Watts|0 | 500 | W | 1 |  Common usb2 output power |
 |usbUsedTime|0 | 9999999 | min | 0.0166 |  USB use time |
 |usbqcUsedTime|0 | 9999999 | min | 0.0166 |  USB QC use time |
 |wattsInSum|0 | 4000 | W | 1 |  Total input power |
@@ -271,7 +269,7 @@
 |sysVer| System version |
 |wifiRssi| Wi-Fi signal intensity |
 |wifiVer| Wi-Fi version |
-|wirelessWatts| Wireless charging output power (W): Reserved, not available |
+|wirelessWatts| Wireless charging output power (W) |
 
 ### level
 
@@ -279,13 +277,4 @@
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
 |lcdOffSec| 0 | 1800 | s | 1 |  LCD screen-off duration: 0: never off | {from:Android,operateType:TCP,id:93980337,lang:en-us,params:{id:39,lcdTime:1800},version:1.0} |
 |standByMode| 0 | 5999 | min | 1 |  Device standby time /min 0 Never standby 5999 Max value | {from:Android,operateType:TCP,id:119032574,lang:en-us,params:{id:33,standByMode:360},version:1.0} |
-
-## info
-
-### switch
-
-| State  |      off    |  on |  Name |  cmd |
-|----------|:-------------:|:------:|------|------|
-|latestQuotas| no trigger | trigger | Get latest Quotas | {from:iOS,operateType:latestQuotas,id:83154039,lang:de-de,params:{},version:1.0} |
-|getAllTaskCfg| no trigger | trigger | Get all tasks | {from:iOS,operateType:getAllTaskCfg,id:83154039,lang:de-de,params:{},version:1.0} |
 

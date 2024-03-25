@@ -1,0 +1,1692 @@
+{
+	"operateType": "latestQuotas",
+	"code": "0",
+	"data": {
+		"sn": "SP10ZEW5ZEAxxxxx",
+		"productType": 40,
+		"model": 0,
+		"online": 1,
+		"quotaMap": {
+			"cfgSta": { "sta": 1, "cmdSet": 11, "id": 8 },
+			"chUseInfo": {
+				"cmdSet": 11,
+				"id": 27,
+				"isEnable": [ true, true, true, true, true, true, true, true, true, true ]
+			},
+			"loadChInfo": {
+				"cmdSet": 11,
+				"id": 33,
+				"info": [
+					{
+						"iconNum": 15,
+						"chName": [
+							75,
+							195,
+							188,
+							104,
+							108,
+							115,
+							99,
+							104,
+							114,
+							97,
+							110,
+							107,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0
+						]
+					},
+					{
+						"iconNum": 0,
+						"chName": [
+							87,
+							111,
+							104,
+							110,
+							122,
+							105,
+							109,
+							109,
+							101,
+							114,
+							32,
+							71,
+							101,
+							115,
+							99,
+							104,
+							105,
+							114,
+							114,
+							115,
+							112,
+							195,
+							188,
+							108,
+							101,
+							114,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0
+						]
+					},
+					{
+						"iconNum": 3,
+						"chName": [
+							83,
+							99,
+							104,
+							108,
+							97,
+							102,
+							122,
+							105,
+							109,
+							109,
+							101,
+							114,
+							44,
+							32,
+							65,
+							110,
+							107,
+							108,
+							101,
+							105,
+							100,
+							101,
+							44,
+							32,
+							66,
+							97,
+							100,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0
+						]
+					},
+					{
+						"iconNum": 12,
+						"chName": [
+							66,
+							195,
+							188,
+							114,
+							111,
+							44,
+							32,
+							87,
+							67,
+							44,
+							32,
+							87,
+							97,
+							115,
+							99,
+							104,
+							109,
+							97,
+							115,
+							99,
+							104,
+							105,
+							110,
+							101,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0
+						]
+					},
+					{
+						"iconNum": 12,
+						"chName": [
+							72,
+							111,
+							98,
+							98,
+							121,
+							114,
+							97,
+							117,
+							109,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0
+						]
+					},
+					{
+						"iconNum": 2,
+						"chName": [
+							75,
+							195,
+							188,
+							99,
+							104,
+							101,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0
+						]
+					},
+					{
+						"iconNum": 6,
+						"chName": [
+							75,
+							105,
+							110,
+							100,
+							101,
+							114,
+							122,
+							105,
+							109,
+							109,
+							101,
+							114,
+							44,
+							32,
+							66,
+							97,
+							100,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0
+						]
+					},
+					{
+						"iconNum": 11,
+						"chName": [
+							71,
+							97,
+							114,
+							97,
+							103,
+							101,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0
+						]
+					},
+					{
+						"iconNum": 27,
+						"chName": [
+							84,
+							101,
+							99,
+							104,
+							110,
+							105,
+							107,
+							114,
+							97,
+							117,
+							109,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0
+						]
+					},
+					{
+						"iconNum": 9,
+						"chName": [
+							84,
+							114,
+							101,
+							112,
+							112,
+							101,
+							110,
+							104,
+							97,
+							117,
+							115,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0,
+							0
+						]
+					}
+				]
+			},
+			"gridInfo": { "gridFreq": 50, "cmdSet": 11, "id": 23, "gridVol": 230 },
+			"backupLoadWatt": {
+				"rtc": "2024-2-29",
+				"watth": [
+					[ 58, 40, 31, 30, 37, 56, 40, 36, 34, 0, 0, 0, 0, 0, 0, 0, 41, 69, 31, 35, 16, 0, 0, 0 ],
+					[ 8, 8, 8, 8, 8, 8, 10, 8, 8, 0, 0, 0, 0, 0, 0, 0, 2, 5, 5, 5, 2, 0, 0, 0 ],
+					[ 13, 13, 13, 13, 25, 22, 34, 15, 15, 0, 0, 0, 0, 0, 0, 0, 7, 14, 15, 13, 5, 0, 0, 0 ],
+					[ 13, 13, 13, 13, 33, 35, 25, 15, 15, 0, 0, 0, 0, 0, 0, 0, 7, 15, 17, 14, 24, 0, 0, 0 ],
+					[ 11, 10, 10, 11, 11, 12, 11, 11, 10, 0, 0, 0, 0, 0, 0, 0, 5, 10, 9, 10, 4, 0, 0, 0 ],
+					[ 13, 13, 13, 13, 13, 268, 46, 13, 13, 0, 0, 0, 0, 0, 0, 0, 8, 15, 27, 29, 9, 0, 0, 0 ],
+					[ 5, 5, 5, 5, 5, 5, 16, 6, 6, 0, 0, 0, 0, 0, 0, 0, 3, 6, 13, 16, 2, 0, 0, 0 ],
+					[ 6, 6, 6, 6, 6, 6, 5, 4, 6, 0, 0, 0, 0, 0, 0, 0, 4, 6, 6, 6, 0, 0, 0, 0 ],
+					[ 76, 75, 76, 75, 76, 75, 74, 65, 65, 0, 0, 0, 0, 0, 0, 0, 33, 66, 73, 78, 36, 0, 0, 0 ],
+					[ 17, 17, 17, 17, 17, 20, 40, 22, 46, 0, 0, 0, 0, 0, 0, 0, 9, 33, 17, 17, 7, 0, 0, 0 ]
+				],
+				"cmdSet": 11,
+				"id": 49
+			},
+			"epsModeInfo": { "cmdSet": 11, "eps": true, "id": 25 },
+			"splitPhaseInfo": {
+				"cfgList": [
+					{ "linkCh": 0, "linkMark": 0 },
+					{ "linkCh": 0, "linkMark": 0 },
+					{ "linkCh": 0, "linkMark": 0 },
+					{ "linkCh": 0, "linkMark": 0 },
+					{ "linkCh": 0, "linkMark": 0 },
+					{ "linkCh": 0, "linkMark": 0 },
+					{ "linkCh": 0, "linkMark": 0 },
+					{ "linkCh": 0, "linkMark": 0 },
+					{ "linkCh": 0, "linkMark": 0 },
+					{ "linkCh": 0, "linkMark": 0 }
+				],
+				"cmdSet": 11,
+				"id": 19
+			},
+			"areaInfo": {
+				"area": "Germany,Baden-Württemberg\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000",
+				"cmdSet": 11,
+				"id": 35
+			},
+			"topupLoadWatt": {
+				"rtc": "2024-2-29",
+				"watth": [
+					[ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 600, 1183, 368, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+					[ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
+				],
+				"cmdSet": 11,
+				"id": 50
+			},
+			"emergencyStrategy": {
+				"backupMode": 1,
+				"isCfg": 1,
+				"cmdSet": 11,
+				"chSta": [
+					{ "priority": 0, "isEnable": 1 },
+					{ "priority": 1, "isEnable": 1 },
+					{ "priority": 2, "isEnable": 1 },
+					{ "priority": 3, "isEnable": 1 },
+					{ "priority": 4, "isEnable": 1 },
+					{ "priority": 5, "isEnable": 1 },
+					{ "priority": 6, "isEnable": 1 },
+					{ "priority": 7, "isEnable": 1 },
+					{ "priority": 8, "isEnable": 1 },
+					{ "priority": 9, "isEnable": 1 }
+				],
+				"id": 65,
+				"overloadMode": 1
+			},
+			"channelPower": {
+				"cmdSet": 11,
+				"time": { "sec": 33, "week": 4, "min": 28, "hour": 20, "month": 2, "year": 2024, "day": 29 },
+				"infoList": [
+					{ "powType": 1, "chWatt": 87.49736 },
+					{ "powType": 1, "chWatt": 0 },
+					{ "powType": 1, "chWatt": 10.97996 },
+					{ "powType": 1, "chWatt": 130.71545 },
+					{ "powType": 1, "chWatt": 10.517826 },
+					{ "powType": 1, "chWatt": 42.40507 },
+					{ "powType": 1, "chWatt": 0 },
+					{ "powType": 1, "chWatt": 0 },
+					{ "powType": 1, "chWatt": 76.0895 },
+					{ "powType": 1, "chWatt": 16.542685 },
+					{ "powType": 1, "chWatt": 474.03818 },
+					{ "powType": 0, "chWatt": 0 }
+				],
+				"id": 96
+			},
+			"loadChCurInfo": { "cur": [ 30, 30, 30, 30, 16, 16, 16, 16, 16, 16, 16, 16 ], "cmdSet": 11, "id": 21 },
+			"mainsLoadWatt": {
+				"rtc": "2024-2-29",
+				"watth": [
+					[ 0, 0, 0, 0, 0, 0, 0, 0, 0, 32, 74, 138, 128, 49, 42, 73, 30, 0, 0, 0, 0, 0, 0, 0 ],
+					[ 0, 0, 0, 0, 0, 0, 0, 0, 0, 18, 717, 14, 9, 10, 10, 10, 4, 0, 0, 0, 0, 0, 0, 0 ],
+					[ 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 16, 18, 17, 48, 143, 17, 7, 0, 0, 0, 0, 0, 0, 0 ],
+					[ 0, 0, 0, 0, 0, 0, 0, 0, 0, 17, 17, 19, 17, 17, 17, 17, 8, 0, 0, 0, 0, 0, 0, 0 ],
+					[ 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 10, 10, 10, 10, 10, 9, 4, 0, 0, 0, 0, 0, 0, 0 ],
+					[ 0, 0, 0, 0, 0, 0, 0, 0, 0, 13, 12, 13, 13, 14, 15, 113, 8, 0, 0, 0, 0, 0, 0, 0 ],
+					[ 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5, 5, 5, 5, 5, 5, 2, 0, 0, 0, 0, 0, 0, 0 ],
+					[ 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 6, 3, 7, 13, 8, 7, 1, 0, 0, 0, 0, 0, 0, 0 ],
+					[ 0, 0, 0, 0, 0, 0, 0, 0, 0, 66, 65, 66, 67, 67, 66, 66, 33, 0, 0, 0, 0, 0, 0, 0 ],
+					[ 0, 0, 0, 0, 0, 0, 0, 0, 0, 31, 18, 19, 23, 33, 19, 19, 9, 0, 0, 0, 0, 0, 0, 0 ]
+				],
+				"cmdSet": 11,
+				"id": 48
+			},
+			"timeTask": [
+				{
+					"cfg": {
+						"param": {
+							"lowBattery": 0,
+							"chChargeWatt": 0,
+							"chSta": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+							"hightBattery": 0
+						},
+						"comCfg": {
+							"timeScale": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+							"isCfg": 0,
+							"type": 0,
+							"isEnable": 0,
+							"setTime": { "sec": 0, "week": 0, "min": 0, "hour": 0, "month": 0, "year": 0, "day": 0 },
+							"timeRange": {
+								"isCfg": 0,
+								"timeMode": 0,
+								"startTime": {
+									"sec": 0,
+									"week": 0,
+									"min": 0,
+									"hour": 0,
+									"month": 0,
+									"year": 0,
+									"day": 0
+								},
+								"endTime": {
+									"sec": 59,
+									"week": 0,
+									"min": 59,
+									"hour": 23,
+									"month": 0,
+									"year": 0,
+									"day": 0
+								},
+								"isEnable": 0
+							}
+						}
+					},
+					"cmdSet": 11,
+					"index": 16,
+					"id": 80
+				},
+				{
+					"cfg": {
+						"param": {
+							"lowBattery": 0,
+							"chChargeWatt": 0,
+							"chSta": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+							"hightBattery": 0
+						},
+						"comCfg": {
+							"timeScale": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+							"isCfg": 0,
+							"type": 0,
+							"isEnable": 0,
+							"setTime": { "sec": 0, "week": 0, "min": 0, "hour": 0, "month": 0, "year": 0, "day": 0 },
+							"timeRange": {
+								"isCfg": 0,
+								"timeMode": 0,
+								"startTime": {
+									"sec": 0,
+									"week": 0,
+									"min": 0,
+									"hour": 0,
+									"month": 0,
+									"year": 0,
+									"day": 0
+								},
+								"endTime": {
+									"sec": 59,
+									"week": 0,
+									"min": 59,
+									"hour": 23,
+									"month": 0,
+									"year": 0,
+									"day": 0
+								},
+								"isEnable": 0
+							}
+						}
+					},
+					"cmdSet": 11,
+					"index": 17,
+					"id": 80
+				},
+				{
+					"cfg": {
+						"param": {
+							"lowBattery": 0,
+							"chChargeWatt": 0,
+							"chSta": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+							"hightBattery": 0
+						},
+						"comCfg": {
+							"timeScale": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+							"isCfg": 0,
+							"type": 0,
+							"isEnable": 0,
+							"setTime": { "sec": 0, "week": 0, "min": 0, "hour": 0, "month": 0, "year": 0, "day": 0 },
+							"timeRange": {
+								"isCfg": 0,
+								"timeMode": 0,
+								"startTime": {
+									"sec": 0,
+									"week": 0,
+									"min": 0,
+									"hour": 0,
+									"month": 0,
+									"year": 0,
+									"day": 0
+								},
+								"endTime": {
+									"sec": 59,
+									"week": 0,
+									"min": 59,
+									"hour": 23,
+									"month": 0,
+									"year": 0,
+									"day": 0
+								},
+								"isEnable": 0
+							}
+						}
+					},
+					"cmdSet": 11,
+					"index": 14,
+					"id": 80
+				},
+				{
+					"cfg": {
+						"param": {
+							"lowBattery": 0,
+							"chChargeWatt": 0,
+							"chSta": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+							"hightBattery": 0
+						},
+						"comCfg": {
+							"timeScale": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+							"isCfg": 0,
+							"type": 0,
+							"isEnable": 0,
+							"setTime": { "sec": 0, "week": 0, "min": 0, "hour": 0, "month": 0, "year": 0, "day": 0 },
+							"timeRange": {
+								"isCfg": 0,
+								"timeMode": 0,
+								"startTime": {
+									"sec": 0,
+									"week": 0,
+									"min": 0,
+									"hour": 0,
+									"month": 0,
+									"year": 0,
+									"day": 0
+								},
+								"endTime": {
+									"sec": 59,
+									"week": 0,
+									"min": 59,
+									"hour": 23,
+									"month": 0,
+									"year": 0,
+									"day": 0
+								},
+								"isEnable": 0
+							}
+						}
+					},
+					"cmdSet": 11,
+					"index": 15,
+					"id": 80
+				},
+				{
+					"cfg": {
+						"param": {
+							"lowBattery": 0,
+							"chChargeWatt": 0,
+							"chSta": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+							"hightBattery": 0
+						},
+						"comCfg": {
+							"timeScale": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+							"isCfg": 0,
+							"type": 0,
+							"isEnable": 0,
+							"setTime": { "sec": 0, "week": 0, "min": 0, "hour": 0, "month": 0, "year": 0, "day": 0 },
+							"timeRange": {
+								"isCfg": 0,
+								"timeMode": 0,
+								"startTime": {
+									"sec": 0,
+									"week": 0,
+									"min": 0,
+									"hour": 0,
+									"month": 0,
+									"year": 0,
+									"day": 0
+								},
+								"endTime": {
+									"sec": 59,
+									"week": 0,
+									"min": 59,
+									"hour": 23,
+									"month": 0,
+									"year": 0,
+									"day": 0
+								},
+								"isEnable": 0
+							}
+						}
+					},
+					"cmdSet": 11,
+					"index": 18,
+					"id": 80
+				},
+				{
+					"cfg": {
+						"param": {
+							"lowBattery": 0,
+							"chChargeWatt": 0,
+							"chSta": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+							"hightBattery": 0
+						},
+						"comCfg": {
+							"timeScale": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+							"isCfg": 0,
+							"type": 0,
+							"isEnable": 0,
+							"setTime": { "sec": 0, "week": 0, "min": 0, "hour": 0, "month": 0, "year": 0, "day": 0 },
+							"timeRange": {
+								"isCfg": 0,
+								"timeMode": 0,
+								"startTime": {
+									"sec": 0,
+									"week": 0,
+									"min": 0,
+									"hour": 0,
+									"month": 0,
+									"year": 0,
+									"day": 0
+								},
+								"endTime": {
+									"sec": 59,
+									"week": 0,
+									"min": 59,
+									"hour": 23,
+									"month": 0,
+									"year": 0,
+									"day": 0
+								},
+								"isEnable": 0
+							}
+						}
+					},
+					"cmdSet": 11,
+					"index": 19,
+					"id": 80
+				},
+				{
+					"cfg": {
+						"param": { "lowBattery": 85, "chChargeWatt": 800, "chSta": [ 1, 1 ], "hightBattery": 90 },
+						"comCfg": {
+							"timeScale": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 15, 0, 0, 0, 0, 0, 0, 0 ],
+							"isCfg": 0,
+							"type": 1,
+							"isEnable": 0,
+							"setTime": {
+								"sec": 31,
+								"week": 1,
+								"min": 15,
+								"hour": 12,
+								"month": 6,
+								"year": 2023,
+								"day": 25
+							},
+							"timeRange": {
+								"isCfg": 1,
+								"timeMode": 0,
+								"startTime": {
+									"sec": 0,
+									"week": 4,
+									"min": 0,
+									"hour": 0,
+									"month": 6,
+									"year": 2023,
+									"day": 25
+								},
+								"endTime": {
+									"sec": 59,
+									"week": 1,
+									"min": 59,
+									"hour": 23,
+									"month": 1,
+									"year": 2035,
+									"day": 1
+								},
+								"isEnable": 1
+							}
+						}
+					},
+					"cmdSet": 11,
+					"index": 0,
+					"id": 80
+				},
+				{
+					"cfg": {
+						"param": {
+							"lowBattery": 0,
+							"chChargeWatt": 0,
+							"chSta": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+							"hightBattery": 0
+						},
+						"comCfg": {
+							"timeScale": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+							"isCfg": 0,
+							"type": 0,
+							"isEnable": 0,
+							"setTime": { "sec": 0, "week": 0, "min": 0, "hour": 0, "month": 0, "year": 0, "day": 0 },
+							"timeRange": {
+								"isCfg": 0,
+								"timeMode": 0,
+								"startTime": {
+									"sec": 0,
+									"week": 0,
+									"min": 0,
+									"hour": 0,
+									"month": 0,
+									"year": 0,
+									"day": 0
+								},
+								"endTime": {
+									"sec": 59,
+									"week": 0,
+									"min": 59,
+									"hour": 23,
+									"month": 0,
+									"year": 0,
+									"day": 0
+								},
+								"isEnable": 0
+							}
+						}
+					},
+					"cmdSet": 11,
+					"index": 3,
+					"id": 80
+				},
+				{
+					"cfg": {
+						"param": {
+							"lowBattery": 0,
+							"chChargeWatt": 0,
+							"chSta": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+							"hightBattery": 0
+						},
+						"comCfg": {
+							"timeScale": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+							"isCfg": 0,
+							"type": 0,
+							"isEnable": 0,
+							"setTime": { "sec": 0, "week": 0, "min": 0, "hour": 0, "month": 0, "year": 0, "day": 0 },
+							"timeRange": {
+								"isCfg": 0,
+								"timeMode": 0,
+								"startTime": {
+									"sec": 0,
+									"week": 0,
+									"min": 0,
+									"hour": 0,
+									"month": 0,
+									"year": 0,
+									"day": 0
+								},
+								"endTime": {
+									"sec": 59,
+									"week": 0,
+									"min": 59,
+									"hour": 23,
+									"month": 0,
+									"year": 0,
+									"day": 0
+								},
+								"isEnable": 0
+							}
+						}
+					},
+					"cmdSet": 11,
+					"index": 4,
+					"id": 80
+				},
+				{
+					"cfg": {
+						"param": {
+							"lowBattery": 0,
+							"chChargeWatt": 0,
+							"chSta": [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ],
+							"hightBattery": 0
+						},
+						"comCfg": {
+							"timeScale": [ -1, -1, -1, -1, -1, -1, 63, 0, 0, 0, 0, 0, -8, -1, -1, -1, -1, -1 ],
+							"isCfg": 1,
+							"type": 2,
+							"isEnable": 1,
+							"setTime": {
+								"sec": 27,
+								"week": 1,
+								"min": 55,
+								"hour": 17,
+								"month": 2,
+								"year": 2024,
+								"day": 28
+							},
+							"timeRange": {
+								"isCfg": 1,
+								"timeMode": 0,
+								"startTime": {
+									"sec": 0,
+									"week": 4,
+									"min": 0,
+									"hour": 0,
+									"month": 6,
+									"year": 2023,
+									"day": 24
+								},
+								"endTime": {
+									"sec": 59,
+									"week": 1,
+									"min": 59,
+									"hour": 23,
+									"month": 1,
+									"year": 2035,
+									"day": 1
+								},
+								"isEnable": 1
+							}
+						}
+					},
+					"cmdSet": 11,
+					"index": 1,
+					"id": 80
+				},
+				{
+					"cfg": {
+						"param": {
+							"lowBattery": 0,
+							"chChargeWatt": 0,
+							"chSta": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+							"hightBattery": 0
+						},
+						"comCfg": {
+							"timeScale": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+							"isCfg": 0,
+							"type": 0,
+							"isEnable": 0,
+							"setTime": { "sec": 0, "week": 0, "min": 0, "hour": 0, "month": 0, "year": 0, "day": 0 },
+							"timeRange": {
+								"isCfg": 0,
+								"timeMode": 0,
+								"startTime": {
+									"sec": 0,
+									"week": 0,
+									"min": 0,
+									"hour": 0,
+									"month": 0,
+									"year": 0,
+									"day": 0
+								},
+								"endTime": {
+									"sec": 59,
+									"week": 0,
+									"min": 59,
+									"hour": 23,
+									"month": 0,
+									"year": 0,
+									"day": 0
+								},
+								"isEnable": 0
+							}
+						}
+					},
+					"cmdSet": 11,
+					"index": 2,
+					"id": 80
+				},
+				{
+					"cfg": {
+						"param": {
+							"lowBattery": 0,
+							"chChargeWatt": 0,
+							"chSta": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+							"hightBattery": 0
+						},
+						"comCfg": {
+							"timeScale": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+							"isCfg": 0,
+							"type": 0,
+							"isEnable": 0,
+							"setTime": { "sec": 0, "week": 0, "min": 0, "hour": 0, "month": 0, "year": 0, "day": 0 },
+							"timeRange": {
+								"isCfg": 0,
+								"timeMode": 0,
+								"startTime": {
+									"sec": 0,
+									"week": 0,
+									"min": 0,
+									"hour": 0,
+									"month": 0,
+									"year": 0,
+									"day": 0
+								},
+								"endTime": {
+									"sec": 59,
+									"week": 0,
+									"min": 59,
+									"hour": 23,
+									"month": 0,
+									"year": 0,
+									"day": 0
+								},
+								"isEnable": 0
+							}
+						}
+					},
+					"cmdSet": 11,
+					"index": 7,
+					"id": 80
+				},
+				{
+					"cfg": {
+						"param": {
+							"lowBattery": 0,
+							"chChargeWatt": 0,
+							"chSta": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+							"hightBattery": 0
+						},
+						"comCfg": {
+							"timeScale": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+							"isCfg": 0,
+							"type": 0,
+							"isEnable": 0,
+							"setTime": { "sec": 0, "week": 0, "min": 0, "hour": 0, "month": 0, "year": 0, "day": 0 },
+							"timeRange": {
+								"isCfg": 0,
+								"timeMode": 0,
+								"startTime": {
+									"sec": 0,
+									"week": 0,
+									"min": 0,
+									"hour": 0,
+									"month": 0,
+									"year": 0,
+									"day": 0
+								},
+								"endTime": {
+									"sec": 59,
+									"week": 0,
+									"min": 59,
+									"hour": 23,
+									"month": 0,
+									"year": 0,
+									"day": 0
+								},
+								"isEnable": 0
+							}
+						}
+					},
+					"cmdSet": 11,
+					"index": 8,
+					"id": 80
+				},
+				{
+					"cfg": {
+						"param": {
+							"lowBattery": 0,
+							"chChargeWatt": 0,
+							"chSta": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+							"hightBattery": 0
+						},
+						"comCfg": {
+							"timeScale": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+							"isCfg": 0,
+							"type": 0,
+							"isEnable": 0,
+							"setTime": { "sec": 0, "week": 0, "min": 0, "hour": 0, "month": 0, "year": 0, "day": 0 },
+							"timeRange": {
+								"isCfg": 0,
+								"timeMode": 0,
+								"startTime": {
+									"sec": 0,
+									"week": 0,
+									"min": 0,
+									"hour": 0,
+									"month": 0,
+									"year": 0,
+									"day": 0
+								},
+								"endTime": {
+									"sec": 59,
+									"week": 0,
+									"min": 59,
+									"hour": 23,
+									"month": 0,
+									"year": 0,
+									"day": 0
+								},
+								"isEnable": 0
+							}
+						}
+					},
+					"cmdSet": 11,
+					"index": 5,
+					"id": 80
+				},
+				{
+					"cfg": {
+						"param": {
+							"lowBattery": 0,
+							"chChargeWatt": 0,
+							"chSta": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+							"hightBattery": 0
+						},
+						"comCfg": {
+							"timeScale": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+							"isCfg": 0,
+							"type": 0,
+							"isEnable": 0,
+							"setTime": { "sec": 0, "week": 0, "min": 0, "hour": 0, "month": 0, "year": 0, "day": 0 },
+							"timeRange": {
+								"isCfg": 0,
+								"timeMode": 0,
+								"startTime": {
+									"sec": 0,
+									"week": 0,
+									"min": 0,
+									"hour": 0,
+									"month": 0,
+									"year": 0,
+									"day": 0
+								},
+								"endTime": {
+									"sec": 59,
+									"week": 0,
+									"min": 59,
+									"hour": 23,
+									"month": 0,
+									"year": 0,
+									"day": 0
+								},
+								"isEnable": 0
+							}
+						}
+					},
+					"cmdSet": 11,
+					"index": 6,
+					"id": 80
+				},
+				{
+					"cfg": {
+						"param": {
+							"lowBattery": 0,
+							"chChargeWatt": 0,
+							"chSta": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+							"hightBattery": 0
+						},
+						"comCfg": {
+							"timeScale": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+							"isCfg": 0,
+							"type": 0,
+							"isEnable": 0,
+							"setTime": { "sec": 0, "week": 0, "min": 0, "hour": 0, "month": 0, "year": 0, "day": 0 },
+							"timeRange": {
+								"isCfg": 0,
+								"timeMode": 0,
+								"startTime": {
+									"sec": 0,
+									"week": 0,
+									"min": 0,
+									"hour": 0,
+									"month": 0,
+									"year": 0,
+									"day": 0
+								},
+								"endTime": {
+									"sec": 59,
+									"week": 0,
+									"min": 59,
+									"hour": 23,
+									"month": 0,
+									"year": 0,
+									"day": 0
+								},
+								"isEnable": 0
+							}
+						}
+					},
+					"cmdSet": 11,
+					"index": 12,
+					"id": 80
+				},
+				{
+					"cfg": {
+						"param": {
+							"lowBattery": 0,
+							"chChargeWatt": 0,
+							"chSta": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+							"hightBattery": 0
+						},
+						"comCfg": {
+							"timeScale": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+							"isCfg": 0,
+							"type": 0,
+							"isEnable": 0,
+							"setTime": { "sec": 0, "week": 0, "min": 0, "hour": 0, "month": 0, "year": 0, "day": 0 },
+							"timeRange": {
+								"isCfg": 0,
+								"timeMode": 0,
+								"startTime": {
+									"sec": 0,
+									"week": 0,
+									"min": 0,
+									"hour": 0,
+									"month": 0,
+									"year": 0,
+									"day": 0
+								},
+								"endTime": {
+									"sec": 59,
+									"week": 0,
+									"min": 59,
+									"hour": 23,
+									"month": 0,
+									"year": 0,
+									"day": 0
+								},
+								"isEnable": 0
+							}
+						}
+					},
+					"cmdSet": 11,
+					"index": 13,
+					"id": 80
+				},
+				{
+					"cfg": {
+						"param": {
+							"lowBattery": 0,
+							"chChargeWatt": 0,
+							"chSta": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+							"hightBattery": 0
+						},
+						"comCfg": {
+							"timeScale": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+							"isCfg": 0,
+							"type": 0,
+							"isEnable": 0,
+							"setTime": { "sec": 0, "week": 0, "min": 0, "hour": 0, "month": 0, "year": 0, "day": 0 },
+							"timeRange": {
+								"isCfg": 0,
+								"timeMode": 0,
+								"startTime": {
+									"sec": 0,
+									"week": 0,
+									"min": 0,
+									"hour": 0,
+									"month": 0,
+									"year": 0,
+									"day": 0
+								},
+								"endTime": {
+									"sec": 59,
+									"week": 0,
+									"min": 59,
+									"hour": 23,
+									"month": 0,
+									"year": 0,
+									"day": 0
+								},
+								"isEnable": 0
+							}
+						}
+					},
+					"cmdSet": 11,
+					"index": 9,
+					"id": 80
+				},
+				{
+					"cfg": {
+						"param": {
+							"lowBattery": 0,
+							"chChargeWatt": 0,
+							"chSta": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+							"hightBattery": 0
+						},
+						"comCfg": {
+							"timeScale": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+							"isCfg": 0,
+							"type": 0,
+							"isEnable": 0,
+							"setTime": { "sec": 0, "week": 0, "min": 0, "hour": 0, "month": 0, "year": 0, "day": 0 },
+							"timeRange": {
+								"isCfg": 0,
+								"timeMode": 0,
+								"startTime": {
+									"sec": 0,
+									"week": 0,
+									"min": 0,
+									"hour": 0,
+									"month": 0,
+									"year": 0,
+									"day": 0
+								},
+								"endTime": {
+									"sec": 59,
+									"week": 0,
+									"min": 59,
+									"hour": 23,
+									"month": 0,
+									"year": 0,
+									"day": 0
+								},
+								"isEnable": 0
+							}
+						}
+					},
+					"cmdSet": 11,
+					"index": 10,
+					"id": 80
+				},
+				{
+					"cfg": {
+						"param": {
+							"lowBattery": 0,
+							"chChargeWatt": 0,
+							"chSta": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+							"hightBattery": 0
+						},
+						"comCfg": {
+							"timeScale": [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+							"isCfg": 0,
+							"type": 0,
+							"isEnable": 0,
+							"setTime": { "sec": 0, "week": 0, "min": 0, "hour": 0, "month": 0, "year": 0, "day": 0 },
+							"timeRange": {
+								"isCfg": 0,
+								"timeMode": 0,
+								"startTime": {
+									"sec": 0,
+									"week": 0,
+									"min": 0,
+									"hour": 0,
+									"month": 0,
+									"year": 0,
+									"day": 0
+								},
+								"endTime": {
+									"sec": 59,
+									"week": 0,
+									"min": 59,
+									"hour": 23,
+									"month": 0,
+									"year": 0,
+									"day": 0
+								},
+								"isEnable": 0
+							}
+						}
+					},
+					"cmdSet": 11,
+					"index": 11,
+					"id": 80
+				}
+			]
+		}
+	}
+}

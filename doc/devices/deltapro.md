@@ -1,5 +1,5 @@
 # States for  DELTAPRO
-### version: 0.0.21
+### version: 0.0.22
 
 [bmsMaster](#bmsMaster)
 
@@ -10,8 +10,6 @@
 [pd](#pd)
 
 [mppt](#mppt)
-
-[info](#info)
 
 
 
@@ -38,7 +36,8 @@
 |remainTime|0 | 143999 | min | 1 |  Time remaining |
 |minCellVol|0 | 60 | V | 0.001 |  Minimum cell voltage |
 |fullCap|0 | 80000 | mAh | 1 |  Full capacity |
-|cycles|0 | 6000 | cycles | 1 |  Number of cycles |
+|cycles|0 | 6000 |  | 1 |  Number of cycles |
+|diffSoc|0 | 100 | % | 1 |  SOC difference |
 
 
 ### string
@@ -60,6 +59,12 @@
 |errCode| Global error code | {0:OK?} |
 |cellId| Battery capacity type | {1:2.5 Ah per battery,2:2 Ah per battery} |
 
+### array
+
+| State  |  Name |
+|----------|------|
+|packSn| Pack SN |
+
 ## ems
 
 ### diagnostic
@@ -67,10 +72,13 @@
 | State  |     Name |  values |
 |----------|:-------------:|------|
 |chgCmd| Charge switch | {0:off,1:on,2:2?} |
-|bmsWarningState| BMS warning state: bit0: hi_temp; bit1: low_temp; bit2: overload; bit3: chg_flag | {0:no warning?,1:hi_temp,2:low_temp,4:overload,8:chg_flag} |
+|bmsWarningState| BMS warning state | {0:no warning?,1:hi_temp,2:low_temp,4:overload,8:chg_flag} |
 |emsIsNormalFlag| Energy storage state: 0: sleep; 1: normal | {0:sleep,1:normal} |
+|bms0Online| BMS0 online signal | {0:not online?,1:HW online,2:SW online,3:HW-SW online} |
+|bms1Online| BMS1 online signal | {0:not online?,1:HW online,2:SW online,3:HW-SW online} |
 |dsgCmd| Discharge switch | {0:off,1:on,2:2?} |
 |chgState| Charging state | {0:disabled,1:CC,2:CV,3:UPS,4:PARA 0x55: Charging error} |
+|bms2Online| BMS2 online signal | {0:not online?,1:HW online,2:SW online,3:HW-SW online} |
 
 ### level
 
@@ -98,14 +106,11 @@
 
 | State  |  Name |
 |----------|------|
-|bms0Online| BMS online signal: BIT0: hardware online signal; BIT1: software online signal |
 |openBmsIdx| Open BMS index |
 |maxAvailableNum| Maximum available quantity |
-|bms1Online| BMS online signal: BIT0: hardware online signal; BIT1: software online signal |
 |bmsModel| BMS model |
 |openUpsFlag| UPS mode enable flag |
 |fanLevel| Fan level |
-|bms2Online| BMS online signal: BIT0: hardware online signal; BIT1: software online signal |
 
 ## inv
 
@@ -132,7 +137,7 @@
 | State  |      off    |  on |  Name |  cmd |
 |----------|:-------------:|:------:|------|------|
 |cfgAcWorkMode| full power | mute | AC charging mode |  |
-|cfgAcEnabled| off | on | AC discharge switch setting | {from:Android,operateType:TCP,id:554272649,lang:en-us,params:{id:66,enabled:1},version:1.0} |
+|cfgAcEnabled| off | on | AC discharge (INV) switch setting | {from:Android,operateType:TCP,id:554272649,lang:en-us,params:{id:66,enabled:1},version:1.0} |
 |cfgAcXboost| off | on | X-Boost switch | {from:Android,operateType:TCP,id:602507362,lang:en-us,params:{id:66,xboost:1},version:1.0} |
 
 ### string
@@ -170,7 +175,7 @@
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |wattsInSum|0 | 4000 | W | 1 |  Total input power |
 |typec2Watts|0 | 500 | W | 1 |  Typec2 output power |
-|usb1Watts|0 | 500 | W | 0.1 |  Common usb1 output power |
+|usb1Watts|0 | 500 | W | 1 |  Common usb1 output power |
 |chgPowerDc|0 | 65000 | kWh | 0.001 |  Cumulative DC power charged (adapter) |
 |dsgPowerDc|0 | 65000 | kWh | 0.001 |  Cumulative DC power discharged |
 |typccUsedTime|0 | 9999999 | min | 0.0166 |  Type-C use time |
@@ -188,12 +193,12 @@
 |chgSunPower|0 | 65000 | kWh | 0.001 |  Cumulative solar power charged |
 |carTemp|0 | 80 | °C | 1 |  CAR temperature |
 |qcUsb2Watts|0 | 500 | W | 0.1 |  Quick charge usb2 output power |
-|qcUsb1Watts|0 | 500 | W | 0.1 |  Quick charge usb1 output power |
+|qcUsb1Watts|0 | 500 | W | 1 |  Quick charge usb1 output power |
 |usbqcUsedTime|0 | 9999999 | min | 0.0166 |  USB QC use time |
 |usbUsedTime|0 | 9999999 | min | 0.0166 |  USB use time |
 |mpptUsedTime|0 | 9999999 | min | 0.0166 |  MPPT use time |
 |carWatts|0 | 500 | W | 0.1 |  CAR output power |
-|usb2Watts|0 | 500 | W | 0.1 |  Common usb2 output power |
+|usb2Watts|0 | 500 | W | 1 |  Common usb2 output power |
 |minAcoutSoc|0 | 255 | % (0-255?) | 1 |  minimum AC out SOC |
 |acautooutPause|0 | 255 | s (0-255?) | 1 |  AC Auto out Pause |
 
@@ -203,7 +208,7 @@
 | State  |  Name |
 |----------|------|
 |wifiVer| Wi-Fi version |
-|wirelessWatts| Wireless charging output power (W): Reserved, not available |
+|wirelessWatts| Wireless charging output power (W) |
 |model| Product model |
 |lcdBrightness| delta max special |
 |sysVer| System version |
@@ -225,7 +230,7 @@
 |----------|:-------------:|------|
 |extRj45Port| RJ45 port | {0:NULL,1:RC(BLE_CTL)} |
 |ext3p8Port| Infinity port / 3+8 ports | {0:NULL,1:CC,2:PR,3:SP (BC)} |
-|carState| CAR button state: 0: off; 1: on | {0:off,1:on} |
+|carState| CAR button state | {0:off,1:on} |
 |wifiAutoRcvy| Wi-Fi auto mode | {0:default mode (STA),1:The Wi-Fi network is automatically restored to the last mode (STA/AP) after powering on} |
 |ext4p8Port| Extra battery port. Only the status of the leftmost port can be identified. | {0:NULL,1:Extra battery,2:Smart generator} |
 |iconRechgTimeMode| Charge icon mode | {0:normal,1:blinking} |
@@ -248,14 +253,14 @@
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |carOutVol|0 | 15 | V | 0.1 |  Car charging output voltage |
 |carTemp|0 | 80 | °C | 1 |  Car charging temperature |
-|outWatts|0 | 500 | W | 0.1 |  PV output power |
+|outWatts|0 | 1600 | W | 0.001 |  PV output power |
 |carOutAmp|0 | 13 | A | 0.01 |  Car charging output current |
 |outAmp|0 | 13 | A | 0.01 |  PV output current |
 |dcdc12vWatts|0 | 500 | W | 0.1 |  DC12V30A output power, which is valid only for DELTA Pro |
-|inWatts|0 | 500 | W | 0.1 |  PV input power |
+|inWatts|0 | 1600 | W | 0.001 |  PV input power |
 |dcdc12vVol|0 | 60 | V | 0.1 |  DC12V30A output voltage, which is valid only for DELTA Pro |
 |inAmp|0 | 13 | A | 0.01 |  PV input current |
-|inVol|0 | 100 | V | 0.1 |  PV input voltage |
+|inVol|0 | 150 | V | 0.1 |  PV input voltage |
 |carOutWatts|0 | 500 | W | 0.1 |  Car charging output power |
 |mpptTemp|0 | 80 | °C | 1 |  MPPT temperature |
 |outVol|0 | 60 | V | 0.1 |  PV output voltage |
@@ -269,17 +274,11 @@
 |----------|:-------------:|:------:|------|------|
 |carState| off | on | Car charger switch setting | {from:Android,operateType:TCP,id:639503104,lang:en-us,params:{id:81,enabled:1},version:1.0} |
 
-### string
-
-| State  |  Name |
-|----------|------|
-|faultCode| Error code: byte0: mppt_fault; byte1: car_fault; byte2: dc24v_fault |
-|swVer| Version number |
-
 ### diagnostic
 
 | State  |     Name |  values |
 |----------|:-------------:|------|
+|faultCode| Error code | {0:OK?,1:mppt_fault,2:car_fault,4:dc24v_fault} |
 |xt60ChgType| XT60 charging type | {0:not detected,1:MPPT,2:adapter} |
 |dc24vState| DCDC24 switch state | {0:off,1:on} |
 |chgPauseFlag| PV charging pause flag | {0:not stopped ?,1:charging stopped} |
@@ -287,18 +286,15 @@
 |cfgChgType| Configured charging type: This parameter is valid when xt60_chg_type is 0. | {0:auto,1:MPPT,2:adapter} |
 |chgState| Charging state | {0:disabled,1:charging,2:standby (DC charging stopped during AC charging)} |
 
+### string
+
+| State  |  Name |
+|----------|------|
+|swVer| Version number |
+
 ### level
 
 | State  |      Min     |     Max     |  Unit |  Mult |  Name |  cmd |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
 |cfgDcChgCurrent| 4 | 13 | A | 0.001 |  On-board charging current | {from:Android,operateType:TCP,id:787426012,lang:en-us,params:{id:71,currMa:6000},version:1.0} |
-
-## info
-
-### switch
-
-| State  |      off    |  on |  Name |  cmd |
-|----------|:-------------:|:------:|------|------|
-|latestQuotas| no trigger | trigger | Get latest Quotas | {from:iOS,operateType:latestQuotas,id:83154039,lang:de-de,params:{},version:1.0} |
-|getAllTaskCfg| no trigger | trigger | Get all tasks | {from:iOS,operateType:getAllTaskCfg,id:83154039,lang:de-de,params:{},version:1.0} |
 

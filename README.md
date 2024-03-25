@@ -30,7 +30,7 @@ The adapter is based on the work of:
 
 ## Installation and Configuration
 
-Install the adapter from github.
+Install the adapter from github (adapter is not yet in the stable repo).
 
 ![some mor details](doc/en/installation.md)
 
@@ -47,7 +47,7 @@ There are 3 possibilities:
 
 The mqqt Broker settings are default and usually need no modification.
 
-Use the second tab "Device(s) Configuration" for adding your equipment.
+Use the tab "Device(s) Configuration" for adding your power equipment.
 
 <details><summary><i> Parametrizing the Powerstream</i></summary>
 <p>
@@ -80,15 +80,37 @@ Use the second tab "Device(s) Configuration" for adding your equipment.
 
 </p></details>
 
-Use the third tab "Wave / Glacier Configuration" for adding your equipment.
+Use the tab "Generator / SHP Configuration" for adding your power equipment.
 
-<details><summary><i><details><summary><i>Parametrizing the Wave</i></summary>
+<details><summary><i>Parametrizing the Generator</i></summary>
+<p>
+
+* add a new row
+* set the deviceID of Generator as shown in the app, something like "DGEB...."
+* give it a name
+* set the type to "Generator"
+
+</p></details>
+
+<details><summary><i>Parametrizing the Smart Home Panel</i></summary>
+<p>
+
+* add a new row
+* set the deviceID of Generator as shown in the app, something like "SP10...."
+* give it a name
+* set the type to "panel"
+
+</p></details>
+
+Use the tab "Wave / Glacier Configuration" for adding your equipment.
+
+<details><summary><i>Parametrizing the Wave</i></summary>
 <p>
 
 * add a new row
 * set the deviceID of Smart Plug as shown in the app, something like "KT21ZCH..."
 * give it a name
-* set the type to "plug"
+* set the type to "Wave2"
 
 </p></details>
 
@@ -98,11 +120,35 @@ Use the third tab "Wave / Glacier Configuration" for adding your equipment.
 * add a new row
 * set the deviceID of Smart Plug as shown in the app, something like "BX11ZCB..."
 * give it a name
-* set the type to "plug"
+* set the type to "Glacier"
 
 </p></details>
 
-## data point update
+Use the tab "Homeassistant" for setup of MQTT connection to HA
+
+<details><summary><i>Parametrizing Homeassistant Connector</i></summary>
+<p>
+
+* enable the service
+* set the user settings of the MQTT Broker of HA
+* set the connection parameter of the MQTT Broker of HA
+* select debug settings if required
+
+Modification at HA side:
+
+* The adapter uses the discovery function in HA, no configuration of datapoints in HA is needed.
+* MQTT add-on ...
+
+</p></details>
+
+## ioBroker adapter functions 
+
+* the defined devices are connected to the adapter via mqtt
+* the adapter filters the incomming messages of the devices. only changed values are stored internally
+* if the App prevents adjusting at a certain condition, when known it is replicated (e.g. inverter ON when below minimum battery charge is prevented, you can see a warning in the log )
+* not everything is known, so information to status interpretation may be uncertain, this is mostly marked with trailing "?"
+
+### remarks to update of data point setup (min, max, unit, ....)
 
 If settings to a data point are changed in the new version of adapter (e.g. name, unit, max value) the change is not effective until you:
 - stop the adapter instance
@@ -111,7 +157,35 @@ If settings to a data point are changed in the new version of adapter (e.g. name
 
 During startup the datapoints are created, but not changed when existing.
 
+### remarks to warnings/errors
+
+Some occurances in the adapter are tagged as warning or error in order to appear in the log when the loglevel is in info mode.
+This is not necessarily a failure or an indicator for not working adapter, it is more a sign for a not expected behaviour. The cause might not be in the adapter itself, but the attention is set.
+
+## HA connector/gateway
+
+* the MQTT discovery function in HA enables an elegant way of information exchange
+* at each iobroker adapter start all discovery objects are transmitted to HA (even the should retain in HA)
+* iobroker adapter filters the incomming messages of the devices. only changed values are stored internally and transferred to HA.
+* if a value is not set by device data update, it will appear as unknown in HA
+* if the device is reachable, then the availability will be shown in the device connectivity, this is inherited to the "sub-devices" (unavailability is precessed in the same way)
+
+### annotations to functionality
+
+* Due to to the asynchronity of information updates and command transfer sometimes race conditions may be visible. So a switch is commanded and its toggling back and forth before it stays, can be observed.
+* restart of HA may not be recognized correctly in iobroker, so it needs a manual restart of the adapter (WIP)
+
 ## Implemented Devices
+
+some explanation to the device data
+* number -> data point with numeric value
+* level -> adjustable data point with numeric value, sometimes also selections which have numeric representation
+* switch -> adjustable data point boolean
+* diagnostic -> boolean or multi state data point transferred to text
+* string -> datapoint as text only
+* array -> datapoint with array
+* value to text conversion might use a non-validated text (feedback is welcome), this is indicated be "?" at the end of text
+
 
 ### Powerstation
 ![River Max](./doc/devices/rivermax.md)
@@ -134,24 +208,57 @@ During startup the datapoints are created, but not changed when existing.
 
 ![Delta 2 Max](./doc/devices/delta2max.md)
 
+![Delta Pro Ultra](./doc/devices/deltaproultra.md)
+
+### Smart Home Panel
+![Smart Home Panel](./doc/devices/panel.md)
+
+### Generator
+![Generator](./doc/devices/generator.md)
+
+Dual Fuel generator is not available, could be implemented, if data is available.
+
 ### Powerstream
 ![Powerstream](./doc/devices/pstream600.md)
 
 The 800W version is also implemented and only difference ist the 800W maximum power.
+supply priority -> 0/false = prioritized grid supply; 1/true = prioritized battery supply (charging)
 
 ### Smart Plugs
 ![Smart Plug](./doc/devices/plug.md)
 
 ### Wave 2 Air conditioner
-![Wave](./doc/devices/wave.md)
+![Wave2](./doc/devices/wave2.md)
+
+Wave is not available, could be implemented, if data is available.
 
 ### Glacier refrigerator
 ![Glacier](./doc/devices/glacier.md)
 
+
 ## ToDo
 * check forgotten boundary conditions for commands (inhibit cmd, or additional value)
+* check beep command if reversing needed
 
 ## Changelog
+### 0.0.22
+* (foxthefox) Homeassistant Connector/Gateway
+* (foxthefox) added Generator (indication only, no knowledge on commands)
+* (foxthefox) added Delta Pro Ultra
+* (foxthefox) added Smart Home Panel
+* (foxthefox) latestQuotas/getTimeTaskConfig moved from info to action
+* (foxthefox) uptime no max boundary
+* (foxthefox) several adjustable values which represent a mode or predefined set of settings are now using "states" definition (IOB)
+* (foxthefox) changed factor for pd/usb1Watts, usb2Watts, qcUsb1Watts, qcUsb2Watts
+* (foxthefox) info for offline/online status with EF cloud
+* (foxthefox) correction for protobuf cmds (dataLen)
+* (foxthefox) some strings are now diagnostic
+* (foxthefox) X_unknown_15/17/34 are now numbers
+* (foxthefox) skip telegrams where openBmsIdx=0, bqSysStatReg=0
+* (foxthefox) deltapro mppt value changes (inWatts/outWatts max=1600, mult= 0.001)
+* (foxthefox) deltapro new values bmsMaster.diffSoc, bmsMaster.packSn
+
+
 ### 0.0.21 (npm)
 * (foxthefox) more debug on connection
 * (foxthefox) new datapoints for wave2

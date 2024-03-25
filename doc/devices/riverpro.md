@@ -1,13 +1,11 @@
 # States for  RIVERPRO
-### version: 0.0.21
+### version: 0.0.22
 
 [bmsMaster](#bmsMaster)
 
 [inv](#inv)
 
 [pd](#pd)
-
-[info](#info)
 
 
 
@@ -17,7 +15,7 @@
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |amp|0 | 25 | A | 0.001 |  Current |
-|cycles|0 | 6000 | cycles | 1 |  Number of cycles |
+|cycles|0 | 6000 |  | 1 |  Number of cycles |
 |fullCap|0 | 80000 | mAh | 1 |  Full capacity |
 |maxCellTemp|0 | 80 | °C | 1 |  Maximum cell temperature |
 |maxCellVol|0 | 60 | V | 0.001 |  Maximum cell voltage |
@@ -60,7 +58,7 @@
 
 | State  |      off    |  on |  Name |  cmd |
 |----------|:-------------:|:------:|------|------|
-|cfgAcEnabled| off | on | AC discharge switch setting | {from:Android,operateType:TCP,id:554272649,lang:en-us,params:{id:66,enabled:1},version:1.0} |
+|cfgAcEnabled| off | on | AC discharge (INV) switch setting | {from:Android,operateType:TCP,id:554272649,lang:en-us,params:{id:66,enabled:1},version:1.0} |
 |cfgAcXboost| off | on | X-Boost switch | {from:Android,operateType:TCP,id:602507362,lang:en-us,params:{id:66,xboost:1},version:1.0} |
 
 ### diagnostic
@@ -131,11 +129,11 @@
 |remainTime|0 | 143999 | min | 1 |  Time remaining (min) &gt; 0: remaining charging time; time remaining (min) &lt; 0: remaining discharging time |
 |soc|0 | 100 | % | 1 |  Displayed SOC |
 |typecUsedTime|0 | 9999999 | min | 0.0166 |  Type-C use time |
-|usb1Watts|0 | 500 | W | 0.1 |  Common usb1 output power |
-|usb2Watts|0 | 500 | W | 0.1 |  Common usb2 output power |
+|usb1Watts|0 | 500 | W | 1 |  Common usb1 output power |
+|usb2Watts|0 | 500 | W | 1 |  Common usb2 output power |
 |usbUsedTime|0 | 9999999 | min | 0.0166 |  USB use time |
 |usbqcUsedTime|0 | 9999999 | min | 0.0166 |  USB QC use time |
-|wattsInSum|0 | 4000 | W | 1 |  Total input power |
+|wattsInSum|0 | 660 | W | 1 |  Total input power |
 |wattsOutSum|0 | 4000 | W | 1 |  Total output power |
 |ledWatts|0 | 100 | W | 0.1 |  LED output power |
 |typecTemp|0 | 80 | °C | 1 |  Type-C temperature |
@@ -163,13 +161,4 @@
 | State  |      Min     |     Max     |  Unit |  Mult |  Name |  cmd |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
 |standByMode| 0 | 5999 | min | 1 |  Device standby time /min 0 Never standby 5999 Max value | {from:Android,operateType:TCP,id:119032574,lang:en-us,params:{id:33,standByMode:360},version:1.0} |
-
-## info
-
-### switch
-
-| State  |      off    |  on |  Name |  cmd |
-|----------|:-------------:|:------:|------|------|
-|latestQuotas| no trigger | trigger | Get latest Quotas | {from:iOS,operateType:latestQuotas,id:83154039,lang:de-de,params:{},version:1.0} |
-|getAllTaskCfg| no trigger | trigger | Get all tasks | {from:iOS,operateType:getAllTaskCfg,id:83154039,lang:de-de,params:{},version:1.0} |
 

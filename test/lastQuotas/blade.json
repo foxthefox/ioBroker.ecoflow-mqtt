@@ -1,0 +1,83 @@
+{
+	"id": 440791018,
+	"version": "1.1",
+	"operateType": "latestQuotas",
+	"moduleType": 0,
+	"code": "0",
+	"data": {
+		"sn": "H101ZEB4ZF2Pxxxx",
+		"productType": 42,
+		"model": 1,
+		"online": 1,
+		"quotaMap": {
+			"mapParam": {
+				"width": 3290,
+				"mapID": 1,
+				"resolution": 0.10000000149011612,
+				"height": 3740
+			},
+			"signalInfo": {
+				"baseLat": 4.04,
+				"4gSignal": -69,
+				"4gIMSI": "208012402xxxxxx",
+				"wifiSignal": -59,
+				"trackedSatellites": 0,
+				"lngDirection": "E",
+				"latDirection": "N",
+				"4gIMEI": "8663440xxxxxx",
+				"robotLat": 4.9629333333,
+				"baseLng": 40.05,
+				"4gICCID": "893301224xxxxxxx",
+				"baseSignal": 0,
+				"robotLng": 40.60757154,
+				"loraSignal": 0
+			},
+			"historical": {
+				"odom": 900,
+				"mowingAreas": 900,
+				"mowingTime": 232,
+				"bladeUsingTime": 232
+			},
+			"normalBleHeartBeat": {
+				"robotLowerr": 2049,
+				"edgeTotal": 0,
+				"errorCode": [],
+				"currentWorkArea": 0,
+				"edgeCurrent": 0,
+				"mappingDistance": 0,
+				"connType": 1,
+				"angle": -180,
+				"currentWorkProgress": 0,
+				"event": 28681,
+				"errorCount": 0,
+				"rtkState": 4,
+				"robotRtkScore": 88,
+				"robotState": 2049,
+				"edgeTime": 0,
+				"baseRtkScore": 94,
+				"mappingArea": 0,
+				"batteryRemainPercent": 100,
+				"basePoseX": -37,
+				"basePoseY": -554,
+				"basePoseAngle": 179,
+				"rainCountdown": 0,
+				"currentWorkTime": 0,
+				"poseY": -554,
+				"exerciseStep": 0,
+				"poseX": -37
+			},
+			"batteryInfo": {
+				"current": 500,
+				"currentCapacity": 490,
+				"batteryTemp": 30,
+				"boardTemp": 31,
+				"motorTemp": 31,
+				"designedCapacity": 500,
+				"cycles": 100,
+				"power": 12,
+				"remainPower": 100,
+				"voltage": 24000
+			}
+		}
+	}
+}

@@ -1,10 +1,33 @@
 {
 	"common": {
 		"name": "ecoflow-mqtt",
-		"version": "0.0.21",
+		"version": "0.0.22",
 		"news": {
+			"0.0.22": {
+				"en": "homeassistant connector",
+				"de": "HomeAssistant-Anschluss",
+				"ru": "разъем домашнего помощника",
+				"pt": "conector do assistente doméstico",
+				"nl": "homeassistant-aansluiting",
+				"fr": "connecteur d'assistant à domicile",
+				"it": "connettore dell'assistente domestico",
+				"es": "conector de asistente doméstico",
+				"pl": "złącze asystenta domowego",
+				"uk": "роз'єм для домашнього помічника",
+				"zh-cn": "家庭助理连接器"
+			},
 			"0.0.21": {
-				"en": "improvements, mor debug log"
+				"en": "improvements, mor debug log",
+				"de": "Verbesserungen, mehr Debug-Protokoll",
+				"ru": "улучшения, журнал отладки",
+				"pt": "melhorias, log de depuração mor",
+				"nl": "verbeteringen, meer foutopsporingslogboek",
+				"fr": "améliorations, plus de journal de débogage",
+				"it": "miglioramenti, più registro di debug",
+				"es": "mejoras, registro de depuración más",
+				"pl": "ulepszenia, więcej dziennika debugowania",
+				"uk": "покращення, мор журнал налагодження",
+				"zh-cn": "改进，更多调试日志"
 			},
 			"0.0.20": {
 				"en": "improvements, added integration testing",
@@ -243,8 +266,16 @@
 			}
 		]
 	},
-	"protectedNative": [ "userName", "userPassword", "mqttUserId", "mqttPwd", "mqttClientId" ],
-	"encryptedNative": [ "userPassword", "mqttPwd" ],
+	"protectedNative": [
+		"userName",
+		"userPassword",
+		"mqttUserId",
+		"mqttPwd",
+		"mqttClientId",
+		"haMqttUserId",
+		"haMqttUserPWd"
+	],
+	"encryptedNative": [ "userPassword", "mqttPwd", "haMqttUserPWd" ],
 	"native": {
 		"userName": "userEmail",
 		"userPassword": "pw",
@@ -252,7 +283,7 @@
 		"mqttUserName": "app-....",
 		"mqttPwd": "xxxx",
 		"mqttClientId": "ANDRIOD-...",
-		"mqttUrl": "mqtts://mqtt.ecoflow.com",
+		"mqttUrl": "mqtts://mqtt-e.ecoflow.com",
 		"mqttPort": 8883,
 		"enableMqttReconnect": false,
 		"pstreams": [],
@@ -260,6 +291,8 @@
 		"plugs": [],
 		"waves": [],
 		"glaciers": [],
+		"generators": [],
+		"panels": [],
 		"msgStateCreation": false,
 		"msgUpdatePstation": false,
 		"msgUpdateValuePstation": false,
@@ -276,7 +309,20 @@
 		"msgSetGetPlug": false,
 		"msgCmdPlug": false,
 		"msgUnknownMsgPlug": false,
-		"showHex": false
+		"showHex": false,
+		"haMqttUserId": "hamqttuser",
+		"haMqttUserPWd": "hamqttusePWd",
+		"haMqttUrl": "192.x.x.x",
+		"haMqttPort": 1883,
+		"haMqttEnable": false,
+		"haMqttProtocol": "mqtt://",
+		"haDiscoveryRetain": false,
+		"msgHaAutoDiscovery": false,
+		"msgHaIncomming": false,
+		"msgHaOutgoing": false,
+		"msgHaStatusInitial": false,
+		"showDiscoveryObject": false,
+		"haTopic": "iob_ef"
 	},
 	"objects": [],
 	"instanceObjects": [

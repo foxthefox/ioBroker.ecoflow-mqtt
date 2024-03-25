@@ -1,5 +1,5 @@
 # States for  DELTA2
-### version: 0.0.21
+### version: 0.0.22
 
 [bmsMaster](#bmsMaster)
 
@@ -11,8 +11,6 @@
 
 [pd](#pd)
 
-[info](#info)
-
 
 
 ## bmsMaster
@@ -21,7 +19,7 @@
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |amp|0 | 25 | A | 0.001 |  Current |
-|cycles|0 | 6000 | cycles | 1 |  Number of cycles |
+|cycles|0 | 6000 |  | 1 |  Number of cycles |
 |designCap|0 | 80000 | mAh | 1 |  Design capacity |
 |f32ShowSoc|0 | 100 | % | 1 |  SOC |
 |fullCap|0 | 80000 | mAh | 1 |  Full capacity |
@@ -94,7 +92,7 @@
 |chgState| Charging state | {0:disabled,1:CC,2:CV,3:UPS,4:PARA 0x55: Charging error} |
 |dsgCmd| Discharge switch | {0:off,1:on,2:2?} |
 |emsIsNormalFlag| Energy storage state: 0: sleep; 1: normal | {0:sleep,1:normal} |
-|bmsWarState| BMS warning state: bit0: hi_temp; bit1: low_temp; bit2: overload; bit3: chg_flag | {0:no warning?,1:hi_temp,2:low_temp,4:overload,8:chg_flag} |
+|bmsWarState| BMS warning state | {0:no warning?,1:hi_temp,2:low_temp,4:overload,8:chg_flag} |
 
 ### level
 
@@ -109,7 +107,7 @@
 
 | State  |  Name |
 |----------|------|
-|bmsIsConnt| BMS online signal: BIT0: hardware online signal; BIT1: software online signal |
+|bmsIsConnt| BMS online signal |
 
 ## inv
 
@@ -171,11 +169,11 @@
 |dcdc12vWatts|0 | 500 | W | 0.1 |  DC12V30A output power, which is valid only for DELTA Pro |
 |inAmp|0 | 13 | A | 0.001 |  PV input current |
 |inVol|0 | 60 | V | 0.001 |  PV input voltage |
-|inWatts|0 | 500 | W | 1 |  PV input power |
+|inWatts|0 | 1600 | W | 1 |  PV input power |
 |mpptTemp|0 | 80 | °C | 1 |  MPPT temperature |
 |outAmp|0 | 13 | A | 0.001 |  PV output current |
 |outVol|0 | 60 | V | 0.001 |  PV output voltage |
-|outWatts|0 | 500 | W | 1 |  PV output power |
+|outWatts|0 | 1600 | W | 1 |  PV output power |
 |powStandbyMin|0 | 720 | min | 1 |  Power standby time /min 0 Never standby 720 Default value ? |
 |scrStandbyMin|0 | 720 | min | 1 |  SCR standby time /min 0 Never standby 720 Default value ? |
 
@@ -198,6 +196,7 @@
 |chgState| Charging state | {0:disabled,1:charging,2:standby (DC charging stopped during AC charging)} |
 |chgType| Actual charging type | {0:null,1:adapter (adapter/DC source),2:MPPT (solar),3:AC (mains supply),4:gas,5:wind} |
 |dc24vState| DCDC24 switch state | {0:off,1:on} |
+|faultCode| Error code | {0:OK?,1:mppt_fault,2:car_fault,4:dc24v_fault} |
 |cfgAcOutFreq| Inverter output frequency (Hz) | {1:50 Hz,2:60 Hz,255:ignored} |
 |dischargeType| Discharging type | {0:no discharge?,1:AC discharging,2:PR,3:BC} |
 |x60ChgType| XT60 charging type | {0:not detected,1:MPPT,2:adapter} |
@@ -206,9 +205,8 @@
 
 | State  |  Name |
 |----------|------|
-|faultCode| Error code: byte0: mppt_fault; byte1: car_fault; byte2: dc24v_fault |
 |swVer| Version number |
-|cfgAcOutVol| Inverter output voltage (V): 0xffffffff: ignored |
+|cfgAcOutVol| Inverter output voltage (mV) |
 
 ### level
 
@@ -225,7 +223,7 @@
 
 | State  |     Name |  values |
 |----------|:-------------:|------|
-|carState| CAR button state: 0: off; 1: on | {0:off,1:on} |
+|carState| CAR button state | {0:off,1:on} |
 |errCode| Global error code | {0:OK?} |
 |ext3p8Port| Infinity port / 3+8 ports | {0:NULL,1:CC,2:PR,3:SP (BC)} |
 |ext4p8Port| Extra battery port. Only the status of the leftmost port can be identified. | {0:NULL,1:Extra battery,2:Smart generator} |
@@ -249,7 +247,7 @@
 |invUsedTime|0 | 9999999 | min | 0.0166 |  Inverter use time |
 |minAcoutSoc|0 | 255 | % (0-255?) | 1 |  minimum AC out SOC |
 |mpptUsedTime|0 | 9999999 | min | 0.0166 |  MPPT use time |
-|qcUsb1Watts|0 | 500 | W | 0.1 |  Quick charge usb1 output power |
+|qcUsb1Watts|0 | 500 | W | 1 |  Quick charge usb1 output power |
 |qcUsb2Watts|0 | 500 | W | 0.1 |  Quick charge usb2 output power |
 |remainTime|0 | 143999 | min | 1 |  Time remaining (min) &gt; 0: remaining charging time; time remaining (min) &lt; 0: remaining discharging time |
 |soc|0 | 100 | % | 1 |  Displayed SOC |
@@ -257,8 +255,8 @@
 |typec1Watts|0 | 500 | W | 1 |  Typec1 output power |
 |typec2Temp|0 | 80 | °C | 1 |  Type-C 2 temperature |
 |typec2Watts|0 | 500 | W | 1 |  Typec2 output power |
-|usb1Watts|0 | 500 | W | 0.1 |  Common usb1 output power |
-|usb2Watts|0 | 500 | W | 0.1 |  Common usb2 output power |
+|usb1Watts|0 | 500 | W | 1 |  Common usb1 output power |
+|usb2Watts|0 | 500 | W | 1 |  Common usb2 output power |
 |usbUsedTime|0 | 9999999 | min | 0.0166 |  USB use time |
 |usbqcUsedTime|0 | 9999999 | min | 0.0166 |  USB QC use time |
 |wattsInSum|0 | 4000 | W | 1 |  Total input power |
@@ -294,7 +292,7 @@
 |wifiVer| Wi-Fi version |
 |brightLevel| LCD brightness level: 0-3 |
 |relaySwitchCnt| Number of relay disconnections |
-|wireWatts| Wireless charging output power (W): Reserved, not available |
+|wireWatts| Wireless charging output power (W) |
 
 ### level
 
@@ -303,13 +301,4 @@
 |lcdOffSec| 0 | 1800 | s | 1 |  LCD screen-off duration: 0: never off | {valName:delayOff,moduleType:1,operateType:lcdCfg,params:{brighLevel:3,delayOff:300}} |
 |bpPowerSoc| 0 | 100 | % | 1 |  Backup Power SOC | {valName:bpPowerSoc,moduleType:1,operateType:watthConfig,params:{bpPowerSoc:55}} |
 |standbyMin| 0 | 720 | min | 1 |  Standby time /min 0 Never standby 720 Default value ? | {valName:standbyMin,moduleType:1,operateType:standbyTime,params:{standbyMin:720}} |
-
-## info
-
-### switch
-
-| State  |      off    |  on |  Name |  cmd |
-|----------|:-------------:|:------:|------|------|
-|latestQuotas| no trigger | trigger | Get latest Quotas | {valName:,operateType:latestQuotas,params:{}} |
-|getAllTaskCfg| no trigger | trigger | Get all tasks | {valName:,moduleType:1,operateType:getAllTaskCfg,params:{}} |
 

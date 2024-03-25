@@ -1,5 +1,5 @@
 # States for  GLACIER
-### version: 0.0.21
+### version: 0.0.22
 
 [pd](#pd)
 
@@ -62,6 +62,7 @@
 |powerXt60Count| Count of each type of power supply on XT60: POWER_TYPE_MAX |
 |errorCountPower| Count of each type of fault in POWER module: ERROR_MAX_POWER |
 |workFsmCount| Count of entering each state of state machine: USER_BEHAVIOR_FSM_MAX |
+|errorCountBldc| Count of each type of fault in BLDC module: ERROR_MAX_BLDC |
 |workModeCount| Count of entering each work mode; WORK_MODE_MAX |
 |errorCountBms| Count of each type of fault in BMS module: ERROR_MAX_PD |
 |chargeXt60Count| Count of each type of charging power supply on XT60: POWER_TYPE_MAX |
@@ -130,13 +131,13 @@
 |doorStat| Door status detection | {0:Closed,1:Open} |
 |runState| Operating status | {0:Normal (24 V output, 40 V output),1:Charging suspended (or when there is no input) (24 V off, 40 V output),2:Standby (24 V off, 40 V off)} |
 |chgType| Charger type //Charger type | {0:NULL,1:XT150 charging,2:Adapter charging (hardware detection),3:Car charging (hardware detection),4:Solar panel charging (hardware detection),5:Car charging (software detection),6:Solar panel charging (software detection),7:Input source cannot be identified (0xff): the charging cable is connected, but it actually does not work due to charging being disabled} |
-|sensor| Sensor status; refer to @ST_SENSOR for data explanation; bit 1: Error; bit 0: Normal | {1:Normal,2:Error} |
+|sensor| Sensor status; refer to @ST_SENSOR for data explanation; bit 1: Error; bit 0: Normal | {0:Normal,2:Error} |
 |xt60InState| xt60 connection status  | {0:no input,1:has input} |
 |iceAlert| Ice taking reminder | {0:Do not remind,1:Remind} |
 |carBatLow| Car charger battery protection reminder | {0:Do not remind,1:Remind} |
 |bmsInFlag| BMS in-place flag, detected through BMS-&gt;PD heartbeat packet | {0:Not in place,1:In place} |
 |bldcDntIce| Ice making limit on compressor | {0:Ice making is allowed,1:Ice making is not allowed} |
-|warnInfo| Warning: BIT0: Over-temperature; BIT1: Under-temperature; BIT2: Overload; BIT3: Charging error; BIT4: Fan error; BIT5: BLCD communication error | {1:overtemperature} |
+|warnInfo| Warning | {0:no warning?,1:overtemperature,2:Under-temperature,4:Overload,8:Charging error,16:Fan error,32:BLCD communication error} |
 |fanLvl| Fan level | {0:non-rotation,1:Level 1,2:Level 2,3:Level3,4:Level 4,5:Level 5} |
 |deiceAct| Deice Active? | {0:inactive,1:active} |
 
@@ -166,7 +167,7 @@
 |remainCap|0 | 13800 | mAh | 1 |  Remaining capacity |
 |tmp|0 | 60 | °C | 1 |  Temperature |
 |outWatts|0 | 500 | W | 1 |  Output power |
-|cycles|0 | 6000 | cycles | 1 |  Number of cycles |
+|cycles|0 | 6000 |  | 1 |  Number of cycles |
 |minCellVol|0 | 60 | V | 0.001 |  Minimum cell voltage |
 |maxCellVol|0 | 60 | V | 0.001 |  Maximum cell voltage |
 |maxMosTmp|0 | 80 | °C | 1 |  Maximum MOS temperature |
@@ -221,14 +222,13 @@
 
 | State  |  Name |
 |----------|------|
-|bmsIsConnt| BMS online signal: BIT0: hardware online signal; BIT1: software online signal |
+|bmsIsConnt| BMS online signal |
 
 ### string
 
 | State  |  Name |
 |----------|------|
 |openBmsIdx| Open BMS index |
-|warnState| BMS warning state: bit0: hi_temp; bit1: low_temp; bit2: overload; bit3: chg_flag |
 |upsFlag| UPS mode enable flag |
 |bmsModel| BMS model |
 
@@ -236,6 +236,7 @@
 
 | State  |     Name |  values |
 |----------|:-------------:|------|
+|warnState| BMS warning state | {0:no warning?,1:hi_temp,2:low_temp,4:overload,8:chg_flag} |
 |dsgCmd| Discharge switch | {0:off,1:on,2:2?} |
 |emsFlag| ems Flag | {0:sleep,1:normal} |
 |chgCmd| Charge switch | {0:off,1:on,2:2?} |

@@ -1,5 +1,5 @@
 # States for  WAVE2
-### version: 0.0.21
+### version: 0.0.22
 
 [pd](#pd)
 
@@ -30,7 +30,7 @@
 |batVolt|0 | 65 | V | 0.01 |  Battery voltage |
 |busVol|0 | 65 | V | 1 |  Bus voltage |
 |batSoc|0 | 100 | % | 1 |  Battery SoC |
-|sacWorkTime|0 | 1000000 | min | 1 |  Device working duration |
+|sacWorkTime|0 |  n/a | min | 1 |  Device working duration |
 |condTemp|0 | 60 | °C | 0.01 |  Condensation temperature |
 |batCurr|0 | 10 | A | 0.001 |  Battery current |
 |setTempCel|0 | 60 | °C | 1 |  Set temperature in degrees Celsius |
@@ -39,20 +39,20 @@
 |acFreq|0 | 60 | Hz | 1 |  AC input frequency |
 |mpptVol|0 | 60 | V | 0.01 |  PV voltage |
 |acCurrRms|0 | 10 | A | 0.001 |  RMS value of the AC input current |
-|batPowerSupplyTime|0 | 10000000 | min | 1 |  Duration of using battery provided with the air conditioner |
+|batPowerSupplyTime|0 |  n/a | min | 1 |  Duration of using battery provided with the air conditioner |
 |acPwrIn|0 | 600 | W | 1 |  AC input power |
 |tempNtc|0 | 60 | °C | 0.1 |  NTC temperature |
 |envTemp|0 | 60 | °C | 1 |  Ambient temperature |
 |sacIdleTime|0 | 1440 | min | 1 |  Device standby time |
 |acVoltRms|0 | 250 | V | 0.1 |  RMS value of the AC input voltage |
-|dp2PowerSupplyTime|0 | 1000000 | min | 1 |  Duration of using DELTA 2 as the power source |
+|dp2PowerSupplyTime|0 |  n/a | min | 1 |  Duration of using DELTA 2 as the power source |
 |coolEnv|0 | 60 | °C | 0.01 |  Air outlet temperature |
 |batChgRemain|0 | 5999 | min | 1 |  Remaining battery charging time |
 |coolTemp|0 | 60 | °C | 1 |  Air outlet temperature |
 |mpptCur|0 | 15 | A | 0.001 |  PV current |
 |busVolt|0 | 60 | V | 1 |  Bus voltage |
 |psdrPower|0 | 600 | W | 1 |  Power supply power |
-|dpPowerSupplyTime|0 | 1000000 | min | 1 |  Duration of using DELTA Pro as the power source |
+|dpPowerSupplyTime|0 |  n/a | min | 1 |  Duration of using DELTA Pro as the power source |
 |timeRemain|0 | 5999 | min | 1 |  Remaining time in current mode |
 |sysPowerWatts|0 | 600 | W | 1 |  System power |
 |evapTemp|0 | 60 | °C | 0.01 |  Evaporation temperature |
@@ -62,7 +62,7 @@
 |airInTemp|0 | 60 | °C | 0.01 |  Evaporation zone return air temperature |
 |setTempfah|0 | 100 | °F | 1 |  Set temperature in degrees Fahrenheit |
 |llcCurr|0 | 10 | A | 1 |  LLC output current |
-|dmPowerSupplyTime|0 | 1000000 | min | 1 |  Duration of using DELTA Max as the power source |
+|dmPowerSupplyTime|0 |  n/a | min | 1 |  Duration of using DELTA Max as the power source |
 
 
 ### level
@@ -135,8 +135,8 @@
 | State  |     Name |  values |
 |----------|:-------------:|------|
 |bmsBoundFlag| Upper and lower limits on main battery pack charging and discharging | {0:Normal charging and discharging,1:Upper limit on charging} |
-|runSts| bit0 ac_in; bit1 pfc; bit2 llc; bit3 mppt: 1: Run; 0: Not run | {0:OK?} |
-|rlySts| bit0 soft start rly; bit1 ac rly; 1: Closed; 0: Open | {0:OK?} |
+|runSts| Run status | {0:not run?,1:AC_IN run,2:PFC run,4:LLC run,8:MPPT run} |
+|rlySts| Relay status | {0:OK?,1:soft start rly closed?,2:ac rly closed?} |
 |timeEn| Timer enable status | {0:Timer off,1:Timer on} |
 |setFanVal| Fan speed | {0:Low,1:Medium,2:High} |
 |bmsUnderVoltage| Battery undervoltage flag bit | {0:Normal,1:Undervoltage} |
@@ -144,7 +144,7 @@
 |mpptWork| MPPT operating status | {1:Car charging,2:Solar charging} |
 |refEn| Cool/Heat enabling flag | {0:Cool/Heat mode cannot be set,1:Cool/Heat mode can be set} |
 |pdMainMode| Set mode | {0:Cool,1:Heat,2:Fan} |
-|powerSrc| Input source: bit0: AC; bit1: MPTT; bit2: Battery main pack; bit3: Battery slave pack | {0:OK?} |
+|powerSrc| Input source | {0:OK?,1:AC,2:MPPT,4:Battery main pack,8:Battery slave pack} |
 |subMode| Set sub-mode  | {0:Max,1:Sleep,2:Eco,3:Manual} |
 |fanSts| Fan speed level | {0:non-rotation,1:Level 1,2:Level 2,3:Level3,4:Level 4} |
 |errCode| Global error code | {0:OK?} |
@@ -208,9 +208,9 @@
 
 | State  |     Name |  values |
 |----------|:-------------:|------|
-|runSts| bit0 ac_in; bit1 pfc; bit2 llc; bit3 mppt: 1: Run; 0: Not run | {0:OK?} |
+|runSts| Run status | {0:not run?,1:AC_IN run?,2:PFC run?,4:LLC run?,8:MPPT run?} |
 |mpptWork| MPPT operating status | {1:Car charging,2:Solar charging} |
-|rlySts| bit0 soft start rly; bit1 ac rly; 1: Closed; 0: Open | {0:OK?} |
+|rlySts| Relay status | {0:Open?,1:soft start rly closed?,2:ac rly closed?} |
 
 ## motor
 

@@ -1,5 +1,5 @@
 # States for  RIVER2MAX
-### version: 0.0.21
+### version: 0.0.22
 
 [bmsMaster](#bmsMaster)
 
@@ -11,8 +11,6 @@
 
 [pd](#pd)
 
-[info](#info)
-
 
 
 ## bmsMaster
@@ -21,7 +19,7 @@
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |amp|0 | 25 | A | 0.001 |  Current |
-|cycles|0 | 6000 | cycles | 1 |  Number of cycles |
+|cycles|0 | 6000 |  | 1 |  Number of cycles |
 |designCap|0 | 80000 | mAh | 1 |  Design capacity |
 |f32ShowSoc|0 | 100 | % | 1 |  SOC |
 |fullCap|0 | 80000 | mAh | 1 |  Full capacity |
@@ -66,7 +64,7 @@
 
 | State  |  Name |
 |----------|------|
-|bmsIsConnt| BMS online signal: BIT0: hardware online signal; BIT1: software online signal |
+|bmsIsConnt| BMS online signal |
 
 ### string
 
@@ -82,7 +80,7 @@
 
 | State  |     Name |  values |
 |----------|:-------------:|------|
-|bmsWarState| BMS warning state: bit0: hi_temp; bit1: low_temp; bit2: overload; bit3: chg_flag | {0:no warning?,1:hi_temp,2:low_temp,4:overload,8:chg_flag} |
+|bmsWarState| BMS warning state | {0:no warning?,1:hi_temp,2:low_temp,4:overload,8:chg_flag} |
 |chgCmd| Charge switch | {0:off,1:on,2:2?} |
 |chgState| Charging state | {0:disabled,1:CC,2:CV,3:UPS,4:PARA 0x55: Charging error} |
 |dsgCmd| Discharge switch | {0:off,1:on,2:2?} |
@@ -142,7 +140,7 @@
 
 | State  |      off    |  on |  Name |  cmd |
 |----------|:-------------:|:------:|------|------|
-|cfgAcEnabled| off | on | AC discharge switch setting | {valName:enabled,moduleType:3,operateType:acOutCfg,params:{enabled:1}} |
+|cfgAcEnabled| off | on | AC discharge (INV) switch setting | {valName:enabled,moduleType:3,operateType:acOutCfg,params:{enabled:1}} |
 |cfgAcWorkMode| full power | mute | AC charging mode | {} |
 |cfgAcXboost| off | on | X-Boost switch | {valName:xboost,moduleType:3,operateType:acOutCfg,params:{xboost:1}} |
 |chgPauseFlag| not stopped? | charge stopped | AC Charging Pause | {valName:chgPauseFlag,moduleType:3,operateType:acOutCfg,params:{chgPauseFlag:1}} |
@@ -193,7 +191,7 @@
 |mpptTemp|0 | 80 | °C | 1 |  MPPT temperature |
 |outAmp|0 | 13 | A | 0.001 |  PV output current |
 |outVol|0 | 60 | V | 0.001 |  PV output voltage |
-|outWatts|0 | 500 | W | 1 |  PV output power |
+|outWatts|0 | 1600 | W | 1 |  PV output power |
 |powStandbyMin|0 | 720 | min | 1 |  Power standby time /min 0 Never standby 720 Default value ? |
 |scrStandbyMin|0 | 720 | min | 1 |  SCR standby time /min 0 Never standby 720 Default value ? |
 
@@ -209,14 +207,14 @@
 |chgType| Actual charging type | {0:null,1:adapter (adapter/DC source),2:MPPT (solar),3:AC (mains supply),4:gas,5:wind} |
 |dc24vState| DCDC24 switch state | {0:off,1:on} |
 |dischargeType| Discharging type | {0:no discharge?,1:AC discharging,2:PR,3:BC} |
+|faultCode| Error code | {0:OK?,1:mppt_fault,2:car_fault,4:dc24v_fault} |
 |x60ChgType| XT60 charging type | {0:not detected,1:MPPT,2:adapter} |
 
 ### string
 
 | State  |  Name |
 |----------|------|
-|cfgAcOutVol| Inverter output voltage (V): 0xffffffff: ignored |
-|faultCode| Error code: byte0: mppt_fault; byte1: car_fault; byte2: dc24v_fault |
+|cfgAcOutVol| Inverter output voltage (mV) |
 |swVer| Version number |
 
 ## pd
@@ -244,7 +242,7 @@
 |invUsedTime|0 | 9999999 | min | 0.0166 |  Inverter use time |
 |minAcoutSoc|0 | 255 | % (0-255?) | 1 |  minimum AC out SOC |
 |mpptUsedTime|0 | 9999999 | min | 0.0166 |  MPPT use time |
-|qcUsb1Watts|0 | 500 | W | 0.1 |  Quick charge usb1 output power |
+|qcUsb1Watts|0 | 500 | W | 1 |  Quick charge usb1 output power |
 |qcUsb2Watts|0 | 500 | W | 0.1 |  Quick charge usb2 output power |
 |remainTime|0 | 143999 | min | 1 |  Time remaining (min) &gt; 0: remaining charging time; time remaining (min) &lt; 0: remaining discharging time |
 |soc|0 | 100 | % | 1 |  Displayed SOC |
@@ -254,11 +252,11 @@
 |typec2Watts|0 | 500 | W | 1 |  Typec2 output power |
 |typecChaWatts|0 | 500 | W | 0.1 |  PD? charging power |
 |typecUsedTime|0 | 9999999 | min | 0.0166 |  Type-C use time |
-|usb1Watts|0 | 500 | W | 0.1 |  Common usb1 output power |
-|usb2Watts|0 | 500 | W | 0.1 |  Common usb2 output power |
+|usb1Watts|0 | 500 | W | 1 |  Common usb1 output power |
+|usb2Watts|0 | 500 | W | 1 |  Common usb2 output power |
 |usbUsedTime|0 | 9999999 | min | 0.0166 |  USB use time |
 |usbqcUsedTime|0 | 9999999 | min | 0.0166 |  USB QC use time |
-|wattsInSum|0 | 4000 | W | 1 |  Total input power |
+|wattsInSum|0 | 500 | W | 1 |  Total input power |
 |wattsOutSum|0 | 4000 | W | 1 |  Total output power |
 
 
@@ -267,7 +265,7 @@
 | State  |     Name |  values |
 |----------|:-------------:|------|
 |beepMode| Beep mode | {0:normal,1:quiet} |
-|carState| CAR button state: 0: off; 1: on | {0:off,1:on} |
+|carState| CAR button state | {0:off,1:on} |
 |chgDsgState| Charging/discharging state on screen | {0:discharging,1:charging} |
 |errCode| Global error code | {0:OK?} |
 |ext3p8Port| Infinity port / 3+8 ports | {0:NULL,1:CC,2:PR,3:SP (BC)} |
@@ -295,14 +293,5 @@
 |sysVer| System version |
 |wifiRssi| Wi-Fi signal intensity |
 |wifiVer| Wi-Fi version |
-|wireWatts| Wireless charging output power (W): Reserved, not available |
-
-## info
-
-### switch
-
-| State  |      off    |  on |  Name |  cmd |
-|----------|:-------------:|:------:|------|------|
-|latestQuotas| no trigger | trigger | Get latest Quotas | {valName:,operateType:latestQuotas,params:{}} |
-|getAllTaskCfg| no trigger | trigger | Get all tasks | {valName:,moduleType:1,operateType:getAllTaskCfg,params:{}} |
+|wireWatts| Wireless charging output power (W) |
 

@@ -1,13 +1,11 @@
 # States for  PSTREAM
-### version: 0.0.21
+### version: 0.0.22
 
 [inverter_heartbeat](#inverter_heartbeat)
 
 [InverterHeartbeat2](#InverterHeartbeat2)
 
 [energy](#energy)
-
-[info](#info)
 
 
 
@@ -43,7 +41,7 @@
 |invFreq|0 | 52 | Hz | 0.1 |  Inverter AC frequency |
 |invDcCur|0 | 20 | A | 0.001 |  Inverter DC input current |
 |ratedPower|0 | 600 | W | 0.1 |  Inverter rated power |
-|heartbeatFrequency|0 | 20 | 1/s | 1 |  Inverter heartbeat |
+|heartbeatFrequency|0 | 20 | Hz | 1 |  Inverter heartbeat |
 |dynamicWatts|0 | 10000 | W | 0.1 |  Dynamic Power |
 |batChargingTime|0 | 144000 | min | 1 |  Battery Charging Time |
 |batDischargingTime|0 | 144000 | min | 1 |  Battery Discharging Time |
@@ -115,9 +113,7 @@
 |status_10| X_Unknown_10 |
 |X_Unknown_11| X_Unknown_11 |
 |X_Unknown_14| X_Unknown_14 |
-|X_Unknown_15| X_Unknown_15 |
 |X_Unknown_16| X_Unknown_16 |
-|X_Unknown_17| X_Unknown_17 |
 |X_Unknown_18| X_Unknown_18 |
 |X_Unknown_19| X_Unknown_19 |
 |X_Unknown_20| X_Unknown_20 |
@@ -133,7 +129,6 @@
 |X_Unknown_30| X_Unknown_30 |
 |X_Unknown_31| X_Unknown_31 |
 |X_Unknown_33| X_Unknown_33 |
-|X_Unknown_34| X_Unknown_34 |
 |X_Unknown_35| X_Unknown_35 |
 |X_Unknown_36| X_Unknown_36 |
 |X_Unknown_37| X_Unknown_37 |
@@ -157,8 +152,11 @@
 |lowerLimit|0 | 30 | % | 1 |  Discharging lower limit |
 |baseLoad|0 | 800 | W | 0.1 |  Home base load |
 |powerPlugsPos|0 | 10000 | W | 0.1 |  Power of plugs |
-|uptime|0 | 9999999 | s | 1 |  Power Stream uptime |
-|gridWatt_45|0 | 10000 | W | 0.1 |  Power from Grid |
+|X_Unknown_15|-100 | 100 |  | 1 |  X_Unknown_15 |
+|X_Unknown_17|0 | 100 |  | 0.0001 |  X_Unknown_17 |
+|uptime|0 |  n/a | s | 1 |  Power Stream uptime |
+|X_Unknown_34|-100 | 100 |  | 1 |  X_Unknown_34 |
+|gridWatt_45|0 | 10000 | W | 0.1 |  Power to Grid |
 |powerPlugsNeg|0 | 10000 | W | 0.1 |  Power of plugs (-) |
 |wifiRssi|-90 | 10 | dBm | 1 |  wifi RSSI |
 
@@ -175,12 +173,4 @@
 |watth7|0 | 6000 | Wh | 1 |  Energy from solar PV1 |
 |watth8|0 | 6000 | Wh | 1 |  Energy from solar PV2 |
 
-
-## info
-
-### switch
-
-| State  |      off    |  on |  Name |  cmd |
-|----------|:-------------:|:------:|------|------|
-|latestQuotas| no trigger | trigger | Get latest Quotas | {cmdFunc:20,cmdId:1,dataLen:0} |
 

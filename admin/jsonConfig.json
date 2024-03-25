@@ -280,6 +280,15 @@
 							"filter": false,
 							"sort": false,
 							"default": "none"
+						},
+						{
+							"type": "checkbox",
+							"title": "HA enable",
+							"width": "10%",
+							"attr": "haEnable",
+							"filter": false,
+							"sort": false,
+							"default": false
 						}
 					]
 				},
@@ -333,6 +342,7 @@
 								{ "value": "deltapro", "label": "Delta Pro" },
 								{ "value": "delta2", "label": "Delta 2" },
 								{ "value": "delta2max", "label": "Delta 2 Max" },
+								{ "value": "deltaproultra", "label": "Delta Pro Ultra" },
 								{ "value": "rivermax", "label": "River Max" },
 								{ "value": "riverpro", "label": "River Pro" },
 								{ "value": "river2max", "label": "River 2 Max" },
@@ -360,6 +370,15 @@
 							"width": "10%",
 							"hidden": "data.devType !== 'deltapro' && data.devType !== 'deltamax' && data.devType !== 'delta2max' ",
 							"attr": "pstationsSlave2",
+							"filter": false,
+							"sort": false,
+							"default": false
+						},
+						{
+							"type": "checkbox",
+							"title": "HA enable",
+							"width": "10%",
+							"attr": "haEnable",
 							"filter": false,
 							"sort": false,
 							"default": false
@@ -413,12 +432,151 @@
 							"filter": false,
 							"sort": false,
 							"default": "none"
+						},
+						{
+							"type": "checkbox",
+							"title": "HA enable",
+							"width": "10%",
+							"attr": "haEnable",
+							"filter": false,
+							"sort": false,
+							"default": false
 						}
 					]
 				}
 			}
 		},
 		"tab_3": {
+			"type": "panel",
+			"label": "Generator / SHP Configuration",
+			"items": {
+				"_generatorHeader": {
+					"newLine": true,
+					"type": "header",
+					"text": "Generator Configuration",
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"size": 3
+				},
+				"_introTable1Txt1": {
+					"type": "staticText",
+					"text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have no device, delete the added line item",
+					"newLine": true
+				},
+				"generators": {
+					"sm": 12,
+					"newLine": true,
+					"type": "table",
+					"label": "My configured Generator(s)",
+					"items": [
+						{
+							"type": "text",
+							"width": "20%",
+							"title": "name",
+							"attr": "devName",
+							"filter": false,
+							"sort": false,
+							"default": "My Gen1"
+						},
+						{
+							"type": "text",
+							"width": "20%",
+							"title": "id",
+							"attr": "devId",
+							"filter": false,
+							"sort": false,
+							"default": "DGEB"
+						},
+						{
+							"type": "select",
+							"width": "20%",
+							"options": [
+								{ "value": "none", "label": "none" },
+								{ "value": "generator", "label": "Smart Generator" }
+							],
+							"title": "Generator Type",
+							"attr": "devType",
+							"filter": false,
+							"sort": false,
+							"default": "none"
+						},
+						{
+							"type": "checkbox",
+							"title": "HA enable",
+							"width": "10%",
+							"attr": "haEnable",
+							"filter": false,
+							"sort": false,
+							"default": false
+						}
+					]
+				},
+				"_shpHeader": {
+					"newLine": true,
+					"type": "header",
+					"text": "Smart Home Panel Configuration",
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"size": 3
+				},
+				"_introTable2Txt1": {
+					"type": "staticText",
+					"text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have no device, delete the added line item",
+					"newLine": true
+				},
+				"panels": {
+					"sm": 12,
+					"newLine": true,
+					"type": "table",
+					"label": "My configured SHP(s)",
+					"items": [
+						{
+							"type": "text",
+							"width": "20%",
+							"title": "name",
+							"attr": "devName",
+							"filter": false,
+							"sort": false,
+							"default": "My SHP1"
+						},
+						{
+							"type": "text",
+							"width": "20%",
+							"title": "id",
+							"attr": "devId",
+							"filter": false,
+							"sort": false,
+							"default": "SP10"
+						},
+						{
+							"type": "select",
+							"width": "20%",
+							"options": [
+								{ "value": "none", "label": "none" },
+								{ "value": "panel", "label": "Smart Home Panel" }
+							],
+							"title": "SHP Type",
+							"attr": "devType",
+							"filter": false,
+							"sort": false,
+							"default": "none"
+						},
+						{
+							"type": "checkbox",
+							"title": "HA enable",
+							"width": "10%",
+							"attr": "haEnable",
+							"filter": false,
+							"sort": false,
+							"default": false
+						}
+					]
+				}
+			}
+		},
+		"tab_4": {
 			"type": "panel",
 			"label": "Wave / Glacier Configuration",
 			"items": {
@@ -472,6 +630,15 @@
 							"filter": false,
 							"sort": false,
 							"default": "none"
+						},
+						{
+							"type": "checkbox",
+							"title": "HA enable",
+							"width": "10%",
+							"attr": "haEnable",
+							"filter": false,
+							"sort": false,
+							"default": false
 						}
 					]
 				},
@@ -525,8 +692,138 @@
 							"filter": false,
 							"sort": false,
 							"default": "none"
+						},
+						{
+							"type": "checkbox",
+							"title": "HA enable",
+							"width": "10%",
+							"attr": "haEnable",
+							"filter": false,
+							"sort": false,
+							"default": false
 						}
 					]
+				}
+			}
+		},
+		"tab_5": {
+			"type": "panel",
+			"label": "Homeassistant",
+			"items": {
+				"_connection": {
+					"newLine": true,
+					"type": "header",
+					"text": "Connection settings",
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"size": 3
+				},
+				"haMqttEnable": {
+					"type": "checkbox",
+					"label": "enable communication with Homeassistant MQTT Broker",
+					"newLine": true,
+					"sm": 12,
+					"md": 6,
+					"lg": 4
+				},
+				"haMqttProtocol": {
+					"type": "text",
+					"label": "HA mqtt protocol",
+					"newLine": true
+				},
+				"haMqttUrl": {
+					"type": "text",
+					"label": "HA mqtt Url",
+					"newLine": false
+				},
+				"haMqttPort": {
+					"type": "text",
+					"label": "HA mqtt port",
+					"newLine": false
+				},
+				"haTopic": {
+					"type": "text",
+					"label": "HA topic prefix",
+					"newLine": false
+				},
+				"_auth": {
+					"newLine": true,
+					"type": "header",
+					"text": "Homeassistant MQTT Authentication settings",
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"size": 3
+				},
+				"haMqttUserId": {
+					"type": "text",
+					"label": "HA mqtt user",
+					"newLine": false,
+					"sm": 12,
+					"md": 6,
+					"lg": 4
+				},
+				"haMqttUserPWd": {
+					"type": "password",
+					"visible": true,
+					"label": "HA mqtt pwd",
+					"newLine": false,
+					"sm": 12,
+					"md": 6,
+					"lg": 4
+				},
+				"haDiscoveryRetain": {
+					"type": "checkbox",
+					"label": "send retained msg for discovery",
+					"newLine": true,
+					"sm": 12,
+					"md": 6,
+					"lg": 4
+				},
+				"_debugcommon": {
+					"newLine": true,
+					"type": "header",
+					"text": "HA DEBUG settings",
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"size": 3
+				},
+				"msgHaAutoDiscovery": {
+					"type": "checkbox",
+					"label": "msgHaAutoDiscovery",
+					"sm": 12,
+					"md": 6,
+					"lg": 4
+				},
+				"showDiscoveryObject": {
+					"type": "checkbox",
+					"label": "showDiscoveryObject",
+					"sm": 12,
+					"md": 6,
+					"lg": 4
+				},
+				"msgHaIncomming": {
+					"type": "checkbox",
+					"label": "msgHaIncomming",
+					"sm": 12,
+					"md": 6,
+					"lg": 4
+				},
+				"msgHaOutgoing": {
+					"type": "checkbox",
+					"label": "msgHaOutgoing",
+					"sm": 12,
+					"md": 6,
+					"lg": 4
+				},
+				"msgHaStatusInitial": {
+					"type": "checkbox",
+					"label": "msgHaStatusInitial",
+					"sm": 12,
+					"md": 6,
+					"lg": 4
 				}
 			}
 		}
