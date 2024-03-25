@@ -29,6 +29,7 @@
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |sysBackupSoc|0 | 100 | % | 1 |  System backup SOC |
+|backupRatio|20 | 90 | % | 1 |  Backup limit (ratio?) |
 |acOutFreq|50 | 60 | Hz | 1 |  AC output frequency |
 |acOftenOpenMinSoc|0 | 30 | % | 1 |  acOftenOpenMinSoc |
 |sysTimezone|-12 | 12 | h | 0.01 |  Timezone offset |
