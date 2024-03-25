@@ -133,7 +133,7 @@
 |usb2Watts|0 | 500 | W | 1 |  Common usb2 output power |
 |usbUsedTime|0 | 9999999 | min | 0.0166 |  USB use time |
 |usbqcUsedTime|0 | 9999999 | min | 0.0166 |  USB QC use time |
-|wattsInSum|0 | 4000 | W | 1 |  Total input power |
+|wattsInSum|0 | 660 | W | 1 |  Total input power |
 |wattsOutSum|0 | 4000 | W | 1 |  Total output power |
 |ledWatts|0 | 100 | W | 0.1 |  LED output power |
 |typecTemp|0 | 80 | °C | 1 |  Type-C temperature |

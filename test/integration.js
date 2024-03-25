@@ -59,76 +59,85 @@ tests.integration(path.join(__dirname, '..'), {
 						glaciers: [ { devName: 'My Glacier', devId: 'BX11ZFB5EF412345', devType: 'glacier' } ],
 						waves: [ { devName: 'My Wave', devId: 'KT21ZCH2ZF112345', devType: 'wave2' } ],
 						plugs: [ { devName: 'My Plug1', devId: 'HW52ZDH4SF12345', devType: 'plug' } ],
+						panels: [ { devName: 'My panel', devId: 'SHP10ZFB5EF412345', devType: 'panel' } ],
+						generators: [ { devName: 'My Generator', devId: 'DGEBZ5R123412345', devType: 'generator' } ],
 						pstations: [
 							{
 								pstationsSlave1: false,
 								pstationsSlave2: false,
 								devId: 'DAABZ5ZE4112345',
 								devType: 'deltamini',
-								devName: 'Deltamini'
+								devName: 'My Deltamini'
 							},
 							{
 								pstationsSlave1: false,
 								pstationsSlave2: false,
 								devId: 'DABBZ5ZE4112345',
 								devType: 'delta',
-								devName: 'Delta'
+								devName: 'My Delta'
 							},
 							{
 								pstationsSlave1: false,
 								pstationsSlave2: false,
 								devId: 'DAEBZ5ZE4112345',
 								devType: 'deltamax',
-								devName: 'Deltamax'
+								devName: 'My Deltamax'
 							},
 							{
 								pstationsSlave1: false,
 								pstationsSlave2: false,
 								devId: 'DECBZ5ZE4112345',
 								devType: 'deltapro',
-								devName: 'DeltaPro'
+								devName: 'My DeltaPro'
 							},
 							{
 								pstationsSlave1: false,
 								pstationsSlave2: false,
 								devId: 'R331ZEB4ZEA12345',
 								devType: 'delta2',
-								devName: 'Delta2'
+								devName: 'My Delta2'
 							},
 							{
 								pstationsSlave1: false,
 								pstationsSlave2: false,
 								devId: 'R351ZFB4HF6L12345',
 								devType: 'delta2max',
-								devName: 'Delta2max'
+								devName: 'My Delta2max'
 							},
 							{
 								pstationsSlave1: false,
 								pstationsSlave2: false,
 								devId: 'R621ZEB4XEC12345',
 								devType: 'river2pro',
-								devName: 'river2pro'
+								devName: 'My river2pro'
 							},
 							{
 								pstationsSlave1: false,
 								pstationsSlave2: false,
 								devId: 'R521ZEB4XEC12345',
 								devType: 'river2max',
-								devName: 'river2max'
+								devName: 'My river2max'
 							},
 							{
 								pstationsSlave1: false,
 								pstationsSlave2: false,
 								devId: 'R421ZEB4XEC12345',
 								devType: 'riverpro',
-								devName: 'riverpro'
+								devName: 'My riverpro'
 							},
 							{
 								pstationsSlave1: false,
 								pstationsSlave2: false,
 								devId: 'R321ZEB4XEC12345',
 								devType: 'rivermax',
-								devName: 'rivermax'
+								devName: 'My rivermax'
+							},
+							{
+								pstationsSlave1: false,
+								pstationsSlave2: false,
+								devId: 'DPU0ZFB5EF412345',
+								devType: 'deltaproultra',
+								devName: 'My deltaproultra'
 							}
 						],
 						pstreams: [
@@ -468,6 +477,70 @@ tests.integration(path.join(__dirname, '..'), {
 					}
 				}
 			});
+
+			it('Generator should be created', async () => {
+				//await harness.objects.delObject('ecoflow-mqtt.0.BX11ZFB5EF412345.mppt.');
+				for (let channel in states['pstationStatesDict']['generator']) {
+					for (let state in states['pstationStatesDict']['generator'][channel]) {
+						if (states['pstationStatesDict']['generator'][channel][state]['entity'] !== 'icon') {
+							await harness.objects.getObject(
+								'ecoflow-mqtt.0.DGEBZ5R123412345.' + channel + '.' + state,
+								function(err, obj) {
+									if (err) console.error('generator TEST' + channel + '.' + state + ' -> ' + err);
+
+									if (!obj) {
+										console.error('generator state ' + channel + '.' + state + ' not set');
+									}
+									expect(obj).to.exist;
+								}
+							);
+						}
+					}
+				}
+			});
+
+			it('SHP should be created', async () => {
+				//await harness.objects.delObject('ecoflow-mqtt.0.BX11ZFB5EF412345.mppt.');
+				for (let channel in states['pstationStatesDict']['panel']) {
+					for (let state in states['pstationStatesDict']['panel'][channel]) {
+						if (states['pstationStatesDict']['panel'][channel][state]['entity'] !== 'icon') {
+							await harness.objects.getObject(
+								'ecoflow-mqtt.0.SHP10ZFB5EF412345.' + channel + '.' + state,
+								function(err, obj) {
+									if (err) console.error('panel TEST' + channel + '.' + state + ' -> ' + err);
+
+									if (!obj) {
+										console.error('panel state ' + channel + '.' + state + ' not set');
+									}
+									expect(obj).to.exist;
+								}
+							);
+						}
+					}
+				}
+			});
+
+			it('Delta Pro Ultra should be created', async () => {
+				//await harness.objects.delObject('ecoflow-mqtt.0.BX11ZFB5EF412345.mppt.');
+				for (let channel in states['pstreamStatesDict']['deltaproultra']) {
+					for (let state in states['pstreamStatesDict']['deltaproultra'][channel]) {
+						if (states['pstreamStatesDict']['deltaproultra'][channel][state]['entity'] !== 'icon') {
+							await harness.objects.getObject(
+								'ecoflow-mqtt.0.DPU0ZFB5EF412345.' + channel + '.' + state,
+								function(err, obj) {
+									if (err) console.error('deltaproultra TEST' + channel + '.' + state + ' -> ' + err);
+
+									if (!obj) {
+										console.error('deltaproultra state ' + channel + '.' + state + ' not set');
+									}
+									expect(obj).to.exist;
+								}
+							);
+						}
+					}
+				}
+			});
+
 			after(() => {
 				console.log('test finished');
 			});

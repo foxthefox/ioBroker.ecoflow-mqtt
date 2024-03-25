@@ -191,7 +191,7 @@
 |mpptTemp|0 | 80 | °C | 1 |  MPPT temperature |
 |outAmp|0 | 13 | A | 0.001 |  PV output current |
 |outVol|0 | 60 | V | 0.001 |  PV output voltage |
-|outWatts|0 | 500 | W | 1 |  PV output power |
+|outWatts|0 | 1600 | W | 1 |  PV output power |
 |powStandbyMin|0 | 720 | min | 1 |  Power standby time /min 0 Never standby 720 Default value ? |
 |scrStandbyMin|0 | 720 | min | 1 |  SCR standby time /min 0 Never standby 720 Default value ? |
 
@@ -256,7 +256,7 @@
 |usb2Watts|0 | 500 | W | 1 |  Common usb2 output power |
 |usbUsedTime|0 | 9999999 | min | 0.0166 |  USB use time |
 |usbqcUsedTime|0 | 9999999 | min | 0.0166 |  USB QC use time |
-|wattsInSum|0 | 4000 | W | 1 |  Total input power |
+|wattsInSum|0 | 500 | W | 1 |  Total input power |
 |wattsOutSum|0 | 4000 | W | 1 |  Total output power |
 
 

@@ -192,11 +192,11 @@
 |dcdc12vWatts|0 | 500 | W | 0.1 |  DC12V30A output power, which is valid only for DELTA Pro |
 |inAmp|0 | 13 | A | 0.001 |  PV input current |
 |inVol|0 | 60 | V | 0.001 |  PV input voltage |
-|inWatts|0 | 500 | W | 1 |  PV input power |
+|inWatts|0 | 1600 | W | 1 |  PV input power |
 |mpptTemp|0 | 80 | °C | 1 |  MPPT temperature |
 |outAmp|0 | 13 | A | 0.001 |  PV output current |
 |outVol|0 | 60 | V | 0.001 |  PV output voltage |
-|outWatts|0 | 500 | W | 1 |  PV output power |
+|outWatts|0 | 1600 | W | 1 |  PV output power |
 |pv2InAmp|0 | 13 | A | 0.001 |  PV input current |
 |pv2InVol|0 | 150 | V | 0.001 |  PV input voltage |
 |pv2InWatts|0 | 500 | W | 1 |  PV input power |

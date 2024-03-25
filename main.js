@@ -87,8 +87,8 @@ class EcoflowMqtt extends utils.Adapter {
 			this.log.info('wave         -> ' + JSON.stringify(this.config.waves));
 			this.log.info('glacier      -> ' + JSON.stringify(this.config.glaciers));
 			//this.log.info('blade      -> ' + JSON.stringify(this.config.blades));
-			this.log.info('generator      -> ' + JSON.stringify(this.config.generators));
-			//this.log.info('panels      -> ' + JSON.stringify(this.config.panels));
+			this.log.info('generator    -> ' + JSON.stringify(this.config.generators));
+			this.log.info('panel        -> ' + JSON.stringify(this.config.panels));
 
 			try {
 				//loop durch alle Geräte
@@ -99,7 +99,8 @@ class EcoflowMqtt extends utils.Adapter {
 					this.config.pstations,
 					this.config.waves,
 					this.config.glaciers,
-					this.config.generators
+					this.config.generators,
+					this.config.panels
 				);
 				if (confdevices.length > 0) {
 					//loop durch alle pstations
@@ -121,7 +122,12 @@ class EcoflowMqtt extends utils.Adapter {
 							}
 
 							let devStates = null;
-							if (devtype === 'pstream600' || devtype === 'pstream800' || devtype === 'plug') {
+							if (
+								devtype === 'pstream600' ||
+								devtype === 'pstream800' ||
+								devtype === 'plug' ||
+								devtype === 'deltaproultra'
+							) {
 								devStates = require('./lib/ecoflow_data.js').pstreamStates;
 							} else {
 								devStates = require('./lib/ecoflow_data.js').pstationStates;
@@ -129,7 +135,12 @@ class EcoflowMqtt extends utils.Adapter {
 
 							if (devtype !== 'none' && devStates) {
 								let devupd = null;
-								if (devtype === 'pstream600' || devtype === 'pstream800' || devtype === 'plug') {
+								if (
+									devtype === 'pstream600' ||
+									devtype === 'pstream800' ||
+									devtype === 'plug' ||
+									devtype === 'deltaproultra'
+								) {
 									devupd = require('./lib/ecoflow_data.js').pstreamRanges[devtype];
 								} else {
 									devupd = require('./lib/ecoflow_data.js').pstationRanges[devtype];
@@ -176,7 +187,7 @@ class EcoflowMqtt extends utils.Adapter {
 
 							let pdevicesStatesDict = null;
 							let pdevicesCmd = null;
-							if (devtype === 'pstream' || devtype === 'plug') {
+							if (devtype === 'pstream' || devtype === 'plug' || devtype === 'deltaproultra') {
 								pdevicesStatesDict = require('./lib/ecoflow_data.js').pstreamStatesDict[devtype];
 								pdevicesCmd = require('./lib/ecoflow_data.js').pstreamCmd[origdevtype];
 							} else {
@@ -401,7 +412,7 @@ class EcoflowMqtt extends utils.Adapter {
 								this.log.error(
 									'something empty ID->' +
 										id +
-										'states -> ' +
+										' states -> ' +
 										devStates +
 										' dict -> ' +
 										pdevicesStatesDict +
@@ -501,7 +512,12 @@ class EcoflowMqtt extends utils.Adapter {
 						}
 					}
 
-					if (devtype === 'pstream600' || devtype === 'pstream800' || devtype === 'plug') {
+					if (
+						devtype === 'pstream600' ||
+						devtype === 'pstream800' ||
+						devtype === 'plug' ||
+						devtype === 'deltaproultra'
+					) {
 						if (this.pdevicesStatesDict && this.pdevicesStates) {
 							let msgdecode = null;
 							try {
@@ -587,7 +603,11 @@ class EcoflowMqtt extends utils.Adapter {
 								val: this.msgCountPlug,
 								ack: true
 							});
-						} else if (devtype === 'pstream600' || devtype === 'pstream800') {
+						} else if (
+							devtype === 'pstream600' ||
+							devtype === 'pstream800' ||
+							devtype === 'deltaproultra'
+						) {
 							this.msgCountPstream++;
 							await this.setStateAsync('info.msgCountPstream', {
 								val: this.msgCountPstream,
@@ -1077,6 +1097,7 @@ class EcoflowMqtt extends utils.Adapter {
 							case 'pstream600':
 							case 'pstream800':
 							case 'plug':
+							case 'deltaproultra':
 								devicetype = this.pdevices[device]['devType'];
 								type = 'stream'; //includes also plugs
 								cmd = this.pdevicesCmd[devicetype];
@@ -1101,7 +1122,7 @@ class EcoflowMqtt extends utils.Adapter {
 				switch (type) {
 					case 'stream':
 						if (devicetype !== '' && devicetype !== 'none' && cmd) {
-							const msgBuf = ef.prepareStreamCmd(
+							const msgBuf = await ef.prepareStreamCmd(
 								this,
 								device,
 								devicetype,

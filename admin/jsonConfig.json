@@ -342,6 +342,7 @@
 								{ "value": "deltapro", "label": "Delta Pro" },
 								{ "value": "delta2", "label": "Delta 2" },
 								{ "value": "delta2max", "label": "Delta 2 Max" },
+								{ "value": "deltaproultra", "label": "Delta Pro Ultra" },
 								{ "value": "rivermax", "label": "River Max" },
 								{ "value": "riverpro", "label": "River Pro" },
 								{ "value": "river2max", "label": "River 2 Max" },
@@ -495,6 +496,68 @@
 								{ "value": "generator", "label": "Smart Generator" }
 							],
 							"title": "Generator Type",
+							"attr": "devType",
+							"filter": false,
+							"sort": false,
+							"default": "none"
+						},
+						{
+							"type": "checkbox",
+							"title": "HA enable",
+							"width": "10%",
+							"attr": "haEnable",
+							"filter": false,
+							"sort": false,
+							"default": false
+						}
+					]
+				},
+				"_shpHeader": {
+					"newLine": true,
+					"type": "header",
+					"text": "Smart Home Panel Configuration",
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"size": 3
+				},
+				"_introTable2Txt1": {
+					"type": "staticText",
+					"text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have no device, delete the added line item",
+					"newLine": true
+				},
+				"panels": {
+					"sm": 12,
+					"newLine": true,
+					"type": "table",
+					"label": "My configured SHP(s)",
+					"items": [
+						{
+							"type": "text",
+							"width": "20%",
+							"title": "name",
+							"attr": "devName",
+							"filter": false,
+							"sort": false,
+							"default": "My SHP1"
+						},
+						{
+							"type": "text",
+							"width": "20%",
+							"title": "id",
+							"attr": "devId",
+							"filter": false,
+							"sort": false,
+							"default": "SP10"
+						},
+						{
+							"type": "select",
+							"width": "20%",
+							"options": [
+								{ "value": "none", "label": "none" },
+								{ "value": "panel", "label": "Smart Home Panel" }
+							],
+							"title": "SHP Type",
 							"attr": "devType",
 							"filter": false,
 							"sort": false,

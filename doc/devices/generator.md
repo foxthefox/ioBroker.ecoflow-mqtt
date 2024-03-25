@@ -12,7 +12,7 @@
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |oilVal|0 | 100 | % | 1 |  Fuel tank |
 |acPower|0 | 2000 | W | 1 |  AC power |
-|totalPower|0 | 2000 | W | 1 |  Total power |
+|totalPower|0 | 1900 | W | 1 |  Total power |
 |remainTime|0 | 5999 | min | 1 |  Remaining time |
 |dcPower|0 | 2000 | W | 1 |  DC power |
 |oilMaxOutPower|0 | 2000 | W | 1 |  Oil max power |

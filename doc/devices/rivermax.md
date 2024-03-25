@@ -99,7 +99,7 @@
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|wattsInSum|0 | 4000 | W | 1 |  Total input power |
+|wattsInSum|0 | 500 | W | 1 |  Total input power |
 |dcInUsedTime|0 | 9999999 | min | 0.0166 |  DC charging time |
 |chgPowerDC|0 | 65000 | kWh | 0.001 |  Cumulative DC power charged for PD (adapter) |
 |dsgPowerDC|0 | 4000 | W | 0.1 |  Discharge Power DC |

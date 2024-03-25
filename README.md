@@ -30,7 +30,7 @@ The adapter is based on the work of:
 
 ## Installation and Configuration
 
-Install the adapter from github.
+Install the adapter from github (adapter is not yet in the stable repo).
 
 ![some mor details](doc/en/installation.md)
 
@@ -88,7 +88,17 @@ Use the tab "Generator / SHP Configuration" for adding your power equipment.
 * add a new row
 * set the deviceID of Generator as shown in the app, something like "DGEB...."
 * give it a name
-* set the type to "generator"
+* set the type to "Generator"
+
+</p></details>
+
+<details><summary><i>Parametrizing the Smart Home Panel</i></summary>
+<p>
+
+* add a new row
+* set the deviceID of Generator as shown in the app, something like "SP10...."
+* give it a name
+* set the type to "panel"
 
 </p></details>
 
@@ -100,7 +110,7 @@ Use the tab "Wave / Glacier Configuration" for adding your equipment.
 * add a new row
 * set the deviceID of Smart Plug as shown in the app, something like "KT21ZCH..."
 * give it a name
-* set the type to "plug"
+* set the type to "Wave2"
 
 </p></details>
 
@@ -110,7 +120,7 @@ Use the tab "Wave / Glacier Configuration" for adding your equipment.
 * add a new row
 * set the deviceID of Smart Plug as shown in the app, something like "BX11ZCB..."
 * give it a name
-* set the type to "plug"
+* set the type to "Glacier"
 
 </p></details>
 
@@ -147,6 +157,11 @@ If settings to a data point are changed in the new version of adapter (e.g. name
 
 During startup the datapoints are created, but not changed when existing.
 
+### remarks to warnings/errors
+
+Some occurances in the adapter are tagged as warning or error in order to appear in the log when the loglevel is in info mode.
+This is not necessarily a failure or an indicator for not working adapter, it is more a sign for a not expected behaviour. The cause might not be in the adapter itself, but the attention is set.
+
 ## HA connector/gateway
 
 * the MQTT discovery function in HA enables an elegant way of information exchange
@@ -169,6 +184,7 @@ some explanation to the device data
 * diagnostic -> boolean or multi state data point transferred to text
 * string -> datapoint as text only
 * array -> datapoint with array
+* value to text conversion might use a non-validated text (feedback is welcome), this is indicated be "?" at the end of text
 
 
 ### Powerstation
@@ -192,8 +208,17 @@ some explanation to the device data
 
 ![Delta 2 Max](./doc/devices/delta2max.md)
 
+![Delta Pro Ultra](./doc/devices/deltaproultra.md)
+
+### Smart Home Panel
+![Smart Home Panel](./doc/devices/panel.md)
+
+Dual Fuel generator is not available, could be implemented, if data is available.
+
 ### Generator
 ![Generator](./doc/devices/generator.md)
+
+Dual Fuel generator is not available, could be implemented, if data is available.
 
 ### Powerstream
 ![Powerstream](./doc/devices/pstream600.md)
@@ -207,8 +232,11 @@ supply priority -> 0/false = prioritized grid supply; 1/true = prioritized batte
 ### Wave 2 Air conditioner
 ![Wave2](./doc/devices/wave2.md)
 
+Wave is not available, could be implemented, if data is available.
+
 ### Glacier refrigerator
 ![Glacier](./doc/devices/glacier.md)
+
 
 ## ToDo
 * check forgotten boundary conditions for commands (inhibit cmd, or additional value)
@@ -217,7 +245,10 @@ supply priority -> 0/false = prioritized grid supply; 1/true = prioritized batte
 ## Changelog
 ### 0.0.22
 * (foxthefox) Homeassistant Connector/Gateway
-* (foxthefox) added Generator (indication)
+* (foxthefox) added Generator (indication only, no knowledge on commands)
+* (foxthefox) added Delta Pro Ultra
+* (foxthefox) added Smart Home Panel
+* (foxthefox) latestQuotas/getTimeTaskConfig moved from info to action
 * (foxthefox) uptime no max boundary
 * (foxthefox) several adjustable values which represent a mode or predefined set of settings are now using "states" definition (IOB)
 * (foxthefox) changed factor for pd/usb1Watts, usb2Watts, qcUsb1Watts, qcUsb2Watts
@@ -226,6 +257,8 @@ supply priority -> 0/false = prioritized grid supply; 1/true = prioritized batte
 * (foxthefox) some strings are now diagnostic
 * (foxthefox) X_unknown_15/17/34 are now numbers
 * (foxthefox) skip telegrams where openBmsIdx=0, bqSysStatReg=0
+* (foxthefox) deltapro mppt value changes (inWatts/outWatts max=1600, mult= 0.001)
+* (foxthefox) deltapro new values bmsMaster.diffSoc, bmsMaster.packSn
 
 
 ### 0.0.21 (npm)

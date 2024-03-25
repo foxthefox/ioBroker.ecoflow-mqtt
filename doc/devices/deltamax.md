@@ -179,11 +179,11 @@
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |carOutVol|0 | 15 | V | 0.1 |  Car charging output voltage |
 |carTemp|0 | 80 | °C | 1 |  Car charging temperature |
-|outWatts|0 | 500 | W | 0.1 |  PV output power |
+|outWatts|0 | 800 | W | 0.1 |  PV output power |
 |carOutAmp|0 | 13 | A | 0.01 |  Car charging output current |
 |outAmp|0 | 13 | A | 0.01 |  PV output current |
 |dcdc12vWatts|0 | 500 | W | 0.1 |  DC12V30A output power, which is valid only for DELTA Pro |
-|inWatts|0 | 500 | W | 0.1 |  PV input power |
+|inWatts|0 | 800 | W | 0.1 |  PV input power |
 |dcdc12vVol|0 | 60 | V | 0.1 |  DC12V30A output voltage, which is valid only for DELTA Pro |
 |inAmp|0 | 13 | A | 0.01 |  PV input current |
 |inVol|0 | 100 | V | 0.1 |  PV input voltage |

@@ -292,6 +292,7 @@
 		"waves": [],
 		"glaciers": [],
 		"generators": [],
+		"panels": [],
 		"msgStateCreation": false,
 		"msgUpdatePstation": false,
 		"msgUpdateValuePstation": false,
