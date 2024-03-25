@@ -213,8 +213,6 @@ some explanation to the device data
 ### Smart Home Panel
 ![Smart Home Panel](./doc/devices/panel.md)
 
-Dual Fuel generator is not available, could be implemented, if data is available.
-
 ### Generator
 ![Generator](./doc/devices/generator.md)
 
