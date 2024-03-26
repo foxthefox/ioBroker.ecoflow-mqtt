@@ -1,8 +1,11 @@
 {
 	"common": {
 		"name": "ecoflow-mqtt",
-		"version": "0.0.22",
+		"version": "0.0.23",
 		"news": {
+			"0.0.23": {
+				"en": "correction latestQuotas,"
+			},
 			"0.0.22": {
 				"en": "homeassistant connector",
 				"de": "HomeAssistant-Anschluss",

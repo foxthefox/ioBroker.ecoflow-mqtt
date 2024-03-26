@@ -241,6 +241,10 @@ Wave is not available, could be implemented, if data is available.
 * check beep command if reversing needed
 
 ## Changelog
+### 0.0.23
+* (foxthefox) correction to latestQuotas (shift from info to action)
+
+
 ### 0.0.22
 * (foxthefox) Homeassistant Connector/Gateway
 * (foxthefox) added Generator (indication only, no knowledge on commands)
