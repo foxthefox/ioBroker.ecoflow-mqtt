@@ -1395,7 +1395,7 @@ class EcoflowMqtt extends utils.Adapter {
 			case 'quotabuf':
 				if (obj.callback && obj.message) {
 					this.log.info('send msg quota protobuf data');
-					await ef.getLastJSONQuotas(this, this.pdevices);
+					await ef.getLastProtobufQuotas(this, this.pdevices);
 					const timeout = setTimeout(() => {
 						try {
 							const quotas = JSON.stringify(this.quotas);
