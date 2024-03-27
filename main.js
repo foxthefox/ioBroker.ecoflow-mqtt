@@ -1370,9 +1370,31 @@ class EcoflowMqtt extends utils.Adapter {
 				}
 				break;
 
-			case 'quota':
+			case 'quotajson':
 				if (obj.callback && obj.message) {
-					this.log.info('send msg quota data');
+					this.log.info('send msg quota json data');
+					await ef.getLastJSONQuotas(this, this.pdevices);
+					const timeout = setTimeout(() => {
+						try {
+							const quotas = JSON.stringify(this.quotas);
+							this.sendTo(
+								obj.from,
+								obj.command,
+								{
+									error: 'device data:' + quotas
+								},
+								obj.callback
+							);
+						} catch (error) {
+							this.log.debug('send quota req ->' + error);
+							clearTimeout(timeout);
+						}
+					}, 2000);
+				}
+				break;
+			case 'quotabuf':
+				if (obj.callback && obj.message) {
+					this.log.info('send msg quota protobuf data');
 					await ef.getLastJSONQuotas(this, this.pdevices);
 					const timeout = setTimeout(() => {
 						try {
