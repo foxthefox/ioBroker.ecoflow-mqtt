@@ -130,8 +130,16 @@
 				"getQuota": {
 					"type": "sendTo",
 					"hidden": "false",
-					"label": "Debug Quotas",
-					"command": "quota",
+					"label": "Debug Quotas (JSON)",
+					"command": "quotajson",
+					"variant": "contained",
+					"jsonData": "{\"quota\": \"now\"}"
+				},
+				"getQuota2": {
+					"type": "sendTo",
+					"hidden": "false",
+					"label": "Debug Quotas (buffer)",
+					"command": "quotabuf",
 					"variant": "contained",
 					"jsonData": "{\"quota\": \"now\"}"
 				},
