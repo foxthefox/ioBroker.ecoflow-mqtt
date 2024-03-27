@@ -243,6 +243,7 @@ Wave is not available, could be implemented, if data is available.
 ## Changelog
 ### 0.0.23
 * (foxthefox) correction to latestQuotas (shift from info to action)
+* (foxthefox) X_Unknown_15 range max 1000
 
 
 ### 0.0.22
