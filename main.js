@@ -658,14 +658,26 @@ class EcoflowMqtt extends utils.Adapter {
 							(msgtype === 'get_reply' || msgtype === 'update')
 						) {
 							const dict = this.pdevicesStatesDict[devtype];
-							const haupdate = await ef.storeStationPayload(
-								this,
-								dict,
-								this.pdevicesStates[devtype],
-								topic,
-								JSON.parse(message.toString()),
-								this.pdevices[topic]['haEnable']
-							);
+							let haupdate = [];
+							if (devtype !== 'panel') {
+								haupdate = await ef.storeStationPayload(
+									this,
+									dict,
+									this.pdevicesStates[devtype],
+									topic,
+									JSON.parse(message.toString()),
+									this.pdevices[topic]['haEnable']
+								);
+							} else {
+								haupdate = await ef.storeSHPpayload(
+									this,
+									dict,
+									this.pdevicesStates[devtype],
+									topic,
+									JSON.parse(message.toString()),
+									this.pdevices[topic]['haEnable']
+								);
+							}
 							if (haupdate.length > 0) {
 								for (let i = 0; i < haupdate.length; i++) {
 									if (typeof haupdate[i].payload === 'string') {

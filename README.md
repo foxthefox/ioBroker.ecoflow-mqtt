@@ -241,6 +241,9 @@ Wave is not available, could be implemented, if data is available.
 * check beep command if reversing needed
 
 ## Changelog
+### 0.0.24
+* (foxthefox) SHP incomming data processing
+
 ### 0.0.23
 * (foxthefox) correction to latestQuotas (shift from info to action)
 * (foxthefox) X_Unknown_15 range max 1000
