@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "ecoflow-mqtt",
-        "version": "0.0.23",
+        "version": "0.0.24",
         "news": {
+            "0.0.24": {
+                "en": "SHP data processing",
+                "de": "SHP-Datenverarbeitung",
+                "ru": "Обработка данных СГП",
+                "pt": "Processamento de dados da PCH",
+                "nl": "SHP-gegevensverwerking",
+                "fr": "Traitement des données SHP",
+                "it": "Elaborazione dati SHP",
+                "es": "Procesamiento de datos SHP",
+                "pl": "Przetwarzanie danych SHP",
+                "uk": "Обробка даних SHP",
+                "zh-cn": "小水电数据处理"
+            },
             "0.0.23": {
                 "en": "correction latestQuotas,",
                 "de": "Korrektur neueste Quoten,",
