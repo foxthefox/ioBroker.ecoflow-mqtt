@@ -521,7 +521,7 @@ class EcoflowMqtt extends utils.Adapter {
 						if (this.pdevicesStatesDict && this.pdevicesStates) {
 							let msgdecode = null;
 							try {
-								msgdecode = ef.pstreamDecode(this, message);
+								msgdecode = ef.pstreamDecode(this, message, '', topic);
 							} catch (error) {
 								this.log.debug('pstreamDecode call ->' + error);
 							}
