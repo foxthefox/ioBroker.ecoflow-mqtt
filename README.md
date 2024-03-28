@@ -241,15 +241,18 @@ Wave is not available, could be implemented, if data is available.
 * check beep command if reversing needed
 
 ## Changelog
-### 0.0.24
+### 0.0.25 (npm)
+* (foxthefox) new datapoints for DeltaPro
+
+### 0.0.24 (npm)
 * (foxthefox) SHP incomming data processing
 
-### 0.0.23
+### 0.0.23 (npm)
 * (foxthefox) correction to latestQuotas (shift from info to action)
 * (foxthefox) X_Unknown_15 range max 1000
 * (foxthefox) new debug button for devices with protobuf msg
 
-### 0.0.22
+### 0.0.22 (npm)
 * (foxthefox) Homeassistant Connector/Gateway
 * (foxthefox) added Generator (indication only, no knowledge on commands)
 * (foxthefox) added Delta Pro Ultra

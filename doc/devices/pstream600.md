@@ -1,5 +1,5 @@
 # States for  PSTREAM
-### version: 0.0.22
+### version: 0.0.25
 
 [inverter_heartbeat](#inverter_heartbeat)
 
@@ -152,7 +152,7 @@
 |lowerLimit|0 | 30 | % | 1 |  Discharging lower limit |
 |baseLoad|0 | 800 | W | 0.1 |  Home base load |
 |powerPlugsPos|0 | 10000 | W | 0.1 |  Power of plugs |
-|X_Unknown_15|-100 | 100 |  | 1 |  X_Unknown_15 |
+|X_Unknown_15|-1000 | 1000 |  | 1 |  X_Unknown_15 |
 |X_Unknown_17|0 | 100 |  | 0.0001 |  X_Unknown_17 |
 |uptime|0 |  n/a | s | 1 |  Power Stream uptime |
 |X_Unknown_34|-100 | 100 |  | 1 |  X_Unknown_34 |

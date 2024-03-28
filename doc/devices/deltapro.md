@@ -1,5 +1,5 @@
 # States for  DELTAPRO
-### version: 0.0.22
+### version: 0.0.25
 
 [bmsMaster](#bmsMaster)
 
@@ -38,6 +38,10 @@
 |fullCap|0 | 80000 | mAh | 1 |  Full capacity |
 |cycles|0 | 6000 |  | 1 |  Number of cycles |
 |diffSoc|0 | 100 | % | 1 |  SOC difference |
+|cellVol|0 | 10 | V | 0.001 |  Cell voltage |
+|cellTemp|0 | 60 | °C | 1 |  Cell temperature |
+|targetSoc|0 | 100 | % | 1 |  Target SoC |
+|actSoc|0 | 100 | % | 1 |  Actual SoC |
 
 
 ### string
@@ -50,6 +54,14 @@
 |bqSysStatReg| BQ hardware protection register |
 |num| BMS number |
 |openBmsIdx| Battery pack enable state |
+|cycleSoh| cycle Soh |
+|realSoh| real Soh |
+|bmsHeartbeatVer| bms Heartbeat Version |
+|productDetail| Product Detail |
+|sysLoaderVer| sysLoaderVer |
+|totalDsgCap| Total Discharge Capacity |
+|totalChgCap| Total Charge Capacity |
+|ecloudOcv| ecloudOcv |
 
 ### diagnostic
 
@@ -58,12 +70,19 @@
 |type| BMS type | {1:Lithium battery,2:Oil-powered} |
 |errCode| Global error code | {0:OK?} |
 |cellId| Battery capacity type | {1:2.5 Ah per battery,2:2 Ah per battery} |
+|chgDsgState| chg Dsg State | {0:0?,1:1?,2:2?} |
+|productType| Product Type | {14:Delta Pro?} |
+|calendarSch| Calendar Schedule | {0:0?,1:1?} |
+|sysState| sys State | {0:0?,1:1?} |
+|allErrCode| all Err Code | {0:0?,1:1?,2:2?} |
+|allBmsFault| all Bms Faulttype | {0:0?,1:1?,2:2?} |
 
 ### array
 
 | State  |  Name |
 |----------|------|
 |packSn| Pack SN |
+|hwEdition| HW edition |
 
 ## ems
 
