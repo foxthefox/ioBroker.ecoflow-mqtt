@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "ecoflow-mqtt",
-        "version": "0.0.25",
+        "version": "0.0.26",
         "news": {
+            "0.0.26": {
+                "en": "Delta Pro datapoint, SHP improvements",
+                "de": "Delta Pro-Datenpunkt, SHP-Verbesserungen",
+                "ru": "Точка данных Delta Pro, улучшения SHP",
+                "pt": "Ponto de dados Delta Pro, melhorias em SHP",
+                "nl": "Delta Pro-datapunt, SHP-verbeteringen",
+                "fr": "Point de données Delta Pro, améliorations SHP",
+                "it": "Punto dati Delta Pro, miglioramenti al piccolo idroelettrico",
+                "es": "Punto de datos Delta Pro, mejoras en SHP",
+                "pl": "Punkt danych Delta Pro, ulepszenia SHP",
+                "uk": "Точка даних Delta Pro, покращення SHP",
+                "zh-cn": "Delta Pro 数据点、SHP 改进"
+            },
             "0.0.25": {
                 "en": "new datapoints Delta Pro",
                 "de": "neue Datenpunkte Delta Pro",
