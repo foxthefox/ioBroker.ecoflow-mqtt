@@ -1,5 +1,5 @@
 # States for  PANEL
-### version: 0.0.22
+### version: 0.0.25
 
 [heartbeat](#heartbeat)
 
@@ -323,16 +323,16 @@
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|watthDaytoDate_0|0 | 86400 | Wh | 1 |  Daily energy DP1 |
-|watthDaytoDate_1|0 | 86400 | Wh | 1 |  Daily energy DP2 |
+|watthDaytoDate_10|0 | 86400 | Wh | 1 |  Daily energy DP1 |
+|watthDaytoDate_11|0 | 86400 | Wh | 1 |  Daily energy DP2 |
 
 
 ### array
 
 | State  |  Name |
 |----------|------|
-|watth_0| Hourly energy DP1 |
-|watth_1| Hourly energy DP2 |
+|watth_10| Hourly energy DP1 |
+|watth_11| Hourly energy DP2 |
 
 ## emergencyStrategy
 

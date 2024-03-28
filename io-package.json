@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "ecoflow-mqtt",
-        "version": "0.0.24",
+        "version": "0.0.25",
         "news": {
+            "0.0.25": {
+                "en": "new datapoints Delta Pro",
+                "de": "neue Datenpunkte Delta Pro",
+                "ru": "новые точки данных Delta Pro",
+                "pt": "novos pontos de dados Delta Pro",
+                "nl": "nieuwe datapunten Delta Pro",
+                "fr": "nouveaux points de données Delta Pro",
+                "it": "nuovi punti dati Delta Pro",
+                "es": "nuevos puntos de datos Delta Pro",
+                "pl": "nowe punkty danych Delta Pro",
+                "uk": "нові точки даних Delta Pro",
+                "zh-cn": "新数据点 Delta Pro"
+            },
             "0.0.24": {
                 "en": "SHP data processing",
                 "de": "SHP-Datenverarbeitung",
