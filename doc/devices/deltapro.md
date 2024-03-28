@@ -1,5 +1,5 @@
 # States for  DELTAPRO
-### version: 0.0.25
+### version: 0.0.26
 
 [bmsMaster](#bmsMaster)
 
@@ -24,7 +24,7 @@
 |temp|0 | 80 | °C | 1 |  Temperature |
 |maxCellTemp|0 | 80 | °C | 1 |  Maximum cell temperature |
 |vol|0 | 60 | V | 0.001 |  Voltage |
-|amp|0 | 25 | A | 0.001 |  Current |
+|amp|0 | 50 | A | 0.001 |  Current |
 |outputWatts|0 | 4000 | W | 0.1 |  Output power |
 |soc|0 | 100 | % | 1 |  Remaining battery percentage |
 |minCellTemp|0 | 80 | °C | 1 |  Minimum cell temperature |
