@@ -242,6 +242,11 @@ Wave is not available, could be implemented, if data is available.
 
 ## Changelog
 ### 0.0.25 (npm)
+* (foxthefox) bmasMaster.amp max = 50
+* (foxthefox) corrections SHP
+
+
+### 0.0.25 (npm)
 * (foxthefox) new datapoints for DeltaPro
 
 ### 0.0.24 (npm)
