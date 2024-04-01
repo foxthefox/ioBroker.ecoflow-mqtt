@@ -17,7 +17,7 @@
 		"node": ">= 16"
 	},
 	"dependencies": {
-		"@iobroker/adapter-core": "^3.0.4",
+		"@iobroker/adapter-core": "^3.0.6",
 		"@iobroker/dev-server": "^0.7.1",
 		"mqtt": "^5.3.4",
 		"protobufjs": "^7.2.6"
