@@ -744,7 +744,7 @@ class EcoflowMqtt extends utils.Adapter {
 			try {
 				this.log.info('[HA] ' + 'going to connect to HA mqtt broker');
 				this.log.debug('[HA] ' + 'your HA mqtt configration:');
-				this.log.debug('[HA] ' + 'topic         -> ' + this.haTopic);
+				this.log.debug('[HA] ' + 'topic         -> ' + this.config.haTopic);
 				this.log.debug('[HA] ' + 'user          -> ' + this.config.haMqttUserId);
 				this.log.debug('[HA] ' + 'port          -> ' + this.config.haMqttPort);
 				this.log.debug('[HA] ' + 'url           -> ' + this.config.haMqttUrl);

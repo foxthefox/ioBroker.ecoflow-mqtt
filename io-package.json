@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "ecoflow-mqtt",
-        "version": "0.0.26",
+        "version": "0.0.27",
         "news": {
+            "0.0.27": {
+                "en": "fixed issues with additional battery and homeassistant transfer; bmsMaster Delta Pro new points",
+                "de": "Probleme mit Zusatzbatterie und HomeAssistant-Übertragung behoben; bmsMaster Delta Pro neue Punkte",
+                "ru": "исправлены проблемы с переносом дополнительной батареи и домашнего помощника; новые очки bmsMaster Delta Pro",
+                "pt": "problemas corrigidos com bateria adicional e transferência de assistente doméstico; novos pontos bmsMaster Delta Pro",
+                "nl": "opgeloste problemen met de overdracht van extra batterij en thuisassistent; bmsMaster Delta Pro nieuwe punten",
+                "fr": "problèmes résolus avec la batterie supplémentaire et le transfert de homeassistant ; bmsMaster Delta Pro nouveaux points",
+                "it": "problemi risolti con batteria aggiuntiva e trasferimento HomeAssistant; bmsMaster Delta Pro nuovi punti",
+                "es": "se solucionaron problemas con la batería adicional y la transferencia del asistente doméstico; bmsMaster Delta Pro nuevos puntos",
+                "pl": "naprawiono problemy z dodatkową baterią i transferem z pomocą asystenta domowego; bmsMaster Delta Pro nowe punkty",
+                "uk": "виправлені проблеми з перенесенням додаткової батареї та домашнього помічника; Нові бали bmsMaster Delta Pro",
+                "zh-cn": "修复了额外电池和家庭助理传输的问题； bmsMaster Delta Pro 新积分"
+            },
             "0.0.26": {
                 "en": "Delta Pro datapoint, SHP improvements",
                 "de": "Delta Pro-Datenpunkt, SHP-Verbesserungen",

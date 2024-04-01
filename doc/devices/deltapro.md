@@ -1,5 +1,5 @@
 # States for  DELTAPRO
-### version: 0.0.26
+### version: 0.0.27
 
 [bmsMaster](#bmsMaster)
 
@@ -42,6 +42,7 @@
 |cellTemp|0 | 60 | °C | 1 |  Cell temperature |
 |targetSoc|0 | 100 | % | 1 |  Target SoC |
 |actSoc|0 | 100 | % | 1 |  Actual SoC |
+|maxVolDiff|0 | 500 | mV | 0.001 |  Maximum cell voltage difference |
 
 
 ### string
@@ -76,6 +77,7 @@
 |sysState| sys State | {0:0?,1:1?} |
 |allErrCode| all Err Code | {0:0?,1:1?,2:2?} |
 |allBmsFault| all Bms Faulttype | {0:0?,1:1?,2:2?} |
+|mosState| Battery capacity type | {0:0?,1:1?,2:2?,3:3?} |
 
 ### array
 
