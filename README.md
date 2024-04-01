@@ -244,6 +244,7 @@ Wave is not available, could be implemented, if data is available.
 ### 0.0.27 (npm)
 * (foxthefox) fixed issues with additional battery and homeassistant transfer
 * (foxthefox) bmsMaster Delta Pro new points (maxVolDiff,mosState,cellSeriesNum,cellNtcNum)
+* (foxthefox) fix issue with SHP heartbeat.errorCodes
 
 ### 0.0.26 (npm)
 * (foxthefox) bmasMaster.amp max = 50
