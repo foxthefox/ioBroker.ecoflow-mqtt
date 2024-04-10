@@ -243,8 +243,10 @@ Wave is not available, could be implemented, if data is available.
 
 ## Changelog
 ### 0.0.28 (npm)
-* (foxthefox) fix value normalization
+* (foxthefox) fix value normalization (DP,wave2,glacier)
 * (foxthefox) set actions initially to false to avoid null
+* (foxthefox) fix latestQuotas for glacier/wave2
+* (foxthefox) enhance logging
 
 ### 0.0.27 (npm)
 * (foxthefox) fixed issues with additional battery and homeassistant transfer
