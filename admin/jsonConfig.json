@@ -631,7 +631,7 @@
 							"width": "20%",
 							"options": [
 								{ "value": "none", "label": "none" },
-								{ "value": "wave", "label": "Wave Air Con" }
+								{ "value": "wave2", "label": "Wave 2 Air Con" }
 							],
 							"title": "Wave Type",
 							"attr": "devType",
