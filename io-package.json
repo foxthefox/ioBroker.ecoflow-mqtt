@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "ecoflow-mqtt",
-        "version": "0.0.27",
+        "version": "0.0.28",
         "news": {
+            "0.0.28": {
+                "en": "fix value normalization, actions initial to false",
+                "de": "Fixwertnormalisierung, Aktionen initial auf false",
+                "ru": "исправить нормализацию значений, начальные действия имеют значение false",
+                "pt": "corrigir normalização de valor, ações iniciais para falsas",
+                "nl": "normalisatie van de waarde repareren, acties die aanvankelijk onwaar zijn",
+                "fr": "correction de la normalisation de la valeur, actions initiales à false",
+                "it": "correzione della normalizzazione del valore, azioni iniziali su false",
+                "es": "normalización de valores fijos, acciones iniciales a falsas",
+                "pl": "napraw normalizację wartości, akcje początkowe na fałszywe",
+                "uk": "виправити нормалізацію значення, дії початкові на false",
+                "zh-cn": "修复值标准化，操作初始为 false"
+            },
             "0.0.27": {
                 "en": "fixed issues with additional battery and homeassistant transfer; bmsMaster Delta Pro new points",
                 "de": "Probleme mit Zusatzbatterie und HomeAssistant-Übertragung behoben; bmsMaster Delta Pro neue Punkte",
@@ -331,6 +344,11 @@
         "connectionType": "cloud",
         "dataSource": "push",
         "tier": 3,
+        "licenseInformation": {
+            "license": "MIT",
+            "link": "https://opensource.org/license/mit/",
+            "type": "free"
+        },
         "adminUI": {
             "config": "json"
         },

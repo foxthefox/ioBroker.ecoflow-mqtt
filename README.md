@@ -165,7 +165,8 @@ This is not necessarily a failure or an indicator for not working adapter, it is
 ## HA connector/gateway
 
 * the MQTT discovery function in HA enables an elegant way of information exchange
-* at each iobroker adapter start all discovery objects are transmitted to HA (even the should retain in HA)
+* the MQTT discovery function may not be activated when MQTT broker is already running in HA, it needs to be enabled during reconfiguration of MQTT service
+* at each start of iobroker adapter all discovery objects are transmitted to HA (even they should retain in HA)
 * iobroker adapter filters the incomming messages of the devices. only changed values are stored internally and transferred to HA.
 * if a value is not set by device data update, it will appear as unknown in HA
 * if the device is reachable, then the availability will be shown in the device connectivity, this is inherited to the "sub-devices" (unavailability is precessed in the same way)
@@ -241,6 +242,12 @@ Wave is not available, could be implemented, if data is available.
 * check beep command if reversing needed
 
 ## Changelog
+### 0.0.28 (npm)
+* (foxthefox) fix value normalization (DP,wave2,glacier)
+* (foxthefox) set actions initially to false to avoid null
+* (foxthefox) fix latestQuotas for glacier/wave2
+* (foxthefox) enhance logging
+
 ### 0.0.27 (npm)
 * (foxthefox) fixed issues with additional battery and homeassistant transfer
 * (foxthefox) bmsMaster Delta Pro new points (maxVolDiff,mosState,cellSeriesNum,cellNtcNum)
