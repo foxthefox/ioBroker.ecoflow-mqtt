@@ -1,5 +1,5 @@
 # States for  RIVER2MAX
-### version: 0.0.25
+### version: 0.0.29
 
 [bmsMaster](#bmsMaster)
 
@@ -18,7 +18,7 @@
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|amp|0 | 25 | A | 0.001 |  Current |
+|amp|0 | 50 | A | 0.001 |  Current |
 |cycles|0 | 6000 |  | 1 |  Number of cycles |
 |designCap|0 | 80000 | mAh | 1 |  Design capacity |
 |f32ShowSoc|0 | 100 | % | 1 |  SOC |

@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "ecoflow-mqtt",
-        "version": "0.0.28",
+        "version": "0.0.29",
         "news": {
+            "0.0.29": {
+                "en": "new objects for wave2",
+                "de": "Neue Objekte für Welle2",
+                "ru": "новые объекты для волны 2",
+                "pt": "novos objetos para wave2",
+                "nl": "nieuwe objecten voor wave2",
+                "fr": "nouveaux objets pour la vague 2",
+                "it": "nuovi oggetti per wave2",
+                "es": "nuevos objetos para wave2",
+                "pl": "nowe obiekty dla fali 2",
+                "uk": "нові об'єкти для wave2",
+                "zh-cn": "Wave2 的新对象"
+            },
             "0.0.28": {
                 "en": "fix value normalization, actions initial to false",
                 "de": "Fixwertnormalisierung, Aktionen initial auf false",

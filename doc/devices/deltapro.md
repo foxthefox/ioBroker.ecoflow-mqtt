@@ -1,5 +1,5 @@
 # States for  DELTAPRO
-### version: 0.0.27
+### version: 0.0.29
 
 [bmsMaster](#bmsMaster)
 
@@ -78,6 +78,7 @@
 |allErrCode| all Err Code | {0:0?,1:1?,2:2?} |
 |allBmsFault| all Bms Faulttype | {0:0?,1:1?,2:2?} |
 |mosState| Battery capacity type | {0:0?,1:1?,2:2?,3:3?} |
+|balanceState| Balance State | {0:0&#x3D;OK?,1:1?,2:2?} |
 
 ### array
 
@@ -274,11 +275,11 @@
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |carOutVol|0 | 15 | V | 0.1 |  Car charging output voltage |
 |carTemp|0 | 80 | °C | 1 |  Car charging temperature |
-|outWatts|0 | 1600 | W | 0.001 |  PV output power |
+|outWatts|0 | 1600 | W | 0.1 |  PV output power |
 |carOutAmp|0 | 13 | A | 0.01 |  Car charging output current |
 |outAmp|0 | 13 | A | 0.01 |  PV output current |
 |dcdc12vWatts|0 | 500 | W | 0.1 |  DC12V30A output power, which is valid only for DELTA Pro |
-|inWatts|0 | 1600 | W | 0.001 |  PV input power |
+|inWatts|0 | 1600 | W | 0.1 |  PV input power |
 |dcdc12vVol|0 | 60 | V | 0.1 |  DC12V30A output voltage, which is valid only for DELTA Pro |
 |inAmp|0 | 13 | A | 0.01 |  PV input current |
 |inVol|0 | 150 | V | 0.1 |  PV input voltage |

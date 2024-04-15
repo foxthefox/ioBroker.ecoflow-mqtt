@@ -1,5 +1,5 @@
 # States for  RIVERPRO
-### version: 0.0.25
+### version: 0.0.29
 
 [bmsMaster](#bmsMaster)
 
@@ -14,7 +14,7 @@
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|amp|0 | 25 | A | 0.001 |  Current |
+|amp|0 | 50 | A | 0.001 |  Current |
 |cycles|0 | 6000 |  | 1 |  Number of cycles |
 |fullCap|0 | 80000 | mAh | 1 |  Full capacity |
 |maxCellTemp|0 | 80 | °C | 1 |  Maximum cell temperature |

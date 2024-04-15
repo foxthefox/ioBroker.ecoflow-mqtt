@@ -1,5 +1,5 @@
 # States for  WAVE2
-### version: 0.0.25
+### version: 0.0.29
 
 [pd](#pd)
 
@@ -42,8 +42,8 @@
 |batPowerSupplyTime|0 |  n/a | min | 1 |  Duration of using battery provided with the air conditioner |
 |acPwrIn|0 | 600 | W | 1 |  AC input power |
 |tempNtc|0 | 60 | °C | 0.1 |  NTC temperature |
-|envTemp|0 | 60 | °C | 1 |  Ambient temperature |
-|sacIdleTime|0 | 1440 | min | 1 |  Device standby time |
+|envTemp|0 | 80 | °C | 1 |  Ambient temperature |
+|sacIdleTime|0 |  n/a | min | 1 |  Device standby time |
 |acVoltRms|0 | 250 | V | 0.1 |  RMS value of the AC input voltage |
 |dp2PowerSupplyTime|0 |  n/a | min | 1 |  Duration of using DELTA 2 as the power source |
 |coolEnv|0 | 60 | °C | 0.01 |  Air outlet temperature |
@@ -155,7 +155,7 @@
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |acFreq|0 | 60 | Hz | 1 |  AC input frequency |
-|batVolt|0 | 60 | V | 1 |  Battery voltage |
+|batVolt|0 | 60 | V | 0.01 |  Battery voltage |
 |acWattsRange0Time|0 |  n/a | min | 0.0166667 |  Length of time when AC power falls in interval 0 (101 W-200 W) |
 |mpptVolRange0Time|0 |  n/a | min | 0.0166667 |  Length of time when MPPT power supply voltage falls in interval 0 (11 V-20 V) |
 |batCurr|0 | 10 | A | 0.001 |  Battery current |
@@ -175,7 +175,7 @@
 |mpptWattsRange1Time|0 |  n/a | min | 0.0166667 |  Length of time when MPPT power supply falls in interval 1 (201 W-300 W) |
 |acCurrRms|0 | 10 | A | 0.001 |  RMS value of the AC input current |
 |llcCurr|0 | 15 | A | 1 |  LLC output current |
-|busVolt|0 | 60 | V | 1 |  Bus voltage |
+|busVolt|0 | 60 | V | 0.001 |  Bus voltage |
 |acWattsRange2Time|0 |  n/a | min | 0.0166667 |  Length of time when AC power falls in interval 2 (301 W-400 W) |
 |tempNtc|0 | 60 | °C | 0.1 |  NTC temperature |
 |tempMax|0 | 80 | °C | 1 |  The highest temperature among the four temperatures: MPPT temperature, PFC temperature, LLC high-voltage side temperature, and LLC low-voltage side temperature |
@@ -225,8 +225,8 @@
 |frontFanWorkTime|0 |  n/a | min | 0.0166667 |  Working duration of front fan |
 |compressorWorkTime|0 |  n/a | min | 0.0166667 |  Working duration of compressor |
 |coolSleepTime|0 |  n/a | min | 0.0166667 |  Working duration in the Sleep mode of Cool mode |
-|setCondFanRpm|0 | 4 | level | 1 |  Set condensing fan speed |
-|setEvapFanRpm|0 | 5 | level | 1 |  Set evaporative fan speed |
+|setCondFanRpm|0 | 1500 | rpm | 1 |  Setpoint condensing fan speed |
+|setEvapFanRpm|0 | 1300 | rpm | 1 |  Setpoint evaporative fan speed |
 |drainageTime|0 |  n/a | min | 0.0166667 |  Duration of outward drainage |
 |hotNormalTime|0 |  n/a | min | 0.0166667 |  Working duration in Normal mode of the Heat mode |
 |hotSleepTime|0 |  n/a | min | 0.0166667 |  Working duration in the Sleep mode of Heat mode |
@@ -238,7 +238,7 @@
 |hotEcoTime|0 |  n/a | min | 0.0166667 |  Working duration in the ECO mode of the Heat mode |
 |hotMaxTime|0 |  n/a | min | 0.0166667 |  Working duration in the Max mode of Heat mode |
 |backFanWorkTime|0 |  n/a | min | 0.0166667 |  Working duration of rear fan |
-|condeFanRpm|0 | 1000 | rpm | 1 |  Condensing fan speed feedback |
+|condeFanRpm|0 | 1800 | rpm | 1 |  Condensing fan speed feedback |
 |setCompressorRpm|0 | 1000 | rpm | 1 |  Compressor speed settings |
 |waterPumpWorkTime|0 |  n/a | min | 0.0166667 |  Working duration of water pump |
 |coolEcoTime|0 |  n/a | min | 0.0166667 |  Working duration in the ECO mode of Cool mode |
@@ -294,6 +294,23 @@
 |bmsChgTime|0 | 5999 | min | 1 |  BMS charging duration |
 |bmsMinDsgSoc|0 | 30 | % | 1 |  UPS minimum discharge SoC |
 |bmsMaxChgSoc|60 | 100 | % | 1 |  UPS maximum charging SOC |
+|maxMosTmp|0 | 80 | °C | 1 |  Maximum MOS temperature |
+|maxCellTmp|0 | 60 | °C | 1 |  Maximum cell temperature |
+|outWatts|0 | 500 | W | 1 |  Output power |
+|minCellTmp|0 | 60 | °C | 1 |  Minimum cell temperature |
+|soc|0 | 100 | % | 1 |  Remaining battery percentage |
+|remainTime|0 | 143999 | min | 1 |  Time remaining |
+|amp|0 | 50 | A | 0.001 |  Current |
+|tmp|0 | 60 | °C | 1 |  Temperature |
+|inWatts|0 | 600 | W | 1 |  Input power |
+|designCap|0 | 80000 | mAh | 1 |  Design capacity |
+|f32ShowSoc|0 | 100 | % | 1 |  SOC |
+|minMosTmp|0 | 80 | °C | 1 |  Minimum MOS temperature |
+|maxVolDiff|0 | 500 | mV | 0.001 |  Maximum cell voltage difference |
+|fullCap|0 | 80000 | mAh | 1 |  Full capacity |
+|vol|0 | 60 | V | 0.001 |  Voltage |
+|tagChgAmp|0 | 100 | A | 0.0001 |  Target charging current |
+|cycles|0 | 6000 |  | 1 |  Number of cycles |
 
 
 ### string
@@ -310,6 +327,13 @@
 |powerOffCnt| Count of pressing button for shutdown |
 |usbUseCnt| Count of using USB |
 |typecUseCnt| Count of using AC |
+|bmsFault| BMS permanent fault |
+|bqStatReg| BQ hardware protection register |
+|soh| Health status |
+|num| BMS number |
+|ver| System version |
+|openBmsIdx| Battery pack enable state |
+|err| Global error code |
 
 ### array
 
@@ -319,6 +343,8 @@
 |dsgWattRangeTime| Length of time (sec) when the discharging power falls in each of the four intervals |
 |usbWattRangeTime| Length of time (sec) when the usb power falls in each of the four intervals |
 |typecWattRangeTime| Length of time (sec) when the AC power falls in each of the four intervals |
+|cellTemp| Cell temperature |
+|cellVol| Cell voltage |
 
 ### diagnostic
 
@@ -326,4 +352,8 @@
 |----------|:-------------:|------|
 |bmsType| bmsType | {0:master,1:slave} |
 |bmsChgDsgSts| bms Charge Discharge Status | {0:idle,1:chg,2:dsg} |
+|cellId| Battery capacity type | {1:2.5 Ah per battery,2:2 Ah per battery} |
+|type| BMS type | {1:Lithium battery,2:Oil-powered} |
+|balanceState| Balance State | {0:0&#x3D;OK?,1:1?,2:2?} |
+|mosState| Battery capacity type | {0:0?,1:1?,2:2?,3:3?} |
 

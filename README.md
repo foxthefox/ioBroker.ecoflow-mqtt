@@ -242,6 +242,10 @@ Wave is not available, could be implemented, if data is available.
 * check beep command if reversing needed
 
 ## Changelog
+### 0.0.29 (npm)
+* (foxthefox) new objects for wave2
+* (foxthefox) device emulation
+
 ### 0.0.28 (npm)
 * (foxthefox) fix value normalization (DP,wave2,glacier)
 * (foxthefox) set actions initially to false to avoid null

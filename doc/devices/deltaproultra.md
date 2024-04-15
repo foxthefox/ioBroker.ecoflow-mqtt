@@ -1,5 +1,5 @@
 # States for  DELTAPROULTRA
-### version: 0.0.25
+### version: 0.0.29
 
 [AppParaHeartbeatReport](#AppParaHeartbeatReport)
 
@@ -164,8 +164,8 @@
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |acInFreq|50 | 60 | Hz | 1 |  AC input frequency |
 |emsMaxAvailNum|0 | 5 | pcs | 1 |  EMS max avail. number |
-|emsParaVolMin|0 | 120 | V | 1 |  Minimum parallel voltage |
-|emsParaVolMax|0 | 120 | V | 1 |  Maximum parallel voltage |
+|emsParaVolMin|0 | 120 | V | 0.001 |  Minimum parallel voltage |
+|emsParaVolMax|0 | 120 | V | 0.001 |  Maximum parallel voltage |
 |acOutFreq|50 | 60 | Hz | 1 |  AC output frequency |
 |batVol|0 | 120 | V | 1 |  Battery voltage |
 |batAmp|0 | 60 | A | 1 |  Battery current |
