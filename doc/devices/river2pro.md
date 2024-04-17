@@ -1,5 +1,5 @@
 # States for  RIVER2PRO
-### version: 0.0.25
+### version: 0.0.29
 
 [pd](#pd)
 
@@ -121,7 +121,7 @@
 |vol|0 | 60 | V | 0.001 |  Voltage |
 |remainTime|0 | 143999 | min | 1 |  Time remaining |
 |fullCap|0 | 80000 | mAh | 1 |  Full capacity |
-|amp|0 | 25 | A | 0.001 |  Current |
+|amp|0 | 50 | A | 0.001 |  Current |
 |soc|0 | 100 | % | 1 |  Remaining battery percentage |
 |inputWatts|0 | 4000 | W | 0.1 |  Input power |
 |tagChgAmp|0 | 100 | A | 0.0001 |  Target charging current |

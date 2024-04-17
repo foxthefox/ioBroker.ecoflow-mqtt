@@ -1206,7 +1206,9 @@ class EcoflowMqtt extends utils.Adapter {
 				const channel = idsplit[3];
 				const item = idsplit[4];
 				if (channel === 'info' && item === 'status') {
-					const cnt = await this.getStateAsync('info.cntDevOnline');
+					const cnt = await this.getStateAsync('info.cntDevOnline').catch((e) => {
+						this.log.warn('problem getting state info.cntDevOnline ' + e);
+					});
 
 					let devcount = cnt.val;
 

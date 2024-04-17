@@ -1,5 +1,5 @@
 # States for  RIVERMAX
-### version: 0.0.25
+### version: 0.0.29
 
 [inv](#inv)
 
@@ -72,7 +72,7 @@
 |vol|0 | 60 | V | 0.001 |  Voltage |
 |minCellVol|0 | 60 | V | 0.001 |  Minimum cell voltage |
 |soc|0 | 100 | % | 1 |  Remaining battery percentage |
-|amp|0 | 25 | A | 0.001 |  Current |
+|amp|0 | 50 | A | 0.001 |  Current |
 |minCellTemp|0 | 80 | °C | 1 |  Minimum cell temperature |
 |minMosTemp|0 | 80 | °C | 1 |  Minimum MOS temperature |
 |maxCellVol|0 | 60 | V | 0.001 |  Maximum cell voltage |

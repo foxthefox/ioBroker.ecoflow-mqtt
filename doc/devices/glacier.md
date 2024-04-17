@@ -1,5 +1,5 @@
 # States for  GLACIER
-### version: 0.0.25
+### version: 0.0.29
 
 [pd](#pd)
 
@@ -14,15 +14,15 @@
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|exhaustTmp|0 | 60 | °C | 1 |  Exhaust pipe wall temperature |
+|exhaustTmp|0 | 60 | °C | 0.1 |  Exhaust pipe wall temperature |
 |batTime|0 | 5999 | min | 1 |  batTime; a negative value indicates a discharging time, and positive value indicates a charging time |
 |tempWater|0 | 60 | °C | 0.1 |  Water temperature of the ice making zone |
-|A12Val|0 | 15 | V | 1 |  12 V auxiliary supply voltage |
+|A12Val|0 | 15 | V | 0.001 |  12 V auxiliary supply voltage |
 |motorCur|0 | 60 | A | 0.001 |  Motor Current |
 |tmpM|-20 | 60 | °C | 1 |  Combined temperature zone temperature |
 |icePercent|0 | 100 | % | 1 |  Ice making progress |
 |powerBatInTime|0 |  n/a | min | 0.0166667 |  Duration of battery pack in place |
-|ambientTmp|0 | 60 | °C | 1 |  Ambient temperature |
+|ambientTmp|0 | 60 | °C | 0.1 |  Ambient temperature |
 |coolZoneSingleTime|0 |  n/a | min | 0.0166667 |  Single temperature zone duration |
 |tmpAver|-20 | 60 | C | 0.1 |  Real-time temperature of single temperature zone |
 |batPct|0 | 100 | % | 1 |  Battery level |
@@ -30,9 +30,9 @@
 |coolCoverTime|0 |  n/a | min | 0.0166667 |  Duration of cooling zone being opened |
 |powerBatOutTime|0 |  n/a | min | 0.0166667 |  Duration of battery pack not in place |
 |chargeWorkTime|0 |  n/a | min | 0.0166667 |  Duration of working while charging |
-|motorVol|0 | 60 | V | 1 |  Motor voltage |
+|motorVol|0 | 60 | V | 0.001 |  Motor voltage |
 |coolZoneDoubleTime|0 |  n/a | min | 0.0166667 |  Duration of dual temperature zone |
-|motorSpeed|0 | 2000 | rpm | 1 |  Motor speed |
+|motorSpeed|0 | 3600 | rpm | 1 |  Motor speed |
 |motorWat|0 | 600 | W | 1 |  Motor power |
 |iceTm|0 | 1440 | min | 1 |  Duration of the current ice making (for app and LCD effect display) |
 |tmpR|-20 | 60 | °C | 1 |  Actual Right temperature zone value |
@@ -76,9 +76,9 @@
 
 | State  |      Min     |     Max     |  Unit |  Mult |  Name |  cmd |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
-|tmpMSet| -20 | 50 | °C | 0.1 |  Set Temperature of the middle temperature zone | {valName:tmpM,moduleType:1,operateType:temp,params:{tmpR:-19,tmpL:0,tmpM:0}} |
-|tmpRSet| -20 | 50 | °C | 0.1 |  Set Temperature of the right temperature zone (valid when partition is inserted) | {valName:tmpR,moduleType:1,operateType:temp,params:{tmpR:-19,tmpL:0,tmpM:0}} |
-|tmpLSet| -20 | 50 | °C | 0.1 |  Set Temperature of the left temperature zone (valid when partition is inserted) | {valName:tmpL,moduleType:1,operateType:temp,params:{tmpR:-19,tmpL:0,tmpM:0}} |
+|tmpMSet| -20 | 50 | °C | 0.01 |  Set Temperature of the middle temperature zone | {valName:tmpM,moduleType:1,operateType:temp,params:{tmpR:-19,tmpL:0,tmpM:0}} |
+|tmpRSet| -20 | 50 | °C | 0.01 |  Set Temperature of the right temperature zone (valid when partition is inserted) | {valName:tmpR,moduleType:1,operateType:temp,params:{tmpR:-19,tmpL:0,tmpM:0}} |
+|tmpLSet| -20 | 50 | °C | 0.01 |  Set Temperature of the left temperature zone (valid when partition is inserted) | {valName:tmpL,moduleType:1,operateType:temp,params:{tmpR:-19,tmpL:0,tmpM:0}} |
 |powerPbLevel| 0 | 2 | level | 1 |  Battery protection level 0: Low; 1: Medium; 2: High | {valName:level,moduleType:1,operateType:protectBat,params:{state:1,level:0}} |
 |blTime| 0 | 3600 | s | 1 |  Screen timeout | {valName:time,moduleType:1,operateType:blTime,params:{time:600}} |
 
@@ -177,7 +177,7 @@
 |minCellTmp|0 | 60 | °C | 1 |  Minimum cell temperature |
 |maxCellTmp|0 | 60 | °C | 1 |  Maximum cell temperature |
 |remainTime|0 | 143999 | min | 1 |  Time remaining |
-|amp|0 | 25 | A | 0.001 |  Current |
+|amp|0 | 50 | A | 0.001 |  Current |
 
 
 ### string
@@ -241,4 +241,5 @@
 |emsFlag| ems Flag | {0:sleep,1:normal} |
 |chgCmd| Charge switch | {0:off,1:on,2:2?} |
 |fanLvl| Fan level | {0:non-rotation,1:Level 1,2:Level 2,3:Level3,4:Level 4,5:Level 5} |
+|chgState| Charging state | {0:disabled,1:CC,2:CV,3:UPS,4:PARA 0x55: Charging error} |
 
