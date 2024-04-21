@@ -37,7 +37,7 @@
 |minCellVol|0 | 60 | V | 0.001 |  Minimum cell voltage |
 |fullCap|0 | 80000 | mAh | 1 |  Full capacity |
 |cycles|0 | 6000 |  | 1 |  Number of cycles |
-|maxVolDiff|0 | 500 | mV | 0.001 |  Maximum cell voltage difference |
+|maxVolDiff|0 | 500 | V | 0.001 |  Maximum cell voltage difference |
 
 
 ### string

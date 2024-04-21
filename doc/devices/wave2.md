@@ -306,7 +306,7 @@
 |designCap|0 | 80000 | mAh | 1 |  Design capacity |
 |f32ShowSoc|0 | 100 | % | 1 |  SOC |
 |minMosTmp|0 | 80 | °C | 1 |  Minimum MOS temperature |
-|maxVolDiff|0 | 500 | mV | 0.001 |  Maximum cell voltage difference |
+|maxVolDiff|0 | 500 | V | 0.001 |  Maximum cell voltage difference |
 |fullCap|0 | 80000 | mAh | 1 |  Full capacity |
 |vol|0 | 60 | V | 0.001 |  Voltage |
 |tagChgAmp|0 | 100 | A | 0.0001 |  Target charging current |

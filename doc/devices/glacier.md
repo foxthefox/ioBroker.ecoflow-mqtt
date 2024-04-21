@@ -216,6 +216,7 @@
 |minDsgSoc|0 | 30 | % | 1 |  Minimum discharging SOC |
 |maxChgSoc|60 | 100 | % | 1 |  Maximum charging SOC |
 |f32LcdSoc|0 | 100 | % | 1 |  SOC on LCD |
+|chgAmp|0 | 100 | A | 0.0001 |  Charging current |
 
 
 ### array
