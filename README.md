@@ -245,6 +245,7 @@ Wave is not available, could be implemented, if data is available.
 ### 0.0.29 (npm)
 * (foxthefox) new objects for wave2
 * (foxthefox) device emulation
+* (foxthefox) mppt max value corrections
 
 ### 0.0.28 (npm)
 * (foxthefox) fix value normalization (DP,wave2,glacier)

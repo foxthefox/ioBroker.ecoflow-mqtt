@@ -37,7 +37,7 @@
 |tagChgAmp|0 | 100 | A | 0.0001 |  Target charging current |
 |temp|0 | 80 | °C | 1 |  Temperature |
 |vol|0 | 60 | V | 0.001 |  Voltage |
-|maxVolDiff|0 | 500 | mV | 0.001 |  Maximum cell voltage difference |
+|maxVolDiff|0 | 500 | V | 0.001 |  Maximum cell voltage difference |
 
 
 ### string
@@ -190,11 +190,11 @@
 |dcdc12vAmp|0 | 13 | A | 0.01 |  DC12V30A output current, which is valid only for DELTA Pro |
 |dcdc12vVol|0 | 60 | V | 0.1 |  DC12V30A output voltage, which is valid only for DELTA Pro |
 |dcdc12vWatts|0 | 500 | W | 0.1 |  DC12V30A output power, which is valid only for DELTA Pro |
-|inAmp|0 | 13 | A | 0.001 |  PV input current |
+|inAmp|0 | 15 | A | 0.001 |  PV input current |
 |inVol|0 | 60 | V | 0.001 |  PV input voltage |
-|inWatts|0 | 1600 | W | 1 |  PV input power |
-|mpptTemp|0 | 80 | °C | 1 |  MPPT temperature |
-|outAmp|0 | 13 | A | 0.001 |  PV output current |
+|inWatts|0 | 900 | W | 1 |  PV input power |
+|mpptTemp|0 | 90 | °C | 1 |  MPPT temperature |
+|outAmp|0 | 30 | A | 0.001 |  PV output current |
 |outVol|0 | 60 | V | 0.001 |  PV output voltage |
 |outWatts|0 | 1600 | W | 1 |  PV output power |
 |pv2InAmp|0 | 13 | A | 0.001 |  PV input current |
@@ -265,6 +265,7 @@
 |bppowerSoc| 0 | 100 | % | 1 |  Backup Power SOC | {valName:bpPowerSoc,moduleType:1,operateType:watthConfig,params:{isConfig:1,bpPowerSoc:55,minDsgSoc:255,minChgSoc:255}} |
 |lcdOffSec| 0 | 1800 | s | 1 |  LCD screen-off duration: 0: never off | {valName:delayOff,moduleType:1,operateType:lcdCfg,params:{brighLevel:255,delayOff:300}} |
 |standbyMin| 0 | 720 | min | 1 |  Standby time /min 0 Never standby 720 Default value ? | {valName:standbyMin,moduleType:1,operateType:standbyTime,params:{standbyMin:720}} |
+|bpPowerSoc| 0 | 100 | % | 1 |  Backup Power SOC |  |
 
 ### string
 

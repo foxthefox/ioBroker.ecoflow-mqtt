@@ -38,7 +38,7 @@
 |bmsFault| BMS permanent fault |
 |openBmsIdx| Battery pack enable state |
 |sysVer| System version |
-|bqSysStatReg| BQ hardware protection register |
+|bqSysStatReq| BQ hardware protection register |
 
 ### diagnostic
 

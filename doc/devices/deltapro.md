@@ -42,7 +42,7 @@
 |cellTemp|0 | 60 | °C | 1 |  Cell temperature |
 |targetSoc|0 | 100 | % | 1 |  Target SoC |
 |actSoc|0 | 100 | % | 1 |  Actual SoC |
-|maxVolDiff|0 | 500 | mV | 0.001 |  Maximum cell voltage difference |
+|maxVolDiff|0 | 500 | V | 0.001 |  Maximum cell voltage difference |
 
 
 ### string
@@ -277,14 +277,14 @@
 |carTemp|0 | 80 | °C | 1 |  Car charging temperature |
 |outWatts|0 | 1600 | W | 0.1 |  PV output power |
 |carOutAmp|0 | 13 | A | 0.01 |  Car charging output current |
-|outAmp|0 | 13 | A | 0.01 |  PV output current |
+|outAmp|0 | 30 | A | 0.01 |  PV output current |
 |dcdc12vWatts|0 | 500 | W | 0.1 |  DC12V30A output power, which is valid only for DELTA Pro |
-|inWatts|0 | 1600 | W | 0.1 |  PV input power |
+|inWatts|0 | 1650 | W | 0.1 |  PV input power |
 |dcdc12vVol|0 | 60 | V | 0.1 |  DC12V30A output voltage, which is valid only for DELTA Pro |
-|inAmp|0 | 13 | A | 0.01 |  PV input current |
+|inAmp|0 | 15 | A | 0.01 |  PV input current |
 |inVol|0 | 150 | V | 0.1 |  PV input voltage |
 |carOutWatts|0 | 500 | W | 0.1 |  Car charging output power |
-|mpptTemp|0 | 80 | °C | 1 |  MPPT temperature |
+|mpptTemp|0 | 90 | °C | 1 |  MPPT temperature |
 |outVol|0 | 60 | V | 0.1 |  PV output voltage |
 |dcdc12vAmp|0 | 13 | A | 0.01 |  DC12V30A output current, which is valid only for DELTA Pro |
 |dc24vTemp|0 | 80 | °C | 1 |  DCDC24V temperature |
