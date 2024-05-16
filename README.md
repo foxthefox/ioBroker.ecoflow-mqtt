@@ -242,6 +242,9 @@ Wave is not available, could be implemented, if data is available.
 * check beep command if reversing needed
 
 ## Changelog
+### 0.0.30 (npm)
+* (foxthefox) correction for slave battery transfer to HA
+
 ### 0.0.29 (npm)
 * (foxthefox) new objects for wave2
 * (foxthefox) device emulation
