@@ -8,7 +8,13 @@
 	},
 	"homepage": "https://github.com/foxthefox/ioBroker.ecoflow-mqtt",
 	"license": "MIT",
-	"keywords": [ "ecoflow", "powerstream", "powerstation", "delta", "river" ],
+	"keywords": [
+		"ecoflow",
+		"powerstream",
+		"powerstation",
+		"delta",
+		"river"
+	],
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/foxthefox/ioBroker.ecoflow-mqtt.git"
@@ -18,7 +24,7 @@
 	},
 	"dependencies": {
 		"@iobroker/adapter-core": "^3.0.6",
-		"@iobroker/dev-server": "^0.7.1",
+		"@iobroker/dev-server": "^0.7.3",
 		"mqtt": "^5.3.4",
 		"protobufjs": "^7.2.6"
 	},

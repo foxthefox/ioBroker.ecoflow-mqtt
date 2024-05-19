@@ -243,6 +243,8 @@ Wave is not available, could be implemented, if data is available.
 
 ## Changelog
 ### 0.0.30 (npm)
+* (foxthefox) correction for River2Pro/Max cmd dcChgCurrent
+* (foxthefox) correction for Delta2 cmd dcChgCurrent/pv2DcChgCurrent
 * (foxthefox) correction for slave battery transfer to HA
 
 ### 0.0.29 (npm)
