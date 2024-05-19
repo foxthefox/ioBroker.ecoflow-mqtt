@@ -452,7 +452,7 @@ class EcoflowMqtt extends utils.Adapter {
 			username: this.mqttUserName,
 			password: this.mqttPwd,
 			keepalive: 60,
-			reconnectPeriod: 5,
+			reconnectPeriod: 5000,
 			clean: true
 			//manualConnect: true
 		};

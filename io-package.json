@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "ecoflow-mqtt",
-        "version": "0.0.30",
+        "version": "0.0.31",
         "news": {
+            "0.0.31": {
+                "en": "optimization EF MQTT reconnect; data structure slave battery to HA",
+                "de": "Optimierung EF MQTT Reconnect; Datenstruktur Slave-Batterie zu HA",
+                "ru": "оптимизация EF MQTT, переподключение; структура данных подчиненной батареи для HA",
+                "pt": "otimização EF MQTT reconexão; bateria escrava de estrutura de dados para HA",
+                "nl": "optimalisatie EF MQTT opnieuw verbinden; datastructuur slave-batterij naar HA",
+                "fr": "optimisation reconnexion EF MQTT ; structure de données batterie esclave vers HA",
+                "it": "ottimizzazione riconnessione EF MQTT; struttura dati batteria slave su HA",
+                "es": "optimización EF MQTT reconexión; batería esclava de estructura de datos a HA",
+                "pl": "optymalizacja ponownego połączenia EF MQTT; Bateria podrzędna struktury danych do HA",
+                "uk": "оптимізація EF MQTT reconnect; структура даних slave батареї до HA",
+                "zh-cn": "优化EF MQTT重连；从电池到HA的数据结构"
+            },
             "0.0.30": {
                 "en": "corrections cmd dcChgCurrent; correction for slave battery transfer to HA",
                 "de": "Korrekturen cmd dcChgCurrent; Korrektur für die Übertragung der Slave-Batterie auf HA",
