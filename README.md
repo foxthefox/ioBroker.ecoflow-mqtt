@@ -242,6 +242,9 @@ Wave is not available, could be implemented, if data is available.
 * check beep command if reversing needed
 
 ## Changelog
+### 0.0.31 (npm)
+* (foxthefox) optimization EF MQTT reconnect
+
 ### 0.0.30 (npm)
 * (foxthefox) correction for River2Pro/Max cmd dcChgCurrent
 * (foxthefox) correction for Delta2 cmd dcChgCurrent/pv2DcChgCurrent
