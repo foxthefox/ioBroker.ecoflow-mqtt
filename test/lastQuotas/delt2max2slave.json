@@ -10,7 +10,7 @@
 			"mppt.faultCode": 0,
 			"bms_slave_bmsSlaveStatus_1.soh": 98,
 			"bms_emsStatus.maxChargeSoc": 100,
-			"bms_slave_bmsSlaveStatus_1.targetSoc": 74.5,
+			"bms_slave_bmsSlaveStatus_1.targetSoc": 64.5,
 			"bms_bmsStatus.designCap": 40000,
 			"pd.bpPowerSoc": 80,
 			"bms_bmsStatus.outputWatts": 0,
