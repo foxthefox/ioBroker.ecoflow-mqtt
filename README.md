@@ -244,6 +244,7 @@ Wave is not available, could be implemented, if data is available.
 ## Changelog
 ### 0.0.31 (npm)
 * (foxthefox) optimization EF MQTT reconnect
+* (foxthefox) data structure slave battery to HA
 
 ### 0.0.30 (npm)
 * (foxthefox) correction for River2Pro/Max cmd dcChgCurrent
