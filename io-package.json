@@ -1,319 +1,347 @@
 {
-	"common": {
-		"name": "ecoflow-mqtt",
-		"version": "0.0.30",
-		"news": {
-			"0.0.30": {
-				"en": "corrections"
-			},
-			"0.0.29": {
-				"en": "new objects for wave2",
-				"de": "Neue Objekte für Welle2",
-				"ru": "новые объекты для волны 2",
-				"pt": "novos objetos para wave2",
-				"nl": "nieuwe objecten voor wave2",
-				"fr": "nouveaux objets pour la vague 2",
-				"it": "nuovi oggetti per wave2",
-				"es": "nuevos objetos para wave2",
-				"pl": "nowe obiekty dla fali 2",
-				"uk": "нові об'єкти для wave2",
-				"zh-cn": "Wave2 的新对象"
-			},
-			"0.0.28": {
-				"en": "fix value normalization, actions initial to false",
-				"de": "Fixwertnormalisierung, Aktionen initial auf false",
-				"ru": "исправить нормализацию значений, начальные действия имеют значение false",
-				"pt": "corrigir normalização de valor, ações iniciais para falsas",
-				"nl": "normalisatie van de waarde repareren, acties die aanvankelijk onwaar zijn",
-				"fr": "correction de la normalisation de la valeur, actions initiales à false",
-				"it": "correzione della normalizzazione del valore, azioni iniziali su false",
-				"es": "normalización de valores fijos, acciones iniciales a falsas",
-				"pl": "napraw normalizację wartości, akcje początkowe na fałszywe",
-				"uk": "виправити нормалізацію значення, дії початкові на false",
-				"zh-cn": "修复值标准化，操作初始为 false"
-			},
-			"0.0.27": {
-				"en": "fixed issues with additional battery and homeassistant transfer; bmsMaster Delta Pro new points",
-				"de": "Probleme mit Zusatzbatterie und HomeAssistant-Übertragung behoben; bmsMaster Delta Pro neue Punkte",
-				"ru": "исправлены проблемы с переносом дополнительной батареи и домашнего помощника; новые очки bmsMaster Delta Pro",
-				"pt": "problemas corrigidos com bateria adicional e transferência de assistente doméstico; novos pontos bmsMaster Delta Pro",
-				"nl": "opgeloste problemen met de overdracht van extra batterij en thuisassistent; bmsMaster Delta Pro nieuwe punten",
-				"fr": "problèmes résolus avec la batterie supplémentaire et le transfert de homeassistant ; bmsMaster Delta Pro nouveaux points",
-				"it": "problemi risolti con batteria aggiuntiva e trasferimento HomeAssistant; bmsMaster Delta Pro nuovi punti",
-				"es": "se solucionaron problemas con la batería adicional y la transferencia del asistente doméstico; bmsMaster Delta Pro nuevos puntos",
-				"pl": "naprawiono problemy z dodatkową baterią i transferem z pomocą asystenta domowego; bmsMaster Delta Pro nowe punkty",
-				"uk": "виправлені проблеми з перенесенням додаткової батареї та домашнього помічника; Нові бали bmsMaster Delta Pro",
-				"zh-cn": "修复了额外电池和家庭助理传输的问题； bmsMaster Delta Pro 新积分"
-			},
-			"0.0.26": {
-				"en": "Delta Pro datapoint, SHP improvements",
-				"de": "Delta Pro-Datenpunkt, SHP-Verbesserungen",
-				"ru": "Точка данных Delta Pro, улучшения SHP",
-				"pt": "Ponto de dados Delta Pro, melhorias em SHP",
-				"nl": "Delta Pro-datapunt, SHP-verbeteringen",
-				"fr": "Point de données Delta Pro, améliorations SHP",
-				"it": "Punto dati Delta Pro, miglioramenti al piccolo idroelettrico",
-				"es": "Punto de datos Delta Pro, mejoras en SHP",
-				"pl": "Punkt danych Delta Pro, ulepszenia SHP",
-				"uk": "Точка даних Delta Pro, покращення SHP",
-				"zh-cn": "Delta Pro 数据点、SHP 改进"
-			},
-			"0.0.25": {
-				"en": "new datapoints Delta Pro",
-				"de": "neue Datenpunkte Delta Pro",
-				"ru": "новые точки данных Delta Pro",
-				"pt": "novos pontos de dados Delta Pro",
-				"nl": "nieuwe datapunten Delta Pro",
-				"fr": "nouveaux points de données Delta Pro",
-				"it": "nuovi punti dati Delta Pro",
-				"es": "nuevos puntos de datos Delta Pro",
-				"pl": "nowe punkty danych Delta Pro",
-				"uk": "нові точки даних Delta Pro",
-				"zh-cn": "新数据点 Delta Pro"
-			},
-			"0.0.24": {
-				"en": "SHP data processing",
-				"de": "SHP-Datenverarbeitung",
-				"ru": "Обработка данных СГП",
-				"pt": "Processamento de dados da PCH",
-				"nl": "SHP-gegevensverwerking",
-				"fr": "Traitement des données SHP",
-				"it": "Elaborazione dati SHP",
-				"es": "Procesamiento de datos SHP",
-				"pl": "Przetwarzanie danych SHP",
-				"uk": "Обробка даних SHP",
-				"zh-cn": "小水电数据处理"
-			},
-			"0.0.23": {
-				"en": "correction latestQuotas,",
-				"de": "Korrektur neueste Quoten,",
-				"ru": "коррекция последних квот,",
-				"pt": "correção mais recenteCotas,",
-				"nl": "correctie nieuwstequota,",
-				"fr": "correction des derniers quotas,",
-				"it": "correzione latestQuotas,",
-				"es": "corrección de últimas cuotas,",
-				"pl": "ostatnia poprawkaQuotas,",
-				"uk": "виправлення останніх квот,",
-				"zh-cn": "修正最新配额，"
-			},
-			"0.0.22": {
-				"en": "homeassistant connector",
-				"de": "HomeAssistant-Anschluss",
-				"ru": "разъем домашнего помощника",
-				"pt": "conector do assistente doméstico",
-				"nl": "homeassistant-aansluiting",
-				"fr": "connecteur d'assistant à domicile",
-				"it": "connettore dell'assistente domestico",
-				"es": "conector de asistente doméstico",
-				"pl": "złącze asystenta domowego",
-				"uk": "роз'єм для домашнього помічника",
-				"zh-cn": "家庭助理连接器"
-			},
-			"0.0.21": {
-				"en": "improvements, mor debug log",
-				"de": "Verbesserungen, mehr Debug-Protokoll",
-				"ru": "улучшения, журнал отладки",
-				"pt": "melhorias, log de depuração mor",
-				"nl": "verbeteringen, meer foutopsporingslogboek",
-				"fr": "améliorations, plus de journal de débogage",
-				"it": "miglioramenti, più registro di debug",
-				"es": "mejoras, registro de depuración más",
-				"pl": "ulepszenia, więcej dziennika debugowania",
-				"uk": "покращення, мор журнал налагодження",
-				"zh-cn": "改进，更多调试日志"
-			},
-			"0.0.20": {
-				"en": "improvements, added integration testing",
-				"de": "Verbesserungen, Integrationstests hinzugefügt",
-				"ru": "улучшения, добавлено интеграционное тестирование",
-				"pt": "melhorias, testes de integração adicionados",
-				"nl": "verbeteringen, toegevoegde integratietesten",
-				"fr": "améliorations, ajout de tests d'intégration",
-				"it": "miglioramenti, aggiunti test di integrazione",
-				"es": "mejoras, pruebas de integración adicionales",
-				"pl": "ulepszenia, dodano testy integracyjne",
-				"uk": "покращення, додане інтеграційне тестування",
-				"zh-cn": "改进，添加集成测试"
-			}
-		},
-		"messages": [
-			{
-				"condition": {
-					"operand": "and",
-					"rules": [ "oldVersion<0.0.8", "newVersion>=0.0.9" ]
-				},
-				"title": {
-					"en": "Important notice!",
-					"de": "Wichtiger Hinweis!",
-					"ru": "Важное замечание!",
-					"pt": "Notícia importante!",
-					"nl": "Belangrijke mededeling!",
-					"fr": "Avis important!",
-					"it": "Avviso IMPORTANTE!",
-					"es": "Noticia importante!",
-					"pl": "Ważna uwaga!",
-					"uk": "Погода!",
-					"zh-cn": "重要通知!"
-				},
-				"text": {
-					"en": "In order to work properly the adapter requires ioBroker.admin >=6.12.3. Please ensure this boundary condition. You can do this by enabling expert settings and installation from npm as source. ",
-					"de": "Damit der Adapter ordnungsgemäß funktioniert, ist ioBroker.admin >=6.12.3 erforderlich. Bitte achten Sie auf diese Randbedingung. Sie können dies tun, indem Sie Experteneinstellungen und die Installation von npm als Quelle aktivieren.",
-					"ru": "Для правильной работы адаптера требуется ioBroker.admin >=6.12.3. Пожалуйста, обеспечьте это граничное условие. Это можно сделать, включив экспертные настройки и установив их из npm в качестве источника.",
-					"pt": "Para funcionar corretamente, o adaptador requer ioBroker.admin >=6.12.3. Por favor, garanta esta condição de limite. Você pode fazer isso habilitando configurações avançadas e instalação do npm como fonte.",
-					"nl": "Om goed te kunnen werken heeft de adapter ioBroker.admin >=6.12.3 nodig. Zorg ervoor dat deze randvoorwaarde aanwezig is. Dit kunt u doen door expertinstellingen en installatie vanuit npm als bron in te schakelen.",
-					"fr": "Pour fonctionner correctement, l'adaptateur nécessite ioBroker.admin >=6.12.3. Veuillez vous assurer de cette condition aux limites. Vous pouvez le faire en activant les paramètres experts et l'installation à partir de npm comme source.",
-					"it": "Per funzionare correttamente l'adattatore richiede ioBroker.admin >=6.12.3. Si prega di garantire questa condizione al contorno. Puoi farlo abilitando le impostazioni avanzate e l'installazione da npm come sorgente.",
-					"es": "Para funcionar correctamente, el adaptador requiere ioBroker.admin >=6.12.3. Asegúrese de que se cumpla esta condición límite. Puede hacerlo habilitando la configuración experta y la instalación desde npm como fuente.",
-					"pl": "Do poprawnego działania adapter wymaga ioBroker.admin >=6.12.3. Proszę zapewnić ten warunek brzegowy. Możesz to zrobić, włączając ustawienia eksperckie i instalację z npm jako źródła.",
-					"uk": "Для належної роботи адаптеру потрібен ioBroker.admin >=6.12.3. Будь ласка, переконайтеся в цій граничній умові. Ви можете зробити це, увімкнувши експертні налаштування та інсталяцію з npm як джерела.",
-					"zh-cn": "为了正常工作，适配器需要 ioBroker.admin >=6.12.3。请确保这个边界条件。您可以通过启用专家设置并从 npm 作为源进行安装来实现此目的。"
-				},
-				"level": "warn",
-				"buttons": [ "ok", "cancel" ]
-			}
-		],
-		"titleLang": {
-			"en": "ecoflow",
-			"de": "Ecoflow",
-			"ru": "экопоток",
-			"pt": "ecofluxo",
-			"nl": "ecostroom",
-			"fr": "écoflux",
-			"it": "ecoflusso",
-			"es": "ecoflujo",
-			"pl": "ekoprzepływ",
-			"uk": "екопотік",
-			"zh-cn": "生态流"
-		},
-		"desc": {
-			"en": "connects to ecoflow products",
-			"de": "verbindet sich mit Ecoflow-Produkten",
-			"ru": "подключается к продуктам Ecoflow",
-			"pt": "conecta-se a produtos ecoflow",
-			"nl": "koppelt aan ecoflow-producten",
-			"fr": "se connecte aux produits ecoflow",
-			"it": "si collega ai prodotti ecoflow",
-			"es": "se conecta a productos ecoflow",
-			"pl": "łączy się z produktami ecoflow",
-			"uk": "підключається до продуктів ecoflow",
-			"zh-cn": "连接至 Ecoflow 产品"
-		},
-		"authors": [ "foxthefox <foxthefox@wysiwis.net>" ],
-		"keywords": [ "ecoflow", "powerstream", "powerstation", "delta", "river" ],
-		"platform": "Javascript/Node.js",
-		"main": "main.js",
-		"icon": "ecoflow-mqtt.png",
-		"enabled": true,
-		"extIcon": "https://raw.githubusercontent.com/foxthefox/ioBroker.ecoflow-mqtt/main/admin/ecoflow-mqtt.png",
-		"readme": "https://github.com/foxthefox/ioBroker.ecoflow-mqtt/blob/main/README.md",
-		"loglevel": "debug",
-		"mode": "daemon",
-		"type": "iot-systems",
-		"compact": true,
-		"messagebox": true,
-		"connectionType": "cloud",
-		"dataSource": "push",
-		"tier": 3,
-		"licenseInformation": {
-			"license": "MIT",
-			"link": "https://opensource.org/license/mit/",
-			"type": "free"
-		},
-		"adminUI": {
-			"config": "json"
-		},
-		"dependencies": [
-			{
-				"js-controller": ">=3.3.22"
-			}
-		],
-		"globalDependencies": [
-			{
-				"admin": ">=6.12.3"
-			}
-		]
-	},
-	"protectedNative": [
-		"userName",
-		"userPassword",
-		"mqttUserId",
-		"mqttPwd",
-		"mqttClientId",
-		"haMqttUserId",
-		"haMqttUserPWd"
-	],
-	"encryptedNative": [ "userPassword", "mqttPwd", "haMqttUserPWd" ],
-	"native": {
-		"userName": "userEmail",
-		"userPassword": "pw",
-		"mqttUserId": "1xxxx",
-		"mqttUserName": "app-....",
-		"mqttPwd": "xxxx",
-		"mqttClientId": "ANDRIOD-...",
-		"mqttUrl": "mqtts://mqtt-e.ecoflow.com",
-		"mqttPort": 8883,
-		"enableMqttReconnect": false,
-		"pstreams": [],
-		"pstations": [],
-		"plugs": [],
-		"waves": [],
-		"glaciers": [],
-		"generators": [],
-		"panels": [],
-		"msgStateCreation": false,
-		"msgUpdatePstation": false,
-		"msgUpdateValuePstation": false,
-		"msgSetGetPstation": true,
-		"msgCmdPstation": true,
-		"msgUpdatePstream": false,
-		"msgUpdateValuePstream": false,
-		"msgSetGetPstream": false,
-		"msgCmdPstream": false,
-		"msgUnknownMsgPstream": false,
-		"msgStateCreationPlug": false,
-		"msgUpdatePlug": false,
-		"msgUpdateValuePlug": false,
-		"msgSetGetPlug": false,
-		"msgCmdPlug": false,
-		"msgUnknownMsgPlug": false,
-		"showHex": false,
-		"haMqttUserId": "hamqttuser",
-		"haMqttUserPWd": "hamqttusePWd",
-		"haMqttUrl": "192.x.x.x",
-		"haMqttPort": 1883,
-		"haMqttEnable": false,
-		"haMqttProtocol": "mqtt://",
-		"haDiscoveryRetain": false,
-		"msgHaAutoDiscovery": false,
-		"msgHaIncomming": false,
-		"msgHaOutgoing": false,
-		"msgHaStatusInitial": false,
-		"showDiscoveryObject": false,
-		"haTopic": "iob_ef"
-	},
-	"objects": [],
-	"instanceObjects": [
-		{
-			"_id": "info",
-			"type": "channel",
-			"common": {
-				"name": "Information"
-			},
-			"native": {}
-		},
-		{
-			"_id": "info.connection",
-			"type": "state",
-			"common": {
-				"role": "indicator.connected",
-				"name": "Device or service connected",
-				"type": "boolean",
-				"read": true,
-				"write": false,
-				"def": false
-			},
-			"native": {}
-		}
-	]
+    "common": {
+        "name": "ecoflow-mqtt",
+        "version": "0.0.30",
+        "news": {
+            "0.0.30": {
+                "en": "corrections cmd dcChgCurrent; correction for slave battery transfer to HA",
+                "de": "Korrekturen cmd dcChgCurrent; Korrektur für die Übertragung der Slave-Batterie auf HA",
+                "ru": "исправления cmd dcChgCurrent; поправка на передачу ведомой батареи в HA",
+                "pt": "correções cmd dcChgCurrent; correção para transferência de bateria escrava para HA",
+                "nl": "correcties cmd dcChgCurrent; correctie voor overdracht van slave-batterij naar HA",
+                "fr": "corrections cmd dcChgCurrent ; correction pour le transfert de batterie esclave vers HA",
+                "it": "correzioni cmd dcChgCurrent; correzione per il trasferimento della batteria slave ad HA",
+                "es": "correcciones cmd dcChgCurrent; corrección para la transferencia de la batería esclava a HA",
+                "pl": "poprawki cmd dcChgCurrent; korekta transferu baterii podrzędnej do HA",
+                "uk": "виправлення cmd dcChgCurrent; поправка для передачі веденої батареї на HA",
+                "zh-cn": "更正 cmd dcChgCurrent；对从属电池传输至 HA 的修正"
+            },
+            "0.0.29": {
+                "en": "new objects for wave2",
+                "de": "Neue Objekte für Welle2",
+                "ru": "новые объекты для волны 2",
+                "pt": "novos objetos para wave2",
+                "nl": "nieuwe objecten voor wave2",
+                "fr": "nouveaux objets pour la vague 2",
+                "it": "nuovi oggetti per wave2",
+                "es": "nuevos objetos para wave2",
+                "pl": "nowe obiekty dla fali 2",
+                "uk": "нові об'єкти для wave2",
+                "zh-cn": "Wave2 的新对象"
+            },
+            "0.0.28": {
+                "en": "fix value normalization, actions initial to false",
+                "de": "Fixwertnormalisierung, Aktionen initial auf false",
+                "ru": "исправить нормализацию значений, начальные действия имеют значение false",
+                "pt": "corrigir normalização de valor, ações iniciais para falsas",
+                "nl": "normalisatie van de waarde repareren, acties die aanvankelijk onwaar zijn",
+                "fr": "correction de la normalisation de la valeur, actions initiales à false",
+                "it": "correzione della normalizzazione del valore, azioni iniziali su false",
+                "es": "normalización de valores fijos, acciones iniciales a falsas",
+                "pl": "napraw normalizację wartości, akcje początkowe na fałszywe",
+                "uk": "виправити нормалізацію значення, дії початкові на false",
+                "zh-cn": "修复值标准化，操作初始为 false"
+            },
+            "0.0.27": {
+                "en": "fixed issues with additional battery and homeassistant transfer; bmsMaster Delta Pro new points",
+                "de": "Probleme mit Zusatzbatterie und HomeAssistant-Übertragung behoben; bmsMaster Delta Pro neue Punkte",
+                "ru": "исправлены проблемы с переносом дополнительной батареи и домашнего помощника; новые очки bmsMaster Delta Pro",
+                "pt": "problemas corrigidos com bateria adicional e transferência de assistente doméstico; novos pontos bmsMaster Delta Pro",
+                "nl": "opgeloste problemen met de overdracht van extra batterij en thuisassistent; bmsMaster Delta Pro nieuwe punten",
+                "fr": "problèmes résolus avec la batterie supplémentaire et le transfert de homeassistant ; bmsMaster Delta Pro nouveaux points",
+                "it": "problemi risolti con batteria aggiuntiva e trasferimento HomeAssistant; bmsMaster Delta Pro nuovi punti",
+                "es": "se solucionaron problemas con la batería adicional y la transferencia del asistente doméstico; bmsMaster Delta Pro nuevos puntos",
+                "pl": "naprawiono problemy z dodatkową baterią i transferem z pomocą asystenta domowego; bmsMaster Delta Pro nowe punkty",
+                "uk": "виправлені проблеми з перенесенням додаткової батареї та домашнього помічника; Нові бали bmsMaster Delta Pro",
+                "zh-cn": "修复了额外电池和家庭助理传输的问题； bmsMaster Delta Pro 新积分"
+            },
+            "0.0.26": {
+                "en": "Delta Pro datapoint, SHP improvements",
+                "de": "Delta Pro-Datenpunkt, SHP-Verbesserungen",
+                "ru": "Точка данных Delta Pro, улучшения SHP",
+                "pt": "Ponto de dados Delta Pro, melhorias em SHP",
+                "nl": "Delta Pro-datapunt, SHP-verbeteringen",
+                "fr": "Point de données Delta Pro, améliorations SHP",
+                "it": "Punto dati Delta Pro, miglioramenti al piccolo idroelettrico",
+                "es": "Punto de datos Delta Pro, mejoras en SHP",
+                "pl": "Punkt danych Delta Pro, ulepszenia SHP",
+                "uk": "Точка даних Delta Pro, покращення SHP",
+                "zh-cn": "Delta Pro 数据点、SHP 改进"
+            },
+            "0.0.25": {
+                "en": "new datapoints Delta Pro",
+                "de": "neue Datenpunkte Delta Pro",
+                "ru": "новые точки данных Delta Pro",
+                "pt": "novos pontos de dados Delta Pro",
+                "nl": "nieuwe datapunten Delta Pro",
+                "fr": "nouveaux points de données Delta Pro",
+                "it": "nuovi punti dati Delta Pro",
+                "es": "nuevos puntos de datos Delta Pro",
+                "pl": "nowe punkty danych Delta Pro",
+                "uk": "нові точки даних Delta Pro",
+                "zh-cn": "新数据点 Delta Pro"
+            },
+            "0.0.24": {
+                "en": "SHP data processing",
+                "de": "SHP-Datenverarbeitung",
+                "ru": "Обработка данных СГП",
+                "pt": "Processamento de dados da PCH",
+                "nl": "SHP-gegevensverwerking",
+                "fr": "Traitement des données SHP",
+                "it": "Elaborazione dati SHP",
+                "es": "Procesamiento de datos SHP",
+                "pl": "Przetwarzanie danych SHP",
+                "uk": "Обробка даних SHP",
+                "zh-cn": "小水电数据处理"
+            },
+            "0.0.23": {
+                "en": "correction latestQuotas,",
+                "de": "Korrektur neueste Quoten,",
+                "ru": "коррекция последних квот,",
+                "pt": "correção mais recenteCotas,",
+                "nl": "correctie nieuwstequota,",
+                "fr": "correction des derniers quotas,",
+                "it": "correzione latestQuotas,",
+                "es": "corrección de últimas cuotas,",
+                "pl": "ostatnia poprawkaQuotas,",
+                "uk": "виправлення останніх квот,",
+                "zh-cn": "修正最新配额，"
+            },
+            "0.0.22": {
+                "en": "homeassistant connector",
+                "de": "HomeAssistant-Anschluss",
+                "ru": "разъем домашнего помощника",
+                "pt": "conector do assistente doméstico",
+                "nl": "homeassistant-aansluiting",
+                "fr": "connecteur d'assistant à domicile",
+                "it": "connettore dell'assistente domestico",
+                "es": "conector de asistente doméstico",
+                "pl": "złącze asystenta domowego",
+                "uk": "роз'єм для домашнього помічника",
+                "zh-cn": "家庭助理连接器"
+            },
+            "0.0.21": {
+                "en": "improvements, mor debug log",
+                "de": "Verbesserungen, mehr Debug-Protokoll",
+                "ru": "улучшения, журнал отладки",
+                "pt": "melhorias, log de depuração mor",
+                "nl": "verbeteringen, meer foutopsporingslogboek",
+                "fr": "améliorations, plus de journal de débogage",
+                "it": "miglioramenti, più registro di debug",
+                "es": "mejoras, registro de depuración más",
+                "pl": "ulepszenia, więcej dziennika debugowania",
+                "uk": "покращення, мор журнал налагодження",
+                "zh-cn": "改进，更多调试日志"
+            },
+            "0.0.20": {
+                "en": "improvements, added integration testing",
+                "de": "Verbesserungen, Integrationstests hinzugefügt",
+                "ru": "улучшения, добавлено интеграционное тестирование",
+                "pt": "melhorias, testes de integração adicionados",
+                "nl": "verbeteringen, toegevoegde integratietesten",
+                "fr": "améliorations, ajout de tests d'intégration",
+                "it": "miglioramenti, aggiunti test di integrazione",
+                "es": "mejoras, pruebas de integración adicionales",
+                "pl": "ulepszenia, dodano testy integracyjne",
+                "uk": "покращення, додане інтеграційне тестування",
+                "zh-cn": "改进，添加集成测试"
+            }
+        },
+        "messages": [
+            {
+                "condition": {
+                    "operand": "and",
+                    "rules": [
+                        "oldVersion<0.0.8",
+                        "newVersion>=0.0.9"
+                    ]
+                },
+                "title": {
+                    "en": "Important notice!",
+                    "de": "Wichtiger Hinweis!",
+                    "ru": "Важное замечание!",
+                    "pt": "Notícia importante!",
+                    "nl": "Belangrijke mededeling!",
+                    "fr": "Avis important!",
+                    "it": "Avviso IMPORTANTE!",
+                    "es": "Noticia importante!",
+                    "pl": "Ważna uwaga!",
+                    "uk": "Погода!",
+                    "zh-cn": "重要通知!"
+                },
+                "text": {
+                    "en": "In order to work properly the adapter requires ioBroker.admin >=6.12.3. Please ensure this boundary condition. You can do this by enabling expert settings and installation from npm as source. ",
+                    "de": "Damit der Adapter ordnungsgemäß funktioniert, ist ioBroker.admin >=6.12.3 erforderlich. Bitte achten Sie auf diese Randbedingung. Sie können dies tun, indem Sie Experteneinstellungen und die Installation von npm als Quelle aktivieren.",
+                    "ru": "Для правильной работы адаптера требуется ioBroker.admin >=6.12.3. Пожалуйста, обеспечьте это граничное условие. Это можно сделать, включив экспертные настройки и установив их из npm в качестве источника.",
+                    "pt": "Para funcionar corretamente, o adaptador requer ioBroker.admin >=6.12.3. Por favor, garanta esta condição de limite. Você pode fazer isso habilitando configurações avançadas e instalação do npm como fonte.",
+                    "nl": "Om goed te kunnen werken heeft de adapter ioBroker.admin >=6.12.3 nodig. Zorg ervoor dat deze randvoorwaarde aanwezig is. Dit kunt u doen door expertinstellingen en installatie vanuit npm als bron in te schakelen.",
+                    "fr": "Pour fonctionner correctement, l'adaptateur nécessite ioBroker.admin >=6.12.3. Veuillez vous assurer de cette condition aux limites. Vous pouvez le faire en activant les paramètres experts et l'installation à partir de npm comme source.",
+                    "it": "Per funzionare correttamente l'adattatore richiede ioBroker.admin >=6.12.3. Si prega di garantire questa condizione al contorno. Puoi farlo abilitando le impostazioni avanzate e l'installazione da npm come sorgente.",
+                    "es": "Para funcionar correctamente, el adaptador requiere ioBroker.admin >=6.12.3. Asegúrese de que se cumpla esta condición límite. Puede hacerlo habilitando la configuración experta y la instalación desde npm como fuente.",
+                    "pl": "Do poprawnego działania adapter wymaga ioBroker.admin >=6.12.3. Proszę zapewnić ten warunek brzegowy. Możesz to zrobić, włączając ustawienia eksperckie i instalację z npm jako źródła.",
+                    "uk": "Для належної роботи адаптеру потрібен ioBroker.admin >=6.12.3. Будь ласка, переконайтеся в цій граничній умові. Ви можете зробити це, увімкнувши експертні налаштування та інсталяцію з npm як джерела.",
+                    "zh-cn": "为了正常工作，适配器需要 ioBroker.admin >=6.12.3。请确保这个边界条件。您可以通过启用专家设置并从 npm 作为源进行安装来实现此目的。"
+                },
+                "level": "warn",
+                "buttons": [
+                    "ok",
+                    "cancel"
+                ]
+            }
+        ],
+        "titleLang": {
+            "en": "ecoflow",
+            "de": "Ecoflow",
+            "ru": "экопоток",
+            "pt": "ecofluxo",
+            "nl": "ecostroom",
+            "fr": "écoflux",
+            "it": "ecoflusso",
+            "es": "ecoflujo",
+            "pl": "ekoprzepływ",
+            "uk": "екопотік",
+            "zh-cn": "生态流"
+        },
+        "desc": {
+            "en": "connects to ecoflow products",
+            "de": "verbindet sich mit Ecoflow-Produkten",
+            "ru": "подключается к продуктам Ecoflow",
+            "pt": "conecta-se a produtos ecoflow",
+            "nl": "koppelt aan ecoflow-producten",
+            "fr": "se connecte aux produits ecoflow",
+            "it": "si collega ai prodotti ecoflow",
+            "es": "se conecta a productos ecoflow",
+            "pl": "łączy się z produktami ecoflow",
+            "uk": "підключається до продуктів ecoflow",
+            "zh-cn": "连接至 Ecoflow 产品"
+        },
+        "authors": [
+            "foxthefox <foxthefox@wysiwis.net>"
+        ],
+        "keywords": [
+            "ecoflow",
+            "powerstream",
+            "powerstation",
+            "delta",
+            "river"
+        ],
+        "platform": "Javascript/Node.js",
+        "main": "main.js",
+        "icon": "ecoflow-mqtt.png",
+        "enabled": true,
+        "extIcon": "https://raw.githubusercontent.com/foxthefox/ioBroker.ecoflow-mqtt/main/admin/ecoflow-mqtt.png",
+        "readme": "https://github.com/foxthefox/ioBroker.ecoflow-mqtt/blob/main/README.md",
+        "loglevel": "debug",
+        "mode": "daemon",
+        "type": "iot-systems",
+        "compact": true,
+        "messagebox": true,
+        "connectionType": "cloud",
+        "dataSource": "push",
+        "tier": 3,
+        "licenseInformation": {
+            "license": "MIT",
+            "link": "https://opensource.org/license/mit/",
+            "type": "free"
+        },
+        "adminUI": {
+            "config": "json"
+        },
+        "dependencies": [
+            {
+                "js-controller": ">=3.3.22"
+            }
+        ],
+        "globalDependencies": [
+            {
+                "admin": ">=6.12.3"
+            }
+        ]
+    },
+    "protectedNative": [
+        "userName",
+        "userPassword",
+        "mqttUserId",
+        "mqttPwd",
+        "mqttClientId",
+        "haMqttUserId",
+        "haMqttUserPWd"
+    ],
+    "encryptedNative": [
+        "userPassword",
+        "mqttPwd",
+        "haMqttUserPWd"
+    ],
+    "native": {
+        "userName": "userEmail",
+        "userPassword": "pw",
+        "mqttUserId": "1xxxx",
+        "mqttUserName": "app-....",
+        "mqttPwd": "xxxx",
+        "mqttClientId": "ANDRIOD-...",
+        "mqttUrl": "mqtts://mqtt-e.ecoflow.com",
+        "mqttPort": 8883,
+        "enableMqttReconnect": false,
+        "pstreams": [],
+        "pstations": [],
+        "plugs": [],
+        "waves": [],
+        "glaciers": [],
+        "generators": [],
+        "panels": [],
+        "msgStateCreation": false,
+        "msgUpdatePstation": false,
+        "msgUpdateValuePstation": false,
+        "msgSetGetPstation": true,
+        "msgCmdPstation": true,
+        "msgUpdatePstream": false,
+        "msgUpdateValuePstream": false,
+        "msgSetGetPstream": false,
+        "msgCmdPstream": false,
+        "msgUnknownMsgPstream": false,
+        "msgStateCreationPlug": false,
+        "msgUpdatePlug": false,
+        "msgUpdateValuePlug": false,
+        "msgSetGetPlug": false,
+        "msgCmdPlug": false,
+        "msgUnknownMsgPlug": false,
+        "showHex": false,
+        "haMqttUserId": "hamqttuser",
+        "haMqttUserPWd": "hamqttusePWd",
+        "haMqttUrl": "192.x.x.x",
+        "haMqttPort": 1883,
+        "haMqttEnable": false,
+        "haMqttProtocol": "mqtt://",
+        "haDiscoveryRetain": false,
+        "msgHaAutoDiscovery": false,
+        "msgHaIncomming": false,
+        "msgHaOutgoing": false,
+        "msgHaStatusInitial": false,
+        "showDiscoveryObject": false,
+        "haTopic": "iob_ef"
+    },
+    "objects": [],
+    "instanceObjects": [
+        {
+            "_id": "info",
+            "type": "channel",
+            "common": {
+                "name": "Information"
+            },
+            "native": {}
+        },
+        {
+            "_id": "info.connection",
+            "type": "state",
+            "common": {
+                "role": "indicator.connected",
+                "name": "Device or service connected",
+                "type": "boolean",
+                "read": true,
+                "write": false,
+                "def": false
+            },
+            "native": {}
+        }
+    ]
 }
