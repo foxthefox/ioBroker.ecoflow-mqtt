@@ -4,17 +4,17 @@
         "version": "0.0.31",
         "news": {
             "0.0.31": {
-                "en": "optimization EF MQTT reconnect; data structure slave battery to HA",
-                "de": "Optimierung EF MQTT Reconnect; Datenstruktur Slave-Batterie zu HA",
-                "ru": "оптимизация EF MQTT, переподключение; структура данных подчиненной батареи для HA",
-                "pt": "otimização EF MQTT reconexão; bateria escrava de estrutura de dados para HA",
-                "nl": "optimalisatie EF MQTT opnieuw verbinden; datastructuur slave-batterij naar HA",
-                "fr": "optimisation reconnexion EF MQTT ; structure de données batterie esclave vers HA",
-                "it": "ottimizzazione riconnessione EF MQTT; struttura dati batteria slave su HA",
-                "es": "optimización EF MQTT reconexión; batería esclava de estructura de datos a HA",
-                "pl": "optymalizacja ponownego połączenia EF MQTT; Bateria podrzędna struktury danych do HA",
-                "uk": "оптимізація EF MQTT reconnect; структура даних slave батареї до HA",
-                "zh-cn": "优化EF MQTT重连；从电池到HA的数据结构"
+                "en": "optimization EF MQTT reconnect; initial update slave battery to HA, adapter config merge all device tabs into one",
+                "de": "Optimierung EF MQTT Reconnect; Erstaktualisierung der Slave-Batterie auf HA, Adapterkonfiguration, Zusammenführung aller Geräteregisterkarten zu einer",
+                "ru": "оптимизация EF MQTT, переподключение; первоначальное обновление ведомой батареи до HA, конфигурация адаптера объединяет все вкладки устройства в одну",
+                "pt": "otimização EF MQTT reconexão; atualização inicial da bateria escrava para HA, configuração do adaptador mescla todas as guias do dispositivo em uma",
+                "nl": "optimalisatie EF MQTT opnieuw verbinden; initiële update slave-batterij naar HA, adapterconfiguratie voegt alle apparaattabbladen samen in één",
+                "fr": "optimisation reconnexion EF MQTT ; mise à jour initiale de la batterie esclave vers HA, la configuration de l'adaptateur fusionne tous les onglets de l'appareil en un seul",
+                "it": "ottimizzazione riconnessione EF MQTT; aggiornamento iniziale della batteria secondaria ad HA, la configurazione dell'adattatore unisce tutte le schede del dispositivo in una",
+                "es": "optimización EF MQTT reconexión; actualización inicial de la batería esclava a HA, la configuración del adaptador fusiona todas las pestañas del dispositivo en una",
+                "pl": "optymalizacja ponownego połączenia EF MQTT; początkowa aktualizacja baterii podrzędnej do HA, konfiguracja adaptera łączy wszystkie karty urządzenia w jedną",
+                "uk": "оптимізація EF MQTT reconnect; початкове оновлення підлеглої батареї до HA, конфігурація адаптера об’єднує всі вкладки пристрою в одну",
+                "zh-cn": "优化EF MQTT重连；初始更新从属电池至 HA，适配器配置将所有设备选项卡合并为一个"
             },
             "0.0.30": {
                 "en": "corrections cmd dcChgCurrent; correction for slave battery transfer to HA",

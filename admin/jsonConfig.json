@@ -255,11 +255,10 @@
 					"sm": 12,
 					"newLine": true,
 					"type": "table",
-					"label": "My configured Powerstream(s)",
 					"items": [
 						{
 							"type": "text",
-							"width": "20%",
+							"width": "15%",
 							"title": "name",
 							"attr": "devName",
 							"filter": false,
@@ -268,7 +267,7 @@
 						},
 						{
 							"type": "text",
-							"width": "20%",
+							"width": "15%",
 							"title": "id",
 							"attr": "devId",
 							"filter": false,
@@ -277,7 +276,7 @@
 						},
 						{
 							"type": "select",
-							"width": "20%",
+							"width": "10%",
 							"options": [
 								{ "value": "none", "label": "none" },
 								{ "value": "pstream600", "label": "Powerstream 600W" },
@@ -292,7 +291,7 @@
 						{
 							"type": "checkbox",
 							"title": "HA enable",
-							"width": "10%",
+							"width": "5%",
 							"attr": "haEnable",
 							"filter": false,
 							"sort": false,
@@ -318,12 +317,11 @@
 					"sm": 12,
 					"newLine": true,
 					"type": "table",
-					"label": "My configured Powerstation(s)",
 					"items": [
 						{
 							"type": "text",
 							"attr": "devName",
-							"width": "20%",
+							"width": "15%",
 							"title": "Name",
 
 							"filter": false,
@@ -332,7 +330,7 @@
 						},
 						{
 							"type": "text",
-							"width": "20%",
+							"width": "15%",
 							"title": "id",
 							"attr": "devId",
 							"filter": false,
@@ -341,7 +339,7 @@
 						},
 						{
 							"type": "select",
-							"width": "30%",
+							"width": "10%",
 							"options": [
 								{ "value": "none", "label": "none" },
 								{ "value": "deltamini", "label": "Delta Mini (882Wh)" },
@@ -364,8 +362,17 @@
 						},
 						{
 							"type": "checkbox",
+							"title": "HA enable",
+							"width": "5%",
+							"attr": "haEnable",
+							"filter": false,
+							"sort": false,
+							"default": false
+						},
+						{
+							"type": "checkbox",
 							"title": "Slave 1",
-							"width": "10%",
+							"width": "5%",
 							"hidden": "data.devType !== 'deltapro' && data.devType !== 'deltamax' && data.devType !== 'delta2max' && data.devType !== 'delta' && data.devType !== 'delta2'",
 							"attr": "pstationsSlave1",
 							"filter": false,
@@ -375,18 +382,9 @@
 						{
 							"type": "checkbox",
 							"title": "Slave 2",
-							"width": "10%",
+							"width": "5%",
 							"hidden": "data.devType !== 'deltapro' && data.devType !== 'deltamax' && data.devType !== 'delta2max' ",
 							"attr": "pstationsSlave2",
-							"filter": false,
-							"sort": false,
-							"default": false
-						},
-						{
-							"type": "checkbox",
-							"title": "HA enable",
-							"width": "10%",
-							"attr": "haEnable",
 							"filter": false,
 							"sort": false,
 							"default": false
@@ -411,11 +409,10 @@
 					"sm": 12,
 					"newLine": true,
 					"type": "table",
-					"label": "My configured Plug(s)",
 					"items": [
 						{
 							"type": "text",
-							"width": "20%",
+							"width": "15%",
 							"title": "name",
 							"attr": "devName",
 							"filter": false,
@@ -424,7 +421,7 @@
 						},
 						{
 							"type": "text",
-							"width": "20%",
+							"width": "15%",
 							"title": "id",
 							"attr": "devId",
 							"filter": false,
@@ -433,7 +430,7 @@
 						},
 						{
 							"type": "select",
-							"width": "20%",
+							"width": "10%",
 							"options": [ { "value": "none", "label": "none" }, { "value": "plug", "label": "Plug" } ],
 							"title": "Plug Type",
 							"attr": "devType",
@@ -444,20 +441,15 @@
 						{
 							"type": "checkbox",
 							"title": "HA enable",
-							"width": "10%",
+							"width": "5%",
 							"attr": "haEnable",
 							"filter": false,
 							"sort": false,
 							"default": false
 						}
 					]
-				}
-			}
-		},
-		"tab_3": {
-			"type": "panel",
-			"label": "Generator / SHP Configuration",
-			"items": {
+				},
+
 				"_generatorHeader": {
 					"newLine": true,
 					"type": "header",
@@ -467,7 +459,7 @@
 					"lg": 12,
 					"size": 3
 				},
-				"_introTable1Txt1": {
+				"_introTable2Txt2": {
 					"type": "staticText",
 					"text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have no device, delete the added line item",
 					"newLine": true
@@ -476,11 +468,10 @@
 					"sm": 12,
 					"newLine": true,
 					"type": "table",
-					"label": "My configured Generator(s)",
 					"items": [
 						{
 							"type": "text",
-							"width": "20%",
+							"width": "15%",
 							"title": "name",
 							"attr": "devName",
 							"filter": false,
@@ -489,7 +480,7 @@
 						},
 						{
 							"type": "text",
-							"width": "20%",
+							"width": "15%",
 							"title": "id",
 							"attr": "devId",
 							"filter": false,
@@ -498,7 +489,7 @@
 						},
 						{
 							"type": "select",
-							"width": "20%",
+							"width": "10%",
 							"options": [
 								{ "value": "none", "label": "none" },
 								{ "value": "generator", "label": "Smart Generator" }
@@ -512,7 +503,7 @@
 						{
 							"type": "checkbox",
 							"title": "HA enable",
-							"width": "10%",
+							"width": "5%",
 							"attr": "haEnable",
 							"filter": false,
 							"sort": false,
@@ -529,7 +520,7 @@
 					"lg": 12,
 					"size": 3
 				},
-				"_introTable2Txt1": {
+				"_introTable3Txt1": {
 					"type": "staticText",
 					"text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have no device, delete the added line item",
 					"newLine": true
@@ -538,11 +529,10 @@
 					"sm": 12,
 					"newLine": true,
 					"type": "table",
-					"label": "My configured SHP(s)",
 					"items": [
 						{
 							"type": "text",
-							"width": "20%",
+							"width": "15%",
 							"title": "name",
 							"attr": "devName",
 							"filter": false,
@@ -551,7 +541,7 @@
 						},
 						{
 							"type": "text",
-							"width": "20%",
+							"width": "15%",
 							"title": "id",
 							"attr": "devId",
 							"filter": false,
@@ -560,7 +550,7 @@
 						},
 						{
 							"type": "select",
-							"width": "20%",
+							"width": "10%",
 							"options": [
 								{ "value": "none", "label": "none" },
 								{ "value": "panel", "label": "Smart Home Panel" }
@@ -574,20 +564,15 @@
 						{
 							"type": "checkbox",
 							"title": "HA enable",
-							"width": "10%",
+							"width": "5%",
 							"attr": "haEnable",
 							"filter": false,
 							"sort": false,
 							"default": false
 						}
 					]
-				}
-			}
-		},
-		"tab_4": {
-			"type": "panel",
-			"label": "Wave / Glacier Configuration",
-			"items": {
+				},
+
 				"_waveHeader": {
 					"newLine": true,
 					"type": "header",
@@ -597,7 +582,7 @@
 					"lg": 12,
 					"size": 3
 				},
-				"_introTable1Txt1": {
+				"_introTable4Txt1": {
 					"type": "staticText",
 					"text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have no device, delete the added line item",
 					"newLine": true
@@ -606,11 +591,10 @@
 					"sm": 12,
 					"newLine": true,
 					"type": "table",
-					"label": "My configured Wave(s)",
 					"items": [
 						{
 							"type": "text",
-							"width": "20%",
+							"width": "15%",
 							"title": "name",
 							"attr": "devName",
 							"filter": false,
@@ -619,7 +603,7 @@
 						},
 						{
 							"type": "text",
-							"width": "20%",
+							"width": "15%",
 							"title": "id",
 							"attr": "devId",
 							"filter": false,
@@ -628,7 +612,7 @@
 						},
 						{
 							"type": "select",
-							"width": "20%",
+							"width": "10%",
 							"options": [
 								{ "value": "none", "label": "none" },
 								{ "value": "wave2", "label": "Wave 2 Air Con" }
@@ -642,7 +626,7 @@
 						{
 							"type": "checkbox",
 							"title": "HA enable",
-							"width": "10%",
+							"width": "5%",
 							"attr": "haEnable",
 							"filter": false,
 							"sort": false,
@@ -668,11 +652,10 @@
 					"sm": 12,
 					"newLine": true,
 					"type": "table",
-					"label": "My configured Glacier(s)",
 					"items": [
 						{
 							"type": "text",
-							"width": "20%",
+							"width": "15%",
 							"title": "name",
 							"attr": "devName",
 							"filter": false,
@@ -681,7 +664,7 @@
 						},
 						{
 							"type": "text",
-							"width": "20%",
+							"width": "15%",
 							"title": "id",
 							"attr": "devId",
 							"filter": false,
@@ -690,7 +673,7 @@
 						},
 						{
 							"type": "select",
-							"width": "20%",
+							"width": "10%",
 							"options": [
 								{ "value": "none", "label": "none" },
 								{ "value": "glacier", "label": "Glacier Cooler" }
@@ -704,7 +687,7 @@
 						{
 							"type": "checkbox",
 							"title": "HA enable",
-							"width": "10%",
+							"width": "5%",
 							"attr": "haEnable",
 							"filter": false,
 							"sort": false,
@@ -714,7 +697,7 @@
 				}
 			}
 		},
-		"tab_5": {
+		"tab_3": {
 			"type": "panel",
 			"label": "Homeassistant",
 			"items": {
