@@ -47,7 +47,7 @@ There are 3 possibilities:
 
 The mqqt Broker settings are default and usually need no modification.
 
-Use the tab "Device(s) Configuration" for adding your power equipment.
+Use the tab "Device(s) Configuration" for adding your equipment.
 
 <details><summary><i> Parametrizing the Powerstream</i></summary>
 <p>
@@ -80,8 +80,6 @@ Use the tab "Device(s) Configuration" for adding your power equipment.
 
 </p></details>
 
-Use the tab "Generator / SHP Configuration" for adding your power equipment.
-
 <details><summary><i>Parametrizing the Generator</i></summary>
 <p>
 
@@ -101,8 +99,6 @@ Use the tab "Generator / SHP Configuration" for adding your power equipment.
 * set the type to "panel"
 
 </p></details>
-
-Use the tab "Wave / Glacier Configuration" for adding your equipment.
 
 <details><summary><i>Parametrizing the Wave</i></summary>
 <p>
@@ -244,7 +240,9 @@ Wave is not available, could be implemented, if data is available.
 ## Changelog
 ### 0.0.31 (npm)
 * (foxthefox) optimization EF MQTT reconnect
-* (foxthefox) data structure slave battery to HA
+* (foxthefox) initial update slave battery to HA
+* (foxthefox) online status from latestQuotas
+* (foxthefox) adapter config merge all device tabs into one (to overcome the problem that on tablets the last tab is not reachable), size adjustment
 
 ### 0.0.30 (npm)
 * (foxthefox) correction for River2Pro/Max cmd dcChgCurrent

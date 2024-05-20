@@ -756,7 +756,7 @@ class EcoflowMqtt extends utils.Adapter {
 					username: this.config.haMqttUserId,
 					password: this.config.haMqttUserPWd,
 					keepAlive: 60,
-					reconnectPeriod: 5,
+					reconnectPeriod: 5000,
 					will: {
 						topic: this.config.haTopic + '/iob/info/status',
 						payload: 'offline',
