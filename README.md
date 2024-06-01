@@ -224,6 +224,9 @@ supply priority -> 0/false = prioritized grid supply; 1/true = prioritized batte
 ### Smart Plugs
 ![Smart Plug](./doc/devices/plug.md)
 
+### Shelly devices
+![Shelly](./doc/devices/shelly.md)
+
 ### Wave 2 Air conditioner
 ![Wave2](./doc/devices/wave2.md)
 
@@ -238,6 +241,10 @@ Wave is not available, could be implemented, if data is available.
 * check beep command if reversing needed
 
 ## Changelog
+
+### 0.0.32 (npm)
+* (foxthefox) added Shelly3EM reporting (cloud to cloud connection to be setup in EF App)
+
 ### 0.0.31 (npm)
 * (foxthefox) optimization EF MQTT reconnect
 * (foxthefox) initial update slave battery to HA

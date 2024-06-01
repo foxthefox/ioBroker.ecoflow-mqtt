@@ -89,6 +89,7 @@ class EcoflowMqtt extends utils.Adapter {
 			//this.log.info('blade      -> ' + JSON.stringify(this.config.blades));
 			this.log.info('generator    -> ' + JSON.stringify(this.config.generators));
 			this.log.info('panel        -> ' + JSON.stringify(this.config.panels));
+			this.log.info('shelly       -> ' + JSON.stringify(this.config.shellies));
 
 			try {
 				//loop durch alle Geräte
@@ -100,7 +101,8 @@ class EcoflowMqtt extends utils.Adapter {
 					this.config.waves,
 					this.config.glaciers,
 					this.config.generators,
-					this.config.panels
+					this.config.panels,
+					this.config.shellies
 				);
 				if (confdevices.length > 0) {
 					//loop durch alle pstations
