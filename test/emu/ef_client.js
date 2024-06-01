@@ -30,6 +30,8 @@ quota['DAEBZ5ZE4112345'] = require('../lastQuotas/deltamax.json');
 quota['R521ZEB4XEC12345'] = require('../lastQuotas/river2max.json');
 quota['R621ZEB4XEC12345'] = require('../lastQuotas/river2pro.json');
 quota['R421ZEB4XEC12345'] = require('../lastQuotas/riverpro.json');
+quota['R351ZFB4HF6SL12345'] = require('../lastQuotas/delt2max2slave.json');
+quota['DAEBZ5ZE41SL12345'] = require('../lastQuotas/deltamax1slave.json');
 quota['DPU0ZFB5EF412345'] = require('../lastQuotas/dpu.js').message.get_reply;
 
 const panelparams = require('../websource/shp/vm2.js').params;
@@ -52,7 +54,9 @@ const pdevices = {
 	DAEBZ5ZE4112345: { devName: 'My deltamax', devType: 'deltamax', haEnable: false },
 	R521ZEB4XEC12345: { devName: 'My river2max', devType: 'river2max', haEnable: false },
 	R621ZEB4XEC12345: { devName: 'My river2pro', devType: 'river2pro', haEnable: false },
-	R421ZEB4XEC12345: { devName: 'My riverpro', devType: 'riverpro', haEnable: false }
+	R421ZEB4XEC12345: { devName: 'My riverpro', devType: 'riverpro', haEnable: false },
+	R351ZFB4HF6SL12345: { devName: 'My delta2max Slave', devType: 'delta2max', haEnable: false },
+	DAEBZ5ZE41SL12345: { devName: 'My deltamax Slave', devType: 'deltamax', haEnable: false }
 };
 
 let lastQuotInterval = null;
