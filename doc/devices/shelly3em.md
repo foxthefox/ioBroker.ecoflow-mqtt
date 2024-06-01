@@ -12,9 +12,9 @@
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|currentL1|0 | 100 | A | 1 |  Current L1 |
-|currentL2|0 | 100 | A | 1 |  Current L2 |
-|currentL3|0 | 100 | A | 1 |  Current L3 |
+|currentL1|0 | 50 | A | 1 |  Current L1 |
+|currentL2|0 | 50 | A | 1 |  Current L2 |
+|currentL3|0 | 50 | A | 1 |  Current L3 |
 |voltageL1|0 | 250 | V | 1 |  Voltage L1 |
 |voltageL2|0 | 250 | V | 1 |  Voltage L2 |
 |voltageL3|0 | 250 | V | 1 |  Voltage L3 |
@@ -25,11 +25,12 @@
 |pfL2|0 | 1 |  | 1 |  Powerfactor L2 |
 |pfL3|0 | 1 |  | 1 |  Powerfactor L3 |
 |totalL1|0 |  n/a | kWh | 0.001 |  Energy L1 |
-|total2|0 |  n/a | kWh | 0.001 |  Energy L2 |
-|total3|0 |  n/a | kWh | 0.001 |  Energy L3 |
+|totalL2|0 |  n/a | kWh | 0.001 |  Energy L2 |
+|totalL3|0 |  n/a | kWh | 0.001 |  Energy L3 |
 |total_returnedL1|0 |  n/a | kWh | 0.001 |  Energy returned L2 |
 |total_returnedL2|0 |  n/a | kWh | 0.001 |  Energy returned L2 |
 |total_returnedL3|0 |  n/a | kWh | 0.001 |  Energy returned L3 |
+|total_power|0 |  n/a | W | 1 |  Total power |
 
 
 ## communication
