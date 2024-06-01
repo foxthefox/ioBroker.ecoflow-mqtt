@@ -243,6 +243,7 @@ Wave is not available, could be implemented, if data is available.
 * (foxthefox) initial update slave battery to HA
 * (foxthefox) online status from latestQuotas
 * (foxthefox) adapter config merge all device tabs into one (to overcome the problem that on tablets the last tab is not reachable), size adjustment
+* (foxthefox) correction for deltapro at xt60ChgType
 
 ### 0.0.30 (npm)
 * (foxthefox) correction for River2Pro/Max cmd dcChgCurrent
