@@ -1,5 +1,5 @@
 # States for  DELTAPRO
-### version: 0.0.29
+### version: 0.0.32
 
 [bmsMaster](#bmsMaster)
 
@@ -77,7 +77,7 @@
 |sysState| sys State | {0:0?,1:1?} |
 |allErrCode| all Err Code | {0:0?,1:1?,2:2?} |
 |allBmsFault| all Bms Faulttype | {0:0?,1:1?,2:2?} |
-|mosState| Battery capacity type | {0:0?,1:1?,2:2?,3:3?} |
+|mosState| MOS state | {0:0?,1:1?,2:2?,3:3?} |
 |balanceState| Balance State | {0:0&#x3D;OK?,1:1?,2:2?} |
 
 ### array
@@ -301,7 +301,7 @@
 | State  |     Name |  values |
 |----------|:-------------:|------|
 |faultCode| Error code | {0:OK?,1:mppt_fault,2:car_fault,4:dc24v_fault} |
-|xt60ChgType| XT60 charging type | {0:not detected,1:MPPT,2:adapter} |
+|xt60ChgType| XT60 charging type | {0:not detected,1:adapter,2:MPPT} |
 |dc24vState| DCDC24 switch state | {0:off,1:on} |
 |chgPauseFlag| PV charging pause flag | {0:not stopped ?,1:charging stopped} |
 |chgType| Actual charging type | {0:null,1:adapter (adapter/DC source),2:MPPT (solar),3:AC (mains supply),4:gas,5:wind} |

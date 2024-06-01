@@ -1,5 +1,5 @@
 # States for  RIVER2MAX
-### version: 0.0.29
+### version: 0.0.32
 
 [bmsMaster](#bmsMaster)
 
@@ -163,7 +163,7 @@
 |acStandbyMins| 0 | 720 | min | 1 |  AC standby time /min 0 Never standby 720 Default value | {valName:standbyMins,moduleType:5,operateType:acStandby,params:{standbyMins:720}} |
 |carStandbyMin| 0 | 720 | min | 1 |  CAR standby time /min 0 Never standby 720 Default value | {valName:standbyMins,moduleType:5,operateType:standbyTime,params:{standbyMins:720}} |
 |cfgChgWatts| 50 | 660 | W | 1 |  Maximum charging power for charging (W) ? | {valName:chgWatts,moduleType:5,operateType:acChgCfg,params:{chgWatts:200}} |
-|dcChgCurrent| 4 | 8 | A | 0.001 |  On-board charging current | {valName:dcChgCfg,moduleType:5,operateType:dcChgCfg,params:{dcChgCfg:8000,dcChgCfg2:8000}} |
+|dcChgCurrent| 4 | 8 | A | 0.001 |  On-board charging current | {valName:dcChgCfg,moduleType:5,operateType:dcChgCfg,params:{dcChgCfg:8000}} |
 
 ### switch
 
