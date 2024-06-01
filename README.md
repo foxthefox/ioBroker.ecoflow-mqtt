@@ -225,7 +225,7 @@ supply priority -> 0/false = prioritized grid supply; 1/true = prioritized batte
 ![Smart Plug](./doc/devices/plug.md)
 
 ### Shelly devices
-![Shelly](./doc/devices/shelly.md)
+![Shelly3EM](./doc/devices/shelly3em.md)
 
 ### Wave 2 Air conditioner
 ![Wave2](./doc/devices/wave2.md)

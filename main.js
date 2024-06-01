@@ -661,7 +661,7 @@ class EcoflowMqtt extends utils.Adapter {
 						) {
 							const dict = this.pdevicesStatesDict[devtype];
 							let haupdate = [];
-							if (devtype !== 'panel') {
+							if (devtype !== 'panel' && devtype !== 'shelly3em') {
 								haupdate = await ef.storeStationPayload(
 									this,
 									dict,
@@ -670,7 +670,7 @@ class EcoflowMqtt extends utils.Adapter {
 									JSON.parse(message.toString()),
 									this.pdevices[topic]['haEnable']
 								);
-							} else {
+							} else if (devtype == 'panel') {
 								haupdate = await ef.storeSHPpayload(
 									this,
 									dict,
@@ -679,6 +679,14 @@ class EcoflowMqtt extends utils.Adapter {
 									JSON.parse(message.toString()),
 									this.pdevices[topic]['haEnable']
 								);
+							} else if(devtype == 'shelly3em'){
+								haupdate = await ef.storeSHELLYpayload(
+									this,
+									dict,
+									this.pdevicesStates[devtype],
+									topic,
+									JSON.parse(message.toString()),
+									this.pdevices[topic]['haEnable']
 							}
 							if (haupdate.length > 0) {
 								for (let i = 0; i < haupdate.length; i++) {
