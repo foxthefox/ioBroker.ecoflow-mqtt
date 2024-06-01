@@ -679,7 +679,7 @@ class EcoflowMqtt extends utils.Adapter {
 									JSON.parse(message.toString()),
 									this.pdevices[topic]['haEnable']
 								);
-							} else if(devtype == 'shelly3em'){
+							} else if (devtype == 'shelly3em') {
 								haupdate = await ef.storeSHELLYpayload(
 									this,
 									dict,
@@ -687,6 +687,7 @@ class EcoflowMqtt extends utils.Adapter {
 									topic,
 									JSON.parse(message.toString()),
 									this.pdevices[topic]['haEnable']
+								);
 							}
 							if (haupdate.length > 0) {
 								for (let i = 0; i < haupdate.length; i++) {
