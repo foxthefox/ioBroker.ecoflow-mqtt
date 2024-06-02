@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "ecoflow-mqtt",
-        "version": "0.0.31",
+        "version": "0.0.32",
         "news": {
+            "0.0.32": {
+                "en": "added Shelly3EM reporting (cloud to cloud connection to be setup in EF App)",
+                "de": "Shelly3EM-Berichterstellung hinzugefügt (Cloud-zu-Cloud-Verbindung muss in der EF-App eingerichtet werden)",
+                "ru": "добавлена ​​отчетность Shelly3EM (соединение между облаками необходимо настроить в приложении EF)",
+                "pt": "adicionado relatório Shelly3EM (conexão nuvem a nuvem a ser configurada no aplicativo EF)",
+                "nl": "Shelly3EM-rapportage toegevoegd (cloud-naar-cloud-verbinding moet worden ingesteld in de EF-app)",
+                "fr": "ajout du reporting Shelly3EM (connexion cloud à cloud à configurer dans l'application EF)",
+                "it": "aggiunto il reporting Shelly3EM (connessione cloud-to-cloud da configurare nell'app EF)",
+                "es": "Se agregaron informes Shelly3EM (la conexión de nube a nube se configurará en la aplicación EF)",
+                "pl": "dodano raportowanie Shelly3EM (połączenie chmura z chmurą do skonfigurowania w aplikacji EF)",
+                "uk": "додано звіти Shelly3EM (підключення між хмарами буде налаштовано в додатку EF)",
+                "zh-cn": "添加了 Shelly3EM 报告（要在 EF 应用程序中设置云到云连接）"
+            },
             "0.0.31": {
                 "en": "optimization EF MQTT reconnect; initial update slave battery to HA, adapter config merge all device tabs into one",
                 "de": "Optimierung EF MQTT Reconnect; Erstaktualisierung der Slave-Batterie auf HA, Adapterkonfiguration, Zusammenführung aller Geräteregisterkarten zu einer",
@@ -302,6 +315,7 @@
         "glaciers": [],
         "generators": [],
         "panels": [],
+        "shellies": [],
         "msgStateCreation": false,
         "msgUpdatePstation": false,
         "msgUpdateValuePstation": false,

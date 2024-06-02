@@ -449,7 +449,67 @@
 						}
 					]
 				},
-
+				"_shellyHeader": {
+					"newLine": true,
+					"type": "header",
+					"text": "Shelly Configuration",
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"size": 3
+				},
+				"_shellyTable1Txt1": {
+					"type": "staticText",
+					"text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have no device, delete the added line item",
+					"newLine": true
+				},
+				"shellies": {
+					"sm": 12,
+					"newLine": true,
+					"type": "table",
+					"items": [
+						{
+							"type": "text",
+							"width": "15%",
+							"title": "name",
+							"attr": "devName",
+							"filter": false,
+							"sort": false,
+							"default": "My Shelly#1"
+						},
+						{
+							"type": "text",
+							"width": "15%",
+							"title": "id",
+							"attr": "devId",
+							"filter": false,
+							"sort": false,
+							"default": "1234.."
+						},
+						{
+							"type": "select",
+							"width": "10%",
+							"options": [
+								{ "value": "none", "label": "none" },
+								{ "value": "shelly3em", "label": "Shelly3EM" }
+							],
+							"title": "Shelly Type",
+							"attr": "devType",
+							"filter": false,
+							"sort": false,
+							"default": "none"
+						},
+						{
+							"type": "checkbox",
+							"title": "HA enable",
+							"width": "5%",
+							"attr": "haEnable",
+							"filter": false,
+							"sort": false,
+							"default": false
+						}
+					]
+				},
 				"_generatorHeader": {
 					"newLine": true,
 					"type": "header",

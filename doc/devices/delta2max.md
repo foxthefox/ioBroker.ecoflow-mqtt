@@ -1,5 +1,5 @@
 # States for  DELTA2MAX
-### version: 0.0.29
+### version: 0.0.32
 
 [bmsMaster](#bmsMaster)
 
@@ -59,7 +59,7 @@
 |errCode| Global error code | {0:OK?} |
 |type| BMS type | {1:Lithium battery,2:Oil-powered} |
 |balanceState| Balance State | {0:0&#x3D;OK?,1:1?,2:2?} |
-|mosState| Battery capacity type | {0:0?,1:1?,2:2?,3:3?} |
+|mosState| MOS state | {0:0?,1:1?,2:2?,3:3?} |
 
 ### array
 
@@ -209,7 +209,7 @@
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
 |carStandbyMin| 0 | 720 | min | 1 |  CAR standby time /min 0 Never standby 720 Default value | {valName:standbyMins,moduleType:5,operateType:standbyTime,params:{standbyMins:720}} |
 |dcChgCurrent| 4 | 8 | A | 0.001 |  On-board charging current | {valName:dcChgCfg,moduleType:5,operateType:dcChgCfg,params:{dcChgCfg:8000,dcChgCfg2:8000}} |
-|pv2DcChgCurrent| 4 | 8 | A | 0.001 |  pv2DcChgCurrent |  |
+|pv2DcChgCurrent| 4 | 8 | A | 0.001 |  pv2DcChgCurrent | {valName:dcChgCfg2,moduleType:5,operateType:dcChgCfg,params:{dcChgCfg:8000,dcChgCfg2:8000}} |
 
 ### switch
 

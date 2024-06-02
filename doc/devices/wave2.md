@@ -1,5 +1,5 @@
 # States for  WAVE2
-### version: 0.0.29
+### version: 0.0.32
 
 [pd](#pd)
 
@@ -355,5 +355,5 @@
 |cellId| Battery capacity type | {1:2.5 Ah per battery,2:2 Ah per battery} |
 |type| BMS type | {1:Lithium battery,2:Oil-powered} |
 |balanceState| Balance State | {0:0&#x3D;OK?,1:1?,2:2?} |
-|mosState| Battery capacity type | {0:0?,1:1?,2:2?,3:3?} |
+|mosState| MOS state | {0:0?,1:1?,2:2?,3:3?} |
 
