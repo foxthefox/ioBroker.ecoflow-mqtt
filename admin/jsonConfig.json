@@ -571,6 +571,86 @@
 						}
 					]
 				},
+				"_powerkitHeader": {
+					"newLine": true,
+					"type": "header",
+					"text": "Power Kit Configuration",
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"size": 3
+				},
+				"_introPowerkitTxt2": {
+					"type": "staticText",
+					"text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have more than one battery check the slave1/slave2. If you have no device, delete the added line item",
+					"newLine": true
+				},
+				"powerkits": {
+					"sm": 12,
+					"newLine": true,
+					"type": "table",
+					"items": [
+						{
+							"type": "text",
+							"width": "15%",
+							"title": "name",
+							"attr": "devName",
+							"filter": false,
+							"sort": false,
+							"default": "My Powerkit"
+						},
+						{
+							"type": "text",
+							"width": "15%",
+							"title": "id",
+							"attr": "devId",
+							"filter": false,
+							"sort": false,
+							"default": "M10."
+						},
+						{
+							"type": "select",
+							"width": "10%",
+							"options": [
+								{ "value": "none", "label": "none" },
+								{ "value": "generator", "label": "Powerkit BP2000" },
+								{ "value": "generator", "label": "Powerkit BP5000" }
+							],
+							"title": "Power Kit Type",
+							"attr": "devType",
+							"filter": false,
+							"sort": false,
+							"default": "none"
+						},
+						{
+							"type": "checkbox",
+							"title": "HA enable",
+							"width": "5%",
+							"attr": "haEnable",
+							"filter": false,
+							"sort": false,
+							"default": false
+						},
+						{
+							"type": "checkbox",
+							"title": "Slave 1",
+							"width": "5%",
+							"attr": "pstationsSlave1",
+							"filter": false,
+							"sort": false,
+							"default": false
+						},
+						{
+							"type": "checkbox",
+							"title": "Slave 2",
+							"width": "5%",
+							"attr": "pstationsSlave2",
+							"filter": false,
+							"sort": false,
+							"default": false
+						}
+					]
+				},
 				"_shpHeader": {
 					"newLine": true,
 					"type": "header",
@@ -739,6 +819,67 @@
 								{ "value": "glacier", "label": "Glacier Cooler" }
 							],
 							"title": "Glacier Type",
+							"attr": "devType",
+							"filter": false,
+							"sort": false,
+							"default": "none"
+						},
+						{
+							"type": "checkbox",
+							"title": "HA enable",
+							"width": "5%",
+							"attr": "haEnable",
+							"filter": false,
+							"sort": false,
+							"default": false
+						}
+					]
+				},
+				"_poweroceanHeader": {
+					"newLine": true,
+					"type": "header",
+					"text": "Power Kit Configuration",
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"size": 3
+				},
+				"_introPoweroceanTxt2": {
+					"type": "staticText",
+					"text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have no device, delete the added line item. ONLY TEST",
+					"newLine": true
+				},
+				"poweroceans": {
+					"sm": 12,
+					"newLine": true,
+					"type": "table",
+					"items": [
+						{
+							"type": "text",
+							"width": "15%",
+							"title": "name",
+							"attr": "devName",
+							"filter": false,
+							"sort": false,
+							"default": "My Power Ocean"
+						},
+						{
+							"type": "text",
+							"width": "15%",
+							"title": "id",
+							"attr": "devId",
+							"filter": false,
+							"sort": false,
+							"default": "M10."
+						},
+						{
+							"type": "select",
+							"width": "10%",
+							"options": [
+								{ "value": "none", "label": "none" },
+								{ "value": "test", "label": "Power Ocean Test" }
+							],
+							"title": "Power Ocean Type",
 							"attr": "devType",
 							"filter": false,
 							"sort": false,
