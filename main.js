@@ -90,6 +90,7 @@ class EcoflowMqtt extends utils.Adapter {
 			this.log.info('generator    -> ' + JSON.stringify(this.config.generators));
 			this.log.info('panel        -> ' + JSON.stringify(this.config.panels));
 			this.log.info('shelly       -> ' + JSON.stringify(this.config.shellies));
+			this.log.info('powerkit     -> ' + JSON.stringify(this.config.powerkits));
 
 			try {
 				//loop durch alle Geräte
@@ -102,7 +103,8 @@ class EcoflowMqtt extends utils.Adapter {
 					this.config.glaciers,
 					this.config.generators,
 					this.config.panels,
-					this.config.shellies
+					this.config.shellies,
+					this.config.powerkits
 				);
 				if (confdevices.length > 0) {
 					//loop durch alle pstations
@@ -131,10 +133,12 @@ class EcoflowMqtt extends utils.Adapter {
 								devtype === 'deltaproultra'
 							) {
 								devStates = require('./lib/ecoflow_data.js').pstreamStates;
+							} else if (devtype === 'powerkit') {
+								devStates = require('./lib/ef_powerkit_data.js').powerkitStates;
 							} else {
 								devStates = require('./lib/ecoflow_data.js').pstationStates;
 							}
-
+							//ef_powerkit_data.js
 							if (devtype !== 'none' && devStates) {
 								let devupd = null;
 								if (
@@ -144,6 +148,8 @@ class EcoflowMqtt extends utils.Adapter {
 									devtype === 'deltaproultra'
 								) {
 									devupd = require('./lib/ecoflow_data.js').pstreamRanges[devtype];
+								} else if (devtype === 'powerkit') {
+									devStates = require('./lib/ef_powerkit_data.js').powerkitRanges[devtype];
 								} else {
 									devupd = require('./lib/ecoflow_data.js').pstationRanges[devtype];
 								}
@@ -186,12 +192,18 @@ class EcoflowMqtt extends utils.Adapter {
 							if (devtype === 'pstream600' || devtype === 'pstream800') {
 								devtype = 'pstream';
 							}
+							if (devtype === 'powerkitbp2000' || devtype === 'powerkitbp5000') {
+								devtype = 'powerkit';
+							}
 
 							let pdevicesStatesDict = null;
 							let pdevicesCmd = null;
 							if (devtype === 'pstream' || devtype === 'plug' || devtype === 'deltaproultra') {
 								pdevicesStatesDict = require('./lib/ecoflow_data.js').pstreamStatesDict[devtype];
 								pdevicesCmd = require('./lib/ecoflow_data.js').pstreamCmd[origdevtype];
+							} else if (devtype === 'powerkit') {
+								pdevicesStatesDict = require('./lib/ef_powerkit_data.js').powerkitStatesDict[devtype];
+								pdevicesCmd = require('./lib/ef_powerkit_data.js').powerkitCmd[devtype];
 							} else {
 								pdevicesStatesDict = require('./lib/ecoflow_data.js').pstationStatesDict[origdevtype];
 								pdevicesCmd = require('./lib/ecoflow_data.js').pstationCmd[origdevtype];
@@ -345,67 +357,133 @@ class EcoflowMqtt extends utils.Adapter {
 									this.log.info('pdevices states created for ' + id + ' / ' + devtype + ' / ' + name);
 									//first additional battery
 									if (confdevices[psta]['pstationsSlave1']) {
-										if (this.config.msgStateCreation) {
-											this.log.debug('____________________________________________');
-											this.log.debug('create  channel ' + 'bmsSlave1');
-										}
-										await myutils.createMyChannel(this, id, 'bmsSlave1', 'bmsSlave1', 'channel');
-										for (let key in pdevicesStatesDict['bmsMaster']) {
-											let type = pdevicesStatesDict['bmsMaster'][key]['entity'];
-											if (type !== 'icon') {
-												if (devStates['bmsMaster'][type][key]) {
-													await myutils.createMyState(
-														this,
-														id,
-														'bmsSlave1',
-														key,
-														devStates['bmsMaster'][type][key]
-													);
-												} else {
-													this.log.info(
-														'not created/mismatch ' +
-															' bmsSlave1 ->' +
-															' ' +
-															key +
-															' ' +
-															type
-													);
+										if (devtype == 'powerkit') {
+											if (this.config.msgStateCreation) {
+												this.log.debug('____________________________________________');
+												this.log.debug('create  channel ' + 'bp2');
+											}
+											await myutils.createMyChannel(this, id, 'bp2', 'bp2', 'channel');
+											for (let key in pdevicesStatesDict['bp1']) {
+												let type = pdevicesStatesDict['bp1'][key]['entity'];
+												if (type !== 'icon') {
+													if (devStates['bp1'][type][key]) {
+														await myutils.createMyState(
+															this,
+															id,
+															'bp2',
+															key,
+															devStates['bp1'][type][key]
+														);
+													} else {
+														this.log.info(
+															'not created/mismatch ' + ' bp2 ->' + ' ' + key + ' ' + type
+														);
+													}
 												}
 											}
+											this.log.info('powerkit add battery #1 states created');
+										} else {
+											if (this.config.msgStateCreation) {
+												this.log.debug('____________________________________________');
+												this.log.debug('create  channel ' + 'bmsSlave1');
+											}
+											await myutils.createMyChannel(
+												this,
+												id,
+												'bmsSlave1',
+												'bmsSlave1',
+												'channel'
+											);
+											for (let key in pdevicesStatesDict['bmsMaster']) {
+												let type = pdevicesStatesDict['bmsMaster'][key]['entity'];
+												if (type !== 'icon') {
+													if (devStates['bmsMaster'][type][key]) {
+														await myutils.createMyState(
+															this,
+															id,
+															'bmsSlave1',
+															key,
+															devStates['bmsMaster'][type][key]
+														);
+													} else {
+														this.log.info(
+															'not created/mismatch ' +
+																' bmsSlave1 ->' +
+																' ' +
+																key +
+																' ' +
+																type
+														);
+													}
+												}
+											}
+											this.log.info('pstation add battery #1 states created');
 										}
-										this.log.info('pstation add battery #1 states created');
 									}
 									//second additional battery
 									if (confdevices[psta]['pstationsSlave2']) {
-										if (this.config.msgStateCreation) {
-											this.log.debug('____________________________________________');
-											this.log.debug('create  channel ' + 'bmsSlave2');
-										}
-										await myutils.createMyChannel(this, id, 'bmsSlave2', 'bmsSlave2', 'channel');
-										for (let key in pdevicesStatesDict['bmsMaster']) {
-											let type = pdevicesStatesDict['bmsMaster'][key]['entity'];
-											if (type !== 'icon') {
-												if (devStates['bmsMaster'][type][key]) {
-													await myutils.createMyState(
-														this,
-														id,
-														'bmsSlave2',
-														key,
-														devStates['bmsMaster'][type][key]
-													);
-												} else {
-													this.log.info(
-														'not created/mismatch ' +
-															'bmsSlave2 ->' +
-															' ' +
-															key +
-															' ' +
-															type
-													);
+										if (devtype == 'powerkit') {
+											if (this.config.msgStateCreation) {
+												this.log.debug('____________________________________________');
+												this.log.debug('create  channel ' + 'bp3');
+											}
+											await myutils.createMyChannel(this, id, 'bp3', 'bp3', 'channel');
+											for (let key in pdevicesStatesDict['bp1']) {
+												let type = pdevicesStatesDict['bp1'][key]['entity'];
+												if (type !== 'icon') {
+													if (devStates['bp1'][type][key]) {
+														await myutils.createMyState(
+															this,
+															id,
+															'bp3',
+															key,
+															devStates['bp1'][type][key]
+														);
+													} else {
+														this.log.info(
+															'not created/mismatch ' + 'bp3 ->' + ' ' + key + ' ' + type
+														);
+													}
 												}
 											}
+											this.log.info('powerkit add battery #2 states created');
+										} else {
+											if (this.config.msgStateCreation) {
+												this.log.debug('____________________________________________');
+												this.log.debug('create  channel ' + 'bmsSlave2');
+											}
+											await myutils.createMyChannel(
+												this,
+												id,
+												'bmsSlave2',
+												'bmsSlave2',
+												'channel'
+											);
+											for (let key in pdevicesStatesDict['bmsMaster']) {
+												let type = pdevicesStatesDict['bmsMaster'][key]['entity'];
+												if (type !== 'icon') {
+													if (devStates['bmsMaster'][type][key]) {
+														await myutils.createMyState(
+															this,
+															id,
+															'bmsSlave2',
+															key,
+															devStates['bmsMaster'][type][key]
+														);
+													} else {
+														this.log.info(
+															'not created/mismatch ' +
+																'bmsSlave2 ->' +
+																' ' +
+																key +
+																' ' +
+																type
+														);
+													}
+												}
+											}
+											this.log.info('pstation add battery #2 states created');
 										}
-										this.log.info('pstation add battery #2 states created');
 									}
 								} catch (error) {
 									this.log.error('create states ' + error);
@@ -661,34 +739,50 @@ class EcoflowMqtt extends utils.Adapter {
 						) {
 							const dict = this.pdevicesStatesDict[devtype];
 							let haupdate = [];
-							if (devtype !== 'panel' && devtype !== 'shelly3em') {
-								haupdate = await ef.storeStationPayload(
-									this,
-									dict,
-									this.pdevicesStates[devtype],
-									topic,
-									JSON.parse(message.toString()),
-									this.pdevices[topic]['haEnable']
-								);
-							} else if (devtype == 'panel') {
-								haupdate = await ef.storeSHPpayload(
-									this,
-									dict,
-									this.pdevicesStates[devtype],
-									topic,
-									JSON.parse(message.toString()),
-									this.pdevices[topic]['haEnable']
-								);
-							} else if (devtype == 'shelly3em') {
-								haupdate = await ef.storeSHELLYpayload(
-									this,
-									dict,
-									this.pdevicesStates[devtype],
-									topic,
-									JSON.parse(message.toString()),
-									this.pdevices[topic]['haEnable']
-								);
+							switch (devtype) {
+								case 'panel':
+									haupdate = await ef.storeSHPpayload(
+										this,
+										dict,
+										this.pdevicesStates[devtype],
+										topic,
+										JSON.parse(message.toString()),
+										this.pdevices[topic]['haEnable']
+									);
+									break;
+								case 'powerkitbp2000':
+								case 'powerkitbp5000':
+									haupdate = await ef.storePowerkitpayload(
+										this,
+										dict,
+										this.pdevicesStates[devtype],
+										topic,
+										JSON.parse(message.toString()),
+										this.pdevices[topic]['haEnable']
+									);
+									break;
+								case 'shelly3em':
+									haupdate = await ef.storeSHELLYpayload(
+										this,
+										dict,
+										this.pdevicesStates[devtype],
+										topic,
+										JSON.parse(message.toString()),
+										this.pdevices[topic]['haEnable']
+									);
+									break;
+								default:
+									haupdate = await ef.storeStationPayload(
+										this,
+										dict,
+										this.pdevicesStates[devtype],
+										topic,
+										JSON.parse(message.toString()),
+										this.pdevices[topic]['haEnable']
+									);
+									break;
 							}
+
 							if (haupdate.length > 0) {
 								for (let i = 0; i < haupdate.length; i++) {
 									if (typeof haupdate[i].payload === 'string') {
@@ -1124,6 +1218,12 @@ class EcoflowMqtt extends utils.Adapter {
 								devicetype = this.pdevices[device]['devType'];
 								type = 'stream'; //includes also plugs
 								cmd = this.pdevicesCmd[devicetype];
+								break;
+							case 'powerkitbp2000':
+							case 'powerkitbp5000':
+								devicetype = this.pdevices[device]['devType'];
+								type = 'station'; //includes also glacier, wave
+								cmd = this.pdevicesCmd['powerkit'];
 								break;
 							default:
 								// all other is not protobuf

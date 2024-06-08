@@ -301,6 +301,7 @@
 		"generators": [],
 		"panels": [],
 		"shellies": [],
+		"powerkits": [],
 		"msgStateCreation": false,
 		"msgUpdatePstation": false,
 		"msgUpdateValuePstation": false,
