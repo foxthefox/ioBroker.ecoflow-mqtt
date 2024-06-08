@@ -613,8 +613,8 @@
 							"width": "10%",
 							"options": [
 								{ "value": "none", "label": "none" },
-								{ "value": "generator", "label": "Powerkit BP2000" },
-								{ "value": "generator", "label": "Powerkit BP5000" }
+								{ "value": "powerkitbp2000", "label": "Powerkit BP2000" },
+								{ "value": "powerkitbp5000", "label": "Powerkit BP5000" }
 							],
 							"title": "Power Kit Type",
 							"attr": "devType",
