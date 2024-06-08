@@ -5,7 +5,7 @@
 
 [bbcout](#bbcout)
 
-[bmstotal](#bmstotal)
+[bmsTotal](#bmsTotal)
 
 [kitscc](#kitscc)
 
@@ -31,13 +31,14 @@
 
 | State  |  Name |
 |----------|------|
+|moduleSn| Module SN# |
 |kitNum| Unique dynamic ID for CAN Mediation |
 |canId| Version No. |
 
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|oilCloseSoc|0 | 30 | % | 1 |  Smart generator shutoff SOC |
+|oilCloseSoc|60 | 100 | % | 1 |  Smart generator shutoff SOC |
 |amp|0 | 60 | A | 0.001 |  Current mA |
 |fullCap|0 | 100000 | mAh | 1 |  Capacity of full charging (mAh) |
 |soc|0 | 100 | % | 1 |  soc |
@@ -46,12 +47,12 @@
 |vol|0 | 60 | V | 0.001 |  Voltage (mV) |
 |minCellTemp|-30 | 100 | °C | 1 |  Minimum battery cell temperature (℃) |
 |ptcChgErrCnt|0 |  n/a |  | 1 |  Error count of PTC heating |
-|remainCap|0 | 100000 | A | 0.001 |  Remaining capacity (mAh) |
+|remainCap|0 | 100000 | mAh | 1 |  Remaining capacity (mAh) |
 |inWatts|0 | 5000 | W | 1 |  Input power (W) |
 |temp|-30 | 100 | °C | 1 |  Showing current temperature (℃) |
 |maxMosTemp|0 | 100 | °C | 1 |  Maximum MOS temperature (℃) |
 |remaintime|0 | 15000 | min | 1 |  Remaining time (min) |
-|maxCellTemp|-30 | 80 | !C | 1 |  Maximum battery cell temperature (℃) |
+|maxCellTemp|-30 | 80 | °C | 1 |  Maximum battery cell temperature (℃) |
 |minMosTemp|0 | 100 | °C | 1 |  Minimum MOS temperature (℃) |
 |lcdStandbyMin|0 | 3600 | min | 1 |  LCD screen standby time |
 |maxPtcTemp|-30 | 100 | °C | 1 |  Maximum PTC temperature (℃) |
@@ -62,6 +63,8 @@
 |oilOpenSoc|0 | 60 | % | 1 |  Smart generator startup SOC |
 |designCap|0 | 100000 | mAh | 1 |  Design capacity (mAh) |
 |outWatts|0 | 6000 | W | 1 |  Output power (W) |
+|bmsChgUpline|0 | 100 | % | 1 |  Upper limit of UPS charging of BMS |
+|remainTime|0 | 15000 | min | 1 |  Remaining time |
 
 
 ### diagnostic
@@ -75,18 +78,24 @@
 |openBmsIdex| Enable the battery or not. 0: not enabled, 1: enabled | {0:not enabled,1:enabled} |
 |ptcHeatingFlag| Current status of PTC: 0: stop, 1: heating, in delay due to error | {0:stop,1:heating, in delay due to error} |
 |proChgDsgMosState| Pre-discharging MOS status | {0:OK?} |
+|chgState| Charging/Discharging status | {0:charging?,1:discharging?} |
 |ptcMosErr| Heating MOS exception | {0:OK?} |
 |ptcAllowFlag| Allow PTC heating indication: 0: not allowed, 1: allowed | {0:not allowed,1:allowed} |
 |eventCode| Event code | {0:OK?} |
 |errCode| Error code | {0:OK?} |
 |ptcTouchFlag| PTC triggering event: 0: not triggered, 1: heating by charging, 2: heating by discharging | {0:not triggered,1:heating by charging,2:heating by discharging} |
 |balanceFlag| Balancing status | {0:OK?} |
+|bmsFault| BMS permanent failure | {0:OK?} |
 |bmsType| 0:BP5000 1:BP2000 | {0:BP5000,1:BP2000} |
-
-### undefined
-
+|doubleOilErrorFlag| Dual smart generator error | {0:OK?} |
 
 ## bbcout
+
+### string
+
+| State  |  Name |
+|----------|------|
+|moduleSn| Module SN# |
 
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
@@ -104,7 +113,7 @@
 |standbyTime|0 |  n/a | min | 1 |  Standby time with open load |
 |batVol|0 | 60 | V | 0.001 |  Battery voltage (mV) |
 |ldOutVol|0 | 60 | V | 0.001 |  Output voltage (mV) |
-|dayEnergy|0 | 60 | Wh | 1 |  Daily power discharged (Wh) |
+|dayEnergy|0 |  n/a | Wh | 1 |  Daily power discharged (Wh) |
 
 
 ### diagnostic
@@ -118,7 +127,7 @@
 |cfgVolTag| Configured output voltage type | {0:OK?} |
 |errCode| See the preceding details of error codes. | {0:OK?} |
 
-## bmstotal
+## bmsTotal
 
 ### diagnostic
 
@@ -132,7 +141,7 @@
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|bmsChgUpline|0 | 60 | V | 1 |  Upper limit of UPS charging of BMS |
+|bmsChgUpline|0 | 100 | % | 1 |  Upper limit of UPS charging of BMS |
 |totalFullCap|0 | 120000 | mAh | 1 |  Total battery capacity |
 |totalOutWatts|0 | 7200 | W | 1 |  Total output power (W) |
 |acDcLsplShutdMin|0 | 7200 | min | 1 |  Time to shutoff when both AC and DC enter low power mode |
@@ -147,6 +156,12 @@
 
 
 ## kitscc
+
+### string
+
+| State  |  Name |
+|----------|------|
+|moduleSn| Module SN# |
 
 ### diagnostic
 
@@ -167,6 +182,8 @@
 |alt1CableUnit| ALT power charging cable length unit, 0: meter, 1: foot | {0:meter,1:foot} |
 |warnCode2| Alarm code | {0:OK?} |
 |warnCode1| Alarm code | {0:OK?} |
+|pv1_hot_out| pv1_hot_out | {0:OK?,1:?} |
+|pv2_hot_out| pv2_hot_out | {0:OK?,1:?} |
 
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
@@ -177,12 +194,12 @@
 |l1Curr|0 | 60 | A | 0.001 |  Inductor L1 current (mA) |
 |alt2CableUnit|0 |  n/a | Wh | 1 |  Accumulative power discharged (Wh) |
 |batCurr|0 | 60 | A | 0.001 |  Battery current (mA) |
-|batWatts|0 | 7200 | W | 1 |  Battery power (W) |
+|batWatts|0 | 7200 | W | 0.01 |  Battery power (W) |
 |pv1InCurr|0 | 60 | A | 0.001 |  PV1 input current (mA) |
-|pv2InVol|0 | 60 | V | 0.001 |  PV2 input voltage (mV) |
-|alt1CableLen|1 | 30 | m | 1 |  ALT1 power charging cable length: 1 m to 30 m |
+|pv2InVol|0 | 70 | V | 0.001 |  PV2 input voltage (mV) |
+|alt1CableLen|1 | 30 | m | 0.01 |  ALT1 power charging cable length: 1 m to 30 m |
 |hs2Temp|0 | 60 | °C | 1 |  Radiator 2 temperature(℃) |
-|alt2CableLen|1 | 30 | m | 1 |  ALT2 power charging cable length: 1 m to 30 m |
+|alt2CableLen|1 | 30 | m | 0.01 |  ALT2 power charging cable length: 1 m to 30 m |
 |dayEnergy|0 |  n/a | Wh | 1 |  Daily power discharged (Wh) |
 |alt1VoltLmt|0 | 60 | V | 0.1 |  Custom restricted voltage value 1, unit: 100 mV |
 |alt2VoltLmt|0 | 60 | V | 0.1 |  Custom restricted voltage value 2, unit: 100 mV |
@@ -191,7 +208,8 @@
 |l2Curr|0 | 30 | A | 0.001 |  Inductor L2 current (mA) |
 |pcbTemp|0 | 80 | °C | 1 |  PCB temperature (℃) |
 |batVol|0 | 60 | V | 0.001 |  Battery voltage (mV) |
-|pv1InVol|0 | 60 | V | 0.001 |  PV1 input voltage (mV) |
+|pv1InVol|0 | 70 | V | 0.001 |  PV1 input voltage (mV) |
+|dsgEnergy|0 |  n/a | Wh | 1 |  Accumulative power discharged (Wh) |
 
 
 ## onLineModuleSnList
@@ -200,14 +218,86 @@
 
 | State  |  Name |
 |----------|------|
-|customData| Custom data |
-|loaderVersion| Loader version |
-|moduleAddr| Module static address |
-|moduleDAddr| Module dynamic address |
-|moduleDetail| Module detail |
-|moduleSn| Module SN |
-|moduleType| Module type |
-|moduleVersion| Module version |
+|m0_customData| Custom data |
+|m0_loaderVersion| Loader version |
+|m0_moduleAddr| Module static address |
+|m0_moduleDAddr| Module dynamic address |
+|m0_moduleDetail| Module detail |
+|m0_moduleSn| Module SN |
+|m0_moduleType| Module type |
+|m0_moduleVersion| Module version |
+|m1_customData| Custom data |
+|m1_loaderVersion| Loader version |
+|m1_moduleAddr| Module static address |
+|m1_moduleDAddr| Module dynamic address |
+|m1_moduleDetail| Module detail |
+|m1_moduleSn| Module SN |
+|m1_moduleType| Module type |
+|m1_moduleVersion| Module version |
+|m2_customData| Custom data |
+|m2_loaderVersion| Loader version |
+|m2_moduleAddr| Module static address |
+|m2_moduleDAddr| Module dynamic address |
+|m2_moduleDetail| Module detail |
+|m2_moduleSn| Module SN |
+|m2_moduleType| Module type |
+|m2_moduleVersion| Module version |
+|m3_customData| Custom data |
+|m3_loaderVersion| Loader version |
+|m3_moduleAddr| Module static address |
+|m3_moduleDAddr| Module dynamic address |
+|m3_moduleDetail| Module detail |
+|m3_moduleSn| Module SN |
+|m3_moduleType| Module type |
+|m3_moduleVersion| Module version |
+|m4_customData| Custom data |
+|m4_loaderVersion| Loader version |
+|m4_moduleAddr| Module static address |
+|m4_moduleDAddr| Module dynamic address |
+|m4_moduleDetail| Module detail |
+|m4_moduleSn| Module SN |
+|m4_moduleType| Module type |
+|m4_moduleVersion| Module version |
+|m5_customData| Custom data |
+|m5_loaderVersion| Loader version |
+|m5_moduleAddr| Module static address |
+|m5_moduleDAddr| Module dynamic address |
+|m5_moduleDetail| Module detail |
+|m5_moduleSn| Module SN |
+|m5_moduleType| Module type |
+|m5_moduleVersion| Module version |
+|m6_customData| Custom data |
+|m6_loaderVersion| Loader version |
+|m6_moduleAddr| Module static address |
+|m6_moduleDAddr| Module dynamic address |
+|m6_moduleDetail| Module detail |
+|m6_moduleSn| Module SN |
+|m6_moduleType| Module type |
+|m6_moduleVersion| Module version |
+|m7_customData| Custom data |
+|m7_loaderVersion| Loader version |
+|m7_moduleAddr| Module static address |
+|m7_moduleDAddr| Module dynamic address |
+|m7_moduleDetail| Module detail |
+|m7_moduleSn| Module SN |
+|m7_moduleType| Module type |
+|m7_moduleVersion| Module version |
+|m8_customData| Custom data |
+|m8_loaderVersion| Loader version |
+|m8_moduleAddr| Module static address |
+|m8_moduleDAddr| Module dynamic address |
+|m8_moduleDetail| Module detail |
+|m8_moduleSn| Module SN |
+|m8_moduleType| Module type |
+|m8_moduleVersion| Module version |
+|m9_customData| Custom data |
+|m9_loaderVersion| Loader version |
+|m9_moduleAddr| Module static address |
+|m9_moduleDAddr| Module dynamic address |
+|m9_moduleDetail| Module detail |
+|m9_moduleSn| Module SN |
+|m9_moduleType| Module type |
+|m9_moduleVersion| Module version |
 
 ## wireless
 
@@ -218,6 +308,12 @@
 |scenes| Scenario |
 
 ## bbcin
+
+### string
+
+| State  |  Name |
+|----------|------|
+|moduleSn| Module SN# |
 
 ### diagnostic
 
@@ -253,15 +349,21 @@
 |l2Curr|0 | 30 | A | 0.001 |  Inductor L2 current (mA) |
 |hs1Temp|0 | 60 | °C | 1 |  Radiator 1 temperature (℃) |
 |hs2Temp|0 | 60 | °C | 1 |  Radiator 2 temperature(℃) |
-|pcbTemp|0 | 60 | °CV | 1 |  PCB temperature (℃) |
-|chgMaxCurr|0 | 60 | A | 0.001 |  Maximum charging current configured (mA) |
+|pcbTemp|0 | 60 | °C | 1 |  PCB temperature (℃) |
+|chgMaxCurr|0 | 70 | A | 0.001 |  Maximum charging current configured (mA) |
 |dayEnergy|0 |  n/a | Wh | 1 |  Daily power discharged (Wh) |
 |dsgEnergy|0 |  n/a | Wh | 1 |  Accumulative power discharged (Wh) |
-|altCableLen|1 | 30 | m | 1 |  ALT power charging cable length |
+|altCableLen|1 | 30 | m | 0.01 |  ALT power charging cable length |
 |altVoltLmt|0 | 60 | V | 0.1 |  Custom restricted voltage value, unit: 100 mV |
 
 
 ## iclow
+
+### string
+
+| State  |  Name |
+|----------|------|
+|moduleSn| Module SN# |
 
 ### diagnostic
 
@@ -286,15 +388,21 @@
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |batVol|0 | 60 | V | 0.001 |  Battery voltage (mV) |
 |batCurr|0 | 60 | A | 0.001 |  Battery current (mA) |
-|busVol|0 | 60 | V | 0.001 |  Bus Voltage (mV) |
+|busVol|0 | 60 | V | 0.0001 |  Bus Voltage (mV) |
 |dcTemp|0 | 60 | °C | 1 |  DC temperature |
 |maxChgCurr|0 | 60 | A | 0.001 |  Maximum chargeable current (mA) |
 |bmsChgCurr|0 | 60 | A | 0.001 |  BMS chargeable current (mA) |
 |chgBatVol|0 | 60 | V | 0.001 |  Charging voltage (mA) |
-|realSoc|0 | 60 | W | 1 |  Power |
+|realSoc|0 | 100 | 5 | 1 |  Real SOC |
 
 
 ## ichigh
+
+### string
+
+| State  |  Name |
+|----------|------|
+|moduleSn| Module SN# |
 
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
@@ -302,7 +410,7 @@
 |inVol|0 | 60 | V | 0.001 |  Input voltage (mV) |
 |inCurr|0 | 60 | A | 0.001 |  Input current (mA) |
 |inWatts|0 | 60 | W | 1 |  Input power (W) |
-|outVol|0 | 60 | V | 0.001 |  Output voltage (mV) |
+|outVol|0 | 250 | V | 0.001 |  Output voltage (mV) |
 |outCurr|0 | 60 | A | 0.001 |  Output current (mA) |
 |outWatts|0 | 60 | W | 1 |  Output power (W) |
 |outVa|0 | 7200 | VA | 1 |  Output apparent power (VA) |
@@ -336,12 +444,18 @@
 
 ## ldac
 
+### string
+
+| State  |  Name |
+|----------|------|
+|moduleSn| Module SN# |
+
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |acTemp1|0 | 80 | °C | 1 |  PCB temperature measurement (℃) |
 |acTemp2|0 | 80 | °C | 1 |  PCB temperature measurement (℃) |
-|acInVol|0 | 60 | V | 0.001 |  Input voltage (mV) |
+|acInVol|0 | 250 | V | 0.001 |  Input voltage (mV) |
 |acTotalWatts|0 | 7200 | W | 1 |  Total active power (W) |
 
 
@@ -361,6 +475,12 @@
 |acSetChSta| Setting 6-way channel status, bot0-&gt;ch1, 0: not allowed to use, 1: allowed to use   | {0:not allowed to use,1:allowed to use} |
 
 ## lddc
+
+### string
+
+| State  |  Name |
+|----------|------|
+|moduleSn| Module SN# |
 
 ### array
 

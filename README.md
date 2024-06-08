@@ -241,7 +241,9 @@ Dual Fuel generator is not available, could be implemented, if data is available
 ![Powerstream](./doc/devices/pstream600.md)
 
 The 800W version is also implemented and only difference ist the 800W maximum power.
-supply priority -> 0/false = prioritized grid supply; 1/true = prioritized battery supply (charging)
+supply priority 
+-> 0/false = prioritized grid supply; 
+-> 1/true = prioritized battery supply (charging)
 
 ### Smart Plugs
 ![Smart Plug](./doc/devices/plug.md)
