@@ -133,7 +133,11 @@ class EcoflowMqtt extends utils.Adapter {
 								devtype === 'deltaproultra'
 							) {
 								devStates = require('./lib/ecoflow_data.js').pstreamStates;
-							} else if (devtype === 'powerkit') {
+							} else if (
+								devtype === 'powerkitbp2000' ||
+								devtype === 'powerkitbp5000' ||
+								devtype === 'powerkit'
+							) {
 								devStates = require('./lib/ef_powerkit_data.js').powerkitStates;
 							} else {
 								devStates = require('./lib/ecoflow_data.js').pstationStates;
@@ -148,8 +152,12 @@ class EcoflowMqtt extends utils.Adapter {
 									devtype === 'deltaproultra'
 								) {
 									devupd = require('./lib/ecoflow_data.js').pstreamRanges[devtype];
-								} else if (devtype === 'powerkit') {
-									devStates = require('./lib/ef_powerkit_data.js').powerkitRanges[devtype];
+								} else if (
+									devtype === 'powerkitbp2000' ||
+									devtype === 'powerkitbp5000' ||
+									devtype === 'powerkit'
+								) {
+									devupd = require('./lib/ef_powerkit_data.js').powerkitRanges[devtype];
 								} else {
 									devupd = require('./lib/ecoflow_data.js').pstationRanges[devtype];
 								}
@@ -752,7 +760,7 @@ class EcoflowMqtt extends utils.Adapter {
 									break;
 								case 'powerkitbp2000':
 								case 'powerkitbp5000':
-									haupdate = await ef.storePowerkitpayload(
+									haupdate = await ef.storePowerkitPayload(
 										this,
 										dict,
 										this.pdevicesStates[devtype],
@@ -1223,7 +1231,7 @@ class EcoflowMqtt extends utils.Adapter {
 							case 'powerkitbp5000':
 								devicetype = this.pdevices[device]['devType'];
 								type = 'station'; //includes also glacier, wave
-								cmd = this.pdevicesCmd['powerkit'];
+								cmd = this.pdevicesCmd[devicetype];
 								break;
 							default:
 								// all other is not protobuf
