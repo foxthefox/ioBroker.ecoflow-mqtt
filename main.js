@@ -1204,7 +1204,7 @@ class EcoflowMqtt extends utils.Adapter {
 				const item = idsplit[4];
 				this.log.info('(ack=false) ->cmd : channel ' + channel + ' state ' + item);
 				let topic = '';
-				if (item === 'latestQuotas') {
+				if (item === 'latestQuotas' || item.includes('get')) {
 					topic = '/app/' + this.mqttUserId + '/' + device + '/thing/property/get';
 					//reset of switch
 					// not needed we trigger at 0 and 1
@@ -1289,7 +1289,8 @@ class EcoflowMqtt extends utils.Adapter {
 								devicetype,
 								item,
 								state.val,
-								cmd[channel][item]
+								cmd[channel][item],
+								channel
 							);
 							if (Object.keys(msg).length > 0) {
 								if (this.config.msgCmdPstation) {
