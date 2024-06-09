@@ -40,29 +40,29 @@
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |oilCloseSoc|60 | 100 | % | 1 |  Smart generator shutoff SOC |
 |amp|0 | 60 | A | 0.001 |  Current mA |
-|fullCap|0 | 100000 | mAh | 1 |  Capacity of full charging (mAh) |
+|fullCap|0 | 100000 | mAh | 1 |  Capacity of full charging |
 |soc|0 | 100 | % | 1 |  soc |
-|minCellVol|0 | 6 | V | 0.001 |  Minimum battery cell voltage (mV) |
-|ptcRemaintime|0 | 360 | min | 1 |  Remaining time of PTC heating (min) |
-|vol|0 | 60 | V | 0.001 |  Voltage (mV) |
-|minCellTemp|-30 | 100 | °C | 1 |  Minimum battery cell temperature (℃) |
+|minCellVol|0 | 6 | V | 0.001 |  Minimum battery cell voltage |
+|ptcRemaintime|0 | 360 | min | 1 |  Remaining time of PTC heating |
+|vol|0 | 60 | V | 0.001 |  Voltage |
+|minCellTemp|-30 | 100 | °C | 1 |  Minimum battery cell temperature |
 |ptcChgErrCnt|0 |  n/a |  | 1 |  Error count of PTC heating |
-|remainCap|0 | 100000 | mAh | 1 |  Remaining capacity (mAh) |
-|inWatts|0 | 5000 | W | 1 |  Input power (W) |
-|temp|-30 | 100 | °C | 1 |  Showing current temperature (℃) |
-|maxMosTemp|0 | 100 | °C | 1 |  Maximum MOS temperature (℃) |
-|remaintime|0 | 15000 | min | 1 |  Remaining time (min) |
-|maxCellTemp|-30 | 80 | °C | 1 |  Maximum battery cell temperature (℃) |
-|minMosTemp|0 | 100 | °C | 1 |  Minimum MOS temperature (℃) |
+|remainCap|0 | 100000 | mAh | 1 |  Remaining capacity |
+|inWatts|0 | 5000 | W | 1 |  Input power |
+|temp|-30 | 100 | °C | 1 |  Showing current temperature |
+|maxMosTemp|0 | 100 | °C | 1 |  Maximum MOS temperature |
+|remaintime|0 | 15000 | min | 1 |  Remaining time |
+|maxCellTemp|-30 | 80 | °C | 1 |  Maximum battery cell temperature |
+|minMosTemp|0 | 100 | °C | 1 |  Minimum MOS temperature |
 |lcdStandbyMin|0 | 3600 | min | 1 |  LCD screen standby time |
-|maxPtcTemp|-30 | 100 | °C | 1 |  Maximum PTC temperature (℃) |
-|maxCellVol|0 | 6 | V | 0.001 |  Maximum battery cell voltage (mV) |
+|maxPtcTemp|-30 | 100 | °C | 1 |  Maximum PTC temperature |
+|maxCellVol|0 | 6 | V | 0.001 |  Maximum battery cell voltage |
 |dsgSetSoc|0 | 30 | % | 1 |  SOC lower limit when discharging the UPS |
-|minPtcTemp|0 | 100 | °C | 1 |  Minimum PTC temperature (℃) |
+|minPtcTemp|0 | 100 | °C | 1 |  Minimum PTC temperature |
 |chgSetSoc|60 | 100 | % | 1 |  SOC upper limit when charging the UPS |
 |oilOpenSoc|0 | 60 | % | 1 |  Smart generator startup SOC |
-|designCap|0 | 100000 | mAh | 1 |  Design capacity (mAh) |
-|outWatts|0 | 6000 | W | 1 |  Output power (W) |
+|designCap|0 | 100000 | mAh | 1 |  Design capacity |
+|outWatts|0 | 6000 | W | 1 |  Output power |
 |bmsChgUpline|0 | 100 | % | 1 |  Upper limit of UPS charging of BMS |
 |remainTime|0 | 15000 | min | 1 |  Remaining time |
 
@@ -100,20 +100,20 @@
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|dsgEnergy|0 |  n/a | Wh | 1 |  Accumulative power discharged (Wh) |
-|ldOutCurr|0 | 60 | A | 0.001 |  Output current (mA) |
-|ldOutWatts|0 | 7200 | W | 1 |  Output power (W) |
-|hs1Temp|0 | 60 | °C | 1 |  Radiator 1 temperature (℃) |
-|l1Curr|0 | 30 | A | 0.001 |  Inductor L1 current (mA) |
-|batCurr|0 | 60 | A | 0.001 |  Battery current (mA) |
-|batWatts|0 | 7200 | W | 1 |  Battery power (W) |
-|l2Curr|0 | 30 | A | 0.001 |  Inductor L2 current (mA) |
-|pcbTemp|0 | 100 | °C | 1 |  PCB temperature (℃) |
+|dsgEnergy|0 |  n/a | Wh | 1 |  Accumulative power discharged |
+|ldOutCurr|0 | 60 | A | 0.001 |  Output current |
+|ldOutWatts|0 | 7200 | W | 1 |  Output power |
+|hs1Temp|0 | 60 | °C | 1 |  Radiator 1 temperature |
+|l1Curr|0 | 30 | A | 0.001 |  Inductor L1 current |
+|batCurr|0 | 60 | A | 0.001 |  Battery current |
+|batWatts|0 | 7200 | W | 1 |  Battery power |
+|l2Curr|0 | 30 | A | 0.001 |  Inductor L2 current |
+|pcbTemp|0 | 100 | °C | 1 |  PCB temperature |
 |hs2Temp|0 | 60 | °C | 1 |  Radiator 2 temperature(℃) |
 |standbyTime|0 |  n/a | min | 1 |  Standby time with open load |
-|batVol|0 | 60 | V | 0.001 |  Battery voltage (mV) |
-|ldOutVol|0 | 60 | V | 0.001 |  Output voltage (mV) |
-|dayEnergy|0 |  n/a | Wh | 1 |  Daily power discharged (Wh) |
+|batVol|0 | 60 | V | 0.001 |  Battery voltage |
+|ldOutVol|0 | 60 | V | 0.001 |  Output voltage |
+|dayEnergy|0 |  n/a | Wh | 1 |  Daily power discharged |
 
 
 ### diagnostic
@@ -143,13 +143,13 @@
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |bmsChgUpline|0 | 100 | % | 1 |  Upper limit of UPS charging of BMS |
 |totalFullCap|0 | 120000 | mAh | 1 |  Total battery capacity |
-|totalOutWatts|0 | 7200 | W | 1 |  Total output power (W) |
+|totalOutWatts|0 | 7200 | W | 1 |  Total output power |
 |acDcLsplShutdMin|0 | 7200 | min | 1 |  Time to shutoff when both AC and DC enter low power mode |
-|totalInWatts|0 | 3000 | W | 1 |  Total input power (W) |
+|totalInWatts|0 | 3000 | W | 1 |  Total input power |
 |totalSoc|0 | 100 | % | 1 |  Total SOC |
 |lcdOffConfirmS|0 | 7200 | min | 1 |  Screen shutoff time |
-|totalAmp|0 | 60 | A | 0.1 |  Total current (0.1 A) |
-|totalRemainTime|0 | 15000 | min | 1 |  Total remaining time (min) |
+|totalAmp|0 | 60 | A | 0.1 |  Total current (0.1A) |
+|totalRemainTime|0 | 15000 | min | 1 |  Total remaining time |
 |oilStartDownline|0 | 30 | % | 1 |  Lower limit for the smart generator to start |
 |oilStopUpline|60 | 100 | % | 1 |  Upper limit for the smart generator to disable |
 |bmsDsgDownline|0 | 30 | % | 1 |  Lower limit of UPS charging of BMS |
@@ -188,28 +188,28 @@
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|pv1InWatts|0 | 1600 | W | 1 |  PV1 input power (W) |
-|pv2InWatts|0 | 1600 | W | 1 |  PV2 input power (W) |
-|chgEnergy|0 |  n/a | Wh | 1 |  Accumulative power discharged (Wh) |
-|l1Curr|0 | 60 | A | 0.001 |  Inductor L1 current (mA) |
-|alt2CableUnit|0 |  n/a | Wh | 1 |  Accumulative power discharged (Wh) |
-|batCurr|0 | 60 | A | 0.001 |  Battery current (mA) |
-|batWatts|0 | 7200 | W | 0.01 |  Battery power (W) |
-|pv1InCurr|0 | 60 | A | 0.001 |  PV1 input current (mA) |
-|pv2InVol|0 | 70 | V | 0.001 |  PV2 input voltage (mV) |
+|pv1InWatts|0 | 1600 | W | 1 |  PV1 input power |
+|pv2InWatts|0 | 1600 | W | 1 |  PV2 input power |
+|chgEnergy|0 |  n/a | Wh | 1 |  Accumulative power discharged |
+|l1Curr|0 | 60 | A | 0.001 |  Inductor L1 current |
+|alt2CableUnit|0 |  n/a | Wh | 1 |  Accumulative power discharged |
+|batCurr|0 | 60 | A | 0.001 |  Battery current |
+|batWatts|0 | 7200 | W | 0.01 |  Battery power |
+|pv1InCurr|0 | 60 | A | 0.001 |  PV1 input current |
+|pv2InVol|0 | 70 | V | 0.001 |  PV2 input voltage |
 |alt1CableLen|1 | 30 | m | 0.01 |  ALT1 power charging cable length: 1 m to 30 m |
 |hs2Temp|0 | 60 | °C | 1 |  Radiator 2 temperature(℃) |
 |alt2CableLen|1 | 30 | m | 0.01 |  ALT2 power charging cable length: 1 m to 30 m |
-|dayEnergy|0 |  n/a | Wh | 1 |  Daily power discharged (Wh) |
+|dayEnergy|0 |  n/a | Wh | 1 |  Daily power discharged |
 |alt1VoltLmt|0 | 60 | V | 0.1 |  Custom restricted voltage value 1, unit: 100 mV |
 |alt2VoltLmt|0 | 60 | V | 0.1 |  Custom restricted voltage value 2, unit: 100 mV |
-|hs1Temp|0 | 60 | °C | 1 |  Radiator 1 temperature (℃) |
-|pv2InCurr|0 | 60 | A | 0.001 |  PV2 input current (mA) |
-|l2Curr|0 | 30 | A | 0.001 |  Inductor L2 current (mA) |
-|pcbTemp|0 | 80 | °C | 1 |  PCB temperature (℃) |
-|batVol|0 | 60 | V | 0.001 |  Battery voltage (mV) |
-|pv1InVol|0 | 70 | V | 0.001 |  PV1 input voltage (mV) |
-|dsgEnergy|0 |  n/a | Wh | 1 |  Accumulative power discharged (Wh) |
+|hs1Temp|0 | 60 | °C | 1 |  Radiator 1 temperature |
+|pv2InCurr|0 | 60 | A | 0.001 |  PV2 input current |
+|l2Curr|0 | 30 | A | 0.001 |  Inductor L2 current |
+|pcbTemp|0 | 80 | °C | 1 |  PCB temperature |
+|batVol|0 | 60 | V | 0.001 |  Battery voltage |
+|pv1InVol|0 | 70 | V | 0.001 |  PV1 input voltage |
+|dsgEnergy|0 |  n/a | Wh | 1 |  Accumulative power discharged |
 
 
 ## onLineModuleSnList
@@ -339,20 +339,20 @@
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|dcInVol|0 | 60 | V | 0.001 |  Input voltage (mV) |
-|dcInCurr|0 | 60 | A | 0.001 |  Input current (mA) |
-|dcInWatts|0 | 1600 | W | 1 |  Input power (W) |
-|batVol|0 | 60 | V | 0.001 |  Battery voltage (mV) |
-|batCurr|0 | 60 | A | 0.001 |  Battery current (mA) |
-|batWatts|0 | 3600 | W | 1 |  Battery power (W) |
-|l1Curr|0 | 30 | A | 0.001 |  Inductor L1 current (mA) |
-|l2Curr|0 | 30 | A | 0.001 |  Inductor L2 current (mA) |
-|hs1Temp|0 | 60 | °C | 1 |  Radiator 1 temperature (℃) |
+|dcInVol|0 | 60 | V | 0.001 |  Input voltage |
+|dcInCurr|0 | 60 | A | 0.001 |  Input current |
+|dcInWatts|0 | 1600 | W | 1 |  Input power |
+|batVol|0 | 60 | V | 0.001 |  Battery voltage |
+|batCurr|0 | 60 | A | 0.001 |  Battery current |
+|batWatts|0 | 3600 | W | 1 |  Battery power |
+|l1Curr|0 | 30 | A | 0.001 |  Inductor L1 current |
+|l2Curr|0 | 30 | A | 0.001 |  Inductor L2 current |
+|hs1Temp|0 | 60 | °C | 1 |  Radiator 1 temperature |
 |hs2Temp|0 | 60 | °C | 1 |  Radiator 2 temperature(℃) |
-|pcbTemp|0 | 60 | °C | 1 |  PCB temperature (℃) |
-|chgMaxCurr|0 | 70 | A | 0.001 |  Maximum charging current configured (mA) |
-|dayEnergy|0 |  n/a | Wh | 1 |  Daily power discharged (Wh) |
-|dsgEnergy|0 |  n/a | Wh | 1 |  Accumulative power discharged (Wh) |
+|pcbTemp|0 | 60 | °C | 1 |  PCB temperature |
+|chgMaxCurr|0 | 70 | A | 0.001 |  Maximum charging current configured |
+|dayEnergy|0 |  n/a | Wh | 1 |  Daily power discharged |
+|dsgEnergy|0 |  n/a | Wh | 1 |  Accumulative power discharged |
 |altCableLen|1 | 30 | m | 0.01 |  ALT power charging cable length |
 |altVoltLmt|0 | 60 | V | 0.1 |  Custom restricted voltage value, unit: 100 mV |
 
@@ -386,13 +386,13 @@
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|batVol|0 | 60 | V | 0.001 |  Battery voltage (mV) |
-|batCurr|0 | 60 | A | 0.001 |  Battery current (mA) |
-|busVol|0 | 60 | V | 0.0001 |  Bus Voltage (mV) |
+|batVol|0 | 60 | V | 0.001 |  Battery voltage |
+|batCurr|0 | 60 | A | 0.001 |  Battery current |
+|busVol|0 | 60 | V | 0.0001 |  Bus Voltage |
 |dcTemp|0 | 60 | °C | 1 |  DC temperature |
-|maxChgCurr|0 | 60 | A | 0.001 |  Maximum chargeable current (mA) |
-|bmsChgCurr|0 | 60 | A | 0.001 |  BMS chargeable current (mA) |
-|chgBatVol|0 | 60 | V | 0.001 |  Charging voltage (mA) |
+|maxChgCurr|0 | 60 | A | 0.001 |  Maximum chargeable current |
+|bmsChgCurr|0 | 60 | A | 0.001 |  BMS chargeable current |
+|chgBatVol|0 | 60 | V | 0.001 |  Charging voltage |
 |realSoc|0 | 100 | 5 | 1 |  Real SOC |
 
 
@@ -407,12 +407,12 @@
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|inVol|0 | 60 | V | 0.001 |  Input voltage (mV) |
-|inCurr|0 | 60 | A | 0.001 |  Input current (mA) |
-|inWatts|0 | 60 | W | 1 |  Input power (W) |
-|outVol|0 | 250 | V | 0.001 |  Output voltage (mV) |
-|outCurr|0 | 60 | A | 0.001 |  Output current (mA) |
-|outWatts|0 | 60 | W | 1 |  Output power (W) |
+|inVol|0 | 60 | V | 0.001 |  Input voltage |
+|inCurr|0 | 60 | A | 0.001 |  Input current |
+|inWatts|0 | 60 | W | 1 |  Input power |
+|outVol|0 | 250 | V | 0.001 |  Output voltage |
+|outCurr|0 | 60 | A | 0.001 |  Output current |
+|outWatts|0 | 60 | W | 1 |  Output power |
 |outVa|0 | 7200 | VA | 1 |  Output apparent power (VA) |
 |acTemp|0 | 60 | °C | 1 |  AC temperature |
 |inFreq|0 | 62 | Hz | 1 |  Inverter input frequency (Hz) 0,50,60 |
@@ -425,7 +425,7 @@
 |acMaxCurrSer|0 | 30 | A | 1 |  Maximum AC input current (A) |
 |passByMaxCurr|0 | 60 | A | 1 |  Setting bypass maximum current |
 |standbyTime|0 | 60 | min | 1 |  Standby time with open load |
-|outAmp2|0 | 60 | A | 0.001 |  Output current channel 2 (mA) |
+|outAmp2|0 | 60 | A | 0.001 |  Output current channel 2 |
 
 
 ### diagnostic
@@ -453,19 +453,19 @@
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|acTemp1|0 | 80 | °C | 1 |  PCB temperature measurement (℃) |
-|acTemp2|0 | 80 | °C | 1 |  PCB temperature measurement (℃) |
-|acInVol|0 | 250 | V | 0.001 |  Input voltage (mV) |
-|acTotalWatts|0 | 7200 | W | 1 |  Total active power (W) |
+|acTemp1|0 | 80 | °C | 1 |  PCB temperature measurement |
+|acTemp2|0 | 80 | °C | 1 |  PCB temperature measurement |
+|acInVol|0 | 250 | V | 0.001 |  Input voltage |
+|acTotalWatts|0 | 7200 | W | 1 |  Total active power |
 
 
 ### array
 
 | State  |  Name |
 |----------|------|
-|acChWatt| 6-way channel active power (W) |
+|acChWatt| 6-way channel active power |
 |errorCodeAdd| Matching of comments for error codes (supplementary) |
-|acChCur| 6-way channel current (mA) |
+|acChCur| 6-way channel current |
 
 ### diagnostic
 
@@ -487,17 +487,17 @@
 | State  |  Name |
 |----------|------|
 |errorCode| Error code |
-|dcChCur| 12-way channel current (mA) |
-|dcChWatt| Total power + 12-way channel active power (W) |
+|dcChCur| 12-way channel current |
+|dcChWatt| Total power + 12-way channel active power |
 |errorCodeAdd| Error codes (supplementary) |
 
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|dcInVol|0 | 60 | V | 0.001 |  Input voltage (mV) |
-|dcTotalWatts|0 | 7200 | W | 1 |  Total power (W) |
-|dcTemp1|0 | 80 | °C | 1 |  PCB temperature measurement (℃) |
-|dcTemp2|0 | 60 | °C | 1 |  PCB temperature measurement (℃) |
+|dcInVol|0 | 60 | V | 0.001 |  Input voltage |
+|dcTotalWatts|0 | 7200 | W | 1 |  Total power |
+|dcTemp1|0 | 80 | °C | 1 |  PCB temperature measurement |
+|dcTemp2|0 | 60 | °C | 1 |  PCB temperature measurement |
 
 
 ### diagnostic
