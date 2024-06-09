@@ -40,7 +40,6 @@
 |invTemp|0 | 80 | °C | 0.1 |  Inverter temperature |
 |invFreq|0 | 52 | Hz | 0.1 |  Inverter AC frequency |
 |invDcCur|0 | 20 | A | 0.001 |  Inverter DC input current |
-|ratedPower|0 | 600 | W | 0.1 |  Inverter rated power |
 |heartbeatFrequency|0 | 20 | Hz | 1 |  Inverter heartbeat |
 |dynamicWatts|0 | 10000 | W | 0.1 |  Dynamic Power |
 |batChargingTime|0 | 144000 | min | 1 |  Battery Charging Time |
@@ -52,6 +51,7 @@
 | State  |      Min     |     Max     |  Unit |  Mult |  Name |  cmd |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
 |permanentWatts| 0 | 600 | W | 0.1 |  Permanent Power | {cmdFunc:20,cmdId:129,dataLen:3} |
+|ratedPower| 0 | 600 | W | 0.1 |  Inverter rated power | {cmdFunc:20,cmdId:146,dataLen:3} |
 |lowerLimit| 0 | 30 | % | 1 |  Battery SOC lower limit | {cmdFunc:20,cmdId:132,dataLen:2} |
 |upperLimit| 50 | 100 | % | 1 |  Battery SOC upper limit | {cmdFunc:20,cmdId:133,dataLen:2} |
 |invBrightness| 0 | 100 | % | 0.1 |  Inverter brightness | {cmdFunc:20,cmdId:135,dataLen:3} |
