@@ -84,7 +84,7 @@ Use the tab "Device(s) Configuration" for adding your equipment.
 <p>
 
 * add a new row
-* set the deviceID of Shelly as shown in the app, please be aware that the ID is different to the Shelly device itself"
+* set the deviceID of Shelly as shown in the app, please be aware that the ID is different to the Shelly device itself
 * give it a name
 * set the type to "Shelly3EM"
 
@@ -114,7 +114,7 @@ Use the tab "Device(s) Configuration" for adding your equipment.
 <p>
 
 * add a new row
-* set the deviceID of Shelly as shown in the app, please be aware that the ID is different to the Shelly device itself"
+* set the deviceID of Generator as shown in the app, something like "M10...."
 * give it a name
 * set the type to "Power Kit BP2000" or "Power Kit BP5000"
 * if there is a second or thrird battery connected, then check it as slave1 or slave2

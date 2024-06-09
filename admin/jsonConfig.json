@@ -606,7 +606,7 @@
 							"attr": "devId",
 							"filter": false,
 							"sort": false,
-							"default": "M10."
+							"default": "M10...."
 						},
 						{
 							"type": "select",
