@@ -80,6 +80,16 @@ Use the tab "Device(s) Configuration" for adding your equipment.
 
 </p></details>
 
+<details><summary><i>Parametrizing the Shelly</i></summary>
+<p>
+
+* add a new row
+* set the deviceID of Shelly as shown in the app, please be aware that the ID is different to the Shelly device itself
+* give it a name
+* set the type to "Shelly3EM"
+
+</p></details>
+
 <details><summary><i>Parametrizing the Generator</i></summary>
 <p>
 
@@ -99,6 +109,18 @@ Use the tab "Device(s) Configuration" for adding your equipment.
 * set the type to "panel"
 
 </p></details>
+
+<details><summary><i>Parametrizing the Power Kit & Hub</i></summary>
+<p>
+
+* add a new row
+* set the deviceID of Generator as shown in the app, something like "M10...."
+* give it a name
+* set the type to "Power Kit BP2000" or "Power Kit BP5000"
+* if there is a second or thrird battery connected, then check it as slave1 or slave2
+
+</p></details>
+
 
 <details><summary><i>Parametrizing the Wave</i></summary>
 <p>
@@ -219,13 +241,18 @@ Dual Fuel generator is not available, could be implemented, if data is available
 ![Powerstream](./doc/devices/pstream600.md)
 
 The 800W version is also implemented and only difference ist the 800W maximum power.
-supply priority -> 0/false = prioritized grid supply; 1/true = prioritized battery supply (charging)
+supply priority 
+-> 0/false = prioritized grid supply; 
+-> 1/true = prioritized battery supply (charging)
 
 ### Smart Plugs
 ![Smart Plug](./doc/devices/plug.md)
 
 ### Shelly devices
 ![Shelly3EM](./doc/devices/shelly3em.md)
+
+### Power Kit & Hub
+![Power Kit](./doc/devices/powerkit.md)
 
 ### Wave 2 Air conditioner
 ![Wave2](./doc/devices/wave2.md)
@@ -241,6 +268,10 @@ Wave is not available, could be implemented, if data is available.
 * check beep command if reversing needed
 
 ## Changelog
+
+### 0.0.33 (npm)
+* (foxthefox) added Power Kit
+* (foxthefox) added new object ratedPower as command for powerstream 
 
 ### 0.0.32 (npm)
 * (foxthefox) added Shelly3EM reporting (cloud to cloud connection to be setup in EF App)

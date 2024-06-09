@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "ecoflow-mqtt",
-        "version": "0.0.32",
+        "version": "0.0.33",
         "news": {
+            "0.0.33": {
+                "en": "added Power Kit/Hub; added 'ratedPower' for PS",
+                "de": "Power Kit/Hub hinzugefügt; Nennleistung für PS hinzugefügt",
+                "ru": "добавлен Power Kit/Hub; добавлена ​​номинальная мощность для PS",
+                "pt": "adicionado kit de energia/hub; adicionado potência nominal para PS",
+                "nl": "toegevoegde Power Kit/Hub; toegevoegd nominaal vermogen voor PS",
+                "fr": "ajout d'un kit d'alimentation/hub ; Ajout de la puissance nominale pour PS",
+                "it": "aggiunto Power Kit/Hub; aggiunta potenza nominale per PS",
+                "es": "kit de alimentación/concentrador agregado; potencia nominal agregada para PS",
+                "pl": "dodano zestaw zasilający/piastę; dodano moc znamionową dla PS",
+                "uk": "доданий Power Kit/Hub; додана номінальна потужність для PS",
+                "zh-cn": "添加了电源套件/集线器；添加了 PS 的额定功率"
+            },
             "0.0.32": {
                 "en": "added Shelly3EM reporting (cloud to cloud connection to be setup in EF App)",
                 "de": "Shelly3EM-Berichterstellung hinzugefügt (Cloud-zu-Cloud-Verbindung muss in der EF-App eingerichtet werden)",
@@ -316,6 +329,7 @@
         "generators": [],
         "panels": [],
         "shellies": [],
+        "powerkits": [],
         "msgStateCreation": false,
         "msgUpdatePstation": false,
         "msgUpdateValuePstation": false,
