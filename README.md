@@ -269,6 +269,9 @@ Wave is not available, could be implemented, if data is available.
 
 ## Changelog
 
+### 0.0.34 (npm)
+* (foxthefox)
+
 ### 0.0.33 (npm)
 * (foxthefox) added Power Kit
 * (foxthefox) added new object ratedPower as command for powerstream 
