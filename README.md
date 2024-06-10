@@ -270,7 +270,7 @@ Wave is not available, could be implemented, if data is available.
 ## Changelog
 
 ### 0.0.34 (npm)
-* (foxthefox)
+* (foxthefox) deltapro max values mmpt.inAmp, mpptTemp
 
 ### 0.0.33 (npm)
 * (foxthefox) added Power Kit
