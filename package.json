@@ -39,7 +39,7 @@
 		"@types/sinon-chai": "^3.2.11",
 		"aedes": "^0.51.2",
 		"chai": "^4.3.10",
-		"chai-as-promised": "^7.1.1",
+		"chai-as-promised": "^8.0.0",
 		"eslint": "^8.57.0",
 		"handlebars": "^4.7.8",
 		"mocha": "^10.2.0",
