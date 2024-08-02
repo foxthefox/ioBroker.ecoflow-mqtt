@@ -291,6 +291,8 @@ Wave is not available, could be implemented, if data is available.
 * (foxthefox) new values watth16/17/18 for powerstream
 * (foxthefox) deltapro max values mmpt.inAmp, mpptTemp
 * (foxthefox) fixed updates to info.reconnects
+* (foxthefox) fixed #90 cfgAcEnabled on river2max
+* (foxthefox) logging enhancements
 
 ### 0.0.33 (npm)
 * (foxthefox) added Power Kit
