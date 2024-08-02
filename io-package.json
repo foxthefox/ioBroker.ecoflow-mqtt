@@ -252,7 +252,7 @@
 			"zh-cn": "连接至 Ecoflow 产品"
 		},
 		"authors": [ "foxthefox <foxthefox@wysiwis.net>" ],
-		"keywords": [ "ecoflow", "powerstream", "powerstation", "delta", "river" ],
+		"keywords": [ "ecoflow", "powerstream", "powerstation", "delta", "river", "powerkit", "powerocaen", "shp" ],
 		"platform": "Javascript/Node.js",
 		"main": "main.js",
 		"icon": "ecoflow-mqtt.png",
@@ -315,6 +315,7 @@
 		"panels": [],
 		"shellies": [],
 		"powerkits": [],
+		"poweroceans": [],
 		"msgStateCreation": false,
 		"msgUpdatePstation": false,
 		"msgUpdateValuePstation": false,

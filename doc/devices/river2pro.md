@@ -1,5 +1,5 @@
 # States for  RIVER2PRO
-### version: 0.0.33
+### version: 0.0.34
 
 [pd](#pd)
 
@@ -195,11 +195,11 @@
 |powStandbyMin|0 | 720 | min | 1 |  Power standby time /min 0 Never standby 720 Default value ? |
 |inWatts|0 | 230 | W | 1 |  PV input power |
 |dcdc12vVol|0 | 60 | V | 0.1 |  DC12V30A output voltage, which is valid only for DELTA Pro |
-|inAmp|0 | 15 | A | 0.001 |  PV input current |
+|inAmp|0 | 16 | A | 0.001 |  PV input current |
 |scrStandbyMin|0 | 720 | min | 1 |  SCR standby time /min 0 Never standby 720 Default value ? |
 |inVol|0 | 55 | V | 0.001 |  PV input voltage |
 |carOutWatts|0 | 500 | W | 0.1 |  Car charging output power |
-|mpptTemp|0 | 90 | °C | 1 |  MPPT temperature |
+|mpptTemp|0 | 100 | °C | 1 |  MPPT temperature |
 |outVol|0 | 60 | V | 0.001 |  PV output voltage |
 |dcdc12vAmp|0 | 13 | A | 0.01 |  DC12V30A output current, which is valid only for DELTA Pro |
 |dc24vTemp|0 | 80 | °C | 1 |  DCDC24V temperature |

@@ -1,5 +1,5 @@
 # States for  RIVER2MAX
-### version: 0.0.33
+### version: 0.0.34
 
 [bmsMaster](#bmsMaster)
 
@@ -140,10 +140,10 @@
 
 | State  |      off    |  on |  Name |  cmd |
 |----------|:-------------:|:------:|------|------|
-|cfgAcEnabled| off | on | AC discharge (INV) switch setting | {valName:enabled,moduleType:3,operateType:acOutCfg,params:{enabled:1}} |
+|cfgAcEnabled| off | on | AC discharge (INV) switch setting | {valName:enabled,moduleType:5,operateType:acOutCfg,params:{enabled:1,out_freq:255,out_voltage:4294967295,xboost:255}} |
 |cfgAcWorkMode| full power | mute | AC charging mode | {} |
-|cfgAcXboost| off | on | X-Boost switch | {valName:xboost,moduleType:3,operateType:acOutCfg,params:{xboost:1}} |
-|chgPauseFlag| not stopped? | charge stopped | AC Charging Pause | {valName:chgPauseFlag,moduleType:3,operateType:acOutCfg,params:{chgPauseFlag:1}} |
+|cfgAcXboost| off | on | X-Boost switch | {valName:xboost,moduleType:5,operateType:acOutCfg,params:{xboost:1,enabled:255,out_freq:255,out_voltage:4294967295}} |
+|chgPauseFlag| not stopped? | charge stopped | AC Charging Pause | {valName:chgPauseFlag,moduleType:5,operateType:acOutCfg,params:{chgPauseFlag:1}} |
 
 ### string
 
@@ -185,10 +185,10 @@
 |dcdc12vAmp|0 | 13 | A | 0.01 |  DC12V30A output current, which is valid only for DELTA Pro |
 |dcdc12vVol|0 | 60 | V | 0.1 |  DC12V30A output voltage, which is valid only for DELTA Pro |
 |dcdc12vWatts|0 | 500 | W | 0.1 |  DC12V30A output power, which is valid only for DELTA Pro |
-|inAmp|0 | 15 | A | 0.001 |  PV input current |
+|inAmp|0 | 16 | A | 0.001 |  PV input current |
 |inVol|0 | 50 | V | 0.001 |  PV input voltage |
 |inWatts|0 | 230 | W | 1 |  PV input power |
-|mpptTemp|0 | 90 | °C | 1 |  MPPT temperature |
+|mpptTemp|0 | 100 | °C | 1 |  MPPT temperature |
 |outAmp|0 | 30 | A | 0.001 |  PV output current |
 |outVol|0 | 60 | V | 0.001 |  PV output voltage |
 |outWatts|0 | 1600 | W | 1 |  PV output power |

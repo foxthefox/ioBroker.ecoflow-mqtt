@@ -1,5 +1,5 @@
 # States for  PSTREAM
-### version: 0.0.33
+### version: 0.0.34
 
 [inverter_heartbeat](#inverter_heartbeat)
 
@@ -172,5 +172,8 @@
 |watth4|0 | 6000 | Wh | 1 |  Energy from battery |
 |watth7|0 | 6000 | Wh | 1 |  Energy from solar PV1 |
 |watth8|0 | 6000 | Wh | 1 |  Energy from solar PV2 |
+|watth16|0 | 6000 | Wh | 1 |  Energy ? |
+|watth17|0 | 6000 | Wh | 1 |  Energy ? |
+|watth18|0 | 6000 | Wh | 1 |  Energy ? |
 
 
