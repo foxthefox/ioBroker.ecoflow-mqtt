@@ -633,7 +633,7 @@
 						},
 						{
 							"type": "checkbox",
-							"title": "Slave 1",
+							"title": "add BP 1",
 							"width": "5%",
 							"attr": "pstationsSlave1",
 							"filter": false,
@@ -642,7 +642,7 @@
 						},
 						{
 							"type": "checkbox",
-							"title": "Slave 2",
+							"title": "add BP 2",
 							"width": "5%",
 							"attr": "pstationsSlave2",
 							"filter": false,
@@ -693,7 +693,8 @@
 							"width": "10%",
 							"options": [
 								{ "value": "none", "label": "none" },
-								{ "value": "panel", "label": "Smart Home Panel" }
+								{ "value": "panel", "label": "Smart Home Panel" },
+								{ "value": "panel2", "label": "Smart Home Panel 2" }
 							],
 							"title": "SHP Type",
 							"attr": "devType",
@@ -838,7 +839,7 @@
 				"_poweroceanHeader": {
 					"newLine": true,
 					"type": "header",
-					"text": "Power Kit Configuration",
+					"text": "Power Ocean DC Fit Configuration",
 					"sm": 12,
 					"md": 12,
 					"lg": 12,
@@ -846,7 +847,7 @@
 				},
 				"_introPoweroceanTxt2": {
 					"type": "staticText",
-					"text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have no device, delete the added line item. ONLY TEST",
+					"text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have no device, delete the added line item.",
 					"newLine": true
 				},
 				"poweroceans": {
@@ -870,14 +871,14 @@
 							"attr": "devId",
 							"filter": false,
 							"sort": false,
-							"default": "M10."
+							"default": "HJ3..."
 						},
 						{
 							"type": "select",
 							"width": "10%",
 							"options": [
 								{ "value": "none", "label": "none" },
-								{ "value": "test", "label": "Power Ocean Test" }
+								{ "value": "powerocean", "label": "Power Ocean" }
 							],
 							"title": "Power Ocean Type",
 							"attr": "devType",
@@ -890,6 +891,24 @@
 							"title": "HA enable",
 							"width": "5%",
 							"attr": "haEnable",
+							"filter": false,
+							"sort": false,
+							"default": false
+						},
+						{
+							"type": "checkbox",
+							"title": "add BP 1",
+							"width": "5%",
+							"attr": "pstationsSlave1",
+							"filter": false,
+							"sort": false,
+							"default": false
+						},
+						{
+							"type": "checkbox",
+							"title": "add BP 2",
+							"width": "5%",
+							"attr": "pstationsSlave2",
 							"filter": false,
 							"sort": false,
 							"default": false

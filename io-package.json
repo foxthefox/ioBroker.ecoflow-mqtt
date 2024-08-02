@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "ecoflow-mqtt",
-        "version": "0.0.33",
+        "version": "0.0.34",
         "news": {
+            "0.0.34": {
+                "en": "added power ocean, added smart home panel, corrections, improvements",
+                "de": "Power Ocean hinzugefügt, Smart Home Panel hinzugefügt, Korrekturen, Verbesserungen",
+                "ru": "добавлен океан энергии, добавлена ​​панель умного дома, исправления, улучшения",
+                "pt": "adicionado poder oceano, adicionado painel inicial inteligente, correções, melhorias",
+                "nl": "Power Ocean toegevoegd, Smart Home-paneel toegevoegd, correcties, verbeteringen",
+                "fr": "ajout d'un océan de puissance, ajout d'un panneau de maison intelligente, corrections, améliorations",
+                "it": "aggiunto power ocean, aggiunto pannello smart home, correzioni, miglioramenti",
+                "es": "océano de energía agregado, panel de hogar inteligente agregado, correcciones, mejoras",
+                "pl": "dodano ocean mocy, dodano panel inteligentnego domu, poprawki, ulepszenia",
+                "uk": "доданий потужний океан, додана панель розумного будинку, виправлення, покращення",
+                "zh-cn": "添加了电力海洋，添加了智能家居面板，更正，改进"
+            },
             "0.0.33": {
                 "en": "added Power Kit/Hub; added 'ratedPower' for PS",
                 "de": "Power Kit/Hub hinzugefügt; Nennleistung für PS hinzugefügt",
@@ -262,7 +275,10 @@
             "powerstream",
             "powerstation",
             "delta",
-            "river"
+            "river",
+            "powerkit",
+            "powerocaen",
+            "shp"
         ],
         "platform": "Javascript/Node.js",
         "main": "main.js",
@@ -330,6 +346,7 @@
         "panels": [],
         "shellies": [],
         "powerkits": [],
+        "poweroceans": [],
         "msgStateCreation": false,
         "msgUpdatePstation": false,
         "msgUpdateValuePstation": false,

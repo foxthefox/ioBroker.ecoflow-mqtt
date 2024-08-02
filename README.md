@@ -106,7 +106,7 @@ Use the tab "Device(s) Configuration" for adding your equipment.
 * add a new row
 * set the deviceID of Generator as shown in the app, something like "SP10...."
 * give it a name
-* set the type to "panel"
+* set the type to "SHP" or "SHP2"
 
 </p></details>
 
@@ -114,10 +114,21 @@ Use the tab "Device(s) Configuration" for adding your equipment.
 <p>
 
 * add a new row
-* set the deviceID of Generator as shown in the app, something like "M10...."
+* set the deviceID of power kit as shown in the app, something like "M10...."
 * give it a name
 * set the type to "Power Kit BP2000" or "Power Kit BP5000"
-* if there is a second or thrird battery connected, then check it as slave1 or slave2
+* if there is a second or third battery connected, then check it as slave1 or slave2
+
+</p></details>
+
+<details><summary><i>Parametrizing the Power Ocean DC fit</i></summary>
+<p>
+
+* add a new row
+* set the deviceID of Generator as shown in the app, something like "HJ31...."
+* give it a name
+* set the type to "Power Ocean"
+* if there is a second or third battery connected, then check it as slave1 or slave2
 
 </p></details>
 
@@ -232,6 +243,14 @@ some explanation to the device data
 ### Smart Home Panel
 ![Smart Home Panel](./doc/devices/panel.md)
 
+![Smart Home Panel 2](./doc/devices/panel2.md)
+
+### Power Kit & Hub
+![Power Kit](./doc/devices/powerkit.md)
+
+### Power Ocean
+![Power Ocean](./doc/devices/powerocean.md)
+
 ### Generator
 ![Generator](./doc/devices/generator.md)
 
@@ -251,9 +270,6 @@ supply priority
 ### Shelly devices
 ![Shelly3EM](./doc/devices/shelly3em.md)
 
-### Power Kit & Hub
-![Power Kit](./doc/devices/powerkit.md)
-
 ### Wave 2 Air conditioner
 ![Wave2](./doc/devices/wave2.md)
 
@@ -269,6 +285,15 @@ Wave is not available, could be implemented, if data is available.
 
 ## Changelog
 
+### 0.0.34 (npm)
+* (foxthefox) first implementation for power ocean kit
+* (foxthefox) first implementation for smart home panel 2
+* (foxthefox) new values watth16/17/18 for powerstream
+* (foxthefox) deltapro max values mmpt.inAmp, mpptTemp
+* (foxthefox) fixed updates to info.reconnects
+* (foxthefox) fixed #90 cfgAcEnabled on river2max
+* (foxthefox) logging enhancements
+
 ### 0.0.33 (npm)
 * (foxthefox) added Power Kit
 * (foxthefox) added new object ratedPower as command for powerstream 
@@ -282,6 +307,7 @@ Wave is not available, could be implemented, if data is available.
 * (foxthefox) online status from latestQuotas
 * (foxthefox) adapter config merge all device tabs into one (to overcome the problem that on tablets the last tab is not reachable), size adjustment
 * (foxthefox) correction for deltapro at xt60ChgType
+* (foxthefox) correction for river2max commands
 
 ### 0.0.30 (npm)
 * (foxthefox) correction for River2Pro/Max cmd dcChgCurrent

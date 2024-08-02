@@ -6,6 +6,10 @@ const { doesNotMatch } = require('assert/strict');
 console.log('PATH ist ' + path.join(__dirname, './data/'));
 
 const states = require(path.join(__dirname, '../lib/') + 'ecoflow_data.js');
+const shpstates = require(path.join(__dirname, '../lib/') + 'ef_shp_data.js');
+const shp2states = require(path.join(__dirname, '../lib/') + 'ef_shp2_data.js');
+const oceanstates = require(path.join(__dirname, '../lib/') + 'ef_powerocean_data.js');
+const kitstates = require(path.join(__dirname, '../lib/') + 'ef_powerkit_data.js');
 
 function delay(t, val) {
 	return new Promise(function(resolve) {
@@ -59,7 +63,10 @@ tests.integration(path.join(__dirname, '..'), {
 						glaciers: [ { devName: 'My Glacier', devId: 'BX11ZFB5EF412345', devType: 'glacier' } ],
 						waves: [ { devName: 'My Wave', devId: 'KT21ZCH2ZF112345', devType: 'wave2' } ],
 						plugs: [ { devName: 'My Plug1', devId: 'HW52ZDH4SF12345', devType: 'plug' } ],
-						panels: [ { devName: 'My panel', devId: 'SHP10ZFB5EF412345', devType: 'panel' } ],
+						panels: [
+							{ devName: 'My panel', devId: 'SHP10ZFB5EF412345', devType: 'panel' },
+							{ devName: 'My panel', devId: 'SHP20ZFB5EF412345', devType: 'panel2' }
+						],
 						generators: [ { devName: 'My Generator', devId: 'DGEBZ5R123412345', devType: 'generator' } ],
 						pstations: [
 							{
@@ -143,7 +150,12 @@ tests.integration(path.join(__dirname, '..'), {
 						pstreams: [
 							{ devType: 'pstream600', devId: 'HW51ZOH4SF412345', devName: 'pstream600' },
 							{ devType: 'pstream800', devId: 'HW51ZOH5SF412345', devName: 'pstream800' }
-						]
+						],
+						powerkits: [ { devName: 'My powerkit', devId: 'M106ZAB4Z000001F', devType: 'powerkitbp2000' } ],
+						poweroceans: [
+							{ devName: 'My power ocean', devId: 'HJ312000BF7W1234', devType: 'powerocean' }
+						],
+						shellies: [ { devName: 'My shelly3em', devId: '1234345346', devType: 'shelly3em' } ]
 					}
 				};
 				await harness.changeAdapterConfig('ecoflow-mqtt', obj);
@@ -500,10 +512,9 @@ tests.integration(path.join(__dirname, '..'), {
 			});
 
 			it('SHP should be created', async () => {
-				//await harness.objects.delObject('ecoflow-mqtt.0.BX11ZFB5EF412345.mppt.');
-				for (let channel in states['pstationStatesDict']['panel']) {
-					for (let state in states['pstationStatesDict']['panel'][channel]) {
-						if (states['pstationStatesDict']['panel'][channel][state]['entity'] !== 'icon') {
+				for (let channel in shpstates['panelStatesDict']['panel']) {
+					for (let state in shpstates['panelStatesDict']['panel'][channel]) {
+						if (shpstates['panelStatesDict']['panel'][channel][state]['entity'] !== 'icon') {
 							await harness.objects.getObject(
 								'ecoflow-mqtt.0.SHP10ZFB5EF412345.' + channel + '.' + state,
 								function(err, obj) {
@@ -515,6 +526,94 @@ tests.integration(path.join(__dirname, '..'), {
 									expect(obj).to.exist;
 								}
 							);
+						}
+					}
+				}
+			});
+			it('SHP 2 should be created', async () => {
+				for (let channel in shp2states['panel2StatesDict']['panel2']) {
+					for (let state in shp2states['panel2StatesDict']['panel2'][channel]) {
+						if (shp2states['panel2StatesDict']['panel2'][channel][state]['entity'] !== 'icon') {
+							let partname;
+							switch (channel) {
+								case 'backupChInfo':
+									partname = [ 'backupCh1Info', 'backupCh2Info', 'backupCh3Info' ];
+									for (let i = 0; i < 3; i++) {
+										await harness.objects.getObject(
+											'ecoflow-mqtt.0.SHP20ZFB5EF412345.' + partname[i] + '.' + state,
+											function(err, obj) {
+												if (err)
+													console.error(
+														'panel 2 TEST' + partname[i] + '.' + state + ' -> ' + err
+													);
+
+												if (!obj) {
+													console.error(
+														'panel 2 state ' + partname[i] + '.' + state + ' not set'
+													);
+												}
+												expect(obj).to.exist;
+											}
+										);
+									}
+									break;
+								case 'EnergyInfo':
+									partname = [ 'Energy1Info', 'Energy2Info', 'Energy3Info' ];
+									for (let i = 0; i < 3; i++) {
+										await harness.objects.getObject(
+											'ecoflow-mqtt.0.SHP20ZFB5EF412345.' + partname[i] + '.' + state,
+											function(err, obj) {
+												if (err)
+													console.error(
+														'panel 2 TEST' + partname[i] + '.' + state + ' -> ' + err
+													);
+
+												if (!obj) {
+													console.error(
+														'panel 2 state ' + partname[i] + '.' + state + ' not set'
+													);
+												}
+												expect(obj).to.exist;
+											}
+										);
+									}
+									break;
+								case 'DeltaProInfo':
+									partname = [ 'DeltaPro1Info', 'DeltaPro2Info' ];
+									for (let i = 0; i < 2; i++) {
+										await harness.objects.getObject(
+											'ecoflow-mqtt.0.SHP20ZFB5EF412345.' + partname[i] + '.' + state,
+											function(err, obj) {
+												if (err)
+													console.error(
+														'panel 2 TEST' + partname[i] + '.' + state + ' -> ' + err
+													);
+
+												if (!obj) {
+													console.error(
+														'panel 2 state ' + partname[i] + '.' + state + ' not set'
+													);
+												}
+												expect(obj).to.exist;
+											}
+										);
+									}
+									break;
+								default:
+									await harness.objects.getObject(
+										'ecoflow-mqtt.0.SHP20ZFB5EF412345.' + channel + '.' + state,
+										function(err, obj) {
+											if (err)
+												console.error('panel 2 TEST' + channel + '.' + state + ' -> ' + err);
+
+											if (!obj) {
+												console.error('panel 2 state ' + channel + '.' + state + ' not set');
+											}
+											expect(obj).to.exist;
+										}
+									);
+									break;
+							}
 						}
 					}
 				}
@@ -541,6 +640,63 @@ tests.integration(path.join(__dirname, '..'), {
 				}
 			});
 
+			it('Powerkit should be created', async () => {
+				for (let channel in kitstates['powerkitStatesDict']['powerkit']) {
+					for (let state in kitstates['powerkitStatesDict']['powerkit'][channel]) {
+						if (kitstates['powerkitStatesDict']['powerkit'][channel][state]['entity'] !== 'icon') {
+							await harness.objects.getObject(
+								'ecoflow-mqtt.0.M106ZAB4Z000001F.' + channel + '.' + state,
+								function(err, obj) {
+									if (err) console.error('powerkit TEST' + channel + '.' + state + ' -> ' + err);
+
+									if (!obj) {
+										console.error('powerkit state ' + channel + '.' + state + ' not set');
+									}
+									expect(obj).to.exist;
+								}
+							);
+						}
+					}
+				}
+			});
+			it('Power ocean should be created', async () => {
+				for (let channel in oceanstates['poweroceanStatesDict']['powerocean']) {
+					for (let state in oceanstates['poweroceanStatesDict']['powerocean'][channel]) {
+						if (oceanstates['poweroceanStatesDict']['powerocean'][channel][state]['entity'] !== 'icon') {
+							await harness.objects.getObject(
+								'ecoflow-mqtt.0.HJ312000BF7W1234.' + channel + '.' + state,
+								function(err, obj) {
+									if (err) console.error('powerocean TEST' + channel + '.' + state + ' -> ' + err);
+
+									if (!obj) {
+										console.error('powerocean state ' + channel + '.' + state + ' not set');
+									}
+									expect(obj).to.exist;
+								}
+							);
+						}
+					}
+				}
+			});
+			it('Shelly3em should be created', async () => {
+				for (let channel in states['pstationStatesDict']['shelly3em']) {
+					for (let state in states['pstationStatesDict']['shelly3em'][channel]) {
+						if (states['pstationStatesDict']['shelly3em'][channel][state]['entity'] !== 'icon') {
+							await harness.objects.getObject(
+								'ecoflow-mqtt.0.1234345346.' + channel + '.' + state,
+								function(err, obj) {
+									if (err) console.error('shelly3em TEST' + channel + '.' + state + ' -> ' + err);
+
+									if (!obj) {
+										console.error('shelly3em state ' + channel + '.' + state + ' not set');
+									}
+									expect(obj).to.exist;
+								}
+							);
+						}
+					}
+				}
+			});
 			after(() => {
 				console.log('test finished');
 			});

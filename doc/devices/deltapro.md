@@ -1,5 +1,5 @@
 # States for  DELTAPRO
-### version: 0.0.33
+### version: 0.0.34
 
 [bmsMaster](#bmsMaster)
 
@@ -281,10 +281,10 @@
 |dcdc12vWatts|0 | 500 | W | 0.1 |  DC12V30A output power, which is valid only for DELTA Pro |
 |inWatts|0 | 1650 | W | 0.1 |  PV input power |
 |dcdc12vVol|0 | 60 | V | 0.1 |  DC12V30A output voltage, which is valid only for DELTA Pro |
-|inAmp|0 | 15 | A | 0.01 |  PV input current |
+|inAmp|0 | 16 | A | 0.01 |  PV input current |
 |inVol|0 | 150 | V | 0.1 |  PV input voltage |
 |carOutWatts|0 | 500 | W | 0.1 |  Car charging output power |
-|mpptTemp|0 | 90 | °C | 1 |  MPPT temperature |
+|mpptTemp|0 | 100 | °C | 1 |  MPPT temperature |
 |outVol|0 | 60 | V | 0.1 |  PV output voltage |
 |dcdc12vAmp|0 | 13 | A | 0.01 |  DC12V30A output current, which is valid only for DELTA Pro |
 |dc24vTemp|0 | 80 | °C | 1 |  DCDC24V temperature |
