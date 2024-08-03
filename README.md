@@ -285,6 +285,9 @@ Wave is not available, could be implemented, if data is available.
 
 ## Changelog
 
+### 0.0.35 (npm)
+* (foxthefox) unified detail debug settings, device specific debugging (new checkbox in device config)
+
 ### 0.0.34 (npm)
 * (foxthefox) first implementation for power ocean kit
 * (foxthefox) first implementation for smart home panel 2

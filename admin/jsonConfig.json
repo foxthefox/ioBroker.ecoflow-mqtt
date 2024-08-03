@@ -127,6 +127,13 @@
 					"md": 6,
 					"lg": 4
 				},
+				"msgUpdateValue": {
+					"type": "checkbox",
+					"label": "msgUpdateValue",
+					"sm": 12,
+					"md": 6,
+					"lg": 4
+				},
 				"getQuota": {
 					"type": "sendTo",
 					"hidden": "false",
@@ -143,90 +150,38 @@
 					"variant": "contained",
 					"jsonData": "{\"quota\": \"now\"}"
 				},
-				"_debugpstation": {
+				"_debugoptions": {
 					"newLine": true,
 					"type": "header",
-					"text": "Powerstation / Wave / Glacier DEBUG settings",
+					"text": "Selection of specific DEBUG settings",
 					"sm": 12,
 					"md": 12,
 					"lg": 12,
 					"size": 3
 				},
-				"msgUpdatePstation": {
+				"_introDebug": {
+					"type": "staticText",
+					"text": "If you are unsure, tick all checkboxes for all debug messages. (it is only effective when the adapter is in debug mode (see header of this admin page and the far right setting))",
+					"newLine": true
+				},
+				"msgUpdate": {
+					"newLine": true,
 					"type": "checkbox",
 					"label": "msgUpdate",
 					"sm": 12,
 					"md": 6,
 					"lg": 4
 				},
-				"msgUpdateValuePstation": {
-					"type": "checkbox",
-					"label": "msgUpdateValue",
-					"sm": 12,
-					"md": 6,
-					"lg": 4
-				},
-				"msgSetGetPstation": {
+				"msgSetGet": {
 					"type": "checkbox",
 					"label": "msgSetGet",
 					"sm": 12,
 					"md": 6,
 					"lg": 4
 				},
-				"msgCmdPstation": {
+				"msgCmd": {
 					"type": "checkbox",
 					"label": "msgCmd",
-					"sm": 12,
-					"md": 6,
-					"lg": 4
-				},
-				"_debugpstream": {
-					"newLine": true,
-					"type": "header",
-					"text": "Powerstream/ SmartPlug DEBUG settings",
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"size": 3
-				},
-				"msgUpdatePstream": {
-					"type": "checkbox",
-					"label": "msgUpdate",
-					"sm": 12,
-					"md": 6,
-					"lg": 4
-				},
-				"msgUpdateValuePstream": {
-					"type": "checkbox",
-					"label": "msgUpdateValue",
-					"sm": 12,
-					"md": 6,
-					"lg": 4
-				},
-				"msgSetGetPstream": {
-					"type": "checkbox",
-					"label": "msgSetGet",
-					"sm": 12,
-					"md": 6,
-					"lg": 4
-				},
-				"msgCmdPstream": {
-					"type": "checkbox",
-					"label": "msgCmd",
-					"sm": 12,
-					"md": 6,
-					"lg": 4
-				},
-				"msgUnknownMsgPstream": {
-					"type": "checkbox",
-					"label": "msgUnknownMsg",
-					"sm": 12,
-					"md": 6,
-					"lg": 4
-				},
-				"showHex": {
-					"type": "checkbox",
-					"label": "showHex",
 					"sm": 12,
 					"md": 6,
 					"lg": 4
@@ -287,6 +242,15 @@
 							"filter": false,
 							"sort": false,
 							"default": "none"
+						},
+						{
+							"type": "checkbox",
+							"title": "debug enable",
+							"width": "5%",
+							"attr": "debugEnable",
+							"filter": false,
+							"sort": false,
+							"default": false
 						},
 						{
 							"type": "checkbox",
@@ -359,6 +323,15 @@
 							"filter": false,
 							"sort": false,
 							"default": "none"
+						},
+						{
+							"type": "checkbox",
+							"title": "debug enable",
+							"width": "5%",
+							"attr": "debugEnable",
+							"filter": false,
+							"sort": false,
+							"default": false
 						},
 						{
 							"type": "checkbox",
@@ -440,6 +413,15 @@
 						},
 						{
 							"type": "checkbox",
+							"title": "debug enable",
+							"width": "5%",
+							"attr": "debugEnable",
+							"filter": false,
+							"sort": false,
+							"default": false
+						},
+						{
+							"type": "checkbox",
 							"title": "HA enable",
 							"width": "5%",
 							"attr": "haEnable",
@@ -498,6 +480,15 @@
 							"filter": false,
 							"sort": false,
 							"default": "none"
+						},
+						{
+							"type": "checkbox",
+							"title": "debug enable",
+							"width": "5%",
+							"attr": "debugEnable",
+							"filter": false,
+							"sort": false,
+							"default": false
 						},
 						{
 							"type": "checkbox",
@@ -562,6 +553,15 @@
 						},
 						{
 							"type": "checkbox",
+							"title": "debug enable",
+							"width": "5%",
+							"attr": "debugEnable",
+							"filter": false,
+							"sort": false,
+							"default": false
+						},
+						{
+							"type": "checkbox",
 							"title": "HA enable",
 							"width": "5%",
 							"attr": "haEnable",
@@ -621,6 +621,15 @@
 							"filter": false,
 							"sort": false,
 							"default": "none"
+						},
+						{
+							"type": "checkbox",
+							"title": "debug enable",
+							"width": "5%",
+							"attr": "debugEnable",
+							"filter": false,
+							"sort": false,
+							"default": false
 						},
 						{
 							"type": "checkbox",
@@ -704,6 +713,15 @@
 						},
 						{
 							"type": "checkbox",
+							"title": "debug enable",
+							"width": "5%",
+							"attr": "debugEnable",
+							"filter": false,
+							"sort": false,
+							"default": false
+						},
+						{
+							"type": "checkbox",
 							"title": "HA enable",
 							"width": "5%",
 							"attr": "haEnable",
@@ -763,6 +781,15 @@
 							"filter": false,
 							"sort": false,
 							"default": "none"
+						},
+						{
+							"type": "checkbox",
+							"title": "debug enable",
+							"width": "5%",
+							"attr": "debugEnable",
+							"filter": false,
+							"sort": false,
+							"default": false
 						},
 						{
 							"type": "checkbox",
@@ -827,6 +854,15 @@
 						},
 						{
 							"type": "checkbox",
+							"title": "debug enable",
+							"width": "5%",
+							"attr": "debugEnable",
+							"filter": false,
+							"sort": false,
+							"default": false
+						},
+						{
+							"type": "checkbox",
 							"title": "HA enable",
 							"width": "5%",
 							"attr": "haEnable",
@@ -885,6 +921,15 @@
 							"filter": false,
 							"sort": false,
 							"default": "none"
+						},
+						{
+							"type": "checkbox",
+							"title": "debug enable",
+							"width": "5%",
+							"attr": "debugEnable",
+							"filter": false,
+							"sort": false,
+							"default": false
 						},
 						{
 							"type": "checkbox",

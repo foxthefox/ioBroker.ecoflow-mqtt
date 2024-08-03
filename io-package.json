@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "ecoflow-mqtt",
-        "version": "0.0.34",
+        "version": "0.0.35",
         "news": {
+            "0.0.35": {
+                "en": "changed debug settings",
+                "de": "Debug-Einstellungen geändert",
+                "ru": "изменены настройки отладки",
+                "pt": "alterou as configurações de depuração",
+                "nl": "gewijzigde debug-instellingen",
+                "fr": "paramètres de débogage modifiés",
+                "it": "modificate le impostazioni di debug",
+                "es": "configuración de depuración modificada",
+                "pl": "zmienione ustawienia debugowania",
+                "uk": "змінив налаштування налагодження",
+                "zh-cn": "更改了调试设置"
+            },
             "0.0.34": {
                 "en": "added power ocean, added smart home panel, corrections, improvements",
                 "de": "Power Ocean hinzugefügt, Smart Home Panel hinzugefügt, Korrekturen, Verbesserungen",
@@ -347,23 +360,6 @@
         "shellies": [],
         "powerkits": [],
         "poweroceans": [],
-        "msgStateCreation": false,
-        "msgUpdatePstation": false,
-        "msgUpdateValuePstation": false,
-        "msgSetGetPstation": true,
-        "msgCmdPstation": true,
-        "msgUpdatePstream": false,
-        "msgUpdateValuePstream": false,
-        "msgSetGetPstream": false,
-        "msgCmdPstream": false,
-        "msgUnknownMsgPstream": false,
-        "msgStateCreationPlug": false,
-        "msgUpdatePlug": false,
-        "msgUpdateValuePlug": false,
-        "msgSetGetPlug": false,
-        "msgCmdPlug": false,
-        "msgUnknownMsgPlug": false,
-        "showHex": false,
         "haMqttUserId": "hamqttuser",
         "haMqttUserPWd": "hamqttusePWd",
         "haMqttUrl": "192.x.x.x",
@@ -376,7 +372,14 @@
         "msgHaOutgoing": false,
         "msgHaStatusInitial": false,
         "showDiscoveryObject": false,
-        "haTopic": "iob_ef"
+        "haTopic": "iob_ef",
+        "msgStateCreation": false,
+        "msgUpdate": false,
+        "msgUpdateValue": false,
+        "msgSetGet": false,
+        "msgCmd": false,
+        "msgUnknownMsg": false,
+        "showHex": false
     },
     "objects": [],
     "instanceObjects": [
