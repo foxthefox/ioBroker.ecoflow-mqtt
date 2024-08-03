@@ -285,6 +285,9 @@ Wave is not available, could be implemented, if data is available.
 
 ## Changelog
 
+### 0.0.36 (npm)
+* (foxthefox) correction bmsMaster.cellVol/cellTemp as array for DeltaPro
+
 ### 0.0.35 (npm)
 * (foxthefox) unified detail debug settings, device specific debugging (new checkbox in device config)
 
