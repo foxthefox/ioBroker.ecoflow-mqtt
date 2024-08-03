@@ -25,6 +25,7 @@ let recon_timer_long = null;
 let haLoadInterval = null;
 
 const version = require('./io-package.json').common.version;
+const { adapter } = require('@iobroker/adapter-core');
 
 class EcoflowMqtt extends utils.Adapter {
 	/**
@@ -116,10 +117,12 @@ class EcoflowMqtt extends utils.Adapter {
 							const id = confdevices[psta]['devId'];
 							const name = confdevices[psta]['devName'];
 							const haEnable = confdevices[psta]['haEnable'];
+							const debugEnable = confdevices[psta]['debugEnable'];
 							this.pdevices[id] = {};
 							this.pdevices[id]['devType'] = devtype;
 							this.pdevices[id]['devName'] = name;
 							this.pdevices[id]['haEnable'] = haEnable;
+							this.pdevices[id]['debugEnable'] = debugEnable;
 							if (confdevices[psta]['pstationsSlave1']) {
 								this.pdevices[id]['pstationsSlave1'] = confdevices[psta]['pstationsSlave1'];
 							}
@@ -805,9 +808,24 @@ class EcoflowMqtt extends utils.Adapter {
 					topic = msgtop.topic;
 
 					let devtype = '';
+					let logged = false;
 					if (this.pdevices) {
 						if (this.pdevices[topic]) {
 							devtype = this.pdevices[topic]['devType'];
+							if (this.pdevices[topic]['debugEnable'] === true) {
+								if (this.config.msgUpdate && msgtype === 'update') {
+									logged = true;
+								} else if (
+									this.config.msgSetGet &&
+									msgtype !== 'update' &&
+									msgtype !== 'unknown msgtype'
+								) {
+									logged = true;
+								}
+								if (msgtype == 'unknown msgtype') {
+									logged = true;
+								}
+							}
 						} else {
 							this.log.debug(topic + ' not part of configured devices');
 						}
@@ -824,40 +842,9 @@ class EcoflowMqtt extends utils.Adapter {
 						if (this.pdevicesStatesDict && this.pdevicesStates) {
 							let msgdecode = null;
 							try {
-								msgdecode = ef.pstreamDecode(this, message, '', topic);
+								msgdecode = ef.pstreamDecode(this, message, '', topic, msgtype, logged);
 							} catch (error) {
 								this.log.debug('pstreamDecode call ->' + error);
-							}
-
-							if (this.config.msgUpdatePstream && msgtype === 'update') {
-								if (this.config.showHex) {
-									this.log.debug(
-										topic +
-											' ' +
-											devtype +
-											' received ' +
-											msgtype +
-											' -> ' +
-											Buffer.from(message).toString('hex')
-									);
-								}
-								this.log.debug(topic + '  ' + devtype + ' data update : ' + JSON.stringify(msgdecode));
-							}
-							if (this.config.msgSetGetPstream && msgtype !== 'update') {
-								if (this.config.showHex) {
-									this.log.debug(
-										topic +
-											' ' +
-											devtype +
-											' received ' +
-											msgtype +
-											' -> ' +
-											Buffer.from(message).toString('hex')
-									);
-								}
-								this.log.debug(
-									topic + ' ' + devtype + ' received ' + msgtype + ' -> ' + JSON.stringify(msgdecode)
-								);
 							}
 							if (msgtype === 'update' || msgtype === 'get_reply') {
 								if (msgdecode !== null && typeof msgdecode === 'object') {
@@ -882,7 +869,7 @@ class EcoflowMqtt extends utils.Adapter {
 														haupdate[i].payload,
 														{ qos: 1 },
 														this.config.msgHaOutgoing,
-														'EF PB UPDATE RCV'
+														'HA EF PB UPDATE RCV'
 													);
 												} else {
 													this.log.warn(
@@ -921,43 +908,53 @@ class EcoflowMqtt extends utils.Adapter {
 						}
 					} else {
 						// JSON msg
-						if (this.config.msgUpdatePstation && msgtype === 'update') {
-							this.log.debug(topic + '  ' + devtype + ' data update : ' + message.toString());
-						}
-						if (this.config.msgSetGetPstation && (msgtype === 'set' || msgtype === 'set_reply')) {
-							let setmsg = JSON.parse(message.toString());
-							if (setmsg.params) {
-								let key = setmsg.params.id;
-								switch (key) {
-									case 40:
-									case 68:
-									case 72:
-										//Lebenszeichen der APP?
+						switch (msgtype) {
+							case 'set':
+							case 'set_reply':
+								if (logged === true) {
+									let setmsg = JSON.parse(message.toString());
+									if (setmsg.params) {
+										let key = setmsg.params.id;
+										switch (key) {
+											case 40:
+											case 68:
+											case 72:
+												//Lebenszeichen der APP?
 
-										break;
-									default:
+												break;
+											default:
+												this.log.debug(
+													'[JSON] ' +
+														topic +
+														' [' +
+														msgtype +
+														'] -> ' +
+														' key:' +
+														key +
+														'  ' +
+														JSON.stringify(setmsg)
+												);
+												break;
+										}
+									} else {
 										this.log.debug(
-											topic +
-												'  ' +
-												devtype +
-												' -> ' +
+											'[JSON] ' +
+												topic +
+												' [' +
 												msgtype +
-												' key:' +
-												key +
-												'  ' +
+												'] -> set w/o params' +
 												JSON.stringify(setmsg)
 										);
-										break;
+									}
 								}
-							} else {
-								this.log.debug(topic + ' ->set w/o params' + JSON.stringify(setmsg));
-							}
+								break;
+							default:
+								if (logged === true) {
+									this.log.debug('[JSON] ' + topic + ' [' + msgtype + '] -> ' + message.toString());
+								}
+								break;
 						}
-						if (this.config.msgSetGetPstation && msgtype === 'get_reply') {
-							this.log.debug(
-								topic + '  ' + devtype + ' received ' + msgtype + '-> ' + message.toString()
-							);
-						}
+
 						if (
 							this.pdevicesStatesDict &&
 							this.pdevicesStates &&
@@ -1019,7 +1016,7 @@ class EcoflowMqtt extends utils.Adapter {
 											haupdate[i].payload,
 											{ qos: 1 },
 											this.config.msgHaOutgoing,
-											'EF JSON UPDATE RCV'
+											'HA EF JSON UPDATE RCV'
 										);
 									} else {
 										this.log.warn(
@@ -1151,7 +1148,7 @@ class EcoflowMqtt extends utils.Adapter {
 							'HA INIT'
 						);
 
-						ha.subscribe(this, 'homeassitant/status', 'HA INIT');
+						ha.subscribe(this, 'homeassitant/status', 'HA INIT status');
 
 						for (let j = 0; j < this.haDevices.length; j++) {
 							const id = this.haDevices[j];
@@ -1210,7 +1207,11 @@ class EcoflowMqtt extends utils.Adapter {
 								);
 							}
 							*/
-							ha.subscribe(this, this.config.haTopic + '/' + this.haDevices[j] + '/set/#', 'HA INIT');
+							ha.subscribe(
+								this,
+								this.config.haTopic + '/' + this.haDevices[j] + '/set/#',
+								'HA INIT devices'
+							);
 						}
 						// this.setState('HA info.connection', true, true);
 					}
@@ -1374,7 +1375,7 @@ class EcoflowMqtt extends utils.Adapter {
 					'offline',
 					{ qos: 1 },
 					true,
-					'UNLOAD'
+					'HA UNLOAD'
 				);
 
 				for (let i = 0; i < this.haDevices.length; i++) {
@@ -1385,7 +1386,7 @@ class EcoflowMqtt extends utils.Adapter {
 						'offline',
 						{ qos: 1 },
 						true,
-						'UNLOAD'
+						'HA UNLOAD'
 					);
 				}
 			}
@@ -1431,6 +1432,7 @@ class EcoflowMqtt extends utils.Adapter {
 					topic = '/app/' + this.mqttUserId + '/' + device + '/thing/property/set';
 				}
 				let devicetype = '';
+				let logged = false;
 				let type = '';
 				let cmd = null;
 
@@ -1446,18 +1448,21 @@ class EcoflowMqtt extends utils.Adapter {
 								devicetype = this.pdevices[device]['devType'];
 								type = 'protobuf'; //includes also plugs
 								cmd = this.pdevicesCmd[devicetype];
+								logged = this.pdevices[device]['debugEnable'] && this.config.msgCmd;
 								break;
 							case 'powerkitbp2000':
 							case 'powerkitbp5000':
 								devicetype = this.pdevices[device]['devType'];
 								type = 'json'; //includes also glacier, wave
 								cmd = this.pdevicesCmd[devicetype];
+								logged = this.pdevices[device]['debugEnable'] && this.config.msgCmd;
 								break;
 							default:
 								// all other is not protobuf
 								devicetype = this.pdevices[device]['devType'];
 								type = 'json'; //includes also glacier, wave
 								cmd = this.pdevicesCmd[devicetype];
+								logged = this.pdevices[device]['debugEnable'] && this.config.msgCmd;
 								break;
 						}
 					} else {
@@ -1479,10 +1484,13 @@ class EcoflowMqtt extends utils.Adapter {
 								devicetype,
 								item,
 								state.val,
-								cmd[channel][item]
+								cmd[channel][item],
+								logged
 							);
-							if (this.config.msgCmdPstream && this.config.showHex) {
-								this.log.debug('converted  Hex-String:' + Buffer.from(msgBuf).toString('hex'));
+							if (logged == true) {
+								this.log.debug(
+									'[PROTOBUF encode] converted  Hex-String:' + Buffer.from(msgBuf).toString('hex')
+								);
 							}
 
 							if (this.client) {
@@ -1491,8 +1499,11 @@ class EcoflowMqtt extends utils.Adapter {
 									if (error) {
 										this.log.error('Error when publishing the MQTT message:: ' + error);
 									} else {
-										if (this.config.msgCmdPstream) {
-											this.log.debug(topic + ' Message succesfully published.');
+										if (logged === true) {
+											const msgtop = ef.getIdFromTopic(topic, this.mqttUserId);
+											this.log.debug(
+												' Message succesfully published.' + msgtop.topic + ' ../..' + msgtop.msg
+											);
 										}
 									}
 								});
@@ -1513,7 +1524,7 @@ class EcoflowMqtt extends utils.Adapter {
 								channel
 							);
 							if (Object.keys(msg).length > 0) {
-								if (this.config.msgCmdPstation) {
+								if (logged === true) {
 									this.log.debug('publish  ' + topic);
 									this.log.debug('publish  ' + JSON.stringify(msg));
 								}
@@ -1524,8 +1535,14 @@ class EcoflowMqtt extends utils.Adapter {
 										if (error) {
 											this.log.error('Error when publishing the MQTT message: ' + error);
 										} else {
-											if (this.config.msgCmdPstation) {
-												this.log.debug(topic + ' Message succesfully published.');
+											if (logged === true) {
+												const msgtop = ef.getIdFromTopic(topic, this.mqttUserId);
+												this.log.debug(
+													' Message succesfully published.' +
+														msgtop.topic +
+														' ../..' +
+														msgtop.msg
+												);
 											}
 										}
 									});
@@ -1600,13 +1617,15 @@ class EcoflowMqtt extends utils.Adapter {
 								bat2
 							);
 							if (this.config.msgHaStatusInitial) {
-								this.log.debug(id + ' initial update: ' + update.length + ' objects ');
+								this.log.debug(
+									'[HA STATE INIT DATA] ' + id + ' initial update: ' + update.length + ' objects '
+								);
 								//this.log.debug(id + ' initial update: ' + JSON.stringify(update));
 							}
 							let missing = [];
 							for (let i = 0; i < update.length; i++) {
 								const value = await this.getStateAsync(update[i].getId).catch((e) => {
-									this.log.warn('problem getting state for initialization ' + e);
+									this.log.warn('[HA STATE INIT DATA] problem getting state for initialization ' + e);
 								});
 								if (value) {
 									let val;
@@ -1618,7 +1637,10 @@ class EcoflowMqtt extends utils.Adapter {
 												val = update[i].states[value.val];
 											} catch (error) {
 												this.log.warn(
-													'value not in range ' + value.val + '  ' + update[i].states
+													'[HA STATE INIT DATA] value not in range ' +
+														value.val +
+														'  ' +
+														update[i].states
 												);
 											}
 										} else if (update[i].entity === 'text') {
@@ -1628,7 +1650,14 @@ class EcoflowMqtt extends utils.Adapter {
 										}
 										if (this.config.msgHaStatusInitial) {
 											this.log.debug(
-												id + ' update [' + i + '] ' + update[i].topic + ' with ' + val
+												'[HA INITIAL] ' +
+													id +
+													' update [' +
+													i +
+													'] ' +
+													update[i].topic +
+													' with ' +
+													val
 											);
 										}
 										if (typeof val === 'string' && val !== 'undefined') {
@@ -1638,25 +1667,44 @@ class EcoflowMqtt extends utils.Adapter {
 												update[i].topic,
 												val,
 												{ qos: 1 },
-												this.config.msgHaStatusInitial,
-												'STATE INIT DATA'
+												false, //this.config.msgHaStatusInitial,
+												'HA STATE INIT DATA'
 											);
 										} else {
-											this.log.warn('not a STRING ! : ' + update[i].topic + ' with ' + val);
+											this.log.warn(
+												'[HA STATE INIT DATA] not a STRING ! : ' +
+													update[i].topic +
+													' with ' +
+													val
+											);
 										}
 									} catch (error) {
 										this.log.warn(
-											update[i].getId + ' problem initialiizing HA ' + value.val + '-> ' + error
+											'[HA STATE INIT DATA] ' +
+												update[i].getId +
+												' problem initialiizing ' +
+												value.val +
+												'-> ' +
+												error
 										);
 									}
 								} else {
 									missing.push(update[i].getId);
-									this.log.warn(update[i].getId + ' getState ' + JSON.stringify(value));
+									this.log.warn(
+										'[HA STATE INIT DATA] ' +
+											update[i].getId +
+											' getState returned -> ' +
+											JSON.stringify(value)
+									);
 								}
 							}
 							if (this.config.msgHaStatusInitial && missing.length > 0) {
-								this.log.debug('Partly FINISHED sent initial updates objects to HA for ' + id);
-								this.log.debug(id + ' missing items ' + JSON.stringify(missing));
+								this.log.debug(
+									'[HA STATE INIT DATA] Partly FINISHED sent initial updates objects to HA for ' + id
+								);
+								this.log.debug(
+									'[HA STATE INIT DATA] ' + id + ' missing items ' + JSON.stringify(missing)
+								);
 							}
 						}
 					}
