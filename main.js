@@ -809,10 +809,12 @@ class EcoflowMqtt extends utils.Adapter {
 
 					let devtype = '';
 					let logged = false;
+					let devicelogged = false;
 					if (this.pdevices) {
 						if (this.pdevices[topic]) {
 							devtype = this.pdevices[topic]['devType'];
 							if (this.pdevices[topic]['debugEnable'] === true) {
+								devicelogged = true;
 								if (this.config.msgUpdate && msgtype === 'update') {
 									logged = true;
 								} else if (
@@ -857,27 +859,30 @@ class EcoflowMqtt extends utils.Adapter {
 											topic,
 											msgdecode,
 											devtype,
-											this.pdevices[topic]['haEnable']
+											this.pdevices[topic]['haEnable'],
+											logged
 										);
 										if (haupdate.length > 0) {
 											for (let i = 0; i < haupdate.length; i++) {
-												if (typeof haupdate[i].payload === 'string') {
-													ha.publish(
-														this,
-														topic,
-														haupdate[i].topic,
-														haupdate[i].payload,
-														{ qos: 1 },
-														this.config.msgHaOutgoing,
-														'HA EF PB UPDATE RCV'
-													);
-												} else {
-													this.log.warn(
-														'not a string! : ' +
-															haupdate[i].topic +
-															'  ' +
-															haupdate[i].payload
-													);
+												if (haupdate[i]) {
+													if (typeof haupdate[i].payload === 'string') {
+														ha.publish(
+															this,
+															topic,
+															haupdate[i].topic,
+															haupdate[i].payload,
+															{ qos: 1 },
+															devicelogged && this.config.msgHaOutgoing,
+															'HA EF PB UPDATE RCV'
+														);
+													} else {
+														this.log.warn(
+															'not a string! : ' +
+																haupdate[i].topic +
+																'  ' +
+																haupdate[i].payload
+														);
+													}
 												}
 											}
 										}
@@ -970,7 +975,8 @@ class EcoflowMqtt extends utils.Adapter {
 										this.pdevicesStates[devtype],
 										topic,
 										JSON.parse(message.toString()),
-										this.pdevices[topic]['haEnable']
+										this.pdevices[topic]['haEnable'],
+										logged
 									);
 									break;
 								case 'powerkitbp2000':
@@ -981,7 +987,8 @@ class EcoflowMqtt extends utils.Adapter {
 										this.pdevicesStates[devtype],
 										topic,
 										JSON.parse(message.toString()),
-										this.pdevices[topic]['haEnable']
+										this.pdevices[topic]['haEnable'],
+										logged
 									);
 									break;
 								case 'shelly3em':
@@ -991,7 +998,8 @@ class EcoflowMqtt extends utils.Adapter {
 										this.pdevicesStates[devtype],
 										topic,
 										JSON.parse(message.toString()),
-										this.pdevices[topic]['haEnable']
+										this.pdevices[topic]['haEnable'],
+										logged
 									);
 									break;
 								default:
@@ -1001,7 +1009,8 @@ class EcoflowMqtt extends utils.Adapter {
 										this.pdevicesStates[devtype],
 										topic,
 										JSON.parse(message.toString()),
-										this.pdevices[topic]['haEnable']
+										this.pdevices[topic]['haEnable'],
+										logged
 									);
 									break;
 							}
@@ -1015,7 +1024,7 @@ class EcoflowMqtt extends utils.Adapter {
 											haupdate[i].topic,
 											haupdate[i].payload,
 											{ qos: 1 },
-											this.config.msgHaOutgoing,
+											devicelogged && this.config.msgHaOutgoing,
 											'HA EF JSON UPDATE RCV'
 										);
 									} else {
