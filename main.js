@@ -244,6 +244,7 @@ class EcoflowMqtt extends utils.Adapter {
 								pdevicesStatesDict = require('./lib/ecoflow_data.js').pstationStatesDict[origdevtype];
 								pdevicesCmd = require('./lib/ecoflow_data.js').pstationCmd[origdevtype];
 							}
+
 							//create device objects
 							//we store only the dict from used components
 							if (!this.pdevicesStatesDict[origdevtype]) {
@@ -252,6 +253,7 @@ class EcoflowMqtt extends utils.Adapter {
 							if (!this.pdevicesStates[origdevtype]) {
 								this.pdevicesStates[origdevtype] = ef.statesFromDict(devStates, pdevicesStatesDict);
 							}
+
 							//we store only the cmd from used components
 							if (!this.pdevicesCmd[origdevtype]) {
 								this.pdevicesCmd[origdevtype] = pdevicesCmd;
@@ -273,142 +275,29 @@ class EcoflowMqtt extends utils.Adapter {
 										native: {}
 									});
 									for (let part in pdevicesStatesDict) {
-										if (part === 'EnergyInfo') {
-											let partname = [ 'Energy1Info', 'Energy2Info', 'Energy3Info' ];
-											for (let i = 0; i < 3; i++) {
-												if (this.config.msgStateCreation) {
-													this.log.debug('____________________________________________');
-													this.log.debug('create  channel ' + partname[i]);
-												}
-												await myutils.createMyChannel(
-													this,
-													id,
-													partname[i],
-													partname[i],
-													'channel'
-												);
-												for (let key in pdevicesStatesDict[part]) {
-													let type = pdevicesStatesDict[part][key]['entity'];
-													if (type !== 'icon') {
-														if (devStates[part][type][key]) {
-															await myutils.createMyState(
-																this,
-																id,
-																partname[i],
-																key,
-																devStates[part][type][key]
-															);
-														} else {
-															this.log.info(
-																'not created/mismatch ->' +
-																	part +
-																	' ' +
-																	key +
-																	' ' +
-																	type
-															);
-														}
+										if (this.config.msgStateCreation) {
+											this.log.debug('____________________________________________');
+											this.log.debug('create  channel ' + part);
+										}
+										await myutils.createMyChannel(this, id, part, part, 'channel');
+										for (let key in pdevicesStatesDict[part]) {
+											let type = pdevicesStatesDict[part][key]['entity'];
+											if (type !== 'icon') {
+												if (devStates[part][type][key]) {
+													if (this.config.msgStateCreation) {
+														this.log.debug('state creation ' + key);
 													}
-												}
-											}
-										} else if (part === 'backupChInfo') {
-											let partname = [ 'backupCh1Info', 'backupCh2Info', 'backupCh3Info' ];
-											for (let i = 0; i < 3; i++) {
-												if (this.config.msgStateCreation) {
-													this.log.debug('____________________________________________');
-													this.log.debug('create  channel ' + partname[i]);
-												}
-												await myutils.createMyChannel(
-													this,
-													id,
-													partname[i],
-													partname[i],
-													'channel'
-												);
-												for (let key in pdevicesStatesDict[part]) {
-													let type = pdevicesStatesDict[part][key]['entity'];
-													if (type !== 'icon') {
-														if (devStates[part][type][key]) {
-															await myutils.createMyState(
-																this,
-																id,
-																partname[i],
-																key,
-																devStates[part][type][key]
-															);
-														} else {
-															this.log.info(
-																'not created/mismatch ->' +
-																	part +
-																	' ' +
-																	key +
-																	' ' +
-																	type
-															);
-														}
-													}
-												}
-											}
-										} else if (part === 'DeltaProInfo') {
-											let partname = [ 'DeltaPro1Info', 'DeltaPro2Info' ];
-											for (let i = 0; i < 2; i++) {
-												if (this.config.msgStateCreation) {
-													this.log.debug('____________________________________________');
-													this.log.debug('create  channel ' + partname[i]);
-												}
-												await myutils.createMyChannel(
-													this,
-													id,
-													partname[i],
-													partname[i],
-													'channel'
-												);
-												for (let key in pdevicesStatesDict[part]) {
-													let type = pdevicesStatesDict[part][key]['entity'];
-													if (type !== 'icon') {
-														if (devStates[part][type][key]) {
-															await myutils.createMyState(
-																this,
-																id,
-																partname[i],
-																key,
-																devStates[part][type][key]
-															);
-														} else {
-															this.log.info(
-																'not created/mismatch ->' +
-																	part +
-																	' ' +
-																	key +
-																	' ' +
-																	type
-															);
-														}
-													}
-												}
-											}
-										} else {
-											if (this.config.msgStateCreation) {
-												this.log.debug('____________________________________________');
-												this.log.debug('create  channel ' + part);
-											}
-											await myutils.createMyChannel(this, id, part, part, 'channel');
-											for (let key in pdevicesStatesDict[part]) {
-												let type = pdevicesStatesDict[part][key]['entity'];
-												if (type !== 'icon') {
-													if (devStates[part][type][key]) {
-														await myutils.createMyState(
-															this,
-															id,
-															part,
-															key,
-															devStates[part][type][key]
-														);
-													} else {
-														this.log.info(
-															'not created/mismatch ->' + part + ' ' + key + ' ' + type
-														);
-													}
+													await myutils.createMyState(
+														this,
+														id,
+														part,
+														key,
+														devStates[part][type][key]
+													);
+												} else {
+													this.log.info(
+														'not created/mismatch ->' + part + ' ' + key + ' ' + type
+													);
 												}
 											}
 										}
@@ -516,6 +405,9 @@ class EcoflowMqtt extends utils.Adapter {
 											}
 											await myutils.createMyChannel(this, id, 'bp2', 'bp2', 'channel');
 											for (let key in pdevicesStatesDict['bp1']) {
+												if (this.config.msgStateCreation) {
+													this.log.debug('state creation ' + key);
+												}
 												let type = pdevicesStatesDict['bp1'][key]['entity'];
 												if (type !== 'icon') {
 													if (devStates['bp1'][type][key]) {
@@ -547,6 +439,9 @@ class EcoflowMqtt extends utils.Adapter {
 												'channel'
 											);
 											for (let key in pdevicesStatesDict['statusReportBattery1']) {
+												if (this.config.msgStateCreation) {
+													this.log.debug('state creation ' + key);
+												}
 												let type = pdevicesStatesDict['statusReportBattery1'][key]['entity'];
 												if (type !== 'icon') {
 													if (devStates['statusReportBattery1'][type][key]) {
@@ -583,6 +478,9 @@ class EcoflowMqtt extends utils.Adapter {
 												'channel'
 											);
 											for (let key in pdevicesStatesDict['bmsMaster']) {
+												if (this.config.msgStateCreation) {
+													this.log.debug('state creation ' + key);
+												}
 												let type = pdevicesStatesDict['bmsMaster'][key]['entity'];
 												if (type !== 'icon') {
 													if (devStates['bmsMaster'][type][key]) {
@@ -617,6 +515,9 @@ class EcoflowMqtt extends utils.Adapter {
 											}
 											await myutils.createMyChannel(this, id, 'bp3', 'bp3', 'channel');
 											for (let key in pdevicesStatesDict['bp1']) {
+												if (this.config.msgStateCreation) {
+													this.log.debug('state creation ' + key);
+												}
 												let type = pdevicesStatesDict['bp1'][key]['entity'];
 												if (type !== 'icon') {
 													if (devStates['bp1'][type][key]) {
@@ -648,6 +549,9 @@ class EcoflowMqtt extends utils.Adapter {
 												'channel'
 											);
 											for (let key in pdevicesStatesDict['statusReportBattery1']) {
+												if (this.config.msgStateCreation) {
+													this.log.debug('state creation ' + key);
+												}
 												let type = pdevicesStatesDict['statusReportBattery1'][key]['entity'];
 												if (type !== 'icon') {
 													if (devStates['statusReportBattery1'][type][key]) {
@@ -684,6 +588,9 @@ class EcoflowMqtt extends utils.Adapter {
 												'channel'
 											);
 											for (let key in pdevicesStatesDict['bmsMaster']) {
+												if (this.config.msgStateCreation) {
+													this.log.debug('state creation ' + key);
+												}
 												let type = pdevicesStatesDict['bmsMaster'][key]['entity'];
 												if (type !== 'icon') {
 													if (devStates['bmsMaster'][type][key]) {
