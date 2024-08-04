@@ -534,6 +534,26 @@ tests.integration(path.join(__dirname, '..'), {
 				for (let channel in shp2states['panel2StatesDict']['panel2']) {
 					for (let state in shp2states['panel2StatesDict']['panel2'][channel]) {
 						if (shp2states['panel2StatesDict']['panel2'][channel][state]['entity'] !== 'icon') {
+							await harness.objects.getObject(
+								'ecoflow-mqtt.0.SHP20ZFB5EF412345.' + channel + '.' + state,
+								function(err, obj) {
+									if (err) console.error('panel 2 TEST' + channel + '.' + state + ' -> ' + err);
+
+									if (!obj) {
+										console.error('panel 2 state ' + channel + '.' + state + ' not set');
+									}
+									expect(obj).to.exist;
+								}
+							);
+						}
+					}
+				}
+			});
+			/*
+			it('SHP 2 should be created', async () => {
+				for (let channel in shp2states['panel2StatesDict']['panel2']) {
+					for (let state in shp2states['panel2StatesDict']['panel2'][channel]) {
+						if (shp2states['panel2StatesDict']['panel2'][channel][state]['entity'] !== 'icon') {
 							let partname;
 							switch (channel) {
 								case 'backupChInfo':
@@ -618,7 +638,7 @@ tests.integration(path.join(__dirname, '..'), {
 					}
 				}
 			});
-
+			*/
 			it('Delta Pro Ultra should be created', async () => {
 				//await harness.objects.delObject('ecoflow-mqtt.0.BX11ZFB5EF412345.mppt.');
 				for (let channel in states['pstreamStatesDict']['deltaproultra']) {
