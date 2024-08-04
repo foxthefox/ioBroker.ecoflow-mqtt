@@ -285,7 +285,7 @@ Wave is not available, could be implemented, if data is available.
 
 ## Changelog
 ### 0.0.37 (npm)
-* (foxthefox) corrections for HA discovery of PowerOcean/SHP2
+* (foxthefox) corrections for HA discovery of PowerOcean/SHP2/PowerKit
 
 ### 0.0.36 (npm)
 * (foxthefox) correction bmsMaster.cellVol/cellTemp as array for DeltaPro
