@@ -287,6 +287,8 @@ Wave is not available, could be implemented, if data is available.
 
 ### 0.0.36 (npm)
 * (foxthefox) correction bmsMaster.cellVol/cellTemp as array for DeltaPro
+* (foxthefox) correction for transfer of values derived from protobuf to HA
+* (foxthefox) enhanced to device specific logging
 
 ### 0.0.35 (npm)
 * (foxthefox) unified detail debug settings, device specific debugging (new checkbox in device config)
