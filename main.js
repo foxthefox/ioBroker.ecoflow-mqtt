@@ -809,10 +809,12 @@ class EcoflowMqtt extends utils.Adapter {
 
 					let devtype = '';
 					let logged = false;
+					let devicelogged = false;
 					if (this.pdevices) {
 						if (this.pdevices[topic]) {
 							devtype = this.pdevices[topic]['devType'];
 							if (this.pdevices[topic]['debugEnable'] === true) {
+								devicelogged = true;
 								if (this.config.msgUpdate && msgtype === 'update') {
 									logged = true;
 								} else if (
@@ -870,7 +872,7 @@ class EcoflowMqtt extends utils.Adapter {
 															haupdate[i].topic,
 															haupdate[i].payload,
 															{ qos: 1 },
-															logged, //this.config.msgHaOutgoing,
+															devicelogged && this.config.msgHaOutgoing,
 															'HA EF PB UPDATE RCV'
 														);
 													} else {
@@ -1022,7 +1024,7 @@ class EcoflowMqtt extends utils.Adapter {
 											haupdate[i].topic,
 											haupdate[i].payload,
 											{ qos: 1 },
-											logged, //this.config.msgHaOutgoing,
+											devicelogged && this.config.msgHaOutgoing,
 											'HA EF JSON UPDATE RCV'
 										);
 									} else {

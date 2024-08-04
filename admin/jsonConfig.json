@@ -127,13 +127,6 @@
 					"md": 6,
 					"lg": 4
 				},
-				"msgUpdateValue": {
-					"type": "checkbox",
-					"label": "msgUpdateValue",
-					"sm": 12,
-					"md": 6,
-					"lg": 4
-				},
 				"getQuota": {
 					"type": "sendTo",
 					"hidden": "false",
@@ -153,7 +146,7 @@
 				"_debugoptions": {
 					"newLine": true,
 					"type": "header",
-					"text": "Selection of specific DEBUG settings",
+					"text": "Selection of specific DEBUG settings (only effective on the device where debug is enabled)",
 					"sm": 12,
 					"md": 12,
 					"lg": 12,
@@ -168,6 +161,13 @@
 					"newLine": true,
 					"type": "checkbox",
 					"label": "msgUpdate",
+					"sm": 12,
+					"md": 6,
+					"lg": 4
+				},
+				"msgUpdateValue": {
+					"type": "checkbox",
+					"label": "msgUpdateValue",
 					"sm": 12,
 					"md": 6,
 					"lg": 4
