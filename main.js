@@ -859,10 +859,9 @@ class EcoflowMqtt extends utils.Adapter {
 											devtype,
 											this.pdevices[topic]['haEnable']
 										);
-
 										if (haupdate.length > 0) {
 											for (let i = 0; i < haupdate.length; i++) {
-												if (haupdate[i] !== null) {
+												if (!haupdate[i]) {
 													if (typeof haupdate[i].payload === 'string') {
 														ha.publish(
 															this,
