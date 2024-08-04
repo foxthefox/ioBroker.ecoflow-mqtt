@@ -857,8 +857,10 @@ class EcoflowMqtt extends utils.Adapter {
 											topic,
 											msgdecode,
 											devtype,
-											this.pdevices[topic]['haEnable']
+											this.pdevices[topic]['haEnable'],
+											logged
 										);
+										this.log.debug('HA update' + JSON.stringify(haupdate));
 										if (haupdate.length > 0) {
 											for (let i = 0; i < haupdate.length; i++) {
 												if (!haupdate[i]) {
@@ -972,7 +974,8 @@ class EcoflowMqtt extends utils.Adapter {
 										this.pdevicesStates[devtype],
 										topic,
 										JSON.parse(message.toString()),
-										this.pdevices[topic]['haEnable']
+										this.pdevices[topic]['haEnable'],
+										logged
 									);
 									break;
 								case 'powerkitbp2000':
@@ -983,7 +986,8 @@ class EcoflowMqtt extends utils.Adapter {
 										this.pdevicesStates[devtype],
 										topic,
 										JSON.parse(message.toString()),
-										this.pdevices[topic]['haEnable']
+										this.pdevices[topic]['haEnable'],
+										logged
 									);
 									break;
 								case 'shelly3em':
@@ -993,7 +997,8 @@ class EcoflowMqtt extends utils.Adapter {
 										this.pdevicesStates[devtype],
 										topic,
 										JSON.parse(message.toString()),
-										this.pdevices[topic]['haEnable']
+										this.pdevices[topic]['haEnable'],
+										logged
 									);
 									break;
 								default:
@@ -1003,7 +1008,8 @@ class EcoflowMqtt extends utils.Adapter {
 										this.pdevicesStates[devtype],
 										topic,
 										JSON.parse(message.toString()),
-										this.pdevices[topic]['haEnable']
+										this.pdevices[topic]['haEnable'],
+										logged
 									);
 									break;
 							}
