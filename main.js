@@ -859,6 +859,7 @@ class EcoflowMqtt extends utils.Adapter {
 											devtype,
 											this.pdevices[topic]['haEnable']
 										);
+										this.log.debug(JSON.stringify(haupdate));
 										if (haupdate.length > 0) {
 											for (let i = 0; i < haupdate.length; i++) {
 												if (typeof haupdate[i].payload === 'string') {
@@ -868,7 +869,7 @@ class EcoflowMqtt extends utils.Adapter {
 														haupdate[i].topic,
 														haupdate[i].payload,
 														{ qos: 1 },
-														this.config.msgHaOutgoing,
+														logged, //this.config.msgHaOutgoing,
 														'HA EF PB UPDATE RCV'
 													);
 												} else {
@@ -1015,7 +1016,7 @@ class EcoflowMqtt extends utils.Adapter {
 											haupdate[i].topic,
 											haupdate[i].payload,
 											{ qos: 1 },
-											this.config.msgHaOutgoing,
+											logged, //this.config.msgHaOutgoing,
 											'HA EF JSON UPDATE RCV'
 										);
 									} else {
