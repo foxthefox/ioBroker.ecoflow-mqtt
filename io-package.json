@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "ecoflow-mqtt",
-        "version": "0.0.36",
+        "version": "0.0.37",
         "news": {
+            "0.0.37": {
+                "en": "corrections for HA discovery of PowerOcean/SHP2/PowerKit",
+                "de": "Korrekturen für die HA-Erkennung von PowerOcean/SHP2/PowerKit",
+                "ru": "исправления для обнаружения высокой доступности PowerOcean/SHP2/PowerKit",
+                "pt": "correções para descoberta de HA do PowerOcean/SHP2/PowerKit",
+                "nl": "correcties voor HA-detectie van PowerOcean/SHP2/PowerKit",
+                "fr": "corrections pour la découverte HA de PowerOcean/SHP2/PowerKit",
+                "it": "correzioni per il rilevamento HA di PowerOcean/SHP2/PowerKit",
+                "es": "correcciones para el descubrimiento de HA de PowerOcean/SHP2/PowerKit",
+                "pl": "poprawki dotyczące wykrywania HA PowerOcean/SHP2/PowerKit",
+                "uk": "виправлення для відкриття HA PowerOcean/SHP2/PowerKit",
+                "zh-cn": "对 PowerOcean/SHP2/PowerKit HA 发现的更正"
+            },
             "0.0.36": {
                 "en": "datapoint corrections. corrections for value transfer to HA",
                 "de": "Datenpunktkorrekturen. Korrekturen zur Wertübertragung an HA",
