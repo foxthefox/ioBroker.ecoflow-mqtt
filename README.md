@@ -284,6 +284,10 @@ Wave is not available, could be implemented, if data is available.
 * check beep command if reversing needed
 
 ## Changelog
+
+### 0.0.38 (npm)
+* (foxthefox) additional datapoints for power ocean
+
 ### 0.0.37 (npm)
 * (foxthefox) corrections for HA discovery of PowerOcean/SHP2/PowerKit
 
