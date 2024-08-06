@@ -250,6 +250,7 @@ class EcoflowMqtt extends utils.Adapter {
 							if (!this.pdevicesStatesDict[origdevtype]) {
 								this.pdevicesStatesDict[origdevtype] = pdevicesStatesDict;
 							}
+
 							if (!this.pdevicesStates[origdevtype]) {
 								this.pdevicesStates[origdevtype] = ef.statesFromDict(devStates, pdevicesStatesDict);
 							}
