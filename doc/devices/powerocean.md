@@ -1,7 +1,11 @@
 # States for  POWEROCEAN
-### version: 0.0.34
+### version: 0.0.38
 
 [statusReportBattery1](#statusReportBattery1)
+
+[JTS1_ENERGY_STREAM_REPORT](#JTS1_ENERGY_STREAM_REPORT)
+
+[JTS1_EMS_HEARTBEAT](#JTS1_EMS_HEARTBEAT)
 
 
 
@@ -92,4 +96,38 @@
 |moduleProductInfo| Module product info |
 |moduleAplSwVer| Module Aplication SW version |
 |moduleLoaderSwVer| Module Loader SW version |
+
+## JTS1_ENERGY_STREAM_REPORT
+
+### number
+| State  |      Min     |      Max     |  Unit |  Mult |  Name |
+|----------|:-------------:|:-------------:|:------:|:-----:|-----|
+|sysLoadPwr|0 | 15000 | W | 1 |  System load |
+|sysGridPwr|0 | 15000 | W | 1 |  Grid power |
+|mpptPwr|0 | 5000 | W | 1 |  Solar power |
+|bpPwr|0 | 5200 | W | 1 |  Battery power |
+|bpSoc|0 | 100 | % | 1 |  Battery SOC |
+
+
+## JTS1_EMS_HEARTBEAT
+
+### number
+| State  |      Min     |      Max     |  Unit |  Mult |  Name |
+|----------|:-------------:|:-------------:|:------:|:-----:|-----|
+|pcsAPhase_volt|0 | 250 | V | 1 |  Phase A voltage |
+|pcsAPhase_amp|0 | 20 | A | 1 |  Phase A current |
+|pcsAPhase_actPwr|-1000 | 5000 | W | 1 |  Phase A active power |
+|pcsAPhase_reactPwr|-500 | 5000 | VAr | 1 |  Phase A reactive power |
+|pcsAPhase_apparentPwr|0 | 5000 | VA | 1 |  Phase A apparent power |
+|pcsBPhase_volt|0 | 250 | V | 1 |  Phase B voltage |
+|pcsBPhase_amp|0 | 20 | A | 1 |  Phase B current |
+|pcsBPhase_actPwr|-1000 | 5000 | W | 1 |  Phase B active power |
+|pcsBPhase_reactPwr|-500 | 15000 | VAr | 1 |  Phase B reactive power |
+|pcsBPhase_apparentPwr|0 | 5000 | VA | 1 |  Phase B apparent power |
+|pcsCPhase_volt|0 | 250 | V | 1 |  Phase C voltage |
+|pcsCPhase_amp|0 | 20 | A | 1 |  Phase C current |
+|pcsCPhase_actPwr|-1000 | 5000 | W | 1 |  Phase C active power |
+|pcsCPhase_reactPwr|-500 | 5000 | VAr | 1 |  Phase C reactive power |
+|pcsCPhase_apparentPwr|0 | 5000 | VA | 1 |  Phase C apparent power |
+
 
