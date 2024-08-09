@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "ecoflow-mqtt",
-        "version": "0.0.37",
+        "version": "0.0.38",
         "news": {
+            "0.0.38": {
+                "en": " additional datapoints for power ocean",
+                "de": "zusätzliche Datenpunkte für Power Ocean",
+                "ru": "дополнительные точки данных для Power Ocean",
+                "pt": "pontos de dados adicionais para energia oceânica",
+                "nl": "extra datapunten voor power ocean",
+                "fr": "points de données supplémentaires pour Power Ocean",
+                "it": "punti dati aggiuntivi per Power Ocean",
+                "es": "puntos de datos adicionales para power ocean",
+                "pl": "dodatkowe punkty danych dla Power Ocean",
+                "uk": "додаткові точки даних для power ocean",
+                "zh-cn": "Power Ocean 的附加数据点"
+            },
             "0.0.37": {
                 "en": "corrections for HA discovery of PowerOcean/SHP2/PowerKit",
                 "de": "Korrekturen für die HA-Erkennung von PowerOcean/SHP2/PowerKit",

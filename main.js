@@ -211,6 +211,9 @@ class EcoflowMqtt extends utils.Adapter {
 							} else {
 								this.log.error('devType not set -> ' + devtype + 'or no device states -> ' + devStates);
 							}
+							if (!devStates) {
+								this.log.warn('no states for ' + devtype);
+							}
 							//devStates is now modfied and used for the object creation
 							//create pdevices objects
 							const origdevtype = devtype;
@@ -244,12 +247,19 @@ class EcoflowMqtt extends utils.Adapter {
 								pdevicesStatesDict = require('./lib/ecoflow_data.js').pstationStatesDict[origdevtype];
 								pdevicesCmd = require('./lib/ecoflow_data.js').pstationCmd[origdevtype];
 							}
+							if (!pdevicesStatesDict) {
+								this.log.warn('no states dict for ' + devtype);
+							}
+							if (!pdevicesCmd) {
+								this.log.warn('no CMD dict for ' + devtype);
+							}
 
 							//create device objects
 							//we store only the dict from used components
 							if (!this.pdevicesStatesDict[origdevtype]) {
 								this.pdevicesStatesDict[origdevtype] = pdevicesStatesDict;
 							}
+
 							if (!this.pdevicesStates[origdevtype]) {
 								this.pdevicesStates[origdevtype] = ef.statesFromDict(devStates, pdevicesStatesDict);
 							}
