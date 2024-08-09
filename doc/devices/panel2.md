@@ -1,5 +1,5 @@
 # States for  PANEL2
-### version: 0.0.34
+### version: 0.0.38
 
 [ProtoTime](#ProtoTime)
 
@@ -7,11 +7,21 @@
 
 [backupIncreInfo](#backupIncreInfo)
 
-[backupChInfo](#backupChInfo)
+[backupCh1Info](#backupCh1Info)
 
-[EnergyInfo](#EnergyInfo)
+[backupCh2Info](#backupCh2Info)
 
-[DeltaProInfo](#DeltaProInfo)
+[backupCh3Info](#backupCh3Info)
+
+[Energy1Info](#Energy1Info)
+
+[Energy2Info](#Energy2Info)
+
+[Energy3Info](#Energy3Info)
+
+[DeltaPro1Info](#DeltaPro1Info)
+
+[DeltaPro2Info](#DeltaPro2Info)
 
 [loadIncreInfo](#loadIncreInfo)
 
@@ -130,7 +140,7 @@
 |backupDischargeRmainBatCap|0 | 20000 | mAh | 1 |  Discharge remain. capacity |
 
 
-## backupChInfo
+## backupCh1Info
 
 ### diagnostic
 
@@ -149,7 +159,45 @@
 |backupRly2Cnt|0 |  n/a |  | 1 |  Backup Relay2 Count |
 
 
-## EnergyInfo
+## backupCh2Info
+
+### diagnostic
+
+| State  |     Name |  values |
+|----------|:-------------:|------|
+|backupIsReady| backupIsReady | {0:not ready?,1:ready?} |
+|ctrlSta| ctrlSta | {0:OK?} |
+|forceChargeSta| forceChargeSta | {0:OK?} |
+|wakeUpChargeSta| wakeUpChargeSta | {0:OK?} |
+|energy_5p8Type| Charge type | {0:idle?} |
+
+### number
+| State  |      Min     |      Max     |  Unit |  Mult |  Name |
+|----------|:-------------:|:-------------:|:------:|:-----:|-----|
+|backupRly1Cnt|0 |  n/a |  | 1 |  Backup Relay1 Count |
+|backupRly2Cnt|0 |  n/a |  | 1 |  Backup Relay2 Count |
+
+
+## backupCh3Info
+
+### diagnostic
+
+| State  |     Name |  values |
+|----------|:-------------:|------|
+|backupIsReady| backupIsReady | {0:not ready?,1:ready?} |
+|ctrlSta| ctrlSta | {0:OK?} |
+|forceChargeSta| forceChargeSta | {0:OK?} |
+|wakeUpChargeSta| wakeUpChargeSta | {0:OK?} |
+|energy_5p8Type| Charge type | {0:idle?} |
+
+### number
+| State  |      Min     |      Max     |  Unit |  Mult |  Name |
+|----------|:-------------:|:-------------:|:------:|:-----:|-----|
+|backupRly1Cnt|0 |  n/a |  | 1 |  Backup Relay1 Count |
+|backupRly2Cnt|0 |  n/a |  | 1 |  Backup Relay2 Count |
+
+
+## Energy1Info
 
 ### diagnostic
 
@@ -184,7 +232,101 @@
 |oilPackNum| Oil pack# |
 |multPackNum| Multo pack# |
 
-## DeltaProInfo
+## Energy2Info
+
+### diagnostic
+
+| State  |     Name |  values |
+|----------|:-------------:|------|
+|isEnable| Device enabled | {0:off?,1:on} |
+|isConnect| Device connected | {0:not connected?,1:connected?} |
+|isAcOpen| AC switch open | {0:off?,1:on} |
+|isPowerOutput| Power output | {0:off?,1:on} |
+|isGridCharge| Grid charge | {0:off?,1:on} |
+|isMpptCharge| MPPT charge | {0:off?,1:on} |
+|emsChgFlag| EMS Charge flag | {0:off?,1:on} |
+|hwConnect| HW connected | {0:off?,1:on} |
+|errorCodeNum| Error code | {0:OK?} |
+
+### number
+| State  |      Min     |      Max     |  Unit |  Mult |  Name |
+|----------|:-------------:|:-------------:|:------:|:-----:|-----|
+|batteryPercentage|0 | 100 | % | 1 |  Battery SOC |
+|outputPower|0 | 7200 | W | 1 |  Output power |
+|emsBatTemp|0 | 80 | °C | 1 |  EMS battery temperature |
+|lcdInputWatts|0 | 7200 | W | 1 |  Input power (LCD) |
+|pvChargeWatts|0 | 5600 | W | 1 |  Charge power |
+|pvLowChargeWatts|0 | 1600 | W | 1 |  Low charge power |
+|pvHeightChargeWatts|0 | 4000 | W | 1 |  High charge power |
+
+
+### string
+
+| State  |  Name |
+|----------|------|
+|oilPackNum| Oil pack# |
+|multPackNum| Multo pack# |
+
+## Energy3Info
+
+### diagnostic
+
+| State  |     Name |  values |
+|----------|:-------------:|------|
+|isEnable| Device enabled | {0:off?,1:on} |
+|isConnect| Device connected | {0:not connected?,1:connected?} |
+|isAcOpen| AC switch open | {0:off?,1:on} |
+|isPowerOutput| Power output | {0:off?,1:on} |
+|isGridCharge| Grid charge | {0:off?,1:on} |
+|isMpptCharge| MPPT charge | {0:off?,1:on} |
+|emsChgFlag| EMS Charge flag | {0:off?,1:on} |
+|hwConnect| HW connected | {0:off?,1:on} |
+|errorCodeNum| Error code | {0:OK?} |
+
+### number
+| State  |      Min     |      Max     |  Unit |  Mult |  Name |
+|----------|:-------------:|:-------------:|:------:|:-----:|-----|
+|batteryPercentage|0 | 100 | % | 1 |  Battery SOC |
+|outputPower|0 | 7200 | W | 1 |  Output power |
+|emsBatTemp|0 | 80 | °C | 1 |  EMS battery temperature |
+|lcdInputWatts|0 | 7200 | W | 1 |  Input power (LCD) |
+|pvChargeWatts|0 | 5600 | W | 1 |  Charge power |
+|pvLowChargeWatts|0 | 1600 | W | 1 |  Low charge power |
+|pvHeightChargeWatts|0 | 4000 | W | 1 |  High charge power |
+
+
+### string
+
+| State  |  Name |
+|----------|------|
+|oilPackNum| Oil pack# |
+|multPackNum| Multo pack# |
+
+## DeltaPro1Info
+
+### diagnostic
+
+| State  |     Name |  values |
+|----------|:-------------:|------|
+|isConnect| Device connected | {0:off?,1:on?} |
+|isAcOpen| AC switch open | {0:off?,1:on?} |
+|pvInsertState| Insert state | {0:off?,1:on?} |
+
+### number
+| State  |      Min     |      Max     |  Unit |  Mult |  Name |
+|----------|:-------------:|:-------------:|:------:|:-----:|-----|
+|batterySoc|0 | 100 | % | 1 |  Battery SOC |
+|fullCap|0 | 80000 | mAh | 1 |  Full capacity |
+|ratePower|0 | 7200 | W | 1 |  Rated power |
+|outputPower|0 | 7200 | W | 1 |  Output power |
+|emsBatTemp|0 | 80 | °C | 1 |  EMS battery temperature |
+|lcdInputWatts|0 | 7200 | W | 1 |  Input power (LCD) |
+|pvLowChargeWatts|0 | 1600 | W | 1 |  Low charge power |
+|chargeTime|0 | 15999 | min | 1 |  Charge time |
+|dischargeTime|0 | 15999 | min | 1 |  Discharge time |
+
+
+## DeltaPro2Info
 
 ### diagnostic
 

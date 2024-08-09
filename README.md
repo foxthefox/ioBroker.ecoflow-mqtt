@@ -287,6 +287,7 @@ Wave is not available, could be implemented, if data is available.
 
 ### 0.0.38 (npm)
 * (foxthefox) additional datapoints for power ocean
+* (foxthefox) corrections for upper limit on power ocean data points
 
 ### 0.0.37 (npm)
 * (foxthefox) corrections for HA discovery of PowerOcean/SHP2/PowerKit
