@@ -1,5 +1,5 @@
 # States for  DELTAPRO
-### version: 0.0.34
+### version: 0.0.38
 
 [bmsMaster](#bmsMaster)
 
@@ -38,8 +38,6 @@
 |fullCap|0 | 80000 | mAh | 1 |  Full capacity |
 |cycles|0 | 6000 |  | 1 |  Number of cycles |
 |diffSoc|0 | 100 | % | 1 |  SOC difference |
-|cellVol|0 | 10 | V | 0.001 |  Cell voltage |
-|cellTemp|0 | 60 | °C | 1 |  Cell temperature |
 |targetSoc|0 | 100 | % | 1 |  Target SoC |
 |actSoc|0 | 100 | % | 1 |  Actual SoC |
 |maxVolDiff|0 | 500 | V | 0.001 |  Maximum cell voltage difference |
@@ -85,6 +83,8 @@
 | State  |  Name |
 |----------|------|
 |packSn| Pack SN |
+|cellVol| Cell voltage |
+|cellTemp| Cell temperature |
 |hwEdition| HW edition |
 
 ## ems
