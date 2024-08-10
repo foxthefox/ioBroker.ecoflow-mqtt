@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "ecoflow-mqtt",
-        "version": "0.0.38",
+        "version": "0.0.39",
         "news": {
+            "0.0.39": {
+                "en": " update devDeps",
+                "de": "devDeps aktualisieren",
+                "ru": "обновить devDeps",
+                "pt": "atualizar devDeps",
+                "nl": "update ontwikkelaar",
+                "fr": "mettre à jour les DevDeps",
+                "it": "aggiorna devDeps",
+                "es": "actualizar departamentos de desarrollo",
+                "pl": "zaktualizuj devDeps",
+                "uk": "оновити devDeps",
+                "zh-cn": "更新 devDeps"
+            },
             "0.0.38": {
                 "en": " additional datapoints for power ocean",
                 "de": "zusätzliche Datenpunkte für Power Ocean",

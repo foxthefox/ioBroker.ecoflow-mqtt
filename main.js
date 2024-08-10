@@ -12,20 +12,14 @@ const ef = require('./lib/ecoflow_utils.js');
 const ha = require('./lib/ha_utils.js');
 const mqtt = require('mqtt');
 
-const { isObject } = require('util');
-const { debug } = require('console');
-const { json } = require('stream/consumers');
-
 // Load your modules here, e.g.:
 // const fs = require("fs");
 
 let recon_timer = null;
 let lastQuotInterval = null;
-let recon_timer_long = null;
 let haLoadInterval = null;
 
 const version = require('./io-package.json').common.version;
-const { adapter } = require('@iobroker/adapter-core');
 
 class EcoflowMqtt extends utils.Adapter {
 	/**
@@ -1327,6 +1321,7 @@ class EcoflowMqtt extends utils.Adapter {
 			this.log.info('cleaned everything up...');
 			callback();
 		} catch (e) {
+			this.log.error(e);
 			callback();
 		}
 	}
@@ -1414,6 +1409,8 @@ class EcoflowMqtt extends utils.Adapter {
 								logged
 							);
 							if (logged == true) {
+								/*global Buffer*/
+								/*eslint no-undef: "error"*/
 								this.log.debug(
 									'[PROTOBUF encode] converted  Hex-String:' + Buffer.from(msgBuf).toString('hex')
 								);
@@ -1566,7 +1563,9 @@ class EcoflowMqtt extends utils.Adapter {
 													'[HA STATE INIT DATA] value not in range ' +
 														value.val +
 														'  ' +
-														update[i].states
+														update[i].states +
+														' err -> ' +
+														error
 												);
 											}
 										} else if (update[i].entity === 'text') {
