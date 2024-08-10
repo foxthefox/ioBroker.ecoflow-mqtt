@@ -285,8 +285,12 @@ Wave is not available, could be implemented, if data is available.
 
 ## Changelog
 
+### 0.0.40 (npm)
+* (foxthefox) IOB checker corrections
+
 ### 0.0.39 (npm)
 * (foxthefox) update devDeps
+* (foxthefox) eslint upgrade and corrections
 
 ### 0.0.38 (npm)
 * (foxthefox) additional datapoints for power ocean
