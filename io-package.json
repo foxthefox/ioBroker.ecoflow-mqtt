@@ -4,7 +4,17 @@
 		"version": "0.0.40",
 		"news": {
 			"0.0.40": {
-				"en": "IOB checker corrections"
+				"en": "IOB checker corrections",
+				"de": "Korrekturen des IOB-Checkers",
+				"ru": "Исправления проверки IOB",
+				"pt": "Correções do verificador IOB",
+				"nl": "IOB-checkercorrecties",
+				"fr": "Corrections du vérificateur IOB",
+				"it": "Correzioni del controllo IOB",
+				"es": "Correcciones del verificador IOB",
+				"pl": "Poprawki sprawdzania IOB",
+				"uk": "Виправлення перевірки IOB",
+				"zh-cn": "IOB 检查器更正"
 			},
 			"0.0.39": {
 				"en": " update devDeps",
