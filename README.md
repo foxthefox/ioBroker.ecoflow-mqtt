@@ -285,6 +285,9 @@ Wave is not available, could be implemented, if data is available.
 
 ## Changelog
 
+### 0.0.41 (npm)
+* (foxthefox) correction in Compare function
+
 ### 0.0.40 (npm)
 * (foxthefox) IOB checker corrections
 
