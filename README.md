@@ -285,11 +285,17 @@ Wave is not available, could be implemented, if data is available.
 
 ## Changelog
 
+### 1.0.0 (npm) BREAKING
+* (foxthefox) correction of state roles (requires deletion of ecoflow objecttree!)
+* (foxthefox) deletion of InverterHeartbeat2 of power stream, since latest FW does not deliver this telegram anymore (most likely part of the larger inverter_heartbeat)
+* (foxthefox) some multiplication and max settings for SHP and Power Ocean corrected, 
+
+
 ### 0.0.42 (npm)
-*  (foxthefox) correction SHP command
-*  (foxthefox) new data point power ocean, range min corrections
-*  (foxthefox) shelly3em model definition
-*  (foxthefox) IOB checker corrections
+* (foxthefox) correction SHP command
+* (foxthefox) new data point power ocean, range min corrections
+* (foxthefox) shelly3em model definition
+* (foxthefox) IOB checker corrections
 
 ### 0.0.41 (npm)
 * (foxthefox) correction in Compare function
