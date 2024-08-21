@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "ecoflow-mqtt",
-        "version": "0.0.41",
+        "version": "0.0.42",
         "news": {
+            "0.0.42": {
+                "en": "correction SHP command, new data point power ocean, shelly3em model definition, IOB checker corrections ",
+                "de": "Korrektur des SHP-Befehls, neuer Datenpunkt Power Ocean, Shelly3em-Modelldefinition, IOB-Checker-Korrekturen",
+                "ru": "коррекция команды SHP, новая точка данных Power Ocean, определение модели shelly3em, исправления средства проверки IOB",
+                "pt": "correção do comando SHP, novo ponto de dados power ocean, definição do modelo shelly3em, correções do verificador IOB",
+                "nl": "correctie SHP-opdracht, nieuwe datapunt power ocean, shelly3em-modeldefinitie, IOB-checkercorrecties",
+                "fr": "correction de la commande SHP, nouveau point de données Power Ocean, définition du modèle Shelly3em, corrections du vérificateur IOB",
+                "it": "correzione comando SHP, nuovo data point power ocean, definizione del modello shelly3em, correzioni del controllo IOB",
+                "es": "corrección del comando SHP, nuevo punto de datos power ocean, definición del modelo shelly3em, correcciones del verificador IOB",
+                "pl": "korekta polecenia SHP, nowy punkt danych Power Ocean, definicja modelu Shelly3em, poprawki kontrolera IOB",
+                "uk": "виправлення команди SHP, нова точка даних power ocean, визначення моделі shelly3em, виправлення засобу перевірки IOB",
+                "zh-cn": "修正SHP命令，新数据点power ocean，shelly3em模型定义，IOB检查器修正"
+            },
             "0.0.41": {
                 "en": "correction in Compare function",
                 "de": "Korrektur in der Vergleichsfunktion",
@@ -16,32 +29,6 @@
                 "uk": "виправлення у функції порівняння",
                 "zh-cn": "比较功能中的修正"
             },
-            "0.0.40": {
-                "en": "IOB checker corrections",
-                "de": "Korrekturen des IOB-Checkers",
-                "ru": "Исправления проверки IOB",
-                "pt": "Correções do verificador IOB",
-                "nl": "IOB-checkercorrecties",
-                "fr": "Corrections du vérificateur IOB",
-                "it": "Correzioni del controllo IOB",
-                "es": "Correcciones del verificador IOB",
-                "pl": "Poprawki sprawdzania IOB",
-                "uk": "Виправлення перевірки IOB",
-                "zh-cn": "IOB 检查器更正"
-            },
-            "0.0.39": {
-                "en": " update devDeps",
-                "de": "devDeps aktualisieren",
-                "ru": "обновить devDeps",
-                "pt": "atualizar devDeps",
-                "nl": "update ontwikkelaar",
-                "fr": "mettre à jour les DevDeps",
-                "it": "aggiorna devDeps",
-                "es": "actualizar departamentos de desarrollo",
-                "pl": "zaktualizuj devDeps",
-                "uk": "оновити devDeps",
-                "zh-cn": "更新 devDeps"
-            },
             "0.0.38": {
                 "en": " additional datapoints for power ocean",
                 "de": "zusätzliche Datenpunkte für Power Ocean",
@@ -54,45 +41,6 @@
                 "pl": "dodatkowe punkty danych dla Power Ocean",
                 "uk": "додаткові точки даних для power ocean",
                 "zh-cn": "Power Ocean 的附加数据点"
-            },
-            "0.0.37": {
-                "en": "corrections for HA discovery of PowerOcean/SHP2/PowerKit",
-                "de": "Korrekturen für die HA-Erkennung von PowerOcean/SHP2/PowerKit",
-                "ru": "исправления для обнаружения высокой доступности PowerOcean/SHP2/PowerKit",
-                "pt": "correções para descoberta de HA do PowerOcean/SHP2/PowerKit",
-                "nl": "correcties voor HA-detectie van PowerOcean/SHP2/PowerKit",
-                "fr": "corrections pour la découverte HA de PowerOcean/SHP2/PowerKit",
-                "it": "correzioni per il rilevamento HA di PowerOcean/SHP2/PowerKit",
-                "es": "correcciones para el descubrimiento de HA de PowerOcean/SHP2/PowerKit",
-                "pl": "poprawki dotyczące wykrywania HA PowerOcean/SHP2/PowerKit",
-                "uk": "виправлення для відкриття HA PowerOcean/SHP2/PowerKit",
-                "zh-cn": "对 PowerOcean/SHP2/PowerKit HA 发现的更正"
-            },
-            "0.0.36": {
-                "en": "datapoint corrections. corrections for value transfer to HA",
-                "de": "Datenpunktkorrekturen. Korrekturen zur Wertübertragung an HA",
-                "ru": "исправления точек данных. исправления для переноса значений в HA",
-                "pt": "correções de pontos de dados. correções para transferência de valor para HA",
-                "nl": "correcties van datapunten. correcties voor waardeoverdracht aan HA",
-                "fr": "corrections de points de données. corrections pour le transfert de valeur vers HA",
-                "it": "correzioni dei punti dati. correzioni per il trasferimento di valore ad HA",
-                "es": "correcciones de puntos de datos. correcciones por transferencia de valor a HA",
-                "pl": "poprawki punktów danych. poprawki dotyczące przekazania wartości do HA",
-                "uk": "виправлення точок даних. поправки для перенесення вартості до HA",
-                "zh-cn": "数据点修正。向 HA 转移价值的更正"
-            },
-            "0.0.35": {
-                "en": "changed debug settings",
-                "de": "Debug-Einstellungen geändert",
-                "ru": "изменены настройки отладки",
-                "pt": "alterou as configurações de depuração",
-                "nl": "gewijzigde debug-instellingen",
-                "fr": "paramètres de débogage modifiés",
-                "it": "modificate le impostazioni di debug",
-                "es": "configuración de depuración modificada",
-                "pl": "zmienione ustawienia debugowania",
-                "uk": "змінив налаштування налагодження",
-                "zh-cn": "更改了调试设置"
             },
             "0.0.34": {
                 "en": "added power ocean, added smart home panel, corrections, improvements",
