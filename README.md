@@ -12,7 +12,7 @@
 
 ## ecoflow-mqtt adapter for ioBroker
 
-connects to ecoflow products
+connects to products of Ecoflow ([https://www.ecoflow.com])
 
 ## WARNING
 
@@ -284,6 +284,12 @@ Wave is not available, could be implemented, if data is available.
 * check beep command if reversing needed
 
 ## Changelog
+
+### 0.0.42 (npm)
+*  (foxthefox) correction SHP command
+*  (foxthefox) new data point power ocean, range min corrections
+*  (foxthefox) shelly3em model definition
+*  (foxthefox) IOB checker corrections
 
 ### 0.0.41 (npm)
 * (foxthefox) correction in Compare function
