@@ -1,7 +1,7 @@
 {
 	"common": {
 		"name": "ecoflow-mqtt",
-		"version": "1.0.0",
+		"version": "1.0.1",
 		"news": {
 			"1.0.1": {
 				"en": "corrections for level commands, other corrections",
