@@ -218,46 +218,46 @@ some explanation to the device data
 
 
 ### Powerstation
-![River Max](./doc/devices/rivermax.md)
+[River Max](./doc/devices/rivermax.md)
 
-![River Pro](./doc/devices/riverpro.md)
+[River Pro](./doc/devices/riverpro.md)
 
-![Delta Mini](./doc/devices/deltamini.md)
+[Delta Mini](./doc/devices/deltamini.md)
 
-![Delta](./doc/devices/delta.md)
+[Delta](./doc/devices/delta.md)
 
-![Delta Max](./doc/devices/deltamax.md)
+[Delta Max](./doc/devices/deltamax.md)
 
-![Delta Pro](./doc/devices/deltapro.md)
+[Delta Pro](./doc/devices/deltapro.md)
 
-![River 2 Max](./doc/devices/river2max.md)
+[River 2 Max](./doc/devices/river2max.md)
 
-![River 2 Pro](./doc/devices/river2pro.md)
+[River 2 Pro](./doc/devices/river2pro.md)
 
-![Delta 2](./doc/devices/delta2.md)
+[Delta 2](./doc/devices/delta2.md)
 
-![Delta 2 Max](./doc/devices/delta2max.md)
+[Delta 2 Max](./doc/devices/delta2max.md)
 
-![Delta Pro Ultra](./doc/devices/deltaproultra.md)
+[Delta Pro Ultra](./doc/devices/deltaproultra.md)
 
 ### Smart Home Panel
-![Smart Home Panel](./doc/devices/panel.md)
+[Smart Home Panel](./doc/devices/panel.md)
 
-![Smart Home Panel 2](./doc/devices/panel2.md)
+[Smart Home Panel 2](./doc/devices/panel2.md)
 
 ### Power Kit & Hub
-![Power Kit](./doc/devices/powerkit.md)
+[Power Kit](./doc/devices/powerkit.md)
 
 ### Power Ocean
-![Power Ocean](./doc/devices/powerocean.md)
+[Power Ocean](./doc/devices/powerocean.md)
 
 ### Generator
-![Generator](./doc/devices/generator.md)
+[Generator](./doc/devices/generator.md)
 
 Dual Fuel generator is not available, could be implemented, if data is available.
 
 ### Powerstream
-![Powerstream](./doc/devices/pstream600.md)
+[Powerstream](./doc/devices/pstream600.md)
 
 The 800W version is also implemented and only difference ist the 800W maximum power.
 supply priority 
@@ -265,25 +265,32 @@ supply priority
 -> 1/true = prioritized battery supply (charging)
 
 ### Smart Plugs
-![Smart Plug](./doc/devices/plug.md)
+[Smart Plug](./doc/devices/plug.md)
 
 ### Shelly devices
-![Shelly3EM](./doc/devices/shelly3em.md)
+[Shelly3EM](./doc/devices/shelly3em.md)
 
 ### Wave 2 Air conditioner
-![Wave2](./doc/devices/wave2.md)
+[Wave2](./doc/devices/wave2.md)
 
 Wave is not available, could be implemented, if data is available.
 
 ### Glacier refrigerator
-![Glacier](./doc/devices/glacier.md)
+[Glacier](./doc/devices/glacier.md)
 
 
 ## ToDo
 * check forgotten boundary conditions for commands (inhibit cmd, or additional value)
 * check beep command if reversing needed
+* SlaveBattery DM, outWatts multiplication by 10
 
 ## Changelog
+
+### 1.0.1 (npm)
+* (foxthefox) correction to level commands (not recognized when appendix level.xxx)
+* (foxthefox) "this." for timer functions
+* (foxthefox) corrected 
+* (foxthefox) min js-controller = 5.0.12
 
 ### 1.0.0 (npm) BREAKING
 * (foxthefox) correction of state roles (requires deletion of ecoflow objecttree!)

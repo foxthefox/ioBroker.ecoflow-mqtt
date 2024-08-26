@@ -694,7 +694,7 @@ class EcoflowMqtt extends utils.Adapter {
 									//initial and interval for requesting last quotas
 									await ef.getLastProtobufQuotas(this, this.pdevices);
 									await ef.getLastJSONQuotas(this, this.pdevices);
-									lastQuotInterval = setInterval(async () => {
+									lastQuotInterval = this.setInterval(async () => {
 										await ef.getLastProtobufQuotas(this, this.pdevices);
 										await ef.getLastJSONQuotas(this, this.pdevices);
 									}, 300 * 1000); // lastQuot every 5min
@@ -954,9 +954,9 @@ class EcoflowMqtt extends utils.Adapter {
 					}
 					//reconnection trial
 					if (this.config.enableMqttReconnect) {
-						if (recon_timer) clearTimeout(recon_timer);
+						if (recon_timer) this.clearTimeout(recon_timer);
 						// online check
-						recon_timer = setTimeout(async () => {
+						recon_timer = this.setTimeout(async () => {
 							this.log.debug('no telegrams from devices within 10min');
 							this.msgReconnects++;
 							await this.setStateAsync('info.reconnects', {
@@ -1022,7 +1022,7 @@ class EcoflowMqtt extends utils.Adapter {
 					await this.setStateAsync('info.haConnection', { val: 'online', ack: true });
 					await this.setStateAsync('info.haConnAvgLoad', { val: 0, ack: true });
 					this.log.debug('[HA] ' + 'haConnAvgLoad  interval started');
-					haLoadInterval = setInterval(async () => {
+					haLoadInterval = this.setInterval(async () => {
 						const msgcnt = this.haCounter - this.haCountMem;
 						this.haCountMem = this.haCounter;
 						await this.setStateAsync('info.haConnAvgLoad', { val: msgcnt, ack: true });
@@ -1275,11 +1275,11 @@ class EcoflowMqtt extends utils.Adapter {
 			// ...
 			// clearInterval(interval1);
 			if (recon_timer) {
-				clearTimeout(recon_timer);
+				this.clearTimeout(recon_timer);
 				this.log.debug('recon_timer stopped');
 			}
 			if (lastQuotInterval) {
-				clearInterval(lastQuotInterval);
+				this.clearInterval(lastQuotInterval);
 				this.log.debug('lastQuotInterval  interval stopped');
 			}
 			if (haLoadInterval) {
@@ -1444,7 +1444,8 @@ class EcoflowMqtt extends utils.Adapter {
 								item,
 								state.val,
 								cmd[channel][item],
-								channel
+								channel,
+								logged
 							);
 							if (Object.keys(msg).length > 0) {
 								if (logged === true) {
@@ -1637,7 +1638,7 @@ class EcoflowMqtt extends utils.Adapter {
 				if (channel === 'info' && item === 'haConnection') {
 					if (state.val == 'offline') {
 						//stop interval
-						if (haLoadInterval) clearInterval(haLoadInterval);
+						if (haLoadInterval) this.clearInterval(haLoadInterval);
 						await this.setStateAsync('info.haConnAvgLoad', { val: 0, ack: true });
 					}
 				}
@@ -1701,7 +1702,7 @@ class EcoflowMqtt extends utils.Adapter {
 				if (obj.callback && obj.message) {
 					this.log.info('send msg quota json data');
 					await ef.getLastJSONQuotas(this, this.pdevices);
-					const timeout = setTimeout(() => {
+					const timeout = this.setTimeout(() => {
 						try {
 							const quotas = JSON.stringify(this.quotas);
 							this.sendTo(
@@ -1714,7 +1715,7 @@ class EcoflowMqtt extends utils.Adapter {
 							);
 						} catch (error) {
 							this.log.debug('send quota req ->' + error);
-							clearTimeout(timeout);
+							this.clearTimeout(timeout);
 						}
 					}, 2000);
 				}
@@ -1723,7 +1724,7 @@ class EcoflowMqtt extends utils.Adapter {
 				if (obj.callback && obj.message) {
 					this.log.info('send msg quota protobuf data');
 					await ef.getLastProtobufQuotas(this, this.pdevices);
-					const timeout = setTimeout(() => {
+					const timeout = this.setTimeout(() => {
 						try {
 							const quotas = JSON.stringify(this.quotas);
 							this.sendTo(
@@ -1736,7 +1737,7 @@ class EcoflowMqtt extends utils.Adapter {
 							);
 						} catch (error) {
 							this.log.debug('send quota req ->' + error);
-							clearTimeout(timeout);
+							this.clearTimeout(timeout);
 						}
 					}, 2000);
 				}
@@ -1757,7 +1758,7 @@ class EcoflowMqtt extends utils.Adapter {
 
 					const _client = mqtt.connect(_url, optionsMqtt);
 					// Set timeout for connection
-					const timeout = setTimeout(() => {
+					const timeout = this.setTimeout(() => {
 						_client.end();
 						this.sendTo(obj.from, obj.command, { result: 'timeout' }, obj.callback);
 					}, 2000);
@@ -1765,13 +1766,13 @@ class EcoflowMqtt extends utils.Adapter {
 					// If connected, return success
 					_client.on('connect', () => {
 						_client.end();
-						clearTimeout(timeout);
+						this.clearTimeout(timeout);
 						this.sendTo(obj.from, obj.command, { result: 'connected' }, obj.callback);
 					});
 					// If not connected, return error
 					_client.on('error', (err) => {
 						_client.end();
-						clearTimeout(timeout);
+						this.clearTimeout(timeout);
 						this.log.warn(`Error on mqtt test: ${err}`);
 						this.sendTo(obj.from, obj.command, { error: err }, obj.callback);
 					});
@@ -1783,7 +1784,7 @@ class EcoflowMqtt extends utils.Adapter {
 				if (obj.callback && obj.message) {
 					this.mqttClient();
 					// Set timeout for connection
-					const timeout = setTimeout(() => {
+					const timeout = this.setTimeout(() => {
 						this.mqttClient.end();
 						this.sendTo(obj.from, obj.command, { result: 'timeout' }, obj.callback);
 					}, 2000);
@@ -1791,13 +1792,13 @@ class EcoflowMqtt extends utils.Adapter {
 					// If connected, return success
 					this.mqttClient.on('connect', () => {
 						this.mqttClient.end();
-						clearTimeout(timeout);
+						this.clearTimeout(timeout);
 						this.sendTo(obj.from, obj.command, { result: 'connected' }, obj.callback);
 					});
 					// If not connected, return error
 					this.mqttClient.on('error', (err) => {
 						this.mqttClient.end();
-						clearTimeout(timeout);
+						this.clearTimeout(timeout);
 						this.log.warn(`Error on mqtt test: ${err}`);
 						this.sendTo(obj.from, obj.command, { error: err }, obj.callback);
 					});
