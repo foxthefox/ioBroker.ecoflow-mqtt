@@ -1,5 +1,5 @@
 # States for  GLACIER
-### version: 0.0.38
+### version: 1.0.0
 
 [pd](#pd)
 
@@ -35,7 +35,7 @@
 |motorSpeed|0 | 3600 | rpm | 1 |  Motor speed |
 |motorWat|0 | 600 | W | 1 |  Motor power |
 |iceTm|0 | 1440 | min | 1 |  Duration of the current ice making (for app and LCD effect display) |
-|tmpR|-20 | 60 | °C | 1 |  Actual Right temperature zone value |
+|tmpR|-20 | 60 | °C | 0.11 |  Actual Right temperature zone value |
 |tmpL|-20 | 60 | °C | 1 |  Actual temperature of the left temperature zone |
 
 

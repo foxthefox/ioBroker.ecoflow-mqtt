@@ -1,9 +1,7 @@
 # States for  PSTREAM
-### version: 0.0.38
+### version: 1.0.0
 
 [inverter_heartbeat](#inverter_heartbeat)
-
-[InverterHeartbeat2](#InverterHeartbeat2)
 
 [energy](#energy)
 
@@ -96,70 +94,6 @@
 |----------|------|
 |installCountry| Install Country |
 |installTown| Install Town |
-
-## InverterHeartbeat2
-
-### string
-
-| State  |  Name |
-|----------|------|
-|pv1Active_1| X_Unknown_1 |
-|pv1Status_2| X_Unknown_2 |
-|pv2Active_3| X_Unknown_3 |
-|pv2Status_4| X_Unknown_4 |
-|X_Unknown_5| X_Unknown_5 |
-|status_6| X_Unknown_6 |
-|status_9| X_Unknown_9 |
-|status_10| X_Unknown_10 |
-|X_Unknown_11| X_Unknown_11 |
-|X_Unknown_14| X_Unknown_14 |
-|X_Unknown_16| X_Unknown_16 |
-|X_Unknown_18| X_Unknown_18 |
-|X_Unknown_19| X_Unknown_19 |
-|X_Unknown_20| X_Unknown_20 |
-|X_Unknown_21| X_Unknown_21 |
-|X_Unknown_22| X_Unknown_22 |
-|X_Unknown_23| X_Unknown_23 |
-|X_Unknown_24| X_Unknown_24 |
-|X_Unknown_25| X_Unknown_25 |
-|X_Unknown_26| X_Unknown_26 |
-|X_Unknown_27| X_Unknown_27 |
-|X_Unknown_28| X_Unknown_28 |
-|X_Unknown_29| X_Unknown_29 |
-|X_Unknown_30| X_Unknown_30 |
-|X_Unknown_31| X_Unknown_31 |
-|X_Unknown_33| X_Unknown_33 |
-|X_Unknown_35| X_Unknown_35 |
-|X_Unknown_36| X_Unknown_36 |
-|X_Unknown_37| X_Unknown_37 |
-|X_Unknown_38| X_Unknown_38 |
-|X_Unknown_39| X_Unknown_39 |
-|X_Unknown_40| X_Unknown_40 |
-|X_Unknown_41| X_Unknown_41 |
-|X_Unknown_42| X_Unknown_42 |
-|X_Unknown_43| X_Unknown_43 |
-|plugsConn_44| X_Unknown_44 |
-|X_Unknown_47| X_Unknown_47 |
-|unixtime_48| X_Unknown_48 |
-|X_Unknown_49| X_Unknown_49 |
-|unixtime_50| X_Unknown_50 |
-|X_Unknown_51| X_Unknown_51 |
-
-### number
-| State  |      Min     |      Max     |  Unit |  Mult |  Name |
-|----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|upperLimit|60 | 100 | % | 1 |  Charging upper limit |
-|lowerLimit|0 | 30 | % | 1 |  Discharging lower limit |
-|baseLoad|0 | 800 | W | 0.1 |  Home base load |
-|powerPlugsPos|0 | 10000 | W | 0.1 |  Power of plugs |
-|X_Unknown_15|-1000 | 1000 |  | 1 |  X_Unknown_15 |
-|X_Unknown_17|0 | 100 |  | 0.0001 |  X_Unknown_17 |
-|uptime|0 |  n/a | s | 1 |  Power Stream uptime |
-|X_Unknown_34|-100 | 100 |  | 1 |  X_Unknown_34 |
-|gridWatt_45|0 | 10000 | W | 0.1 |  Power to Grid |
-|powerPlugsNeg|0 | 10000 | W | 0.1 |  Power of plugs (-) |
-|wifiRssi|-90 | 10 | dBm | 1 |  wifi RSSI |
-
 
 ## energy
 

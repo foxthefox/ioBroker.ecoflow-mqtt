@@ -1,317 +1,277 @@
 {
-    "common": {
-        "name": "ecoflow-mqtt",
-        "version": "1.0.0",
-        "news": {
-            "1.0.0": {
-                "en": "correction of state roles (requires deletion of ecoflow objecttree!); ATTENTION! cancelation of 'InverterHeartbeat2' data from 'power stream'",
-                "de": "Korrektur der Statusrollen (erfordert Löschung des Ecoflow-Objektbaums!); AUFMERKSAMKEIT! Löschung der „InverterHeartbeat2“-Daten aus „Power Stream“",
-                "ru": "исправление государственных ролей (требуется удаление дерева объектов экопотока!); ВНИМАНИЕ! отмена данных «InverterHeartbeat2» из «потока энергии»",
-                "pt": "correção de funções de estado (requer exclusão do ecoflow objecttree!); ATENÇÃO! cancelamento de dados 'InverterHeartbeat2' de 'power stream'",
-                "nl": "correctie van statusrollen (vereist verwijdering van ecoflow objectboom!); AANDACHT! annulering van 'InverterHeartbeat2'-gegevens uit 'powerstream'",
-                "fr": "correction des rôles d'état (nécessite la suppression de l'arbre d'objets ecoflow !) ; ATTENTION! annulation des données 'InverterHeartbeat2' du 'Power Stream'",
-                "it": "correzione dei ruoli statali (richiede la cancellazione dell'oggetto ecoflow!); ATTENZIONE! cancellazione dei dati 'InverterHeartbeat2' da 'power stream'",
-                "es": "corrección de roles estatales (¡requiere la eliminación del árbol de objetos de ecoflow!); ¡ATENCIÓN! cancelación de datos 'InverterHeartbeat2' de 'power stream'",
-                "pl": "korekta ról stanowych (wymaga usunięcia drzewa obiektów ecoflow!); UWAGA! anulowanie danych „InverterHeartbeat2” ze „strumienia mocy”",
-                "uk": "виправлення ролей стану (вимагає видалення дерева об'єктів ecoflow!); УВАГА! скасування даних \"InverterHeartbeat2\" з \"power stream\"",
-                "zh-cn": "修正状态角色（需要删除 Ecoflow 对象树！）；注意力！从“电力流”中取消“InverterHeartbeat2”数据"
-            },
-            "0.0.42": {
-                "en": "correction SHP command, new data point power ocean, shelly3em model definition, IOB checker corrections ",
-                "de": "Korrektur des SHP-Befehls, neuer Datenpunkt Power Ocean, Shelly3em-Modelldefinition, IOB-Checker-Korrekturen",
-                "ru": "коррекция команды SHP, новая точка данных Power Ocean, определение модели shelly3em, исправления средства проверки IOB",
-                "pt": "correção do comando SHP, novo ponto de dados power ocean, definição do modelo shelly3em, correções do verificador IOB",
-                "nl": "correctie SHP-opdracht, nieuwe datapunt power ocean, shelly3em-modeldefinitie, IOB-checkercorrecties",
-                "fr": "correction de la commande SHP, nouveau point de données Power Ocean, définition du modèle Shelly3em, corrections du vérificateur IOB",
-                "it": "correzione comando SHP, nuovo data point power ocean, definizione del modello shelly3em, correzioni del controllo IOB",
-                "es": "corrección del comando SHP, nuevo punto de datos power ocean, definición del modelo shelly3em, correcciones del verificador IOB",
-                "pl": "korekta polecenia SHP, nowy punkt danych Power Ocean, definicja modelu Shelly3em, poprawki kontrolera IOB",
-                "uk": "виправлення команди SHP, нова точка даних power ocean, визначення моделі shelly3em, виправлення засобу перевірки IOB",
-                "zh-cn": "修正SHP命令，新数据点power ocean，shelly3em模型定义，IOB检查器修正"
-            },
-            "0.0.41": {
-                "en": "correction in Compare function",
-                "de": "Korrektur in der Vergleichsfunktion",
-                "ru": "исправление в функции сравнения",
-                "pt": "correção na função Comparar",
-                "nl": "correctie in de vergelijkingsfunctie",
-                "fr": "correction dans la fonction Comparer",
-                "it": "correzione nella funzione Confronta",
-                "es": "corrección en la función Comparar",
-                "pl": "korekta w funkcji Porównaj",
-                "uk": "виправлення у функції порівняння",
-                "zh-cn": "比较功能中的修正"
-            },
-            "0.0.38": {
-                "en": " additional datapoints for power ocean",
-                "de": "zusätzliche Datenpunkte für Power Ocean",
-                "ru": "дополнительные точки данных для Power Ocean",
-                "pt": "pontos de dados adicionais para energia oceânica",
-                "nl": "extra datapunten voor power ocean",
-                "fr": "points de données supplémentaires pour Power Ocean",
-                "it": "punti dati aggiuntivi per Power Ocean",
-                "es": "puntos de datos adicionales para power ocean",
-                "pl": "dodatkowe punkty danych dla Power Ocean",
-                "uk": "додаткові точки даних для power ocean",
-                "zh-cn": "Power Ocean 的附加数据点"
-            },
-            "0.0.34": {
-                "en": "added power ocean, added smart home panel, corrections, improvements",
-                "de": "Power Ocean hinzugefügt, Smart Home Panel hinzugefügt, Korrekturen, Verbesserungen",
-                "ru": "добавлен океан энергии, добавлена ​​панель умного дома, исправления, улучшения",
-                "pt": "adicionado poder oceano, adicionado painel inicial inteligente, correções, melhorias",
-                "nl": "Power Ocean toegevoegd, Smart Home-paneel toegevoegd, correcties, verbeteringen",
-                "fr": "ajout d'un océan de puissance, ajout d'un panneau de maison intelligente, corrections, améliorations",
-                "it": "aggiunto power ocean, aggiunto pannello smart home, correzioni, miglioramenti",
-                "es": "océano de energía agregado, panel de hogar inteligente agregado, correcciones, mejoras",
-                "pl": "dodano ocean mocy, dodano panel inteligentnego domu, poprawki, ulepszenia",
-                "uk": "доданий потужний океан, додана панель розумного будинку, виправлення, покращення",
-                "zh-cn": "添加了电力海洋，添加了智能家居面板，更正，改进"
-            },
-            "0.0.33": {
-                "en": "added Power Kit/Hub; added 'ratedPower' for PS",
-                "de": "Power Kit/Hub hinzugefügt; Nennleistung für PS hinzugefügt",
-                "ru": "добавлен Power Kit/Hub; добавлена ​​номинальная мощность для PS",
-                "pt": "adicionado kit de energia/hub; adicionado potência nominal para PS",
-                "nl": "toegevoegde Power Kit/Hub; toegevoegd nominaal vermogen voor PS",
-                "fr": "ajout d'un kit d'alimentation/hub ; Ajout de la puissance nominale pour PS",
-                "it": "aggiunto Power Kit/Hub; aggiunta potenza nominale per PS",
-                "es": "kit de alimentación/concentrador agregado; potencia nominal agregada para PS",
-                "pl": "dodano zestaw zasilający/piastę; dodano moc znamionową dla PS",
-                "uk": "доданий Power Kit/Hub; додана номінальна потужність для PS",
-                "zh-cn": "添加了电源套件/集线器；添加了 PS 的额定功率"
-            }
-        },
-        "messages": [
-            {
-                "condition": {
-                    "operand": "and",
-                    "rules": [
-                        "oldVersion<0.0.8",
-                        "newVersion>=0.0.9"
-                    ]
-                },
-                "title": {
-                    "en": "Important notice!",
-                    "de": "Wichtiger Hinweis!",
-                    "ru": "Важное замечание!",
-                    "pt": "Notícia importante!",
-                    "nl": "Belangrijke mededeling!",
-                    "fr": "Avis important!",
-                    "it": "Avviso IMPORTANTE!",
-                    "es": "Noticia importante!",
-                    "pl": "Ważna uwaga!",
-                    "uk": "Погода!",
-                    "zh-cn": "重要通知!"
-                },
-                "text": {
-                    "en": "In order to work properly the adapter requires ioBroker.admin >=6.12.3. Please ensure this boundary condition. You can do this by enabling expert settings and installation from npm as source. ",
-                    "de": "Damit der Adapter ordnungsgemäß funktioniert, ist ioBroker.admin >=6.12.3 erforderlich. Bitte achten Sie auf diese Randbedingung. Sie können dies tun, indem Sie Experteneinstellungen und die Installation von npm als Quelle aktivieren.",
-                    "ru": "Для правильной работы адаптера требуется ioBroker.admin >=6.12.3. Пожалуйста, обеспечьте это граничное условие. Это можно сделать, включив экспертные настройки и установив их из npm в качестве источника.",
-                    "pt": "Para funcionar corretamente, o adaptador requer ioBroker.admin >=6.12.3. Por favor, garanta esta condição de limite. Você pode fazer isso habilitando configurações avançadas e instalação do npm como fonte.",
-                    "nl": "Om goed te kunnen werken heeft de adapter ioBroker.admin >=6.12.3 nodig. Zorg ervoor dat deze randvoorwaarde aanwezig is. Dit kunt u doen door expertinstellingen en installatie vanuit npm als bron in te schakelen.",
-                    "fr": "Pour fonctionner correctement, l'adaptateur nécessite ioBroker.admin >=6.12.3. Veuillez vous assurer de cette condition aux limites. Vous pouvez le faire en activant les paramètres experts et l'installation à partir de npm comme source.",
-                    "it": "Per funzionare correttamente l'adattatore richiede ioBroker.admin >=6.12.3. Si prega di garantire questa condizione al contorno. Puoi farlo abilitando le impostazioni avanzate e l'installazione da npm come sorgente.",
-                    "es": "Para funcionar correctamente, el adaptador requiere ioBroker.admin >=6.12.3. Asegúrese de que se cumpla esta condición límite. Puede hacerlo habilitando la configuración experta y la instalación desde npm como fuente.",
-                    "pl": "Do poprawnego działania adapter wymaga ioBroker.admin >=6.12.3. Proszę zapewnić ten warunek brzegowy. Możesz to zrobić, włączając ustawienia eksperckie i instalację z npm jako źródła.",
-                    "uk": "Для належної роботи адаптеру потрібен ioBroker.admin >=6.12.3. Будь ласка, переконайтеся в цій граничній умові. Ви можете зробити це, увімкнувши експертні налаштування та інсталяцію з npm як джерела.",
-                    "zh-cn": "为了正常工作，适配器需要 ioBroker.admin >=6.12.3。请确保这个边界条件。您可以通过启用专家设置并从 npm 作为源进行安装来实现此目的。"
-                },
-                "level": "warn",
-                "buttons": [
-                    "ok",
-                    "cancel"
-                ]
-            },
-            {
-                "condition": {
-                    "operand": "and",
-                    "rules": [
-                        "oldVersion<1.0.0",
-                        "newVersion>=1.0.0"
-                    ]
-                },
-                "title": {
-                    "en": "Important notice!",
-                    "de": "Wichtiger Hinweis!",
-                    "ru": "Важное замечание!",
-                    "pt": "Notícia importante!",
-                    "nl": "Belangrijke mededeling!",
-                    "fr": "Avis important!",
-                    "it": "Avviso IMPORTANTE!",
-                    "es": "Noticia importante!",
-                    "pl": "Ważna uwaga!",
-                    "uk": "Погода!",
-                    "zh-cn": "重要通知!"
-                },
-                "text": {
-                    "en": "State roles of the datapoints are corrected, please stop the adapter, delete all objects of the ecoflow-mqtt instance and restart adapter. Datapoints are recreated.",
-                    "de": "Statusrollen der Datenpunkte wurden korrigiert, bitte stoppen Sie den Adapter, löschen Sie alle Objekte der ecoflow-mqtt-Instanz und starten Sie den Adapter neu. Datenpunkte werden neu erstellt.",
-                    "ru": "Роли состояния точек данных исправлены. Остановите адаптер, удалите все объекты экземпляра ecoflow-mqtt и перезапустите адаптер. Точки данных воссоздаются.",
-                    "pt": "As funções de estado dos pontos de dados foram corrigidas. Pare o adaptador, exclua todos os objetos da instância ecoflow-mqtt e reinicie o adaptador. Os pontos de dados são recriados.",
-                    "nl": "De statusrollen van de datapunten zijn gecorrigeerd. Stop de adapter, verwijder alle objecten van de ecoflow-mqtt-instantie en start de adapter opnieuw. Datapunten worden opnieuw gemaakt.",
-                    "fr": "Les rôles d'état des points de données sont corrigés, veuillez arrêter l'adaptateur, supprimer tous les objets de l'instance ecoflow-mqtt et redémarrer l'adaptateur. Les points de données sont recréés.",
-                    "it": "I ruoli di stato dei datapoint sono corretti, arresta l'adattatore, elimina tutti gli oggetti dell'istanza ecoflow-mqtt e riavvia l'adattatore. I punti dati vengono ricreati.",
-                    "es": "Se corrigen las funciones de estado de los puntos de datos. Detenga el adaptador, elimine todos los objetos de la instancia ecoflow-mqtt y reinicie el adaptador. Se recrean los puntos de datos.",
-                    "pl": "Role stanowe punktów danych zostały poprawione. Zatrzymaj adapter, usuń wszystkie obiekty instancji ecoflow-mqtt i zrestartuj adapter. Punkty danych są odtwarzane.",
-                    "uk": "Ролі станів точок даних виправлено. Зупиніть адаптер, видаліть усі об’єкти екземпляра ecoflow-mqtt і перезапустіть адаптер. Точки даних створюються заново.",
-                    "zh-cn": "数据点的状态角色已更正，请停止适配器，删除ecoflow-mqtt实例的所有对象并重新启动适配器。数据点被重新创建。"
-                },
-                "level": "warn",
-                "buttons": [
-                    "ok",
-                    "cancel"
-                ]
-            }
-        ],
-        "titleLang": {
-            "en": "ecoflow",
-            "de": "Ecoflow",
-            "ru": "экопоток",
-            "pt": "ecofluxo",
-            "nl": "ecostroom",
-            "fr": "écoflux",
-            "it": "ecoflusso",
-            "es": "ecoflujo",
-            "pl": "ekoprzepływ",
-            "uk": "екопотік",
-            "zh-cn": "生态流"
-        },
-        "desc": {
-            "en": "connects to ecoflow products",
-            "de": "verbindet sich mit Ecoflow-Produkten",
-            "ru": "подключается к продуктам Ecoflow",
-            "pt": "conecta-se a produtos ecoflow",
-            "nl": "koppelt aan ecoflow-producten",
-            "fr": "se connecte aux produits ecoflow",
-            "it": "si collega ai prodotti ecoflow",
-            "es": "se conecta a productos ecoflow",
-            "pl": "łączy się z produktami ecoflow",
-            "uk": "підключається до продуктів ecoflow",
-            "zh-cn": "连接至 Ecoflow 产品"
-        },
-        "authors": [
-            "foxthefox <foxthefox@wysiwis.net>"
-        ],
-        "keywords": [
-            "ecoflow",
-            "powerstream",
-            "powerstation",
-            "delta",
-            "river",
-            "powerkit",
-            "powerocaen",
-            "shp"
-        ],
-        "platform": "Javascript/Node.js",
-        "icon": "ecoflow-mqtt.png",
-        "enabled": true,
-        "extIcon": "https://raw.githubusercontent.com/foxthefox/ioBroker.ecoflow-mqtt/main/admin/ecoflow-mqtt.png",
-        "readme": "https://github.com/foxthefox/ioBroker.ecoflow-mqtt/blob/main/README.md",
-        "loglevel": "debug",
-        "mode": "daemon",
-        "type": "iot-systems",
-        "compact": true,
-        "messagebox": true,
-        "connectionType": "cloud",
-        "dataSource": "push",
-        "tier": 3,
-        "licenseInformation": {
-            "license": "MIT",
-            "link": "https://opensource.org/license/mit/",
-            "type": "free"
-        },
-        "adminUI": {
-            "config": "json"
-        },
-        "dependencies": [
-            {
-                "js-controller": ">=4.0.24"
-            }
-        ],
-        "globalDependencies": [
-            {
-                "admin": ">=6.12.3"
-            }
-        ]
-    },
-    "protectedNative": [
-        "userName",
-        "userPassword",
-        "mqttUserId",
-        "mqttPwd",
-        "mqttClientId",
-        "haMqttUserId",
-        "haMqttUserPWd"
-    ],
-    "encryptedNative": [
-        "userPassword",
-        "mqttPwd",
-        "haMqttUserPWd"
-    ],
-    "native": {
-        "userName": "userEmail",
-        "userPassword": "pw",
-        "mqttUserId": "1xxxx",
-        "mqttUserName": "app-....",
-        "mqttPwd": "xxxx",
-        "mqttClientId": "ANDRIOD-...",
-        "mqttUrl": "mqtts://mqtt-e.ecoflow.com",
-        "mqttPort": 8883,
-        "enableMqttReconnect": false,
-        "pstreams": [],
-        "pstations": [],
-        "plugs": [],
-        "waves": [],
-        "glaciers": [],
-        "generators": [],
-        "panels": [],
-        "shellies": [],
-        "powerkits": [],
-        "poweroceans": [],
-        "haMqttUserId": "hamqttuser",
-        "haMqttUserPWd": "hamqttusePWd",
-        "haMqttUrl": "192.x.x.x",
-        "haMqttPort": 1883,
-        "haMqttEnable": false,
-        "haMqttProtocol": "mqtt://",
-        "haDiscoveryRetain": false,
-        "msgHaAutoDiscovery": false,
-        "msgHaIncomming": false,
-        "msgHaOutgoing": false,
-        "msgHaStatusInitial": false,
-        "showDiscoveryObject": false,
-        "haTopic": "iob_ef",
-        "msgStateCreation": false,
-        "msgUpdate": false,
-        "msgUpdateValue": false,
-        "msgSetGet": false,
-        "msgCmd": false,
-        "msgUnknownMsg": false,
-        "showHex": false
-    },
-    "objects": [],
-    "instanceObjects": [
-        {
-            "_id": "info",
-            "type": "channel",
-            "common": {
-                "name": "Information"
-            },
-            "native": {}
-        },
-        {
-            "_id": "info.connection",
-            "type": "state",
-            "common": {
-                "role": "indicator.connected",
-                "name": "Device or service connected",
-                "type": "boolean",
-                "read": true,
-                "write": false,
-                "def": false
-            },
-            "native": {}
-        }
-    ]
+	"common": {
+		"name": "ecoflow-mqtt",
+		"version": "1.0.1",
+		"news": {
+			"1.0.1": {
+				"en": "corrections for level commands, other corrections",
+				"de": "Korrekturen für Levelbefehle, sonstige Korrekturen",
+				"ru": "исправления команд уровня, другие исправления",
+				"pt": "correções para comandos de nível, outras correções",
+				"nl": "correcties voor niveaucommando's, andere correcties",
+				"fr": "corrections pour les commandes de niveau, autres corrections",
+				"it": "correzioni per comandi di livello, altre correzioni",
+				"es": "correcciones para comandos de nivel, otras correcciones",
+				"pl": "poprawki dla poleceń poziomu, inne poprawki",
+				"uk": "виправлення для команд рівня, інші виправлення",
+				"zh-cn": "级别命令的更正，其他更正"
+			},
+			"1.0.0": {
+				"en": "correction of state roles (requires deletion of ecoflow objecttree!); ATTENTION! cancelation of 'InverterHeartbeat2' data from 'power stream'",
+				"de": "Korrektur der Statusrollen (erfordert Löschung des Ecoflow-Objektbaums!); AUFMERKSAMKEIT! Löschung der „InverterHeartbeat2“-Daten aus „Power Stream“",
+				"ru": "исправление государственных ролей (требуется удаление дерева объектов экопотока!); ВНИМАНИЕ! отмена данных «InverterHeartbeat2» из «потока энергии»",
+				"pt": "correção de funções de estado (requer exclusão do ecoflow objecttree!); ATENÇÃO! cancelamento de dados 'InverterHeartbeat2' de 'power stream'",
+				"nl": "correctie van statusrollen (vereist verwijdering van ecoflow objectboom!); AANDACHT! annulering van 'InverterHeartbeat2'-gegevens uit 'powerstream'",
+				"fr": "correction des rôles d'état (nécessite la suppression de l'arbre d'objets ecoflow !) ; ATTENTION! annulation des données 'InverterHeartbeat2' du 'Power Stream'",
+				"it": "correzione dei ruoli statali (richiede la cancellazione dell'oggetto ecoflow!); ATTENZIONE! cancellazione dei dati 'InverterHeartbeat2' da 'power stream'",
+				"es": "corrección de roles estatales (¡requiere la eliminación del árbol de objetos de ecoflow!); ¡ATENCIÓN! cancelación de datos 'InverterHeartbeat2' de 'power stream'",
+				"pl": "korekta ról stanowych (wymaga usunięcia drzewa obiektów ecoflow!); UWAGA! anulowanie danych „InverterHeartbeat2” ze „strumienia mocy”",
+				"uk": "виправлення ролей стану (вимагає видалення дерева об'єктів ecoflow!); УВАГА! скасування даних \"InverterHeartbeat2\" з \"power stream\"",
+				"zh-cn": "修正状态角色（需要删除 Ecoflow 对象树！）；注意力！从“电力流”中取消“InverterHeartbeat2”数据"
+			},
+			"0.0.42": {
+				"en": "correction SHP command, new data point power ocean, shelly3em model definition, IOB checker corrections ",
+				"de": "Korrektur des SHP-Befehls, neuer Datenpunkt Power Ocean, Shelly3em-Modelldefinition, IOB-Checker-Korrekturen",
+				"ru": "коррекция команды SHP, новая точка данных Power Ocean, определение модели shelly3em, исправления средства проверки IOB",
+				"pt": "correção do comando SHP, novo ponto de dados power ocean, definição do modelo shelly3em, correções do verificador IOB",
+				"nl": "correctie SHP-opdracht, nieuwe datapunt power ocean, shelly3em-modeldefinitie, IOB-checkercorrecties",
+				"fr": "correction de la commande SHP, nouveau point de données Power Ocean, définition du modèle Shelly3em, corrections du vérificateur IOB",
+				"it": "correzione comando SHP, nuovo data point power ocean, definizione del modello shelly3em, correzioni del controllo IOB",
+				"es": "corrección del comando SHP, nuevo punto de datos power ocean, definición del modelo shelly3em, correcciones del verificador IOB",
+				"pl": "korekta polecenia SHP, nowy punkt danych Power Ocean, definicja modelu Shelly3em, poprawki kontrolera IOB",
+				"uk": "виправлення команди SHP, нова точка даних power ocean, визначення моделі shelly3em, виправлення засобу перевірки IOB",
+				"zh-cn": "修正SHP命令，新数据点power ocean，shelly3em模型定义，IOB检查器修正"
+			},
+			"0.0.34": {
+				"en": "added power ocean, added smart home panel, corrections, improvements",
+				"de": "Power Ocean hinzugefügt, Smart Home Panel hinzugefügt, Korrekturen, Verbesserungen",
+				"ru": "добавлен океан энергии, добавлена ​​панель умного дома, исправления, улучшения",
+				"pt": "adicionado poder oceano, adicionado painel inicial inteligente, correções, melhorias",
+				"nl": "Power Ocean toegevoegd, Smart Home-paneel toegevoegd, correcties, verbeteringen",
+				"fr": "ajout d'un océan de puissance, ajout d'un panneau de maison intelligente, corrections, améliorations",
+				"it": "aggiunto power ocean, aggiunto pannello smart home, correzioni, miglioramenti",
+				"es": "océano de energía agregado, panel de hogar inteligente agregado, correcciones, mejoras",
+				"pl": "dodano ocean mocy, dodano panel inteligentnego domu, poprawki, ulepszenia",
+				"uk": "доданий потужний океан, додана панель розумного будинку, виправлення, покращення",
+				"zh-cn": "添加了电力海洋，添加了智能家居面板，更正，改进"
+			},
+			"0.0.33": {
+				"en": "added Power Kit/Hub; added 'ratedPower' for PS",
+				"de": "Power Kit/Hub hinzugefügt; Nennleistung für PS hinzugefügt",
+				"ru": "добавлен Power Kit/Hub; добавлена ​​номинальная мощность для PS",
+				"pt": "adicionado kit de energia/hub; adicionado potência nominal para PS",
+				"nl": "toegevoegde Power Kit/Hub; toegevoegd nominaal vermogen voor PS",
+				"fr": "ajout d'un kit d'alimentation/hub ; Ajout de la puissance nominale pour PS",
+				"it": "aggiunto Power Kit/Hub; aggiunta potenza nominale per PS",
+				"es": "kit de alimentación/concentrador agregado; potencia nominal agregada para PS",
+				"pl": "dodano zestaw zasilający/piastę; dodano moc znamionową dla PS",
+				"uk": "доданий Power Kit/Hub; додана номінальна потужність для PS",
+				"zh-cn": "添加了电源套件/集线器；添加了 PS 的额定功率"
+			}
+		},
+		"messages": [
+			{
+				"condition": {
+					"operand": "and",
+					"rules": [ "oldVersion<0.0.8", "newVersion>=0.0.9" ]
+				},
+				"title": {
+					"en": "Important notice!",
+					"de": "Wichtiger Hinweis!",
+					"ru": "Важное замечание!",
+					"pt": "Notícia importante!",
+					"nl": "Belangrijke mededeling!",
+					"fr": "Avis important!",
+					"it": "Avviso IMPORTANTE!",
+					"es": "Noticia importante!",
+					"pl": "Ważna uwaga!",
+					"uk": "Погода!",
+					"zh-cn": "重要通知!"
+				},
+				"text": {
+					"en": "In order to work properly the adapter requires ioBroker.admin >=6.12.3. Please ensure this boundary condition. You can do this by enabling expert settings and installation from npm as source. ",
+					"de": "Damit der Adapter ordnungsgemäß funktioniert, ist ioBroker.admin >=6.12.3 erforderlich. Bitte achten Sie auf diese Randbedingung. Sie können dies tun, indem Sie Experteneinstellungen und die Installation von npm als Quelle aktivieren.",
+					"ru": "Для правильной работы адаптера требуется ioBroker.admin >=6.12.3. Пожалуйста, обеспечьте это граничное условие. Это можно сделать, включив экспертные настройки и установив их из npm в качестве источника.",
+					"pt": "Para funcionar corretamente, o adaptador requer ioBroker.admin >=6.12.3. Por favor, garanta esta condição de limite. Você pode fazer isso habilitando configurações avançadas e instalação do npm como fonte.",
+					"nl": "Om goed te kunnen werken heeft de adapter ioBroker.admin >=6.12.3 nodig. Zorg ervoor dat deze randvoorwaarde aanwezig is. Dit kunt u doen door expertinstellingen en installatie vanuit npm als bron in te schakelen.",
+					"fr": "Pour fonctionner correctement, l'adaptateur nécessite ioBroker.admin >=6.12.3. Veuillez vous assurer de cette condition aux limites. Vous pouvez le faire en activant les paramètres experts et l'installation à partir de npm comme source.",
+					"it": "Per funzionare correttamente l'adattatore richiede ioBroker.admin >=6.12.3. Si prega di garantire questa condizione al contorno. Puoi farlo abilitando le impostazioni avanzate e l'installazione da npm come sorgente.",
+					"es": "Para funcionar correctamente, el adaptador requiere ioBroker.admin >=6.12.3. Asegúrese de que se cumpla esta condición límite. Puede hacerlo habilitando la configuración experta y la instalación desde npm como fuente.",
+					"pl": "Do poprawnego działania adapter wymaga ioBroker.admin >=6.12.3. Proszę zapewnić ten warunek brzegowy. Możesz to zrobić, włączając ustawienia eksperckie i instalację z npm jako źródła.",
+					"uk": "Для належної роботи адаптеру потрібен ioBroker.admin >=6.12.3. Будь ласка, переконайтеся в цій граничній умові. Ви можете зробити це, увімкнувши експертні налаштування та інсталяцію з npm як джерела.",
+					"zh-cn": "为了正常工作，适配器需要 ioBroker.admin >=6.12.3。请确保这个边界条件。您可以通过启用专家设置并从 npm 作为源进行安装来实现此目的。"
+				},
+				"level": "warn",
+				"buttons": [ "ok", "cancel" ]
+			},
+			{
+				"condition": {
+					"operand": "and",
+					"rules": [ "oldVersion<1.0.0", "newVersion>=1.0.0" ]
+				},
+				"title": {
+					"en": "Important notice!",
+					"de": "Wichtiger Hinweis!",
+					"ru": "Важное замечание!",
+					"pt": "Notícia importante!",
+					"nl": "Belangrijke mededeling!",
+					"fr": "Avis important!",
+					"it": "Avviso IMPORTANTE!",
+					"es": "Noticia importante!",
+					"pl": "Ważna uwaga!",
+					"uk": "Погода!",
+					"zh-cn": "重要通知!"
+				},
+				"text": {
+					"en": "State roles of the datapoints are corrected, please stop the adapter, delete all objects of the ecoflow-mqtt instance and restart adapter. Datapoints are recreated.",
+					"de": "Statusrollen der Datenpunkte wurden korrigiert, bitte stoppen Sie den Adapter, löschen Sie alle Objekte der ecoflow-mqtt-Instanz und starten Sie den Adapter neu. Datenpunkte werden neu erstellt.",
+					"ru": "Роли состояния точек данных исправлены. Остановите адаптер, удалите все объекты экземпляра ecoflow-mqtt и перезапустите адаптер. Точки данных воссоздаются.",
+					"pt": "As funções de estado dos pontos de dados foram corrigidas. Pare o adaptador, exclua todos os objetos da instância ecoflow-mqtt e reinicie o adaptador. Os pontos de dados são recriados.",
+					"nl": "De statusrollen van de datapunten zijn gecorrigeerd. Stop de adapter, verwijder alle objecten van de ecoflow-mqtt-instantie en start de adapter opnieuw. Datapunten worden opnieuw gemaakt.",
+					"fr": "Les rôles d'état des points de données sont corrigés, veuillez arrêter l'adaptateur, supprimer tous les objets de l'instance ecoflow-mqtt et redémarrer l'adaptateur. Les points de données sont recréés.",
+					"it": "I ruoli di stato dei datapoint sono corretti, arresta l'adattatore, elimina tutti gli oggetti dell'istanza ecoflow-mqtt e riavvia l'adattatore. I punti dati vengono ricreati.",
+					"es": "Se corrigen las funciones de estado de los puntos de datos. Detenga el adaptador, elimine todos los objetos de la instancia ecoflow-mqtt y reinicie el adaptador. Se recrean los puntos de datos.",
+					"pl": "Role stanowe punktów danych zostały poprawione. Zatrzymaj adapter, usuń wszystkie obiekty instancji ecoflow-mqtt i zrestartuj adapter. Punkty danych są odtwarzane.",
+					"uk": "Ролі станів точок даних виправлено. Зупиніть адаптер, видаліть усі об’єкти екземпляра ecoflow-mqtt і перезапустіть адаптер. Точки даних створюються заново.",
+					"zh-cn": "数据点的状态角色已更正，请停止适配器，删除ecoflow-mqtt实例的所有对象并重新启动适配器。数据点被重新创建。"
+				},
+				"level": "warn",
+				"buttons": [ "ok", "cancel" ]
+			}
+		],
+		"titleLang": {
+			"en": "ecoflow",
+			"de": "Ecoflow",
+			"ru": "экопоток",
+			"pt": "ecofluxo",
+			"nl": "ecostroom",
+			"fr": "écoflux",
+			"it": "ecoflusso",
+			"es": "ecoflujo",
+			"pl": "ekoprzepływ",
+			"uk": "екопотік",
+			"zh-cn": "生态流"
+		},
+		"desc": {
+			"en": "connects to ecoflow products",
+			"de": "verbindet sich mit Ecoflow-Produkten",
+			"ru": "подключается к продуктам Ecoflow",
+			"pt": "conecta-se a produtos ecoflow",
+			"nl": "koppelt aan ecoflow-producten",
+			"fr": "se connecte aux produits ecoflow",
+			"it": "si collega ai prodotti ecoflow",
+			"es": "se conecta a productos ecoflow",
+			"pl": "łączy się z produktami ecoflow",
+			"uk": "підключається до продуктів ecoflow",
+			"zh-cn": "连接至 Ecoflow 产品"
+		},
+		"authors": [ "foxthefox <foxthefox@wysiwis.net>" ],
+		"keywords": [ "ecoflow", "powerstream", "powerstation", "delta", "river", "powerkit", "powerocaen", "shp" ],
+		"platform": "Javascript/Node.js",
+		"icon": "ecoflow-mqtt.png",
+		"enabled": true,
+		"extIcon": "https://raw.githubusercontent.com/foxthefox/ioBroker.ecoflow-mqtt/main/admin/ecoflow-mqtt.png",
+		"readme": "https://github.com/foxthefox/ioBroker.ecoflow-mqtt/blob/main/README.md",
+		"loglevel": "debug",
+		"mode": "daemon",
+		"type": "iot-systems",
+		"compact": true,
+		"messagebox": true,
+		"connectionType": "cloud",
+		"dataSource": "push",
+		"tier": 3,
+		"licenseInformation": {
+			"license": "MIT",
+			"link": "https://opensource.org/license/mit/",
+			"type": "free"
+		},
+		"adminUI": {
+			"config": "json"
+		},
+		"dependencies": [
+			{
+				"js-controller": ">=5.0.12"
+			}
+		],
+		"globalDependencies": [
+			{
+				"admin": ">=6.12.3"
+			}
+		]
+	},
+	"protectedNative": [
+		"userName",
+		"userPassword",
+		"mqttUserId",
+		"mqttPwd",
+		"mqttClientId",
+		"haMqttUserId",
+		"haMqttUserPWd"
+	],
+	"encryptedNative": [ "userPassword", "mqttPwd", "haMqttUserPWd" ],
+	"native": {
+		"userName": "userEmail",
+		"userPassword": "pw",
+		"mqttUserId": "1xxxx",
+		"mqttUserName": "app-....",
+		"mqttPwd": "xxxx",
+		"mqttClientId": "ANDRIOD-...",
+		"mqttUrl": "mqtts://mqtt-e.ecoflow.com",
+		"mqttPort": 8883,
+		"enableMqttReconnect": false,
+		"pstreams": [],
+		"pstations": [],
+		"plugs": [],
+		"waves": [],
+		"glaciers": [],
+		"generators": [],
+		"panels": [],
+		"shellies": [],
+		"powerkits": [],
+		"poweroceans": [],
+		"haMqttUserId": "hamqttuser",
+		"haMqttUserPWd": "hamqttusePWd",
+		"haMqttUrl": "192.x.x.x",
+		"haMqttPort": 1883,
+		"haMqttEnable": false,
+		"haMqttProtocol": "mqtt://",
+		"haDiscoveryRetain": false,
+		"msgHaAutoDiscovery": false,
+		"msgHaIncomming": false,
+		"msgHaOutgoing": false,
+		"msgHaStatusInitial": false,
+		"showDiscoveryObject": false,
+		"haTopic": "iob_ef",
+		"msgStateCreation": false,
+		"msgUpdate": false,
+		"msgUpdateValue": false,
+		"msgSetGet": false,
+		"msgCmd": false,
+		"msgUnknownMsg": false,
+		"showHex": false
+	},
+	"objects": [],
+	"instanceObjects": [
+		{
+			"_id": "info",
+			"type": "channel",
+			"common": {
+				"name": "Information"
+			},
+			"native": {}
+		},
+		{
+			"_id": "info.connection",
+			"type": "state",
+			"common": {
+				"role": "indicator.connected",
+				"name": "Device or service connected",
+				"type": "boolean",
+				"read": true,
+				"write": false,
+				"def": false
+			},
+			"native": {}
+		}
+	]
 }

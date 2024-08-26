@@ -1,5 +1,5 @@
 # States for  PANEL
-### version: 0.0.38
+### version: 1.0.0
 
 [heartbeat](#heartbeat)
 

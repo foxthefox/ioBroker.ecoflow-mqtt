@@ -1,5 +1,5 @@
 # States for  RIVER2MAX
-### version: 0.0.38
+### version: 1.0.0
 
 [bmsMaster](#bmsMaster)
 

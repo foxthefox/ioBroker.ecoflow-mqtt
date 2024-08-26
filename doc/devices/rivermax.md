@@ -1,5 +1,5 @@
 # States for  RIVERMAX
-### version: 0.0.38
+### version: 1.0.0
 
 [inv](#inv)
 
@@ -51,7 +51,7 @@
 
 | State  |      Min     |     Max     |  Unit |  Mult |  Name |  cmd |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
-|cfgStandbyMin| 0 | 720 | min | 1 |  AC standby time /min 0 Never standby 720 Default value | {from:Android,operateType:TCP,id:153750799,lang:en-us,params:{id:153,standByMins:360},version:1.0} |
+|cfgStandbyMin| 0 | 1440 | min | 1 |  AC standby time /min 0 Never standby 1440 Default value | {from:Android,operateType:TCP,id:153750799,lang:en-us,params:{id:153,standByMins:360},version:1.0} |
 
 ### switch
 

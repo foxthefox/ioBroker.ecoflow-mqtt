@@ -1,5 +1,5 @@
 # States for  POWERKIT
-### version: 0.0.38
+### version: 1.0.0
 
 [bp1](#bp1)
 
@@ -38,7 +38,7 @@
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|oilCloseSoc|60 | 100 | % | 1 |  Smart generator shutoff SOC |
+|oilCloseSoc|50 | 100 | % | 1 |  Smart generator shutoff SOC |
 |amp|0 | 60 | A | 0.001 |  Current mA |
 |fullCap|0 | 100000 | mAh | 1 |  Capacity of full charging |
 |soc|0 | 100 | % | 1 |  soc |
@@ -148,7 +148,7 @@
 |totalInWatts|0 | 3000 | W | 1 |  Total input power |
 |totalSoc|0 | 100 | % | 1 |  Total SOC |
 |lcdOffConfirmS|0 | 7200 | min | 1 |  Screen shutoff time |
-|totalAmp|0 | 60 | A | 0.1 |  Total current (0.1A) |
+|totalAmp|0 | 60 | A | 0.1 |  Total current |
 |totalRemainTime|0 | 15000 | min | 1 |  Total remaining time |
 |oilStartDownline|0 | 30 | % | 1 |  Lower limit for the smart generator to start |
 |oilStopUpline|60 | 100 | % | 1 |  Upper limit for the smart generator to disable |

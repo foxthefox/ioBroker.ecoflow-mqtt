@@ -1,5 +1,5 @@
 # States for  PANEL2
-### version: 0.0.38
+### version: 1.0.0
 
 [ProtoTime](#ProtoTime)
 
@@ -73,7 +73,7 @@
 |foceChargeHight|60 | 100 | % | 1 |  Charge upper threshold percentage |
 |chargeWattPower|0 | 3600 | W | 1 |  Charging Power |
 |discLower|0 | 30 | % | 1 |  Discharge lower threshold percentage |
-|masterCur|0 | 60 | A | 1 |  Master current |
+|masterCur|0 | 100 | A | 1 |  Master current |
 |oilEngineWatt|0 | 12000 | W | 1 |  Oil engine power |
 |backupReserveSoc|0 | 100 | % | 1 |  Backup Reserve SOC |
 |timeZone|-12 | 12 |  | 1 |  time zone |
@@ -553,17 +553,17 @@
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |midPriorityChDischargeLow|0 | 30 | % | 1 |  midPriorityChDischargeLow |
-|loadPriority1|0 | 13 |  | 1 |  Channel #1 load priority |
-|loadPriority2|0 | 13 |  | 1 |  Channel #2 load priority |
-|loadPriority3|0 | 13 |  | 1 |  Channel #3 load priority |
-|loadPriority4|0 | 13 |  | 1 |  Channel #4 load priority |
-|loadPriority5|0 | 13 |  | 1 |  Channel #5 load priority |
-|loadPriority6|0 | 13 |  | 1 |  Channel #6 load priority |
-|loadPriority7|0 | 13 |  | 1 |  Channel #7 load priority |
-|loadPriority8|0 | 13 |  | 1 |  Channel #8 load priority |
-|loadPriority9|0 | 13 |  | 1 |  Channel #9 load priority |
-|loadPriority10|0 | 13 |  | 1 |  Channel #10 load priority |
-|loadPriority11|0 | 13 |  | 1 |  Channel #11 load priority |
-|loadPriority12|0 | 13 |  | 1 |  Channel #12 load priority |
+|loadPriority1|0 |  n/a |  | 1 |  Channel #1 load priority |
+|loadPriority2|0 |  n/a |  | 1 |  Channel #2 load priority |
+|loadPriority3|0 |  n/a |  | 1 |  Channel #3 load priority |
+|loadPriority4|0 |  n/a |  | 1 |  Channel #4 load priority |
+|loadPriority5|0 |  n/a |  | 1 |  Channel #5 load priority |
+|loadPriority6|0 |  n/a |  | 1 |  Channel #6 load priority |
+|loadPriority7|0 |  n/a |  | 1 |  Channel #7 load priority |
+|loadPriority8|0 |  n/a |  | 1 |  Channel #8 load priority |
+|loadPriority9|0 |  n/a |  | 1 |  Channel #9 load priority |
+|loadPriority10|0 |  n/a |  | 1 |  Channel #10 load priority |
+|loadPriority11|0 |  n/a |  | 1 |  Channel #11 load priority |
+|loadPriority12|0 |  n/a |  | 1 |  Channel #12 load priority |
 
 
