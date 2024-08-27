@@ -283,13 +283,17 @@ Wave is not available, could be implemented, if data is available.
 * check forgotten boundary conditions for commands (inhibit cmd, or additional value)
 * check beep command if reversing needed
 * SlaveBattery DM, outWatts multiplication by 10
+* more getCmds for SHP values
 
 ## Changelog
+
+### 1.0.2 (npm)
+* (foxthefox) correction of SHP commands (#130)
 
 ### 1.0.1 (npm)
 * (foxthefox) correction to level commands (not recognized when appendix level.xxx)
 * (foxthefox) "this." for timer functions
-* (foxthefox) corrected 
+* (foxthefox) corrected some debug functions
 * (foxthefox) min js-controller = 5.0.12
 
 ### 1.0.0 (npm) BREAKING
