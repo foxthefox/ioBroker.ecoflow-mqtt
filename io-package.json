@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "ecoflow-mqtt",
-        "version": "1.0.2",
+        "version": "1.0.3",
         "news": {
+            "1.0.3": {
+                "en": "watth16/17/18 upper range 10kWh, 'Backup reserve' option added for D2M",
+                "de": "Watt 16/17/18 oberer Bereich 10 kWh, Option „Backup-Reserve“ für D2M hinzugefügt",
+                "ru": "wath16/17/18 верхний диапазон 10 кВтч, для D2M добавлена ​​опция «Резервный резерв»",
+                "pt": "watth16/17/18 faixa superior 10kWh, opção 'Reserva de backup' adicionada para D2M",
+                "nl": "watth16/17/18 bovenbereik 10kWh, optie 'Backup reserve' toegevoegd voor D2M",
+                "fr": "watth16/17/18 plage supérieure 10 kWh, option « Réserve de secours » ajoutée pour D2M",
+                "it": "watth16/17/18 gamma superiore 10kWh, opzione 'Riserva di riserva' aggiunta per D2M",
+                "es": "wath16/17/18 rango superior 10kWh, opción 'reserva de respaldo' agregada para D2M",
+                "pl": "watth16/17/18 górny zakres 10kWh, dodano opcję „Rezerwa rezerwowa” dla D2M",
+                "uk": "watth16/17/18 верхній діапазон 10 кВт·год, опція «Резервний резерв» додана для D2M",
+                "zh-cn": "watth16/17/18 上限 10kWh，为 D2M 添加“备用储备”选项"
+            },
             "1.0.2": {
                 "en": "correction of SHP commands",
                 "de": "Korrektur der SHP-Befehle",

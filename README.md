@@ -17,7 +17,7 @@ connects to products of Ecoflow ([https://www.ecoflow.com])
 ## WARNING
 
 This adapter uses a non-offical communication with the devices. 
-Wrong communication or setting wrong values can affect the functionality of the device.
+Wrong communication or setting wrong values can affect the functionality of the device and may lead to exclusion from the service.
 
 
 The adapter is based on the work of:
@@ -170,6 +170,15 @@ Modification at HA side:
 
 </p></details>
 
+## Updating the adapter
+
+Usually it is enough to install the next version on top of the old one. In some cases (e.g. 1.0.0) it might be needed to erase the whole object tree.
+If datapoint related values are changed, like min or max of the range, the you have to:
+- stop the adapter
+- deleted the concerned datapoints
+- start the adapter
+After this the new ranges are taken over.
+
 ## ioBroker adapter functions 
 
 * the defined devices are connected to the adapter via mqtt
@@ -286,6 +295,11 @@ Wave is not available, could be implemented, if data is available.
 * more getCmds for SHP values
 
 ## Changelog
+
+### 1.0.3 (npm)
+* (foxthefox) watth16/17/18 upper range 10kWh
+* (foxthefox) 'Backup reserve' option added for D2M #137
+
 
 ### 1.0.2 (npm)
 * (foxthefox) correction of SHP commands (#130)
