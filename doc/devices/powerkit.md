@@ -1,5 +1,5 @@
 # States for  POWERKIT
-### version: 1.0.0
+### version: 1.0.4
 
 [bp1](#bp1)
 
@@ -43,7 +43,7 @@
 |fullCap|0 | 100000 | mAh | 1 |  Capacity of full charging |
 |soc|0 | 100 | % | 1 |  soc |
 |minCellVol|0 | 6 | V | 0.001 |  Minimum battery cell voltage |
-|ptcRemaintime|0 | 360 | min | 1 |  Remaining time of PTC heating |
+|ptcRemainTime|0 | 360 | min | 1 |  Remaining time of PTC heating |
 |vol|0 | 60 | V | 0.001 |  Voltage |
 |minCellTemp|-30 | 100 | °C | 1 |  Minimum battery cell temperature |
 |ptcChgErrCnt|0 |  n/a |  | 1 |  Error count of PTC heating |
@@ -51,7 +51,6 @@
 |inWatts|0 | 5000 | W | 1 |  Input power |
 |temp|-30 | 100 | °C | 1 |  Showing current temperature |
 |maxMosTemp|0 | 100 | °C | 1 |  Maximum MOS temperature |
-|remaintime|0 | 15000 | min | 1 |  Remaining time |
 |maxCellTemp|-30 | 80 | °C | 1 |  Maximum battery cell temperature |
 |minMosTemp|0 | 100 | °C | 1 |  Minimum MOS temperature |
 |lcdStandbyMin|0 | 3600 | min | 1 |  LCD screen standby time |
@@ -65,6 +64,18 @@
 |outWatts|0 | 6000 | W | 1 |  Output power |
 |bmsChgUpline|0 | 100 | % | 1 |  Upper limit of UPS charging of BMS |
 |remainTime|0 | 15000 | min | 1 |  Remaining time |
+|totalFullCap|0 | 120000 | mAh | 1 |  Total battery capacity |
+|totalOutWatts|0 | 7200 | W | 1 |  Total output power |
+|acDcLsplShutdMin|0 | 7200 | min | 1 |  Time to shutoff when both AC and DC enter low power mode |
+|totalInWatts|0 | 3000 | W | 1 |  Total input power |
+|lcdOffConfirmS|0 | 7200 | min | 1 |  Screen shutoff time |
+|oilStopUpline|60 | 100 | % | 1 |  Upper limit for the smart generator to disable |
+|oilStartDownline|0 | 30 | % | 1 |  Lower limit for the smart generator to start |
+|cycles|0 |  n/a |  | 1 |  Cycles |
+|totalSoc|0 | 100 | % | 1 |  Total SOC |
+|totalRemainTime|0 | 15000 | min | 1 |  Total remaining time |
+|bmsDsgDownline|0 | 30 | % | 1 |  Lower limit of UPS charging of BMS |
+|totalAmp|0 | 60 | A | 0.1 |  Total current |
 
 
 ### diagnostic
@@ -88,6 +99,9 @@
 |bmsFault| BMS permanent failure | {0:OK?} |
 |bmsType| 0:BP5000 1:BP2000 | {0:BP5000,1:BP2000} |
 |doubleOilErrorFlag| Dual smart generator error | {0:OK?} |
+|totalChgDsgState| Overall charging/discharging status, 0: idle, 1: discharging, 2: charging | {0:idle,1:discharging,2:charging} |
+|remindDsgPtcFlag| HUB under-voltage reminder to heat by charging | {0:OK?} |
+|warningEvent| Alarm event, 0: no warning, 1: charging, shutoff warning not allowed | {0:no warning,1:charging, shutoff warning not allowed} |
 
 ## bbcout
 
@@ -353,9 +367,16 @@
 |chgMaxCurr|0 | 70 | A | 0.001 |  Maximum charging current configured |
 |dayEnergy|0 |  n/a | Wh | 1 |  Daily power discharged |
 |dsgEnergy|0 |  n/a | Wh | 1 |  Accumulative power discharged |
-|altCableLen|1 | 30 | m | 0.01 |  ALT power charging cable length |
+|altCableLen|0 | 30 | m | 0.01 |  ALT power charging cable length |
 |altVoltLmt|0 | 60 | V | 0.1 |  Custom restricted voltage value, unit: 100 mV |
+|thirdWatts|0 | 7200 | W | 0.1 |  third watts |
 
+
+### array
+
+| State  |  Name |
+|----------|------|
+|rsvd| reserved |
 
 ## iclow
 
@@ -412,7 +433,7 @@
 |inWatts|0 | 60 | W | 1 |  Input power |
 |outVol|0 | 250 | V | 0.001 |  Output voltage |
 |outCurr|0 | 60 | A | 0.001 |  Output current |
-|outWatts|0 | 60 | W | 1 |  Output power |
+|outWatts|0 | 7200 | W | 1 |  Output power |
 |outVa|0 | 7200 | VA | 1 |  Output apparent power (VA) |
 |acTemp|0 | 60 | °C | 1 |  AC temperature |
 |inFreq|0 | 62 | Hz | 1 |  Inverter input frequency (Hz) 0,50,60 |
@@ -434,13 +455,18 @@
 |----------|:-------------:|------|
 |invType| Machine type | {0:OK?} |
 |invSwSta| Inverter switch, 1: on, 0: off | {0:off,1:on} |
-|appCfg| Object Application configuration | {0:OK?} |
 |powerOn| Command for discharging; valid for the rising edge, 0: off, 1: on | {0:off,1:on} |
 |acChgDisable| Charging not allowed | {0:OK?} |
-|acRlyCtrlDis| AC earth relay control not allowed | {0:OK?} |
+|acRlyCtrlDisable| AC earth relay control not allowed | {0:OK?} |
 |wakeup| Exit low power mode, wake up | {0:OK?} |
 |ch2Watt| Channel 2 power Is the power of the standalone socket on the KIT for the MM100 project | {0:OK?} |
 |passByModeEn| Use the grid power in priority when the button is disabled, 0: ignored, 1: enabled, 2: disabled    | {0:ignored,1:enabled,2:disabled} |
+
+### array
+
+| State  |  Name |
+|----------|------|
+|appCfg| Object Application configuration |
 
 ## ldac
 

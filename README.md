@@ -296,9 +296,14 @@ Wave is not available, could be implemented, if data is available.
 
 ## Changelog
 
+### 1.0.4 (npm)
+* (foxthefox) some more protobuf decoding for power ocean (ev pulse portion)
+* (foxthefox) 
+
 ### 1.0.3 (npm)
 * (foxthefox) watth16/17/18 upper range 10kWh
 * (foxthefox) 'Backup reserve' option added for D2M #137
+* (foxthefox) preparations for DeltaPro3 decode
 
 
 ### 1.0.2 (npm)

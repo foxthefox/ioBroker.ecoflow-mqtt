@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "ecoflow-mqtt",
-        "version": "1.0.3",
+        "version": "1.0.4",
         "news": {
+            "1.0.4": {
+                "en": "correction for powerkit telegram reception #99",
+                "de": "Korrektur für Powerkit-Telegrammempfang #99",
+                "ru": "исправление приема телеграммы powerkit #99",
+                "pt": "correção para recepção de telegrama do powerkit #99",
+                "nl": "correctie voor powerkit-telegramontvangst #99",
+                "fr": "correction pour la réception des télégrammes powerkit #99",
+                "it": "correzione ricezione telegramma powerkit #99",
+                "es": "corrección para recepción de telegramas powerkit #99",
+                "pl": "poprawka odbioru telegramu Powerkit #99",
+                "uk": "виправлення для отримання телеграми powerkit №99",
+                "zh-cn": "powerkit 电报接收修正 #99"
+            },
             "1.0.3": {
                 "en": "watth16/17/18 upper range 10kWh, 'Backup reserve' option added for D2M",
                 "de": "Watt 16/17/18 oberer Bereich 10 kWh, Option „Backup-Reserve“ für D2M hinzugefügt",
