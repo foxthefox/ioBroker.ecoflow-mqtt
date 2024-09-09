@@ -298,7 +298,8 @@ Wave is not available, could be implemented, if data is available.
 
 ### 1.0.4 (npm)
 * (foxthefox) some more protobuf decoding for power ocean (ev pulse portion)
-* (foxthefox) 
+* (foxthefox) correction for powerkit telegram reception #99
+* (foxthefox) corrected/imroved powerkit datapoints
 
 ### 1.0.3 (npm)
 * (foxthefox) watth16/17/18 upper range 10kWh
