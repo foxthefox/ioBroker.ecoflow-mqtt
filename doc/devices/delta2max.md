@@ -1,5 +1,5 @@
 # States for  DELTA2MAX
-### version: 1.0.0
+### version: 1.0.3
 
 [bmsMaster](#bmsMaster)
 
@@ -251,7 +251,6 @@
 |carState| CAR button state | {0:off,1:on} |
 |chgDsgState| Charging/discharging state on screen | {0:discharging,1:charging} |
 |errCode| Global error code | {0:OK?} |
-|watchIsConfig| Power management configuration:  | {0:disable,1:enable} |
 |wifiAutoRcvy| Wi-Fi auto mode | {0:default mode (STA),1:The Wi-Fi network is automatically restored to the last mode (STA/AP) after powering on} |
 |otherKitState| other Kit State | {0:0?,1:1?} |
 |pv1ChargeType| Charger type | {0:none,1:adapter,2:solar panel} |
@@ -262,10 +261,9 @@
 
 | State  |      Min     |     Max     |  Unit |  Mult |  Name |  cmd |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
-|bppowerSoc| 0 | 100 | % | 1 |  Backup Power SOC | {valName:bpPowerSoc,moduleType:1,operateType:watthConfig,params:{isConfig:1,bpPowerSoc:55,minDsgSoc:255,minChgSoc:255}} |
+|bpPowerSoc| 0 | 100 | % | 1 |  Backup Power SOC | {valName:bpPowerSoc,moduleType:1,operateType:watthConfig,params:{isConfig:1,bpPowerSoc:55,minDsgSoc:255,minChgSoc:255}} |
 |lcdOffSec| 0 | 1800 | s | 1 |  LCD screen-off duration: 0: never off | {valName:delayOff,moduleType:1,operateType:lcdCfg,params:{brighLevel:255,delayOff:300}} |
 |standbyMin| 0 | 720 | min | 1 |  Standby time /min 0 Never standby 720 Default value ? | {valName:standbyMin,moduleType:1,operateType:standbyTime,params:{standbyMin:720}} |
-|bpPowerSoc| 0 | 100 | % | 1 |  Backup Power SOC |  |
 
 ### string
 
@@ -325,6 +323,7 @@
 | State  |      off    |  on |  Name |  cmd |
 |----------|:-------------:|:------:|------|------|
 |dcOutState| off | on | DC button state | {valName:enabled,moduleType:1,operateType:dcOutCfg,params:{enabled:1}} |
+|watchIsConfig| Disable | Enable | Power management configuration (Backup Reserve)  | {valName:isConfig,moduleType:1,operateType:watthConfig,params:{isConfig:1,bpPowerSoc:55,minDsgSoc:0,minChgSoc:0}} |
 |newAcAutoOnCfg| off | on | AC auto out Config | {valName:enabled,moduleType:1,operateType:newAcAutoOnCfg,params:{enabled:1,minAcSoc:5}} |
 
 ### array
