@@ -43,7 +43,7 @@
 		"eslint": "^9.9.0",
 		"globals": "^15.9.0",
 
-		"aedes": "^0.51.2",
+		"aedes": "^0.51.3",
 		"chai": "^4.5.0",
 		"chai-as-promised": "^8.0.0",
 
