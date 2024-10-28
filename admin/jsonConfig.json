@@ -1,6 +1,9 @@
 {
 	"i18n": true,
 	"type": "tabs",
+	"tabsStyle": {
+		"width": "calc(100% - 100px)"
+	},
 	"items": {
 		"tab_1": {
 			"type": "panel",
@@ -10,9 +13,11 @@
 					"newLine": true,
 					"type": "header",
 					"text": "User Data",
+					"xs": 12,
 					"sm": 12,
 					"md": 12,
 					"lg": 12,
+					"xl": 12,
 					"size": 3
 				},
 				"userName": {
@@ -38,9 +43,11 @@
 					"newLine": true,
 					"type": "header",
 					"text": "Connection settings",
+					"xs": 12,
 					"sm": 12,
 					"md": 12,
 					"lg": 12,
+					"xl": 12,
 					"size": 3
 				},
 				"mqttUrl": {
@@ -57,51 +64,63 @@
 					"newLine": true,
 					"type": "header",
 					"text": "MQTT Authentication settings",
+					"xs": 12,
 					"sm": 12,
 					"md": 12,
 					"lg": 12,
+					"xl": 12,
 					"size": 3
 				},
 				"mqttUserId": {
 					"type": "text",
 					"label": "mqtt userId",
 					"newLine": false,
+					"xs": 12,
 					"sm": 12,
 					"md": 6,
-					"lg": 4
+					"lg": 4,
+					"xl": 4
 				},
 				"mqttUserName": {
 					"type": "text",
 					"label": "mqtt user name",
 					"newLine": false,
+					"xs": 12,
 					"sm": 12,
 					"md": 6,
-					"lg": 4
+					"lg": 4,
+					"xl": 4
 				},
 				"mqttPwd": {
 					"type": "password",
 					"visible": true,
 					"label": "mqtt pwd",
 					"newLine": true,
+					"xs": 12,
 					"sm": 12,
 					"md": 6,
-					"lg": 4
+					"lg": 4,
+					"xl": 4
 				},
 				"mqttClientId": {
 					"type": "text",
 					"label": "mqtt clientId",
 					"newLine": false,
+					"xs": 12,
 					"sm": 12,
 					"md": 6,
-					"lg": 4
+					"lg": 4,
+					"xl": 4
 				},
 				"enableMqttReconnect": {
 					"type": "checkbox",
 					"label": "enable check for reconnects (10min)",
 					"newLine": true,
+					"xs": 12,
 					"sm": 12,
 					"md": 6,
-					"lg": 4
+					"lg": 4,
+					"xl": 4
 				},
 				"_test": {
 					"type": "sendTo",
@@ -115,17 +134,21 @@
 					"newLine": true,
 					"type": "header",
 					"text": "common DEBUG settings",
+					"xs": 12,
 					"sm": 12,
 					"md": 12,
 					"lg": 12,
+					"xl": 12,
 					"size": 3
 				},
 				"msgStateCreation": {
 					"type": "checkbox",
 					"label": "msgStateCreation",
+					"xs": 12,
 					"sm": 12,
 					"md": 6,
-					"lg": 4
+					"lg": 4,
+					"xl": 4
 				},
 				"getQuota": {
 					"type": "sendTo",
@@ -147,9 +170,11 @@
 					"newLine": true,
 					"type": "header",
 					"text": "Selection of specific DEBUG settings (only effective on the device where debug is enabled)",
+					"xs": 12,
 					"sm": 12,
 					"md": 12,
 					"lg": 12,
+					"xl": 12,
 					"size": 3
 				},
 				"_introDebug": {
@@ -161,30 +186,38 @@
 					"newLine": true,
 					"type": "checkbox",
 					"label": "msgUpdate",
+					"xs": 12,
 					"sm": 12,
 					"md": 6,
-					"lg": 4
+					"lg": 4,
+					"xl": 4
 				},
 				"msgUpdateValue": {
 					"type": "checkbox",
 					"label": "msgUpdateValue",
+					"xs": 12,
 					"sm": 12,
 					"md": 6,
-					"lg": 4
+					"lg": 4,
+					"xl": 4
 				},
 				"msgSetGet": {
 					"type": "checkbox",
 					"label": "msgSetGet",
+					"xs": 12,
 					"sm": 12,
 					"md": 6,
-					"lg": 4
+					"lg": 4,
+					"xl": 4
 				},
 				"msgCmd": {
 					"type": "checkbox",
 					"label": "msgCmd",
+					"xs": 12,
 					"sm": 12,
 					"md": 6,
-					"lg": 4
+					"lg": 4,
+					"xl": 4
 				}
 			}
 		},
@@ -196,9 +229,11 @@
 					"newLine": true,
 					"type": "header",
 					"text": "Power Stream Configuration",
+					"xs": 12,
 					"sm": 12,
 					"md": 12,
 					"lg": 12,
+					"xl": 12,
 					"size": 3
 				},
 				"_introTable1Txt1": {
@@ -267,9 +302,11 @@
 					"newLine": true,
 					"type": "header",
 					"text": "Power Station Configuration",
+					"xs": 12,
 					"sm": 12,
 					"md": 12,
 					"lg": 12,
+					"xl": 12,
 					"size": 3
 				},
 				"_introTable1Txt2": {
@@ -368,9 +405,11 @@
 					"newLine": true,
 					"type": "header",
 					"text": "Plug Configuration",
+					"xs": 12,
 					"sm": 12,
 					"md": 12,
 					"lg": 12,
+					"xl": 12,
 					"size": 3
 				},
 				"_introTable1Txt3": {
@@ -435,9 +474,11 @@
 					"newLine": true,
 					"type": "header",
 					"text": "Shelly Configuration",
+					"xs": 12,
 					"sm": 12,
 					"md": 12,
 					"lg": 12,
+					"xl": 12,
 					"size": 3
 				},
 				"_shellyTable1Txt1": {
@@ -505,9 +546,11 @@
 					"newLine": true,
 					"type": "header",
 					"text": "Generator Configuration",
+					"xs": 12,
 					"sm": 12,
 					"md": 12,
 					"lg": 12,
+					"xl": 12,
 					"size": 3
 				},
 				"_introTable2Txt2": {
@@ -575,9 +618,11 @@
 					"newLine": true,
 					"type": "header",
 					"text": "Power Kit Configuration",
+					"xs": 12,
 					"sm": 12,
 					"md": 12,
 					"lg": 12,
+					"xl": 12,
 					"size": 3
 				},
 				"_introPowerkitTxt2": {
@@ -664,9 +709,11 @@
 					"newLine": true,
 					"type": "header",
 					"text": "Smart Home Panel Configuration",
+					"xs": 12,
 					"sm": 12,
 					"md": 12,
 					"lg": 12,
+					"xl": 12,
 					"size": 3
 				},
 				"_introTable3Txt1": {
@@ -736,9 +783,11 @@
 					"newLine": true,
 					"type": "header",
 					"text": "Wave Configuration",
+					"xs": 12,
 					"sm": 12,
 					"md": 12,
 					"lg": 12,
+					"xl": 12,
 					"size": 3
 				},
 				"_introTable4Txt1": {
@@ -806,9 +855,11 @@
 					"newLine": true,
 					"type": "header",
 					"text": "Glacier Configuration",
+					"xs": 12,
 					"sm": 12,
 					"md": 12,
 					"lg": 12,
+					"xl": 12,
 					"size": 3
 				},
 				"_glacierTable1Txt1": {
@@ -876,9 +927,11 @@
 					"newLine": true,
 					"type": "header",
 					"text": "Power Ocean DC Fit Configuration",
+					"xs": 12,
 					"sm": 12,
 					"md": 12,
 					"lg": 12,
+					"xl": 12,
 					"size": 3
 				},
 				"_introPoweroceanTxt2": {
@@ -970,18 +1023,22 @@
 					"newLine": true,
 					"type": "header",
 					"text": "Connection settings",
+					"xs": 12,
 					"sm": 12,
 					"md": 12,
 					"lg": 12,
+					"xl": 12,
 					"size": 3
 				},
 				"haMqttEnable": {
 					"type": "checkbox",
 					"label": "enable communication with Homeassistant MQTT Broker",
 					"newLine": true,
+					"xs": 12,
 					"sm": 12,
 					"md": 6,
-					"lg": 4
+					"lg": 4,
+					"xl": 4
 				},
 				"haMqttProtocol": {
 					"type": "text",
@@ -1007,79 +1064,99 @@
 					"newLine": true,
 					"type": "header",
 					"text": "Homeassistant MQTT Authentication settings",
+					"xs": 12,
 					"sm": 12,
 					"md": 12,
 					"lg": 12,
+					"xl": 12,
 					"size": 3
 				},
 				"haMqttUserId": {
 					"type": "text",
 					"label": "HA mqtt user",
 					"newLine": false,
+					"xs": 12,
 					"sm": 12,
 					"md": 6,
-					"lg": 4
+					"lg": 4,
+					"xl": 4
 				},
 				"haMqttUserPWd": {
 					"type": "password",
 					"visible": true,
 					"label": "HA mqtt pwd",
 					"newLine": false,
+					"xs": 12,
 					"sm": 12,
 					"md": 6,
-					"lg": 4
+					"lg": 4,
+					"xl": 4
 				},
 				"haDiscoveryRetain": {
 					"type": "checkbox",
 					"label": "send retained msg for discovery",
 					"newLine": true,
+					"xs": 12,
 					"sm": 12,
 					"md": 6,
-					"lg": 4
+					"lg": 4,
+					"xl": 4
 				},
 				"_debugcommon": {
 					"newLine": true,
 					"type": "header",
 					"text": "HA DEBUG settings",
+					"xs": 12,
 					"sm": 12,
 					"md": 12,
 					"lg": 12,
+					"xl": 12,
 					"size": 3
 				},
 				"msgHaAutoDiscovery": {
 					"type": "checkbox",
 					"label": "msgHaAutoDiscovery",
+					"xs": 12,
 					"sm": 12,
 					"md": 6,
-					"lg": 4
+					"lg": 4,
+					"xl": 4
 				},
 				"showDiscoveryObject": {
 					"type": "checkbox",
 					"label": "showDiscoveryObject",
+					"xs": 12,
 					"sm": 12,
 					"md": 6,
-					"lg": 4
+					"lg": 4,
+					"xl": 4
 				},
 				"msgHaIncomming": {
 					"type": "checkbox",
 					"label": "msgHaIncomming",
+					"xs": 12,
 					"sm": 12,
 					"md": 6,
-					"lg": 4
+					"lg": 4,
+					"xl": 4
 				},
 				"msgHaOutgoing": {
 					"type": "checkbox",
 					"label": "msgHaOutgoing",
+					"xs": 12,
 					"sm": 12,
 					"md": 6,
-					"lg": 4
+					"lg": 4,
+					"xl": 4
 				},
 				"msgHaStatusInitial": {
 					"type": "checkbox",
 					"label": "msgHaStatusInitial",
+					"xs": 12,
 					"sm": 12,
 					"md": 6,
-					"lg": 4
+					"lg": 4,
+					"xl": 4
 				}
 			}
 		}

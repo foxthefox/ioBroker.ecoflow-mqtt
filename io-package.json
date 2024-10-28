@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "ecoflow-mqtt",
-        "version": "1.0.4",
+        "version": "1.0.5",
         "news": {
+            "1.0.5": {
+                "en": "new max settings D2M: mppt.outWatts; PS:inverter_heartbeat.invOutputWatts; responsive design",
+                "de": "neue maximale Einstellungen D2M: mppt.outWatts; PS:inverter_heartbeat.invOutputWatts; responsives Design",
+                "ru": "новые максимальные настройки D2M: mppt.outWatts; PS:inverter_heartbeat.invOutputWatts; адаптивный дизайн",
+                "pt": "novas configurações máximas D2M: mppt.outWatts; PS: inversor_heartbeat.invOutputWatts; design responsivo",
+                "nl": "nieuwe maximale instellingen D2M: mppt.outWatts; PS:inverter_heartbeat.invOutputWatts; responsief ontwerp",
+                "fr": "nouveaux paramètres maximum D2M : mppt.outWatts ; PS : inverter_heartbeat.invOutputWatts ; conception réactive",
+                "it": "nuove impostazioni massime D2M: mppt.outWatts; PS:inverter_heartbeat.invOutputWatts; progettazione reattiva",
+                "es": "nueva configuración máxima D2M: mppt.outWatts; PD:inverter_heartbeat.invOutputWatts; diseño responsivo",
+                "pl": "nowe ustawienia maksymalne D2M: mppt.outWatts; PS:inverter_heartbeat.invOutputWatts; responsywny projekt",
+                "uk": "нові максимальні налаштування D2M: mppt.outWatts; PS:inverter_heartbeat.invOutputWatts; адаптивний дизайн",
+                "zh-cn": "新的最大设置 D2M：mppt.outWatts； PS：inverter_heartbeat.invOutputWatts；响应式设计"
+            },
             "1.0.4": {
                 "en": "correction for powerkit telegram reception #99",
                 "de": "Korrektur für Powerkit-Telegrammempfang #99",
@@ -67,45 +80,6 @@
                 "pl": "korekta ról stanowych (wymaga usunięcia drzewa obiektów ecoflow!); UWAGA! anulowanie danych „InverterHeartbeat2” ze „strumienia mocy”",
                 "uk": "виправлення ролей стану (вимагає видалення дерева об'єктів ecoflow!); УВАГА! скасування даних \"InverterHeartbeat2\" з \"power stream\"",
                 "zh-cn": "修正状态角色（需要删除 Ecoflow 对象树！）；注意力！从“电力流”中取消“InverterHeartbeat2”数据"
-            },
-            "0.0.42": {
-                "en": "correction SHP command, new data point power ocean, shelly3em model definition, IOB checker corrections ",
-                "de": "Korrektur des SHP-Befehls, neuer Datenpunkt Power Ocean, Shelly3em-Modelldefinition, IOB-Checker-Korrekturen",
-                "ru": "коррекция команды SHP, новая точка данных Power Ocean, определение модели shelly3em, исправления средства проверки IOB",
-                "pt": "correção do comando SHP, novo ponto de dados power ocean, definição do modelo shelly3em, correções do verificador IOB",
-                "nl": "correctie SHP-opdracht, nieuwe datapunt power ocean, shelly3em-modeldefinitie, IOB-checkercorrecties",
-                "fr": "correction de la commande SHP, nouveau point de données Power Ocean, définition du modèle Shelly3em, corrections du vérificateur IOB",
-                "it": "correzione comando SHP, nuovo data point power ocean, definizione del modello shelly3em, correzioni del controllo IOB",
-                "es": "corrección del comando SHP, nuevo punto de datos power ocean, definición del modelo shelly3em, correcciones del verificador IOB",
-                "pl": "korekta polecenia SHP, nowy punkt danych Power Ocean, definicja modelu Shelly3em, poprawki kontrolera IOB",
-                "uk": "виправлення команди SHP, нова точка даних power ocean, визначення моделі shelly3em, виправлення засобу перевірки IOB",
-                "zh-cn": "修正SHP命令，新数据点power ocean，shelly3em模型定义，IOB检查器修正"
-            },
-            "0.0.34": {
-                "en": "added power ocean, added smart home panel, corrections, improvements",
-                "de": "Power Ocean hinzugefügt, Smart Home Panel hinzugefügt, Korrekturen, Verbesserungen",
-                "ru": "добавлен океан энергии, добавлена ​​панель умного дома, исправления, улучшения",
-                "pt": "adicionado poder oceano, adicionado painel inicial inteligente, correções, melhorias",
-                "nl": "Power Ocean toegevoegd, Smart Home-paneel toegevoegd, correcties, verbeteringen",
-                "fr": "ajout d'un océan de puissance, ajout d'un panneau de maison intelligente, corrections, améliorations",
-                "it": "aggiunto power ocean, aggiunto pannello smart home, correzioni, miglioramenti",
-                "es": "océano de energía agregado, panel de hogar inteligente agregado, correcciones, mejoras",
-                "pl": "dodano ocean mocy, dodano panel inteligentnego domu, poprawki, ulepszenia",
-                "uk": "доданий потужний океан, додана панель розумного будинку, виправлення, покращення",
-                "zh-cn": "添加了电力海洋，添加了智能家居面板，更正，改进"
-            },
-            "0.0.33": {
-                "en": "added Power Kit/Hub; added 'ratedPower' for PS",
-                "de": "Power Kit/Hub hinzugefügt; Nennleistung für PS hinzugefügt",
-                "ru": "добавлен Power Kit/Hub; добавлена ​​номинальная мощность для PS",
-                "pt": "adicionado kit de energia/hub; adicionado potência nominal para PS",
-                "nl": "toegevoegde Power Kit/Hub; toegevoegd nominaal vermogen voor PS",
-                "fr": "ajout d'un kit d'alimentation/hub ; Ajout de la puissance nominale pour PS",
-                "it": "aggiunto Power Kit/Hub; aggiunta potenza nominale per PS",
-                "es": "kit de alimentación/concentrador agregado; potencia nominal agregada para PS",
-                "pl": "dodano zestaw zasilający/piastę; dodano moc znamionową dla PS",
-                "uk": "доданий Power Kit/Hub; додана номінальна потужність для PS",
-                "zh-cn": "添加了电源套件/集线器；添加了 PS 的额定功率"
             }
         },
         "messages": [
