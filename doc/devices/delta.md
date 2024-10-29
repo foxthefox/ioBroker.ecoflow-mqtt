@@ -1,5 +1,5 @@
 # States for  DELTA
-### version: 1.0.0
+### version: 1.0.5
 
 [bmsMaster](#bmsMaster)
 
@@ -167,7 +167,7 @@
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |carOutVol|0 | 15 | V | 0.1 |  Car charging output voltage |
 |carTemp|0 | 80 | °C | 1 |  Car charging temperature |
-|outWatts|0 | 500 | W | 0.1 |  PV output power |
+|outWatts|0 | 600 | W | 0.1 |  PV output power |
 |carOutAmp|0 | 13 | A | 0.01 |  Car charging output current |
 |outAmp|0 | 13 | A | 0.01 |  PV output current |
 |dcdc12vWatts|0 | 500 | W | 0.1 |  DC12V30A output power, which is valid only for DELTA Pro |

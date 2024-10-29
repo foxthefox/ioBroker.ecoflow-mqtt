@@ -28,11 +28,16 @@ The adapter is based on the work of:
 * https://konkludenz.de/en/making-ecoflow-wave2-smart-home-capable-with-node-red-and-mqtt
 
 
-## Installation and Configuration
+## Installation
 
-Install the adapter from github (adapter is not yet in the stable repo).
+The adapter is in stable repository and therefore you can install it by searching it.
+If updates are available the you should install them.
 
-![some mor details](doc/en/installation.md)
+If a very new version is available it might be neccesary to make a custom install from npm/github.
+In such case the expert mode must be enabled to get access to the "octacat" icon.
+![some more details](doc/en/installation.md)
+
+## EF credentials 
 
 In Admin Page (first tab) the mqqt credentials for the mqqt Broker need to be inserted.
 * UserName - something like "app-...."
@@ -46,6 +51,8 @@ There are 3 possibilities:
 3. by adapters own alogorithm (pressing the button), for this the ecoflow username and password is necessary.
 
 The mqqt Broker settings are default and usually need no modification.
+
+## Device setup and Configuration
 
 Use the tab "Device(s) Configuration" for adding your equipment.
 
@@ -214,7 +221,7 @@ This is not necessarily a failure or an indicator for not working adapter, it is
 * Due to to the asynchronity of information updates and command transfer sometimes race conditions may be visible. So a switch is commanded and its toggling back and forth before it stays, can be observed.
 * restart of HA may not be recognized correctly in iobroker, so it needs a manual restart of the adapter (WIP)
 
-## Implemented Devices
+## Implemented Devices & Structure with Datapoints
 
 some explanation to the device data
 * number -> data point with numeric value
@@ -295,6 +302,11 @@ Wave is not available, could be implemented, if data is available.
 * more getCmds for SHP values
 
 ## Changelog
+
+### 1.0.5 (npm)
+* (foxthefox) mppt.outWatts 500 -> 600; inverter_heartbeat.invOutputWatts 800 -> 810
+* (foxthefox) update of Readme (adapter now in stable)
+* (foxthefox) changes for responsive design #160
 
 ### 1.0.4 (npm)
 * (foxthefox) some more protobuf decoding for power ocean (ev pulse portion)

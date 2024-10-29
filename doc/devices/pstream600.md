@@ -1,5 +1,5 @@
 # States for  PSTREAM
-### version: 1.0.0
+### version: 1.0.5
 
 [inverter_heartbeat](#inverter_heartbeat)
 
@@ -34,7 +34,7 @@
 |invInputVolt|0 | 60 | V | 0.01 |  Inverter DC input voltage |
 |invOpVolt|0 | 250 | V | 0.1 |  Inverter AC output voltage |
 |invOutputCur|0 | 20 | A | 0.001 |  Inverter AC output current |
-|invOutputWatts|0 | 800 | W | 0.1 |  Inverter AC power |
+|invOutputWatts|0 | 810 | W | 0.1 |  Inverter AC power |
 |invTemp|0 | 80 | °C | 0.1 |  Inverter temperature |
 |invFreq|0 | 52 | Hz | 0.1 |  Inverter AC frequency |
 |invDcCur|0 | 20 | A | 0.001 |  Inverter DC input current |
@@ -106,8 +106,8 @@
 |watth4|0 | 6000 | Wh | 1 |  Energy from battery |
 |watth7|0 | 6000 | Wh | 1 |  Energy from solar PV1 |
 |watth8|0 | 6000 | Wh | 1 |  Energy from solar PV2 |
-|watth16|0 | 6000 | Wh | 1 |  Energy 16 |
-|watth17|0 | 6000 | Wh | 1 |  Energy 17 |
-|watth18|0 | 6000 | Wh | 1 |  Energy 18 |
+|watth16|0 | 10000 | Wh | 1 |  Energy 16 |
+|watth17|0 | 10000 | Wh | 1 |  Energy 17 |
+|watth18|0 | 10000 | Wh | 1 |  Energy 18 |
 
 

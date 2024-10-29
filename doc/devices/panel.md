@@ -1,5 +1,5 @@
 # States for  PANEL
-### version: 1.0.0
+### version: 1.0.5
 
 [heartbeat](#heartbeat)
 
@@ -77,15 +77,15 @@
 
 | State  |      Min     |     Max     |  Unit |  Mult |  Name |  cmd |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
-|ctrlSta_10| 0 | 2 |  | 1 |  Power supply type DP1 0 Grid supply, 1 storage power supply, 2 close | {valName:sta,moduleType:0,operateType:TCP,params:{sta:2,ctrlMode:1,ch:10,cmdSet:11,id:17}} |
-|ctrlSta_11| 0 | 2 |  | 1 |  Power supply type DP2 0 Grid supply, 1 storage power supply, 2 close | {valName:sta,moduleType:0,operateType:TCP,params:{sta:2,ctrlMode:1,ch:11,cmdSet:11,id:17}} |
+|ctrlSta_10| 0 | 2 |  | 1 |  Power supply type DP1 0 Grid supply, 1 storage power supply, 2 close/off | {valName:sta,moduleType:0,operateType:TCP,params:{sta:2,ctrlMode:1,ch:10,cmdSet:11,id:17}} |
+|ctrlSta_11| 0 | 2 |  | 1 |  Power supply type DP2 0 Grid supply, 1 storage power supply, 2 close/off | {valName:sta,moduleType:0,operateType:TCP,params:{sta:2,ctrlMode:1,ch:11,cmdSet:11,id:17}} |
 
 ### switch
 
 | State  |      off    |  on |  Name |  cmd |
 |----------|:-------------:|:------:|------|------|
-|ctrlMode_10| auto | manual | Contol mode DP1 0-Auto/1-Manual | {valName:ctrlMode,moduleType:0,operateType:TCP,params:{sta:2,ctrlMode:1,ch:10,cmdSet:11,id:17}} |
-|ctrlMode_11| auto | manual | Contol mode DP2 0-Auto/1-Manual | {valName:ctrlMode,moduleType:0,operateType:TCP,params:{sta:2,ctrlMode:1,ch:11,cmdSet:11,id:17}} |
+|ctrlMode_10| auto | manual | Contol mode DP1 0-Auto/1-Manual/Grid | {valName:ctrlMode,moduleType:0,operateType:TCP,params:{sta:0,ctrlMode:0,ch:10,cmdSet:11,id:17}} |
+|ctrlMode_11| auto | manual | Contol mode DP2 0-Auto/1-Manual/Grid | {valName:ctrlMode,moduleType:0,operateType:TCP,params:{sta:0,ctrlMode:0,ch:11,cmdSet:11,id:17}} |
 
 ## loadCmdChCtrlInfos
 
@@ -118,31 +118,31 @@
 
 | State  |      Min     |     Max     |  Unit |  Mult |  Name |  cmd |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
-|ctrlSta_0| 0 | 2 |  | 1 |  Power supply type channel #1 Grid supply, 1 storage power supply, 2 close | {valName:sta,moduleType:0,operateType:TCP,params:{sta:2,ctrlMode:1,ch:0,cmdSet:11,id:16}} |
-|ctrlSta_1| 0 | 2 |  | 1 |  Power supply type channel #2 Grid supply, 1 storage power supply, 2 close | {valName:sta,moduleType:0,operateType:TCP,params:{sta:2,ctrlMode:1,ch:1,cmdSet:11,id:16}} |
-|ctrlSta_2| 0 | 2 |  | 1 |  Power supply type channel #3 Grid supply, 1 storage power supply, 2 close | {valName:sta,moduleType:0,operateType:TCP,params:{sta:2,ctrlMode:1,ch:2,cmdSet:11,id:16}} |
-|ctrlSta_3| 0 | 2 |  | 1 |  Power supply type channel #4 Grid supply, 1 storage power supply, 2 close | {valName:sta,moduleType:0,operateType:TCP,params:{sta:2,ctrlMode:1,ch:3,cmdSet:11,id:16}} |
-|ctrlSta_4| 0 | 2 |  | 1 |  Power supply type channel #5 Grid supply, 1 storage power supply, 2 close | {valName:sta,moduleType:0,operateType:TCP,params:{sta:2,ctrlMode:1,ch:4,cmdSet:11,id:16}} |
-|ctrlSta_5| 0 | 2 |  | 1 |  Power supply type channel #6 Grid supply, 1 storage power supply, 2 close | {valName:sta,moduleType:0,operateType:TCP,params:{sta:2,ctrlMode:1,ch:5,cmdSet:11,id:16}} |
-|ctrlSta_6| 0 | 2 |  | 1 |  Power supply type channel #7 Grid supply, 1 storage power supply, 2 close | {valName:sta,moduleType:0,operateType:TCP,params:{sta:2,ctrlMode:1,ch:6,cmdSet:11,id:16}} |
-|ctrlSta_7| 0 | 2 |  | 1 |  Power supply type channel #8 Grid supply, 1 storage power supply, 2 close | {valName:sta,moduleType:0,operateType:TCP,params:{sta:2,ctrlMode:1,ch:7,cmdSet:11,id:16}} |
-|ctrlSta_8| 0 | 2 |  | 1 |  Power supply type channel #9 Grid supply, 1 storage power supply, 2 close | {valName:sta,moduleType:0,operateType:TCP,params:{sta:2,ctrlMode:1,ch:8,cmdSet:11,id:16}} |
-|ctrlSta_9| 0 | 2 |  | 1 |  Power supply type channel #10 Grid supply, 1 storage power supply, 2 close | {valName:sta,moduleType:0,operateType:TCP,params:{sta:2,ctrlMode:1,ch:9,cmdSet:11,id:16}} |
+|ctrlSta_0| 0 | 2 |  | 1 |  Power supply type channel #1 Grid supply, 1 storage power supply, 2 close/off | {valName:sta,moduleType:0,operateType:TCP,params:{sta:2,ctrlMode:1,ch:0,cmdSet:11,id:16}} |
+|ctrlSta_1| 0 | 2 |  | 1 |  Power supply type channel #2 Grid supply, 1 storage power supply, 2 close/off | {valName:sta,moduleType:0,operateType:TCP,params:{sta:2,ctrlMode:1,ch:1,cmdSet:11,id:16}} |
+|ctrlSta_2| 0 | 2 |  | 1 |  Power supply type channel #3 Grid supply, 1 storage power supply, 2 close/off | {valName:sta,moduleType:0,operateType:TCP,params:{sta:2,ctrlMode:1,ch:2,cmdSet:11,id:16}} |
+|ctrlSta_3| 0 | 2 |  | 1 |  Power supply type channel #4 Grid supply, 1 storage power supply, 2 close/off | {valName:sta,moduleType:0,operateType:TCP,params:{sta:2,ctrlMode:1,ch:3,cmdSet:11,id:16}} |
+|ctrlSta_4| 0 | 2 |  | 1 |  Power supply type channel #5 Grid supply, 1 storage power supply, 2 close/off | {valName:sta,moduleType:0,operateType:TCP,params:{sta:2,ctrlMode:1,ch:4,cmdSet:11,id:16}} |
+|ctrlSta_5| 0 | 2 |  | 1 |  Power supply type channel #6 Grid supply, 1 storage power supply, 2 close/off | {valName:sta,moduleType:0,operateType:TCP,params:{sta:2,ctrlMode:1,ch:5,cmdSet:11,id:16}} |
+|ctrlSta_6| 0 | 2 |  | 1 |  Power supply type channel #7 Grid supply, 1 storage power supply, 2 close/off | {valName:sta,moduleType:0,operateType:TCP,params:{sta:2,ctrlMode:1,ch:6,cmdSet:11,id:16}} |
+|ctrlSta_7| 0 | 2 |  | 1 |  Power supply type channel #8 Grid supply, 1 storage power supply, 2 close/off | {valName:sta,moduleType:0,operateType:TCP,params:{sta:2,ctrlMode:1,ch:7,cmdSet:11,id:16}} |
+|ctrlSta_8| 0 | 2 |  | 1 |  Power supply type channel #9 Grid supply, 1 storage power supply, 2 close/off | {valName:sta,moduleType:0,operateType:TCP,params:{sta:2,ctrlMode:1,ch:8,cmdSet:11,id:16}} |
+|ctrlSta_9| 0 | 2 |  | 1 |  Power supply type channel #10 Grid supply, 1 storage power supply, 2 close/off | {valName:sta,moduleType:0,operateType:TCP,params:{sta:2,ctrlMode:1,ch:9,cmdSet:11,id:16}} |
 
 ### switch
 
 | State  |      off    |  on |  Name |  cmd |
 |----------|:-------------:|:------:|------|------|
-|ctrlMode_0| auto | manual | Contol mode channel #1 0-Auto/1-Manual | {valName:ctrlMode,moduleType:0,operateType:TCP,params:{sta:2,ctrlMode:1,ch:0,cmdSet:11,id:16}} |
-|ctrlMode_1| auto | manual | Contol mode channel #2 0-Auto/1-Manual | {valName:ctrlMode,moduleType:0,operateType:TCP,params:{sta:2,ctrlMode:1,ch:1,cmdSet:11,id:16}} |
-|ctrlMode_2| auto | manual | Contol mode channel #3 0-Auto/1-Manual | {valName:ctrlMode,moduleType:0,operateType:TCP,params:{sta:2,ctrlMode:1,ch:2,cmdSet:11,id:16}} |
-|ctrlMode_3| auto | manual | Contol mode channel #4 0-Auto/1-Manual | {valName:ctrlMode,moduleType:0,operateType:TCP,params:{sta:2,ctrlMode:1,ch:3,cmdSet:11,id:16}} |
-|ctrlMode_4| auto | manual | Contol mode channel #5 0-Auto/1-Manual | {valName:ctrlMode,moduleType:0,operateType:TCP,params:{sta:2,ctrlMode:1,ch:4,cmdSet:11,id:16}} |
-|ctrlMode_5| auto | manual | Contol mode channel #6 0-Auto/1-Manual | {valName:ctrlMode,moduleType:0,operateType:TCP,params:{sta:2,ctrlMode:1,ch:5,cmdSet:11,id:16}} |
-|ctrlMode_6| auto | manual | Contol mode channel #7 0-Auto/1-Manual | {valName:ctrlMode,moduleType:0,operateType:TCP,params:{sta:2,ctrlMode:1,ch:6,cmdSet:11,id:16}} |
-|ctrlMode_7| auto | manual | Contol mode channel #8 0-Auto/1-Manual | {valName:ctrlMode,moduleType:0,operateType:TCP,params:{sta:2,ctrlMode:1,ch:7,cmdSet:11,id:16}} |
-|ctrlMode_8| auto | manual | Contol mode channel #9 0-Auto/1-Manual | {valName:ctrlMode,moduleType:0,operateType:TCP,params:{sta:2,ctrlMode:1,ch:8,cmdSet:11,id:16}} |
-|ctrlMode_9| auto | manual | Contol mode channel #10 0-Auto/1-Manual | {valName:ctrlMode,moduleType:0,operateType:TCP,params:{sta:2,ctrlMode:1,ch:9,cmdSet:11,id:16}} |
+|ctrlMode_0| auto | manual | Contol mode channel #1 0-Auto/1-Manual/Grid | {valName:ctrlMode,moduleType:0,operateType:TCP,params:{sta:0,ctrlMode:0,ch:0,cmdSet:11,id:16}} |
+|ctrlMode_1| auto | manual | Contol mode channel #2 0-Auto/1-Manual/Grid | {valName:ctrlMode,moduleType:0,operateType:TCP,params:{sta:0,ctrlMode:0,ch:1,cmdSet:11,id:16}} |
+|ctrlMode_2| auto | manual | Contol mode channel #3 0-Auto/1-Manual/Grid | {valName:ctrlMode,moduleType:0,operateType:TCP,params:{sta:0,ctrlMode:0,ch:2,cmdSet:11,id:16}} |
+|ctrlMode_3| auto | manual | Contol mode channel #4 0-Auto/1-Manual/Grid | {valName:ctrlMode,moduleType:0,operateType:TCP,params:{sta:0,ctrlMode:0,ch:3,cmdSet:11,id:16}} |
+|ctrlMode_4| auto | manual | Contol mode channel #5 0-Auto/1-Manual/Grid | {valName:ctrlMode,moduleType:0,operateType:TCP,params:{sta:0,ctrlMode:0,ch:4,cmdSet:11,id:16}} |
+|ctrlMode_5| auto | manual | Contol mode channel #6 0-Auto/1-Manual/Grid | {valName:ctrlMode,moduleType:0,operateType:TCP,params:{sta:0,ctrlMode:0,ch:5,cmdSet:11,id:16}} |
+|ctrlMode_6| auto | manual | Contol mode channel #7 0-Auto/1-Manual/Grid | {valName:ctrlMode,moduleType:0,operateType:TCP,params:{sta:0,ctrlMode:0,ch:6,cmdSet:11,id:16}} |
+|ctrlMode_7| auto | manual | Contol mode channel #8 0-Auto/1-Manual/Grid | {valName:ctrlMode,moduleType:0,operateType:TCP,params:{sta:0,ctrlMode:0,ch:7,cmdSet:11,id:16}} |
+|ctrlMode_8| auto | manual | Contol mode channel #9 0-Auto/1-Manual/Grid | {valName:ctrlMode,moduleType:0,operateType:TCP,params:{sta:0,ctrlMode:0,ch:8,cmdSet:11,id:16}} |
+|ctrlMode_9| auto | manual | Contol mode channel #10 0-Auto/1-Manual/Grid | {valName:ctrlMode,moduleType:0,operateType:TCP,params:{sta:0,ctrlMode:0,ch:9,cmdSet:11,id:16}} |
 
 ## epsModeInfo
 

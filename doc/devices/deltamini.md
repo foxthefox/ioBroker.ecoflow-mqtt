@@ -1,5 +1,5 @@
 # States for  DELTAMINI
-### version: 1.0.0
+### version: 1.0.5
 
 [bmsMaster](#bmsMaster)
 
@@ -177,7 +177,7 @@
 |mpptTemp|0 | 80 | °C | 1 |  MPPT temperature |
 |outAmp|0 | 13 | A | 0.01 |  PV output current |
 |outVol|0 | 60 | V | 0.1 |  PV output voltage |
-|outWatts|0 | 500 | W | 0.1 |  PV output power |
+|outWatts|0 | 600 | W | 0.1 |  PV output power |
 
 
 ### switch
