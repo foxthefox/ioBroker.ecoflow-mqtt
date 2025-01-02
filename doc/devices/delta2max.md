@@ -1,5 +1,5 @@
 # States for  DELTA2MAX
-### version: 1.1.0
+### version: 1.1.1
 
 [bmsMaster](#bmsMaster)
 

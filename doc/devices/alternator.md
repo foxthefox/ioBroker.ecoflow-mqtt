@@ -1,5 +1,5 @@
 # States for  ALTERNATOR
-### version: 1.1.0
+### version: 1.1.1
 
 [alternatorHeartbeat](#alternatorHeartbeat)
 

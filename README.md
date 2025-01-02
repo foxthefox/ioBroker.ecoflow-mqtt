@@ -311,6 +311,10 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 
 ## Changelog
 
+### 1.1.1
+* (foxthefox) changed code structure
+* (foxthefox) initial population of BPInfo2/3 to HA
+
 ### 1.1.0 (npm)
 * (foxthefox) added a preliminary version of alternator (no cmd, non final state names)
 * (foxthefox) added a config possibility for unsupported devices for capturing the transmitted telegrams

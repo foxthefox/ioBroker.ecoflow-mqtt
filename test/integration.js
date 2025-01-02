@@ -1,11 +1,15 @@
 const path = require('path');
 const { tests } = require('@iobroker/testing');
+//import { expect } from 'chai';
 const expect = require('chai').expect;
 const { doesNotMatch } = require('assert/strict');
 
 console.log('PATH ist ' + path.join(__dirname, './data/'));
 
 const states = require(path.join(__dirname, '../lib/') + 'ecoflow_data.js');
+const pstreamstates = require(path.join(__dirname, '../lib/') + 'ef_pstream_data.js');
+const plugstates = require(path.join(__dirname, '../lib/') + 'ef_plug_data.js');
+const dpustates = require(path.join(__dirname, '../lib/') + 'ef_dpu_data.js');
 const shpstates = require(path.join(__dirname, '../lib/') + 'ef_shp_data.js');
 const shp2states = require(path.join(__dirname, '../lib/') + 'ef_shp2_data.js');
 const oceanstates = require(path.join(__dirname, '../lib/') + 'ef_powerocean_data.js');
@@ -197,8 +201,8 @@ tests.integration(path.join(__dirname, '..'), {
 
 			it('Plug states should be created', async () => {
 				//await harness.objects.delObject('ecoflow-mqtt.0.HW52ZDH4SF12345.plug_heartbeat.brightness');
-				for (let channel in states['pstreamStatesDict']['plug']) {
-					for (let state in states['pstreamStatesDict']['plug'][channel]) {
+				for (let channel in plugstates['plugStatesDict']['plug']) {
+					for (let state in plugstates['plugStatesDict']['plug'][channel]) {
 						await harness.objects.getObject(
 							'ecoflow-mqtt.0.HW52ZDH4SF12345.' + channel + '.' + state,
 							function(err, obj) {
@@ -215,8 +219,8 @@ tests.integration(path.join(__dirname, '..'), {
 			});
 			it('Pstream 600 states should be created', async () => {
 				//await harness.objects.delObject('ecoflow-mqtt.0.HW51ZOH4SF412345.inverter_heartbeat.permanentWatts');
-				for (let channel in states['pstreamStatesDict']['pstream']) {
-					for (let state in states['pstreamStatesDict']['pstream'][channel]) {
+				for (let channel in pstreamstates['pstreamStatesDict']['pstream']) {
+					for (let state in pstreamstates['pstreamStatesDict']['pstream'][channel]) {
 						await harness.objects.getObject(
 							'ecoflow-mqtt.0.HW51ZOH4SF412345.' + channel + '.' + state,
 							function(err, obj) {
@@ -233,8 +237,8 @@ tests.integration(path.join(__dirname, '..'), {
 			});
 			it('Pstream 800 states should be created', async () => {
 				//await harness.objects.delObject('ecoflow-mqtt.0.HW51ZOH5SF412345.inverter_heartbeat.permanentWatts');
-				for (let channel in states['pstreamStatesDict']['pstream']) {
-					for (let state in states['pstreamStatesDict']['pstream'][channel]) {
+				for (let channel in pstreamstates['pstreamStatesDict']['pstream']) {
+					for (let state in pstreamstates['pstreamStatesDict']['pstream'][channel]) {
 						await harness.objects.getObject(
 							'ecoflow-mqtt.0.HW51ZOH5SF412345.' + channel + '.' + state,
 							function(err, obj) {
@@ -641,9 +645,11 @@ tests.integration(path.join(__dirname, '..'), {
 			*/
 			it('Delta Pro Ultra should be created', async () => {
 				//await harness.objects.delObject('ecoflow-mqtt.0.BX11ZFB5EF412345.mppt.');
-				for (let channel in states['pstreamStatesDict']['deltaproultra']) {
-					for (let state in states['pstreamStatesDict']['deltaproultra'][channel]) {
-						if (states['pstreamStatesDict']['deltaproultra'][channel][state]['entity'] !== 'icon') {
+				for (let channel in dpustates['deltaproultraStatesDict']['deltaproultra']) {
+					for (let state in dpustates['deltaproultraStatesDict']['deltaproultra'][channel]) {
+						if (
+							dpustates['deltaproultraStatesDict']['deltaproultra'][channel][state]['entity'] !== 'icon'
+						) {
 							await harness.objects.getObject(
 								'ecoflow-mqtt.0.DPU0ZFB5EF412345.' + channel + '.' + state,
 								function(err, obj) {
