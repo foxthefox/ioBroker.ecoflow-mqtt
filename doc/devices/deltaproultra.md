@@ -1,5 +1,5 @@
 # States for  DELTAPROULTRA
-### version: 1.0.5
+### version: 1.1.0
 
 [AppParaHeartbeatReport](#AppParaHeartbeatReport)
 
@@ -80,7 +80,7 @@
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |showFlag|0 |  n/a |  | 1 |  show flag |
 |soc|0 | 100 | % | 1 |  SOC |
-|bpNum|0 | 5 |  | 1 |  Baiiery pack count |
+|bpNum|0 | 5 |  | 1 |  Battery pack count |
 |c20ChgMaxWatts|0 | 7200 | W | 1 |  Max charging power AC IN |
 |paraChgMaxWatts|0 | 7200 | W | 1 |  Max parallel charging power |
 |remainTime|0 |  n/a | min | 1 |  Remaining time |
@@ -100,7 +100,7 @@
 |outAcTtPwr|0 | 3600 | W | 1 |  Output power UPS TT-30 |
 |outAcL14Pwr|0 | 4800 | W | 1 |  Output power Backup L-14 |
 |outAc_5p8Pwr|0 | 3600 | W | 1 |  Output power Power I/O |
-|inAc_5p8Pwr|0 | 3600 | W | 1 |  Input power Power I/O |
+|inAc_5p8Pwr|0 | 7200 | W | 1 |  Input power Power I/O |
 |inAcC20Pwr|0 | 2800 | W | 1 |  Input power AC IN |
 |inLvMpptPwr|0 | 1600 | W | 1 |  LV solar power input |
 |inHvMpptPwr|0 | 4000 | W | 1 |  HV solar power input |
@@ -166,7 +166,7 @@
 |emsMaxAvailNum|0 | 5 | pcs | 1 |  EMS max avail. number |
 |emsParaVolMin|0 | 120 | V | 0.001 |  Minimum parallel voltage |
 |emsParaVolMax|0 | 120 | V | 0.001 |  Maximum parallel voltage |
-|acOutFreq|50 | 60 | Hz | 1 |  AC output frequency |
+|acOutFreq|0 | 60 | Hz | 1 |  AC output frequency |
 |batVol|0 | 120 | V | 1 |  Battery voltage |
 |batAmp|0 | 60 | A | 1 |  Battery current |
 |bmsInputWatts|0 | 7200 | W | 1 |  BMS input power |
@@ -195,8 +195,8 @@
 |outAcL14Amp|0 | 20 | A | 1 |  Output current Backup L-14 |
 |outAc_5p8Vol|0 | 250 | V | 1 |  Output voltage PowerI/O |
 |outAc_5p8Amp|0 | 30 | A | 1 |  Output current PowerI/O |
-|inAc_5p8Vol|0 | 250 | V | 1 |  Input voltage PowerI/O |
-|inAc_5p8Amp|0 | 30 | V | 1 |  Input current PowerI/O |
+|inAc_5p8Vol|0 | 260 | V | 1 |  Input voltage PowerI/O |
+|inAc_5p8Amp|0 | 31 | A | 1 |  Input current PowerI/O |
 |inAcC20Vol|0 | 250 | V | 1 |  Input voltage AC IN |
 |inAcC20Amp|0 | 20 | A | 1 |  Input current AC IN |
 |inLvMpptVol|0 | 150 | V | 1 |  LV solar input voltage |

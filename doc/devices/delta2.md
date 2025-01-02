@@ -1,5 +1,5 @@
 # States for  DELTA2
-### version: 1.0.5
+### version: 1.1.0
 
 [bmsMaster](#bmsMaster)
 
@@ -262,10 +262,10 @@
 |wattsInSum|0 | 4000 | W | 1 |  Total input power |
 |wattsOutSum|0 | 4000 | W | 1 |  Total output power |
 |acAutoOutPause|0 | 255 | s (0-255?) | 1 |  AC Auto out Pause |
-|chgPowerAC|0 | 65000 | kWh | 0.001 |  Cumulative AC power charged for PD (wall socket) |
-|chgPowerDC|0 | 65000 | kWh | 0.001 |  Cumulative DC power charged for PD (adapter) |
-|dsgPowerAC|0 | 4000 | W | 0.1 |  Discharge Power AC |
-|dsgPowerDC|0 | 4000 | W | 0.1 |  Discharge Power DC |
+|chgPowerAC|0 |  n/a | kWh | 0.001 |  Cumulative AC power charged for PD (wall socket) |
+|chgPowerDC|0 |  n/a | kWh | 0.001 |  Cumulative DC power charged for PD (adapter) |
+|dsgPowerAC|0 |  n/a | kWh | 0.001 |  Cumulative AC power discharged  |
+|dsgPowerDC|0 |  n/a | kWh | 0.001 |  Cumulative DC discharge capacity |
 |inWatts|0 | 500 | W | 0.1 |  PD? input power |
 |inputWatts|0 | 4000 | W | 0.1 |  Input power |
 |outWatts|0 | 500 | W | 0.1 |  PD? output power |

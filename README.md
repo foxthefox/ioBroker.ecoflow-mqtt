@@ -294,6 +294,14 @@ Wave is not available, could be implemented, if data is available.
 ### Glacier refrigerator
 [Glacier](./doc/devices/glacier.md)
 
+### Alternator
+[Alternator](./doc/devices/alternator.md)
+
+### Unsupported devices
+for debugging purpose this section is created, please select the device (delta pro3, delta3, delta3 plus) und put the serial in the added line
+it is anticipated that the unknown device is using protobuf
+it creates [PROTOBUF unknown] messages in th log, they contain the raw hex telegram
+
 
 ## ToDo
 * check forgotten boundary conditions for commands (inhibit cmd, or additional value)
@@ -302,6 +310,15 @@ Wave is not available, could be implemented, if data is available.
 * more getCmds for SHP values
 
 ## Changelog
+
+### 1.1.0 (npm)
+* (foxthefox) added a preliminary version of alternator (no cmd, non final state names)
+* (foxthefox) added a config possibility for unsupported devices for capturing the transmitted telegrams
+* (foxthefox) #168 changed SHP2 masterIncreInfo.gridSta '0': 'Grid volt. not detected', '1': 'Grid OK'
+* (foxthefox) #173 DPU added additional battery selection
+* (foxthefox) #174 SHP2 added in ProtoTime the wattInfoChWatt, wattInfoAllHallWatt
+* (foxthefox) #174 SHP2 added channel values of power and current in loadPower/loadCurrent including the sum of the values
+* (foxthefox) #167 DELTA2/2Max pd.dsgPowerAC and pd.dsgPowerDC (type from 'power' to 'energy')
 
 ### 1.0.5 (npm)
 * (foxthefox) mppt.outWatts 500 -> 600; inverter_heartbeat.invOutputWatts 800 -> 810
@@ -317,7 +334,6 @@ Wave is not available, could be implemented, if data is available.
 * (foxthefox) watth16/17/18 upper range 10kWh
 * (foxthefox) 'Backup reserve' option added for D2M #137
 * (foxthefox) preparations for DeltaPro3 decode
-
 
 ### 1.0.2 (npm)
 * (foxthefox) correction of SHP commands (#130)
@@ -566,7 +582,7 @@ Wave is not available, could be implemented, if data is available.
 ## License
 MIT License
 
-Copyright (c) 2023-2024 foxthefox <foxthefox@wysiwis.net>
+Copyright (c) 2023-2025 foxthefox <foxthefox@wysiwis.net>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

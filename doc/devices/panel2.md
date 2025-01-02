@@ -1,5 +1,5 @@
 # States for  PANEL2
-### version: 1.0.5
+### version: 1.1.0
 
 [ProtoTime](#ProtoTime)
 
@@ -29,6 +29,10 @@
 
 [LoadStrategyCfg](#LoadStrategyCfg)
 
+[loadCurrent](#loadCurrent)
+
+[loadPower](#loadPower)
+
 
 
 ## ProtoTime
@@ -36,14 +40,16 @@
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|master_gridWatt|0 | 12000 | W | 1 |  Backup charge power |
+|master_gridWatt|0 | 12000 | W | 1 |  Master grid power |
 |bkpChWatt|0 | 7200 | W | 1 |  Backup charge power |
 |backupDischargeTime|0 | 30000 | min | 1 |  Backup discharge time |
 |bkpEnerg1ChargeTime|0 | 30000 | min | 1 |  Backup Energy#1 charge time |
 |bkpEnerg1DischargeTime|0 | 30000 | min | 1 |  Backup Energy#1 discharge time |
-|bkpEnerg2ChargeTime|0 | 30000 | min | 1 |  Backup Energy#1 charge time |
-|bkpEnerg2DischargeTime|0 | 30000 | min | 1 |  Backup Energy#1 discharge time |
-|wattInfoGridWatt|0 | 12000 | W | 1 |  Power info |
+|bkpEnerg2ChargeTime|0 | 30000 | min | 1 |  Backup Energy#2 charge time |
+|bkpEnerg2DischargeTime|0 | 30000 | min | 1 |  Backup Energy#2 discharge time |
+|wattInfoGridWatt|0 | 12000 | W | 1 |  Power info grid |
+|wattInfoChWatt|0 | 12000 | W | 1 |  Power info channel |
+|wattInfoAllHallWatt|0 | 12000 | W | 1 |  Power info all hall |
 
 
 ### string
@@ -88,7 +94,7 @@
 | State  |     Name |  values |
 |----------|:-------------:|------|
 |productType| Product type | {1:SHP2?} |
-|powerSta| Power Status | {0:feeding loads?,1:standby?,2:charging?,3:error?} |
+|powerSta| Power Status | {0:LOAD_CH_EG_POWER,1:LOAD_CH_ES_POWER,2:LOAD_CH_OIL_POWER,3:LOAD_CH_STOP_EM,4:LOAD_CH_OFF_POWER} |
 |isSetOilEngine| isSetOilEngine | {0:no generator?,1:generator?} |
 |isAreaErr| Area error | {0:OK?,1:Error?} |
 |ch1ForceCharge| Ch1 force charging | {0:normal?,1:forced?} |
@@ -507,7 +513,7 @@
 
 | State  |     Name |  values |
 |----------|:-------------:|------|
-|gridSta| Grid status | {0:Grid OK?,1:Grid overvolt./overfreq?,2:Grid volt. not detected?} |
+|gridSta| Grid status | {0:Grid volt. not detected,1:Grid OK,2:Grid overvolt./overfreq} |
 |masterRlyErrFlg| Master Relay Error Flag | {0:OK?,1:Error?} |
 
 ### number
@@ -565,5 +571,45 @@
 |loadPriority10|0 |  n/a |  | 1 |  Channel #10 load priority |
 |loadPriority11|0 |  n/a |  | 1 |  Channel #11 load priority |
 |loadPriority12|0 |  n/a |  | 1 |  Channel #12 load priority |
+
+
+## loadCurrent
+
+### number
+| State  |      Min     |      Max     |  Unit |  Mult |  Name |
+|----------|:-------------:|:-------------:|:------:|:-----:|-----|
+|cur_0|0 | 30 | A | 1 |  Channel #1 current |
+|cur_1|0 | 30 | A | 1 |  Channel #2 current |
+|cur_2|0 | 30 | A | 1 |  Channel #3 current |
+|cur_3|0 | 30 | A | 1 |  Channel #4 current |
+|cur_4|0 | 30 | A | 1 |  Channel #5 current |
+|cur_5|0 | 30 | A | 1 |  Channel #6 current |
+|cur_6|0 | 30 | A | 1 |  Channel #7 current |
+|cur_7|0 | 30 | A | 1 |  Channel #8 current |
+|cur_8|0 | 30 | A | 1 |  Channel #9 current |
+|cur_9|0 | 30 | A | 1 |  Channel #10 current |
+|cur_10|0 | 30 | A | 1 |  Channel #11 current |
+|cur_11|0 | 30 | A | 1 |  Channel #12 current |
+|sumCur|0 | 30 | A | 1 |  Total Load Current |
+
+
+## loadPower
+
+### number
+| State  |      Min     |      Max     |  Unit |  Mult |  Name |
+|----------|:-------------:|:-------------:|:------:|:-----:|-----|
+|chWatt_0|0 | 3600 | W | 1 |  Power channel #1 |
+|chWatt_1|0 | 3600 | W | 1 |  Power channel #2 |
+|chWatt_2|0 | 3600 | W | 1 |  Power channel #3 |
+|chWatt_3|0 | 3600 | W | 1 |  Power channel #4 |
+|chWatt_4|0 | 3600 | W | 1 |  Power channel #5 |
+|chWatt_5|0 | 3600 | W | 1 |  Power channel #6 |
+|chWatt_6|0 | 3600 | W | 1 |  Power channel #7 |
+|chWatt_7|0 | 3600 | W | 1 |  Power channel #8 |
+|chWatt_8|0 | 3600 | W | 1 |  Power channel #9 |
+|chWatt_9|0 | 3600 | W | 1 |  Power channel #10 |
+|chWatt_10|0 | 3600 | W | 1 |  Power channel #11 |
+|chWatt_11|0 | 3600 | W | 1 |  Power channel #12 |
+|sumWatt|0 | 10000 | W | 1 |  Total Load Power |
 
 
