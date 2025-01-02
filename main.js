@@ -87,6 +87,8 @@ class EcoflowMqtt extends utils.Adapter {
 			this.log.info('shelly       -> ' + JSON.stringify(this.config.shellies));
 			this.log.info('powerkit     -> ' + JSON.stringify(this.config.powerkits));
 			this.log.info('powerocean   -> ' + JSON.stringify(this.config.poweroceans));
+			this.log.info('alternator   -> ' + JSON.stringify(this.config.alternators));
+			this.log.info('unknown      -> ' + JSON.stringify(this.config.unknowns));
 
 			try {
 				//loop durch alle Geräte
@@ -101,7 +103,9 @@ class EcoflowMqtt extends utils.Adapter {
 					this.config.panels,
 					this.config.shellies,
 					this.config.powerkits,
-					this.config.poweroceans
+					this.config.poweroceans,
+					this.config.alternators,
+					this.config.unknowns
 				);
 				if (confdevices.length > 0) {
 					//loop durch alle pstations
@@ -110,7 +114,11 @@ class EcoflowMqtt extends utils.Adapter {
 						if (devtype !== 'none' && devtype !== '') {
 							const id = confdevices[psta]['devId'];
 							const name = confdevices[psta]['devName'];
-							const haEnable = confdevices[psta]['haEnable'];
+							let haEnable = false;
+							//Testgeräte haben kein haEnable
+							if (confdevices[psta]['haEnable']) {
+								haEnable = confdevices[psta]['haEnable'];
+							}
 							const debugEnable = confdevices[psta]['debugEnable'];
 							this.pdevices[id] = {};
 							this.pdevices[id]['devType'] = devtype;
@@ -125,12 +133,7 @@ class EcoflowMqtt extends utils.Adapter {
 							}
 
 							let devStates = null;
-							if (
-								devtype === 'pstream600' ||
-								devtype === 'pstream800' ||
-								devtype === 'plug' ||
-								devtype === 'deltaproultra'
-							) {
+							if (devtype === 'pstream600' || devtype === 'pstream800' || devtype === 'plug') {
 								devStates = require('./lib/ecoflow_data.js').pstreamStates;
 							} else if (
 								devtype === 'powerkitbp2000' ||
@@ -144,18 +147,17 @@ class EcoflowMqtt extends utils.Adapter {
 								devStates = require('./lib/ef_shp_data.js').panelStates;
 							} else if (devtype === 'panel2') {
 								devStates = require('./lib/ef_shp2_data.js').panel2States;
+							} else if (devtype === 'deltaproultra') {
+								devStates = require('./lib/ef_dpu_data.js').deltaproultraStates;
+							} else if (devtype === 'alternator') {
+								devStates = require('./lib/ef_alternator_data.js').alternatorStates;
 							} else {
 								devStates = require('./lib/ecoflow_data.js').pstationStates;
 							}
 							//ef_powerkit_data.js
 							if (devtype !== 'none' && devStates) {
 								let devupd = null;
-								if (
-									devtype === 'pstream600' ||
-									devtype === 'pstream800' ||
-									devtype === 'plug' ||
-									devtype === 'deltaproultra'
-								) {
+								if (devtype === 'pstream600' || devtype === 'pstream800' || devtype === 'plug') {
 									devupd = require('./lib/ecoflow_data.js').pstreamRanges[devtype];
 								} else if (
 									devtype === 'powerkitbp2000' ||
@@ -169,6 +171,10 @@ class EcoflowMqtt extends utils.Adapter {
 									devupd = require('./lib/ef_shp_data.js').panelRanges[devtype];
 								} else if (devtype === 'panel2') {
 									devupd = require('./lib/ef_shp2_data.js').panel2Ranges[devtype];
+								} else if (devtype === 'deltaproultra') {
+									devupd = require('./lib/ef_dpu_data.js').deltaproultraRanges[devtype];
+								} else if (devtype === 'alternator') {
+									devupd = require('./lib/ef_alternator_data.js').alternatorRanges[devtype];
 								} else {
 									devupd = require('./lib/ecoflow_data.js').pstationRanges[devtype];
 								}
@@ -220,7 +226,7 @@ class EcoflowMqtt extends utils.Adapter {
 
 							let pdevicesStatesDict = null;
 							let pdevicesCmd = null;
-							if (devtype === 'pstream' || devtype === 'plug' || devtype === 'deltaproultra') {
+							if (devtype === 'pstream' || devtype === 'plug') {
 								pdevicesStatesDict = require('./lib/ecoflow_data.js').pstreamStatesDict[devtype];
 								pdevicesCmd = require('./lib/ecoflow_data.js').pstreamCmd[origdevtype];
 							} else if (devtype === 'powerkit') {
@@ -237,6 +243,14 @@ class EcoflowMqtt extends utils.Adapter {
 							} else if (devtype === 'panel2') {
 								pdevicesStatesDict = require('./lib/ef_shp2_data.js').panel2StatesDict[devtype];
 								pdevicesCmd = require('./lib/ef_shp2_data.js').panel2Cmd[devtype];
+							} else if (devtype === 'deltaproultra') {
+								pdevicesStatesDict = require('./lib/ef_dpu_data.js').deltaproultraStatesDict[devtype];
+								pdevicesCmd = require('./lib/ef_dpu_data.js').deltaproultraCmd[devtype];
+							} else if (devtype === 'alternator') {
+								pdevicesStatesDict = require('./lib/ef_alternator_data.js').alternatorStatesDict[
+									devtype
+								];
+								pdevicesCmd = require('./lib/ef_alternator_data.js').alternatorCmd[devtype];
 							} else {
 								pdevicesStatesDict = require('./lib/ecoflow_data.js').pstationStatesDict[origdevtype];
 								pdevicesCmd = require('./lib/ecoflow_data.js').pstationCmd[origdevtype];
@@ -469,6 +483,39 @@ class EcoflowMqtt extends utils.Adapter {
 												}
 											}
 											this.log.info('powerocean add battery #1 states created');
+										} else if (devtype == 'deltaproultra') {
+											if (this.config.msgStateCreation) {
+												this.log.debug('____________________________________________');
+												this.log.debug('create  channel ' + 'BPInfo2');
+											}
+											await myutils.createMyChannel(this, id, 'BPInfo2', 'BPInfo2', 'channel');
+											for (let key in pdevicesStatesDict['BPInfo']) {
+												if (this.config.msgStateCreation) {
+													this.log.debug('state creation ' + key);
+												}
+												let type = pdevicesStatesDict['BPInfo'][key]['entity'];
+												if (type !== 'icon') {
+													if (devStates['BPInfo'][type][key]) {
+														await myutils.createMyState(
+															this,
+															id,
+															'BPInfo2',
+															key,
+															devStates['BPInfo'][type][key]
+														);
+													} else {
+														this.log.info(
+															'not created/mismatch ' +
+																' BPInfo2 ->' +
+																' ' +
+																key +
+																' ' +
+																type
+														);
+													}
+												}
+											}
+											this.log.info('DPU add battery (#2) states created');
 										} else {
 											if (this.config.msgStateCreation) {
 												this.log.debug('____________________________________________');
@@ -579,6 +626,39 @@ class EcoflowMqtt extends utils.Adapter {
 												}
 											}
 											this.log.info('powerocean add battery #1 states created');
+										} else if (devtype == 'deltaproultra') {
+											if (this.config.msgStateCreation) {
+												this.log.debug('____________________________________________');
+												this.log.debug('create  channel ' + 'BPInfo3');
+											}
+											await myutils.createMyChannel(this, id, 'BPInfo3', 'BPInfo3', 'channel');
+											for (let key in pdevicesStatesDict['BPInfo']) {
+												if (this.config.msgStateCreation) {
+													this.log.debug('state creation ' + key);
+												}
+												let type = pdevicesStatesDict['BPInfo'][key]['entity'];
+												if (type !== 'icon') {
+													if (devStates['BPInfo'][type][key]) {
+														await myutils.createMyState(
+															this,
+															id,
+															'BPInfo3',
+															key,
+															devStates['BPInfo'][type][key]
+														);
+													} else {
+														this.log.info(
+															'not created/mismatch ' +
+																' BPInfo3 ->' +
+																' ' +
+																key +
+																' ' +
+																type
+														);
+													}
+												}
+											}
+											this.log.info('DPU add battery (#3) states created');
 										} else {
 											if (this.config.msgStateCreation) {
 												this.log.debug('____________________________________________');
@@ -750,14 +830,31 @@ class EcoflowMqtt extends utils.Adapter {
 						devtype === 'plug' ||
 						devtype === 'deltaproultra' ||
 						devtype === 'powerocean' ||
-						devtype === 'panel2'
+						devtype === 'panel2' ||
+						devtype === 'alternator' ||
+						devtype === 'deltapro3' ||
+						devtype === 'delta3' ||
+						devtype === 'delta3plus'
 					) {
 						if (this.pdevicesStatesDict && this.pdevicesStates) {
 							let msgdecode = null;
-							try {
-								msgdecode = ef.pstreamDecode(this, message, '', topic, msgtype, logged);
-							} catch (error) {
-								this.log.debug('pstreamDecode call ->' + error);
+							if (devtype === 'deltapro3' || devtype === 'delta3' || devtype === 'delta3plus') {
+								this.log.debug(
+									'[PROTOBUF unknown] ' +
+										topic +
+										' [' +
+										devtype +
+										'/' +
+										msgtype +
+										'] raw (hex): ' +
+										message.toString('hex')
+								);
+							} else {
+								try {
+									msgdecode = ef.pstreamDecode(this, message, '', topic, msgtype, logged);
+								} catch (error) {
+									this.log.debug('pstreamDecode call ->' + error);
+								}
 							}
 							if (msgtype === 'update' || msgtype === 'get_reply') {
 								if (msgdecode !== null && typeof msgdecode === 'object') {
@@ -814,7 +911,8 @@ class EcoflowMqtt extends utils.Adapter {
 							devtype === 'pstream800' ||
 							devtype === 'deltaproultra' ||
 							devtype === 'powerocean' ||
-							devtype === 'panel2'
+							devtype === 'panel2' ||
+							devtype === 'alternator'
 						) {
 							this.msgCountPstream++;
 							await this.setStateAsync('info.msgCountPstream', {
@@ -1366,6 +1464,10 @@ class EcoflowMqtt extends utils.Adapter {
 							case 'deltaproultra':
 							case 'powerocean':
 							case 'panel2':
+							case 'alternator':
+							case 'deltapro3':
+							case 'dalta3plus':
+							case 'dalta3':
 								devicetype = this.pdevices[device]['devType'];
 								type = 'protobuf'; //includes also plugs
 								cmd = this.pdevicesCmd[devicetype];
@@ -1398,7 +1500,15 @@ class EcoflowMqtt extends utils.Adapter {
 
 				switch (type) {
 					case 'protobuf':
-						if (devicetype !== '' && devicetype !== 'none' && cmd) {
+						if (
+							devicetype !== '' &&
+							devicetype !== 'none' &&
+							cmd &&
+							(devicetype !== 'delta3' &&
+								devicetype !== 'delta3plus' &&
+								devicetype !== 'deltapro3' &&
+								devicetype !== 'alternator')
+						) {
 							const msgBuf = await ef.prepareStreamCmd(
 								this,
 								device,

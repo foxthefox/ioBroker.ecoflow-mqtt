@@ -1,5 +1,5 @@
 # States for  RIVERPRO
-### version: 1.0.5
+### version: 1.1.0
 
 [bmsMaster](#bmsMaster)
 
@@ -118,12 +118,12 @@
 |carTemp|0 | 80 | °C | 1 |  CAR temperature |
 |carUsedTime|0 | 9999999 | min | 0.0166 |  Car use time |
 |carWatts|0 | 500 | W | 0.1 |  CAR output power |
-|chgPowerAC|0 | 65000 | kWh | 0.001 |  Cumulative AC power charged for PD (wall socket) |
-|chgPowerDC|0 | 65000 | kWh | 0.001 |  Cumulative DC power charged for PD (adapter) |
+|chgPowerAC|0 |  n/a | kWh | 0.001 |  Cumulative AC power charged for PD (wall socket) |
+|chgPowerDC|0 |  n/a | kWh | 0.001 |  Cumulative DC power charged for PD (adapter) |
 |chgSunPower|0 | 65000 | kWh | 0.001 |  Cumulative solar power charged |
 |dcInUsedTime|0 | 9999999 | min | 0.0166 |  DC charging time |
-|dsgPowerAC|0 | 4000 | W | 0.001 |  Discharge Power AC |
-|dsgPowerDC|0 | 4000 | W | 0.1 |  Discharge Power DC |
+|dsgPowerAC|0 |  n/a | kWh | 0.001 |  Cumulative AC power discharged  |
+|dsgPowerDC|0 |  n/a | kWh | 0.001 |  Cumulative DC discharge capacity |
 |invUsedTime|0 | 9999999 | min | 0.0166 |  Inverter use time |
 |mpptUsedTime|0 | 9999999 | min | 0.0166 |  MPPT use time |
 |remainTime|0 | 143999 | min | 1 |  Time remaining (min) &gt; 0: remaining charging time; time remaining (min) &lt; 0: remaining discharging time |

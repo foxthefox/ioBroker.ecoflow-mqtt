@@ -1,5 +1,5 @@
 # States for  RIVERMAX
-### version: 1.0.5
+### version: 1.1.0
 
 [inv](#inv)
 
@@ -101,8 +101,8 @@
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |wattsInSum|0 | 500 | W | 1 |  Total input power |
 |dcInUsedTime|0 | 9999999 | min | 0.0166 |  DC charging time |
-|chgPowerDC|0 | 65000 | kWh | 0.001 |  Cumulative DC power charged for PD (adapter) |
-|dsgPowerDC|0 | 4000 | W | 0.1 |  Discharge Power DC |
+|chgPowerDC|0 |  n/a | kWh | 0.001 |  Cumulative DC power charged for PD (adapter) |
+|dsgPowerDC|0 |  n/a | kWh | 0.001 |  Cumulative DC discharge capacity |
 |remainTime|0 | 143999 | min | 1 |  Time remaining (min) &gt; 0: remaining charging time; time remaining (min) &lt; 0: remaining discharging time |
 |usb3Watts|0 | 500 | W | 0.1 |  Common usb3 output power |
 |typecUsedTime|0 | 9999999 | min | 0.0166 |  Type-C use time |
@@ -115,8 +115,8 @@
 |mpptUsedTime|0 | 9999999 | min | 0.0166 |  MPPT use time |
 |ledWatts|0 | 100 | W | 0.1 |  LED output power |
 |usb1Watts|0 | 500 | W | 1 |  Common usb1 output power |
-|dsgPowerAC|0 | 4000 | W | 0.001 |  Discharge Power AC |
-|chgPowerAC|0 | 65000 | kWh | 0.001 |  Cumulative AC power charged for PD (wall socket) |
+|dsgPowerAC|0 |  n/a | kWh | 0.001 |  Cumulative AC power discharged  |
+|chgPowerAC|0 |  n/a | kWh | 0.001 |  Cumulative AC power charged for PD (wall socket) |
 |carWatts|0 | 500 | W | 0.1 |  CAR output power |
 |carUsedTime|0 | 9999999 | min | 0.0166 |  Car use time |
 |usb2Watts|0 | 500 | W | 1 |  Common usb2 output power |
