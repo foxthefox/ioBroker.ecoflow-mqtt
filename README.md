@@ -294,6 +294,14 @@ Wave is not available, could be implemented, if data is available.
 ### Glacier refrigerator
 [Glacier](./doc/devices/glacier.md)
 
+### Alternator
+[Alternator](./doc/devices/alternator.md)
+
+### Unsupported devices
+for debugging purpose this section is created, please select the device (delta pro3, delta3, delta3 plus) und put the serial in the added line
+it is anticipated that the unknown device is using protobuf
+it creates [PROTOBUF unknown] messages in th log, they contain the raw hex telegram
+
 
 ## ToDo
 * check forgotten boundary conditions for commands (inhibit cmd, or additional value)
