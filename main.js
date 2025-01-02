@@ -1500,7 +1500,15 @@ class EcoflowMqtt extends utils.Adapter {
 
 				switch (type) {
 					case 'protobuf':
-						if (devicetype !== '' && devicetype !== 'none' && cmd) {
+						if (
+							devicetype !== '' &&
+							devicetype !== 'none' &&
+							cmd &&
+							(devicetype !== 'delta3' &&
+								devicetype !== 'delta3plus' &&
+								devicetype !== 'deltapro3' &&
+								devicetype !== 'alternator')
+						) {
 							const msgBuf = await ef.prepareStreamCmd(
 								this,
 								device,

@@ -312,6 +312,8 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 ## Changelog
 
 ### 1.1.0 (npm)
+* (foxthefox) added a preliminary version of alternator (no cmd, non final state names)
+* (foxthefox) added a config possibility for unsupported devices for capturing the transmitted telegrams
 * (foxthefox) #168 changed SHP2 masterIncreInfo.gridSta '0': 'Grid volt. not detected', '1': 'Grid OK'
 * (foxthefox) #173 DPU added additional battery selection
 * (foxthefox) #174 SHP2 added in ProtoTime the wattInfoChWatt, wattInfoAllHallWatt
