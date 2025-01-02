@@ -23,13 +23,23 @@
 				"userName": {
 					"type": "text",
 					"label": "ecoflow account name / email  ",
-					"newLine": false
+					"newLine": false,
+					"xs": 12,
+					"sm": 12,
+					"md": 6,
+					"lg": 6,
+					"xl": 4
 				},
 				"userPassword": {
 					"type": "password",
 					"visible": true,
 					"label": "user password",
-					"newLine": false
+					"newLine": false,
+					"xs": 12,
+					"sm": 12,
+					"md": 6,
+					"lg": 6,
+					"xl": 4
 				},
 				"_create": {
 					"type": "sendTo",
@@ -37,7 +47,12 @@
 					"command": "create",
 					"variant": "outlined",
 					"jsonData": "{\"user\": \"${data.userName}\", \"pass\": \"${data.userPassword}\"}",
-					"useNative": true
+					"useNative": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 6,
+					"lg": 6,
+					"xl": 4
 				},
 				"_connection": {
 					"newLine": true,
@@ -53,12 +68,22 @@
 				"mqttUrl": {
 					"type": "text",
 					"label": "mqtt broker",
-					"newLine": false
+					"newLine": false,
+					"xs": 12,
+					"sm": 12,
+					"md": 6,
+					"lg": 6,
+					"xl": 4
 				},
 				"mqttPort": {
 					"type": "text",
 					"label": "mqtt port",
-					"newLine": false
+					"newLine": false,
+					"xs": 12,
+					"sm": 12,
+					"md": 6,
+					"lg": 6,
+					"xl": 4
 				},
 				"_auth": {
 					"newLine": true,
@@ -128,7 +153,12 @@
 					"label": "Test connection",
 					"command": "test",
 					"variant": "contained",
-					"jsonData": "{\"user\": \"${data.mqttUserName}\", \"pass\": \"${data.mqttPwd}\", \"url\": \"${data.mqttUrl}\", \"port\": ${data.mqttPort}, \"clientId\": \"${data.mqttClientId}\"}"
+					"jsonData": "{\"user\": \"${data.mqttUserName}\", \"pass\": \"${data.mqttPwd}\", \"url\": \"${data.mqttUrl}\", \"port\": ${data.mqttPort}, \"clientId\": \"${data.mqttClientId}\"}",
+					"xs": 12,
+					"sm": 12,
+					"md": 6,
+					"lg": 6,
+					"xl": 4
 				},
 				"_debugcommon": {
 					"newLine": true,
@@ -156,7 +186,12 @@
 					"label": "Debug Quotas (JSON)",
 					"command": "quotajson",
 					"variant": "contained",
-					"jsonData": "{\"quota\": \"now\"}"
+					"jsonData": "{\"quota\": \"now\"}",
+					"xs": 12,
+					"sm": 12,
+					"md": 6,
+					"lg": 4,
+					"xl": 4
 				},
 				"getQuota2": {
 					"type": "sendTo",
@@ -164,7 +199,12 @@
 					"label": "Debug Quotas (buffer)",
 					"command": "quotabuf",
 					"variant": "contained",
-					"jsonData": "{\"quota\": \"now\"}"
+					"jsonData": "{\"quota\": \"now\"}",
+					"xs": 12,
+					"sm": 12,
+					"md": 6,
+					"lg": 4,
+					"xl": 4
 				},
 				"_debugoptions": {
 					"newLine": true,
@@ -180,7 +220,12 @@
 				"_introDebug": {
 					"type": "staticText",
 					"text": "If you are unsure, tick all checkboxes for all debug messages. (it is only effective when the adapter is in debug mode (see header of this admin page and the far right setting))",
-					"newLine": true
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12
 				},
 				"msgUpdate": {
 					"newLine": true,
@@ -242,7 +287,11 @@
 					"newLine": true
 				},
 				"pstreams": {
+					"xs": 12,
 					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12,
 					"newLine": true,
 					"type": "table",
 					"items": [
@@ -315,7 +364,11 @@
 					"newLine": true
 				},
 				"pstations": {
+					"xs": 12,
 					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12,
 					"newLine": true,
 					"type": "table",
 					"items": [
@@ -383,7 +436,7 @@
 							"type": "checkbox",
 							"title": "Slave 1",
 							"width": "5%",
-							"hidden": "data.devType !== 'deltapro' && data.devType !== 'deltamax' && data.devType !== 'delta2max' && data.devType !== 'delta' && data.devType !== 'delta2'",
+							"hidden": "data.devType !== 'deltapro' && data.devType !== 'deltamax' && data.devType !== 'delta2max' && data.devType !== 'delta' && data.devType !== 'delta2' && data.devType !== 'deltaproultra'",
 							"attr": "pstationsSlave1",
 							"filter": false,
 							"sort": false,
@@ -393,7 +446,7 @@
 							"type": "checkbox",
 							"title": "Slave 2",
 							"width": "5%",
-							"hidden": "data.devType !== 'deltapro' && data.devType !== 'deltamax' && data.devType !== 'delta2max' ",
+							"hidden": "data.devType !== 'deltapro' && data.devType !== 'deltamax' && data.devType !== 'delta2max' && data.devType !== 'deltaproultra'",
 							"attr": "pstationsSlave2",
 							"filter": false,
 							"sort": false,
@@ -418,7 +471,11 @@
 					"newLine": true
 				},
 				"plugs": {
+					"xs": 12,
 					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12,
 					"newLine": true,
 					"type": "table",
 					"items": [
@@ -940,7 +997,11 @@
 					"newLine": true
 				},
 				"poweroceans": {
+					"xs": 12,
 					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12,
 					"newLine": true,
 					"type": "table",
 					"items": [
@@ -1012,6 +1073,134 @@
 							"default": false
 						}
 					]
+				},
+				"_alternatorHeader": {
+					"newLine": true,
+					"type": "header",
+					"text": "Alternator Configuration",
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12,
+					"size": 3
+				},
+				"_alternatorTable1Txt1": {
+					"type": "staticText",
+					"text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have no device, delete the added line item",
+					"newLine": true
+				},
+				"alternators": {
+					"sm": 12,
+					"newLine": true,
+					"type": "table",
+					"items": [
+						{
+							"type": "text",
+							"width": "15%",
+							"title": "name",
+							"attr": "devName",
+							"filter": false,
+							"sort": false,
+							"default": "My Alternator1"
+						},
+						{
+							"type": "text",
+							"width": "15%",
+							"title": "id",
+							"attr": "devId",
+							"filter": false,
+							"sort": false,
+							"default": "F37.."
+						},
+						{
+							"type": "select",
+							"width": "10%",
+							"options": [
+								{ "value": "none", "label": "none" },
+								{ "value": "alternator", "label": "Alternator 800W" }
+							],
+							"title": "Alternator Type",
+							"attr": "devType",
+							"filter": false,
+							"sort": false,
+							"default": "none"
+						},
+						{
+							"type": "checkbox",
+							"title": "debug enable",
+							"width": "5%",
+							"attr": "debugEnable",
+							"filter": false,
+							"sort": false,
+							"default": false
+						}
+					]
+				},
+				"_unknownHeader": {
+					"newLine": true,
+					"type": "header",
+					"text": "Configuration for not yet supported devices for debugging",
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12,
+					"size": 3
+				},
+				"_unknownTable1Txt1": {
+					"type": "staticText",
+					"text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have no device, delete the added line item",
+					"newLine": true
+				},
+				"unknowns": {
+					"sm": 12,
+					"newLine": true,
+					"type": "table",
+					"items": [
+						{
+							"type": "text",
+							"width": "15%",
+							"title": "name",
+							"attr": "devName",
+							"filter": false,
+							"sort": false,
+							"default": "Device 1"
+						},
+						{
+							"type": "text",
+							"width": "15%",
+							"title": "id",
+							"attr": "devId",
+							"filter": false,
+							"sort": false,
+							"default": "MR51.."
+						},
+						{
+							"type": "select",
+							"width": "10%",
+							"options": [
+								{ "value": "none", "label": "none" },
+								{ "value": "deltapro3", "label": "Delta Pro 3" },
+								{ "value": "delta3", "label": "Delta 3" },
+								{ "value": "delta3plus", "label": "Delta 3 Plus" }
+							],
+							"title": "Alternator Type",
+							"attr": "devType",
+							"filter": false,
+							"sort": false,
+							"default": "none"
+						},
+						{
+							"type": "checkbox",
+							"title": "debug enable",
+							"width": "5%",
+							"attr": "debugEnable",
+							"filter": false,
+							"sort": false,
+							"default": true
+						}
+					]
 				}
 			}
 		},
@@ -1037,28 +1226,48 @@
 					"xs": 12,
 					"sm": 12,
 					"md": 6,
-					"lg": 4,
+					"lg": 6,
 					"xl": 4
 				},
 				"haMqttProtocol": {
 					"type": "text",
 					"label": "HA mqtt protocol",
-					"newLine": true
+					"newLine": true,
+					"xs": 12,
+					"sm": 12,
+					"md": 6,
+					"lg": 6,
+					"xl": 4
 				},
 				"haMqttUrl": {
 					"type": "text",
 					"label": "HA mqtt Url",
-					"newLine": false
+					"newLine": false,
+					"xs": 12,
+					"sm": 12,
+					"md": 6,
+					"lg": 6,
+					"xl": 4
 				},
 				"haMqttPort": {
 					"type": "text",
 					"label": "HA mqtt port",
-					"newLine": false
+					"newLine": false,
+					"xs": 12,
+					"sm": 12,
+					"md": 6,
+					"lg": 6,
+					"xl": 4
 				},
 				"haTopic": {
 					"type": "text",
 					"label": "HA topic prefix",
-					"newLine": false
+					"newLine": false,
+					"xs": 12,
+					"sm": 12,
+					"md": 6,
+					"lg": 6,
+					"xl": 4
 				},
 				"_auth": {
 					"newLine": true,
