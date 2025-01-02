@@ -133,8 +133,10 @@ class EcoflowMqtt extends utils.Adapter {
 							}
 
 							let devStates = null;
-							if (devtype === 'pstream600' || devtype === 'pstream800' || devtype === 'plug') {
-								devStates = require('./lib/ecoflow_data.js').pstreamStates;
+							if (devtype === 'pstream600' || devtype === 'pstream800') {
+								devStates = require('./lib/ef_pstream_data.js').pstreamStates;
+							} else if (devtype === 'plug') {
+								devStates = require('./lib/ef_plug_data.js').plugStates;
 							} else if (
 								devtype === 'powerkitbp2000' ||
 								devtype === 'powerkitbp5000' ||
@@ -157,8 +159,10 @@ class EcoflowMqtt extends utils.Adapter {
 							//ef_powerkit_data.js
 							if (devtype !== 'none' && devStates) {
 								let devupd = null;
-								if (devtype === 'pstream600' || devtype === 'pstream800' || devtype === 'plug') {
-									devupd = require('./lib/ecoflow_data.js').pstreamRanges[devtype];
+								if (devtype === 'pstream600' || devtype === 'pstream800') {
+									devupd = require('./lib/ef_pstream_data.js').pstreamRanges[devtype];
+								} else if (devtype === 'plug') {
+									devupd = require('./lib/ef_plug_data.js').plugRanges[devtype];
 								} else if (
 									devtype === 'powerkitbp2000' ||
 									devtype === 'powerkitbp5000' ||
@@ -226,9 +230,12 @@ class EcoflowMqtt extends utils.Adapter {
 
 							let pdevicesStatesDict = null;
 							let pdevicesCmd = null;
-							if (devtype === 'pstream' || devtype === 'plug') {
-								pdevicesStatesDict = require('./lib/ecoflow_data.js').pstreamStatesDict[devtype];
-								pdevicesCmd = require('./lib/ecoflow_data.js').pstreamCmd[origdevtype];
+							if (devtype === 'pstream') {
+								pdevicesStatesDict = require('./lib/ef_pstream_data.js').pstreamStatesDict[devtype];
+								pdevicesCmd = require('./lib/ef_pstream_data.js').pstreamCmd[origdevtype];
+							} else if (devtype === 'plug') {
+								pdevicesStatesDict = require('./lib/ef_plug_data.js').plugStatesDict[devtype];
+								pdevicesCmd = require('./lib/ef_plug_data.js').plugCmd[devtype];
 							} else if (devtype === 'powerkit') {
 								pdevicesStatesDict = require('./lib/ef_powerkit_data.js').powerkitStatesDict[devtype];
 								pdevicesCmd = require('./lib/ef_powerkit_data.js').powerkitCmd[devtype];
