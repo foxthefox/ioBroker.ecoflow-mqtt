@@ -1173,7 +1173,7 @@ class EcoflowMqtt extends utils.Adapter {
 							'HA INIT'
 						);
 
-						ha.subscribe(this, 'homeassitant/status', 'HA INIT status');
+						ha.subscribe(this, 'homeassistant/status', 'HA INIT status');
 
 						for (let j = 0; j < this.haDevices.length; j++) {
 							const id = this.haDevices[j];
@@ -1601,168 +1601,203 @@ class EcoflowMqtt extends utils.Adapter {
 			} else {
 				const idsplit = id.split('.');
 				const device = idsplit[2];
-				const channel = idsplit[3];
-				const item = idsplit[4];
-				if (channel === 'info' && item === 'status') {
-					const cnt = await this.getStateAsync('info.cntDevOnline').catch((e) => {
-						this.log.warn('problem getting state info.cntDevOnline ' + e);
-					});
-
-					let devcount = cnt.val;
-
-					if (state.val === 'online') {
-						if (devcount === 0) {
-							//stop recon_timer_long
-							//start recon_timer
+				if (device === 'info') {
+					// Top level (non-device specific) states
+					const item = idsplit[3];
+					if (item === 'haConnection') {
+						if (state.val == 'offline') {
+							//stop interval
+							if (haLoadInterval) this.clearInterval(haLoadInterval);
+							await this.setStateAsync('info.haConnAvgLoad', { val: 0, ack: true });
 						}
-						devcount++;
-						await this.setStateAsync('info.cntDevOnline', { val: devcount, ack: true });
-					} else if (state.val === 'offline') {
-						if (devcount === 1) {
-							//stop recon_timer
-							//start recon_timer_long
-						}
-						devcount--;
-						await this.setStateAsync('info.cntDevOnline', { val: devcount, ack: true });
 					}
-
-					if (this.haClient && this.pdevices[device]['haEnable'] === true) {
-						ha.publish(
-							this,
-							device,
-							this.config.haTopic + '/' + device + '/info/status',
-							String(state.val),
-							{ qos: 1 },
-							true,
-							'HA STATE UPD'
-						);
-
-						if (this.pdevices && this.pdevicesStatesDict && this.pdevicesStates && this.config.haTopic) {
-							const id = device;
-							const type = this.pdevices[id]['devType'];
-							let bat1 = false;
-							let bat2 = false;
-							if (this.pdevices[id]['pstationsSlave1']) {
-								bat1 = this.pdevices[id]['pstationsSlave1'];
-							}
-							if (this.pdevices[id]['pstationsSlave2']) {
-								bat2 = this.pdevices[id]['pstationsSlave2'];
-							}
-
-							const update = ha.prepareFullHaUpd(
-								id,
-								this.pdevicesStatesDict[type],
-								this.pdevicesStates[type],
-								this.config.haTopic,
-								bat1,
-								bat2
+					else if (item === 'haBrokerStatus') {
+						if (state.val == 'online') {
+							this.log.debug('HA broker online; init devices');
+							ha.publish(
+								this,
+								'IOB',
+								this.config.haTopic + '/iob/info/status',
+								'online',
+								{ qos: 1 },
+								true,
+								'HA INIT'
 							);
-							if (this.config.msgHaStatusInitial) {
-								this.log.debug(
-									'[HA STATE INIT DATA] ' + id + ' initial update: ' + update.length + ' objects '
-								);
-								//this.log.debug(id + ' initial update: ' + JSON.stringify(update));
-							}
-							let missing = [];
-							for (let i = 0; i < update.length; i++) {
-								const value = await this.getStateAsync(update[i].getId).catch((e) => {
-									this.log.warn('[HA STATE INIT DATA] problem getting state for initialization ' + e);
-								});
-								if (value) {
-									let val;
-									try {
-										if (update[i].entity === 'switch') {
-											val = value.val === true ? update[i].on : update[i].off;
-										} else if (update[i].entity === 'select') {
-											try {
-												val = update[i].states[value.val];
-											} catch (error) {
-												this.log.warn(
-													'[HA STATE INIT DATA] value not in range ' +
-														value.val +
-														'  ' +
-														update[i].states +
-														' err -> ' +
-														error
-												);
-											}
-										} else if (update[i].entity === 'text') {
-											val = value.val;
-										} else {
-											val = String(value.val);
+							if (this.pdevices) {
+								for (const device in this.pdevices) {
+									this.log.debug('init device ' + device);
+									if (this.haClient && this.pdevices[device]['haEnable'] === true) {
+										const status = await this.getStateAsync(device + '.info.status');
+										if (status && status.val) {
+											await this.initDeviceWithHA(device, status.val === 'online' ? 'online' : 'offline');
 										}
-										if (this.config.msgHaStatusInitial) {
-											this.log.debug(
-												'[HA INITIAL] ' +
-													id +
-													' update [' +
-													i +
-													'] ' +
-													update[i].topic +
-													' with ' +
-													val
-											);
-										}
-										if (typeof val === 'string' && val !== 'undefined') {
-											ha.publish(
-												this,
-												id,
-												update[i].topic,
-												val,
-												{ qos: 1 },
-												false, //this.config.msgHaStatusInitial,
-												'HA STATE INIT DATA'
-											);
-										} else {
-											this.log.warn(
-												'[HA STATE INIT DATA] not a STRING ! : ' +
-													update[i].topic +
-													' with ' +
-													val
-											);
-										}
-									} catch (error) {
-										this.log.warn(
-											'[HA STATE INIT DATA] ' +
-												update[i].getId +
-												' problem initialiizing ' +
-												value.val +
-												'-> ' +
-												error
-										);
 									}
-								} else {
-									missing.push(update[i].getId);
-									this.log.warn(
-										'[HA STATE INIT DATA] ' +
-											update[i].getId +
-											' getState returned -> ' +
-											JSON.stringify(value)
-									);
 								}
 							}
-							if (this.config.msgHaStatusInitial && missing.length > 0) {
-								this.log.debug(
-									'[HA STATE INIT DATA] Partly FINISHED sent initial updates objects to HA for ' + id
-								);
-								this.log.debug(
-									'[HA STATE INIT DATA] ' + id + ' missing items ' + JSON.stringify(missing)
-								);
-							}
 						}
 					}
-				}
-				if (channel === 'info' && item === 'haConnection') {
-					if (state.val == 'offline') {
-						//stop interval
-						if (haLoadInterval) this.clearInterval(haLoadInterval);
-						await this.setStateAsync('info.haConnAvgLoad', { val: 0, ack: true });
+				} else {
+					// Device specific states
+					const channel = idsplit[3];
+					const item = idsplit[4];
+					if (channel === 'info' && item === 'status') {
+						const cnt = await this.getStateAsync('info.cntDevOnline').catch((e) => {
+							this.log.warn('problem getting state info.cntDevOnline ' + e);
+						});
+
+						let devcount = cnt.val;
+
+						if (state.val === 'online') {
+							if (devcount === 0) {
+								//stop recon_timer_long
+								//start recon_timer
+							}
+							devcount++;
+							await this.setStateAsync('info.cntDevOnline', { val: devcount, ack: true });
+						} else if (state.val === 'offline') {
+							if (devcount === 1) {
+								//stop recon_timer
+								//start recon_timer_long
+							}
+							devcount--;
+							await this.setStateAsync('info.cntDevOnline', { val: devcount, ack: true });
+						}
+
+						if (this.haClient && this.pdevices[device]['haEnable'] === true) {
+							await this.initDeviceWithHA(device, String(state.val));
+						}
 					}
 				}
 			}
 		} else {
 			// The state was deleted
 			this.log.info(`state ${id} deleted`);
+		}
+	}
+
+	async initDeviceWithHA(device, state) {
+		if (this.pdevices && this.pdevicesStatesDict && this.pdevicesStates && this.config.haTopic) {
+			ha.publish(
+				this,
+				device,
+				this.config.haTopic + '/' + device + '/info/status',
+				state,
+				{ qos: 1 },
+				true,
+				'HA STATE UPD'
+			);
+
+			const id = device;
+			const type = this.pdevices[id]['devType'];
+			let bat1 = false;
+			let bat2 = false;
+			if (this.pdevices[id]['pstationsSlave1']) {
+				bat1 = this.pdevices[id]['pstationsSlave1'];
+			}
+			if (this.pdevices[id]['pstationsSlave2']) {
+				bat2 = this.pdevices[id]['pstationsSlave2'];
+			}
+
+			const update = ha.prepareFullHaUpd(
+				id,
+				this.pdevicesStatesDict[type],
+				this.pdevicesStates[type],
+				this.config.haTopic,
+				bat1,
+				bat2
+			);
+			if (this.config.msgHaStatusInitial) {
+				this.log.debug(
+					'[HA STATE INIT DATA] ' + id + ' initial update: ' + update.length + ' objects '
+				);
+				//this.log.debug(id + ' initial update: ' + JSON.stringify(update));
+			}
+			let missing = [];
+			for (let i = 0; i < update.length; i++) {
+				const value = await this.getStateAsync(update[i].getId).catch((e) => {
+					this.log.warn('[HA STATE INIT DATA] problem getting state for initialization ' + e);
+				});
+				if (value) {
+					let val;
+					try {
+						if (update[i].entity === 'switch') {
+							val = value.val === true ? update[i].on : update[i].off;
+						} else if (update[i].entity === 'select') {
+							try {
+								val = update[i].states[value.val];
+							} catch (error) {
+								this.log.warn(
+									'[HA STATE INIT DATA] value not in range ' +
+									value.val +
+									'  ' +
+									update[i].states +
+									' err -> ' +
+									error
+								);
+							}
+						} else if (update[i].entity === 'text') {
+							val = value.val;
+						} else {
+							val = String(value.val);
+						}
+						if (this.config.msgHaStatusInitial) {
+							this.log.debug(
+								'[HA INITIAL] ' +
+								id +
+								' update [' +
+								i +
+								'] ' +
+								update[i].topic +
+								' with ' +
+								val
+							);
+						}
+						if (typeof val === 'string' && val !== 'undefined') {
+							ha.publish(
+								this,
+								id,
+								update[i].topic,
+								val,
+								{ qos: 1 },
+								false, //this.config.msgHaStatusInitial,
+								'HA STATE INIT DATA'
+							);
+						} else {
+							this.log.warn(
+								'[HA STATE INIT DATA] not a STRING ! : ' +
+								update[i].topic +
+								' with ' +
+								val
+							);
+						}
+					} catch (error) {
+						this.log.warn(
+							'[HA STATE INIT DATA] ' +
+							update[i].getId +
+							' problem initialiizing ' +
+							value.val +
+							'-> ' +
+							error
+						);
+					}
+				} else {
+					missing.push(update[i].getId);
+					this.log.warn(
+						'[HA STATE INIT DATA] ' +
+						update[i].getId +
+						' getState returned -> ' +
+						JSON.stringify(value)
+					);
+				}
+			}
+			if (this.config.msgHaStatusInitial && missing.length > 0) {
+				this.log.debug(
+					'[HA STATE INIT DATA] Partly FINISHED sent initial updates objects to HA for ' + id
+				);
+				this.log.debug(
+					'[HA STATE INIT DATA] ' + id + ' missing items ' + JSON.stringify(missing)
+				);
+			}
 		}
 	}
 
