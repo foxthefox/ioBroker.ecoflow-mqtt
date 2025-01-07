@@ -1610,10 +1610,9 @@ class EcoflowMqtt extends utils.Adapter {
 							if (haLoadInterval) this.clearInterval(haLoadInterval);
 							await this.setStateAsync('info.haConnAvgLoad', { val: 0, ack: true });
 						}
-					}
-					else if (item === 'haBrokerStatus') {
+					} else if (item === 'haBrokerStatus') {
 						if (state.val == 'online') {
-							this.log.debug('HA broker online; init devices');
+							this.log.debug('HA broker is online; start init of devices');
 							ha.publish(
 								this,
 								'IOB',
@@ -1625,11 +1624,15 @@ class EcoflowMqtt extends utils.Adapter {
 							);
 							if (this.pdevices) {
 								for (const device in this.pdevices) {
-									this.log.debug('init device ' + device);
 									if (this.haClient && this.pdevices[device]['haEnable'] === true) {
+										this.log.debug('HA init device ' + device);
 										const status = await this.getStateAsync(device + '.info.status');
 										if (status && status.val) {
-											await this.initDeviceWithHA(device, status.val === 'online' ? 'online' : 'offline');
+											//maybe also here only when online
+											await this.initDeviceWithHA(
+												device,
+												status.val === 'online' ? 'online' : 'offline'
+											);
 										}
 									}
 								}
@@ -1707,9 +1710,7 @@ class EcoflowMqtt extends utils.Adapter {
 				bat2
 			);
 			if (this.config.msgHaStatusInitial) {
-				this.log.debug(
-					'[HA STATE INIT DATA] ' + id + ' initial update: ' + update.length + ' objects '
-				);
+				this.log.debug('[HA STATE INIT DATA] ' + id + ' initial update: ' + update.length + ' objects ');
 				//this.log.debug(id + ' initial update: ' + JSON.stringify(update));
 			}
 			let missing = [];
@@ -1728,11 +1729,11 @@ class EcoflowMqtt extends utils.Adapter {
 							} catch (error) {
 								this.log.warn(
 									'[HA STATE INIT DATA] value not in range ' +
-									value.val +
-									'  ' +
-									update[i].states +
-									' err -> ' +
-									error
+										value.val +
+										'  ' +
+										update[i].states +
+										' err -> ' +
+										error
 								);
 							}
 						} else if (update[i].entity === 'text') {
@@ -1742,14 +1743,7 @@ class EcoflowMqtt extends utils.Adapter {
 						}
 						if (this.config.msgHaStatusInitial) {
 							this.log.debug(
-								'[HA INITIAL] ' +
-								id +
-								' update [' +
-								i +
-								'] ' +
-								update[i].topic +
-								' with ' +
-								val
+								'[HA INITIAL] ' + id + ' update [' + i + '] ' + update[i].topic + ' with ' + val
 							);
 						}
 						if (typeof val === 'string' && val !== 'undefined') {
@@ -1763,40 +1757,28 @@ class EcoflowMqtt extends utils.Adapter {
 								'HA STATE INIT DATA'
 							);
 						} else {
-							this.log.warn(
-								'[HA STATE INIT DATA] not a STRING ! : ' +
-								update[i].topic +
-								' with ' +
-								val
-							);
+							this.log.warn('[HA STATE INIT DATA] not a STRING ! : ' + update[i].topic + ' with ' + val);
 						}
 					} catch (error) {
 						this.log.warn(
 							'[HA STATE INIT DATA] ' +
-							update[i].getId +
-							' problem initialiizing ' +
-							value.val +
-							'-> ' +
-							error
+								update[i].getId +
+								' problem initialiizing ' +
+								value.val +
+								'-> ' +
+								error
 						);
 					}
 				} else {
 					missing.push(update[i].getId);
 					this.log.warn(
-						'[HA STATE INIT DATA] ' +
-						update[i].getId +
-						' getState returned -> ' +
-						JSON.stringify(value)
+						'[HA STATE INIT DATA] ' + update[i].getId + ' getState returned -> ' + JSON.stringify(value)
 					);
 				}
 			}
 			if (this.config.msgHaStatusInitial && missing.length > 0) {
-				this.log.debug(
-					'[HA STATE INIT DATA] Partly FINISHED sent initial updates objects to HA for ' + id
-				);
-				this.log.debug(
-					'[HA STATE INIT DATA] ' + id + ' missing items ' + JSON.stringify(missing)
-				);
+				this.log.debug('[HA STATE INIT DATA] Partly FINISHED sent initial updates objects to HA for ' + id);
+				this.log.debug('[HA STATE INIT DATA] ' + id + ' missing items ' + JSON.stringify(missing));
 			}
 		}
 	}
