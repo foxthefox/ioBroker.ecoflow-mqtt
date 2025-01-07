@@ -284,6 +284,11 @@
 				"_introTable1Txt1": {
 					"type": "staticText",
 					"text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have no device, delete the added line item",
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12,
 					"newLine": true
 				},
 				"pstreams": {
@@ -361,6 +366,11 @@
 				"_introTable1Txt2": {
 					"type": "staticText",
 					"text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have additional batteries connected, check the slave port#. If you have no device, delete the added line item",
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12,
 					"newLine": true
 				},
 				"pstations": {
@@ -468,6 +478,11 @@
 				"_introTable1Txt3": {
 					"type": "staticText",
 					"text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have no device, delete the added line item",
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12,
 					"newLine": true
 				},
 				"plugs": {
@@ -541,10 +556,19 @@
 				"_shellyTable1Txt1": {
 					"type": "staticText",
 					"text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have no device, delete the added line item",
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12,
 					"newLine": true
 				},
 				"shellies": {
+					"xs": 12,
 					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12,
 					"newLine": true,
 					"type": "table",
 					"items": [
@@ -613,10 +637,19 @@
 				"_introTable2Txt2": {
 					"type": "staticText",
 					"text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have no device, delete the added line item",
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12,
 					"newLine": true
 				},
 				"generators": {
+					"xs": 12,
 					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12,
 					"newLine": true,
 					"type": "table",
 					"items": [
@@ -685,10 +718,19 @@
 				"_introPowerkitTxt2": {
 					"type": "staticText",
 					"text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have more than one battery check the slave1/slave2. If you have no device, delete the added line item",
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12,
 					"newLine": true
 				},
 				"powerkits": {
+					"xs": 12,
 					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12,
 					"newLine": true,
 					"type": "table",
 					"items": [
@@ -776,10 +818,19 @@
 				"_introTable3Txt1": {
 					"type": "staticText",
 					"text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have no device, delete the added line item",
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12,
 					"newLine": true
 				},
 				"panels": {
+					"xs": 12,
 					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12,
 					"newLine": true,
 					"type": "table",
 					"items": [
@@ -850,10 +901,19 @@
 				"_introTable4Txt1": {
 					"type": "staticText",
 					"text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have no device, delete the added line item",
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12,
 					"newLine": true
 				},
 				"waves": {
+					"xs": 12,
 					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12,
 					"newLine": true,
 					"type": "table",
 					"items": [
@@ -922,10 +982,19 @@
 				"_glacierTable1Txt1": {
 					"type": "staticText",
 					"text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have no device, delete the added line item",
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12,
 					"newLine": true
 				},
 				"glaciers": {
+					"xs": 12,
 					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12,
 					"newLine": true,
 					"type": "table",
 					"items": [
@@ -994,6 +1063,11 @@
 				"_introPoweroceanTxt2": {
 					"type": "staticText",
 					"text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have no device, delete the added line item.",
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12,
 					"newLine": true
 				},
 				"poweroceans": {
@@ -1088,10 +1162,19 @@
 				"_alternatorTable1Txt1": {
 					"type": "staticText",
 					"text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have no device, delete the added line item",
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12,
 					"newLine": true
 				},
 				"alternators": {
+					"xs": 12,
 					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12,
 					"newLine": true,
 					"type": "table",
 					"items": [
@@ -1151,10 +1234,19 @@
 				"_unknownTable1Txt1": {
 					"type": "staticText",
 					"text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have no device, delete the added line item",
+					"xs": 12,
+					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12,
 					"newLine": true
 				},
 				"unknowns": {
+					"xs": 12,
 					"sm": 12,
+					"md": 12,
+					"lg": 12,
+					"xl": 12,
 					"newLine": true,
 					"type": "table",
 					"items": [
