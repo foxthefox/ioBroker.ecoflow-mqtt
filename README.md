@@ -51,6 +51,7 @@ There are 3 possibilities:
 3. by adapters own alogorithm (pressing the button), for this the ecoflow username and password is necessary.
 
 The mqqt Broker settings are default and usually need no modification.
+
 !!! In cases where the mqtt-server refuses the connection it might be helpfull to check with option #2 the output of that website, in some cases it will return a different mqtt-broker address !!!
 
 ## Device setup and Configuration
