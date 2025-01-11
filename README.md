@@ -323,6 +323,10 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 
 ## Changelog
 
+### 1.1.3 (npm)
+* (foxthefox) enhancements to alternator values
+* (foxthefox) refactoring of protobuf handling/structure/component data
+
 ### 1.1.2 (npm)
 * (bh1cqx) handle HA restart #PR193
 * (foxthefox) initial state population of BPInfo2/3 to HA

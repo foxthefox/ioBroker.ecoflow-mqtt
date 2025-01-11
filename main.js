@@ -47,6 +47,8 @@ class EcoflowMqtt extends utils.Adapter {
 		this.pdevicesStatesDict = {};
 		this.pdevicesStates = {};
 		this.pdevicesCmd = {};
+		this.protoSource = {};
+		this.protoMsg = {};
 		this.quotas = {};
 		this.haDevices = null;
 		this.haCounter = 0;
@@ -210,7 +212,7 @@ class EcoflowMqtt extends utils.Adapter {
 										this.log.error('device states upd not possible');
 									}
 								} else {
-									this.log.warn('did not get devupd');
+									this.log.warn('did not get devupd for ' + devtype);
 								}
 							} else {
 								this.log.error('devType not set -> ' + devtype + 'or no device states -> ' + devStates);
@@ -230,12 +232,19 @@ class EcoflowMqtt extends utils.Adapter {
 
 							let pdevicesStatesDict = null;
 							let pdevicesCmd = null;
+							let protoSource = null;
+							let protoMsg = null;
+
 							if (devtype === 'pstream') {
 								pdevicesStatesDict = require('./lib/ef_pstream_data.js').pstreamStatesDict[devtype];
 								pdevicesCmd = require('./lib/ef_pstream_data.js').pstreamCmd[origdevtype];
+								protoSource = require('./lib/ef_pstream_data.js').protoSource;
+								protoMsg = require('./lib/ef_pstream_data.js').protoMsg;
 							} else if (devtype === 'plug') {
 								pdevicesStatesDict = require('./lib/ef_plug_data.js').plugStatesDict[devtype];
 								pdevicesCmd = require('./lib/ef_plug_data.js').plugCmd[devtype];
+								protoSource = require('./lib/ef_plug_data.js').protoSource;
+								protoMsg = require('./lib/ef_plug_data.js').protoMsg;
 							} else if (devtype === 'powerkit') {
 								pdevicesStatesDict = require('./lib/ef_powerkit_data.js').powerkitStatesDict[devtype];
 								pdevicesCmd = require('./lib/ef_powerkit_data.js').powerkitCmd[devtype];
@@ -244,20 +253,28 @@ class EcoflowMqtt extends utils.Adapter {
 									devtype
 								];
 								pdevicesCmd = require('./lib/ef_powerocean_data.js').poweroceanCmd[devtype];
+								protoSource = require('./lib/ef_powerocean_data.js').protoSource;
+								protoMsg = require('./lib/ef_powerocean_data.js').protoMsg;
 							} else if (devtype === 'panel') {
 								pdevicesStatesDict = require('./lib/ef_shp_data.js').panelStatesDict[devtype];
 								pdevicesCmd = require('./lib/ef_shp_data.js').panelCmd[devtype];
 							} else if (devtype === 'panel2') {
 								pdevicesStatesDict = require('./lib/ef_shp2_data.js').panel2StatesDict[devtype];
 								pdevicesCmd = require('./lib/ef_shp2_data.js').panel2Cmd[devtype];
+								protoSource = require('./lib/ef_shp2_data.js').protoSource;
+								protoMsg = require('./lib/ef_shp2_data.js').protoMsg;
 							} else if (devtype === 'deltaproultra') {
 								pdevicesStatesDict = require('./lib/ef_dpu_data.js').deltaproultraStatesDict[devtype];
 								pdevicesCmd = require('./lib/ef_dpu_data.js').deltaproultraCmd[devtype];
+								protoSource = require('./lib/ef_dpu_data.js').protoSource;
+								protoMsg = require('./lib/ef_dpu_data.js').protoMsg;
 							} else if (devtype === 'alternator') {
 								pdevicesStatesDict = require('./lib/ef_alternator_data.js').alternatorStatesDict[
 									devtype
 								];
 								pdevicesCmd = require('./lib/ef_alternator_data.js').alternatorCmd[devtype];
+								protoSource = require('./lib/ef_alternator_data.js').protoSource;
+								protoMsg = require('./lib/ef_alternator_data.js').protoMsg;
 							} else {
 								pdevicesStatesDict = require('./lib/ecoflow_data.js').pstationStatesDict[origdevtype];
 								pdevicesCmd = require('./lib/ecoflow_data.js').pstationCmd[origdevtype];
@@ -278,7 +295,17 @@ class EcoflowMqtt extends utils.Adapter {
 							if (!this.pdevicesStates[origdevtype]) {
 								this.pdevicesStates[origdevtype] = ef.statesFromDict(devStates, pdevicesStatesDict);
 							}
-
+							//if protobuf devices stor additionally the protoSource and protoMsg
+							if (protoSource) {
+								if (!this.protoSource[origdevtype]) {
+									this.protoSource[origdevtype] = protoSource;
+								}
+							}
+							if (protoMsg) {
+								if (!this.protoMsg[origdevtype]) {
+									this.protoMsg[origdevtype] = protoMsg;
+								}
+							}
 							//we store only the cmd from used components
 							if (!this.pdevicesCmd[origdevtype]) {
 								this.pdevicesCmd[origdevtype] = pdevicesCmd;
@@ -858,7 +885,16 @@ class EcoflowMqtt extends utils.Adapter {
 								);
 							} else {
 								try {
-									msgdecode = ef.pstreamDecode(this, message, '', topic, msgtype, logged);
+									msgdecode = ef.pstreamDecode(
+										this,
+										message,
+										'',
+										topic,
+										msgtype,
+										this.protoSource[devtype],
+										this.protoMsg[devtype],
+										logged
+									);
 								} catch (error) {
 									this.log.debug('pstreamDecode call ->' + error);
 								}
