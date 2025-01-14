@@ -1,5 +1,5 @@
 # States for  PLUG
-### version: 1.1.1
+### version: 1.1.3
 
 [plug_heartbeat](#plug_heartbeat)
 
@@ -22,25 +22,25 @@
 |----------|------|
 |country| Install Country |
 |town| Install Town |
-|unknown16| unknown16 |
-|unknown17| unknown17 |
-|unknown18| unknown18 |
-|unknown20| unknown20 |
-|unknown21| unknown21 |
-|unknown22| unknown22 |
-|unknown23| unknown23 |
-|unknown24| unknown24 |
-|unknown25| unknown25 |
-|unknown26| unknown26 |
-|unknown27| unknown27 |
-|unknown28| unknown28 |
-|unknown29| unknown29 |
-|unknown30| unknown30 |
-|streamConn_31| unknown31 |
-|unknown35| unknown35 |
-|unknown36| unknown36 |
-|unknown37| unknown37 |
-|unixtime_38| unknown38 |
+|resetReason| reset reason |
+|rtcResetReason| RTC Reset Reason |
+|resetCount| reset count |
+|lanState| lan state |
+|stackFree| stack free |
+|stackMinFree| stack min free |
+|meshId| mesh id |
+|meshLayer| mesh layer |
+|selfMac| self mac |
+|parentMac| parent mac |
+|otaDlErr| ota dl err |
+|otaDlTlsErr| ota dl tls err |
+|staIpAddr| sta ip addr |
+|matterFabric| matter fabric |
+|wifiErr| wifi err |
+|mqttErr| mqtt err  |
+|mqttErrTime| mqtt err time |
+|rssiThreshold| rssi threshold |
+|rssiVariance| rssi variance |
 
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
@@ -53,10 +53,11 @@
 |watts|0 | 2500 | W | 0.1 |  Plug AC power |
 |heartbeatFrequency|0 | 20 | Hz | 1 |  Plug heartbeat |
 |uptime|0 |  n/a | s | 1 |  Smart plug uptime |
-|cntDevices|0 | 20 | pcs | 1 |  Amount of Plugs connected to PS |
-|streamOutputPower|0 | 800 | W | 0.1 |  Power Stream output power |
+|geneNum|0 | 20 | pcs | 1 |  Amount of PS |
+|consNum|0 | 20 | pcs | 1 |  Amount of Plugs connected to PS |
+|geneWatt|0 | 800 | W | 0.1 |  Power Stream(s) output power |
 |powerPlugs|0 | 1000 | W | 0.1 |  Power of plugs |
-|wifiRssi|-90 | 10 | dBm | 1 |  wifi RSSI |
+|parentWifiRssi|-90 | 10 | dBm | 1 |  parent wifi RSSI |
 
 
 ### switch

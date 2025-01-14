@@ -1,5 +1,5 @@
 # States for  PANEL2
-### version: 1.1.1
+### version: 1.1.3
 
 [ProtoTime](#ProtoTime)
 
@@ -40,14 +40,14 @@
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|master_gridWatt|0 | 12000 | W | 1 |  Master grid power |
+|master_gridWatt|0 | 12000 | W | 1 |  Master Grid Power |
 |bkpChWatt|0 | 7200 | W | 1 |  Backup charge power |
-|backupDischargeTime|0 | 30000 | min | 1 |  Backup discharge time |
+|backupDischargeTime|0 | 180000 | min | 1 |  Backup discharge time |
 |bkpEnerg1ChargeTime|0 | 30000 | min | 1 |  Backup Energy#1 charge time |
 |bkpEnerg1DischargeTime|0 | 30000 | min | 1 |  Backup Energy#1 discharge time |
 |bkpEnerg2ChargeTime|0 | 30000 | min | 1 |  Backup Energy#2 charge time |
 |bkpEnerg2DischargeTime|0 | 30000 | min | 1 |  Backup Energy#2 discharge time |
-|wattInfoGridWatt|0 | 12000 | W | 1 |  Power info grid |
+|wattInfoGridWatt|0 | 24000 | W | 1 |  Power info grid |
 |wattInfoChWatt|0 | 12000 | W | 1 |  Power info channel |
 |wattInfoAllHallWatt|0 | 12000 | W | 1 |  Power info all hall |
 
@@ -56,8 +56,8 @@
 
 | State  |  Name |
 |----------|------|
-|sysTimezone| Backup charge power |
-|timezoneId| Backup charge power |
+|sysTimezone| System Timezone |
+|timezoneId| System Timezone Id |
 |appMainVer| Master app main version |
 |appDbgVer| Master app debug version |
 |appTestVer| Master app test version |
@@ -93,7 +93,7 @@
 
 | State  |     Name |  values |
 |----------|:-------------:|------|
-|productType| Product type | {1:SHP2?} |
+|productType| Product type | {0:GRID_OFF_LOAD12,1:GRID_CONNECTED_LOAD12,2:GRID_OFF_LOAD36,3:GRID_CONNECTED_LOAD36} |
 |powerSta| Power Status | {0:LOAD_CH_EG_POWER,1:LOAD_CH_ES_POWER,2:LOAD_CH_OIL_POWER,3:LOAD_CH_STOP_EM,4:LOAD_CH_OFF_POWER} |
 |isSetOilEngine| isSetOilEngine | {0:no generator?,1:generator?} |
 |isAreaErr| Area error | {0:OK?,1:Error?} |
@@ -141,7 +141,7 @@
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|backupFullCap|0 | 12400 | mAh | 1 |  Full capacity |
+|backupFullCap|0 | 92160 | mAh | 1 |  Full capacity |
 |backupBatPer|0 | 100 | % | 1 |  Battery SOC |
 |backupDischargeRmainBatCap|0 | 20000 | mAh | 1 |  Discharge remain. capacity |
 
@@ -418,62 +418,62 @@
 |ch11Info_linkMark| Split status channel #11 | {0:Not be split?,1:Should be split?} |
 |ch12Info_linkMark| Split status channel #12 | {0:Not be split?,1:Should be split?} |
 |ch1Sta_loadSta| Channel #1 power supply type | {0:Grid supply,1:storage power supply,2:close} |
-|ch1Sta_ctrlMode| Channel #1 contol mode  0-Auto/1-Manual | {0:Auto,1:Manual} |
+|ch1Sta_ctrlMode| Channel #1 contol mode  0-Auto/1-Manual | {0:Auto,1:Manual,2:failure} |
 |ch1Sta_noticeEnable| Channel #1 Notice enable | {0:off?,1:on?} |
 |ch1Sta_noticeAction| Channel #1 Notice action | {0:OK?} |
 |ch1Sta_loadChSwitchCause| Channel #1 Load switch cause | {0:OK?} |
 |ch2Sta_loadSta| Channel #2 power supply type | {0:Grid supply,1:storage power supply,2:close} |
-|ch2Sta_ctrlMode| Channel #2 contol mode  0-Auto/1-Manual | {0:Auto,1:Manual} |
+|ch2Sta_ctrlMode| Channel #2 contol mode  0-Auto/1-Manual | {0:Auto,1:Manual,2:failure} |
 |ch2Sta_noticeEnable| Channel #2 Notice enable | {0:off?,1:on?} |
 |ch2Sta_noticeAction| Channel #2 Notice action | {0:OK?} |
 |ch2Sta_loadChSwitchCause| Channel #2 Load switch cause | {0:OK?} |
 |ch3Sta_loadSta| Channel #3 power supply type | {0:Grid supply,1:storage power supply,2:close} |
-|ch3Sta_ctrlMode| Channel #3 contol mode  0-Auto/1-Manual | {0:Auto,1:Manual} |
+|ch3Sta_ctrlMode| Channel #3 contol mode  0-Auto/1-Manual | {0:Auto,1:Manual,2:failure} |
 |ch3Sta_noticeEnable| Channel #3 Notice enable | {0:off?,1:on?} |
 |ch3Sta_noticeAction| Channel #3 Notice action | {0:OK?} |
 |ch3Sta_loadChSwitchCause| Channel #3 Load switch cause | {0:OK?} |
 |ch4Sta_loadSta| Channel #4 power supply type | {0:Grid supply,1:storage power supply,2:close} |
-|ch4Sta_ctrlMode| Channel #4 contol mode  0-Auto/1-Manual | {0:Auto,1:Manual} |
+|ch4Sta_ctrlMode| Channel #4 contol mode  0-Auto/1-Manual | {0:Auto,1:Manual,2:failure} |
 |ch4Sta_noticeEnable| Channel #4 Notice enable | {0:off?,1:on?} |
 |ch4Sta_noticeAction| Channel #4 Notice action | {0:OK?} |
 |ch4Sta_loadChSwitchCause| Channel #4 Load switch cause | {0:OK?} |
 |ch5Sta_loadSta| Channel #5 power supply type | {0:Grid supply,1:storage power supply,2:close} |
-|ch5Sta_ctrlMode| Channel #5 contol mode  0-Auto/1-Manual | {0:Auto,1:Manual} |
+|ch5Sta_ctrlMode| Channel #5 contol mode  0-Auto/1-Manual | {0:Auto,1:Manual,2:failure} |
 |ch5Sta_noticeEnable| Channel #5 Notice enable | {0:off?,1:on?} |
 |ch5Sta_noticeAction| Channel #5 Notice action | {0:OK?} |
 |ch5Sta_loadChSwitchCause| Channel #5 Load switch cause | {0:OK?} |
 |ch6Sta_loadSta| Channel #6 power supply type | {0:Grid supply,1:storage power supply,2:close} |
-|ch6Sta_ctrlMode| Channel #6 contol mode  0-Auto/1-Manual | {0:Auto,1:Manual} |
+|ch6Sta_ctrlMode| Channel #6 contol mode  0-Auto/1-Manual | {0:Auto,1:Manual,2:failure} |
 |ch6Sta_noticeEnable| Channel #6 Notice enable | {0:off?,1:on?} |
 |ch6Sta_noticeAction| Channel #6 Notice action | {0:OK?} |
 |ch6Sta_loadChSwitchCause| Channel #6 Load switch cause | {0:OK?} |
 |ch7Sta_loadSta| Channel #7 power supply type | {0:Grid supply,1:storage power supply,2:close} |
-|ch7Sta_ctrlMode| Channel #7 contol mode  0-Auto/1-Manual | {0:Auto,1:Manual} |
+|ch7Sta_ctrlMode| Channel #7 contol mode  0-Auto/1-Manual | {0:Auto,1:Manual,2:failure} |
 |ch7Sta_noticeEnable| Channel #7 Notice enable | {0:off?,1:on?} |
 |ch7Sta_noticeAction| Channel #7 Notice action | {0:OK?} |
 |ch7Sta_loadChSwitchCause| Channel #7 Load switch cause | {0:OK?} |
 |ch8Sta_loadSta| Channel #8 power supply type | {0:Grid supply,1:storage power supply,2:close} |
-|ch8Sta_ctrlMode| Channel #8 contol mode  0-Auto/1-Manual | {0:Auto,1:Manual} |
+|ch8Sta_ctrlMode| Channel #8 contol mode  0-Auto/1-Manual | {0:Auto,1:Manual,2:failure} |
 |ch8Sta_noticeEnable| Channel #8 Notice enable | {0:off?,1:on?} |
 |ch8Sta_noticeAction| Channel #8 Notice action | {0:OK?} |
 |ch8Sta_loadChSwitchCause| Channel #8 Load switch cause | {0:OK?} |
 |ch9Sta_loadSta| Channel #9 power supply type | {0:Grid supply,1:storage power supply,2:close} |
-|ch9Sta_ctrlMode| Channel #9 contol mode  0-Auto/1-Manual | {0:Auto,1:Manual} |
+|ch9Sta_ctrlMode| Channel #9 contol mode  0-Auto/1-Manual | {0:Auto,1:Manual,2:failure} |
 |ch9Sta_noticeEnable| Channel #9 Notice enable | {0:off?,1:on?} |
 |ch9Sta_noticeAction| Channel #9 Notice action | {0:OK?} |
 |ch9Sta_loadChSwitchCause| Channel #9 Load switch cause | {0:OK?} |
 |ch10Sta_loadSta| Channel #10 power supply type | {0:Grid supply,1:storage power supply,2:close} |
-|ch10Sta_ctrlMode| Channel #10 contol mode  0-Auto/1-Manual | {0:Auto,1:Manual} |
+|ch10Sta_ctrlMode| Channel #10 contol mode  0-Auto/1-Manual | {0:Auto,1:Manual,2:failure} |
 |ch10Sta_noticeEnable| Channel #10 Notice enable | {0:off?,1:on?} |
 |ch10Sta_noticeAction| Channel #10 Notice action | {0:OK?} |
 |ch10Sta_loadChSwitchCause| Channel #10 Load switch cause | {0:OK?} |
 |ch11Sta_loadSta| Channel #11 power supply type | {0:Grid supply,1:storage power supply,2:close} |
-|ch11Sta_ctrlMode| Channel #11 contol mode  0-Auto/1-Manual | {0:Auto,1:Manual} |
+|ch11Sta_ctrlMode| Channel #11 contol mode  0-Auto/1-Manual | {0:Auto,1:Manual,2:failure} |
 |ch11Sta_noticeEnable| Channel #11 Notice enable | {0:off?,1:on?} |
 |ch11Sta_noticeAction| Channel #11 Notice action | {0:OK?} |
 |ch11Sta_loadChSwitchCause| Channel #11 Load switch cause | {0:OK?} |
 |ch12Sta_loadSta| Channel #12 power supply type | {0:Grid supply,1:storage power supply,2:close} |
-|ch12Sta_ctrlMode| Channel #12 contol mode  0-Auto/1-Manual | {0:Auto,1:Manual} |
+|ch12Sta_ctrlMode| Channel #12 contol mode  0-Auto/1-Manual | {0:Auto,1:Manual,2:failure} |
 |ch12Sta_noticeEnable| Channel #12 Notice enable | {0:off?,1:on?} |
 |ch12Sta_noticeAction| Channel #12 Notice action | {0:OK?} |
 |ch12Sta_loadChSwitchCause| Channel #12 Load switch cause | {0:OK?} |
