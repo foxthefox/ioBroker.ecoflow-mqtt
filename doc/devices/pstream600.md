@@ -1,5 +1,5 @@
 # States for  PSTREAM
-### version: 1.1.1
+### version: 1.2.0
 
 [inverter_heartbeat](#inverter_heartbeat)
 
@@ -42,6 +42,31 @@
 |dynamicWatts|0 | 10000 | W | 0.1 |  Dynamic Power |
 |batChargingTime|0 | 144000 | min | 1 |  Battery Charging Time |
 |batDischargingTime|0 | 144000 | min | 1 |  Battery Discharging Time |
+|pvToInvWatts|0 | 5000 | W | 0.1 |  pv to inv watts |
+|gridConsWatts|0 | 10000 | V | 0.1 |  grid cons watts |
+|plugTotalWatts|0 | 10000 | W | 0.1 |  plug total watts |
+|invToPlugWatts|0 | 5000 | W | 0.1 |  inv to plug watts |
+|spaceDemandWatts|0 | 5000 | W | 0.1 |  space demand watts |
+|invDemandWatts|0 | 5000 | W | 0.1 |  inv demand watts |
+|bmsReqChgVol|0 | 65 | V | 0.01 |  bms req chg vol |
+|bmsReqChgAmp|0 | 15 | A | 0.1 |  bms req chg amp |
+|invToOtherWatts|0 | 5000 | W | 0.1 |  inv to other watts |
+|wifiRssi|-90 | 10 | dBm | 1 |  wifi rssi |
+|pvPowerLimitAcPower|0 | 60 | V | 1 |  pv power limit ac power |
+|geneNum|0 | 10 | pcs | 1 |  gene num |
+|consNum|0 | 20 | pcs | 1 |  cons num |
+|geneWatt|0 | 5000 | W | 0.1 |  gene watt |
+|consWatt|0 | 10000 | W | 0.1 |  cons watt |
+|acSetWatts|0 | 900 | W | 0.1 |  ac set watts |
+|fisoRxyz|0 | 1000 | V | 1 |  fiso rxyz |
+|historyPvToInvWatts|0 |  n/a | kWh | 0.001 |  history pv to inv watts |
+|historyBatInputWatts|0 |  n/a | kWh | 0.001 |  history bat input watts |
+|historyInvOutputWatts|0 |  n/a | kWh | 0.001 |  history inv output watts |
+|historyGridConsWatts|0 |  n/a | kWh | 0.001 |  history grid cons watts |
+|historyPlugTotalWatts|0 |  n/a | kWh | 0.001 |  history plug total watts |
+|historyInvToPlugWatts|0 |  n/a | kWh | 0.001 |  history inv to plug watts |
+|historyPermanentWatts|0 |  n/a | kWh | 0.001 |  history permanent watts |
+|espTempsensor|-20 | 90 | °C | 0.1 |  esp tempsensor |
 
 
 ### level
@@ -94,6 +119,47 @@
 |----------|------|
 |installCountry| Install Country |
 |installTown| Install Town |
+|interfaceConnFlag| interface conn flag |
+|pv1CtrlMpptOffFlag| pv1 ctrl mppt off flag |
+|pv2CtrlMpptOffFlag| pv2 ctrl mppt off flag |
+|batOffFlag| bat off flag |
+|llcOffFlag| llc off flag |
+|acOffFlag| ac off flag |
+|uwloadLimitFlag| uwload limit flag |
+|invLoadLimitFlag| inv load limit flag |
+|batLoadLimitFlag| bat load limit flag |
+|antiBackFlowFlag| anti back flow flag |
+|uwsocFlag| uwsoc flag |
+|uwlowLightFlag| uwlow light flag |
+|batSystem| bat system |
+|floadLimitOut| fload limit out |
+|invOutputLoadLimit| inv output load limit |
+|batOutputLoadLimit| bat output load limit |
+|batErrorInvLoadLimit| bat error inv load limit |
+|resetReason| reset reason |
+|resetCount| reset count |
+|meshId| mesh id |
+|meshLayel| mesh layel |
+|selfMac| self mac |
+|parentMac| parent mac |
+|staIpAddr| sta ip addr |
+|wifiErr| wifi err |
+|wifiErrTime| wifi err time |
+|mqttErr| mqtt err |
+|mqttErrTime| mqtt err time |
+|stackFree| stack free |
+|stackMinFree| stack min free |
+|mqttTlsLastErr| mqtt tls last err |
+|mqttTlsStackErr| mqtt tls stack err |
+|mqttSockErrno| mqtt sock errno |
+|mqttLastDisReason| mqtt last dis reason |
+|mqttConnectReturnCode| mqtt connect return code |
+|wifiFirmwareVersion| wifi firmware version |
+|wifiConnectChannel| wifi connect channel |
+|wifiEncryptMode| wifi encrypt mode |
+|noiseFloor| noise floor |
+|rssiThreshold| rssi threshold |
+|rssiVariance| rssi variance |
 
 ## energy
 

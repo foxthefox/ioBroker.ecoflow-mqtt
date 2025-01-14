@@ -1,5 +1,5 @@
 # States for  POWERKIT
-### version: 1.1.1
+### version: 1.2.0
 
 [bp1](#bp1)
 
@@ -530,7 +530,7 @@
 
 | State  |     Name |  values |
 |----------|:-------------:|------|
-|dcChRelay| 6-way relay status, bit0-&gt;ch1, 0: off, 1: on | {0:off,1:on} |
+|dcChRelay| 6-way relay status, bit0-&gt;ch1, 0: off, 1: on | {0:CH#1 off,1:CH#1 on} |
 |dcChSta| 12 way channel status bit0-&gt;ch1 0: off 1: on | {0:off,1:on} |
 |dcSetChSta| Setting 12 way channel status bot0-&gt;ch1 0: not allowed to use 1: allowed to use | {0:not allowed to use,1:allowed to use} |
 
