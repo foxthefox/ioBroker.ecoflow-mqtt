@@ -1,5 +1,5 @@
 # States for  PLUG
-### version: 1.1.3
+### version: 1.2.0
 
 [plug_heartbeat](#plug_heartbeat)
 
@@ -37,6 +37,7 @@
 |staIpAddr| sta ip addr |
 |matterFabric| matter fabric |
 |wifiErr| wifi err |
+|wifiErrTime| wifi err time |
 |mqttErr| mqtt err  |
 |mqttErrTime| mqtt err time |
 |rssiThreshold| rssi threshold |

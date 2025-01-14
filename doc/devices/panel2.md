@@ -1,5 +1,5 @@
 # States for  PANEL2
-### version: 1.1.3
+### version: 1.2.0
 
 [ProtoTime](#ProtoTime)
 
