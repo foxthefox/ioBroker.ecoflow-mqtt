@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "ecoflow-mqtt",
-        "version": "1.1.3",
+        "version": "1.2.0",
         "news": {
+            "1.2.0": {
+                "en": "new values powerocean, new values powerstream, new values plug, enhancements on values for SHP2,DPU,alternator",
+                "de": "Neue Werte Powerocean, neue Werte Powerstream, neue Werte Plug, Verbesserungen der Werte für SHP2, DPU, Lichtmaschine",
+                "ru": "новые значения powerocean, новые значения powerstream, штекер новых значений, улучшения значений для SHP2, DPU, генератора переменного тока",
+                "pt": "novos valores powerocean, novos valores powerstream, novos valores plug, melhorias nos valores para SHP2, DPU, alternador",
+                "nl": "nieuwe waarden powerocean, nieuwe waarden powerstream, nieuwe waardenplug, verbeteringen op waarden voor SHP2,DPU,alternator",
+                "fr": "nouvelles valeurs powerocean, nouvelles valeurs powerstream, nouvelles valeurs plug, améliorations des valeurs pour SHP2, DPU, alternateur",
+                "it": "nuovi valori powerocean, nuovi valori powerstream, nuovi valori plug, miglioramenti ai valori per SHP2,DPU,alternatore",
+                "es": "nuevos valores powerocean, nuevos valores powerstream, nuevos valores plug, mejoras en los valores para SHP2,DPU,alternador",
+                "pl": "nowe wartości powerocean, nowe wartości powerstream, nowa wtyczka wartości, ulepszenia wartości dla SHP2, DPU, alternatora",
+                "uk": "нові значення powerocean, нові значення powerstream, нові значення plug, покращення значень для SHP2, DPU, генератора",
+                "zh-cn": "新值 powerocean、新值 powerstream、新值插头、SHP2、DPU、交流发电机值的增强"
+            },
             "1.1.3": {
                 "en": "enhancements to alternator values,refactoring of protobuf handling/structure/component data",
                 "de": "Verbesserungen der Lichtmaschinenwerte, Umgestaltung der Protobuf-Verarbeitung/Struktur/Komponentendaten",

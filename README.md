@@ -323,6 +323,12 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 
 ## Changelog
 
+### 1.2.0 (npm)
+* (foxthefox) new values powerocean
+* (foxthefox) new values powerstream
+* (foxthefox) new values plug
+* (foxthefox) enhancements on values for SHP2,DPU,alternator
+
 ### 1.1.3 (npm)
 * (foxthefox) enhancements to alternator values
 * (foxthefox) refactoring of protobuf handling/structure/component data
