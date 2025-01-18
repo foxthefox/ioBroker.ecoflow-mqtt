@@ -143,6 +143,10 @@
 |mpptHeartBeat_mpptPv_pwr0|0 | 5000 | W | 1 |  Solar 1 power |
 |mpptHeartBeat_mpptPv_pwr1|0 | 5000 | W | 1 |  Solar 2 power |
 |mpptHeartBeat_mpptInsResist|0 | 1000 |  | 1 |  MPPT insulation resistance |
+|pcsLoadInfo_vol|0 | 410 | V | 1 |  load voltage |
+|pcsLoadInfo_amp|0 | 35 | A | 1 |  load current |
+|pcsLoadInfo_freq|0 | 65 | Hz | 1 |  load frequency |
+|pcsLoadInfo_pwr|0 | 10000 | W | 1 |  load power |
 |bpRemainWatth|0 |  n/a | kWh | 0.001 |  bp remain watth |
 |bpDsgTime|0 |  n/a | min | 1 |  bp dsg time |
 |pcsActPwr|0 | 7000 | W | 1 |  pcs act pwr |

@@ -158,7 +158,7 @@ class EcoflowMqtt extends utils.Adapter {
 							} else {
 								devStates = require('./lib/ecoflow_data.js').pstationStates;
 							}
-							//ef_powerkit_data.js
+
 							if (devtype !== 'none' && devStates) {
 								let devupd = null;
 								if (devtype === 'pstream600' || devtype === 'pstream800') {
@@ -196,7 +196,9 @@ class EcoflowMqtt extends utils.Adapter {
 																channel +
 																'/' +
 																state +
-																' old--new ' +
+																'(' +
+																value +
+																')  old--new ' +
 																devStates[channel][type][state][value] +
 																' -- ' +
 																devupd[channel][type][state][value]
@@ -443,6 +445,104 @@ class EcoflowMqtt extends utils.Adapter {
 															devStates[part][type][key]
 														);
 													}
+												}
+											}
+										}
+									} else if (devtype === 'panel') {
+										let part = 'timeTask';
+										if (this.config.msgStateCreation) {
+											this.log.debug('____________________________________________');
+											this.log.debug('create  channel ' + part);
+										}
+										//createMyChannel(adapter, device, channel, name, role)
+										await myutils.createMyChannel(this, id, part, part, 'channel');
+										for (let j = 1; j < 21; j++) {
+											const task = 'task' + j;
+											await myutils.createMyChannel(this, id + '.' + part, task, task, 'channel');
+											//param
+											await myutils.createMyChannel(
+												this,
+												id + '.' + part + '.' + task,
+												'param',
+												'param',
+												'channel'
+											);
+											for (let key in devStates[part]['cfg']['param']) {
+												await myutils.createMyState(
+													this,
+													id,
+													part + '.' + task + '.param',
+													key,
+													devStates[part]['cfg']['param'][key]
+												);
+											}
+											//comCfg
+											await myutils.createMyChannel(
+												this,
+												id + '.' + part + '.' + task,
+												'comCfg',
+												'comCfg',
+												'channel'
+											);
+											for (let key in devStates[part]['cfg']['comCfg']) {
+												if (key === 'setTime') {
+													//setTime
+													await myutils.createMyChannel(
+														this,
+														id + '.' + part + '.' + task + '.comCfg',
+														'setTime',
+														'setTime',
+														'channel'
+													);
+													for (let key2 in devStates[part]['cfg']['comCfg'][key]) {
+														await myutils.createMyState(
+															this,
+															id,
+															part + '.' + task + '.comCfg.' + key,
+															key2,
+															devStates[part]['cfg']['comCfg'][key][key2]
+														);
+													}
+												} else if (key === 'timeRange') {
+													//timerange
+													await myutils.createMyChannel(
+														this,
+														id + '.' + part + '.' + task + '.comCfg',
+														'timeRange',
+														'timeRange',
+														'channel'
+													);
+													for (let key2 in devStates[part]['cfg']['comCfg'][key]) {
+														if (key2 === 'startTime' || key2 === 'endTime') {
+															for (let key3 in devStates[part]['cfg']['comCfg'][key][
+																key2
+															]) {
+																await myutils.createMyState(
+																	this,
+																	id,
+																	part + '.' + task + '.comCfg.' + key + '.' + key2,
+																	key3,
+																	devStates[part]['cfg']['comCfg'][key][key2][key3]
+																);
+															}
+														} else {
+															await myutils.createMyState(
+																this,
+																id,
+																part + '.' + task + '.comCfg.' + key,
+																key2,
+																devStates[part]['cfg']['comCfg'][key][key2]
+															);
+														}
+													}
+												} else {
+													await myutils.createMyState(
+														this,
+														id,
+														part + '.' + task + '.comCfg',
+														key,
+														devStates[part]['cfg']['comCfg'][key]
+													);
 												}
 											}
 										}
