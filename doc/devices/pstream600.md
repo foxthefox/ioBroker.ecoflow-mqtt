@@ -48,11 +48,15 @@
 |invToPlugWatts|0 | 5000 | W | 0.1 |  inv to plug watts |
 |spaceDemandWatts|0 | 5000 | W | 0.1 |  space demand watts |
 |invDemandWatts|0 | 5000 | W | 0.1 |  inv demand watts |
-|bmsReqChgVol|0 | 65 | V | 0.01 |  bms req chg vol |
+|bmsReqChgVol|0 | 65 | V | 0.0001 |  bms req chg vol |
 |bmsReqChgAmp|0 | 15 | A | 0.1 |  bms req chg amp |
 |invToOtherWatts|0 | 5000 | W | 0.1 |  inv to other watts |
 |wifiRssi|-90 | 10 | dBm | 1 |  wifi rssi |
-|pvPowerLimitAcPower|0 | 60 | V | 1 |  pv power limit ac power |
+|floadLimitOut|0 | 850 | W | 0.1 |  fload limit out |
+|invOutputLoadLimit|0 | 850 | W | 0.1 |  inv output load limit |
+|batOutputLoadLimit|0 | 850 | W | 0.1 |  bat output load limit |
+|pvPowerLimitAcPower|0 | 850 | W | 0.1 |  pv power limit ac power |
+|batErrorInvLoadLimit|0 | 850 | W | 0.1 |  bat error inv load limit |
 |geneNum|0 | 10 | pcs | 1 |  gene num |
 |consNum|0 | 20 | pcs | 1 |  cons num |
 |geneWatt|0 | 5000 | W | 0.1 |  gene watt |
@@ -132,10 +136,6 @@
 |uwsocFlag| uwsoc flag |
 |uwlowLightFlag| uwlow light flag |
 |batSystem| bat system |
-|floadLimitOut| fload limit out |
-|invOutputLoadLimit| inv output load limit |
-|batOutputLoadLimit| bat output load limit |
-|batErrorInvLoadLimit| bat error inv load limit |
 |resetReason| reset reason |
 |resetCount| reset count |
 |meshId| mesh id |

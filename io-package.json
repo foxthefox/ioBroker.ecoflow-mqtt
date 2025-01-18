@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "ecoflow-mqtt",
-        "version": "1.2.0",
+        "version": "1.2.1",
         "news": {
+            "1.2.1": {
+                "en": "corrections for powerstream objects, new time task config SHP",
+                "de": "Korrekturen für Powerstream-Objekte, neue Zeitaufgabenkonfiguration SHP",
+                "ru": "исправления для объектов Powerstream, новая конфигурация временных задач SHP",
+                "pt": "correções para objetos powerstream, nova configuração de tarefa de horário SHP",
+                "nl": "correcties voor powerstream-objecten, nieuwe tijdtaakconfiguratie SHP",
+                "fr": "corrections pour les objets Powerstream, nouvelle configuration de tâche temporelle SHP",
+                "it": "correzioni per oggetti powerstream, nuova configurazione attività temporale SHP",
+                "es": "correcciones para objetos powerstream, nueva configuración de tareas de tiempo SHP",
+                "pl": "poprawki dla obiektów strumienia mocy, nowa konfiguracja zadań czasowych SHP",
+                "uk": "виправлення для об’єктів Powerstream, нова конфігурація завдання часу SHP",
+                "zh-cn": "对 powerstream 对象的更正，新的时间任务配置 SHP"
+            },
             "1.2.0": {
                 "en": "new values powerocean, new values powerstream, new values plug, enhancements on values for SHP2,DPU,alternator",
                 "de": "Neue Werte Powerocean, neue Werte Powerstream, neue Werte Plug, Verbesserungen der Werte für SHP2, DPU, Lichtmaschine",

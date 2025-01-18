@@ -323,6 +323,10 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 
 ## Changelog
 
+### 1.2.1 (npm)
+* (foxthefox) corrections for pstream objects, some changed from string to number
+* (foxthefox) new SHP time task config values
+
 ### 1.2.0 (npm)
 * (foxthefox) new values powerocean
 * (foxthefox) new values powerstream
