@@ -1,5 +1,5 @@
 # States for  PSTREAM
-### version: 1.2.0
+### version: 1.2.1
 
 [inverter_heartbeat](#inverter_heartbeat)
 
@@ -43,13 +43,13 @@
 |batChargingTime|0 | 144000 | min | 1 |  Battery Charging Time |
 |batDischargingTime|0 | 144000 | min | 1 |  Battery Discharging Time |
 |pvToInvWatts|0 | 5000 | W | 0.1 |  pv to inv watts |
-|gridConsWatts|0 | 10000 | V | 0.1 |  grid cons watts |
+|gridConsWatts|0 | 10000 | W | 0.1 |  grid cons watts |
 |plugTotalWatts|0 | 10000 | W | 0.1 |  plug total watts |
 |invToPlugWatts|0 | 5000 | W | 0.1 |  inv to plug watts |
 |spaceDemandWatts|0 | 5000 | W | 0.1 |  space demand watts |
 |invDemandWatts|0 | 5000 | W | 0.1 |  inv demand watts |
 |bmsReqChgVol|0 | 65 | V | 0.0001 |  bms req chg vol |
-|bmsReqChgAmp|0 | 15 | A | 0.1 |  bms req chg amp |
+|bmsReqChgAmp|0 | 15 | A | 0.00001 |  bms req chg amp |
 |invToOtherWatts|0 | 5000 | W | 0.1 |  inv to other watts |
 |wifiRssi|-90 | 10 | dBm | 1 |  wifi rssi |
 |floadLimitOut|0 | 850 | W | 0.1 |  fload limit out |
