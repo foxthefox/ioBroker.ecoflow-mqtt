@@ -15,7 +15,7 @@ Finally you will see:
 
 go to the config page of adapter
 
-![finish](Bildschirmfoto 2025-01-24 um 21.48.02.png)
+![finish]("Bildschirmfoto 2025-01-24 um 21.48.02.png")
 
 click Finish!
 
@@ -31,15 +31,15 @@ in search field type ecoflow
 
 a card appears and click on the 3 dots
 
-![adapter](Bildschirmfoto 2025-01-24 um 21.51.08.png)
+![adapter]("Bildschirmfoto 2025-01-24 um 21.51.08.png")
 
 the click the + to install the adapter and add an instance
 
-![adapter](Bildschirmfoto 2025-01-24 um 21.52.08.png)
+![adapter]("Bildschirmfoto 2025-01-24 um 21.52.08.png")
 
 after the installation the process opens directly the admin page of the adapter
 
-![adapter](Bildschirmfoto 2025-01-24 um 21.55.45.png)
+![adapter]("Bildschirmfoto 2025-01-24 um 21.55.45.png")
 
 You need to complete the 3 the tabs
 * CREDENTIALS & DEBUG SETTINGS -> access to EF MQTT server
@@ -73,12 +73,12 @@ There are multiple chapters for the different devices.
 Select your devices i.e. Delta 2 powerstation with the Serial# R331ZEB4ZEAL0528 and enable  HA gateway.
 The you should add a new line with + and it should look like:
 
-![device_config](Bildschirmfoto 2025-01-25 um 23.03.33.png)
+![device_config]("Bildschirmfoto 2025-01-25 um 23.03.33.png")
 
 # HA settings
 Enable the the HA commincation gateway
 
-![ha_enable](Bildschirmfoto 2025-01-24 um 22.32.14.png)
+![ha_enable]("Bildschirmfoto 2025-01-24 um 22.32.14.png")
 
 the IP address of HA installation must be filled in, the other settings should work with their defaults.
 
@@ -90,36 +90,36 @@ The user which is entered "HA MQTT Authentication settings" must match the HA MQ
 
 if you not have the MQTT Server installed, do so by navigating Settings > Add-ons 
 
-![adapter](./Bildschirmfoto 2025-01-24 um 22.04.06.png)
+![adapter](./Bildschirmfoto 2025-01-24 um 22.04.06.png")
 
 use mosquitto broker
-![mqtt_adapter](Bildschirmfoto 2025-01-24 um 22.38.34.png)
+![mqtt_adapter]("Bildschirmfoto 2025-01-24 um 22.38.34.png")
 
 Note: Add-on avalability https://www.home-assistant.io/addons/
 
 Install the MQTT broker add-on and Start it.
 
-![start_mqtt](Bildschirmfoto 2025-01-24 um 22.39.29.png)
+![start_mqtt]("Bildschirmfoto 2025-01-24 um 22.39.29.png")
 
 Install the MQTT integration through Settings > Devices & services
 
-![mqtt_integration](Bildschirmfoto 2025-01-24 um 22.42.53.png)
+![mqtt_integration]("Bildschirmfoto 2025-01-24 um 22.42.53.png")
 
 add the instance
 
-![add_mqtt](Bildschirmfoto 2025-01-24 um 22.43.36.png)
+![add_mqtt]("Bildschirmfoto 2025-01-24 um 22.43.36.png")
 
 acknowledge the connection to the mqtt broker
 
-![ack_mqtt](Bildschirmfoto 2025-01-24 um 22.44.42.png)
+![ack_mqtt]("Bildschirmfoto 2025-01-24 um 22.44.42.png")
 
 if ioBroker adapter is running and connected you see:
 
-![running_iob_conn](Bildschirmfoto 2025-01-25 um 21.32.19.png)
+![running_iob_conn]("Bildschirmfoto 2025-01-25 um 21.32.19.png")
 
 you can navigate to the devices
 
-![device](Bildschirmfoto 2025-01-25 um 21.32.42.png)
+![device]("Bildschirmfoto 2025-01-25 um 21.32.42.png")
 
 
 
