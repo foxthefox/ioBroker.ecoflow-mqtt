@@ -1,7 +1,7 @@
 Some useful information for HA user using the ioBroker adapter
 
-[install_IOB_and_HA_config](./doc/en/IOB_HA/iobrokerins.md)
+[install_IOB_and_HA_config](iobrokerins.md)
 
-[ecoflow_adapter_install](./doc/en/IOB_HA/adapter.md)
+[ecoflow_adapter_install](adapter.md)
 
-[logging](./doc/en/IOB_HA/logging.md)
+[logging](logging.md)
