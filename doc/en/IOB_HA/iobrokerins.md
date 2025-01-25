@@ -90,7 +90,7 @@ The user which is entered "HA MQTT Authentication settings" must match the HA MQ
 
 if you not have the MQTT Server installed, do so by navigating Settings > Add-ons 
 
-![adapter](Bildschirmfoto 2025-01-24 um 22.04.06.png)
+![adapter](./Bildschirmfoto 2025-01-24 um 22.04.06.png)
 
 use mosquitto broker
 ![mqtt_adapter](Bildschirmfoto 2025-01-24 um 22.38.34.png)
