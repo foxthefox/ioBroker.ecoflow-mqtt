@@ -228,6 +228,8 @@ This is not necessarily a failure or an indicator for not working adapter, it is
 * if a value is not set by device data update, it will appear as unknown in HA
 * if the device is reachable, then the availability will be shown in the device connectivity, this is inherited to the "sub-devices" (unavailability is precessed in the same way)
 
+[some_hints_for HA](./doc/en/IOB_HA/navi.md)
+
 ### annotations to functionality
 
 * Due to to the asynchronity of information updates and command transfer sometimes race conditions may be visible. So a switch is commanded and its toggling back and forth before it stays, can be observed.
@@ -322,6 +324,9 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 * more getCmds for SHP values
 
 ## Changelog
+
+### 1.2.2 (npm)
+* (foxthefox) some documentation for HA users
 
 ### 1.2.1 (npm)
 * (foxthefox) corrections for pstream objects, some changed from string to number
