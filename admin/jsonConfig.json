@@ -1275,7 +1275,9 @@
 								{ "value": "none", "label": "none" },
 								{ "value": "deltapro3", "label": "Delta Pro 3" },
 								{ "value": "delta3", "label": "Delta 3" },
-								{ "value": "delta3plus", "label": "Delta 3 Plus" }
+								{ "value": "delta3plus", "label": "Delta 3 Plus" },
+								{ "value": "riever3", "label": "River 3" },
+								{ "value": "river3plus", "label": "River 3 Plus" }
 							],
 							"title": "Alternator Type",
 							"attr": "devType",

@@ -1,5 +1,5 @@
 # States for  RIVERMAX
-### version: 1.2.0
+### version: 1.2.1
 
 [inv](#inv)
 

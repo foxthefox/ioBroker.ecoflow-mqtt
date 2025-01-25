@@ -4,8 +4,7 @@ function logger() {
 	};
 }
 function configure() {
-	this.msgUnknownMsgPstream = true;
-	this.msgUnknownMsgPlug = true;
+	this.msgUnknownMsg = true;
 	this.showHex = true;
 }
 
@@ -15,7 +14,13 @@ that.log = new logger();
 that.config = new configure();
 
 const mqtt = require('mqtt');
-const client = mqtt.connect('mqtt://localhost:1883');
+//const client = mqtt.connect('mqtt://localhost:1883');
+const client = mqtt.connect({
+	host: '192.168.178.74',
+	port: 1883,
+	username: 'efSimulation',
+	password: 'devicePWD'
+});
 
 const ef = require('../../lib/ecoflow_utils.js');
 let quota = {};
@@ -30,9 +35,16 @@ quota['DAEBZ5ZE4112345'] = require('../lastQuotas/deltamax.json');
 quota['R521ZEB4XEC12345'] = require('../lastQuotas/river2max.json');
 quota['R621ZEB4XEC12345'] = require('../lastQuotas/river2pro.json');
 quota['R421ZEB4XEC12345'] = require('../lastQuotas/riverpro.json');
-quota['R351ZFB4HF6SL12345'] = require('../lastQuotas/delt2max2slave.json');
+quota['R351ZFB4HF6SL12345'] = require('../lastQuotas/delta2max2slave.json');
 quota['DAEBZ5ZE41SL12345'] = require('../lastQuotas/deltamax1slave.json');
-quota['DPU0ZFB5EF412345'] = require('../lastQuotas/dpu.js').message.get_reply;
+quota['DPU0ZFB5EF412345'] = require('../lastQuotas/dpu.js').message.getreply2bat; //get_reply;
+quota['1234345346'] = require('../lastQuotas/shelly3em.json');
+quota['M106ZAB4Z000001F'] = require('../lastQuotas/pkit_txt.json');
+quota['M106ZBB4Z000001F'] = require('../lastQuotas/powerkit.json');
+quota['HJ312000BF7W1234'] = require('../lastQuotas/ocean.js').message.full;
+quota['SHP20ZFB5EF412345'] = require('../lastQuotas/panel2.js').message.jerry; //latestQuotas;
+quota['F317ZEB49G1234567'] = require('../lastQuotas/alternator.js').message.get2; //latestQuotas;
+quota['MR51ZAS4PG1234567'] = require('../lastQuotas/dp3.js').message.debug2_2; //latestQuotas;
 
 const panelparams = require('../websource/shp/vm2.js').params;
 
@@ -56,7 +68,14 @@ const pdevices = {
 	R621ZEB4XEC12345: { devName: 'My river2pro', devType: 'river2pro', haEnable: false },
 	R421ZEB4XEC12345: { devName: 'My riverpro', devType: 'riverpro', haEnable: false },
 	R351ZFB4HF6SL12345: { devName: 'My delta2max Slave', devType: 'delta2max', haEnable: false },
-	DAEBZ5ZE41SL12345: { devName: 'My deltamax Slave', devType: 'deltamax', haEnable: false }
+	DAEBZ5ZE41SL12345: { devName: 'My deltamax Slave', devType: 'deltamax', haEnable: false },
+	1234345346: { devName: 'My shelly 3em', devType: 'shelly3em', haEnable: false },
+	M106ZAB4Z000001F: { devName: 'My powerkit', devType: 'powerkit', haEnable: false },
+	M106ZBB4Z000001F: { devName: 'My powerkit2bat', devType: 'powerkit', haEnable: false, pstationsSlave1: true },
+	HJ312000BF7W1234: { devName: 'My powerocean', devType: 'powerocean', haEnable: false },
+	SHP20ZFB5EF412345: { devName: 'My SHP2', devType: 'panel2', haEnable: false },
+	F317ZEB49G1234567: { devName: 'My alternator', devType: 'alternator', haEnable: false },
+	MR51ZAS4PG1234567: { devName: 'My deltapro3', devType: 'deltapro3', haEnable: false }
 };
 
 let lastQuotInterval = null;
@@ -107,16 +126,36 @@ client.on('message', (topic, message) => {
 	// client.end();
 
 	if (msgtype === 'get' && quota[topic]) {
-		if (topic !== 'DPU0ZFB5EF412345') {
-			client.publish(
-				'/app/' + mqttUserId + '/' + topic + '/thing/property/get_reply',
-				JSON.stringify(quota[topic])
-			);
-		} else {
+		if (topic == 'HJ312000BF7W1234') {
+			const string = quota['HJ312000BF7W1234'].replace(/ /g, '').toLowerCase();
+			//console.log(string);
+			const buffer = Buffer.from(string, 'hex');
+			client.publish('/app/' + mqttUserId + '/' + topic + '/thing/property/get_reply', buffer);
+		} else if (topic == 'DPU0ZFB5EF412345') {
 			const string = quota['DPU0ZFB5EF412345'].replace(/ /g, '').toLowerCase();
 			//console.log(string);
 			const buffer = Buffer.from(string, 'hex');
 			client.publish('/app/' + mqttUserId + '/' + topic + '/thing/property/get_reply', buffer);
+		} else if (topic == 'SHP20ZFB5EF412345') {
+			const string = quota['SHP20ZFB5EF412345'].replace(/ /g, '').toLowerCase();
+			//console.log(string);
+			const buffer = Buffer.from(string, 'hex');
+			client.publish('/app/' + mqttUserId + '/' + topic + '/thing/property/get_reply', buffer);
+		} else if (topic == 'F317ZEB49G1234567') {
+			const string = quota['F317ZEB49G1234567'].replace(/ /g, '').toLowerCase();
+			//console.log(string);
+			const buffer = Buffer.from(string, 'hex');
+			client.publish('/app/' + mqttUserId + '/' + topic + '/thing/property/get_reply', buffer);
+		} else if (topic == 'MR51ZAS4PG1234567') {
+			const string = quota['MR51ZAS4PG1234567'].replace(/ /g, '').toLowerCase();
+			//console.log(string);
+			const buffer = Buffer.from(string, 'hex');
+			client.publish('/app/' + mqttUserId + '/' + topic + '/thing/property/get_reply', buffer);
+		} else {
+			client.publish(
+				'/app/' + mqttUserId + '/' + topic + '/thing/property/get_reply',
+				JSON.stringify(quota[topic])
+			);
 		}
 	}
 });
