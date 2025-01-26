@@ -42,7 +42,7 @@ after the installation the process opens directly the admin page of the adapter
 ![adapter](Bildschirmfoto%202025-01-24%20um%2021.55.45.png)
 
 You need to complete the 3 the tabs
-* CREDENTIALS & DEBUG SETTINGS -> access to EF MQTT server
+* CREDENTIALS & DEBUG SETTINGS -> access to EF MQTT server (your login data from using the EF-App)
 * DEVICE(S) CONFIGURATION -> your devices type and serial number
 * HOMEASSISTANT -> access to HA MQTT server
 
@@ -54,7 +54,7 @@ You need to get the credentials to access the EF MQTT server
 You have 3 possibilities:
 1. by script https://github.com/mmiller7/ecoflow-withoutflow/blob/main/cloud-mqtt/ecoflow_get_mqtt_login.sh
 2. by website https://energychain.github.io/site_ecoflow_mqtt_credentials/
-3. by adapters own alogorithm (pressing the button), for this the ecoflow username and password is necessary.
+3. by adapters own alogorithm (pressing the button), for this the Ecoflow-APP username and password is necessary.
 
 using the third method transfers the credentials directly to the MQTT athentication section
 

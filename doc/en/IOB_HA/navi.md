@@ -5,3 +5,5 @@ Some useful information for HA user using the ioBroker adapter
 [ecoflow_adapter_install](adapter.md)
 
 [logging](logging.md)
+
+[troubleshooting](troubleshooting.md)
