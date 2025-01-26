@@ -64,7 +64,8 @@ Otherwise you have to copy and paste the values to the fields.
 * mqtt pwd (MQTT Password)
 * mqtt clientId (MQTT Client ID (sample)) i.e. ANDROID_666498788_1....
 
-
+Note: it might be necessary to change the default server address (mqtts://mqtt-e.ecoflow.com ) to a different one.
+Verification could be done website https://energychain.github.io/site_ecoflow_mqtt_credentials/ and checking the server address.
 
 # Device configurations
 
