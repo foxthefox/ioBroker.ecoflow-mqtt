@@ -4,17 +4,17 @@
 		"version": "1.2.2",
 		"news": {
 			"1.2.2": {
-				"en": "doc for HA users",
-				"de": "Dokument für HA-Benutzer",
-				"ru": "документ для пользователей высокой доступности",
-				"pt": "documento para usuários de HA",
-				"nl": "Doc voor HA -gebruikers",
-				"fr": "Doc pour les utilisateurs HA",
-				"it": "Doc per gli utenti HA",
-				"es": "documento para usuarios de HA",
-				"pl": "dokument dla użytkowników HA",
-				"uk": "DOC для користувачів HA",
-				"zh-cn": "HA 用户的文档"
+				"en": "doc for HA users, enhancements for SHP2",
+				"de": "DOC für HA -Benutzer, Verbesserungen für SHP2",
+				"ru": "Док для пользователей HA, улучшения для SHP2",
+				"pt": "DOC para usuários de HA, aprimoramentos para shp2",
+				"nl": "Doc voor HA -gebruikers, verbeteringen voor SHP2",
+				"fr": "Doc pour les utilisateurs HA, améliorations pour SHP2",
+				"it": "Doc per utenti HA, miglioramenti per SHP2",
+				"es": "DOC para usuarios de HA, mejoras para SHP2",
+				"pl": "Doc dla użytkowników HA, ulepszenia dla SHP2",
+				"uk": "DOC для користувачів HA, вдосконалення для SHP2",
+				"zh-cn": "HA用户的DOC，SHP2的增强功能"
 			},
 			"1.2.1": {
 				"en": "corrections for powerstream objects, new time task config SHP",
