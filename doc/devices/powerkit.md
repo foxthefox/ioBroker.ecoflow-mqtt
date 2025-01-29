@@ -1,5 +1,5 @@
 # States for  POWERKIT
-### version: 1.2.1
+### version: 1.2.2
 
 [bp1](#bp1)
 
