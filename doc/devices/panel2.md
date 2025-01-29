@@ -1,5 +1,5 @@
 # States for  PANEL2
-### version: 1.2.1
+### version: 1.2.2
 
 [ProtoTime](#ProtoTime)
 
@@ -41,14 +41,16 @@
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |master_gridWatt|0 | 12000 | W | 1 |  Master Grid Power |
-|bkpChWatt|0 | 7200 | W | 1 |  Backup charge power |
 |backupDischargeTime|0 | 180000 | min | 1 |  Backup discharge time |
 |bkpEnerg1ChargeTime|0 | 30000 | min | 1 |  Backup Energy#1 charge time |
 |bkpEnerg1DischargeTime|0 | 30000 | min | 1 |  Backup Energy#1 discharge time |
 |bkpEnerg2ChargeTime|0 | 30000 | min | 1 |  Backup Energy#2 charge time |
 |bkpEnerg2DischargeTime|0 | 30000 | min | 1 |  Backup Energy#2 discharge time |
 |wattInfoGridWatt|0 | 24000 | W | 1 |  Power info grid |
-|wattInfoChWatt|0 | 12000 | W | 1 |  Power info channel |
+|wattInfoChWatt|0 | 12000 | W | 1 |  Power info channel sum |
+|wattInfoChWatt1|0 | 12000 | W | 1 |  Power info channel 1 |
+|wattInfoChWatt2|0 | 12000 | W | 1 |  Power info channel 2 |
+|wattInfoChWatt3|0 | 12000 | W | 1 |  Power info channel 3 |
 |wattInfoAllHallWatt|0 | 12000 | W | 1 |  Power info all hall |
 
 
@@ -68,6 +70,7 @@
 |----------|------|
 |hall1Watt| Hall1 power |
 |hall1Curr| Hall1 current |
+|bkpChWatt| Backup charge power |
 
 ## ProtoPushAndSet
 
