@@ -26,7 +26,7 @@
 |unknown269|0 | 144000 | min | 1 |  Battery Charging Time |
 |chargeToFull268|0 | 144000 | min | 1 |  Battery Charging Time |
 |current425|0 | 30 | A | 0.001 |  current |
-|wifiRssi|-90 | 10 | dBm | 1 |  Wifi RSSI |
+|wifiRssi|-100 | 10 | dBm | 1 |  Wifi RSSI |
 |ratedPower|0 | 800 | W | 1 |  Alternator rated power |
 
 

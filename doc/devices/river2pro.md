@@ -190,7 +190,7 @@
 |carTemp|0 | 80 | °C | 1 |  Car charging temperature |
 |outWatts|0 | 1600 | W | 1 |  PV output power |
 |carOutAmp|0 | 13 | A | 0.001 |  Car charging output current |
-|outAmp|0 | 30 | A | 0.001 |  PV output current |
+|outAmp|0 | 31 | A | 0.001 |  PV output current |
 |dcdc12vWatts|0 | 500 | W | 0.1 |  DC12V30A output power, which is valid only for DELTA Pro |
 |powStandbyMin|0 | 720 | min | 1 |  Power standby time /min 0 Never standby 720 Default value ? |
 |inWatts|0 | 230 | W | 1 |  PV input power |
@@ -199,7 +199,7 @@
 |scrStandbyMin|0 | 720 | min | 1 |  SCR standby time /min 0 Never standby 720 Default value ? |
 |inVol|0 | 55 | V | 0.001 |  PV input voltage |
 |carOutWatts|0 | 500 | W | 0.1 |  Car charging output power |
-|mpptTemp|0 | 100 | °C | 1 |  MPPT temperature |
+|mpptTemp|0 | 120 | °C | 1 |  MPPT temperature |
 |outVol|0 | 60 | V | 0.001 |  PV output voltage |
 |dcdc12vAmp|0 | 13 | A | 0.01 |  DC12V30A output current, which is valid only for DELTA Pro |
 |dc24vTemp|0 | 80 | °C | 1 |  DCDC24V temperature |

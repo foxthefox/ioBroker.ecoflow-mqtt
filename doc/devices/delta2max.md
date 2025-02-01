@@ -193,8 +193,8 @@
 |inAmp|0 | 16 | A | 0.001 |  PV input current |
 |inVol|0 | 60 | V | 0.001 |  PV input voltage |
 |inWatts|0 | 900 | W | 1 |  PV input power |
-|mpptTemp|0 | 100 | °C | 1 |  MPPT temperature |
-|outAmp|0 | 30 | A | 0.001 |  PV output current |
+|mpptTemp|0 | 120 | °C | 1 |  MPPT temperature |
+|outAmp|0 | 31 | A | 0.001 |  PV output current |
 |outVol|0 | 60 | V | 0.001 |  PV output voltage |
 |outWatts|0 | 1600 | W | 1 |  PV output power |
 |pv2InAmp|0 | 13 | A | 0.001 |  PV input current |
