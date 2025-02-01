@@ -329,7 +329,8 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 * (foxthefox) some documentation for HA users
 * (foxthefox) corrections in SHP2 protobuf definition
 * (foxthefox) new datapoints in SHP2 ProtoTime, new telegram ProtoTimeStat mapped to ProtoTime
-* (foxthefox) corrections to alternator (objects 268,269), power setting
+* (foxthefox) corrections to alternator (objects 268,269), power,wifiRssi setting, 
+* (foxthefox) DeltaPro mpptTemp, outAmp new max value
 
 ### 1.2.1 (npm)
 * (foxthefox) corrections for pstream objects, some changed from string to number
