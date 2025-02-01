@@ -32,7 +32,7 @@
 		"@iobroker/dev-server": "^0.7.3",
 		"@iobroker/testing": "^5.0.0",
 		"@tsconfig/node18": "^18.2.4",
-		"@types/chai": "^4.3.9",
+		"@types/chai": "^5.0.1",
 		"@types/chai-as-promised": "^8.0.1",
 		"@types/mocha": "^10.0.10",
 		"@types/node": "^22.10.1",
@@ -44,7 +44,7 @@
 		"globals": "^15.14.0",
 
 		"aedes": "^0.51.3",
-		"chai": "^4.5.0",
+		"chai": "^5.1.2",
 		"chai-as-promised": "^8.0.1",
 
 		"handlebars": "^4.7.8",
