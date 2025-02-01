@@ -45,7 +45,7 @@
 
 		"aedes": "^0.51.3",
 		"chai": "^4.5.0",
-		"chai-as-promised": "^8.0.0",
+		"chai-as-promised": "^8.0.1",
 
 		"handlebars": "^4.7.8",
 		"mocha": "^10.8.2",
