@@ -1,19 +1,31 @@
-const path = require('path');
-const { tests } = require('@iobroker/testing');
-//import { expect } from 'chai';
-const expect = require('chai').expect;
-const { doesNotMatch } = require('assert/strict');
+import path from "path";
+import { dirname } from 'node:path';
+import { fileURLToPath } from 'node:url'; 
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+import {  tests } from '@iobroker/testing';
+
+import { expect } from "chai";
+import { doesNotMatch } from 'assert/strict';
 
 console.log('PATH ist ' + path.join(__dirname, './data/'));
 
-const states = require(path.join(__dirname, '../lib/') + 'ecoflow_data.js');
-const pstreamstates = require(path.join(__dirname, '../lib/') + 'ef_pstream_data.js');
-const plugstates = require(path.join(__dirname, '../lib/') + 'ef_plug_data.js');
-const dpustates = require(path.join(__dirname, '../lib/') + 'ef_dpu_data.js');
-const shpstates = require(path.join(__dirname, '../lib/') + 'ef_shp_data.js');
-const shp2states = require(path.join(__dirname, '../lib/') + 'ef_shp2_data.js');
-const oceanstates = require(path.join(__dirname, '../lib/') + 'ef_powerocean_data.js');
-const kitstates = require(path.join(__dirname, '../lib/') + 'ef_powerkit_data.js');
+import * as states from  '../lib/ecoflow_data.js'
+import * as  pstreamstates from '../lib/ef_pstream_data.js';
+import * as  plugstates from '../lib/ef_plug_data.js';
+import * as  dpustates from '../lib/ef_dpu_data.js';
+import * as shpstates from  '../lib/ef_shp_data.js';
+import * as shp2states from '../lib/ef_shp2_data.js';
+import * as  oceanstates from '../lib/ef_powerocean_data.js';
+import * as  kitstates from  '../lib/ef_powerkit_data.js';
+//const states = require(path.join(__dirname, '../lib/') + 'ecoflow_data.js');
+//const pstreamstates = require(path.join(__dirname, '../lib/') + 'ef_pstream_data.js');
+//const plugstates = require(path.join(__dirname, '../lib/') + 'ef_plug_data.js');
+//const dpustates = require(path.join(__dirname, '../lib/') + 'ef_dpu_data.js');
+//const shpstates = require(path.join(__dirname, '../lib/') + 'ef_shp_data.js');
+//const shp2states = require(path.join(__dirname, '../lib/') + 'ef_shp2_data.js');
+//const oceanstates = require(path.join(__dirname, '../lib/') + 'ef_powerocean_data.js');
+//const kitstates = require(path.join(__dirname, '../lib/') + 'ef_powerkit_data.js');
 
 function delay(t, val) {
 	return new Promise(function(resolve) {
