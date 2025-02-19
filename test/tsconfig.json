@@ -4,6 +4,7 @@
 		"noImplicitAny": false
 	},
 	"include": [
-		"./**/*.js"
+		"./**/*.js",
+		"integration.mjs"
 	]
 }
