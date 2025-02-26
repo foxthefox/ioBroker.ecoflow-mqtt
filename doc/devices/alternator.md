@@ -20,12 +20,12 @@
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |temp|0 | 80 | °C | 1 |  Temperature |
-|actPower|0 | 830 | W | 1 |  Alternator actual power |
+|actPower|0 | 830 | W | 1 |  Alternator power |
 |carBatVolt|10 | 30 | V | 1 |  Car battery voltage |
 |batSoc|0 | 100 | % | 1 |  Powerstation battery state of charge |
 |unknown269|0 | 144000 | min | 1 |  Battery Charging Time |
 |chargeToFull268|0 | 144000 | min | 1 |  Battery Charging Time |
-|current425|0 | 30 | A | 0.001 |  current |
+|current425|0 | 30 | W | 1 |  Station Power |
 |wifiRssi|-100 | 10 | dBm | 1 |  Wifi RSSI |
 |ratedPower|0 | 800 | W | 1 |  Alternator rated power |
 
