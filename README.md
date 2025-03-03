@@ -325,6 +325,12 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 
 ## Changelog
 
+### 1.3.0 (npm)
+* (foxthefox) correction for PStream energy
+* (foxthefox) new DeltaPro 3
+* (foxthefox, radeonorama) enhancements alternator
+
+
 ### 1.2.2 (npm)
 * (foxthefox) some documentation for HA users
 * (foxthefox) corrections in SHP2 protobuf definition
