@@ -49,8 +49,8 @@ class EcoflowMqtt extends utils.Adapter {
 		this.pdevicesCmd = {};
 		this.protoSource = {};
 		this.protoMsg = {};
-		this.storeProtoPayload  = {};
-		this.prepareProtoCmd  = {};
+		this.storeProtoPayload = {};
+		this.prepareProtoCmd = {};
 		this.quotas = {};
 		this.haDevices = null;
 		this.haCounter = 0;
@@ -138,51 +138,51 @@ class EcoflowMqtt extends utils.Adapter {
 
 							let devStates = null;
 							if (devtype === 'pstream600' || devtype === 'pstream800') {
-								devStates = require('./lib/dict_data/ef_pstream_data.js').pstreamStates;
-							} else if (devtype === 'plug') {
-								devStates = require('./lib/dict_data/ef_plug_data.js').plugStates;
+								devStates = require('./lib/dict_data/ef_pstream_data.js').deviceStates;
 							} else if (
 								devtype === 'powerkitbp2000' ||
 								devtype === 'powerkitbp5000' ||
 								devtype === 'powerkit'
 							) {
 								devStates = require('./lib/dict_data/ef_powerkit_data.js').powerkitStates;
+							} else if (devtype === 'plug') {
+								devStates = require('./lib/dict_data/ef_plug_data.js').deviceStates;
 							} else if (devtype === 'powerocean') {
-								devStates = require('./lib/dict_data/ef_powerocean_data.js').poweroceanStates;
+								devStates = require('./lib/dict_data/ef_powerocean_data.js').deviceStates;
 							} else if (devtype === 'panel') {
 								devStates = require('./lib/dict_data/ef_panel_data.js').panelStates;
 							} else if (devtype === 'panel2') {
-								devStates = require('./lib/dict_data/ef_panel2_data.js').panel2States;
+								devStates = require('./lib/dict_data/ef_panel2_data.js').deviceStates;
 							} else if (devtype === 'deltaproultra') {
-								devStates = require('./lib/dict_data/ef_deltaproultra_data.js').deltaproultraStates;
+								devStates = require('./lib/dict_data/ef_deltaproultra_data.js').deviceStates;
 							} else if (devtype === 'alternator') {
 								devStates = require('./lib/dict_data/ef_alternator_data.js').deviceStates;
 							} else if (devtype === 'deltapro3') {
 								devStates = require('./lib/dict_data/ef_deltapro3_data.js').deviceStates;
-							}else {
+							} else {
 								devStates = require('./lib/ecoflow_data.js').pstationStates;
 							}
 
 							if (devtype !== 'none' && devStates) {
 								let devupd = null;
 								if (devtype === 'pstream600' || devtype === 'pstream800') {
-									devupd = require('./lib/dict_data/ef_pstream_data.js').pstreamRanges[devtype];
-								} else if (devtype === 'plug') {
-									devupd = require('./lib/dict_data/ef_plug_data.js').plugRanges[devtype];
+									devupd = require('./lib/dict_data/ef_pstream_data.js').deviceRanges[devtype];
 								} else if (
 									devtype === 'powerkitbp2000' ||
 									devtype === 'powerkitbp5000' ||
 									devtype === 'powerkit'
 								) {
 									devupd = require('./lib/dict_data/ef_powerkit_data.js').powerkitRanges[devtype];
+								} else if (devtype === 'plug') {
+									devupd = require('./lib/dict_data/ef_plug_data.js').deviceRanges[devtype];
 								} else if (devtype === 'powerocean') {
-									devupd = require('./lib/dict_data/ef_powerocean_data.js').poweroceanRanges[devtype];
+									devupd = require('./lib/dict_data/ef_powerocean_data.js').deviceRanges[devtype];
 								} else if (devtype === 'panel') {
 									devupd = require('./lib/dict_data/ef_panel_data.js').panelRanges[devtype];
 								} else if (devtype === 'panel2') {
-									devupd = require('./lib/dict_data/ef_panel2_data.js').panel2Ranges[devtype];
+									devupd = require('./lib/dict_data/ef_panel2_data.js').deviceRanges[devtype];
 								} else if (devtype === 'deltaproultra') {
-									devupd = require('./lib/dict_data/ef_deltaproultra_data.js').deltaproultraRanges[devtype];
+									devupd = require('./lib/dict_data/ef_deltaproultra_data.js').deviceRanges[devtype];
 								} else if (devtype === 'alternator') {
 									devupd = require('./lib/dict_data/ef_alternator_data.js').deviceRanges[devtype];
 								} else if (devtype === 'deltapro3') {
@@ -199,15 +199,15 @@ class EcoflowMqtt extends utils.Adapter {
 													for (let value in devupd[channel][type][state]) {
 														this.log.debug(
 															'manipulate: ' +
-																channel +
-																'/' +
-																state +
-																'(' +
-																value +
-																')  old--new ' +
-																devStates[channel][type][state][value] +
-																' -- ' +
-																devupd[channel][type][state][value]
+															channel +
+															'/' +
+															state +
+															'(' +
+															value +
+															')  old--new ' +
+															devStates[channel][type][state][value] +
+															' -- ' +
+															devupd[channel][type][state][value]
 														);
 														devStates[channel][type][state][value] =
 															devupd[channel][type][state][value];
@@ -245,15 +245,15 @@ class EcoflowMqtt extends utils.Adapter {
 							let storeProtoPayload = null;
 							let prepareProtoCmd = null;
 							if (devtype === 'pstream') {
-								pdevicesStatesDict = require('./lib/dict_data/ef_pstream_data.js').pstreamStatesDict[devtype];
-								pdevicesCmd = require('./lib/dict_data/ef_pstream_data.js').pstreamCmd[origdevtype];
+								pdevicesStatesDict = require('./lib/dict_data/ef_pstream_data.js').deviceStatesDict[devtype];
+								pdevicesCmd = require('./lib/dict_data/ef_pstream_data.js').deviceCmd[origdevtype];
 								protoSource = require('./lib/dict_data/ef_pstream_data.js').protoSource;
 								protoMsg = require('./lib/dict_data/ef_pstream_data.js').protoMsg;
 								storeProtoPayload = require('./lib/dict_data/ef_pstream_data.js').storeProtoPayload;
 								prepareProtoCmd = require('./lib/dict_data/ef_pstream_data.js').prepareProtoCmd;
 							} else if (devtype === 'plug') {
-								pdevicesStatesDict = require('./lib/dict_data/ef_plug_data.js').plugStatesDict[devtype];
-								pdevicesCmd = require('./lib/dict_data/ef_plug_data.js').plugCmd[devtype];
+								pdevicesStatesDict = require('./lib/dict_data/ef_plug_data.js').deviceStatesDict[devtype];
+								pdevicesCmd = require('./lib/dict_data/ef_plug_data.js').deviceCmd[devtype];
 								protoSource = require('./lib/dict_data/ef_plug_data.js').protoSource;
 								protoMsg = require('./lib/dict_data/ef_plug_data.js').protoMsg;
 								storeProtoPayload = require('./lib/dict_data/ef_plug_data.js').storeProtoPayload;
@@ -262,8 +262,8 @@ class EcoflowMqtt extends utils.Adapter {
 								pdevicesStatesDict = require('./lib/dict_data/ef_powerkit_data.js').powerkitStatesDict[devtype];
 								pdevicesCmd = require('./lib/dict_data/ef_powerkit_data.js').powerkitCmd[devtype];
 							} else if (devtype === 'powerocean') {
-								pdevicesStatesDict = require('./lib/dict_data/ef_powerocean_data.js').poweroceanStatesDict[devtype];
-								pdevicesCmd = require('./lib/dict_data/ef_powerocean_data.js').poweroceanCmd[devtype];
+								pdevicesStatesDict = require('./lib/dict_data/ef_powerocean_data.js').deviceStatesDict[devtype];
+								pdevicesCmd = require('./lib/dict_data/ef_powerocean_data.js').deviceCmd[devtype];
 								protoSource = require('./lib/dict_data/ef_powerocean_data.js').protoSource;
 								protoMsg = require('./lib/dict_data/ef_powerocean_data.js').protoMsg;
 								storeProtoPayload = require('./lib/dict_data/ef_powerocean_data.js').storeProtoPayload;
@@ -272,15 +272,15 @@ class EcoflowMqtt extends utils.Adapter {
 								pdevicesStatesDict = require('./lib/dict_data/ef_panel_data.js').panelStatesDict[devtype];
 								pdevicesCmd = require('./lib/dict_data/ef_panel_data.js').panelCmd[devtype];
 							} else if (devtype === 'panel2') {
-								pdevicesStatesDict = require('./lib/dict_data/ef_panel2_data.js').panel2StatesDict[devtype];
-								pdevicesCmd = require('./lib/dict_data/ef_panel2_data.js').panel2Cmd[devtype];
+								pdevicesStatesDict = require('./lib/dict_data/ef_panel2_data.js').deviceStatesDict[devtype];
+								pdevicesCmd = require('./lib/dict_data/ef_panel2_data.js').deviceCmd[devtype];
 								protoSource = require('./lib/dict_data/ef_panel2_data.js').protoSource;
 								protoMsg = require('./lib/dict_data/ef_panel2_data.js').protoMsg;
 								storeProtoPayload = require('./lib/dict_data/ef_panel2_data.js').storeProtoPayload;
 								prepareProtoCmd = require('./lib/dict_data/ef_panel2_data.js').prepareProtoCmd;
 							} else if (devtype === 'deltaproultra') {
-								pdevicesStatesDict = require('./lib/dict_data/ef_deltaproultra_data.js').deltaproultraStatesDict[devtype];
-								pdevicesCmd = require('./lib/dict_data/ef_deltaproultra_data.js').deltaproultraCmd[devtype];
+								pdevicesStatesDict = require('./lib/dict_data/ef_deltaproultra_data.js').deviceStatesDict[devtype];
+								pdevicesCmd = require('./lib/dict_data/ef_deltaproultra_data.js').deviceCmd[devtype];
 								protoSource = require('./lib/dict_data/ef_deltaproultra_data.js').protoSource;
 								protoMsg = require('./lib/dict_data/ef_deltaproultra_data.js').protoMsg;
 								storeProtoPayload = require('./lib/dict_data/ef_deltaproultra_data.js').storeProtoPayload;
@@ -299,7 +299,7 @@ class EcoflowMqtt extends utils.Adapter {
 								protoMsg = require('./lib/dict_data/ef_deltapro3_data.js').protoMsg;
 								storeProtoPayload = require('./lib/dict_data/ef_deltapro3_data.js').storeProtoPayload;
 								prepareProtoCmd = require('./lib/dict_data/ef_deltapro3_data.js').prepareProtoCmd;
-							}else {
+							} else {
 								pdevicesStatesDict = require('./lib/ecoflow_data.js').pstationStatesDict[origdevtype];
 								pdevicesCmd = require('./lib/ecoflow_data.js').pstationCmd[origdevtype];
 							}
@@ -640,11 +640,11 @@ class EcoflowMqtt extends utils.Adapter {
 													} else {
 														this.log.info(
 															'not created/mismatch ' +
-																' statusReportBattery2 ->' +
-																' ' +
-																key +
-																' ' +
-																type
+															' statusReportBattery2 ->' +
+															' ' +
+															key +
+															' ' +
+															type
 														);
 													}
 												}
@@ -673,11 +673,11 @@ class EcoflowMqtt extends utils.Adapter {
 													} else {
 														this.log.info(
 															'not created/mismatch ' +
-																' BPInfo2 ->' +
-																' ' +
-																key +
-																' ' +
-																type
+															' BPInfo2 ->' +
+															' ' +
+															key +
+															' ' +
+															type
 														);
 													}
 												}
@@ -712,11 +712,11 @@ class EcoflowMqtt extends utils.Adapter {
 													} else {
 														this.log.info(
 															'not created/mismatch ' +
-																' bmsSlave1 ->' +
-																' ' +
-																key +
-																' ' +
-																type
+															' bmsSlave1 ->' +
+															' ' +
+															key +
+															' ' +
+															type
 														);
 													}
 												}
@@ -783,11 +783,11 @@ class EcoflowMqtt extends utils.Adapter {
 													} else {
 														this.log.info(
 															'not created/mismatch ' +
-																' statusReportBattery3 ->' +
-																' ' +
-																key +
-																' ' +
-																type
+															' statusReportBattery3 ->' +
+															' ' +
+															key +
+															' ' +
+															type
 														);
 													}
 												}
@@ -816,11 +816,11 @@ class EcoflowMqtt extends utils.Adapter {
 													} else {
 														this.log.info(
 															'not created/mismatch ' +
-																' BPInfo3 ->' +
-																' ' +
-																key +
-																' ' +
-																type
+															' BPInfo3 ->' +
+															' ' +
+															key +
+															' ' +
+															type
 														);
 													}
 												}
@@ -855,11 +855,11 @@ class EcoflowMqtt extends utils.Adapter {
 													} else {
 														this.log.info(
 															'not created/mismatch ' +
-																'bmsSlave2 ->' +
-																' ' +
-																key +
-																' ' +
-																type
+															'bmsSlave2 ->' +
+															' ' +
+															key +
+															' ' +
+															type
 														);
 													}
 												}
@@ -873,13 +873,13 @@ class EcoflowMqtt extends utils.Adapter {
 							} else {
 								this.log.error(
 									'something empty ID->' +
-										id +
-										' states -> ' +
-										devStates +
-										' dict -> ' +
-										pdevicesStatesDict +
-										' type -> ' +
-										devtype
+									id +
+									' states -> ' +
+									devStates +
+									' dict -> ' +
+									pdevicesStatesDict +
+									' type -> ' +
+									devtype
 								);
 							}
 						}
@@ -1011,13 +1011,13 @@ class EcoflowMqtt extends utils.Adapter {
 							if (devtype === 'delta3' || devtype === 'delta3plus') {
 								this.log.debug(
 									'[PROTOBUF unknown] ' +
-										topic +
-										' [' +
-										devtype +
-										'/' +
-										msgtype +
-										'] raw (hex): ' +
-										message.toString('hex')
+									topic +
+									' [' +
+									devtype +
+									'/' +
+									msgtype +
+									'] raw (hex): ' +
+									message.toString('hex')
 								);
 							} else {
 								try {
@@ -1035,7 +1035,7 @@ class EcoflowMqtt extends utils.Adapter {
 									this.log.debug('pstreamDecode call ->' + error);
 								}
 							}
-							if (msgtype === 'update' || msgtype === 'get_reply' || msgtype === 'set_reply' ) { 
+							if (msgtype === 'update' || msgtype === 'get_reply' || msgtype === 'set_reply') {
 								if (msgdecode !== null && typeof msgdecode === 'object') {
 									if (Object.keys(msgdecode).length > 0) {
 										//storeStreamPayload handles multiple objects
@@ -1065,9 +1065,9 @@ class EcoflowMqtt extends utils.Adapter {
 													} else {
 														this.log.warn(
 															'not a string! : ' +
-																haupdate[i].topic +
-																'  ' +
-																haupdate[i].payload
+															haupdate[i].topic +
+															'  ' +
+															haupdate[i].payload
 														);
 													}
 												}
@@ -1119,25 +1119,25 @@ class EcoflowMqtt extends utils.Adapter {
 											default:
 												this.log.debug(
 													'[JSON] ' +
-														topic +
-														' [' +
-														msgtype +
-														'] -> ' +
-														' key:' +
-														key +
-														'  ' +
-														JSON.stringify(setmsg)
+													topic +
+													' [' +
+													msgtype +
+													'] -> ' +
+													' key:' +
+													key +
+													'  ' +
+													JSON.stringify(setmsg)
 												);
 												break;
 										}
 									} else {
 										this.log.debug(
 											'[JSON] ' +
-												topic +
-												' [' +
-												msgtype +
-												'] -> set w/o params' +
-												JSON.stringify(setmsg)
+											topic +
+											' [' +
+											msgtype +
+											'] -> set w/o params' +
+											JSON.stringify(setmsg)
 										);
 									}
 								}
@@ -1434,15 +1434,15 @@ class EcoflowMqtt extends utils.Adapter {
 								if (this.config.msgHaIncomming) {
 									this.log.debug(
 										'[HA] ' +
-											devtype +
-											': processing ' +
-											device +
-											'  ' +
-											channel +
-											'   ' +
-											item +
-											' value : ' +
-											String(message)
+										devtype +
+										': processing ' +
+										device +
+										'  ' +
+										channel +
+										'   ' +
+										item +
+										' value : ' +
+										String(message)
 									);
 								}
 								let value;
@@ -1471,18 +1471,18 @@ class EcoflowMqtt extends utils.Adapter {
 											} catch (error) {
 												this.log.error(
 													'[HA] ' +
-														'Wrong selection value ' +
-														String(message) +
-														' for ' +
-														device +
-														'  ' +
-														channel +
-														' possible is : ' +
-														this.pdevicesStates[devtype][channel]['level'][item][
-															'select_obj'
-														] +
-														'   -> ' +
-														error
+													'Wrong selection value ' +
+													String(message) +
+													' for ' +
+													device +
+													'  ' +
+													channel +
+													' possible is : ' +
+													this.pdevicesStates[devtype][channel]['level'][item][
+													'select_obj'
+													] +
+													'   -> ' +
+													error
 												);
 											}
 										} else {
@@ -1495,14 +1495,14 @@ class EcoflowMqtt extends utils.Adapter {
 								if (this.config.msgHaIncomming) {
 									this.log.debug(
 										'[HA] ' +
-											'sending cmd value ' +
-											value +
-											' to ' +
-											device +
-											'.' +
-											channel +
-											'.' +
-											item
+										'sending cmd value ' +
+										value +
+										' to ' +
+										device +
+										'.' +
+										channel +
+										'.' +
+										item
 									);
 								}
 								await this.setStateAsync(device + '.' + channel + '.' + item, {
@@ -1670,9 +1670,9 @@ class EcoflowMqtt extends utils.Adapter {
 					} else {
 						this.log.warn(
 							'pdevices -> ' +
-								JSON.stringify(this.pdevices) +
-								' or pdevicesCmd problematic -> ' +
-								JSON.stringify(this.pdevicesCmd)
+							JSON.stringify(this.pdevices) +
+							' or pdevicesCmd problematic -> ' +
+							JSON.stringify(this.pdevicesCmd)
 						);
 					}
 				}
@@ -1685,7 +1685,7 @@ class EcoflowMqtt extends utils.Adapter {
 						if (
 							devicetype !== '' &&
 							devicetype !== 'none' &&
-							cmd && (  devicetype !== 'delta3' && devicetype !== 'delta3plus' )
+							cmd && (devicetype !== 'delta3' && devicetype !== 'delta3plus')
 						) {
 							const msgBuf = await this.prepareProtoCmd[devicetype](
 								this,
@@ -1697,7 +1697,7 @@ class EcoflowMqtt extends utils.Adapter {
 								logged
 							);
 
-							if(msgBuf) {
+							if (msgBuf) {
 								if (logged == true) {
 									/*global Buffer*/
 									/*eslint no-undef: "error"*/
@@ -1720,7 +1720,7 @@ class EcoflowMqtt extends utils.Adapter {
 										}
 									});
 								}
-							} else{
+							} else {
 								this.log.debug('missing msgBuf for sending')
 							}
 
@@ -1756,9 +1756,9 @@ class EcoflowMqtt extends utils.Adapter {
 												const msgtop = ef.getIdFromTopic(topic, this.mqttUserId);
 												this.log.debug(
 													' Message succesfully published.' +
-														msgtop.topic +
-														' ../..' +
-														msgtop.msg
+													msgtop.topic +
+													' ../..' +
+													msgtop.msg
 												);
 											}
 										}
@@ -1905,11 +1905,11 @@ class EcoflowMqtt extends utils.Adapter {
 							} catch (error) {
 								this.log.warn(
 									'[HA STATE INIT DATA] value not in range ' +
-										value.val +
-										'  ' +
-										update[i].states +
-										' err -> ' +
-										error
+									value.val +
+									'  ' +
+									update[i].states +
+									' err -> ' +
+									error
 								);
 							}
 						} else if (update[i].entity === 'text') {
@@ -1938,11 +1938,11 @@ class EcoflowMqtt extends utils.Adapter {
 					} catch (error) {
 						this.log.warn(
 							'[HA STATE INIT DATA] ' +
-								update[i].getId +
-								' problem initialiizing ' +
-								value.val +
-								'-> ' +
-								error
+							update[i].getId +
+							' problem initialiizing ' +
+							value.val +
+							'-> ' +
+							error
 						);
 					}
 				} else {
