@@ -213,8 +213,8 @@ tests.integration(path.join(__dirname, '..'), {
 
 			it('Plug states should be created', async () => {
 				//await harness.objects.delObject('ecoflow-mqtt.0.HW52ZDH4SF12345.plug_heartbeat.brightness');
-				for (let channel in plugstates['plugStatesDict']['plug']) {
-					for (let state in plugstates['plugStatesDict']['plug'][channel]) {
+				for (let channel in plugstates['deviceStatesDict']['plug']) {
+					for (let state in plugstates['deviceStatesDict']['plug'][channel]) {
 						await harness.objects.getObject(
 							'ecoflow-mqtt.0.HW52ZDH4SF12345.' + channel + '.' + state,
 							function (err, obj) {
