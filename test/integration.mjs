@@ -1,23 +1,23 @@
 import path from "path";
 import { dirname } from 'node:path';
-import { fileURLToPath } from 'node:url'; 
+import { fileURLToPath } from 'node:url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-import {  tests } from '@iobroker/testing';
+import { tests } from '@iobroker/testing';
 
 import { expect } from "chai";
 import { doesNotMatch } from 'assert/strict';
 
 console.log('PATH ist ' + path.join(__dirname, './data/'));
 
-import * as states from  '../lib/ecoflow_data.js'
+import * as states from '../lib/ecoflow_data.js'
 import * as  pstreamstates from '../lib/dict_data/ef_pstream_data.js';
 import * as  plugstates from '../lib/dict_data/ef_plug_data.js';
 import * as  dpustates from '../lib/dict_data/ef_deltaproultra_data.js';
-import * as shpstates from  '../lib/dict_data/ef_panel_data.js';
+import * as shpstates from '../lib/dict_data/ef_panel_data.js';
 import * as shp2states from '../lib/dict_data/ef_panel2_data.js';
 import * as  oceanstates from '../lib/dict_data/ef_powerocean_data.js';
-import * as  kitstates from  '../lib/dict_data/ef_powerkit_data.js';
+import * as  kitstates from '../lib/dict_data/ef_powerkit_data.js';
 //const states = require(path.join(__dirname, '../lib/') + 'ecoflow_data.js');
 //const pstreamstates = require(path.join(__dirname, '../lib/') + 'ef_pstream_data.js');
 //const plugstates = require(path.join(__dirname, '../lib/') + 'ef_plug_data.js');
@@ -28,8 +28,8 @@ import * as  kitstates from  '../lib/dict_data/ef_powerkit_data.js';
 //const kitstates = require(path.join(__dirname, '../lib/') + 'ef_powerkit_data.js');
 
 function delay(t, val) {
-	return new Promise(function(resolve) {
-		setTimeout(function() {
+	return new Promise(function (resolve) {
+		setTimeout(function () {
 			resolve(val);
 		}, t);
 	});
@@ -39,7 +39,7 @@ function delay(t, val) {
 tests.integration(path.join(__dirname, '..'), {
 	// If the adapter may call process.exit during startup, define here which exit codes are allowed.
 	// By default, termination during startup is not allowed.
-	allowedExitCodes: [ 11 ],
+	allowedExitCodes: [11],
 
 	// To test against a different version of JS-Controller, you can change the version or dist-tag here.
 	// Make sure to remove this setting when you're done testing.
@@ -64,7 +64,7 @@ tests.integration(path.join(__dirname, '..'), {
 					hkr_batt
 				);
 				emulation.setupHttpServer(function() {});
-                */
+				*/
 				harness = getHarness();
 				const obj = {
 					native: {
@@ -75,15 +75,15 @@ tests.integration(path.join(__dirname, '..'), {
 						fritz_pw: encrypt('Zgfr56gFe87jJOM', 'password'),
 						fritz_interval: 300,
 						fritz_strictssl: true,
-                        */
-						glaciers: [ { devName: 'My Glacier', devId: 'BX11ZFB5EF412345', devType: 'glacier' } ],
-						waves: [ { devName: 'My Wave', devId: 'KT21ZCH2ZF112345', devType: 'wave2' } ],
-						plugs: [ { devName: 'My Plug1', devId: 'HW52ZDH4SF12345', devType: 'plug' } ],
+						*/
+						glaciers: [{ devName: 'My Glacier', devId: 'BX11ZFB5EF412345', devType: 'glacier' }],
+						waves: [{ devName: 'My Wave', devId: 'KT21ZCH2ZF112345', devType: 'wave2' }],
+						plugs: [{ devName: 'My Plug1', devId: 'HW52ZDH4SF12345', devType: 'plug' }],
 						panels: [
 							{ devName: 'My panel', devId: 'SHP10ZFB5EF412345', devType: 'panel' },
 							{ devName: 'My panel', devId: 'SHP20ZFB5EF412345', devType: 'panel2' }
 						],
-						generators: [ { devName: 'My Generator', devId: 'DGEBZ5R123412345', devType: 'generator' } ],
+						generators: [{ devName: 'My Generator', devId: 'DGEBZ5R123412345', devType: 'generator' }],
 						pstations: [
 							{
 								pstationsSlave1: false,
@@ -167,11 +167,11 @@ tests.integration(path.join(__dirname, '..'), {
 							{ devType: 'pstream600', devId: 'HW51ZOH4SF412345', devName: 'pstream600' },
 							{ devType: 'pstream800', devId: 'HW51ZOH5SF412345', devName: 'pstream800' }
 						],
-						powerkits: [ { devName: 'My powerkit', devId: 'M106ZAB4Z000001F', devType: 'powerkitbp2000' } ],
+						powerkits: [{ devName: 'My powerkit', devId: 'M106ZAB4Z000001F', devType: 'powerkitbp2000' }],
 						poweroceans: [
 							{ devName: 'My power ocean', devId: 'HJ312000BF7W1234', devType: 'powerocean' }
 						],
-						shellies: [ { devName: 'My shelly3em', devId: '1234345346', devType: 'shelly3em' } ]
+						shellies: [{ devName: 'My shelly3em', devId: '1234345346', devType: 'shelly3em' }]
 					}
 				};
 				await harness.changeAdapterConfig('ecoflow-mqtt', obj);
@@ -187,7 +187,7 @@ tests.integration(path.join(__dirname, '..'), {
 				});
 				await harness.startAdapterAndWait();
 			});
-            */
+			*/
 
 			it('start Adapter and read config object', () => {
 				return new Promise(async (resolve) => {
@@ -217,7 +217,7 @@ tests.integration(path.join(__dirname, '..'), {
 					for (let state in plugstates['plugStatesDict']['plug'][channel]) {
 						await harness.objects.getObject(
 							'ecoflow-mqtt.0.HW52ZDH4SF12345.' + channel + '.' + state,
-							function(err, obj) {
+							function (err, obj) {
 								if (err) console.error('plug TEST' + channel + '.' + state + ' -> ' + err);
 
 								if (!obj) {
@@ -231,11 +231,11 @@ tests.integration(path.join(__dirname, '..'), {
 			});
 			it('Pstream 600 states should be created', async () => {
 				//await harness.objects.delObject('ecoflow-mqtt.0.HW51ZOH4SF412345.inverter_heartbeat.permanentWatts');
-				for (let channel in pstreamstates['pstreamStatesDict']['pstream']) {
-					for (let state in pstreamstates['pstreamStatesDict']['pstream'][channel]) {
+				for (let channel in pstreamstates['deviceStatesDict']['pstream']) {
+					for (let state in pstreamstates['deviceStatesDict']['pstream'][channel]) {
 						await harness.objects.getObject(
 							'ecoflow-mqtt.0.HW51ZOH4SF412345.' + channel + '.' + state,
-							function(err, obj) {
+							function (err, obj) {
 								if (err) console.error('pstream600 TEST' + channel + '.' + state + ' -> ' + err);
 
 								if (!obj) {
@@ -249,11 +249,11 @@ tests.integration(path.join(__dirname, '..'), {
 			});
 			it('Pstream 800 states should be created', async () => {
 				//await harness.objects.delObject('ecoflow-mqtt.0.HW51ZOH5SF412345.inverter_heartbeat.permanentWatts');
-				for (let channel in pstreamstates['pstreamStatesDict']['pstream']) {
-					for (let state in pstreamstates['pstreamStatesDict']['pstream'][channel]) {
+				for (let channel in pstreamstates['deviceStatesDict']['pstream']) {
+					for (let state in pstreamstates['deviceStatesDict']['pstream'][channel]) {
 						await harness.objects.getObject(
 							'ecoflow-mqtt.0.HW51ZOH5SF412345.' + channel + '.' + state,
-							function(err, obj) {
+							function (err, obj) {
 								if (err) console.error('pstream800 TEST' + channel + '.' + state + ' -> ' + err);
 
 								if (!obj) {
@@ -272,7 +272,7 @@ tests.integration(path.join(__dirname, '..'), {
 						if (states['pstationStatesDict']['deltamini'][channel][state]['entity'] !== 'icon') {
 							await harness.objects.getObject(
 								'ecoflow-mqtt.0.DAABZ5ZE4112345.' + channel + '.' + state,
-								function(err, obj) {
+								function (err, obj) {
 									if (err) console.error('deltamini TEST' + channel + '.' + state + ' -> ' + err);
 
 									if (!obj) {
@@ -292,7 +292,7 @@ tests.integration(path.join(__dirname, '..'), {
 						if (states['pstationStatesDict']['delta'][channel][state]['entity'] !== 'icon') {
 							await harness.objects.getObject(
 								'ecoflow-mqtt.0.DABBZ5ZE4112345.' + channel + '.' + state,
-								function(err, obj) {
+								function (err, obj) {
 									if (err) console.error('delta TEST' + channel + '.' + state + ' -> ' + err);
 
 									if (!obj) {
@@ -312,7 +312,7 @@ tests.integration(path.join(__dirname, '..'), {
 						if (states['pstationStatesDict']['deltamax'][channel][state]['entity'] !== 'icon') {
 							await harness.objects.getObject(
 								'ecoflow-mqtt.0.DAEBZ5ZE4112345.' + channel + '.' + state,
-								function(err, obj) {
+								function (err, obj) {
 									if (err) console.error('deltamax TEST' + channel + '.' + state + ' -> ' + err);
 
 									if (!obj) {
@@ -332,7 +332,7 @@ tests.integration(path.join(__dirname, '..'), {
 						if (states['pstationStatesDict']['deltapro'][channel][state]['entity'] !== 'icon') {
 							await harness.objects.getObject(
 								'ecoflow-mqtt.0.DECBZ5ZE4112345.' + channel + '.' + state,
-								function(err, obj) {
+								function (err, obj) {
 									if (err) console.error('deltapro TEST' + channel + '.' + state + ' -> ' + err);
 
 									if (!obj) {
@@ -352,7 +352,7 @@ tests.integration(path.join(__dirname, '..'), {
 						if (states['pstationStatesDict']['delta2'][channel][state]['entity'] !== 'icon') {
 							await harness.objects.getObject(
 								'ecoflow-mqtt.0.R331ZEB4ZEA12345.' + channel + '.' + state,
-								function(err, obj) {
+								function (err, obj) {
 									if (err) console.error('delta2 TEST' + channel + '.' + state + ' -> ' + err);
 
 									if (!obj) {
@@ -372,7 +372,7 @@ tests.integration(path.join(__dirname, '..'), {
 						if (states['pstationStatesDict']['delta2max'][channel][state]['entity'] !== 'icon') {
 							await harness.objects.getObject(
 								'ecoflow-mqtt.0.R351ZFB4HF6L12345.' + channel + '.' + state,
-								function(err, obj) {
+								function (err, obj) {
 									if (err) console.error('delta2max TEST' + channel + '.' + state + ' -> ' + err);
 
 									if (!obj) {
@@ -392,7 +392,7 @@ tests.integration(path.join(__dirname, '..'), {
 						if (states['pstationStatesDict']['river2pro'][channel][state]['entity'] !== 'icon') {
 							await harness.objects.getObject(
 								'ecoflow-mqtt.0.R621ZEB4XEC12345.' + channel + '.' + state,
-								function(err, obj) {
+								function (err, obj) {
 									if (err) console.error('river2pro TEST' + channel + '.' + state + ' -> ' + err);
 
 									if (!obj) {
@@ -412,7 +412,7 @@ tests.integration(path.join(__dirname, '..'), {
 						if (states['pstationStatesDict']['river2max'][channel][state]['entity'] !== 'icon') {
 							await harness.objects.getObject(
 								'ecoflow-mqtt.0.R521ZEB4XEC12345.' + channel + '.' + state,
-								function(err, obj) {
+								function (err, obj) {
 									if (err) console.error('river2max TEST' + channel + '.' + state + ' -> ' + err);
 
 									if (!obj) {
@@ -432,7 +432,7 @@ tests.integration(path.join(__dirname, '..'), {
 						if (states['pstationStatesDict']['riverpro'][channel][state]['entity'] !== 'icon') {
 							await harness.objects.getObject(
 								'ecoflow-mqtt.0.R421ZEB4XEC12345.' + channel + '.' + state,
-								function(err, obj) {
+								function (err, obj) {
 									if (err) console.error('riverpro TEST' + channel + '.' + state + ' -> ' + err);
 
 									if (!obj) {
@@ -452,7 +452,7 @@ tests.integration(path.join(__dirname, '..'), {
 						if (states['pstationStatesDict']['rivermax'][channel][state]['entity'] !== 'icon') {
 							await harness.objects.getObject(
 								'ecoflow-mqtt.0.R321ZEB4XEC12345.' + channel + '.' + state,
-								function(err, obj) {
+								function (err, obj) {
 									if (err) console.error('rivermax TEST' + channel + '.' + state + ' -> ' + err);
 
 									if (!obj) {
@@ -472,7 +472,7 @@ tests.integration(path.join(__dirname, '..'), {
 						if (states['pstationStatesDict']['wave2'][channel][state]['entity'] !== 'icon') {
 							await harness.objects.getObject(
 								'ecoflow-mqtt.0.KT21ZCH2ZF112345.' + channel + '.' + state,
-								function(err, obj) {
+								function (err, obj) {
 									if (err) console.error('wave2 TEST' + channel + '.' + state + ' -> ' + err);
 
 									if (!obj) {
@@ -492,7 +492,7 @@ tests.integration(path.join(__dirname, '..'), {
 						if (states['pstationStatesDict']['glacier'][channel][state]['entity'] !== 'icon') {
 							await harness.objects.getObject(
 								'ecoflow-mqtt.0.BX11ZFB5EF412345.' + channel + '.' + state,
-								function(err, obj) {
+								function (err, obj) {
 									if (err) console.error('glacier TEST' + channel + '.' + state + ' -> ' + err);
 
 									if (!obj) {
@@ -513,7 +513,7 @@ tests.integration(path.join(__dirname, '..'), {
 						if (states['pstationStatesDict']['generator'][channel][state]['entity'] !== 'icon') {
 							await harness.objects.getObject(
 								'ecoflow-mqtt.0.DGEBZ5R123412345.' + channel + '.' + state,
-								function(err, obj) {
+								function (err, obj) {
 									if (err) console.error('generator TEST' + channel + '.' + state + ' -> ' + err);
 
 									if (!obj) {
@@ -533,7 +533,7 @@ tests.integration(path.join(__dirname, '..'), {
 						if (shpstates['panelStatesDict']['panel'][channel][state]['entity'] !== 'icon') {
 							await harness.objects.getObject(
 								'ecoflow-mqtt.0.SHP10ZFB5EF412345.' + channel + '.' + state,
-								function(err, obj) {
+								function (err, obj) {
 									if (err) console.error('panel TEST' + channel + '.' + state + ' -> ' + err);
 
 									if (!obj) {
@@ -547,12 +547,12 @@ tests.integration(path.join(__dirname, '..'), {
 				}
 			});
 			it('SHP 2 should be created', async () => {
-				for (let channel in shp2states['panel2StatesDict']['panel2']) {
-					for (let state in shp2states['panel2StatesDict']['panel2'][channel]) {
-						if (shp2states['panel2StatesDict']['panel2'][channel][state]['entity'] !== 'icon') {
+				for (let channel in shp2states['deviceStatesDict']['panel2']) {
+					for (let state in shp2states['deviceStatesDict']['panel2'][channel]) {
+						if (shp2states['deviceStatesDict']['panel2'][channel][state]['entity'] !== 'icon') {
 							await harness.objects.getObject(
 								'ecoflow-mqtt.0.SHP20ZFB5EF412345.' + channel + '.' + state,
-								function(err, obj) {
+								function (err, obj) {
 									if (err) console.error('panel 2 TEST' + channel + '.' + state + ' -> ' + err);
 
 									if (!obj) {
@@ -657,14 +657,14 @@ tests.integration(path.join(__dirname, '..'), {
 			*/
 			it('Delta Pro Ultra should be created', async () => {
 				//await harness.objects.delObject('ecoflow-mqtt.0.BX11ZFB5EF412345.mppt.');
-				for (let channel in dpustates['deltaproultraStatesDict']['deltaproultra']) {
-					for (let state in dpustates['deltaproultraStatesDict']['deltaproultra'][channel]) {
+				for (let channel in dpustates['deviceStatesDict']['deltaproultra']) {
+					for (let state in dpustates['deviceStatesDict']['deltaproultra'][channel]) {
 						if (
-							dpustates['deltaproultraStatesDict']['deltaproultra'][channel][state]['entity'] !== 'icon'
+							dpustates['deviceStatesDict']['deltaproultra'][channel][state]['entity'] !== 'icon'
 						) {
 							await harness.objects.getObject(
 								'ecoflow-mqtt.0.DPU0ZFB5EF412345.' + channel + '.' + state,
-								function(err, obj) {
+								function (err, obj) {
 									if (err) console.error('deltaproultra TEST' + channel + '.' + state + ' -> ' + err);
 
 									if (!obj) {
@@ -684,7 +684,7 @@ tests.integration(path.join(__dirname, '..'), {
 						if (kitstates['powerkitStatesDict']['powerkit'][channel][state]['entity'] !== 'icon') {
 							await harness.objects.getObject(
 								'ecoflow-mqtt.0.M106ZAB4Z000001F.' + channel + '.' + state,
-								function(err, obj) {
+								function (err, obj) {
 									if (err) console.error('powerkit TEST' + channel + '.' + state + ' -> ' + err);
 
 									if (!obj) {
@@ -698,12 +698,12 @@ tests.integration(path.join(__dirname, '..'), {
 				}
 			});
 			it('Power ocean should be created', async () => {
-				for (let channel in oceanstates['poweroceanStatesDict']['powerocean']) {
-					for (let state in oceanstates['poweroceanStatesDict']['powerocean'][channel]) {
-						if (oceanstates['poweroceanStatesDict']['powerocean'][channel][state]['entity'] !== 'icon') {
+				for (let channel in oceanstates['deviceStatesDict']['powerocean']) {
+					for (let state in oceanstates['deviceStatesDict']['powerocean'][channel]) {
+						if (oceanstates['deviceStatesDict']['powerocean'][channel][state]['entity'] !== 'icon') {
 							await harness.objects.getObject(
 								'ecoflow-mqtt.0.HJ312000BF7W1234.' + channel + '.' + state,
-								function(err, obj) {
+								function (err, obj) {
 									if (err) console.error('powerocean TEST' + channel + '.' + state + ' -> ' + err);
 
 									if (!obj) {
@@ -722,7 +722,7 @@ tests.integration(path.join(__dirname, '..'), {
 						if (states['pstationStatesDict']['shelly3em'][channel][state]['entity'] !== 'icon') {
 							await harness.objects.getObject(
 								'ecoflow-mqtt.0.1234345346.' + channel + '.' + state,
-								function(err, obj) {
+								function (err, obj) {
 									if (err) console.error('shelly3em TEST' + channel + '.' + state + ' -> ' + err);
 
 									if (!obj) {
