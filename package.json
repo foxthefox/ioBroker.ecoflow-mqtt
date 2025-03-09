@@ -1,6 +1,6 @@
 {
 	"name": "iobroker.ecoflow-mqtt",
-	"version": "1.2.2",
+	"version": "1.3.0",
 	"description": "connects to ecoflow products",
 	"author": {
 		"name": "foxthefox",
@@ -74,7 +74,8 @@
 		"check": "tsc --noEmit -p tsconfig.check.json",
 		"lint": "eslint",
 		"translate": "translate-adapter",
-		"release": "release-script"
+		"release": "release-script",
+		"docugen": "node ./lib/gen_docs.js"
 	},
 	"bugs": {
 		"url": "https://github.com/foxthefox/ioBroker.ecoflow-mqtt/issues"

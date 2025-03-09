@@ -1,331 +1,345 @@
 {
-	"common": {
-		"name": "ecoflow-mqtt",
-		"version": "1.2.2",
-		"news": {
-			"1.2.2": {
-				"en": "doc for HA users, enhancements for SHP2",
-				"de": "DOC für HA -Benutzer, Verbesserungen für SHP2",
-				"ru": "Док для пользователей HA, улучшения для SHP2",
-				"pt": "DOC para usuários de HA, aprimoramentos para shp2",
-				"nl": "Doc voor HA -gebruikers, verbeteringen voor SHP2",
-				"fr": "Doc pour les utilisateurs HA, améliorations pour SHP2",
-				"it": "Doc per utenti HA, miglioramenti per SHP2",
-				"es": "DOC para usuarios de HA, mejoras para SHP2",
-				"pl": "Doc dla użytkowników HA, ulepszenia dla SHP2",
-				"uk": "DOC для користувачів HA, вдосконалення для SHP2",
-				"zh-cn": "HA用户的DOC，SHP2的增强功能"
-			},
-			"1.2.1": {
-				"en": "corrections for powerstream objects, new time task config SHP",
-				"de": "Korrekturen für Powerstream-Objekte, neue Zeitaufgabenkonfiguration SHP",
-				"ru": "исправления для объектов Powerstream, новая конфигурация временных задач SHP",
-				"pt": "correções para objetos powerstream, nova configuração de tarefa de horário SHP",
-				"nl": "correcties voor powerstream-objecten, nieuwe tijdtaakconfiguratie SHP",
-				"fr": "corrections pour les objets Powerstream, nouvelle configuration de tâche temporelle SHP",
-				"it": "correzioni per oggetti powerstream, nuova configurazione attività temporale SHP",
-				"es": "correcciones para objetos powerstream, nueva configuración de tareas de tiempo SHP",
-				"pl": "poprawki dla obiektów strumienia mocy, nowa konfiguracja zadań czasowych SHP",
-				"uk": "виправлення для об’єктів Powerstream, нова конфігурація завдання часу SHP",
-				"zh-cn": "对 powerstream 对象的更正，新的时间任务配置 SHP"
-			},
-			"1.2.0": {
-				"en": "new values powerocean, new values powerstream, new values plug, enhancements on values for SHP2,DPU,alternator",
-				"de": "Neue Werte Powerocean, neue Werte Powerstream, neue Werte Plug, Verbesserungen der Werte für SHP2, DPU, Lichtmaschine",
-				"ru": "новые значения powerocean, новые значения powerstream, штекер новых значений, улучшения значений для SHP2, DPU, генератора переменного тока",
-				"pt": "novos valores powerocean, novos valores powerstream, novos valores plug, melhorias nos valores para SHP2, DPU, alternador",
-				"nl": "nieuwe waarden powerocean, nieuwe waarden powerstream, nieuwe waardenplug, verbeteringen op waarden voor SHP2,DPU,alternator",
-				"fr": "nouvelles valeurs powerocean, nouvelles valeurs powerstream, nouvelles valeurs plug, améliorations des valeurs pour SHP2, DPU, alternateur",
-				"it": "nuovi valori powerocean, nuovi valori powerstream, nuovi valori plug, miglioramenti ai valori per SHP2,DPU,alternatore",
-				"es": "nuevos valores powerocean, nuevos valores powerstream, nuevos valores plug, mejoras en los valores para SHP2,DPU,alternador",
-				"pl": "nowe wartości powerocean, nowe wartości powerstream, nowa wtyczka wartości, ulepszenia wartości dla SHP2, DPU, alternatora",
-				"uk": "нові значення powerocean, нові значення powerstream, нові значення plug, покращення значень для SHP2, DPU, генератора",
-				"zh-cn": "新值 powerocean、新值 powerstream、新值插头、SHP2、DPU、交流发电机值的增强"
-			},
-			"1.1.3": {
-				"en": "enhancements to alternator values,refactoring of protobuf handling/structure/component data",
-				"de": "Verbesserungen der Lichtmaschinenwerte, Umgestaltung der Protobuf-Verarbeitung/Struktur/Komponentendaten",
-				"ru": "улучшения значений генератора переменного тока, рефакторинг обработки/структуры/данных компонентов protobuf",
-				"pt": "melhorias nos valores do alternador, refatoração de dados de manipulação/estrutura/componentes do protobuf",
-				"nl": "verbeteringen aan de alternatorwaarden, refactoring van protobuf-verwerking/structuur/componentgegevens",
-				"fr": "améliorations des valeurs de l'alternateur, refactorisation des données de gestion/structure/composant de protobuf",
-				"it": "miglioramenti ai valori dell'alternatore, refactoring della gestione/struttura/dati dei componenti del protobuf",
-				"es": "Mejoras en los valores del alternador, refactorización de datos de manejo/estructura/componentes de protobuf.",
-				"pl": "ulepszenia wartości alternatora, refaktoryzacja danych dotyczących obsługi/struktury/komponentów protobufu",
-				"uk": "вдосконалення значень генератора змінного струму, рефакторинг даних обробки/структури/компонента protobuf",
-				"zh-cn": "交流发电机值的增强、protobuf 处理/结构/组件数据的重构"
-			},
-			"1.1.2": {
-				"en": "handle HA restart , initial state population of BPInfo2/3 to HA",
-				"de": "Behandeln Sie den HA-Neustart und füllen Sie BPInfo2/3 im Anfangszustand mit HA aus",
-				"ru": "обработка перезапуска HA, загрузка начального состояния BPInfo2/3 в HA",
-				"pt": "lidar com reinicialização de HA, população de estado inicial de BPInfo2/3 para HA",
-				"nl": "handle HA restart , initiële statuspopulatie van BBPinfo2/3 naar HA",
-				"fr": "gérer le redémarrage de HA, le remplissage de l'état initial de BPInfo2/3 vers HA",
-				"it": "gestire il riavvio HA, popolamento dello stato iniziale di BPInfo2/3 in HA",
-				"es": "manejar el reinicio de HA, población del estado inicial de BPInfo2/3 en HA",
-				"pl": "obsłuż ponowne uruchomienie HA, zaludnienie stanu początkowego BPInfo2/3 do HA",
-				"uk": "обробка перезапуску HA, заповнення початкового стану BPInfo2/3 до HA",
-				"zh-cn": "处理HA重启，将BPInfo2/3的初始状态填充到HA"
-			},
-			"1.1.1": {
-				"en": "code structure, initial state creation of BPInfo2/3 to HA",
-				"de": "Codestruktur, anfängliche Zustandserstellung von BPInfo2/3 zu HA",
-				"ru": "структура кода, создание начального состояния BPInfo2/3 для HA",
-				"pt": "estrutura de código, criação de estado inicial de BPInfo2/3 para HA",
-				"nl": "codestructuur, initiële statuscreatie van BBPinfo2/3 naar HA",
-				"fr": "structure du code, création de l'état initial de BPInfo2/3 vers HA",
-				"it": "struttura del codice, creazione dello stato iniziale di BPInfo2/3 in HA",
-				"es": "estructura de código, creación del estado inicial de BPInfo2/3 a HA",
-				"pl": "struktura kodu, tworzenie stanu początkowego BPInfo2/3 do HA",
-				"uk": "структура коду, створення початкового стану BPInfo2/3 до HA",
-				"zh-cn": "代码结构，BPInfo2/3到HA的初始状态创建"
-			},
-			"1.1.0": {
-				"en": "added alternator, unsupported device debugging, closed issues",
-				"de": "Batterieladegerät hinzugefügt, nicht unterstütztes Geräte-Debugging, geschlossene Probleme",
-				"ru": "добавлен генератор переменного тока, отладка неподдерживаемых устройств, закрытые проблемы",
-				"pt": "alternador adicionado, depuração de dispositivo não compatível, problemas resolvidos",
-				"nl": "dynamo toegevoegd, niet-ondersteunde foutopsporing van apparaten, gesloten problemen",
-				"fr": "alternateur ajouté, débogage de périphérique non pris en charge, problèmes résolus",
-				"it": "aggiunto alternatore, debug del dispositivo non supportato, problemi chiusi",
-				"es": "alternador añadido, depuración de dispositivos no compatibles, problemas cerrados",
-				"pl": "dodany alternator, nieobsługiwane debugowanie urządzenia, zamknięte problemy",
-				"uk": "доданий генератор, налагодження непідтримуваного пристрою, закриті проблеми",
-				"zh-cn": "添加了交流发电机、不支持的设备调试、已解决的问题"
-			},
-			"1.0.5": {
-				"en": "new max settings D2M: mppt.outWatts; PS:inverter_heartbeat.invOutputWatts; responsive design",
-				"de": "neue maximale Einstellungen D2M: mppt.outWatts; PS:inverter_heartbeat.invOutputWatts; responsives Design",
-				"ru": "новые максимальные настройки D2M: mppt.outWatts; PS:inverter_heartbeat.invOutputWatts; адаптивный дизайн",
-				"pt": "novas configurações máximas D2M: mppt.outWatts; PS: inversor_heartbeat.invOutputWatts; design responsivo",
-				"nl": "nieuwe maximale instellingen D2M: mppt.outWatts; PS:inverter_heartbeat.invOutputWatts; responsief ontwerp",
-				"fr": "nouveaux paramètres maximum D2M : mppt.outWatts ; PS : inverter_heartbeat.invOutputWatts ; conception réactive",
-				"it": "nuove impostazioni massime D2M: mppt.outWatts; PS:inverter_heartbeat.invOutputWatts; progettazione reattiva",
-				"es": "nueva configuración máxima D2M: mppt.outWatts; PD:inverter_heartbeat.invOutputWatts; diseño responsivo",
-				"pl": "nowe ustawienia maksymalne D2M: mppt.outWatts; PS:inverter_heartbeat.invOutputWatts; responsywny projekt",
-				"uk": "нові максимальні налаштування D2M: mppt.outWatts; PS:inverter_heartbeat.invOutputWatts; адаптивний дизайн",
-				"zh-cn": "新的最大设置 D2M：mppt.outWatts； PS：inverter_heartbeat.invOutputWatts；响应式设计"
-			},
-			"1.0.4": {
-				"en": "correction for powerkit telegram reception #99",
-				"de": "Korrektur für Powerkit-Telegrammempfang #99",
-				"ru": "исправление приема телеграммы powerkit #99",
-				"pt": "correção para recepção de telegrama do powerkit #99",
-				"nl": "correctie voor powerkit-telegramontvangst #99",
-				"fr": "correction pour la réception des télégrammes powerkit #99",
-				"it": "correzione ricezione telegramma powerkit #99",
-				"es": "corrección para recepción de telegramas powerkit #99",
-				"pl": "poprawka odbioru telegramu Powerkit #99",
-				"uk": "виправлення для отримання телеграми powerkit №99",
-				"zh-cn": "powerkit 电报接收修正 #99"
-			}
-		},
-		"messages": [
-			{
-				"condition": {
-					"operand": "and",
-					"rules": [ "oldVersion<0.0.8", "newVersion>=0.0.9" ]
-				},
-				"title": {
-					"en": "Important notice!",
-					"de": "Wichtiger Hinweis!",
-					"ru": "Важное замечание!",
-					"pt": "Notícia importante!",
-					"nl": "Belangrijke mededeling!",
-					"fr": "Avis important!",
-					"it": "Avviso IMPORTANTE!",
-					"es": "Noticia importante!",
-					"pl": "Ważna uwaga!",
-					"uk": "Погода!",
-					"zh-cn": "重要通知!"
-				},
-				"text": {
-					"en": "In order to work properly the adapter requires ioBroker.admin >=6.12.3. Please ensure this boundary condition. You can do this by enabling expert settings and installation from npm as source. ",
-					"de": "Damit der Adapter ordnungsgemäß funktioniert, ist ioBroker.admin >=6.12.3 erforderlich. Bitte achten Sie auf diese Randbedingung. Sie können dies tun, indem Sie Experteneinstellungen und die Installation von npm als Quelle aktivieren.",
-					"ru": "Для правильной работы адаптера требуется ioBroker.admin >=6.12.3. Пожалуйста, обеспечьте это граничное условие. Это можно сделать, включив экспертные настройки и установив их из npm в качестве источника.",
-					"pt": "Para funcionar corretamente, o adaptador requer ioBroker.admin >=6.12.3. Por favor, garanta esta condição de limite. Você pode fazer isso habilitando configurações avançadas e instalação do npm como fonte.",
-					"nl": "Om goed te kunnen werken heeft de adapter ioBroker.admin >=6.12.3 nodig. Zorg ervoor dat deze randvoorwaarde aanwezig is. Dit kunt u doen door expertinstellingen en installatie vanuit npm als bron in te schakelen.",
-					"fr": "Pour fonctionner correctement, l'adaptateur nécessite ioBroker.admin >=6.12.3. Veuillez vous assurer de cette condition aux limites. Vous pouvez le faire en activant les paramètres experts et l'installation à partir de npm comme source.",
-					"it": "Per funzionare correttamente l'adattatore richiede ioBroker.admin >=6.12.3. Si prega di garantire questa condizione al contorno. Puoi farlo abilitando le impostazioni avanzate e l'installazione da npm come sorgente.",
-					"es": "Para funcionar correctamente, el adaptador requiere ioBroker.admin >=6.12.3. Asegúrese de que se cumpla esta condición límite. Puede hacerlo habilitando la configuración experta y la instalación desde npm como fuente.",
-					"pl": "Do poprawnego działania adapter wymaga ioBroker.admin >=6.12.3. Proszę zapewnić ten warunek brzegowy. Możesz to zrobić, włączając ustawienia eksperckie i instalację z npm jako źródła.",
-					"uk": "Для належної роботи адаптеру потрібен ioBroker.admin >=6.12.3. Будь ласка, переконайтеся в цій граничній умові. Ви можете зробити це, увімкнувши експертні налаштування та інсталяцію з npm як джерела.",
-					"zh-cn": "为了正常工作，适配器需要 ioBroker.admin >=6.12.3。请确保这个边界条件。您可以通过启用专家设置并从 npm 作为源进行安装来实现此目的。"
-				},
-				"level": "warn",
-				"buttons": [ "ok", "cancel" ]
-			},
-			{
-				"condition": {
-					"operand": "and",
-					"rules": [ "oldVersion<1.0.0", "newVersion>=1.0.0" ]
-				},
-				"title": {
-					"en": "Important notice!",
-					"de": "Wichtiger Hinweis!",
-					"ru": "Важное замечание!",
-					"pt": "Notícia importante!",
-					"nl": "Belangrijke mededeling!",
-					"fr": "Avis important!",
-					"it": "Avviso IMPORTANTE!",
-					"es": "Noticia importante!",
-					"pl": "Ważna uwaga!",
-					"uk": "Погода!",
-					"zh-cn": "重要通知!"
-				},
-				"text": {
-					"en": "State roles of the datapoints are corrected, please stop the adapter, delete all objects of the ecoflow-mqtt instance and restart adapter. Datapoints are recreated.",
-					"de": "Statusrollen der Datenpunkte wurden korrigiert, bitte stoppen Sie den Adapter, löschen Sie alle Objekte der ecoflow-mqtt-Instanz und starten Sie den Adapter neu. Datenpunkte werden neu erstellt.",
-					"ru": "Роли состояния точек данных исправлены. Остановите адаптер, удалите все объекты экземпляра ecoflow-mqtt и перезапустите адаптер. Точки данных воссоздаются.",
-					"pt": "As funções de estado dos pontos de dados foram corrigidas. Pare o adaptador, exclua todos os objetos da instância ecoflow-mqtt e reinicie o adaptador. Os pontos de dados são recriados.",
-					"nl": "De statusrollen van de datapunten zijn gecorrigeerd. Stop de adapter, verwijder alle objecten van de ecoflow-mqtt-instantie en start de adapter opnieuw. Datapunten worden opnieuw gemaakt.",
-					"fr": "Les rôles d'état des points de données sont corrigés, veuillez arrêter l'adaptateur, supprimer tous les objets de l'instance ecoflow-mqtt et redémarrer l'adaptateur. Les points de données sont recréés.",
-					"it": "I ruoli di stato dei datapoint sono corretti, arresta l'adattatore, elimina tutti gli oggetti dell'istanza ecoflow-mqtt e riavvia l'adattatore. I punti dati vengono ricreati.",
-					"es": "Se corrigen las funciones de estado de los puntos de datos. Detenga el adaptador, elimine todos los objetos de la instancia ecoflow-mqtt y reinicie el adaptador. Se recrean los puntos de datos.",
-					"pl": "Role stanowe punktów danych zostały poprawione. Zatrzymaj adapter, usuń wszystkie obiekty instancji ecoflow-mqtt i zrestartuj adapter. Punkty danych są odtwarzane.",
-					"uk": "Ролі станів точок даних виправлено. Зупиніть адаптер, видаліть усі об’єкти екземпляра ecoflow-mqtt і перезапустіть адаптер. Точки даних створюються заново.",
-					"zh-cn": "数据点的状态角色已更正，请停止适配器，删除ecoflow-mqtt实例的所有对象并重新启动适配器。数据点被重新创建。"
-				},
-				"level": "warn",
-				"buttons": [ "ok", "cancel" ]
-			}
-		],
-		"titleLang": {
-			"en": "ecoflow",
-			"de": "Ecoflow",
-			"ru": "экопоток",
-			"pt": "ecofluxo",
-			"nl": "ecostroom",
-			"fr": "écoflux",
-			"it": "ecoflusso",
-			"es": "ecoflujo",
-			"pl": "ekoprzepływ",
-			"uk": "екопотік",
-			"zh-cn": "生态流"
-		},
-		"desc": {
-			"en": "connects to ecoflow products",
-			"de": "verbindet sich mit Ecoflow-Produkten",
-			"ru": "подключается к продуктам Ecoflow",
-			"pt": "conecta-se a produtos ecoflow",
-			"nl": "koppelt aan ecoflow-producten",
-			"fr": "se connecte aux produits ecoflow",
-			"it": "si collega ai prodotti ecoflow",
-			"es": "se conecta a productos ecoflow",
-			"pl": "łączy się z produktami ecoflow",
-			"uk": "підключається до продуктів ecoflow",
-			"zh-cn": "连接至 Ecoflow 产品"
-		},
-		"authors": [ "foxthefox <foxthefox@wysiwis.net>" ],
-		"keywords": [ "ecoflow", "powerstream", "powerstation", "delta", "river", "powerkit", "powerocaen", "shp" ],
-		"platform": "Javascript/Node.js",
-		"icon": "ecoflow-mqtt.png",
-		"enabled": true,
-		"extIcon": "https://raw.githubusercontent.com/foxthefox/ioBroker.ecoflow-mqtt/main/admin/ecoflow-mqtt.png",
-		"readme": "https://github.com/foxthefox/ioBroker.ecoflow-mqtt/blob/main/README.md",
-		"loglevel": "debug",
-		"mode": "daemon",
-		"type": "iot-systems",
-		"compact": true,
-		"messagebox": true,
-		"connectionType": "cloud",
-		"dataSource": "push",
-		"tier": 3,
-		"licenseInformation": {
-			"license": "MIT",
-			"link": "https://opensource.org/license/mit/",
-			"type": "free"
-		},
-		"adminUI": {
-			"config": "json"
-		},
-		"dependencies": [
-			{
-				"js-controller": ">=5.0.19"
-			}
-		],
-		"globalDependencies": [
-			{
-				"admin": ">=6.12.3"
-			}
-		]
-	},
-	"protectedNative": [
-		"userName",
-		"userPassword",
-		"mqttUserId",
-		"mqttPwd",
-		"mqttClientId",
-		"haMqttUserId",
-		"haMqttUserPWd"
-	],
-	"encryptedNative": [ "userPassword", "mqttPwd", "haMqttUserPWd" ],
-	"native": {
-		"userName": "userEmail",
-		"userPassword": "pw",
-		"mqttUserId": "1xxxx",
-		"mqttUserName": "app-....",
-		"mqttPwd": "xxxx",
-		"mqttClientId": "ANDRIOD-...",
-		"mqttUrl": "mqtts://mqtt-e.ecoflow.com",
-		"mqttPort": 8883,
-		"enableMqttReconnect": false,
-		"pstreams": [],
-		"pstations": [],
-		"plugs": [],
-		"waves": [],
-		"glaciers": [],
-		"generators": [],
-		"panels": [],
-		"shellies": [],
-		"powerkits": [],
-		"poweroceans": [],
-		"alternators": [],
-		"unknowns": [],
-		"haMqttUserId": "hamqttuser",
-		"haMqttUserPWd": "hamqttusePWd",
-		"haMqttUrl": "192.x.x.x",
-		"haMqttPort": 1883,
-		"haMqttEnable": false,
-		"haMqttProtocol": "mqtt://",
-		"haDiscoveryRetain": false,
-		"msgHaAutoDiscovery": false,
-		"msgHaIncomming": false,
-		"msgHaOutgoing": false,
-		"msgHaStatusInitial": false,
-		"showDiscoveryObject": false,
-		"haTopic": "iob_ef",
-		"msgStateCreation": false,
-		"msgUpdate": false,
-		"msgUpdateValue": false,
-		"msgSetGet": false,
-		"msgCmd": false,
-		"msgUnknownMsg": false,
-		"showHex": false
-	},
-	"objects": [],
-	"instanceObjects": [
-		{
-			"_id": "info",
-			"type": "channel",
-			"common": {
-				"name": "Information"
-			},
-			"native": {}
-		},
-		{
-			"_id": "info.connection",
-			"type": "state",
-			"common": {
-				"role": "indicator.connected",
-				"name": "Device or service connected",
-				"type": "boolean",
-				"read": true,
-				"write": false,
-				"def": false
-			},
-			"native": {}
-		}
-	]
+    "common": {
+        "name": "ecoflow-mqtt",
+        "version": "1.3.0",
+        "news": {
+            "1.3.0": {
+                "en": "correction PS energy, new Delta Pro 3, major refactoring",
+                "de": "Korrektur PS Energy, New Delta Pro 3, Major Refactoring",
+                "ru": "Коррекция PS Energy, New Delta Pro 3, крупный рефакторинг",
+                "pt": "Correção PS Energy, New Delta Pro 3, grande refatoração",
+                "nl": "Correctie PS Energy, New Delta Pro 3, Major Refactoring",
+                "fr": "Correction PS Energy, New Delta Pro 3, Refactorisation majeure",
+                "it": "Correzione PS Energy, New Delta Pro 3, Refactoring principale",
+                "es": "Corrección PS Energy, New Delta Pro 3, refactorización importante",
+                "pl": "Korekta PS Energy, New Delta Pro 3, główne refaktoryzacja",
+                "uk": "Корекція PS Energy, New Delta Pro 3, основне рефакторинг",
+                "zh-cn": "校正PS Energy，New Delta Pro 3，主要重构"
+            },
+            "1.2.2": {
+                "en": "doc for HA users, enhancements for SHP2",
+                "de": "DOC für HA -Benutzer, Verbesserungen für SHP2",
+                "ru": "Док для пользователей HA, улучшения для SHP2",
+                "pt": "DOC para usuários de HA, aprimoramentos para shp2",
+                "nl": "Doc voor HA -gebruikers, verbeteringen voor SHP2",
+                "fr": "Doc pour les utilisateurs HA, améliorations pour SHP2",
+                "it": "Doc per utenti HA, miglioramenti per SHP2",
+                "es": "DOC para usuarios de HA, mejoras para SHP2",
+                "pl": "Doc dla użytkowników HA, ulepszenia dla SHP2",
+                "uk": "DOC для користувачів HA, вдосконалення для SHP2",
+                "zh-cn": "HA用户的DOC，SHP2的增强功能"
+            },
+            "1.2.1": {
+                "en": "corrections for powerstream objects, new time task config SHP",
+                "de": "Korrekturen für Powerstream-Objekte, neue Zeitaufgabenkonfiguration SHP",
+                "ru": "исправления для объектов Powerstream, новая конфигурация временных задач SHP",
+                "pt": "correções para objetos powerstream, nova configuração de tarefa de horário SHP",
+                "nl": "correcties voor powerstream-objecten, nieuwe tijdtaakconfiguratie SHP",
+                "fr": "corrections pour les objets Powerstream, nouvelle configuration de tâche temporelle SHP",
+                "it": "correzioni per oggetti powerstream, nuova configurazione attività temporale SHP",
+                "es": "correcciones para objetos powerstream, nueva configuración de tareas de tiempo SHP",
+                "pl": "poprawki dla obiektów strumienia mocy, nowa konfiguracja zadań czasowych SHP",
+                "uk": "виправлення для об’єктів Powerstream, нова конфігурація завдання часу SHP",
+                "zh-cn": "对 powerstream 对象的更正，新的时间任务配置 SHP"
+            },
+            "1.2.0": {
+                "en": "new values powerocean, new values powerstream, new values plug, enhancements on values for SHP2,DPU,alternator",
+                "de": "Neue Werte Powerocean, neue Werte Powerstream, neue Werte Plug, Verbesserungen der Werte für SHP2, DPU, Lichtmaschine",
+                "ru": "новые значения powerocean, новые значения powerstream, штекер новых значений, улучшения значений для SHP2, DPU, генератора переменного тока",
+                "pt": "novos valores powerocean, novos valores powerstream, novos valores plug, melhorias nos valores para SHP2, DPU, alternador",
+                "nl": "nieuwe waarden powerocean, nieuwe waarden powerstream, nieuwe waardenplug, verbeteringen op waarden voor SHP2,DPU,alternator",
+                "fr": "nouvelles valeurs powerocean, nouvelles valeurs powerstream, nouvelles valeurs plug, améliorations des valeurs pour SHP2, DPU, alternateur",
+                "it": "nuovi valori powerocean, nuovi valori powerstream, nuovi valori plug, miglioramenti ai valori per SHP2,DPU,alternatore",
+                "es": "nuevos valores powerocean, nuevos valores powerstream, nuevos valores plug, mejoras en los valores para SHP2,DPU,alternador",
+                "pl": "nowe wartości powerocean, nowe wartości powerstream, nowa wtyczka wartości, ulepszenia wartości dla SHP2, DPU, alternatora",
+                "uk": "нові значення powerocean, нові значення powerstream, нові значення plug, покращення значень для SHP2, DPU, генератора",
+                "zh-cn": "新值 powerocean、新值 powerstream、新值插头、SHP2、DPU、交流发电机值的增强"
+            },
+            "1.1.3": {
+                "en": "enhancements to alternator values,refactoring of protobuf handling/structure/component data",
+                "de": "Verbesserungen der Lichtmaschinenwerte, Umgestaltung der Protobuf-Verarbeitung/Struktur/Komponentendaten",
+                "ru": "улучшения значений генератора переменного тока, рефакторинг обработки/структуры/данных компонентов protobuf",
+                "pt": "melhorias nos valores do alternador, refatoração de dados de manipulação/estrutura/componentes do protobuf",
+                "nl": "verbeteringen aan de alternatorwaarden, refactoring van protobuf-verwerking/structuur/componentgegevens",
+                "fr": "améliorations des valeurs de l'alternateur, refactorisation des données de gestion/structure/composant de protobuf",
+                "it": "miglioramenti ai valori dell'alternatore, refactoring della gestione/struttura/dati dei componenti del protobuf",
+                "es": "Mejoras en los valores del alternador, refactorización de datos de manejo/estructura/componentes de protobuf.",
+                "pl": "ulepszenia wartości alternatora, refaktoryzacja danych dotyczących obsługi/struktury/komponentów protobufu",
+                "uk": "вдосконалення значень генератора змінного струму, рефакторинг даних обробки/структури/компонента protobuf",
+                "zh-cn": "交流发电机值的增强、protobuf 处理/结构/组件数据的重构"
+            },
+            "1.1.2": {
+                "en": "handle HA restart , initial state population of BPInfo2/3 to HA",
+                "de": "Behandeln Sie den HA-Neustart und füllen Sie BPInfo2/3 im Anfangszustand mit HA aus",
+                "ru": "обработка перезапуска HA, загрузка начального состояния BPInfo2/3 в HA",
+                "pt": "lidar com reinicialização de HA, população de estado inicial de BPInfo2/3 para HA",
+                "nl": "handle HA restart , initiële statuspopulatie van BBPinfo2/3 naar HA",
+                "fr": "gérer le redémarrage de HA, le remplissage de l'état initial de BPInfo2/3 vers HA",
+                "it": "gestire il riavvio HA, popolamento dello stato iniziale di BPInfo2/3 in HA",
+                "es": "manejar el reinicio de HA, población del estado inicial de BPInfo2/3 en HA",
+                "pl": "obsłuż ponowne uruchomienie HA, zaludnienie stanu początkowego BPInfo2/3 do HA",
+                "uk": "обробка перезапуску HA, заповнення початкового стану BPInfo2/3 до HA",
+                "zh-cn": "处理HA重启，将BPInfo2/3的初始状态填充到HA"
+            },
+            "1.1.0": {
+                "en": "added alternator, unsupported device debugging, closed issues",
+                "de": "Batterieladegerät hinzugefügt, nicht unterstütztes Geräte-Debugging, geschlossene Probleme",
+                "ru": "добавлен генератор переменного тока, отладка неподдерживаемых устройств, закрытые проблемы",
+                "pt": "alternador adicionado, depuração de dispositivo não compatível, problemas resolvidos",
+                "nl": "dynamo toegevoegd, niet-ondersteunde foutopsporing van apparaten, gesloten problemen",
+                "fr": "alternateur ajouté, débogage de périphérique non pris en charge, problèmes résolus",
+                "it": "aggiunto alternatore, debug del dispositivo non supportato, problemi chiusi",
+                "es": "alternador añadido, depuración de dispositivos no compatibles, problemas cerrados",
+                "pl": "dodany alternator, nieobsługiwane debugowanie urządzenia, zamknięte problemy",
+                "uk": "доданий генератор, налагодження непідтримуваного пристрою, закриті проблеми",
+                "zh-cn": "添加了交流发电机、不支持的设备调试、已解决的问题"
+            },
+            "1.0.4": {
+                "en": "correction for powerkit telegram reception #99",
+                "de": "Korrektur für Powerkit-Telegrammempfang #99",
+                "ru": "исправление приема телеграммы powerkit #99",
+                "pt": "correção para recepção de telegrama do powerkit #99",
+                "nl": "correctie voor powerkit-telegramontvangst #99",
+                "fr": "correction pour la réception des télégrammes powerkit #99",
+                "it": "correzione ricezione telegramma powerkit #99",
+                "es": "corrección para recepción de telegramas powerkit #99",
+                "pl": "poprawka odbioru telegramu Powerkit #99",
+                "uk": "виправлення для отримання телеграми powerkit №99",
+                "zh-cn": "powerkit 电报接收修正 #99"
+            }
+        },
+        "messages": [
+            {
+                "condition": {
+                    "operand": "and",
+                    "rules": [
+                        "oldVersion<0.0.8",
+                        "newVersion>=0.0.9"
+                    ]
+                },
+                "title": {
+                    "en": "Important notice!",
+                    "de": "Wichtiger Hinweis!",
+                    "ru": "Важное замечание!",
+                    "pt": "Notícia importante!",
+                    "nl": "Belangrijke mededeling!",
+                    "fr": "Avis important!",
+                    "it": "Avviso IMPORTANTE!",
+                    "es": "Noticia importante!",
+                    "pl": "Ważna uwaga!",
+                    "uk": "Погода!",
+                    "zh-cn": "重要通知!"
+                },
+                "text": {
+                    "en": "In order to work properly the adapter requires ioBroker.admin >=6.12.3. Please ensure this boundary condition. You can do this by enabling expert settings and installation from npm as source. ",
+                    "de": "Damit der Adapter ordnungsgemäß funktioniert, ist ioBroker.admin >=6.12.3 erforderlich. Bitte achten Sie auf diese Randbedingung. Sie können dies tun, indem Sie Experteneinstellungen und die Installation von npm als Quelle aktivieren.",
+                    "ru": "Для правильной работы адаптера требуется ioBroker.admin >=6.12.3. Пожалуйста, обеспечьте это граничное условие. Это можно сделать, включив экспертные настройки и установив их из npm в качестве источника.",
+                    "pt": "Para funcionar corretamente, o adaptador requer ioBroker.admin >=6.12.3. Por favor, garanta esta condição de limite. Você pode fazer isso habilitando configurações avançadas e instalação do npm como fonte.",
+                    "nl": "Om goed te kunnen werken heeft de adapter ioBroker.admin >=6.12.3 nodig. Zorg ervoor dat deze randvoorwaarde aanwezig is. Dit kunt u doen door expertinstellingen en installatie vanuit npm als bron in te schakelen.",
+                    "fr": "Pour fonctionner correctement, l'adaptateur nécessite ioBroker.admin >=6.12.3. Veuillez vous assurer de cette condition aux limites. Vous pouvez le faire en activant les paramètres experts et l'installation à partir de npm comme source.",
+                    "it": "Per funzionare correttamente l'adattatore richiede ioBroker.admin >=6.12.3. Si prega di garantire questa condizione al contorno. Puoi farlo abilitando le impostazioni avanzate e l'installazione da npm come sorgente.",
+                    "es": "Para funcionar correctamente, el adaptador requiere ioBroker.admin >=6.12.3. Asegúrese de que se cumpla esta condición límite. Puede hacerlo habilitando la configuración experta y la instalación desde npm como fuente.",
+                    "pl": "Do poprawnego działania adapter wymaga ioBroker.admin >=6.12.3. Proszę zapewnić ten warunek brzegowy. Możesz to zrobić, włączając ustawienia eksperckie i instalację z npm jako źródła.",
+                    "uk": "Для належної роботи адаптеру потрібен ioBroker.admin >=6.12.3. Будь ласка, переконайтеся в цій граничній умові. Ви можете зробити це, увімкнувши експертні налаштування та інсталяцію з npm як джерела.",
+                    "zh-cn": "为了正常工作，适配器需要 ioBroker.admin >=6.12.3。请确保这个边界条件。您可以通过启用专家设置并从 npm 作为源进行安装来实现此目的。"
+                },
+                "level": "warn",
+                "buttons": [
+                    "ok",
+                    "cancel"
+                ]
+            },
+            {
+                "condition": {
+                    "operand": "and",
+                    "rules": [
+                        "oldVersion<1.0.0",
+                        "newVersion>=1.0.0"
+                    ]
+                },
+                "title": {
+                    "en": "Important notice!",
+                    "de": "Wichtiger Hinweis!",
+                    "ru": "Важное замечание!",
+                    "pt": "Notícia importante!",
+                    "nl": "Belangrijke mededeling!",
+                    "fr": "Avis important!",
+                    "it": "Avviso IMPORTANTE!",
+                    "es": "Noticia importante!",
+                    "pl": "Ważna uwaga!",
+                    "uk": "Погода!",
+                    "zh-cn": "重要通知!"
+                },
+                "text": {
+                    "en": "State roles of the datapoints are corrected, please stop the adapter, delete all objects of the ecoflow-mqtt instance and restart adapter. Datapoints are recreated.",
+                    "de": "Statusrollen der Datenpunkte wurden korrigiert, bitte stoppen Sie den Adapter, löschen Sie alle Objekte der ecoflow-mqtt-Instanz und starten Sie den Adapter neu. Datenpunkte werden neu erstellt.",
+                    "ru": "Роли состояния точек данных исправлены. Остановите адаптер, удалите все объекты экземпляра ecoflow-mqtt и перезапустите адаптер. Точки данных воссоздаются.",
+                    "pt": "As funções de estado dos pontos de dados foram corrigidas. Pare o adaptador, exclua todos os objetos da instância ecoflow-mqtt e reinicie o adaptador. Os pontos de dados são recriados.",
+                    "nl": "De statusrollen van de datapunten zijn gecorrigeerd. Stop de adapter, verwijder alle objecten van de ecoflow-mqtt-instantie en start de adapter opnieuw. Datapunten worden opnieuw gemaakt.",
+                    "fr": "Les rôles d'état des points de données sont corrigés, veuillez arrêter l'adaptateur, supprimer tous les objets de l'instance ecoflow-mqtt et redémarrer l'adaptateur. Les points de données sont recréés.",
+                    "it": "I ruoli di stato dei datapoint sono corretti, arresta l'adattatore, elimina tutti gli oggetti dell'istanza ecoflow-mqtt e riavvia l'adattatore. I punti dati vengono ricreati.",
+                    "es": "Se corrigen las funciones de estado de los puntos de datos. Detenga el adaptador, elimine todos los objetos de la instancia ecoflow-mqtt y reinicie el adaptador. Se recrean los puntos de datos.",
+                    "pl": "Role stanowe punktów danych zostały poprawione. Zatrzymaj adapter, usuń wszystkie obiekty instancji ecoflow-mqtt i zrestartuj adapter. Punkty danych są odtwarzane.",
+                    "uk": "Ролі станів точок даних виправлено. Зупиніть адаптер, видаліть усі об’єкти екземпляра ecoflow-mqtt і перезапустіть адаптер. Точки даних створюються заново.",
+                    "zh-cn": "数据点的状态角色已更正，请停止适配器，删除ecoflow-mqtt实例的所有对象并重新启动适配器。数据点被重新创建。"
+                },
+                "level": "warn",
+                "buttons": [
+                    "ok",
+                    "cancel"
+                ]
+            }
+        ],
+        "titleLang": {
+            "en": "ecoflow",
+            "de": "Ecoflow",
+            "ru": "экопоток",
+            "pt": "ecofluxo",
+            "nl": "ecostroom",
+            "fr": "écoflux",
+            "it": "ecoflusso",
+            "es": "ecoflujo",
+            "pl": "ekoprzepływ",
+            "uk": "екопотік",
+            "zh-cn": "生态流"
+        },
+        "desc": {
+            "en": "connects to ecoflow products",
+            "de": "verbindet sich mit Ecoflow-Produkten",
+            "ru": "подключается к продуктам Ecoflow",
+            "pt": "conecta-se a produtos ecoflow",
+            "nl": "koppelt aan ecoflow-producten",
+            "fr": "se connecte aux produits ecoflow",
+            "it": "si collega ai prodotti ecoflow",
+            "es": "se conecta a productos ecoflow",
+            "pl": "łączy się z produktami ecoflow",
+            "uk": "підключається до продуктів ecoflow",
+            "zh-cn": "连接至 Ecoflow 产品"
+        },
+        "authors": [
+            "foxthefox <foxthefox@wysiwis.net>"
+        ],
+        "keywords": [
+            "ecoflow",
+            "powerstream",
+            "powerstation",
+            "delta",
+            "river",
+            "powerkit",
+            "powerocaen",
+            "shp"
+        ],
+        "platform": "Javascript/Node.js",
+        "icon": "ecoflow-mqtt.png",
+        "enabled": true,
+        "extIcon": "https://raw.githubusercontent.com/foxthefox/ioBroker.ecoflow-mqtt/main/admin/ecoflow-mqtt.png",
+        "readme": "https://github.com/foxthefox/ioBroker.ecoflow-mqtt/blob/main/README.md",
+        "loglevel": "debug",
+        "mode": "daemon",
+        "type": "iot-systems",
+        "compact": true,
+        "messagebox": true,
+        "connectionType": "cloud",
+        "dataSource": "push",
+        "tier": 3,
+        "licenseInformation": {
+            "license": "MIT",
+            "link": "https://opensource.org/license/mit/",
+            "type": "free"
+        },
+        "adminUI": {
+            "config": "json"
+        },
+        "dependencies": [
+            {
+                "js-controller": ">=5.0.19"
+            }
+        ],
+        "globalDependencies": [
+            {
+                "admin": ">=6.17.14"
+            }
+        ]
+    },
+    "protectedNative": [
+        "userName",
+        "userPassword",
+        "mqttUserId",
+        "mqttPwd",
+        "mqttClientId",
+        "haMqttUserId",
+        "haMqttUserPWd"
+    ],
+    "encryptedNative": [
+        "userPassword",
+        "mqttPwd",
+        "haMqttUserPWd"
+    ],
+    "native": {
+        "userName": "userEmail",
+        "userPassword": "pw",
+        "mqttUserId": "1xxxx",
+        "mqttUserName": "app-....",
+        "mqttPwd": "xxxx",
+        "mqttClientId": "ANDRIOD-...",
+        "mqttUrl": "mqtts://mqtt-e.ecoflow.com",
+        "mqttPort": 8883,
+        "enableMqttReconnect": false,
+        "pstreams": [],
+        "pstations": [],
+        "plugs": [],
+        "waves": [],
+        "glaciers": [],
+        "generators": [],
+        "panels": [],
+        "shellies": [],
+        "powerkits": [],
+        "poweroceans": [],
+        "alternators": [],
+        "unknowns": [],
+        "haMqttUserId": "hamqttuser",
+        "haMqttUserPWd": "hamqttusePWd",
+        "haMqttUrl": "192.x.x.x",
+        "haMqttPort": 1883,
+        "haMqttEnable": false,
+        "haMqttProtocol": "mqtt://",
+        "haDiscoveryRetain": false,
+        "msgHaAutoDiscovery": false,
+        "msgHaIncomming": false,
+        "msgHaOutgoing": false,
+        "msgHaStatusInitial": false,
+        "showDiscoveryObject": false,
+        "haTopic": "iob_ef",
+        "msgStateCreation": false,
+        "msgUpdate": false,
+        "msgUpdateValue": false,
+        "msgSetGet": false,
+        "msgCmd": false,
+        "msgUnknownMsg": false,
+        "showHex": false
+    },
+    "objects": [],
+    "instanceObjects": [
+        {
+            "_id": "info",
+            "type": "channel",
+            "common": {
+                "name": "Information"
+            },
+            "native": {}
+        },
+        {
+            "_id": "info.connection",
+            "type": "state",
+            "common": {
+                "role": "indicator.connected",
+                "name": "Device or service connected",
+                "type": "boolean",
+                "read": true,
+                "write": false,
+                "def": false
+            },
+            "native": {}
+        }
+    ]
 }
