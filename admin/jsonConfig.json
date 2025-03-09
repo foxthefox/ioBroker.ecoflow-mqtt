@@ -322,9 +322,18 @@
 							"type": "select",
 							"width": "10%",
 							"options": [
-								{ "value": "none", "label": "none" },
-								{ "value": "pstream600", "label": "Powerstream 600W" },
-								{ "value": "pstream800", "label": "Powerstream 800W" }
+								{
+									"value": "none",
+									"label": "none"
+								},
+								{
+									"value": "pstream600",
+									"label": "Powerstream 600W"
+								},
+								{
+									"value": "pstream800",
+									"label": "Powerstream 800W"
+								}
 							],
 							"title": "Powerstream Type",
 							"attr": "devType",
@@ -387,7 +396,6 @@
 							"attr": "devName",
 							"width": "15%",
 							"title": "Name",
-
 							"filter": false,
 							"sort": false,
 							"default": "My Station#1"
@@ -405,18 +413,58 @@
 							"type": "select",
 							"width": "10%",
 							"options": [
-								{ "value": "none", "label": "none" },
-								{ "value": "deltamini", "label": "Delta Mini (882Wh)" },
-								{ "value": "delta", "label": "Delta (1260Wh)" },
-								{ "value": "deltamax", "label": "Delta Max (1600/2000)" },
-								{ "value": "deltapro", "label": "Delta Pro" },
-								{ "value": "delta2", "label": "Delta 2" },
-								{ "value": "delta2max", "label": "Delta 2 Max" },
-								{ "value": "deltaproultra", "label": "Delta Pro Ultra" },
-								{ "value": "rivermax", "label": "River Max" },
-								{ "value": "riverpro", "label": "River Pro" },
-								{ "value": "river2max", "label": "River 2 Max" },
-								{ "value": "river2pro", "label": "River 2 Pro" }
+								{
+									"value": "none",
+									"label": "none"
+								},
+								{
+									"value": "deltamini",
+									"label": "Delta Mini (882Wh)"
+								},
+								{
+									"value": "delta",
+									"label": "Delta (1260Wh)"
+								},
+								{
+									"value": "deltamax",
+									"label": "Delta Max (1600/2000)"
+								},
+								{
+									"value": "deltapro",
+									"label": "Delta Pro"
+								},
+								{
+									"value": "delta2",
+									"label": "Delta 2"
+								},
+								{
+									"value": "delta2max",
+									"label": "Delta 2 Max"
+								},
+								{
+									"value": "deltapro3",
+									"label": "Delta 3 Pro"
+								},
+								{
+									"value": "deltaproultra",
+									"label": "Delta Pro Ultra"
+								},
+								{
+									"value": "rivermax",
+									"label": "River Max"
+								},
+								{
+									"value": "riverpro",
+									"label": "River Pro"
+								},
+								{
+									"value": "river2max",
+									"label": "River 2 Max"
+								},
+								{
+									"value": "river2pro",
+									"label": "River 2 Pro"
+								}
 							],
 							"title": "Power Station Type",
 							"attr": "devType",
@@ -515,7 +563,16 @@
 						{
 							"type": "select",
 							"width": "10%",
-							"options": [ { "value": "none", "label": "none" }, { "value": "plug", "label": "Plug" } ],
+							"options": [
+								{
+									"value": "none",
+									"label": "none"
+								},
+								{
+									"value": "plug",
+									"label": "Plug"
+								}
+							],
 							"title": "Plug Type",
 							"attr": "devType",
 							"filter": false,
@@ -594,8 +651,14 @@
 							"type": "select",
 							"width": "10%",
 							"options": [
-								{ "value": "none", "label": "none" },
-								{ "value": "shelly3em", "label": "Shelly3EM" }
+								{
+									"value": "none",
+									"label": "none"
+								},
+								{
+									"value": "shelly3em",
+									"label": "Shelly3EM"
+								}
 							],
 							"title": "Shelly Type",
 							"attr": "devType",
@@ -675,8 +738,14 @@
 							"type": "select",
 							"width": "10%",
 							"options": [
-								{ "value": "none", "label": "none" },
-								{ "value": "generator", "label": "Smart Generator" }
+								{
+									"value": "none",
+									"label": "none"
+								},
+								{
+									"value": "generator",
+									"label": "Smart Generator"
+								}
 							],
 							"title": "Generator Type",
 							"attr": "devType",
@@ -756,9 +825,18 @@
 							"type": "select",
 							"width": "10%",
 							"options": [
-								{ "value": "none", "label": "none" },
-								{ "value": "powerkitbp2000", "label": "Powerkit BP2000" },
-								{ "value": "powerkitbp5000", "label": "Powerkit BP5000" }
+								{
+									"value": "none",
+									"label": "none"
+								},
+								{
+									"value": "powerkitbp2000",
+									"label": "Powerkit BP2000"
+								},
+								{
+									"value": "powerkitbp5000",
+									"label": "Powerkit BP5000"
+								}
 							],
 							"title": "Power Kit Type",
 							"attr": "devType",
@@ -856,9 +934,18 @@
 							"type": "select",
 							"width": "10%",
 							"options": [
-								{ "value": "none", "label": "none" },
-								{ "value": "panel", "label": "Smart Home Panel" },
-								{ "value": "panel2", "label": "Smart Home Panel 2" }
+								{
+									"value": "none",
+									"label": "none"
+								},
+								{
+									"value": "panel",
+									"label": "Smart Home Panel"
+								},
+								{
+									"value": "panel2",
+									"label": "Smart Home Panel 2"
+								}
 							],
 							"title": "SHP Type",
 							"attr": "devType",
@@ -886,7 +973,6 @@
 						}
 					]
 				},
-
 				"_waveHeader": {
 					"newLine": true,
 					"type": "header",
@@ -939,8 +1025,14 @@
 							"type": "select",
 							"width": "10%",
 							"options": [
-								{ "value": "none", "label": "none" },
-								{ "value": "wave2", "label": "Wave 2 Air Con" }
+								{
+									"value": "none",
+									"label": "none"
+								},
+								{
+									"value": "wave2",
+									"label": "Wave 2 Air Con"
+								}
 							],
 							"title": "Wave Type",
 							"attr": "devType",
@@ -1020,8 +1112,14 @@
 							"type": "select",
 							"width": "10%",
 							"options": [
-								{ "value": "none", "label": "none" },
-								{ "value": "glacier", "label": "Glacier Cooler" }
+								{
+									"value": "none",
+									"label": "none"
+								},
+								{
+									"value": "glacier",
+									"label": "Glacier Cooler"
+								}
 							],
 							"title": "Glacier Type",
 							"attr": "devType",
@@ -1101,8 +1199,14 @@
 							"type": "select",
 							"width": "10%",
 							"options": [
-								{ "value": "none", "label": "none" },
-								{ "value": "powerocean", "label": "Power Ocean" }
+								{
+									"value": "none",
+									"label": "none"
+								},
+								{
+									"value": "powerocean",
+									"label": "Power Ocean"
+								}
 							],
 							"title": "Power Ocean Type",
 							"attr": "devType",
@@ -1200,8 +1304,14 @@
 							"type": "select",
 							"width": "10%",
 							"options": [
-								{ "value": "none", "label": "none" },
-								{ "value": "alternator", "label": "Alternator 800W" }
+								{
+									"value": "none",
+									"label": "none"
+								},
+								{
+									"value": "alternator",
+									"label": "Alternator 800W"
+								}
 							],
 							"title": "Alternator Type",
 							"attr": "devType",
@@ -1272,14 +1382,28 @@
 							"type": "select",
 							"width": "10%",
 							"options": [
-								{ "value": "none", "label": "none" },
-								{ "value": "deltapro3", "label": "Delta Pro 3" },
-								{ "value": "delta3", "label": "Delta 3" },
-								{ "value": "delta3plus", "label": "Delta 3 Plus" },
-								{ "value": "riever3", "label": "River 3" },
-								{ "value": "river3plus", "label": "River 3 Plus" }
+								{
+									"value": "none",
+									"label": "none"
+								},
+								{
+									"value": "delta3",
+									"label": "Delta 3"
+								},
+								{
+									"value": "delta3plus",
+									"label": "Delta 3 Plus"
+								},
+								{
+									"value": "river3",
+									"label": "River 3"
+								},
+								{
+									"value": "river3plus",
+									"label": "River 3 Plus"
+								}
 							],
-							"title": "Alternator Type",
+							"title": "Device Type",
 							"attr": "devType",
 							"filter": false,
 							"sort": false,

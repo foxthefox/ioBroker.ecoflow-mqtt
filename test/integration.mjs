@@ -11,13 +11,13 @@ import { doesNotMatch } from 'assert/strict';
 console.log('PATH ist ' + path.join(__dirname, './data/'));
 
 import * as states from  '../lib/ecoflow_data.js'
-import * as  pstreamstates from '../lib/ef_pstream_data.js';
-import * as  plugstates from '../lib/ef_plug_data.js';
-import * as  dpustates from '../lib/ef_dpu_data.js';
-import * as shpstates from  '../lib/ef_shp_data.js';
-import * as shp2states from '../lib/ef_shp2_data.js';
-import * as  oceanstates from '../lib/ef_powerocean_data.js';
-import * as  kitstates from  '../lib/ef_powerkit_data.js';
+import * as  pstreamstates from '../lib/dict_data/ef_pstream_data.js';
+import * as  plugstates from '../lib/dict_data/ef_plug_data.js';
+import * as  dpustates from '../lib/dict_data/ef_deltaproultra_data.js';
+import * as shpstates from  '../lib/dict_data/ef_panel_data.js';
+import * as shp2states from '../lib/dict_data/ef_panel2_data.js';
+import * as  oceanstates from '../lib/dict_data/ef_powerocean_data.js';
+import * as  kitstates from  '../lib/dict_data/ef_powerkit_data.js';
 //const states = require(path.join(__dirname, '../lib/') + 'ecoflow_data.js');
 //const pstreamstates = require(path.join(__dirname, '../lib/') + 'ef_pstream_data.js');
 //const plugstates = require(path.join(__dirname, '../lib/') + 'ef_plug_data.js');

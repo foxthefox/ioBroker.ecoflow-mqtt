@@ -270,6 +270,8 @@ some explanation to the device data
 
 [Delta Pro Ultra](./doc/devices/deltaproultra.md)
 
+[Delta Pro 3](./doc/devices/deltapro3.md)
+
 ### Smart Home Panel
 [Smart Home Panel](./doc/devices/panel.md)
 
@@ -327,8 +329,10 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 
 ### 1.3.0 (npm)
 * (foxthefox) correction for PStream energy
-* (foxthefox) new DeltaPro 3
+* (foxthefox) new DeltaPro 3 implementation
 * (foxthefox, radeonorama) enhancements alternator
+* (foxthefox) major refactoring
+* (foxthefox) new items to PowerOcean and HeatingRod
 
 
 ### 1.2.2 (npm)

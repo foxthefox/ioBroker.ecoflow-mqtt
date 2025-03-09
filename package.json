@@ -74,7 +74,8 @@
 		"check": "tsc --noEmit -p tsconfig.check.json",
 		"lint": "eslint",
 		"translate": "translate-adapter",
-		"release": "release-script"
+		"release": "release-script",
+		"docugen": "node ./lib/gen_docs.js"
 	},
 	"bugs": {
 		"url": "https://github.com/foxthefox/ioBroker.ecoflow-mqtt/issues"
