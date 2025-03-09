@@ -138,23 +138,23 @@ class EcoflowMqtt extends utils.Adapter {
 
 							let devStates = null;
 							if (devtype === 'pstream600' || devtype === 'pstream800') {
-								devStates = require('./lib/dict_data/ef_pstream_data.js').pstreamStates;
-							} else if (devtype === 'plug') {
-								devStates = require('./lib/dict_data/ef_plug_data.js').plugStates;
+								devStates = require('./lib/dict_data/ef_pstream_data.js').deviceStates;
 							} else if (
 								devtype === 'powerkitbp2000' ||
 								devtype === 'powerkitbp5000' ||
 								devtype === 'powerkit'
 							) {
 								devStates = require('./lib/dict_data/ef_powerkit_data.js').powerkitStates;
+							} else if (devtype === 'plug') {
+								devStates = require('./lib/dict_data/ef_plug_data.js').deviceStates;
 							} else if (devtype === 'powerocean') {
-								devStates = require('./lib/dict_data/ef_powerocean_data.js').poweroceanStates;
+								devStates = require('./lib/dict_data/ef_powerocean_data.js').deviceStates;
 							} else if (devtype === 'panel') {
 								devStates = require('./lib/dict_data/ef_panel_data.js').panelStates;
 							} else if (devtype === 'panel2') {
-								devStates = require('./lib/dict_data/ef_panel2_data.js').panel2States;
+								devStates = require('./lib/dict_data/ef_panel2_data.js').deviceStates;
 							} else if (devtype === 'deltaproultra') {
-								devStates = require('./lib/dict_data/ef_deltaproultra_data.js').deltaproultraStates;
+								devStates = require('./lib/dict_data/ef_deltaproultra_data.js').deviceStates;
 							} else if (devtype === 'alternator') {
 								devStates = require('./lib/dict_data/ef_alternator_data.js').deviceStates;
 							} else if (devtype === 'deltapro3') {
@@ -166,23 +166,23 @@ class EcoflowMqtt extends utils.Adapter {
 							if (devtype !== 'none' && devStates) {
 								let devupd = null;
 								if (devtype === 'pstream600' || devtype === 'pstream800') {
-									devupd = require('./lib/dict_data/ef_pstream_data.js').pstreamRanges[devtype];
-								} else if (devtype === 'plug') {
-									devupd = require('./lib/dict_data/ef_plug_data.js').plugRanges[devtype];
+									devupd = require('./lib/dict_data/ef_pstream_data.js').deviceRanges[devtype];
 								} else if (
 									devtype === 'powerkitbp2000' ||
 									devtype === 'powerkitbp5000' ||
 									devtype === 'powerkit'
 								) {
 									devupd = require('./lib/dict_data/ef_powerkit_data.js').powerkitRanges[devtype];
+								} else if (devtype === 'plug') {
+									devupd = require('./lib/dict_data/ef_plug_data.js').deviceRanges[devtype];
 								} else if (devtype === 'powerocean') {
-									devupd = require('./lib/dict_data/ef_powerocean_data.js').poweroceanRanges[devtype];
+									devupd = require('./lib/dict_data/ef_powerocean_data.js').deviceRanges[devtype];
 								} else if (devtype === 'panel') {
 									devupd = require('./lib/dict_data/ef_panel_data.js').panelRanges[devtype];
 								} else if (devtype === 'panel2') {
-									devupd = require('./lib/dict_data/ef_panel2_data.js').panel2Ranges[devtype];
+									devupd = require('./lib/dict_data/ef_panel2_data.js').deviceRanges[devtype];
 								} else if (devtype === 'deltaproultra') {
-									devupd = require('./lib/dict_data/ef_deltaproultra_data.js').deltaproultraRanges[devtype];
+									devupd = require('./lib/dict_data/ef_deltaproultra_data.js').deviceRanges[devtype];
 								} else if (devtype === 'alternator') {
 									devupd = require('./lib/dict_data/ef_alternator_data.js').deviceRanges[devtype];
 								} else if (devtype === 'deltapro3') {
@@ -245,15 +245,15 @@ class EcoflowMqtt extends utils.Adapter {
 							let storeProtoPayload = null;
 							let prepareProtoCmd = null;
 							if (devtype === 'pstream') {
-								pdevicesStatesDict = require('./lib/dict_data/ef_pstream_data.js').pstreamStatesDict[devtype];
-								pdevicesCmd = require('./lib/dict_data/ef_pstream_data.js').pstreamCmd[origdevtype];
+								pdevicesStatesDict = require('./lib/dict_data/ef_pstream_data.js').deviceStatesDict[devtype];
+								pdevicesCmd = require('./lib/dict_data/ef_pstream_data.js').deviceCmd[origdevtype];
 								protoSource = require('./lib/dict_data/ef_pstream_data.js').protoSource;
 								protoMsg = require('./lib/dict_data/ef_pstream_data.js').protoMsg;
 								storeProtoPayload = require('./lib/dict_data/ef_pstream_data.js').storeProtoPayload;
 								prepareProtoCmd = require('./lib/dict_data/ef_pstream_data.js').prepareProtoCmd;
 							} else if (devtype === 'plug') {
-								pdevicesStatesDict = require('./lib/dict_data/ef_plug_data.js').plugStatesDict[devtype];
-								pdevicesCmd = require('./lib/dict_data/ef_plug_data.js').plugCmd[devtype];
+								pdevicesStatesDict = require('./lib/dict_data/ef_plug_data.js').deviceStatesDict[devtype];
+								pdevicesCmd = require('./lib/dict_data/ef_plug_data.js').deviceCmd[devtype];
 								protoSource = require('./lib/dict_data/ef_plug_data.js').protoSource;
 								protoMsg = require('./lib/dict_data/ef_plug_data.js').protoMsg;
 								storeProtoPayload = require('./lib/dict_data/ef_plug_data.js').storeProtoPayload;
@@ -262,8 +262,8 @@ class EcoflowMqtt extends utils.Adapter {
 								pdevicesStatesDict = require('./lib/dict_data/ef_powerkit_data.js').powerkitStatesDict[devtype];
 								pdevicesCmd = require('./lib/dict_data/ef_powerkit_data.js').powerkitCmd[devtype];
 							} else if (devtype === 'powerocean') {
-								pdevicesStatesDict = require('./lib/dict_data/ef_powerocean_data.js').poweroceanStatesDict[devtype];
-								pdevicesCmd = require('./lib/dict_data/ef_powerocean_data.js').poweroceanCmd[devtype];
+								pdevicesStatesDict = require('./lib/dict_data/ef_powerocean_data.js').deviceStatesDict[devtype];
+								pdevicesCmd = require('./lib/dict_data/ef_powerocean_data.js').deviceCmd[devtype];
 								protoSource = require('./lib/dict_data/ef_powerocean_data.js').protoSource;
 								protoMsg = require('./lib/dict_data/ef_powerocean_data.js').protoMsg;
 								storeProtoPayload = require('./lib/dict_data/ef_powerocean_data.js').storeProtoPayload;
@@ -272,15 +272,15 @@ class EcoflowMqtt extends utils.Adapter {
 								pdevicesStatesDict = require('./lib/dict_data/ef_panel_data.js').panelStatesDict[devtype];
 								pdevicesCmd = require('./lib/dict_data/ef_panel_data.js').panelCmd[devtype];
 							} else if (devtype === 'panel2') {
-								pdevicesStatesDict = require('./lib/dict_data/ef_panel2_data.js').panel2StatesDict[devtype];
-								pdevicesCmd = require('./lib/dict_data/ef_panel2_data.js').panel2Cmd[devtype];
+								pdevicesStatesDict = require('./lib/dict_data/ef_panel2_data.js').deviceStatesDict[devtype];
+								pdevicesCmd = require('./lib/dict_data/ef_panel2_data.js').deviceCmd[devtype];
 								protoSource = require('./lib/dict_data/ef_panel2_data.js').protoSource;
 								protoMsg = require('./lib/dict_data/ef_panel2_data.js').protoMsg;
 								storeProtoPayload = require('./lib/dict_data/ef_panel2_data.js').storeProtoPayload;
 								prepareProtoCmd = require('./lib/dict_data/ef_panel2_data.js').prepareProtoCmd;
 							} else if (devtype === 'deltaproultra') {
-								pdevicesStatesDict = require('./lib/dict_data/ef_deltaproultra_data.js').deltaproultraStatesDict[devtype];
-								pdevicesCmd = require('./lib/dict_data/ef_deltaproultra_data.js').deltaproultraCmd[devtype];
+								pdevicesStatesDict = require('./lib/dict_data/ef_deltaproultra_data.js').deviceStatesDict[devtype];
+								pdevicesCmd = require('./lib/dict_data/ef_deltaproultra_data.js').deviceCmd[devtype];
 								protoSource = require('./lib/dict_data/ef_deltaproultra_data.js').protoSource;
 								protoMsg = require('./lib/dict_data/ef_deltaproultra_data.js').protoMsg;
 								storeProtoPayload = require('./lib/dict_data/ef_deltaproultra_data.js').storeProtoPayload;
