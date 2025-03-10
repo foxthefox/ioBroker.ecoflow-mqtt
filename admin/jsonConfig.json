@@ -1327,6 +1327,15 @@
 							"filter": false,
 							"sort": false,
 							"default": false
+						},
+						{
+							"type": "checkbox",
+							"title": "HA enable",
+							"width": "5%",
+							"attr": "haEnable",
+							"filter": false,
+							"sort": false,
+							"default": false
 						}
 					]
 				},
