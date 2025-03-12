@@ -78,7 +78,7 @@
 		"lint": "eslint",
 		"translate": "translate-adapter",
 		"release": "release-script",
-		"docugen": "node ./lib/gen_docs.js"
+		"docugen": "node ./lib/helper/gen_docs.js"
 	},
 	"bugs": {
 		"url": "https://github.com/foxthefox/ioBroker.ecoflow-mqtt/issues"

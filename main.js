@@ -905,7 +905,7 @@ class EcoflowMqtt extends utils.Adapter {
 		if (this.mqttUserId.length > 0) {
 			topics = topics.concat(ef.createSubscribeTopics(this.mqttUserId, this.pdevices));
 		}
-		this.log.debug('subscription topics EF ' + JSON.stringify(topics));
+		// this.log.debug('subscription topics EF ' + JSON.stringify(topics));
 
 		//connect to Ecoflow
 		const optionsMqtt = {
@@ -922,12 +922,12 @@ class EcoflowMqtt extends utils.Adapter {
 			try {
 				this.log.info('[EF] ' + 'going to connect to mqtt broker');
 				this.log.debug('[EF] ' + 'your mqtt configration:');
-				this.log.debug('[EF] ' + 'user          -> ' + this.mqttUserId);
-				this.log.debug('[EF] ' + 'name          -> ' + this.mqttUserName);
-				this.log.debug('[EF] ' + 'client        -> ' + this.mqttClientId);
+				//this.log.debug('[EF] ' + 'user          -> ' + this.mqttUserId);
+				//this.log.debug('[EF] ' + 'name          -> ' + this.mqttUserName);
+				//this.log.debug('[EF] ' + 'client        -> ' + this.mqttClientId);
 				this.log.debug('[EF] ' + 'port          -> ' + this.mqttPort);
 				this.log.debug('[EF] ' + 'url           -> ' + this.mqttUrl);
-				this.log.debug('[EF] ' + 'ptotocol      -> ' + this.mqttProtocol);
+				this.log.debug('[EF] ' + 'protocol      -> ' + this.mqttProtocol);
 
 				this.client = mqtt.connect(this.mqttUrl + ':' + this.mqttPort, optionsMqtt);
 
@@ -1004,11 +1004,13 @@ class EcoflowMqtt extends utils.Adapter {
 						devtype === 'alternator' ||
 						devtype === 'deltapro3' ||
 						devtype === 'delta3' ||
-						devtype === 'delta3plus'
+						devtype === 'delta3plus' ||
+						devtype === 'river3' ||
+						devtype === 'river3plus'
 					) {
 						if (this.pdevicesStatesDict && this.pdevicesStates) {
 							let msgdecode = null;
-							if (devtype === 'delta3' || devtype === 'delta3plus') {
+							if (devtype === 'delta3' || devtype === 'delta3plus' || devtype === 'river3' || devtype === 'river3plus') {
 								this.log.debug(
 									'[PROTOBUF unknown] ' +
 									topic +
@@ -1034,49 +1036,49 @@ class EcoflowMqtt extends utils.Adapter {
 								} catch (error) {
 									this.log.debug('pstreamDecode call ->' + error);
 								}
-							}
-							if (msgtype === 'update' || msgtype === 'get_reply' || msgtype === 'set_reply') {
-								if (msgdecode !== null && typeof msgdecode === 'object') {
-									if (Object.keys(msgdecode).length > 0) {
-										//storeStreamPayload handles multiple objects
-										const haupdate = await this.storeProtoPayload[devtype](
-											this,
-											this.pdevicesStatesDict[origdevtype],
-											this.pdevicesStates[origdevtype],
-											topic,
-											msgdecode,
-											devtype,
-											this.pdevices[topic]['haEnable'],
-											logged
-										);
-										if (haupdate.length > 0) {
-											for (let i = 0; i < haupdate.length; i++) {
-												if (haupdate[i]) {
-													if (typeof haupdate[i].payload === 'string') {
-														ha.publish(
-															this,
-															topic,
-															haupdate[i].topic,
-															haupdate[i].payload,
-															{ qos: 1 },
-															devicelogged && this.config.msgHaOutgoing,
-															'HA EF PB UPDATE RCV'
-														);
-													} else {
-														this.log.warn(
-															'not a string! : ' +
-															haupdate[i].topic +
-															'  ' +
-															haupdate[i].payload
-														);
+								if (msgtype === 'update' || msgtype === 'get_reply' || msgtype === 'set_reply') {
+									if (msgdecode !== null && typeof msgdecode === 'object') {
+										if (Object.keys(msgdecode).length > 0) {
+											//storeStreamPayload handles multiple objects
+											const haupdate = await this.storeProtoPayload[devtype](
+												this,
+												this.pdevicesStatesDict[origdevtype],
+												this.pdevicesStates[origdevtype],
+												topic,
+												msgdecode,
+												devtype,
+												this.pdevices[topic]['haEnable'],
+												logged
+											);
+											if (haupdate.length > 0) {
+												for (let i = 0; i < haupdate.length; i++) {
+													if (haupdate[i]) {
+														if (typeof haupdate[i].payload === 'string') {
+															ha.publish(
+																this,
+																topic,
+																haupdate[i].topic,
+																haupdate[i].payload,
+																{ qos: 1 },
+																devicelogged && this.config.msgHaOutgoing,
+																'HA EF PB UPDATE RCV'
+															);
+														} else {
+															this.log.warn(
+																'not a string! : ' +
+																haupdate[i].topic +
+																'  ' +
+																haupdate[i].payload
+															);
+														}
 													}
 												}
 											}
 										}
 									}
+								} else {
+									//ef.pstreamDecode()
 								}
-							} else {
-								//ef.pstreamDecode()
 							}
 						}
 						if (devtype === 'plug') {
@@ -1087,12 +1089,15 @@ class EcoflowMqtt extends utils.Adapter {
 							});
 						} else if (
 							devtype === 'pstream' ||
-							devtype === 'pstream600' ||
-							devtype === 'pstream800' ||
 							devtype === 'deltaproultra' ||
 							devtype === 'powerocean' ||
 							devtype === 'panel2' ||
-							devtype === 'alternator'
+							devtype === 'alternator' ||
+							devtype === 'deltapro3' ||
+							devtype === 'delta3' ||
+							devtype === 'delta3plus' ||
+							devtype === 'river3' ||
+							devtype === 'river3plus'
 						) {
 							this.msgCountPstream++;
 							await this.setStateAsync('info.msgCountPstream', {
