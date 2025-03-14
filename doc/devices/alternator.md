@@ -25,7 +25,7 @@
 |batSoc|0 | 100 | % | 1 |  Powerstation battery state of charge |
 |unknown269|0 | 144000 | min | 1 |  Battery Charging Time |
 |chargeToFull268|0 | 144000 | min | 1 |  Battery Charging Time |
-|stationPower|0 | 900 | W | 0.001 |  Station Power |
+|stationPower|0 | 900 | W | 1 |  Station Power |
 |wifiRssi|-100 | 10 | dBm | 1 |  Wifi RSSI |
 |ratedPower|0 | 800 | W | 1 |  Alternator rated power |
 

@@ -159,6 +159,10 @@ class EcoflowMqtt extends utils.Adapter {
 								devStates = require('./lib/dict_data/ef_alternator_data.js').deviceStates;
 							} else if (devtype === 'deltapro3') {
 								devStates = require('./lib/dict_data/ef_deltapro3_data.js').deviceStates;
+							} else if (devtype === 'delta3plus') {
+								devStates = require('./lib/dict_data/ef_delta3plus_data.js').deviceStates;
+							} else if (devtype === 'river3plus') {
+								devStates = require('./lib/dict_data/ef_river3plus_data.js').deviceStates;
 							} else {
 								devStates = require('./lib/ecoflow_data.js').pstationStates;
 							}
@@ -185,6 +189,10 @@ class EcoflowMqtt extends utils.Adapter {
 									devupd = require('./lib/dict_data/ef_deltaproultra_data.js').deviceRanges[devtype];
 								} else if (devtype === 'alternator') {
 									devupd = require('./lib/dict_data/ef_alternator_data.js').deviceRanges[devtype];
+								} else if (devtype === 'delta3plus') {
+									devupd = require('./lib/dict_data/ef_delta3plus_data.js').deviceRanges[devtype];
+								} else if (devtype === 'river3plus') {
+									devupd = require('./lib/dict_data/ef_river3plus_data.js').deviceRanges[devtype];
 								} else if (devtype === 'deltapro3') {
 									devupd = require('./lib/dict_data/ef_deltapro3_data.js').deviceRanges[devtype];
 								} else {
@@ -311,7 +319,7 @@ class EcoflowMqtt extends utils.Adapter {
 								pdevicesCmd = require('./lib/dict_data/ef_delta3plus_data.js').deviceCmd[devtype];
 								protoSource = require('./lib/dict_data/ef_delta3plus_data.js').protoSource;
 								protoMsg = require('./lib/dict_data/ef_delta3plus_data.js').protoMsg;
-								//storeProtoPayload = require('./lib/dict_data/ef_delta3plus_data.js').storeProtoPayload;
+								storeProtoPayload = require('./lib/dict_data/ef_delta3plus_data.js').storeProtoPayload;
 								prepareProtoCmd = require('./lib/dict_data/ef_delta3plus_data.js').prepareProtoCmd;
 							} else if (devtype === 'river3') {
 								pdevicesStatesDict = require('./lib/dict_data/ef_river3_data.js').deviceStatesDict[devtype];
@@ -325,7 +333,7 @@ class EcoflowMqtt extends utils.Adapter {
 								pdevicesCmd = require('./lib/dict_data/ef_river3plus_data.js').deviceCmd[devtype];
 								protoSource = require('./lib/dict_data/ef_river3plus_data.js').protoSource;
 								protoMsg = require('./lib/dict_data/ef_river3plus_data.js').protoMsg;
-								//storeProtoPayload = require('./lib/dict_data/ef_river3plus_data.js').storeProtoPayload;
+								storeProtoPayload = require('./lib/dict_data/ef_river3plus_data.js').storeProtoPayload;
 								prepareProtoCmd = require('./lib/dict_data/ef_river3plus_data.js').prepareProtoCmd;
 							} else {
 								pdevicesStatesDict = require('./lib/ecoflow_data.js').pstationStatesDict[origdevtype];
@@ -1038,7 +1046,7 @@ class EcoflowMqtt extends utils.Adapter {
 					) {
 						if (this.pdevicesStatesDict && this.pdevicesStates) {
 							let msgdecode = null;
-							if (devtype === 'delta3' || devtype === 'delta3plus' || devtype === 'river3' || devtype === 'river3plus') {
+							if (devtype === 'delta3' || devtype === 'river3') {
 								this.log.debug(
 									'[PROTOBUF unknown] ' +
 									topic +

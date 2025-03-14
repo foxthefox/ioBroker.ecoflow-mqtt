@@ -442,6 +442,10 @@
 									"label": "Delta 2 Max"
 								},
 								{
+									"value": "delta3plus",
+									"label": "Delta 3 Plus"
+								},
+								{
 									"value": "deltapro3",
 									"label": "Delta 3 Pro"
 								},
@@ -464,6 +468,10 @@
 								{
 									"value": "river2pro",
 									"label": "River 2 Pro"
+								},
+								{
+									"value": "river3plus",
+									"label": "River 3 Plus"
 								}
 							],
 							"title": "Power Station Type",
@@ -1400,16 +1408,8 @@
 									"label": "Delta 3"
 								},
 								{
-									"value": "delta3plus",
-									"label": "Delta 3 Plus"
-								},
-								{
 									"value": "river3",
 									"label": "River 3"
-								},
-								{
-									"value": "river3plus",
-									"label": "River 3 Plus"
 								}
 							],
 							"title": "Device Type",
