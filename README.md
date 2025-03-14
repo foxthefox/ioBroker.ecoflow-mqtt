@@ -333,7 +333,9 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 
 ### 1.3.0 (npm)
 * (foxthefox) correction for PStream energy
-* (foxthefox) new DeltaPro 3 implementation
+* (foxthefox) new Delta Pro 3 implementation
+* (foxthefox) new Delta 3 Plus implementation
+* (foxthefox) new River 3 Plus implementation
 * (foxthefox, radeonorama) enhancements alternator
 * (foxthefox) major refactoring
 * (foxthefox) new items to PowerOcean and HeatingRod
