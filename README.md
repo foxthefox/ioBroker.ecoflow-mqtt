@@ -264,13 +264,17 @@ some explanation to the device data
 
 [River 2 Pro](./doc/devices/river2pro.md)
 
+[River 3 Plus](./doc/devices/river3plus.md)
+
 [Delta 2](./doc/devices/delta2.md)
 
 [Delta 2 Max](./doc/devices/delta2max.md)
 
-[Delta Pro Ultra](./doc/devices/deltaproultra.md)
+[Delta 3 Plus](./doc/devices/delta3plus.md)
 
 [Delta Pro 3](./doc/devices/deltapro3.md)
+
+[Delta Pro Ultra](./doc/devices/deltaproultra.md)
 
 ### Smart Home Panel
 [Smart Home Panel](./doc/devices/panel.md)
