@@ -160,7 +160,7 @@
 |pcsMeterPower|0 | 20000 | W | 1 |  pcs meter power |
 |pcsAverageVoltage|0 | 900 | V | 1 |  pcs average voltage |
 |pcsVgridThd|0 | 60 |  | 1 |  pcs vgrid thd |
-|emsbusvolt|0 | 900 | V | 1 |  emsbusvolt |
+|emsBusVolt|0 | 900 | V | 1 |  ems bus volt |
 |emsBpPower|0 | 10000 | W | 1 |  ems bp power |
 |emsBpChg|0 |  n/a | kWh | 0.001 |  ems bp chg |
 |emsBpDsg|0 | 60 | kWh | 0.001 |  ems bp dsg |
@@ -219,10 +219,10 @@
 |duraTime| dura time |
 |pcsDci| pcs dci |
 |pcsDcv| pcs dcv |
-|pcsvbusref| pcsvbusref |
+|pcsVbusRef| pcs vbus ref |
 |pcsActivePowerRef| pcs active power ref |
-|pcsActivePowerLimitup| pcs active power limit up |
-|pcsActivePowerLimitdn| pcs active power limit dn |
+|pcsActivePowerLimitUp| pcs active power limit up |
+|pcsActivePowerLimitDn| pcs active power limit dn |
 |pcsRelayStateShow| pcs relay state show |
 |pcsGridSafetyFuncRecord| pcs grid safety func record |
 |pcsGridSafetyStateRecord| pcs grid safety state record |
@@ -263,6 +263,12 @@
 |chgDsgPwr|0 | 7000 | W | 1 |  chg dsg pwr |
 
 
+### array
+
+| State  |  Name |
+|----------|------|
+|evBindList| ev bind list |
+
 ### diagnostic
 
 | State  |     Name |  values |
@@ -302,9 +308,9 @@
 |pcsLowVol1| pcs low vol1 |
 |pcsLowVol2| pcs low vol2 |
 |pcsLowVol3| pcs low vol3 |
-|pcsLowVoltime1| pcs low vol time1 |
-|pcsLowVoltime2| pcs low vol time2 |
-|pcsLowVoltime3| pcs low vol time3 |
+|pcsLowVolTime1| pcs low vol time1 |
+|pcsLowVolTime2| pcs low vol time2 |
+|pcsLowVolTime3| pcs low vol time3 |
 |pcsOverVolRecover| pcs over vol recover |
 |pcsLowVolRecover| pcs low vol recover |
 |pcsVolRecoverTime| pcs vol recover time |
@@ -318,7 +324,7 @@
 |pcsLowFreq2| pcs low freq2 |
 |pcsLowFreqTime1| pcs low freq time1 |
 |pcsLowFreqTime2| pcs low freq time2 |
-|pcsOverReqRecover| pcs over req recover |
+|pcsOverFreqRecover| pcs over req recover |
 |pcsLowFreqRecover| pcs low freq recover |
 |pcsFreqRecoverTime| pcs freq recover time |
 |pcsHvrtLvrtSwitch| pcs hvrt lvrt switch |
@@ -369,10 +375,10 @@
 |pcsQuV2| pcs qu v2 |
 |pcsQuV3| pcs qu v3 |
 |pcsQuV4| pcs qu v4 |
-|ppcsQuQ1| ppcs qu q1 |
-|ppcsQuQ2| ppcs qu q2 |
-|ppcsQuQ3| ppcs qu q3 |
-|ppcsQuQ4| ppcs qu q4 |
+|pcsQuQ1| ppcs qu q1 |
+|pcsQuQ2| ppcs qu q2 |
+|pcsQuQ3| ppcs qu q3 |
+|pcsQuQ4| ppcs qu q4 |
 |pcsQuTimeConst| pcs qu time const |
 |pcsCospP1| pcs cosp p1 |
 |pcsCospP2| pcs cosp p2 |

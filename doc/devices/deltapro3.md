@@ -227,7 +227,7 @@
 |plugInInfoPvHVol|0 | 150 | V | 1 |  plug in info pv h vol |
 |plugInInfoPvLVol|0 | 60 | V | 1 |  plug in info pv l vol |
 |plugInInfoAcOutFreq|49 | 61 | Hz | 1 |  plug in info ac out freq |
-|plugInInfo_5p8Freq|49 | 61 | Hz | 1 |  plug in info_5p8 freq |
+|plugInInfo_5p8Freq|0 | 61 | Hz | 1 |  plug in info_5p8 freq |
 |plugInInfoAcInVol|0 | 250 | V | 1 |  plug in info ac in vol |
 |plugInInfo_24vVol|0 | 30 | V | 1 |  plug in info_24v vol |
 |plugInInfo_24vAmp|-30 | 30 | A | 1 |  plug in info_24v amp |
