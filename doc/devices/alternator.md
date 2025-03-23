@@ -7,14 +7,11 @@
 
 ## alternatorHeartbeat
 
-### string
+### diagnostic
 
-| State  |  Name |
-|----------|------|
-|status1| X_status1 |
-|unknown427| X_unknown427 |
-|unknown428| X_unknown428 |
-|unknown609| X_unknown609 |
+| State  |     Name |  values |
+|----------|:-------------:|------|
+|status1| X_status1 | {0:no undervoltage,32:undervoltage at conn. to car batt. } |
 
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
@@ -45,4 +42,12 @@
 |operationMode| 1 | 3 |  | 1 |  Operation mode | {dest:20,cmdFunc:254,cmdId:17,dataLen:3} |
 |permanentWatts| 0 | 800 | W | 1 |  Permanent Power Limit | {dest:20,cmdFunc:254,cmdId:17,dataLen:6} |
 |cableLength608| 0 | 10 | m | 1 |  X_cableLength608 | {dest:20,cmdFunc:254,cmdId:17,dataLen:6} |
+
+### string
+
+| State  |  Name |
+|----------|------|
+|unknown427| X_unknown427 |
+|unknown428| X_unknown428 |
+|unknown609| X_unknown609 |
 
