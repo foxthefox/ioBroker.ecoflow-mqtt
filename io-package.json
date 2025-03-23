@@ -55,19 +55,6 @@
                 "uk": "нові значення powerocean, нові значення powerstream, нові значення plug, покращення значень для SHP2, DPU, генератора",
                 "zh-cn": "新值 powerocean、新值 powerstream、新值插头、SHP2、DPU、交流发电机值的增强"
             },
-            "1.1.3": {
-                "en": "enhancements to alternator values,refactoring of protobuf handling/structure/component data",
-                "de": "Verbesserungen der Lichtmaschinenwerte, Umgestaltung der Protobuf-Verarbeitung/Struktur/Komponentendaten",
-                "ru": "улучшения значений генератора переменного тока, рефакторинг обработки/структуры/данных компонентов protobuf",
-                "pt": "melhorias nos valores do alternador, refatoração de dados de manipulação/estrutura/componentes do protobuf",
-                "nl": "verbeteringen aan de alternatorwaarden, refactoring van protobuf-verwerking/structuur/componentgegevens",
-                "fr": "améliorations des valeurs de l'alternateur, refactorisation des données de gestion/structure/composant de protobuf",
-                "it": "miglioramenti ai valori dell'alternatore, refactoring della gestione/struttura/dati dei componenti del protobuf",
-                "es": "Mejoras en los valores del alternador, refactorización de datos de manejo/estructura/componentes de protobuf.",
-                "pl": "ulepszenia wartości alternatora, refaktoryzacja danych dotyczących obsługi/struktury/komponentów protobufu",
-                "uk": "вдосконалення значень генератора змінного струму, рефакторинг даних обробки/структури/компонента protobuf",
-                "zh-cn": "交流发电机值的增强、protobuf 处理/结构/组件数据的重构"
-            },
             "1.1.2": {
                 "en": "handle HA restart , initial state population of BPInfo2/3 to HA",
                 "de": "Behandeln Sie den HA-Neustart und füllen Sie BPInfo2/3 im Anfangszustand mit HA aus",
@@ -80,19 +67,6 @@
                 "pl": "obsłuż ponowne uruchomienie HA, zaludnienie stanu początkowego BPInfo2/3 do HA",
                 "uk": "обробка перезапуску HA, заповнення початкового стану BPInfo2/3 до HA",
                 "zh-cn": "处理HA重启，将BPInfo2/3的初始状态填充到HA"
-            },
-            "1.1.0": {
-                "en": "added alternator, unsupported device debugging, closed issues",
-                "de": "Batterieladegerät hinzugefügt, nicht unterstütztes Geräte-Debugging, geschlossene Probleme",
-                "ru": "добавлен генератор переменного тока, отладка неподдерживаемых устройств, закрытые проблемы",
-                "pt": "alternador adicionado, depuração de dispositivo não compatível, problemas resolvidos",
-                "nl": "dynamo toegevoegd, niet-ondersteunde foutopsporing van apparaten, gesloten problemen",
-                "fr": "alternateur ajouté, débogage de périphérique non pris en charge, problèmes résolus",
-                "it": "aggiunto alternatore, debug del dispositivo non supportato, problemi chiusi",
-                "es": "alternador añadido, depuración de dispositivos no compatibles, problemas cerrados",
-                "pl": "dodany alternator, nieobsługiwane debugowanie urządzenia, zamknięte problemy",
-                "uk": "доданий генератор, налагодження непідтримуваного пристрою, закриті проблеми",
-                "zh-cn": "添加了交流发电机、不支持的设备调试、已解决的问题"
             },
             "1.0.4": {
                 "en": "correction for powerkit telegram reception #99",
