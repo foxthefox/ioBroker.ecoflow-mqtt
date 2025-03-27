@@ -249,7 +249,7 @@
 |bmsBattAmp|-80 | 80 | A | 1 |  bms batt amp |
 |bmsFullCap|0 | 80000 | mAh | 1 |  bms full cap |
 |bmsRemainCap|0 | 80000 | mAh | 1 |  bms remain cap |
-|bmsMinCellVol|0 | 5 | V | 0.001 |  Minimum temperature of the main battery |
+|bmsMinCellVol|0 | 5 | V | 0.001 |  Minimum voltage of the main battery |
 |bmsMaxCellVol|0 | 5 | V | 0.001 |  bms max cell vol |
 |cmsBattVol|0 | 60 | V | 1 |  cms batt vol |
 |cmsBattAmp|-80 | 80 | A | 1 |  cms batt amp |

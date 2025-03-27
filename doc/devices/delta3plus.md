@@ -15,7 +15,7 @@
 |tempPcsDc|0 | 100 | °C | 1 |  temp pcs dc |
 |tempPcsAc|0 | 100 | °C | 1 |  temp pcs ac |
 |plugInInfoAcOutFreq|49 | 61 | Hz | 1 |  plug in info ac out freq |
-|plugInInfoAcOutVol|0 | 60 | V | 1 |  plug in info ac out vol |
+|plugInInfoAcOutVol|0 | 250 | V | 1 |  plug in info ac out vol |
 |plugInInfoAcInVol|0 | 250 | V | 1 |  plug in info ac in vol |
 |plugInInfoPv2Amp|0 | 60 | A | 1 |  plug in info pv2 amp |
 |plugInInfoBmsVol|0 | 60 | V | 1 |  plug in info bms vol |
@@ -25,7 +25,7 @@
 |bmsBattAmp|-80 | 80 | A | 1 |  bms batt amp |
 |bmsFullCap|0 | 80000 | mAh | 1 |  bms full cap |
 |bmsRemainCap|0 | 80000 | mAh | 1 |  bms remain cap |
-|bmsMinCellVol|0 | 5 | V | 0.001 |  Minimum temperature of the main battery |
+|bmsMinCellVol|0 | 5 | V | 0.001 |  Minimum voltage of the main battery |
 |bmsMaxCellVol|0 | 5 | V | 0.001 |  bms max cell vol |
 |cmsBattVol|0 | 60 | V | 1 |  cms batt vol |
 |cmsBattAmp|-80 | 80 | A | 1 |  cms batt amp |
