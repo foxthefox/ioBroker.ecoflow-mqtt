@@ -20,15 +20,15 @@
 |plugInInfoAcOutVol|0 | 250 | V | 1 |  plug in info ac out vol |
 |plugInInfoAcInVol|0 | 250 | V | 1 |  plug in info ac in vol |
 |plugInInfoPv2Amp|0 | 15 | A | 1 |  plug in info pv2 amp |
-|plugInInfoBmsVol|0 | 60 | V | 1 |  plug in info bms vol |
+|plugInInfoBmsVol|0 | 60 | V | 1 |  plug in info main battery vol |
 |plugInInfoAcInAmp|0 | 10 | A | 1 |  plug in info ac in amp |
 |plugInInfoAcOutAmp|0 | 10 | A | 1 |  plug in info ac out amp |
-|bmsBattVol|0 | 60 | V | 1 |  bms batt vol |
-|bmsBattAmp|-80 | 80 | A | 1 |  bms batt amp |
-|bmsFullCap|0 | 20000 | mAh | 1 |  bms full cap |
-|bmsRemainCap|0 | 20000 | mAh | 1 |  bms remain cap |
+|bmsBattVol|0 | 60 | V | 1 |  main battery batt vol |
+|bmsBattAmp|-80 | 80 | A | 1 |  main battery batt amp |
+|bmsFullCap|0 | 20000 | mAh | 1 |  main battery full cap |
+|bmsRemainCap|0 | 20000 | mAh | 1 |  main battery remain cap |
 |bmsMinCellVol|0 | 5 | V | 0.001 |  Minimum voltage of the main battery |
-|bmsMaxCellVol|0 | 5 | V | 0.001 |  bms max cell vol |
+|bmsMaxCellVol|0 | 5 | V | 0.001 |  main battery max cell vol |
 |cmsBattVol|0 | 60 | V | 1 |  cms batt vol |
 |cmsBattAmp|-80 | 80 | A | 1 |  cms batt amp |
 |cmsChgReqVol|0 | 60 | V | 1 |  cms chg req vol |
@@ -49,23 +49,23 @@
 | State  |     Name |  values |
 |----------|:-------------:|------|
 |plugInInfoAcOutType| plug in info ac out type | {0:OK?} |
-|bmsBalState| bms bal state | {0:OK?} |
-|bmsAlmState| bms alm state | {0:OK?} |
-|bmsProState| bms pro state | {0:OK?} |
-|bmsFltState| bms flt state | {0:OK?} |
-|bmsAlmState_2| bms alm state_2 | {0:OK?} |
-|bmsProState_2| bms pro state_2 | {0:OK?} |
+|bmsBalState| main battery bal state | {0:OK?} |
+|bmsAlmState| main battery alm state | {0:OK?} |
+|bmsProState| main battery pro state | {0:OK?} |
+|bmsFltState| main battery flt state | {0:OK?} |
+|bmsAlmState_2| main battery alm state_2 | {0:OK?} |
+|bmsProState_2| main battery pro state_2 | {0:OK?} |
 
 ### string
 
 | State  |  Name |
 |----------|------|
-|pdBmsCommErr| pd bms comm err |
+|pdBmsCommErr| pd main battery comm err |
 |pdIotCommErr| pd iot comm err |
 |pdFirmVer| pd firm ver |
 |iotFirmVer| iot firm ver |
-|bmsFirmVer| bms firm ver |
-|bmsErrCode| bms err code |
+|bmsFirmVer| main battery firm ver |
+|bmsErrCode| main battery err code |
 |displayPropertyFullUploadPeriod| display property full upload period |
 |displayPropertyIncrementalUploadPeriod| display property incremental upload period |
 |pdDcdcCommErr| pd dcdc comm err |
@@ -85,7 +85,7 @@
 |utcTimezoneId| utc timezone id |
 |plugInInfoPvChgMaxList| plug in info pv chg max list |
 |plugInInfoPv2ChgMaxList| plug in info pv2 chg max list |
-|bmsErrCode| bms err code |
+|bmsErrCode| main battery err code |
 |wirelessCoordinateDevList| wireless coordinate dev list |
 |wirelessOilSelfStart| wireless oil self start |
 |bypassOutDisable| bypass out disable |
@@ -131,8 +131,8 @@
 |bmsChgRemTime|0 | 15999 | min | 1 |  Remaining charging time of the main battery |
 |bmsMinCellTemp|0 | 80 | °C | 1 |  Minimum temperature of the main battery |
 |bmsMaxCellTemp|0 | 80 | °C | 1 |  Temperature of the main battery |
-|bmsMinMosTemp|0 | 100 | °C | 1 |  bms min mos temp |
-|bmsMaxMosTemp|0 | 100 | °C | 1 |  bms max mos temp |
+|bmsMinMosTemp|0 | 100 | °C | 1 |  main battery min mos temp |
+|bmsMaxMosTemp|0 | 100 | °C | 1 |  main battery max mos temp |
 |cmsBattSoc|0 | 100 | % | 1 |  Overall SOC |
 |cmsBattSoh|0 | 100 | % | 1 |  Overall SOH |
 |cmsDsgRemTime|0 | 15999 | min | 1 |  Remaining discharging time |
@@ -184,8 +184,8 @@
 |plugInInfoAcInFlag| Indicates whether the AC charging port is connected | {0:disconnected,1:connected} |
 |utcSetMode| utc set mode | {0:OK?} |
 |outputPowerOffMemory| output power off memory | {0:OFF?,1:ON?} |
-|flowInfoBmsDsg| flow info bms dsg | {0:off,2:on} |
-|flowInfoBmsChg| flow info bms chg | {0:off,2:on} |
+|flowInfoBmsDsg| flow info main battery dsg | {0:off,2:on} |
+|flowInfoBmsChg| flow info main battery chg | {0:off,2:on} |
 |fastChargeSwitch| Fast charging slider switch | {0: fast charging,1:custom charging power} |
 |plugInInfoAcChargerFlag| Indicates whether the charger is connected to the AC port | {0:not charging?,1:charging?} |
 |devSleepState| Sleep status | {0:Off?,1:On?} |
