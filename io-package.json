@@ -1,20 +1,33 @@
 {
     "common": {
         "name": "ecoflow-mqtt",
-        "version": "1.3.0",
+        "version": "1.3.1",
         "news": {
+            "1.3.1": {
+                "en": "new cmd for Delta3Plus and corrections to rangess",
+                "de": "Neues CMD für Delta3plus und Korrekturen auf Rangess",
+                "ru": "Новый CMD для Delta3plus и исправления в Rangess",
+                "pt": "Novo CMD para delta3plus e correções para a faixa",
+                "nl": "Nieuwe CMD voor delta3plus en correcties voor Rangess",
+                "fr": "Nouveau CMD pour Delta3Plus et correction à la volonté",
+                "it": "Nuovo CMD per Delta3Plus e correzioni a Rangess",
+                "es": "Nuevo CMD para Delta3Plus y correcciones a Rangess",
+                "pl": "Nowy CMD dla Delta3Plus i poprawki do Rangess",
+                "uk": "Новий CMD для Delta3Plus та виправлень до Rangess",
+                "zh-cn": "用于delta3plus的新CMD和校正到Rangess"
+            },
             "1.3.0": {
-                "en": "correction PS energy, new Delta Pro 3, major refactoring",
-                "de": "Korrektur PS Energy, New Delta Pro 3, Major Refactoring",
-                "ru": "Коррекция PS Energy, New Delta Pro 3, крупный рефакторинг",
-                "pt": "Correção PS Energy, New Delta Pro 3, grande refatoração",
-                "nl": "Correctie PS Energy, New Delta Pro 3, Major Refactoring",
-                "fr": "Correction PS Energy, New Delta Pro 3, Refactorisation majeure",
-                "it": "Correzione PS Energy, New Delta Pro 3, Refactoring principale",
-                "es": "Corrección PS Energy, New Delta Pro 3, refactorización importante",
-                "pl": "Korekta PS Energy, New Delta Pro 3, główne refaktoryzacja",
-                "uk": "Корекція PS Energy, New Delta Pro 3, основне рефакторинг",
-                "zh-cn": "校正PS Energy，New Delta Pro 3，主要重构"
+                "en": "correction PS energy, new Delta Pro 3, Delta3Plus, River3Plus, major refactoring",
+                "de": "Korrektur PS Energy, New Delta Pro 3, Delta3plus, River3plus, Major Refactoring",
+                "ru": "Коррекция PS Energy, New Delta Pro 3, Delta3plus, River3plus, крупный рефакторинг",
+                "pt": "Correção PS Energy, New Delta Pro 3, Delta3plus, River3plus, Maior Refatoração",
+                "nl": "Correctie PS Energy, New Delta Pro 3, Delta3Plus, River3Plus, Major Refactoring",
+                "fr": "Correction PS Energy, New Delta Pro 3, Delta3Plus, River3Plus, Major Refactoring",
+                "it": "Correzione PS Energy, New Delta Pro 3, Delta3Plus, River3Plus, importante refactoring",
+                "es": "Corrección PS Energy, New Delta Pro 3, Delta3Plus, River3Plus, refactorización importante",
+                "pl": "Korekta PS Energy, New Delta Pro 3, Delta3Plus, River3Plus, główne refaktoryzacja",
+                "uk": "Корекція PS Energy, New Delta Pro 3, Delta3Plus, River3Plus, основне рефакторинг",
+                "zh-cn": "校正PS Energy，New Delta Pro 3，Delta3plus，River3plus，主要重构"
             },
             "1.2.2": {
                 "en": "doc for HA users, enhancements for SHP2",

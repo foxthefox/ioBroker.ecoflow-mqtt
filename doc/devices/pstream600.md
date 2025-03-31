@@ -1,5 +1,5 @@
 # States for  PSTREAM
-### version: 1.3.0
+### version: 1.3.1
 
 [inverter_heartbeat](#inverter_heartbeat)
 
