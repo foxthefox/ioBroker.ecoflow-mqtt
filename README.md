@@ -331,6 +331,11 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 
 ## Changelog
 
+### 1.3.1 (npm)
+* (foxthefox) new cmd for Delta3Plus and corrections to ranges
+* (foxthefox) major refactoring for the "JSON-devices" 
+* (foxthefox) new datapoints for PowerOcean and HeatingRod
+
 ### 1.3.0 (npm)
 * (foxthefox) correction for PStream energy
 * (foxthefox) new Delta Pro 3 implementation
