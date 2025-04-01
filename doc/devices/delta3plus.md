@@ -118,11 +118,10 @@
 |plugInInfoPv2ChgAmpMax|0 | 15 | A | 1 |  plug in info pv2 chg amp max |
 |plugInInfoPv2ChgVolMax|0 | 60 | V | 1 |  plug in info pv2 chg vol max |
 |utcTimezone|-1200 | 1200 |  | 1 |  utc timezone |
-|wirelessOilOnSoc|0 | 60 | % | 1 |  wireless oil on soc |
-|wirelessOilOffSoc|40 | 100 | % | 1 |  wireless oil off soc |
+|wirelessOilOnSoc|0 | 100 | % | 1 |  wireless oil on soc |
+|wirelessOilOffSoc|0 | 100 | % | 1 |  wireless oil off soc |
 |powGetBms|0 | 4000 | W | 1 |  pow get bms |
 |acOutFreq|49 | 61 | Hz | 1 |  AC output frequency |
-|timeTaskCurrent|0 | 60 |  | 1 |  time task current |
 |plugInInfoAcOutDsgPowMax|0 | 4000 | W | 1 |  Maximum AC discharging power |
 |bmsBattSoc|0 | 100 | % | 1 |  SOC of the main battery |
 |bmsBattSoh|0 | 100 | % | 1 |  SOH of the main battery |
@@ -142,7 +141,7 @@
 |plugInInfoPvDcAmpMax|0 | 15 | A | 1 |  plug in info pv dc amp max |
 |powGetPv|0 | 600 | W | 1 |  pow get pv |
 |plugInInfoPvChgAmpMax|0 | 15 | A | 1 |  plug in info pv chg amp max |
-|plugInInfoPvChgVolMax|0 | 60 | V | 1 |  plug in info pv chg vol max |
+|plugInInfoPvChgVolMax|0 | 61 | V | 1 |  plug in info pv chg vol max |
 |powGetAcOut|0 | 4000 | W | 1 |  pow get ac out |
 |powGetDcp|0 | 600 | W | 1 |  pow get dcp |
 |cmsBattPowOutMax|0 | 4000 | W | 1 |  cms batt pow out max |
@@ -220,6 +219,12 @@
 |xboostEn| off | on | X-Boost switch | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
 |enBeep| off | on | Beeper on/off. (true: on, false: off.) | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
 |cmsOilSelfStart| off | on | Smart Generator auto start/stop switch | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
+
+### array
+
+| State  |  Name |
+|----------|------|
+|timeTaskCurrent| time task current |
 
 ## setDp3
 

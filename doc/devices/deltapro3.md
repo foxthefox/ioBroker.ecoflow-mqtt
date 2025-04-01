@@ -108,7 +108,7 @@
 |bleStandbyTime| 0 | 2592000 | s | 1 |  Device timeout | {dest:2,cmdFunc:254,cmdId:17,dataLen:4} |
 |multiBpChgDsgMode| 0 | 2 |  | 1 |  Battery charging/discharging order | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
 |plugInInfoPvLDcAmpMax| 0 | 15 | A | 1 |  Maximum input current of the low-voltage PV port | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
-|plugInInfoAcInChgPowMax| 400 | 1500 | W | 1 |  Maximum AC input power for charging | {dest:2,cmdFunc:254,cmdId:17,dataLen:4} |
+|plugInInfoAcInChgPowMax| 100 | 1500 | W | 1 |  Maximum AC input power for charging | {dest:2,cmdFunc:254,cmdId:17,dataLen:4} |
 |plugInInfo_5p8ChgPowMax| 500 | 4000 | W | 1 |  Maximum charging power of the Power In/Out port | {dest:2,cmdFunc:254,cmdId:17,dataLen:4} |
 
 ### diagnostic
