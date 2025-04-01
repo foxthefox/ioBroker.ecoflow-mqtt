@@ -44,7 +44,7 @@
 |cmsBattVol|0 | 60 | V | 0.001 |  cms batt vol |
 |cmsBattAmp|-80 | 80 | A | 0.001 |  cms batt amp |
 |cmsChgReqVol|0 | 60 | V | 0.001 |  cms chg req vol |
-|cmsChgReqAmp|0 | 80 | A | 1 |  cms chg req amp |
+|cmsChgReqAmp|0 | 80 | A | 0.001 |  cms chg req amp |
 |runtimePropertyFullUploadPeriod|0 |  n/a | s | 1 |  runtime property full upload period |
 |runtimePropertyIncrementalUploadPeriod|0 |  n/a | s | 1 |  runtime property incremental upload period |
 |dcdcChgReqCur|0 | 80 | A | 1 |  dcdc chg req cur |
@@ -77,6 +77,12 @@
 |displayPropertyFullUploadPeriod| display property full upload period |
 |displayPropertyIncrementalUploadPeriod| display property incremental upload period |
 |pvVinRef| pv vin ref |
+
+### array
+
+| State  |  Name |
+|----------|------|
+|runtimeStatisticsSum| runtime Statistics |
 
 ## DisplayPropertyUpload
 
@@ -119,11 +125,10 @@
 |powGet_12v|0 | 60 | W | 1 |  Real-time 12V power |
 |powGetAc|0 | 8000 | W | 1 |  Real-time AC power |
 |powGetAcIn|0 | 8000 | W | 1 |  Real-time AC input power |
-|plugInInfoAcInFeq|50 | 60 | Hz | 1 |  AC input frequency |
+|plugInInfoAcInFeq|0 | 61 | Hz | 1 |  AC input frequency |
 |powGetDcp2|0 | 60 | W | 1 |  pow get dcp2 |
 |powGetBms|0 | 8000 | W | 1 |  pow get bms |
 |acOutFreq|49 | 61 | Hz | 1 |  AC output frequency |
-|timeTaskCurrent|0 | 60 | A | 1 |  time task current |
 |plugInInfoAcOutDsgPowMax|0 | 4000 | W | 1 |  Maximum AC discharging power |
 |bmsBattSoc|0 | 100 | % | 1 |  SOC of the main battery |
 |bmsBattSoh|0 | 100 | % | 1 |  SOH of the main battery |
@@ -141,7 +146,7 @@
 |timeTaskChangeCnt|0 | 60 |  | 1 |  time task change cnt |
 |plugInInfoPvDcAmpMax|0 | 60 | A | 1 |  plug in info pv dc amp max |
 |lowPowerAlarm|0 | 60 | W | 1 |  low power alarm |
-|silenceChgWatt|0 | 60 | W | 1 |  silence chg watt |
+|silenceChgWatt|0 | 600 | W | 1 |  silence chg watt |
 |powGetPv|0 | 60 | W | 1 |  pow get pv |
 |plugInInfoPvChgAmpMax|0 | 60 | A | 1 |  plug in info pv chg amp max |
 |plugInInfoPvChgVolMax|0 | 60 | V | 1 |  plug in info pv chg vol max |
@@ -204,7 +209,7 @@
 |devStandbyTime| 0 | 1440 | min | 1 |  Device timeout (min) | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
 |screenOffTime| 0 | 1800 | s | 1 |  Screen timeout (s) | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
 |acStandbyTime| 0 | 1440 | min | 1 |  AC timeout (min) | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
-|plugInInfoAcInChgPowMax| 400 | 1500 | W | 1 |  Maximum AC input power for charging | {dest:2,cmdFunc:254,cmdId:17,dataLen:4} |
+|plugInInfoAcInChgPowMax| 100 | 1500 | W | 1 |  Maximum AC input power for charging | {dest:2,cmdFunc:254,cmdId:17,dataLen:4} |
 |cmsMaxChgSoc| 50 | 100 | % | 1 |  Charge limit | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
 |cmsMinDsgSoc| 0 | 30 | % | 1 |  Discharge limit | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
 
@@ -214,4 +219,10 @@
 |----------|:-------------:|:------:|------|------|
 |xboostEn| off | on | X-Boost switch | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
 |enBeep| off | on | Beeper on/off. (true: on, false: off.) | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
+
+### array
+
+| State  |  Name |
+|----------|------|
+|timeTaskCurrent| time task current |
 
