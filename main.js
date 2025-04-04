@@ -1083,7 +1083,7 @@ class EcoflowMqtt extends utils.Adapter {
 								} catch (error) {
 									this.log.debug('pstreamDecode call ->' + error);
 								}
-								if (msgtype === 'update' || msgtype === 'get_reply' || msgtype === 'set_reply') {
+								if (msgtype === 'update' || msgtype === 'get_reply' || msgtype === 'set_reply' || msgtype === 'set') {
 									if (msgdecode !== null && typeof msgdecode === 'object') {
 										if (Object.keys(msgdecode).length > 0) {
 											//storeStreamPayload handles multiple objects
