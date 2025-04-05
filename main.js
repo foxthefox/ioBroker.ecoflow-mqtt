@@ -1486,6 +1486,7 @@ class EcoflowMqtt extends utils.Adapter {
 										String(message)
 									);
 								}
+
 								let value;
 								if (this.pdevicesStatesDict[devtype] && this.pdevicesStates) {
 									const type = this.pdevicesStatesDict[devtype][channel][item]['entity'];
@@ -1495,6 +1496,20 @@ class EcoflowMqtt extends utils.Adapter {
 										];
 										//const payloadfalse = this.pdevicesStates[devtype][channel]['switch'][item]['payload_off']
 										value = String(message) === payloadtrue ? true : false;
+										// send back the cmd for toggle prevention in HA
+										let devicelogged = false
+										if (this.pdevices[device]['debugEnable'] === true) {
+											devicelogged = true;
+										}
+										ha.publish(
+											this,
+											device,
+											channel + '_' + item + '/state', ///topic, //adapter.config.haTopic + '/' + topic + '_' + channel + '/' + state,
+											String(message),
+											{ qos: 1 },
+											devicelogged && this.config.msgHaOutgoing,
+											'HA EF JSON UPDATE SWITCH to HA'
+										);
 									} else if (type === 'level') {
 										if (
 											this.pdevicesStates[devtype][channel]['level'][item]['entity_type'] ===
