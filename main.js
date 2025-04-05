@@ -55,7 +55,6 @@ class EcoflowMqtt extends utils.Adapter {
 		this.haDevices = null;
 		this.haCounter = 0;
 		this.haCountMem = 0;
-		this.cmdLockUpd = [];
 
 		this.on('ready', this.onReady.bind(this));
 		this.on('stateChange', this.onStateChange.bind(this));
@@ -1002,16 +1001,6 @@ class EcoflowMqtt extends utils.Adapter {
 					//this topic only contains the id of device
 					topic = msgtop.topic;
 
-					if (msgtype === 'set_reply') {
-						if (this.cmdLockUpd.includes(topic)) {
-							const index = this.cmdLockUpd.indexOf(topic);
-							if (index > -1) {
-								this.cmdLockUpd.splice(index, 1);
-							}
-						}
-					}
-					const cmdLockUpd = this.cmdLockUpd.includes(topic)
-
 					let devtype = '';
 					let logged = false;
 					let devicelogged = false;
@@ -1095,8 +1084,7 @@ class EcoflowMqtt extends utils.Adapter {
 												msgdecode,
 												devtype,
 												this.pdevices[topic]['haEnable'],
-												logged,
-												cmdLockUpd
+												logged
 											);
 											if (haupdate.length > 0) {
 												for (let i = 0; i < haupdate.length; i++) {
@@ -1218,8 +1206,7 @@ class EcoflowMqtt extends utils.Adapter {
 										topic,
 										JSON.parse(message.toString()),
 										this.pdevices[topic]['haEnable'],
-										logged,
-										cmdLockUpd
+										logged
 									);
 									break;
 								case 'powerkitbp2000':
@@ -1231,8 +1218,7 @@ class EcoflowMqtt extends utils.Adapter {
 										topic,
 										JSON.parse(message.toString()),
 										this.pdevices[topic]['haEnable'],
-										logged,
-										cmdLockUpd
+										logged
 									);
 									break;
 								case 'shelly3em':
@@ -1243,8 +1229,7 @@ class EcoflowMqtt extends utils.Adapter {
 										topic,
 										JSON.parse(message.toString()),
 										this.pdevices[topic]['haEnable'],
-										logged,
-										cmdLockUpd
+										logged
 									);
 									break;
 								default:
@@ -1255,8 +1240,7 @@ class EcoflowMqtt extends utils.Adapter {
 										topic,
 										JSON.parse(message.toString()),
 										this.pdevices[topic]['haEnable'],
-										logged,
-										cmdLockUpd
+										logged
 									);
 									break;
 							}
@@ -1735,9 +1719,7 @@ class EcoflowMqtt extends utils.Adapter {
 						);
 					}
 				}
-				if (!this.cmdLockUpd.includes(device)) {
-					this.cmdLockUpd.push(device)
-				}
+
 				switch (type) {
 					case 'protobuf':
 						if (devicetype === 'pstream600' || devicetype === 'pstream800') {
