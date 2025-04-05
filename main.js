@@ -1504,7 +1504,7 @@ class EcoflowMqtt extends utils.Adapter {
 										ha.publish(
 											this,
 											device,
-											'iob_ef/' + device + '_' + channel + '/' + item + '/state', ///topic, //adapter.config.haTopic + '/' + topic + '_' + channel + '/' + state,
+											'iob_ef/' + device + '_' + channel + '/' + item, ///topic, //adapter.config.haTopic + '/' + topic + '_' + channel + '/' + state,
 											String(message),
 											{ qos: 1 },
 											devicelogged && this.config.msgHaOutgoing,
