@@ -331,12 +331,13 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 
 ## Changelog
 
-### 1.3.2 (npm)
+### 1.3.2 (WIP)
 * (foxthefox) major refactoring for the "JSON-devices" 
 * (foxthefox) new datapoints for PowerOcean and HeatingRod
 
 ### 1.3.1 (npm)
 * (foxthefox) new cmd for Delta3Plus and corrections to ranges
+* (foxthefox) correction to cmd D3P,D3+, R3+ to appear correctly in HA
 * (foxthefox) improvement on HA cmds to devices with protobuf
 * (foxthefox) delta2 settings improvement (unit, device_class)
 
