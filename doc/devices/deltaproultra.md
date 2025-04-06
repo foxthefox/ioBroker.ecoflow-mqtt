@@ -52,7 +52,7 @@
 |powerStandbyMins| 0 | 800 | min | 1 |  System standby time | {dest:2,cmdFunc:2,cmdId:81,dataLen:2} |
 |screenStandbySec| 0 | 1800 | s | 1 |  Screen standby time | {dest:2,cmdFunc:2,cmdId:82,dataLen:3} |
 |dcStandbyMins| 0 | 1440 | min | 1 |  DC12V standby time | {dest:2,cmdFunc:2,cmdId:84,dataLen:2} |
-|acStandbyMins| 0 | 800 | W | 1 |  AC standby time | {dest:2,cmdFunc:2,cmdId:83,dataLen:2} |
+|acStandbyMins| 0 | 1440 | min | 1 |  AC standby time | {dest:2,cmdFunc:2,cmdId:83,dataLen:2} |
 
 ### string
 
