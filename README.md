@@ -332,6 +332,8 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 ## Changelog
 
 ### 1.3.2 (WIP)
+* (foxthefox) improvement on HA cmds with numbers
+* (foxthefox) correction on startVoltage for alternator
 * (foxthefox) major refactoring for the "JSON-devices" 
 * (foxthefox) new datapoints for PowerOcean and HeatingRod
 * (foxthefox) new datapoints Delta2max
