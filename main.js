@@ -1423,7 +1423,7 @@ class EcoflowMqtt extends utils.Adapter {
 								'HA INIT'
 							);
 
-							/*
+
 							const status = await this.getStateAsync(id + '.info.status');
 							if (status && status.val) {
 								//eventuell zu früh um das zu senden
@@ -1444,7 +1444,7 @@ class EcoflowMqtt extends utils.Adapter {
 									}
 								);
 							}
-							*/
+
 							ha.subscribe(
 								this,
 								this.config.haTopic + '/' + this.haDevices[j] + '/set/#',
@@ -1497,19 +1497,6 @@ class EcoflowMqtt extends utils.Adapter {
 										//const payloadfalse = this.pdevicesStates[devtype][channel]['switch'][item]['payload_off']
 										value = String(message) === payloadtrue ? true : false;
 										// send back the cmd for toggle prevention in HA
-										let devicelogged = false
-										if (this.pdevices[device]['debugEnable'] === true) {
-											devicelogged = true;
-										}
-										ha.publish(
-											this,
-											device,
-											'iob_ef/' + device + '_' + channel + '/' + item, ///topic, //adapter.config.haTopic + '/' + topic + '_' + channel + '/' + state,
-											String(message),
-											{ qos: 1 },
-											devicelogged && this.config.msgHaOutgoing,
-											'HA EF JSON UPDATE SWITCH to HA'
-										);
 									} else if (type === 'level') {
 										if (
 											this.pdevicesStates[devtype][channel]['level'][item]['entity_type'] ===
@@ -1545,6 +1532,24 @@ class EcoflowMqtt extends utils.Adapter {
 											this.log.debug('[HA] ' + 'type level but not number or select ');
 										}
 									}
+
+									// send back the received value, so HA populates it internally
+									/*
+									let devicelogged = false
+									if (this.pdevices[device]['debugEnable'] === true) {
+										devicelogged = true;
+									}
+									*/
+									ha.publish(
+										this,
+										device,
+										'iob_ef/' + device + '_' + channel + '/' + item,
+										String(message),
+										{ qos: 1 },
+										true,//devicelogged && this.config.msgHaOutgoing,
+										'HA EF JSON UPDATE value to HA'
+									);
+
 								} else {
 									this.log.debug('[HA] ' + 'states or dict missing for cmd evaluation');
 								}

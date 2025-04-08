@@ -331,9 +331,15 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 
 ## Changelog
 
-### 1.3.2 (WIP)
+### 1.3.3 (WIP)
 * (foxthefox) major refactoring for the "JSON-devices" 
 * (foxthefox) new datapoints for PowerOcean and HeatingRod
+* (foxthefox) new datapoints Delta2max
+* (foxthefox) telegram counter now in each device/info
+
+### 1.3.2 (npm)
+* (foxthefox) improvement on HA cmds with numbers
+* (foxthefox) correction on startVoltage for alternator, new cablelength
 
 ### 1.3.1 (npm)
 * (foxthefox) new cmd for Delta3Plus and corrections to ranges
