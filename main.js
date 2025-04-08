@@ -1532,6 +1532,7 @@ class EcoflowMqtt extends utils.Adapter {
 											this.log.debug('[HA] ' + 'type level but not number or select ');
 										}
 									}
+									/*
 									// send back the received value, so HA populates it internally
 									let devicelogged = false
 									if (this.pdevices[device]['debugEnable'] === true) {
@@ -1546,6 +1547,7 @@ class EcoflowMqtt extends utils.Adapter {
 										devicelogged && this.config.msgHaOutgoing,
 										'HA EF JSON UPDATE SWITCH to HA'
 									);
+									*/
 								} else {
 									this.log.debug('[HA] ' + 'states or dict missing for cmd evaluation');
 								}
