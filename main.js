@@ -1423,7 +1423,7 @@ class EcoflowMqtt extends utils.Adapter {
 								'HA INIT'
 							);
 
-							/*
+
 							const status = await this.getStateAsync(id + '.info.status');
 							if (status && status.val) {
 								//eventuell zu früh um das zu senden
@@ -1444,7 +1444,7 @@ class EcoflowMqtt extends utils.Adapter {
 									}
 								);
 							}
-							*/
+
 							ha.subscribe(
 								this,
 								this.config.haTopic + '/' + this.haDevices[j] + '/set/#',
