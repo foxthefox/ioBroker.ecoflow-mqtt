@@ -1534,18 +1534,20 @@ class EcoflowMqtt extends utils.Adapter {
 									}
 
 									// send back the received value, so HA populates it internally
+									/*
 									let devicelogged = false
 									if (this.pdevices[device]['debugEnable'] === true) {
 										devicelogged = true;
 									}
+									*/
 									ha.publish(
 										this,
 										device,
 										'iob_ef/' + device + '_' + channel + '/' + item,
 										String(message),
 										{ qos: 1 },
-										devicelogged && this.config.msgHaOutgoing,
-										'HA EF JSON UPDATE SWITCH to HA'
+										true,//devicelogged && this.config.msgHaOutgoing,
+										'HA EF JSON UPDATE value to HA'
 									);
 
 								} else {
