@@ -31,9 +31,6 @@ class EcoflowMqtt extends utils.Adapter {
 			name: 'ecoflow-mqtt'
 		});
 		this.mqttClient = null;
-		this.msgCountPstream = 0;
-		this.msgCountPlug = 0;
-		this.msgCountPstation = 0;
 		this.msgReconnects = 0;
 		this.mqttUserId = '';
 		this.mqttUserName = '';
@@ -88,33 +85,34 @@ class EcoflowMqtt extends utils.Adapter {
 			//this.log.info('blade        -> ' + JSON.stringify(this.config.blades));
 			this.log.info('generator    -> ' + JSON.stringify(this.config.generators));
 			this.log.info('panel        -> ' + JSON.stringify(this.config.panels));
-			this.log.info('shelly       -> ' + JSON.stringify(this.config.shellies));
+			this.log.info('smartmeter   -> ' + JSON.stringify(this.config.shellies));
 			this.log.info('powerkit     -> ' + JSON.stringify(this.config.powerkits));
 			this.log.info('powerocean   -> ' + JSON.stringify(this.config.poweroceans));
 			this.log.info('alternator   -> ' + JSON.stringify(this.config.alternators));
 			this.log.info('unknown      -> ' + JSON.stringify(this.config.unknowns));
 
-			try {
-				//loop durch alle Geräte
 
-				const confdevices = [].concat(
-					this.config.pstreams,
-					this.config.plugs,
-					this.config.pstations,
-					this.config.waves,
-					this.config.glaciers,
-					this.config.generators,
-					this.config.panels,
-					this.config.shellies,
-					this.config.powerkits,
-					this.config.poweroceans,
-					this.config.alternators,
-					this.config.unknowns
-				);
-				if (confdevices.length > 0) {
-					//loop durch alle pstations
-					for (let psta = 0; psta < confdevices.length; psta++) {
-						let devtype = confdevices[psta]['devType'];
+			//loop durch alle Geräte
+
+			const confdevices = [].concat(
+				this.config.pstreams,
+				this.config.plugs,
+				this.config.pstations,
+				this.config.waves,
+				this.config.glaciers,
+				this.config.generators,
+				this.config.panels,
+				this.config.shellies,
+				this.config.powerkits,
+				this.config.poweroceans,
+				this.config.alternators,
+				this.config.unknowns
+			);
+			if (confdevices.length > 0) {
+				//loop durch alle devices
+				for (let psta = 0; psta < confdevices.length; psta++) {
+					let devtype = confdevices[psta]['devType'];
+					try {
 						if (devtype !== 'none' && devtype !== '') {
 							const id = confdevices[psta]['devId'];
 							const name = confdevices[psta]['devName'];
@@ -135,7 +133,9 @@ class EcoflowMqtt extends utils.Adapter {
 							if (confdevices[psta]['pstationsSlave2']) {
 								this.pdevices[id]['pstationsSlave2'] = confdevices[psta]['pstationsSlave2'];
 							}
-
+							if (confdevices[psta]['pstationsSlave3']) {
+								this.pdevices[id]['pstationsSlave3'] = confdevices[psta]['pstationsSlave3'];
+							}
 							let devStates = null;
 							if (devtype === 'pstream600' || devtype === 'pstream800') {
 								devStates = require('./lib/dict_data/ef_pstream_data.js').deviceStates;
@@ -144,10 +144,14 @@ class EcoflowMqtt extends utils.Adapter {
 								devtype === 'powerkitbp5000' ||
 								devtype === 'powerkit'
 							) {
-								devStates = require('./lib/dict_data/ef_powerkit_data.js').powerkitStates;
+								devStates = require('./lib/dict_data/ef_powerkit_data.js').deviceStates;
 							} else if (devtype === 'plug') {
 								devStates = require('./lib/dict_data/ef_plug_data.js').deviceStates;
-							} else if (devtype === 'powerocean') {
+							} else {
+								devStates = require('./lib/dict_data/ef_' + devtype + '_data.js').deviceStates;
+							}
+							/*
+							if (devtype === 'powerocean') {
 								devStates = require('./lib/dict_data/ef_powerocean_data.js').deviceStates;
 							} else if (devtype === 'panel') {
 								devStates = require('./lib/dict_data/ef_panel_data.js').panelStates;
@@ -163,10 +167,16 @@ class EcoflowMqtt extends utils.Adapter {
 								devStates = require('./lib/dict_data/ef_delta3plus_data.js').deviceStates;
 							} else if (devtype === 'river3plus') {
 								devStates = require('./lib/dict_data/ef_river3plus_data.js').deviceStates;
+							} else if (devtype === 'delta3') {
+								devStates = require('./lib/dict_data/ef_delta3_data.js').deviceStates;
+							} else if (devtype === 'river3') {
+								devStates = require('./lib/dict_data/ef_river3_data.js').deviceStates;
 							} else {
 								devStates = require('./lib/ecoflow_data.js').pstationStates;
 							}
+							*/
 
+							/*
 							if (devtype !== 'none' && devStates) {
 								let devupd = null;
 								if (devtype === 'pstream600' || devtype === 'pstream800') {
@@ -176,28 +186,13 @@ class EcoflowMqtt extends utils.Adapter {
 									devtype === 'powerkitbp5000' ||
 									devtype === 'powerkit'
 								) {
-									devupd = require('./lib/dict_data/ef_powerkit_data.js').powerkitRanges[devtype];
+									devupd = require('./lib/dict_data/ef_powerkit_data.js').deviceRanges[devtype];
 								} else if (devtype === 'plug') {
 									devupd = require('./lib/dict_data/ef_plug_data.js').deviceRanges[devtype];
-								} else if (devtype === 'powerocean') {
-									devupd = require('./lib/dict_data/ef_powerocean_data.js').deviceRanges[devtype];
-								} else if (devtype === 'panel') {
-									devupd = require('./lib/dict_data/ef_panel_data.js').panelRanges[devtype];
-								} else if (devtype === 'panel2') {
-									devupd = require('./lib/dict_data/ef_panel2_data.js').deviceRanges[devtype];
-								} else if (devtype === 'deltaproultra') {
-									devupd = require('./lib/dict_data/ef_deltaproultra_data.js').deviceRanges[devtype];
-								} else if (devtype === 'alternator') {
-									devupd = require('./lib/dict_data/ef_alternator_data.js').deviceRanges[devtype];
-								} else if (devtype === 'delta3plus') {
-									devupd = require('./lib/dict_data/ef_delta3plus_data.js').deviceRanges[devtype];
-								} else if (devtype === 'river3plus') {
-									devupd = require('./lib/dict_data/ef_river3plus_data.js').deviceRanges[devtype];
-								} else if (devtype === 'deltapro3') {
-									devupd = require('./lib/dict_data/ef_deltapro3_data.js').deviceRanges[devtype];
 								} else {
-									devupd = require('./lib/ecoflow_data.js').pstationRanges[devtype];
+									devupd = require('./lib/dict_data/ef_' + devtype + '_data.js').deviceRanges[devtype];
 								}
+								this.log.debug('Updating device ' + devtype)
 								this.log.debug('device upd ' + JSON.stringify(devupd));
 								if (devupd) {
 									if (Object.keys(devupd).length > 0) {
@@ -230,13 +225,16 @@ class EcoflowMqtt extends utils.Adapter {
 								} else {
 									this.log.warn('did not get devupd for ' + devtype);
 								}
+
 							} else {
 								this.log.error('devType not set -> ' + devtype + 'or no device states -> ' + devStates);
 							}
+							*/
+
 							if (!devStates) {
 								this.log.warn('no states for ' + devtype);
 							}
-							//devStates is now modfied and used for the object creation
+
 							//create pdevices objects
 							const origdevtype = devtype;
 							if (devtype === 'pstream600' || devtype === 'pstream800') {
@@ -252,6 +250,38 @@ class EcoflowMqtt extends utils.Adapter {
 							let protoMsg = null;
 							let storeProtoPayload = null;
 							let prepareProtoCmd = null;
+							//protobuf devices
+							if (devtype === 'pstream' ||
+								devtype === 'plug' ||
+								devtype === 'powerocean' ||
+								devtype === 'poweroceanfit' ||
+								devtype === 'panel2' ||
+								devtype === 'deltaproultra' ||
+								devtype === 'alternator' ||
+								devtype === 'deltapro3' ||
+								devtype === 'delta3' ||
+								devtype === 'delta3plus' ||
+								devtype === 'river3' ||
+								devtype === 'river3plus' ||
+								devtype === 'smartmeter' ||
+								devtype === 'stream_ac_pro' ||
+								devtype === 'stream_pro' ||
+								devtype === 'stream_ultra'
+
+							) {
+								pdevicesStatesDict = require('./lib/dict_data/ef_' + devtype + '_data.js').deviceStatesDict[devtype];
+								pdevicesCmd = require('./lib/dict_data/ef_' + devtype + '_data.js').deviceCmd[origdevtype];
+								protoSource = require('./lib/dict_data/ef_' + devtype + '_data.js').protoSource;
+								protoMsg = require('./lib/dict_data/ef_' + devtype + '_data.js').protoMsg;
+								storeProtoPayload = require('./lib/dict_data/ef_' + devtype + '_data.js').storeProtoPayload;
+								prepareProtoCmd = require('./lib/dict_data/ef_' + devtype + '_data.js').prepareProtoCmd;
+							}
+							//JSON devices
+							else {
+								pdevicesStatesDict = require('./lib/dict_data/ef_' + devtype + '_data.js').deviceStatesDict[origdevtype];
+								pdevicesCmd = require('./lib/dict_data/ef_' + devtype + '_data.js').deviceCmd[origdevtype];
+							}
+							/*
 							if (devtype === 'pstream') {
 								pdevicesStatesDict = require('./lib/dict_data/ef_pstream_data.js').deviceStatesDict[devtype];
 								pdevicesCmd = require('./lib/dict_data/ef_pstream_data.js').deviceCmd[origdevtype];
@@ -339,6 +369,7 @@ class EcoflowMqtt extends utils.Adapter {
 								pdevicesStatesDict = require('./lib/ecoflow_data.js').pstationStatesDict[origdevtype];
 								pdevicesCmd = require('./lib/ecoflow_data.js').pstationCmd[origdevtype];
 							}
+							*/
 							if (!pdevicesStatesDict) {
 								this.log.warn('no states dict for ' + devtype);
 							}
@@ -381,8 +412,9 @@ class EcoflowMqtt extends utils.Adapter {
 							if (!this.pdevicesCmd[origdevtype]) {
 								this.pdevicesCmd[origdevtype] = pdevicesCmd;
 							}
-
+							// create devices
 							if (devtype !== 'none' && devStates && pdevicesStatesDict) {
+								this.log.info('==========================');
 								this.log.info('start device state creation ->' + devtype + ' for Id ' + id);
 								try {
 									if (this.config.msgStateCreation) {
@@ -398,33 +430,68 @@ class EcoflowMqtt extends utils.Adapter {
 										native: {}
 									});
 									for (let part in pdevicesStatesDict) {
-										if (this.config.msgStateCreation) {
-											this.log.debug('____________________________________________');
-											this.log.debug('create  channel ' + part);
-										}
-										await myutils.createMyChannel(this, id, part, part, 'channel');
-										for (let key in pdevicesStatesDict[part]) {
-											let type = pdevicesStatesDict[part][key]['entity'];
-											if (type !== 'icon') {
-												if (devStates[part][type][key]) {
-													if (this.config.msgStateCreation) {
-														this.log.debug('state creation ' + key);
+										if (part !== 'bmsSlave1' && part !== 'bp2' && part !== 'statusReportBattery2' && part !== 'BPInfo1' && part !== 'BMSHeartBeatReport1' && part !== 'bPInfo1' &&
+											part !== 'bmsSlave2' && part !== 'bp3' && part !== 'statusReportBattery3' && part !== 'BPInfo2' && part !== 'BMSHeartBeatReport2' && part !== 'bPInfo2' &&
+											part !== 'BPInfo3') {
+											if (this.config.msgStateCreation) {
+												this.log.debug('____________________________________________');
+												this.log.debug('create  channel ' + part);
+											}
+											await myutils.createMyChannel(this, id, part, part, 'channel');
+											for (let key in pdevicesStatesDict[part]) {
+												let type = pdevicesStatesDict[part][key]['entity'];
+												if (type !== 'icon') {
+													if (devStates[part][type][key]) {
+														if (this.config.msgStateCreation) {
+															this.log.debug('state creation ' + key);
+														}
+														await myutils.createMyState(
+															this,
+															id,
+															part,
+															key,
+															devStates[part][type][key]
+														);
+													} else {
+														this.log.info(
+															'not created/mismatch ->' + part + ' ' + key + ' ' + type
+														);
 													}
-													await myutils.createMyState(
-														this,
-														id,
-														part,
-														key,
-														devStates[part][type][key]
-													);
-												} else {
-													this.log.info(
-														'not created/mismatch ->' + part + ' ' + key + ' ' + type
-													);
+												}
+											}
+										}
+										else if ((part === 'bmsSlave1' || part === 'bp2' || part === 'statusReportBattery2' || part === 'BPInfo1' || part === 'BMSHeartBeatReport1' || part !== 'bPInfo1') && confdevices[psta]['pstationsSlave1'] ||
+											(part === 'bmsSlave2' || part === 'bp3' || part === 'statusReportBattery3' || part === 'BPInfo2' || part === 'BMSHeartBeatReport2' || part !== 'bPInfo2') && confdevices[psta]['pstationsSlave2'] ||
+											part === 'BPInfo3' && confdevices[psta]['pstationsSlave3']) {
+											if (this.config.msgStateCreation) {
+												this.log.debug('____________________________________________');
+												this.log.debug('create  channel ' + part);
+											}
+											await myutils.createMyChannel(this, id, part, part, 'channel');
+											for (let key in pdevicesStatesDict[part]) {
+												let type = pdevicesStatesDict[part][key]['entity'];
+												if (type !== 'icon') {
+													if (devStates[part][type][key]) {
+														if (this.config.msgStateCreation) {
+															this.log.debug('state creation ' + key);
+														}
+														await myutils.createMyState(
+															this,
+															id,
+															part,
+															key,
+															devStates[part][type][key]
+														);
+													} else {
+														this.log.info(
+															'not created/mismatch ->' + part + ' ' + key + ' ' + type
+														);
+													}
 												}
 											}
 										}
 									}
+									//create timeTask only for certain devices
 									if (devtype === 'pstream' || devtype === 'plug') {
 										let part = 'time_task_config_post';
 										if (this.config.msgStateCreation) {
@@ -616,293 +683,12 @@ class EcoflowMqtt extends utils.Adapter {
 											}
 										}
 									}
-									this.log.info('pdevices states created for ' + id + ' / ' + devtype + ' / ' + name);
-									//first additional battery
-									if (confdevices[psta]['pstationsSlave1']) {
-										if (devtype == 'powerkit') {
-											if (this.config.msgStateCreation) {
-												this.log.debug('____________________________________________');
-												this.log.debug('create  channel ' + 'bp2');
-											}
-											await myutils.createMyChannel(this, id, 'bp2', 'bp2', 'channel');
-											for (let key in pdevicesStatesDict['bp1']) {
-												if (this.config.msgStateCreation) {
-													this.log.debug('state creation ' + key);
-												}
-												let type = pdevicesStatesDict['bp1'][key]['entity'];
-												if (type !== 'icon') {
-													if (devStates['bp1'][type][key]) {
-														await myutils.createMyState(
-															this,
-															id,
-															'bp2',
-															key,
-															devStates['bp1'][type][key]
-														);
-													} else {
-														this.log.info(
-															'not created/mismatch ' + ' bp2 ->' + ' ' + key + ' ' + type
-														);
-													}
-												}
-											}
-											this.log.info('powerkit add battery #1 states created');
-										} else if (devtype == 'powerocean') {
-											if (this.config.msgStateCreation) {
-												this.log.debug('____________________________________________');
-												this.log.debug('create  channel ' + 'statusReportBattery2');
-											}
-											await myutils.createMyChannel(
-												this,
-												id,
-												'statusReportBattery2',
-												'statusReportBattery2',
-												'channel'
-											);
-											for (let key in pdevicesStatesDict['statusReportBattery1']) {
-												if (this.config.msgStateCreation) {
-													this.log.debug('state creation ' + key);
-												}
-												let type = pdevicesStatesDict['statusReportBattery1'][key]['entity'];
-												if (type !== 'icon') {
-													if (devStates['statusReportBattery1'][type][key]) {
-														await myutils.createMyState(
-															this,
-															id,
-															'statusReportBattery2',
-															key,
-															devStates['statusReportBattery1'][type][key]
-														);
-													} else {
-														this.log.info(
-															'not created/mismatch ' +
-															' statusReportBattery2 ->' +
-															' ' +
-															key +
-															' ' +
-															type
-														);
-													}
-												}
-											}
-											this.log.info('powerocean add battery #1 states created');
-										} else if (devtype == 'deltaproultra') {
-											if (this.config.msgStateCreation) {
-												this.log.debug('____________________________________________');
-												this.log.debug('create  channel ' + 'BPInfo2');
-											}
-											await myutils.createMyChannel(this, id, 'BPInfo2', 'BPInfo2', 'channel');
-											for (let key in pdevicesStatesDict['BPInfo']) {
-												if (this.config.msgStateCreation) {
-													this.log.debug('state creation ' + key);
-												}
-												let type = pdevicesStatesDict['BPInfo'][key]['entity'];
-												if (type !== 'icon') {
-													if (devStates['BPInfo'][type][key]) {
-														await myutils.createMyState(
-															this,
-															id,
-															'BPInfo2',
-															key,
-															devStates['BPInfo'][type][key]
-														);
-													} else {
-														this.log.info(
-															'not created/mismatch ' +
-															' BPInfo2 ->' +
-															' ' +
-															key +
-															' ' +
-															type
-														);
-													}
-												}
-											}
-											this.log.info('DPU add battery (#2) states created');
-										} else {
-											if (this.config.msgStateCreation) {
-												this.log.debug('____________________________________________');
-												this.log.debug('create  channel ' + 'bmsSlave1');
-											}
-											await myutils.createMyChannel(
-												this,
-												id,
-												'bmsSlave1',
-												'bmsSlave1',
-												'channel'
-											);
-											for (let key in pdevicesStatesDict['bmsMaster']) {
-												if (this.config.msgStateCreation) {
-													this.log.debug('state creation ' + key);
-												}
-												let type = pdevicesStatesDict['bmsMaster'][key]['entity'];
-												if (type !== 'icon') {
-													if (devStates['bmsMaster'][type][key]) {
-														await myutils.createMyState(
-															this,
-															id,
-															'bmsSlave1',
-															key,
-															devStates['bmsMaster'][type][key]
-														);
-													} else {
-														this.log.info(
-															'not created/mismatch ' +
-															' bmsSlave1 ->' +
-															' ' +
-															key +
-															' ' +
-															type
-														);
-													}
-												}
-											}
-											this.log.info('pstation add battery #1 states created');
-										}
-									}
-									//second additional battery
-									if (confdevices[psta]['pstationsSlave2']) {
-										if (devtype == 'powerkit') {
-											if (this.config.msgStateCreation) {
-												this.log.debug('____________________________________________');
-												this.log.debug('create  channel ' + 'bp3');
-											}
-											await myutils.createMyChannel(this, id, 'bp3', 'bp3', 'channel');
-											for (let key in pdevicesStatesDict['bp1']) {
-												if (this.config.msgStateCreation) {
-													this.log.debug('state creation ' + key);
-												}
-												let type = pdevicesStatesDict['bp1'][key]['entity'];
-												if (type !== 'icon') {
-													if (devStates['bp1'][type][key]) {
-														await myutils.createMyState(
-															this,
-															id,
-															'bp3',
-															key,
-															devStates['bp1'][type][key]
-														);
-													} else {
-														this.log.info(
-															'not created/mismatch ' + 'bp3 ->' + ' ' + key + ' ' + type
-														);
-													}
-												}
-											}
-											this.log.info('powerkit add battery #2 states created');
-										} else if (devtype == 'powerocean') {
-											if (this.config.msgStateCreation) {
-												this.log.debug('____________________________________________');
-												this.log.debug('create  channel ' + 'statusReportBattery3');
-											}
-											await myutils.createMyChannel(
-												this,
-												id,
-												'statusReportBattery3',
-												'statusReportBattery3',
-												'channel'
-											);
-											for (let key in pdevicesStatesDict['statusReportBattery1']) {
-												if (this.config.msgStateCreation) {
-													this.log.debug('state creation ' + key);
-												}
-												let type = pdevicesStatesDict['statusReportBattery1'][key]['entity'];
-												if (type !== 'icon') {
-													if (devStates['statusReportBattery1'][type][key]) {
-														await myutils.createMyState(
-															this,
-															id,
-															'statusReportBattery3',
-															key,
-															devStates['statusReportBattery1'][type][key]
-														);
-													} else {
-														this.log.info(
-															'not created/mismatch ' +
-															' statusReportBattery3 ->' +
-															' ' +
-															key +
-															' ' +
-															type
-														);
-													}
-												}
-											}
-											this.log.info('powerocean add battery #1 states created');
-										} else if (devtype == 'deltaproultra') {
-											if (this.config.msgStateCreation) {
-												this.log.debug('____________________________________________');
-												this.log.debug('create  channel ' + 'BPInfo3');
-											}
-											await myutils.createMyChannel(this, id, 'BPInfo3', 'BPInfo3', 'channel');
-											for (let key in pdevicesStatesDict['BPInfo']) {
-												if (this.config.msgStateCreation) {
-													this.log.debug('state creation ' + key);
-												}
-												let type = pdevicesStatesDict['BPInfo'][key]['entity'];
-												if (type !== 'icon') {
-													if (devStates['BPInfo'][type][key]) {
-														await myutils.createMyState(
-															this,
-															id,
-															'BPInfo3',
-															key,
-															devStates['BPInfo'][type][key]
-														);
-													} else {
-														this.log.info(
-															'not created/mismatch ' +
-															' BPInfo3 ->' +
-															' ' +
-															key +
-															' ' +
-															type
-														);
-													}
-												}
-											}
-											this.log.info('DPU add battery (#3) states created');
-										} else {
-											if (this.config.msgStateCreation) {
-												this.log.debug('____________________________________________');
-												this.log.debug('create  channel ' + 'bmsSlave2');
-											}
-											await myutils.createMyChannel(
-												this,
-												id,
-												'bmsSlave2',
-												'bmsSlave2',
-												'channel'
-											);
-											for (let key in pdevicesStatesDict['bmsMaster']) {
-												if (this.config.msgStateCreation) {
-													this.log.debug('state creation ' + key);
-												}
-												let type = pdevicesStatesDict['bmsMaster'][key]['entity'];
-												if (type !== 'icon') {
-													if (devStates['bmsMaster'][type][key]) {
-														await myutils.createMyState(
-															this,
-															id,
-															'bmsSlave2',
-															key,
-															devStates['bmsMaster'][type][key]
-														);
-													} else {
-														this.log.info(
-															'not created/mismatch ' +
-															'bmsSlave2 ->' +
-															' ' +
-															key +
-															' ' +
-															type
-														);
-													}
-												}
-											}
-											this.log.info('pstation add battery #2 states created');
-										}
-									}
+									this.setState(id + '.info.msgCount', {
+										val: 0,
+										ack: true
+									});
+									this.log.info('device states created for ' + id + ' / ' + devtype + ' / ' + name);
+									this.log.info('==========================');
 								} catch (error) {
 									this.log.error('create states ' + error);
 								}
@@ -919,11 +705,13 @@ class EcoflowMqtt extends utils.Adapter {
 								);
 							}
 						}
+					} catch (error) {
+						this.log.error(devtype + ' modification or state creation went wrong ->' + error);
 					}
 				}
-			} catch (error) {
-				this.log.error('modification or state creation went wrong ->' + error);
 			}
+
+
 		} catch (error) {
 			this.log.error('read config ' + error);
 		}
@@ -957,7 +745,7 @@ class EcoflowMqtt extends utils.Adapter {
 		if (optionsMqtt.clientId.length > 18 && optionsMqtt.username.length > 18 && optionsMqtt.password.length > 18) {
 			try {
 				this.log.info('[EF] ' + 'going to connect to mqtt broker');
-				this.log.debug('[EF] ' + 'your mqtt configration:');
+				this.log.debug('[EF] ' + 'your mqtt configuration:');
 				//this.log.debug('[EF] ' + 'user          -> ' + this.mqttUserId);
 				//this.log.debug('[EF] ' + 'name          -> ' + this.mqttUserName);
 				//this.log.debug('[EF] ' + 'client        -> ' + this.mqttClientId);
@@ -973,7 +761,7 @@ class EcoflowMqtt extends utils.Adapter {
 						if (this.client) {
 							this.client.subscribe(topics, async (err) => {
 								if (!err) {
-									this.log.debug('subscribed the topics EF');
+									this.log.debug('EF subscribed the topics');
 									//initial and interval for requesting last quotas
 									await ef.getLastProtobufQuotas(this, this.pdevices);
 									await ef.getLastJSONQuotas(this, this.pdevices);
@@ -982,12 +770,12 @@ class EcoflowMqtt extends utils.Adapter {
 										await ef.getLastJSONQuotas(this, this.pdevices);
 									}, 300 * 1000); // lastQuot every 5min
 								} else {
-									this.log.warn('could not subscribe to topics ' + err);
+									this.log.warn('EF could not subscribe to topics ' + err);
 								}
 							});
 						}
 					} else {
-						this.log.debug('no topics for subscription');
+						this.log.debug('EF no topics for subscription');
 					}
 					this.setState('info.connection', true, true);
 				});
@@ -1036,17 +824,23 @@ class EcoflowMqtt extends utils.Adapter {
 						devtype === 'plug' ||
 						devtype === 'deltaproultra' ||
 						devtype === 'powerocean' ||
+						devtype === 'poweroceanfit' ||
 						devtype === 'panel2' ||
 						devtype === 'alternator' ||
 						devtype === 'deltapro3' ||
 						devtype === 'delta3' ||
 						devtype === 'delta3plus' ||
 						devtype === 'river3' ||
-						devtype === 'river3plus'
+						devtype === 'river3plus' ||
+						devtype === 'smartmeter' ||
+						devtype === 'stream_ac_pro' ||
+						devtype === 'stream_pro' ||
+						devtype === 'stream_ultra' ||
+						devtype === 'unknown'
 					) {
 						if (this.pdevicesStatesDict && this.pdevicesStates) {
 							let msgdecode = null;
-							if (devtype === 'delta3' || devtype === 'river3') {
+							if (devtype === 'unknown') {
 								this.log.debug(
 									'[PROTOBUF unknown] ' +
 									topic +
@@ -1112,34 +906,28 @@ class EcoflowMqtt extends utils.Adapter {
 											}
 										}
 									}
+									//msg counter, only when receiving telegrams
+									if (msgtype === 'update' || msgtype === 'get_reply' || msgtype === 'set_reply') {
+										try {
+											let countobj = await this.getStateAsync(topic + '.info.msgCount');
+											if (countobj) {
+												if (countobj.val !== null) {
+													await this.setState(topic + '.info.msgCount', {
+														val: parseInt(countobj.val) + 1,
+														ack: true
+													});
+												}
+											} else {
+												this.log.debug('did not get count info ' + topic + '  ' + countobj)
+											}
+										} catch (error) {
+											this.log.error('Error writing msg count ' + error)
+										}
+									}
 								} else {
 									//ef.pstreamDecode()
 								}
 							}
-						}
-						if (devtype === 'plug') {
-							this.msgCountPlug++;
-							await this.setStateAsync('info.msgCountPlug', {
-								val: this.msgCountPlug,
-								ack: true
-							});
-						} else if (
-							devtype === 'pstream' ||
-							devtype === 'deltaproultra' ||
-							devtype === 'powerocean' ||
-							devtype === 'panel2' ||
-							devtype === 'alternator' ||
-							devtype === 'deltapro3' ||
-							devtype === 'delta3' ||
-							devtype === 'delta3plus' ||
-							devtype === 'river3' ||
-							devtype === 'river3plus'
-						) {
-							this.msgCountPstream++;
-							await this.setStateAsync('info.msgCountPstream', {
-								val: this.msgCountPstream,
-								ack: true
-							});
 						}
 					} else {
 						// JSON msg
@@ -1244,7 +1032,22 @@ class EcoflowMqtt extends utils.Adapter {
 									);
 									break;
 							}
-
+							//msg counter, only when receiving telegrams
+							try {
+								let countobj = await this.getStateAsync(topic + '.info.msgCount');
+								if (countobj) {
+									if (countobj.val !== null) {
+										await this.setState(topic + '.info.msgCount', {
+											val: parseInt(countobj.val) + 1,
+											ack: true
+										});
+									}
+								} else {
+									this.log.debug('did not get count info ' + topic + '  ' + countobj)
+								}
+							} catch (error) {
+								this.log.error('Error writing msg count ' + error)
+							}
 							if (haupdate.length > 0) {
 								for (let i = 0; i < haupdate.length; i++) {
 									if (typeof haupdate[i].payload === 'string') {
@@ -1265,12 +1068,8 @@ class EcoflowMqtt extends utils.Adapter {
 								}
 							}
 						}
-						this.msgCountPstation++;
-						await this.setStateAsync('info.msgCountPstation', {
-							val: this.msgCountPstation,
-							ack: true
-						});
 					}
+
 					//reconnection trial
 					if (this.config.enableMqttReconnect) {
 						if (recon_timer) this.clearTimeout(recon_timer);
@@ -1315,7 +1114,7 @@ class EcoflowMqtt extends utils.Adapter {
 				this.log.debug('[HA] ' + 'user          -> ' + this.config.haMqttUserId);
 				this.log.debug('[HA] ' + 'port          -> ' + this.config.haMqttPort);
 				this.log.debug('[HA] ' + 'url           -> ' + this.config.haMqttUrl);
-				this.log.debug('[HA] ' + 'ptotocol      -> ' + this.config.haMqttProtocol);
+				this.log.debug('[HA] ' + 'protocol      -> ' + this.config.haMqttProtocol);
 				this.log.debug('[HA] ' + 'devices       -> ' + JSON.stringify(this.haDevices));
 
 				const optionsHaMqtt = {
@@ -1703,6 +1502,7 @@ class EcoflowMqtt extends utils.Adapter {
 							case 'plug':
 							case 'deltaproultra':
 							case 'powerocean':
+							case 'poweroceanfit':
 							case 'panel2':
 							case 'alternator':
 							case 'deltapro3':
@@ -1710,6 +1510,10 @@ class EcoflowMqtt extends utils.Adapter {
 							case 'delta3':
 							case 'river3plus':
 							case 'river3':
+							case 'smartmeter':
+							case 'stream_ac_pro':
+							case 'stream_pro':
+							case 'stream_ultra':
 								devicetype = this.pdevices[device]['devType'];
 								type = 'protobuf'; //includes also plugs
 								cmd = this.pdevicesCmd[devicetype];
@@ -1886,27 +1690,28 @@ class EcoflowMqtt extends utils.Adapter {
 						const cnt = await this.getStateAsync('info.cntDevOnline').catch((e) => {
 							this.log.warn('problem getting state info.cntDevOnline ' + e);
 						});
+						if (cnt && cnt.val) {
+							let devcount = parseInt(cnt.val);
 
-						let devcount = cnt.val;
-
-						if (state.val === 'online') {
-							if (devcount === 0) {
-								//stop recon_timer_long
-								//start recon_timer
+							if (state.val === 'online') {
+								if (devcount === 0) {
+									//stop recon_timer_long
+									//start recon_timer
+								}
+								devcount++;
+								await this.setStateAsync('info.cntDevOnline', { val: devcount, ack: true });
+							} else if (state.val === 'offline') {
+								if (devcount === 1) {
+									//stop recon_timer
+									//start recon_timer_long
+								}
+								devcount--;
+								await this.setStateAsync('info.cntDevOnline', { val: devcount, ack: true });
 							}
-							devcount++;
-							await this.setStateAsync('info.cntDevOnline', { val: devcount, ack: true });
-						} else if (state.val === 'offline') {
-							if (devcount === 1) {
-								//stop recon_timer
-								//start recon_timer_long
-							}
-							devcount--;
-							await this.setStateAsync('info.cntDevOnline', { val: devcount, ack: true });
-						}
 
-						if (this.haClient && this.pdevices[device]['haEnable'] === true) {
-							await this.initDeviceWithHA(device, String(state.val));
+							if (this.haClient && this.pdevices[device]['haEnable'] === true) {
+								await this.initDeviceWithHA(device, String(state.val));
+							}
 						}
 					}
 				}

@@ -89,13 +89,13 @@ Use the tab "Device(s) Configuration" for adding your equipment.
 
 </p></details>
 
-<details><summary><i>Parametrizing the Shelly</i></summary>
+<details><summary><i>Parametrizing the Smartmeter</i></summary>
 <p>
 
 * add a new row
-* set the deviceID of Shelly as shown in the app, please be aware that the ID is different to the Shelly device itself
+* set the deviceID of Smartmeter (Shelly or EF) as shown in the app, if Shelly please be aware that the ID is different to the Shelly device itself
 * give it a name
-* set the type to "Shelly3EM"
+* set the type to "Shelly3EM" or "EF smartmeter"
 
 </p></details>
 
@@ -285,15 +285,18 @@ some explanation to the device data
 [Power Kit](./doc/devices/powerkit.md)
 
 ### Power Ocean
-[Power Ocean](./doc/devices/powerocean.md)
+[Power Ocean DC](./doc/devices/powerocean.md)
+[Power Ocean DC FIT](./doc/devices/poweroceanfit.md)
 
 ### Generator
 [Generator](./doc/devices/generator.md)
 
 Dual Fuel generator is not available, could be implemented, if data is available.
 
-### Powerstream
+### Powerstream & Stream
 [Powerstream](./doc/devices/pstream600.md)
+[Stream AC PRO](./doc/devices/stream_ac_pro.md)
+[Stream Ultra](./doc/devices/stream_ultra.md)
 
 The 800W version is also implemented and only difference ist the 800W maximum power.
 supply priority 
@@ -303,8 +306,9 @@ supply priority
 ### Smart Plugs
 [Smart Plug](./doc/devices/plug.md)
 
-### Shelly devices
+### Smartmeter devices
 [Shelly3EM](./doc/devices/shelly3em.md)
+[Smartmeter](./doc/devices/smartmeter.md)
 
 ### Wave 2 Air conditioner
 [Wave2](./doc/devices/wave2.md)
@@ -331,11 +335,25 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 
 ## Changelog
 
-### 1.3.3 (WIP)
-* (foxthefox) major refactoring for the "JSON-devices" 
+### 1.4.1 (WIP)
 * (foxthefox) new datapoints for PowerOcean and HeatingRod
 * (foxthefox) new datapoints Delta2max
+* (foxthefox) SHP time task enable switch
+* (foxthefox) new support of Wave3 (without cmds)
+
+### 1.4.0 (npm)
+* (foxthefox) new support of EF Smartmeter
+* (foxthefox) new support of River3 (without cmds)
+* (foxthefox) new support of Stream Series
+* (foxthefox) new Statistics for Gen3 powerstattions
+* (foxthefox) new battery data for Gen3 powerstattions
+* (foxthefox) new support of Power Ocean DC FIT
+* (foxthefox) support of 3 extra batteries DeltaProUltra
+* (foxthefox) corrections at history.. values for powerstream (not kWh, it is W)
+* (foxthefox) issue #264, correction, additional bat Delta 2 has different data names than D2M
 * (foxthefox) telegram counter now in each device/info
+* (foxthefox) major refactoring for the "JSON-devices" 
+* (foxthefox) min nodejs version >=20
 
 ### 1.3.2 (npm)
 * (foxthefox) improvement on HA cmds with numbers

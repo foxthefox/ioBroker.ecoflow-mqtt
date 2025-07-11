@@ -1,5 +1,5 @@
 function logger() {
-	this.debug = function(text) {
+	this.debug = function (text) {
 		console.log(text);
 	};
 }
@@ -44,9 +44,18 @@ quota['M106ZBB4Z000001F'] = require('../lastQuotas/powerkit.json');
 quota['HJ312000BF7W1234'] = require('../lastQuotas/ocean.js').message.full;
 quota['SHP20ZFB5EF412345'] = require('../lastQuotas/panel2.js').message.jerry; //latestQuotas;
 quota['F317ZEB49G1234567'] = require('../lastQuotas/alternator.js').message.get2; //latestQuotas;
-quota['MR51ZAS4PG1234567'] = require('../lastQuotas/dp3.js').message.debug2_2; //latestQuotas;
+quota['MR51ZAS4PG1234567'] = require('../lastQuotas/dp3.js').message.all; //latestQuotas;
+quota['HW5155555G1234567'] = require('../lastQuotas/watth.js').watth;
+quota['R632Z1B1234567890'] = require('../lastQuotas/river3plus.js').all;
+quota['R332Z1B1234567890'] = require('../lastQuotas/delta3plus.js').all;
+quota['BK21Z1B1234567890'] = require('../lastQuotas/smartmeter.js').all;
+quota['HC31Z123456789012'] = require('../lastQuotas/oceanfit.js').get.all;
+quota['R631Z1B1234567890'] = require('../lastQuotas/river3.js').message.debug4_1;
+quota['R331Z1B1234567890'] = require('../lastQuotas/delta3.js').all;
+quota['BK31Z123456789012'] = require('../lastQuotas/streamacpro.js').get.all;
+quota['BK11Z123456789012'] = require('../lastQuotas/streamultra.js').get.all;
 
-const panelparams = require('../websource/shp/vm2.js').params;
+const panelparams = require('../lastQuotas/vm2.js').params;
 
 const pdevices = {
 	SHP10ZFB5EF412345: { devName: 'My panel', devType: 'panel', haEnable: false },
@@ -75,7 +84,16 @@ const pdevices = {
 	HJ312000BF7W1234: { devName: 'My powerocean', devType: 'powerocean', haEnable: false },
 	SHP20ZFB5EF412345: { devName: 'My SHP2', devType: 'panel2', haEnable: false },
 	F317ZEB49G1234567: { devName: 'My alternator', devType: 'alternator', haEnable: false },
-	MR51ZAS4PG1234567: { devName: 'My deltapro3', devType: 'deltapro3', haEnable: false }
+	MR51ZAS4PG1234567: { devName: 'My deltapro3', devType: 'deltapro3', haEnable: false },
+	HW5155555G1234567: { devName: 'My stream', devType: 'pstream800', haEnable: false },
+	R632Z1B1234567890: { devName: 'My river3plus', devType: 'river3plus', haEnable: false },
+	R332Z1B1234567890: { devName: 'My delta3plus', devType: 'delta3plus', haEnable: false },
+	BK21Z1B1234567890: { devName: 'EF smartmeter', devType: 'smartmeter', haEnable: false },
+	HC31Z123456789012: { devName: 'EF Oecan dc fit', devType: 'poweroceanfit', haEnable: false },
+	R631Z1B1234567890: { devName: 'My river3', devType: 'river3', haEnable: false },
+	R331Z1B1234567890: { devName: 'My delta3', devType: 'delta3', haEnable: false },
+	BK31Z123456789012: { devName: 'My stream ac pro', devType: 'stream_ac_pro', haEnable: false },
+	BK11Z123456789012: { devName: 'My stream ultra', devType: 'stream_ultra', haEnable: false },
 };
 
 let lastQuotInterval = null;
@@ -104,7 +122,7 @@ client.on('connect', () => {
 							JSON.stringify({ params: panelparams })
 						);
 					}, 10 * 1000); // lastQuot every 5min
-                    */
+					*/
 				} else {
 					console.log('could not subscribe to topics ' + err);
 				}
@@ -151,6 +169,51 @@ client.on('message', (topic, message) => {
 			//console.log(string);
 			const buffer = Buffer.from(string, 'hex');
 			client.publish('/app/' + mqttUserId + '/' + topic + '/thing/property/get_reply', buffer);
+		} else if (topic == 'HW5155555G1234567') {
+			const string = quota['HW5155555G1234567'].replace(/ /g, '').toLowerCase();
+			//console.log(string);
+			const buffer = Buffer.from(string, 'hex');
+			client.publish('/app/' + mqttUserId + '/' + topic + '/thing/property/get_reply', buffer);
+		} else if (topic == 'R632Z1B1234567890') {
+			const string = quota['R632Z1B1234567890'].replace(/ /g, '').toLowerCase();
+			//console.log(string);
+			const buffer = Buffer.from(string, 'hex');
+			client.publish('/app/' + mqttUserId + '/' + topic + '/thing/property/get_reply', buffer);
+		} else if (topic == 'R332Z1B1234567890') {
+			const string = quota['R332Z1B1234567890'].replace(/ /g, '').toLowerCase();
+			//console.log(string);
+			const buffer = Buffer.from(string, 'hex');
+			client.publish('/app/' + mqttUserId + '/' + topic + '/thing/property/get_reply', buffer);
+		} else if (topic == 'BK21Z1B1234567890') {
+			const string = quota['BK21Z1B1234567890'].replace(/ /g, '').toLowerCase();
+			//console.log(string);
+			const buffer = Buffer.from(string, 'hex');
+			client.publish('/app/' + mqttUserId + '/' + topic + '/thing/property/get_reply', buffer);
+		} else if (topic == 'HC31Z123456789012') {
+			const string = quota['HC31Z123456789012'].replace(/ /g, '').toLowerCase();
+			//console.log(string);
+			const buffer = Buffer.from(string, 'hex');
+			client.publish('/app/' + mqttUserId + '/' + topic + '/thing/property/get_reply', buffer);
+		} else if (topic == 'R631Z1B1234567890') {
+			const string = quota['R631Z1B1234567890'].replace(/ /g, '').toLowerCase();
+			//console.log(string);
+			const buffer = Buffer.from(string, 'hex');
+			client.publish('/app/' + mqttUserId + '/' + topic + '/thing/property/get_reply', buffer);
+		} else if (topic == 'R331Z1B1234567890') {
+			const string = quota['R331Z1B1234567890'].replace(/ /g, '').toLowerCase();
+			//console.log(string);
+			const buffer = Buffer.from(string, 'hex');
+			client.publish('/app/' + mqttUserId + '/' + topic + '/thing/property/get_reply', buffer);
+		} else if (topic == 'BK31Z123456789012') {
+			const string = quota['BK31Z123456789012'].replace(/ /g, '').toLowerCase();
+			//console.log(string);
+			const buffer = Buffer.from(string, 'hex');
+			client.publish('/app/' + mqttUserId + '/' + topic + '/thing/property/get_reply', buffer);
+		} else if (topic == 'BK11Z123456789012') {
+			const string = quota['BK11Z123456789012'].replace(/ /g, '').toLowerCase();
+			//console.log(string);
+			const buffer = Buffer.from(string, 'hex');
+			client.publish('/app/' + mqttUserId + '/' + topic + '/thing/property/get_reply', buffer);
 		} else {
 			client.publish(
 				'/app/' + mqttUserId + '/' + topic + '/thing/property/get_reply',
@@ -158,4 +221,4 @@ client.on('message', (topic, message) => {
 			);
 		}
 	}
-});
+}); 

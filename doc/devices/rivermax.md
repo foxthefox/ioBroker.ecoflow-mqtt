@@ -1,5 +1,5 @@
 # States for  RIVERMAX
-### version: 1.3.1
+### version: 1.4.0
 
 [inv](#inv)
 
@@ -51,7 +51,7 @@
 
 | State  |      Min     |     Max     |  Unit |  Mult |  Name |  cmd |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
-|cfgStandbyMin| 0 | 1440 | min | 1 |  AC standby time /min 0 Never standby 1440 Default value | {from:Android,operateType:TCP,id:153750799,lang:en-us,params:{id:153,standByMins:360},version:1.0} |
+|cfgStandbyMin| 0 | 720 | min | 1 |  AC standby time /min 0 Never standby 720 Default value | {from:Android,operateType:TCP,id:153750799,lang:en-us,params:{id:153,standByMins:360},version:1.0} |
 
 ### switch
 
@@ -72,7 +72,7 @@
 |vol|0 | 60 | V | 0.001 |  Voltage |
 |minCellVol|0 | 60 | V | 0.001 |  Minimum cell voltage |
 |soc|0 | 100 | % | 1 |  Remaining battery percentage |
-|amp|0 | 50 | A | 0.001 |  Current |
+|amp|0 | 25 | A | 0.001 |  Current |
 |minCellTemp|0 | 80 | °C | 1 |  Minimum cell temperature |
 |minMosTemp|0 | 80 | °C | 1 |  Minimum MOS temperature |
 |maxCellVol|0 | 60 | V | 0.001 |  Maximum cell voltage |
@@ -99,7 +99,7 @@
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|wattsInSum|0 | 500 | W | 1 |  Total input power |
+|wattsInSum|0 | 4000 | W | 1 |  Total input power |
 |dcInUsedTime|0 | 9999999 | min | 0.0166 |  DC charging time |
 |chgPowerDC|0 |  n/a | kWh | 0.001 |  Cumulative DC power charged for PD (adapter) |
 |dsgPowerDC|0 |  n/a | kWh | 0.001 |  Cumulative DC discharge capacity |

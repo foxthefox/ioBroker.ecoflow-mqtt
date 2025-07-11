@@ -1,13 +1,11 @@
-# States for  DELTA3PLUS
+# States for  DELTA3
 ### version: 1.4.0
 
 [RuntimePropertyUpload](#RuntimePropertyUpload)
 
 [DisplayPropertyUpload](#DisplayPropertyUpload)
 
-[BMSHeartBeatReport0](#BMSHeartBeatReport0)
-
-[BMSHeartBeatReport1](#BMSHeartBeatReport1)
+[BMSHeartBeatReport](#BMSHeartBeatReport)
 
 [setDp3](#setDp3)
 
@@ -23,7 +21,6 @@
 |plugInInfoAcOutFreq|49 | 61 | Hz | 1 |  plug in info ac out freq |
 |plugInInfoAcOutVol|0 | 250 | V | 1 |  plug in info ac out vol |
 |plugInInfoAcInVol|0 | 250 | V | 1 |  plug in info ac in vol |
-|plugInInfoPv2Amp|0 | 15 | A | 1 |  plug in info pv2 amp |
 |plugInInfoBmsVol|0 | 60 | V | 1 |  plug in info main battery vol |
 |plugInInfoAcInAmp|0 | 10 | A | 1 |  plug in info ac in amp |
 |plugInInfoAcOutAmp|0 | 10 | A | 1 |  plug in info ac out amp |
@@ -42,8 +39,6 @@
 |tempPv|0 | 100 | °C | 1 |  temp pv |
 |plugInInfoPvVol|0 | 60 | V | 1 |  plug in info pv vol |
 |plugInInfoPvAmp|0 | 15 | A | 1 |  plug in info pv amp |
-|tempPv2|0 | 100 | °C | 1 |  temp pv2 |
-|plugInInfoPv2Vol|0 | 60 | V | 1 |  plug in info pv2 vol |
 |plugInInfoDcpVol|0 | 60 | V | 1 |  plug in info dcp vol |
 |plugInInfoDcpAmp|0 | 15 | A | 1 |  plug in info dcp amp |
 
@@ -88,14 +83,11 @@
 |pvDcChgSettingList| pv dc chg setting list |
 |utcTimezoneId| utc timezone id |
 |plugInInfoPvChgMaxList| plug in info pv chg max list |
-|plugInInfoPv2ChgMaxList| plug in info pv2 chg max list |
 |bmsErrCode| main battery err code |
 |wirelessCoordinateDevList| wireless coordinate dev list |
 |wirelessOilSelfStart| wireless oil self start |
 |bypassOutDisable| bypass out disable |
 |pdErrCode| pd err code |
-|selfPoweredConflictFlag| Self Powered Conflict Flag |
-|touModeConflictFlag| TOU Mode Conflict Flag |
 |plugInInfoDcpDetail| plug in info dcp detail |
 |plugInInfoDcpResv| plug in info dcp resv |
 |plugInInfoDcpSn| plug in info dcp sn |
@@ -103,6 +95,8 @@
 |dcdcErrCode| dcdc err code |
 |plugInInfoDcpErrCode| plug in info dcp err code |
 |invErrCode| inv err code |
+|selfPoweredConflictFlag| Self Powered Conflict Flag |
+|touModeConflictFlag| TOU Mode Conflict Flag |
 
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
@@ -110,8 +104,8 @@
 |powInSumW|0 | 4000 | W | 1 |  Total input power |
 |powOutSumW|0 | 1000 | W | 1 |  Total output power |
 |energyBackupStartSoc|0 | 100 | % | 1 |  Backup reserve level |
-|powGetQcusb1|0 | 140 | W | 1 |  Real-time power of the USB 1 port |
-|powGetQcusb2|0 | 140 | W | 1 |  Real-time power of the USB 2 port |
+|powGetQcusb1|0 | 120 | W | 1 |  Real-time power of the USB 1 port |
+|powGetQcusb2|0 | 120 | W | 1 |  Real-time power of the USB 2 port |
 |powGetTypec1|0 | 4000 | W | 1 |  Real-time power of Type-C port 1 |
 |powGetTypec2|0 | 4000 | W | 1 |  Real-time power of Type-C port 2 |
 |acAlwaysOnMiniSoc|0 | 100 | % | 1 |  Sets the minimum SOC to enable the AC Always-on function |
@@ -119,10 +113,6 @@
 |powGetAc|0 | 4000 | W | 1 |  Real-time AC power |
 |powGetAcIn|0 | 4000 | W | 1 |  Real-time AC input power |
 |plugInInfoAcInFeq|49 | 61 | Hz | 1 |  AC input frequency |
-|powGetPv2|0 | 600 | W | 1 |  pow get pv2 |
-|plugInInfoPv2DcAmpMax|0 | 15 | A | 1 |  plug in info pv2 dc amp max |
-|plugInInfoPv2ChgAmpMax|0 | 15 | A | 1 |  plug in info pv2 chg amp max |
-|plugInInfoPv2ChgVolMax|0 | 60 | V | 1 |  plug in info pv2 chg vol max |
 |utcTimezone|-1200 | 1200 |  | 1 |  utc timezone |
 |wirelessOilOnSoc|0 | 100 | % | 1 |  wireless oil on soc |
 |wirelessOilOffSoc|0 | 100 | % | 1 |  wireless oil off soc |
@@ -152,9 +142,9 @@
 |powGetDcp|0 | 600 | W | 1 |  pow get dcp |
 |cmsBattPowOutMax|0 | 4000 | W | 1 |  cms batt pow out max |
 |cmsBattPowInMax|0 | 4000 | W | 1 |  cms batt pow in max |
-|backupReverseSoc|0 | 100 | % | 1 |  Backup Reverse Soc |
 |cmsBattFullEnergy|0 | 1024 | Wh | 1 |  cms batt full energy |
 |stormPatternEndTime|0 | 60 | h | 1 |  storm pattern end time |
+|backupReverseSoc|0 | 100 | % | 1 |  Backup Reverse Soc |
 
 
 ### level
@@ -205,14 +195,10 @@
 |plugInInfoPvType| plug in info pv type | {0:OK?} |
 |plugInInfoPvChargerFlag| plug in info pv charger flag | {0:OK?} |
 |flowInfoAcOut| flow info ac out | {0:OK?} |
-|flowInfoPv2| flow info pv2 | {0:OK?} |
-|plugInInfoPv2Flag| plug in info pv2 flag | {0:OK?} |
-|plugInInfoPv2Type| plug in info pv2 type | {0:OK?} |
 |flowInfoDcpIn| flow info dcp in | {0:OK?} |
 |flowInfoDcpOut| flow info dcp out | {0:OK?} |
 |plugInInfoDcpInFlag| plug in info dcp in flag | {0:OK?} |
 |plugInInfoDcpType| plug in info dcp type | {0:OK?} |
-|plugInInfoPv2ChargerFlag| plug in info pv2 charger flag | {0:OK?} |
 |plugInInfoDcpDsgChgType| plug in info dcp dsg chg type | {0:OK?} |
 |plugInInfoDcpChargerFlag| plug in info dcp charger flag | {0:OK?} |
 |plugInInfoDcpRunState| plug in info dcp run state | {0:OK?} |
@@ -234,111 +220,7 @@
 |timeTaskCurrent| time task current |
 |energyStrategyOperateMode| Energy Strategy Operate Mode |
 
-## BMSHeartBeatReport0
-
-### string
-
-| State  |  Name |
-|----------|------|
-|num| num |
-|type| type |
-|cellId| cell id |
-|errCode| err code |
-|sysVer| sys ver |
-|bqSysStatReg| bq sys stat reg |
-|cellSeriesNum| cell series num |
-|cellNtcNum| cell ntc num |
-|hwVer| hw ver |
-|bmsHeartbeatVer| bms heartbeat ver |
-|ecloudOcv| ecloud ocv |
-|bmsSn| bms sn |
-|productType| product type |
-|productDetail| product detail |
-|sysLoaderVer| sys loader ver |
-|mosNtcNum| mos ntc num |
-|envNtcNum| env ntc num |
-|curSensorNtcNum| cur sensor ntc num |
-|balanceCmd| balance cmd |
-|afeSysStatus| afe sys status |
-|mcuPinInStatus| mcu pin in status |
-|mcuPinOutStatus| mcu pin out status |
-|packSn| pack sn |
-|waterInFlag| water in flag |
-
-### number
-| State  |      Min     |      Max     |  Unit |  Mult |  Name |
-|----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|soc|0 | 100 | % | 1 |  soc |
-|vol|0 | 60 | V | 0.001 |  vol |
-|amp|0 | 30 | A | 0.001 |  amp |
-|temp|0 | 90 | °C | 1 |  temp |
-|designCap|0 | 20000 | mAh | 1 |  design cap |
-|remainCap|0 | 20000 | mAh | 1 |  remain cap |
-|fullCap|0 | 20000 | mAh | 1 |  full cap |
-|cycles|0 | 6000 |  | 1 |  Number of cycles |
-|soh|0 | 100 | % | 1 |  soh |
-|maxCellVol|0 | 5 | V | 0.001 |  max cell vol |
-|minCellVol|0 | 5 | V | 0.001 |  min cell vol |
-|maxCellTemp|0 | 90 | °C | 1 |  max cell temp |
-|minCellTemp|0 | 90 | °C | 1 |  min cell temp |
-|maxMosTemp|0 | 100 | °C | 1 |  max mos temp |
-|minMosTemp|0 | 100 | °C | 1 |  min mos temp |
-|tagChgAmp|0 | 60 | A | 0.001 |  tag chg amp |
-|f32ShowSoc|0 | 100 | % | 1 |  f32 show soc |
-|inputWatts|0 | 1000 | W | 1 |  input watts |
-|outputWatts|0 | 1000 | W | 1 |  output watts |
-|remainTime|0 | 5999 | h | 1 |  remain time |
-|maxVolDiff|0 | 1 | V | 0.001 |  max vol diff |
-|actSoc|0 | 100 | % | 1 |  act soc |
-|diffSoc|0 | 100 | % | 1 |  diff soc |
-|targetSoc|0 | 100 | % | 1 |  target soc |
-|accuChgCap|0 |  n/a | mAh | 1 |  accu chg cap |
-|accuDsgCap|0 |  n/a | mAh | 1 |  accu dsg cap |
-|realSoh|0 | 100 | % | 1 |  real soh |
-|calendarSoh|0 | 100 | % | 1 |  calendar soh |
-|cycleSoh|0 | 100 | % | 1 |  cycle soh |
-|maxEnvTemp|0 | 80 | °C | 1 |  max env temp |
-|minEnvTemp|-10 | 80 | °C | 1 |  min env temp |
-|maxCurSensorTemp|0 | 90 | °C | 1 |  max cur sensor temp |
-|minCurSensorTemp|0 | 90 | °C | 1 |  min cur sensor temp |
-|accuChgEnergy|0 |  n/a | kWh | 0.001 |  accu chg energy |
-|accuDsgEnergy|0 |  n/a | kWh | 0.001 |  accu dsg energy |
-|heatfilmNtcNum|0 | 10 |  | 1 |   heatfilm Ntc Num |
-|minHeatfilmTemp|0 | 90 | °C | 1 |  min Heatfilm Temp |
-|maxHeatfilmTemp|0 | 90 | °C | 1 |  max Heatfilm Temp |
-
-
-### diagnostic
-
-| State  |     Name |  values |
-|----------|:-------------:|------|
-|openBmsFlag| open bms flag | {0:OK?} |
-|bmsFault| bms fault | {0:OK?} |
-|mosState| mos state | {0:OK?} |
-|balanceState| balance state | {0:OK?} |
-|sysState| sys state | {0:OK?} |
-|chgDsgState| chg dsg state | {0:OK?} |
-|allErrCode| all err code | {0:OK?} |
-|allBmsFault| all bms fault | {0:OK?} |
-|bmsAlarmState1| bms alarm state1 | {0:OK?} |
-|bmsAlarmState2| bms alarm state2 | {0:OK?} |
-|bmsProtectState1| bms protect state1 | {0:OK?} |
-|bmsProtectState2| bms protect state2 | {0:OK?} |
-|bmsFaultState| bms fault state | {0:OK?} |
-
-### array
-
-| State  |  Name |
-|----------|------|
-|cellVol| Cell voltage |
-|cellTemp| Cell temperature |
-|mosTemp| mos temp |
-|envTemp| env temp |
-|curSensorTemp| cur sensor temp |
-|remainBalanceTime| remain balance time |
-|heatfilmTemp| heatfilm Temp |
-
-## BMSHeartBeatReport1
+## BMSHeartBeatReport
 
 ### string
 

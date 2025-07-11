@@ -1,5 +1,5 @@
 # States for  DELTA
-### version: 1.3.1
+### version: 1.4.0
 
 [bmsMaster](#bmsMaster)
 
@@ -114,7 +114,7 @@
 |outputWatts|0 | 4000 | W | 1 |  Discharging power |
 |dcInTemp|0 | 80 | °C | 1 |  DC temperature |
 |invOutFreq|0 | 62 | Hz | 1 |  Inverter output frequency |
-|cfgFastChgWatts|200 | 1200 | W | 1 |  Maximum charging power for AC fast charging (W) |
+|cfgFastChgWatts|200 | 2400 | W | 1 |  Maximum charging power for AC fast charging (W) |
 |acInAmp|0 | 13 | A | 0.001 |  Inverter input current |
 |outTemp|0 | 90 | °C | 1 |  Inverter temperature |
 |invOutVol|0 | 250 | V | 0.001 |  Actual inverter output voltage |
@@ -146,7 +146,7 @@
 | State  |      Min     |     Max     |  Unit |  Mult |  Name |  cmd |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
 |cfgStandbyMin| 0 | 720 | min | 1 |  AC standby time /min 0 Never standby 720 Default value | {from:Android,operateType:TCP,id:153750799,lang:en-us,params:{id:153,standByMins:360},version:1.0} |
-|cfgSlowChgWatts| 200 | 700 | W | 1 |  Maximum charging power for AC slow charging (W) | {from:Android,operateType:TCP,id:747329085,lang:en-us,params:{id:69,slowChgPower:300},version:1.0} |
+|cfgSlowChgWatts| 200 | 1000 | W | 1 |  Maximum charging power for AC slow charging (W) | {from:Android,operateType:TCP,id:747329085,lang:en-us,params:{id:69,slowChgPower:300},version:1.0} |
 
 ### diagnostic
 
@@ -165,7 +165,7 @@
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|carOutVol|0 | 15 | V | 0.1 |  Car charging output voltage |
+|carOutVol|0 | 60 | V | 0.1 |  Car charging output voltage |
 |carTemp|0 | 80 | °C | 1 |  Car charging temperature |
 |outWatts|0 | 600 | W | 0.1 |  PV output power |
 |carOutAmp|0 | 13 | A | 0.01 |  Car charging output current |
@@ -174,7 +174,7 @@
 |inWatts|0 | 500 | W | 0.1 |  PV input power |
 |dcdc12vVol|0 | 60 | V | 0.1 |  DC12V30A output voltage, which is valid only for DELTA Pro |
 |inAmp|0 | 13 | A | 0.01 |  PV input current |
-|inVol|0 | 65 | V | 0.1 |  PV input voltage |
+|inVol|0 | 150 | V | 0.1 |  PV input voltage |
 |carOutWatts|0 | 500 | W | 0.1 |  Car charging output power |
 |mpptTemp|0 | 80 | °C | 1 |  MPPT temperature |
 |outVol|0 | 60 | V | 0.1 |  PV output voltage |

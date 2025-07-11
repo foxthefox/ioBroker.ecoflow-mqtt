@@ -1,5 +1,5 @@
 # States for  WAVE2
-### version: 1.3.1
+### version: 1.4.0
 
 [pd](#pd)
 
@@ -282,7 +282,7 @@
 |bmsDisplayTime|0 | 5999 | min | 1 |  Time displayed in BMS |
 |maxCellVol|0 | 60 | V | 0.001 |  Maximum cell voltage |
 |bmsSoc|0 | 100 | % | 1 |  Battery SoC |
-|remainCap|0 | 40000 | mAh | 1 |  Remaining capacity |
+|remainCap|0 | 80000 | mAh | 1 |  Remaining capacity |
 |bmsCur|0 | 15 | A | 0.001 |  BMS current |
 |maxCellTemp|0 | 80 | °C | 1 |  Maximum cell temperature |
 |minCellVol|0 | 60 | V | 0.001 |  Minimum cell voltage |
@@ -300,7 +300,7 @@
 |minCellTmp|0 | 60 | °C | 1 |  Minimum cell temperature |
 |soc|0 | 100 | % | 1 |  Remaining battery percentage |
 |remainTime|0 | 143999 | min | 1 |  Time remaining |
-|amp|0 | 50 | A | 0.001 |  Current |
+|amp|0 | 25 | A | 0.001 |  Current |
 |tmp|0 | 60 | °C | 1 |  Temperature |
 |inWatts|0 | 600 | W | 1 |  Input power |
 |designCap|0 | 80000 | mAh | 1 |  Design capacity |
