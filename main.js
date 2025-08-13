@@ -49,6 +49,7 @@ class EcoflowMqtt extends utils.Adapter {
 		this.storeProtoPayload = {};
 		this.prepareProtoCmd = {};
 		this.quotas = {};
+		this.unknownPBmsg = {};
 		this.haDevices = null;
 		this.haCounter = 0;
 		this.haCountMem = 0;
@@ -763,11 +764,9 @@ class EcoflowMqtt extends utils.Adapter {
 								if (!err) {
 									this.log.debug('EF subscribed the topics');
 									//initial and interval for requesting last quotas
-									await ef.getLastProtobufQuotas(this, this.pdevices);
-									await ef.getLastJSONQuotas(this, this.pdevices);
+									await ef.getLastQuotas(this, this.pdevices);
 									lastQuotInterval = this.setInterval(async () => {
-										await ef.getLastProtobufQuotas(this, this.pdevices);
-										await ef.getLastJSONQuotas(this, this.pdevices);
+										await ef.getLastQuotas(this, this.pdevices);
 									}, 300 * 1000); // lastQuot every 5min
 								} else {
 									this.log.warn('EF could not subscribe to topics ' + err);
@@ -965,7 +964,7 @@ class EcoflowMqtt extends utils.Adapter {
 											topic +
 											' [' +
 											msgtype +
-											'] -> set w/o params' +
+											'] -> set w/o params ' +
 											JSON.stringify(setmsg)
 										);
 									}
@@ -992,6 +991,7 @@ class EcoflowMqtt extends utils.Adapter {
 										dict,
 										this.pdevicesStates[devtype],
 										topic,
+										msgtype,
 										JSON.parse(message.toString()),
 										this.pdevices[topic]['haEnable'],
 										logged
@@ -1004,6 +1004,7 @@ class EcoflowMqtt extends utils.Adapter {
 										dict,
 										this.pdevicesStates[devtype],
 										topic,
+										msgtype,
 										JSON.parse(message.toString()),
 										this.pdevices[topic]['haEnable'],
 										logged
@@ -1015,6 +1016,7 @@ class EcoflowMqtt extends utils.Adapter {
 										dict,
 										this.pdevicesStates[devtype],
 										topic,
+										msgtype,
 										JSON.parse(message.toString()),
 										this.pdevices[topic]['haEnable'],
 										logged
@@ -1026,6 +1028,7 @@ class EcoflowMqtt extends utils.Adapter {
 										dict,
 										this.pdevicesStates[devtype],
 										topic,
+										msgtype,
 										JSON.parse(message.toString()),
 										this.pdevices[topic]['haEnable'],
 										logged
@@ -1192,14 +1195,17 @@ class EcoflowMqtt extends utils.Adapter {
 							const type = this.pdevices[id]['devType'];
 							let bat1 = false;
 							let bat2 = false;
+							let bat3 = false;
 							if (this.pdevices[id]['pstationsSlave1']) {
 								bat1 = this.pdevices[id]['pstationsSlave1'];
 							}
 							if (this.pdevices[id]['pstationsSlave2']) {
 								bat2 = this.pdevices[id]['pstationsSlave2'];
 							}
-
-							const discovery = ha.prepareDiscoveryMessage(
+							if (this.pdevices[id]['pstationsSlave3']) {
+								bat3 = this.pdevices[id]['pstationsSlave3'];
+							}
+							const discovery = ha.prepareFullDiscovery(
 								this.haDevices[j],
 								type,
 								this.pdevicesStatesDict[type],
@@ -1207,6 +1213,7 @@ class EcoflowMqtt extends utils.Adapter {
 								this.config.haTopic,
 								bat1,
 								bat2,
+								bat3,
 								version
 							);
 							if (this.config.showDiscoveryObject) {
@@ -1690,7 +1697,7 @@ class EcoflowMqtt extends utils.Adapter {
 						const cnt = await this.getStateAsync('info.cntDevOnline').catch((e) => {
 							this.log.warn('problem getting state info.cntDevOnline ' + e);
 						});
-						if (cnt && cnt.val) {
+						if (cnt) {
 							let devcount = parseInt(cnt.val);
 
 							if (state.val === 'online') {
@@ -1699,19 +1706,20 @@ class EcoflowMqtt extends utils.Adapter {
 									//start recon_timer
 								}
 								devcount++;
-								await this.setStateAsync('info.cntDevOnline', { val: devcount, ack: true });
+								this.setState('info.cntDevOnline', { val: devcount, ack: true });
 							} else if (state.val === 'offline') {
 								if (devcount === 1) {
 									//stop recon_timer
 									//start recon_timer_long
 								}
 								devcount--;
-								await this.setStateAsync('info.cntDevOnline', { val: devcount, ack: true });
+								this.setState('info.cntDevOnline', { val: devcount, ack: true });
 							}
-
-							if (this.haClient && this.pdevices[device]['haEnable'] === true) {
-								await this.initDeviceWithHA(device, String(state.val));
-							}
+						} else {
+							this.log.debug('info.cntDevOnline not retrieved ' + JSON.stringify(cnt))
+						}
+						if (this.haClient && this.pdevices[device]['haEnable'] === true) {
+							await this.initDeviceWithHA(device, String(state.val));
 						}
 					}
 				}
@@ -1738,11 +1746,15 @@ class EcoflowMqtt extends utils.Adapter {
 			const type = this.pdevices[id]['devType'];
 			let bat1 = false;
 			let bat2 = false;
+			let bat3 = false
 			if (this.pdevices[id]['pstationsSlave1']) {
 				bat1 = this.pdevices[id]['pstationsSlave1'];
 			}
 			if (this.pdevices[id]['pstationsSlave2']) {
 				bat2 = this.pdevices[id]['pstationsSlave2'];
+			}
+			if (this.pdevices[id]['pstationsSlave3']) {
+				bat3 = this.pdevices[id]['pstationsSlave3'];
 			}
 
 			const update = ha.prepareFullHaUpd(
@@ -1751,7 +1763,8 @@ class EcoflowMqtt extends utils.Adapter {
 				this.pdevicesStates[type],
 				this.config.haTopic,
 				bat1,
-				bat2
+				bat2,
+				bat3
 			);
 			if (this.config.msgHaStatusInitial) {
 				this.log.debug('[HA STATE INIT DATA] ' + id + ' initial update: ' + update.length + ' objects ');
@@ -1878,8 +1891,8 @@ class EcoflowMqtt extends utils.Adapter {
 
 			case 'quotajson':
 				if (obj.callback && obj.message) {
-					this.log.info('send msg quota json data');
-					await ef.getLastJSONQuotas(this, this.pdevices);
+					this.log.info('send msg quota data');
+					await ef.getLastQuotas(this, this.pdevices);
 					const timeout = this.setTimeout(() => {
 						try {
 							const quotas = JSON.stringify(this.quotas);
@@ -1895,16 +1908,15 @@ class EcoflowMqtt extends utils.Adapter {
 							this.log.debug('send quota req ->' + error);
 							this.clearTimeout(timeout);
 						}
-					}, 2000);
+					}, 5000);
 				}
 				break;
 			case 'quotabuf':
 				if (obj.callback && obj.message) {
-					this.log.info('send msg quota protobuf data');
-					await ef.getLastProtobufQuotas(this, this.pdevices);
+					this.log.info('send msg protobuf unknown data');
 					const timeout = this.setTimeout(() => {
 						try {
-							const quotas = JSON.stringify(this.quotas);
+							const quotas = JSON.stringify(this.unknownPBmsg);
 							this.sendTo(
 								obj.from,
 								obj.command,
@@ -1914,7 +1926,7 @@ class EcoflowMqtt extends utils.Adapter {
 								obj.callback
 							);
 						} catch (error) {
-							this.log.debug('send quota req ->' + error);
+							this.log.debug('send unknown pb data req ->' + error);
 							this.clearTimeout(timeout);
 						}
 					}, 2000);

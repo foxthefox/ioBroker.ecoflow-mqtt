@@ -183,7 +183,7 @@
 				"getQuota": {
 					"type": "sendTo",
 					"hidden": "false",
-					"label": "Debug Quotas (JSON)",
+					"label": "Debug Quotas",
 					"command": "quotajson",
 					"variant": "contained",
 					"jsonData": "{\"quota\": \"now\"}",
@@ -196,7 +196,7 @@
 				"getQuota2": {
 					"type": "sendTo",
 					"hidden": "false",
-					"label": "Debug Quotas (buffer)",
+					"label": "Debug unkn. msg",
 					"command": "quotabuf",
 					"variant": "contained",
 					"jsonData": "{\"quota\": \"now\"}",

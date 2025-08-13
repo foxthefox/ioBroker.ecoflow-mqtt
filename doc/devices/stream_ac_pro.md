@@ -89,13 +89,25 @@
 |----------|------|
 |utcTimezoneId| utc timezone id |
 |townCode| town code |
-|wifiApMeshId| wifi Ap Mesh Id |
 |systemMeshId| system Mesh Id |
 |systemGroupId| system Group Id |
 |seriesConnectDeviceId| series Connect Device Id |
 |gridSysDeviceCnt| grid Sys Device Cnt |
 |moduleWifiRssi| Wi-Fi signal intensity |
 |gridCodeVersion| grid Code Version |
+
+### array
+
+| State  |  Name |
+|----------|------|
+|wifiApMeshId| wifi Ap Mesh Id |
+|powerSocket| power Socket |
+|devErrcodeList| dev Errcode List |
+|timezoneChangeList| timezone Change List |
+|dayResidentLoadList| day Resident Load List |
+|cloudMeter| cloud meter |
+|energyStrategyOperateMode| Energy Strategy Operate Mode |
+|timeAdjust| timeadjust |
 
 ### diagnostic
 
@@ -133,18 +145,6 @@
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
 |cmsMaxChgSoc| 50 | 100 | % | 1 |  Charge limit | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
 |cmsMinDsgSoc| 0 | 30 | % | 1 |  Discharge limit | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
-
-### array
-
-| State  |  Name |
-|----------|------|
-|powerSocket| power Socket |
-|devErrcodeList| dev Errcode List |
-|timezoneChangeList| timezone Change List |
-|dayResidentLoadList| day Resident Load List |
-|cloudMeter| cloud meter |
-|energyStrategyOperateMode| Energy Strategy Operate Mode |
-|timeadjust| timeadjust |
 
 ## BMSHeartBeatReport
 

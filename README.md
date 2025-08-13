@@ -349,11 +349,15 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 * (foxthefox) new battery data for Gen3 powerstattions
 * (foxthefox) new support of Power Ocean DC FIT
 * (foxthefox) support of 3 extra batteries DeltaProUltra
+* (foxthefox) new datapoints for stream series
+* (foxthefox) new datapoints for river2max/pro in pd section
+* (foxthefox) correction of river2max command chgWatts
 * (foxthefox) corrections at history.. values for powerstream (not kWh, it is W)
 * (foxthefox) issue #264, correction, additional bat Delta 2 has different data names than D2M
 * (foxthefox) telegram counter now in each device/info
 * (foxthefox) major refactoring for the "JSON-devices" 
 * (foxthefox) min nodejs version >=20
+* (foxthefox) debug button for latestQuotas, dbug button for unknown protobuf msg
 
 ### 1.3.2 (npm)
 * (foxthefox) improvement on HA cmds with numbers
