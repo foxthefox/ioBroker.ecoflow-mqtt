@@ -42,7 +42,7 @@
 |plugInInfoAcInAmp|0 | 30 | A | 1 |  plug in info ac in amp |
 |plugInInfoAcOutAmp|0 | 60 | A | 1 |  plug in info ac out amp |
 |bmsBattVol|0 | 60 | V | 0.001 |  bms batt vol |
-|bmsBattAmp|-20 | 20 | A | 0.001 |  bms batt amp |
+|bmsBattAmp|-80 | 80 | A | 0.001 |  bms batt amp |
 |bmsFullCap|0 | 80000 | mAh | 1 |  bms full cap |
 |bmsRemainCap|0 | 80000 | mAh | 1 |  bms remain cap |
 |bmsMinCellVol|0 | 5 | V | 0.001 |  Minimum voltage of the main battery |
