@@ -321,9 +321,10 @@ supply priority
 [Shelly3EM](./doc/devices/shelly3em.md)
 [Smartmeter](./doc/devices/smartmeter.md)
 
-### Wave 2 Air conditioner
+### Wave Air conditioner
 
 [Wave2](./doc/devices/wave2.md)
+[Wave3](./doc/devices/wave3.md)
 
 Wave is not available, could be implemented, if data is available.
 
