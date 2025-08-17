@@ -268,7 +268,8 @@ class EcoflowMqtt extends utils.Adapter {
                                 devtype === 'smartmeter' ||
                                 devtype === 'stream_ac_pro' ||
                                 devtype === 'stream_pro' ||
-                                devtype === 'stream_ultra'
+                                devtype === 'stream_ultra' ||
+                                devtype === 'wave3'
                             ) {
                                 pdevicesStatesDict = require(`./lib/dict_data/ef_${devtype}_data.js`).deviceStatesDict[
                                     devtype
@@ -857,6 +858,7 @@ class EcoflowMqtt extends utils.Adapter {
                         devtype === 'stream_ac_pro' ||
                         devtype === 'stream_pro' ||
                         devtype === 'stream_ultra' ||
+                        devtype === 'wave3' ||
                         devtype === 'unknown'
                     ) {
                         if (this.pdevicesStatesDict && this.pdevicesStates) {
@@ -1524,6 +1526,7 @@ class EcoflowMqtt extends utils.Adapter {
                             case 'stream_ac_pro':
                             case 'stream_pro':
                             case 'stream_ultra':
+                            case 'wave3':
                                 devicetype = this.pdevices[device]['devType'];
                                 type = 'protobuf'; //includes also plugs
                                 cmd = this.pdevicesCmd[devicetype];

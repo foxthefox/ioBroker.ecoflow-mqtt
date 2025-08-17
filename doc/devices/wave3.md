@@ -23,6 +23,7 @@
 |----------|------|
 |errcode| errcode |
 |pcsFanLevel| pcs fan level |
+|utcTimezoneId| utc timezone id |
 |bmsErrCode| bms err code |
 |pdErrCode| pd err code |
 |plugInInfoDcpDetail| plug in info dcp detail |
@@ -74,6 +75,17 @@
 |unknown777|0 |  n/a |  | 1 |  unknown 777 |
 
 
+### level
+
+| State  |      Min     |     Max     |  Unit |  Mult |  Name |  cmd |
+|----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
+|lcdLight| 0 | 100 | % | 0.390625 |  Screen brightness | {dest:2,cmdFunc:254,cmdId:17,dataLen:2} |
+|devStandbyTime| 0 | 1440 | min | 1 |  Device timeout (min) | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
+|screenOffTime| 0 | 1800 | s | 1 |  Screen timeout (s) | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
+|plugInInfoAcInChgPowMax| 100 | 1500 | W | 1 |  Maximum AC input power for charging | {dest:2,cmdFunc:254,cmdId:17,dataLen:7} |
+|cmsMaxChgSoc| 50 | 100 | % | 1 |  Charge limit | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
+|cmsMinDsgSoc| 0 | 30 | % | 1 |  Discharge limit | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
+
 ### diagnostic
 
 | State  |     Name |  values |
@@ -91,6 +103,7 @@
 |cmsBmsRunState| On/Off status | {0:off,1:on} |
 |bmsChgDsgState| Charging/Discharging status of the main battery | {0:not charging or discharging,1:discharging,2:charging} |
 |cmsChgDsgState| Charging/Discharging status | {0:not charging or discharging,1:discharging,2:charging} |
+|timeTaskConflictFlag| time task conflict flag | {0:no conflict?,1:conflict?} |
 |flowInfoPv| flow info pv | {0:OK?} |
 |plugInInfoPvType| plug in info pv type | {0:OK?} |
 |plugInInfoPvChargerFlag| plug in info pv charger flag | {0:OK?} |
@@ -101,4 +114,10 @@
 |plugInInfoDcpDsgChgType| plug in info dcp dsg chg type | {0:OK?} |
 |plugInInfoDcpChargerFlag| plug in info dcp charger flag | {0:OK?} |
 |plugInInfoDcpRunState| plug in info dcp run state | {0:OK?} |
+
+### switch
+
+| State  |      off    |  on |  Name |  cmd |
+|----------|:-------------:|:------:|------|------|
+|enBeep| off | on | Beeper on/off. (true: on, false: off.) | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
 
