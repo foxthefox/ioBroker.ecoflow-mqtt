@@ -256,6 +256,7 @@ class EcoflowMqtt extends utils.Adapter {
                                 devtype === 'pstream' ||
                                 devtype === 'plug' ||
                                 devtype === 'powerocean' ||
+                                devtype === 'poweroceanplus' ||
                                 devtype === 'poweroceanfit' ||
                                 devtype === 'panel2' ||
                                 devtype === 'deltaproultra' ||
@@ -846,6 +847,7 @@ class EcoflowMqtt extends utils.Adapter {
                         devtype === 'plug' ||
                         devtype === 'deltaproultra' ||
                         devtype === 'powerocean' ||
+                        devtype === 'poweroceanplus' ||
                         devtype === 'poweroceanfit' ||
                         devtype === 'panel2' ||
                         devtype === 'alternator' ||
@@ -1514,6 +1516,7 @@ class EcoflowMqtt extends utils.Adapter {
                             case 'plug':
                             case 'deltaproultra':
                             case 'powerocean':
+                            case 'poweroceanplus':
                             case 'poweroceanfit':
                             case 'panel2':
                             case 'alternator':

@@ -293,6 +293,9 @@ some explanation to the device data
 ### Power Ocean
 
 [Power Ocean DC](./doc/devices/powerocean.md)
+
+[Power Ocean Plus](./doc/devices/poweroceanplus.md)
+
 [Power Ocean DC FIT](./doc/devices/poweroceanfit.md)
 
 ### Generator
@@ -362,6 +365,7 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 - (foxthefox) new support of EF Smartmeter
 - (foxthefox) new support of River3 (without cmds)
 - (foxthefox) new support of Stream Series
+- (foxthefox) new support of Power Ocean Plus
 - (foxthefox) new Statistics for Gen3 powerstattions
 - (foxthefox) new battery data for Gen3 powerstattions
 - (foxthefox) new support of Power Ocean DC FIT

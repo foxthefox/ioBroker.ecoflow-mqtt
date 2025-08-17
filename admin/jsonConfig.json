@@ -1250,6 +1250,10 @@
 									"label": "Power Ocean DC"
 								},
 								{
+									"value": "poweroceanplus",
+									"label": "Power Ocean Plus"
+								},
+								{
 									"value": "poweroceanfit",
 									"label": "Power Ocean DC FIT"
 								}
