@@ -283,9 +283,8 @@ class EcoflowMqtt extends utils.Adapter {
                                     devtype
                                 ];
                                 pdevicesCmd = require(`./lib/dict_data/ef_${devtype}_data.js`).deviceCmd[devtype];
-                            }
-                            //JSON devices
-                            else {
+                            } else {
+                                //JSON devices
                                 pdevicesStatesDict = require(`./lib/dict_data/ef_${devtype}_data.js`).deviceStatesDict[
                                     origdevtype
                                 ];
@@ -1572,8 +1571,8 @@ class EcoflowMqtt extends utils.Adapter {
 
                             if (msgBuf) {
                                 if (logged == true) {
-                                    /*global Buffer*/
-                                    /*eslint no-undef: "error"*/
+                                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                                    // @ts-ignore
                                     this.log.debug(
                                         `[PROTOBUF encode] converted  Hex-String:${Buffer.from(msgBuf).toString(
                                             'hex',
