@@ -47,8 +47,8 @@
 |backupReverseSoc|0 | 100 | % | 1 |  Backup Reverse Soc |
 |cmsBattFullEnergy|0 | 1920 | Wh | 1 |  cms batt full energy |
 |stormPatternEndTime|0 | 60 | h | 1 |  storm pattern end time |
-|powGetSysGrid|0 | 2500 | W | 1 |  pow get sys grid |
-|powGetSysLoad|0 | 2500 | W | 1 |  pow get sys load |
+|powGetSysGrid|0 | 3000 | W | 1 |  pow get sys grid |
+|powGetSysLoad|0 | 3000 | W | 1 |  pow get sys load |
 |powGetPvSum|0 | 2400 | W | 1 |  pow get pv sum |
 |powGetBpCms|0 | 2000 | W | 1 |  pow get bp cms |
 |powSysAcOutMax|0 | 2000 | W | 1 |  pow sys ac out max |
@@ -68,8 +68,8 @@
 |plugInInfoPv4Amp|0 | 15 | A | 1 |  plug in info pv4 current |
 |powGetSysLoadFromPv|0 | 2000 | W | 1 |  power get sys load from Pv  |
 |powGetSysLoadFromBp|0 | 2500 | W | 1 |  pow get gys load from bp |
-|powGetSysLoadFromGrid|0 | 2500 | W | 1 |  pow get sys load from grid |
-|powSysAcInMax|0 | 2500 | W | 1 |  pow Sys Ac In Max |
+|powGetSysLoadFromGrid|0 | 3000 | W | 1 |  pow get sys load from grid |
+|powSysAcInMax|0 | 3000 | W | 1 |  pow Sys Ac In Max |
 |socketMeasurePower|0 | 2000 | W | 1 |  socket Measure Power |
 |powGetSchuko1|0 | 2000 | W | 1 |  Power Outlet 1 |
 |powGetSchuko2|0 | 2000 | W | 1 |  Power Outlet 2 |
@@ -148,8 +148,8 @@
 
 | State  |      off    |  on |  Name |  cmd |
 |----------|:-------------:|:------:|------|------|
-|relay2Onoff| off | on | relay AC out #1 | {src:32,dest:2,dSrc:1,dDest:1,cmdFunc:254,cmdId:17,dataLen:9,productId:56,version:3,payloadVer:1,pdata:{cfg_utc_time:6,relay2Onoff:380}} |
-|relay3Onoff| off | on | relay AC out #2 | {src:32,dest:2,dSrc:1,dDest:1,cmdFunc:254,cmdId:17,dataLen:9,productId:56,version:3,payloadVer:1,pdata:{cfg_utc_time:6,relay3Onoff:380}} |
+|relay2Onoff| off | on | relay AC out #1 | {src:32,dest:2,dSrc:1,dDest:1,cmdFunc:254,cmdId:17,dataLen:9,productId:56,version:3,payloadVer:1,pdata:{cfgUtcTime:6,relay2Onoff:380}} |
+|relay3Onoff| off | on | relay AC out #2 | {src:32,dest:2,dSrc:1,dDest:1,cmdFunc:254,cmdId:17,dataLen:9,productId:56,version:3,payloadVer:1,pdata:{cfgUtcTime:6,relay3Onoff:380}} |
 
 ## BMSHeartBeatReport
 
