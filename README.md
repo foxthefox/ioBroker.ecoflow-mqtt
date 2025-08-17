@@ -307,7 +307,9 @@ Dual Fuel generator is not available, could be implemented, if data is available
 ### Powerstream & Stream
 
 [Powerstream](./doc/devices/pstream600.md)
+
 [Stream AC PRO](./doc/devices/stream_ac_pro.md)
+
 [Stream Ultra](./doc/devices/stream_ultra.md)
 
 The 800W version is also implemented and only difference ist the 800W maximum power.
@@ -322,11 +324,13 @@ supply priority
 ### Smartmeter devices
 
 [Shelly3EM](./doc/devices/shelly3em.md)
+
 [Smartmeter](./doc/devices/smartmeter.md)
 
 ### Wave Air conditioner
 
 [Wave2](./doc/devices/wave2.md)
+
 [Wave3](./doc/devices/wave3.md)
 
 Wave is not available, could be implemented, if data is available.
