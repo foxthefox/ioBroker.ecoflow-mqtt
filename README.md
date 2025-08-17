@@ -372,6 +372,7 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 - (foxthefox) correction of river2max command chgWatts
 - (foxthefox) corrections at history.. values for powerstream (not kWh, it is W)
 - (foxthefox) issue #264, correction, additional bat Delta 2 has different data names than D2M
+- (foxthefox) improved recognition of HA broker status and better initializing of data
 - (foxthefox) telegram counter now in each device/info
 - (foxthefox) major refactoring for the "JSON-devices"
 - (foxthefox) min nodejs version >=20
