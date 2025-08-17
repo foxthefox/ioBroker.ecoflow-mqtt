@@ -53,6 +53,7 @@ class EcoflowMqtt extends utils.Adapter {
         this.haDevices = null;
         this.haCounter = 0;
         this.haCountMem = 0;
+        this.onlineDevices = [];
 
         this.on('ready', this.onReady.bind(this));
         this.on('stateChange', this.onStateChange.bind(this));
@@ -1086,10 +1087,10 @@ class EcoflowMqtt extends utils.Adapter {
                             this.clearTimeout(recon_timer);
                         }
                         // online check
-                        recon_timer = this.setTimeout(async () => {
+                        recon_timer = this.setTimeout(() => {
                             this.log.debug('no telegrams from devices within 10min');
                             this.msgReconnects++;
-                            await this.setStateAsync('info.reconnects', {
+                            this.setState('info.reconnects', {
                                 val: this.msgReconnects,
                                 ack: true,
                             });
@@ -1097,20 +1098,20 @@ class EcoflowMqtt extends utils.Adapter {
                     }
                 });
 
-                this.client.on('close', async () => {
+                this.client.on('close', () => {
                     this.setState('info.connection', false, true);
                     //all info/status auf offline setzen
-                    for (let i = 0; i < this.pdevices.length; i++) {
-                        this.log.debug(`${this.pdevices[i].id} is offline`);
-                        await this.setStateAsync(`${this.pdevices[i].id}.info.status`, { val: 'offline', ack: true });
+                    for (let key in this.pdevices) {
+                        this.log.debug(`${key} is offline`);
+                        this.setState(`${key}.info.status`, { val: 'offline', ack: true });
                     }
                     this.log.info('ecoflow connection closed');
                 });
-                this.client.on('error', async error => {
+                this.client.on('error', error => {
                     this.setState('info.connection', false, true);
                     //all info/status auf offline setzen
-                    for (let i = 0; i < this.pdevices.length; i++) {
-                        await this.setStateAsync(`${this.pdevices[i].id}.info.status`, { val: 'offline', ack: true });
+                    for (let key in this.pdevices) {
+                        this.setState(`${key}.info.status`, { val: 'offline', ack: true });
                     }
                     this.log.error(`Error inconnection to Ecoflow MQTT-Broker:${error}`);
                 });
@@ -1158,12 +1159,12 @@ class EcoflowMqtt extends utils.Adapter {
 
                 this.haClient.on('connect', async () => {
                     this.log.info('[HA] ' + 'connected');
-                    await this.setStateAsync('info.haConnAvgLoad', { val: 0, ack: true });
+                    this.setState('info.haConnAvgLoad', { val: 0, ack: true });
                     this.log.debug('[HA] ' + 'haConnAvgLoad  interval started');
-                    haLoadInterval = this.setInterval(async () => {
+                    haLoadInterval = this.setInterval(() => {
                         const msgcnt = this.haCounter - this.haCountMem;
                         this.haCountMem = this.haCounter;
-                        await this.setStateAsync('info.haConnAvgLoad', { val: msgcnt, ack: true });
+                        this.setState('info.haConnAvgLoad', { val: msgcnt, ack: true });
                     }, 10 * 1000);
 
                     if (this.haDevices && this.haDevices.length > 0) {
@@ -1205,7 +1206,7 @@ class EcoflowMqtt extends utils.Adapter {
                             'HA INIT (status online)',
                         );
 
-                        ha.subscribe(this, 'homeassistant/status', 'HA INIT status');
+                        ha.subscribe(this, 'homeassistant/status', 'HA INIT ha/status subscription');
 
                         for (let j = 0; j < this.haDevices.length; j++) {
                             const id = this.haDevices[j];
@@ -1278,7 +1279,7 @@ class EcoflowMqtt extends utils.Adapter {
                         );
                     }
                     //we set the connection status after the discovery things, this triggers the full update of states
-                    await this.setStateAsync('info.haConnection', { val: 'online', ack: true });
+                    this.setState('info.haConnection', { val: 'online', ack: true });
                 });
 
                 this.haClient.on('message', async (topic, message) => {
@@ -1371,7 +1372,7 @@ class EcoflowMqtt extends utils.Adapter {
                                         `[HA] ` + `sending cmd value ${value} to ${device}.${channel}.${item}`,
                                     );
                                 }
-                                await this.setStateAsync(`${device}.${channel}.${item}`, {
+                                this.setState(`${device}.${channel}.${item}`, {
                                     val: value,
                                     ack: false,
                                 });
@@ -1381,22 +1382,22 @@ class EcoflowMqtt extends utils.Adapter {
                         }
                     } else if (topic === 'homeassistant/status') {
                         this.log.info(`[HA] got broker status: ${String(message)}`);
-                        await this.setStateAsync('info.haBrokerStatus', { val: String(message), ack: true });
+                        this.setState('info.haBrokerStatus', { val: String(message), ack: true });
                         //wenn online darauf reagieren und discovery schicken ?!
                     }
                 });
 
-                this.haClient.on('close', async () => {
-                    await this.setStateAsync('info.haConnection', { val: 'offline', ack: true });
+                this.haClient.on('close', () => {
+                    this.setState('info.haConnection', { val: 'offline', ack: true });
                     this.log.info('[HA] ' + ' connection closed');
                 });
-                this.haClient.on('error', async error => {
-                    await this.setStateAsync('info.haConnection', { val: 'error', ack: true });
+                this.haClient.on('error', error => {
+                    this.setState('info.haConnection', { val: 'error', ack: true });
                     this.log.error(`[HA] ` + `Error inconnection to HA MQTT-Broker: ${error}`);
                 });
 
-                this.haClient.on('reconnect', async () => {
-                    await this.setStateAsync('info.haConnection', { val: 'reconnect', ack: true });
+                this.haClient.on('reconnect', () => {
+                    this.setState('info.haConnection', { val: 'reconnect', ack: true });
                     this.log.debug('[HA] ' + 'Reconnecting to HA MQTT broker...');
                 });
             } catch (error) {
@@ -1453,15 +1454,15 @@ class EcoflowMqtt extends utils.Adapter {
                     );
                 }
             }
-            for (let i = 0; i < this.pdevices.length; i++) {
-                await this.setStateAsync(`${this.pdevices[i].id}info.status`, { val: 'offline', ack: true });
+            for (let key in this.pdevices) {
+                this.setState(`${key}.info.status`, { val: 'offline', ack: true });
             }
             if (this.client) {
                 this.client.end();
             }
 
             if (this.haClient) {
-                await this.setStateAsync('info.haConnection', { val: 'offline', ack: true });
+                this.setState('info.haConnection', { val: 'offline', ack: true });
                 this.haClient.end();
             }
             this.log.info('cleaned everything up...');
@@ -1668,6 +1669,7 @@ class EcoflowMqtt extends utils.Adapter {
                                 true,
                                 'HA INIT',
                             );
+                            //initial update of HA when haConnection is online
                             if (this.pdevices) {
                                 for (const device in this.pdevices) {
                                     if (this.haClient && this.pdevices[device]['haEnable'] === true) {
@@ -1675,10 +1677,22 @@ class EcoflowMqtt extends utils.Adapter {
                                         const status = await this.getStateAsync(`${device}.info.status`);
                                         if (status && status.val) {
                                             //maybe also here only when online
+                                            await ha.initDeviceWithHA(
+                                                this,
+                                                device,
+                                                status.val === 'online' ? 'online' : 'offline',
+                                                this.pdevices,
+                                                this.pdevicesStatesDict,
+                                                this.pdevicesStates,
+                                                this.config.haTopic,
+                                                this.config.msgHaStatusInitial,
+                                            );
+                                            /*
                                             await this.initDeviceWithHA(
                                                 device,
                                                 status.val === 'online' ? 'online' : 'offline',
                                             );
+                                            */
                                         }
                                     }
                                 }
@@ -1692,32 +1706,37 @@ class EcoflowMqtt extends utils.Adapter {
                     const channel = idsplit[3];
                     const item = idsplit[4];
                     if (channel === 'info' && item === 'status') {
-                        const cnt = await this.getStateAsync('info.cntDevOnline').catch(e => {
-                            this.log.warn(`problem getting state info.cntDevOnline ${e}`);
-                        });
-                        if (cnt) {
-                            let devcount = parseInt(cnt.val);
-
-                            if (state.val === 'online') {
-                                if (devcount === 0) {
-                                    //stop recon_timer_long
-                                    //start recon_timer
-                                }
-                                devcount++;
-                                this.setState('info.cntDevOnline', { val: devcount, ack: true });
-                            } else if (state.val === 'offline') {
-                                if (devcount === 1) {
-                                    //stop recon_timer
-                                    //start recon_timer_long
-                                }
-                                devcount--;
-                                this.setState('info.cntDevOnline', { val: devcount, ack: true });
+                        if (state.val === 'online') {
+                            if (!this.onlineDevices.includes(device)) {
+                                this.onlineDevices.push(device);
                             }
-                        } else {
-                            this.log.debug(`info.cntDevOnline not retrieved ${JSON.stringify(cnt)}`);
+                        } else if (state.val === 'offline') {
+                            let index = this.onlineDevices.indexOf(device);
+                            if (index !== -1) {
+                                this.onlineDevices.splice(index, 1);
+                            }
                         }
+                        this.setState('info.cntDevOnline', { val: this.onlineDevices.length, ack: true });
+
+                        //update of HA depending on the status change of device
                         if (this.haClient && this.pdevices[device]['haEnable'] === true) {
-                            await this.initDeviceWithHA(device, String(state.val));
+                            await ha.initDeviceWithHA(
+                                this,
+                                device,
+                                String(state.val),
+                                this.pdevices,
+                                this.pdevicesStatesDict,
+                                this.pdevicesStates,
+                                this.config.haTopic,
+                                this.config.msgHaStatusInitial,
+                            );
+                            //await this.initDeviceWithHA(device, String(state.val));
+                        }
+                    } else if (channel === 'info' && item === 'cntDevOnline') {
+                        if (state.val === 0) {
+                            //stop recon_timer_long
+                            //start recon_timer
+                            this.log.debug('no devices reachable at EF cloud');
                         }
                     }
                 }
@@ -1727,7 +1746,8 @@ class EcoflowMqtt extends utils.Adapter {
             this.log.info(`state ${id} deleted`);
         }
     }
-    // async initDeviceWithHA(device, state, this.pdevices && this.pdevicesStatesDict && this.pdevicesStates && this.config.haTopic, ) {
+
+    /*
     async initDeviceWithHA(device, state) {
         if (this.pdevices && this.pdevicesStatesDict && this.pdevicesStates && this.config.haTopic) {
             ha.publish(
@@ -1829,7 +1849,7 @@ class EcoflowMqtt extends utils.Adapter {
             }
         }
     }
-
+    */
     // If you need to accept messages in your adapter, uncomment the following block and the corresponding line in the constructor.
     // /**
     //  * Some message was sent to this instance over message box. Used by email, pushover, text2speech, ...
