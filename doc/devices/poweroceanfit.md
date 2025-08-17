@@ -30,7 +30,6 @@
 |bpAmp|0 | 60 | A | 1 |  Battery Current |
 |bpBusVol|0 | 1000 | V | 1 |  Bus voltage |
 |bpBusAmp|0 | 100 | A | 1 |  bp bus amp |
-|bpCycles|0 |  n/a |  | 1 |  Battery cycles |
 |bpHvMosTemp|0 | 90 | °C | 1 |  High voltage Mos temperature |
 |bpLvMosTemp|0 | 90 | °C | 1 |  Low voltage Mos temparature |
 |bpPtcTemp|0 | 90 | °C | 1 |  PTC temperature |
@@ -94,6 +93,7 @@
 | State  |  Name |
 |----------|------|
 |bpSn| Battery serial number |
+|bpCycles| bp cycles |
 |bpEcloundSoc| Eclound Soc |
 |bpHeartbeatVer| Heartbeat version |
 |bpTimestamp| Timestamp |

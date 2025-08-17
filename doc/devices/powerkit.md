@@ -574,7 +574,7 @@
 |maxChgCurr|0 | 60 | A | 0.001 |  Maximum chargeable current |
 |bmsChgCurr|0 | 60 | A | 0.001 |  BMS chargeable current |
 |chgBatVol|0 | 60 | V | 0.001 |  Charging voltage |
-|realSoc|0 | 100 | 5 | 1 |  Real SOC |
+|realSoc|0 | 100 | % | 1 |  Real SOC |
 
 
 ## ichigh

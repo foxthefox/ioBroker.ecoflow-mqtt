@@ -102,7 +102,7 @@
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |powInSumW|0 | 4000 | W | 1 |  Total input power |
-|powOutSumW|0 | 1000 | W | 1 |  Total output power |
+|powOutSumW|0 | 1200 | W | 1 |  Total output power |
 |energyBackupStartSoc|0 | 100 | % | 1 |  Backup reserve level |
 |powGetQcusb1|0 | 120 | W | 1 |  Real-time power of the USB 1 port |
 |powGetQcusb2|0 | 120 | W | 1 |  Real-time power of the USB 2 port |

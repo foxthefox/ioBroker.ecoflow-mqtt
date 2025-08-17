@@ -124,8 +124,6 @@
 |plugInInfoPv3Flag| plug in info pv3 flag | {0:OK?} |
 |plugInInfoPv4Flag| plug in info pv4 flag | {0:OK?} |
 |relay1Onoff| relay 1 status | {0:off?,1:on} |
-|relay2Onoff| relay 2 status | {0:off?,1:on} |
-|relay3Onoff| relay 3 status | {0:off?,1:on} |
 |relay4Onoff| relay 4 status | {0:off?,1:on} |
 |feedGridMode| feed grid mode | {1:online?} |
 |bmsBattHeating| bms Batt Heating status | {0:off?,1:on} |
@@ -145,6 +143,13 @@
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
 |cmsMaxChgSoc| 50 | 100 | % | 1 |  Charge limit | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
 |cmsMinDsgSoc| 0 | 30 | % | 1 |  Discharge limit | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
+
+### switch
+
+| State  |      off    |  on |  Name |  cmd |
+|----------|:-------------:|:------:|------|------|
+|relay2Onoff| off | on | relay AC out #1 | {src:32,dest:2,dSrc:1,dDest:1,cmdFunc:254,cmdId:17,dataLen:9,productId:56,version:3,payloadVer:1,pdata:{cfg_utc_time:6,relay2Onoff:380}} |
+|relay3Onoff| off | on | relay AC out #2 | {src:32,dest:2,dSrc:1,dDest:1,cmdFunc:254,cmdId:17,dataLen:9,productId:56,version:3,payloadVer:1,pdata:{cfg_utc_time:6,relay3Onoff:380}} |
 
 ## BMSHeartBeatReport
 
