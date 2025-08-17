@@ -183,7 +183,7 @@
 				"getQuota": {
 					"type": "sendTo",
 					"hidden": "false",
-					"label": "Debug Quotas (JSON)",
+					"label": "Debug Quotas",
 					"command": "quotajson",
 					"variant": "contained",
 					"jsonData": "{\"quota\": \"now\"}",
@@ -196,7 +196,7 @@
 				"getQuota2": {
 					"type": "sendTo",
 					"hidden": "false",
-					"label": "Debug Quotas (buffer)",
+					"label": "Debug unkn. msg",
 					"command": "quotabuf",
 					"variant": "contained",
 					"jsonData": "{\"quota\": \"now\"}",
@@ -273,7 +273,7 @@
 				"_pstremHeader": {
 					"newLine": true,
 					"type": "header",
-					"text": "Power Stream Configuration",
+					"text": "(Power) Stream Configuration",
 					"xs": 12,
 					"sm": 12,
 					"md": 12,
@@ -307,7 +307,7 @@
 							"attr": "devName",
 							"filter": false,
 							"sort": false,
-							"default": "My Pstream1"
+							"default": "My Stream1"
 						},
 						{
 							"type": "text",
@@ -316,7 +316,7 @@
 							"attr": "devId",
 							"filter": false,
 							"sort": false,
-							"default": "HW51"
+							"default": "HW51.../BK..."
 						},
 						{
 							"type": "select",
@@ -333,6 +333,14 @@
 								{
 									"value": "pstream800",
 									"label": "Powerstream 800W"
+								},
+								{
+									"value": "stream_ac_pro",
+									"label": "Stream AC Pro"
+								},
+								{
+									"value": "stream_ultra",
+									"label": "Stream Ultra"
 								}
 							],
 							"title": "Powerstream Type",
@@ -442,6 +450,10 @@
 									"label": "Delta 2 Max"
 								},
 								{
+									"value": "delta3",
+									"label": "Delta 3"
+								},
+								{
 									"value": "delta3plus",
 									"label": "Delta 3 Plus"
 								},
@@ -468,6 +480,10 @@
 								{
 									"value": "river2pro",
 									"label": "River 2 Pro"
+								},
+								{
+									"value": "river3",
+									"label": "River 3"
 								},
 								{
 									"value": "river3plus",
@@ -502,7 +518,7 @@
 							"type": "checkbox",
 							"title": "Slave 1",
 							"width": "5%",
-							"hidden": "data.devType !== 'deltapro' && data.devType !== 'deltamax' && data.devType !== 'delta2max' && data.devType !== 'delta' && data.devType !== 'delta2' && data.devType !== 'deltaproultra'",
+							"hidden": "data.devType !== 'deltapro' && data.devType !== 'deltamax' && data.devType !== 'delta2max' && data.devType !== 'delta' && data.devType !== 'delta2' && data.devType !== 'deltaproultra' && data.devType !== 'deltapro3' && data.devType !== 'delta3plus' && data.devType !== 'river3plus'",
 							"attr": "pstationsSlave1",
 							"filter": false,
 							"sort": false,
@@ -512,8 +528,18 @@
 							"type": "checkbox",
 							"title": "Slave 2",
 							"width": "5%",
-							"hidden": "data.devType !== 'deltapro' && data.devType !== 'deltamax' && data.devType !== 'delta2max' && data.devType !== 'deltaproultra'",
+							"hidden": "data.devType !== 'deltapro' && data.devType !== 'deltamax' && data.devType !== 'delta2max' && data.devType !== 'deltaproultra' && data.devType !== 'deltapro3'",
 							"attr": "pstationsSlave2",
+							"filter": false,
+							"sort": false,
+							"default": false
+						},
+						{
+							"type": "checkbox",
+							"title": "Slave 3",
+							"width": "5%",
+							"hidden": "data.devType !== 'deltaproultra'",
+							"attr": "pstationsSlave3",
 							"filter": false,
 							"sort": false,
 							"default": false
@@ -610,7 +636,7 @@
 				"_shellyHeader": {
 					"newLine": true,
 					"type": "header",
-					"text": "Shelly Configuration",
+					"text": "Smartmeter Configuration",
 					"xs": 12,
 					"sm": 12,
 					"md": 12,
@@ -644,7 +670,7 @@
 							"attr": "devName",
 							"filter": false,
 							"sort": false,
-							"default": "My Shelly#1"
+							"default": "My device1"
 						},
 						{
 							"type": "text",
@@ -653,7 +679,7 @@
 							"attr": "devId",
 							"filter": false,
 							"sort": false,
-							"default": "1234.."
+							"default": "1234../BK12..."
 						},
 						{
 							"type": "select",
@@ -666,9 +692,13 @@
 								{
 									"value": "shelly3em",
 									"label": "Shelly3EM"
+								},
+								{
+									"value": "smartmeter",
+									"label": "EF smartmeter"
 								}
 							],
-							"title": "Shelly Type",
+							"title": "Type",
 							"attr": "devType",
 							"filter": false,
 							"sort": false,
@@ -1040,6 +1070,10 @@
 								{
 									"value": "wave2",
 									"label": "Wave 2 Air Con"
+								},
+								{
+									"value": "wave3",
+									"label": "Wave 3 Air Con"
 								}
 							],
 							"title": "Wave Type",
@@ -1158,7 +1192,7 @@
 				"_poweroceanHeader": {
 					"newLine": true,
 					"type": "header",
-					"text": "Power Ocean DC Fit Configuration",
+					"text": "Power Ocean Configuration",
 					"xs": 12,
 					"sm": 12,
 					"md": 12,
@@ -1213,7 +1247,15 @@
 								},
 								{
 									"value": "powerocean",
-									"label": "Power Ocean"
+									"label": "Power Ocean DC"
+								},
+								{
+									"value": "poweroceanplus",
+									"label": "Power Ocean Plus"
+								},
+								{
+									"value": "poweroceanfit",
+									"label": "Power Ocean DC FIT"
 								}
 							],
 							"title": "Power Ocean Type",
@@ -1393,7 +1435,7 @@
 							"attr": "devId",
 							"filter": false,
 							"sort": false,
-							"default": "MR51.."
+							"default": "Serial.."
 						},
 						{
 							"type": "select",
@@ -1404,12 +1446,8 @@
 									"label": "none"
 								},
 								{
-									"value": "delta3",
-									"label": "Delta 3"
-								},
-								{
-									"value": "river3",
-									"label": "River 3"
+									"value": "unknown",
+									"label": "Unknown"
 								}
 							],
 							"title": "Device Type",

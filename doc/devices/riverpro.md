@@ -1,5 +1,5 @@
 # States for  RIVERPRO
-### version: 1.3.1
+### version: 1.4.0
 
 [bmsMaster](#bmsMaster)
 
@@ -14,7 +14,7 @@
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|amp|0 | 50 | A | 0.001 |  Current |
+|amp|0 | 25 | A | 0.001 |  Current |
 |cycles|0 | 6000 |  | 1 |  Number of cycles |
 |fullCap|0 | 80000 | mAh | 1 |  Full capacity |
 |maxCellTemp|0 | 80 | °C | 1 |  Maximum cell temperature |
@@ -84,7 +84,7 @@
 
 | State  |      Min     |     Max     |  Unit |  Mult |  Name |  cmd |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
-|cfgStandbyMin| 0 | 1440 | min | 1 |  AC standby time /min 0 Never standby 1440 Default value | {from:Android,operateType:TCP,id:153750799,lang:en-us,params:{id:153,standByMins:360},version:1.0} |
+|cfgStandbyMin| 0 | 720 | min | 1 |  AC standby time /min 0 Never standby 720 Default value | {from:Android,operateType:TCP,id:153750799,lang:en-us,params:{id:153,standByMins:360},version:1.0} |
 
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
@@ -133,7 +133,7 @@
 |usb2Watts|0 | 500 | W | 1 |  Common usb2 output power |
 |usbUsedTime|0 | 9999999 | min | 0.0166 |  USB use time |
 |usbqcUsedTime|0 | 9999999 | min | 0.0166 |  USB QC use time |
-|wattsInSum|0 | 660 | W | 1 |  Total input power |
+|wattsInSum|0 | 4000 | W | 1 |  Total input power |
 |wattsOutSum|0 | 4000 | W | 1 |  Total output power |
 |ledWatts|0 | 100 | W | 0.1 |  LED output power |
 |typecTemp|0 | 80 | °C | 1 |  Type-C temperature |

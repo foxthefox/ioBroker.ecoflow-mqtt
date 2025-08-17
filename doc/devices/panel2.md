@@ -1,5 +1,5 @@
 # States for  PANEL2
-### version: 1.3.1
+### version: 1.4.0
 
 [ProtoTime](#ProtoTime)
 
@@ -144,7 +144,7 @@
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|backupFullCap|0 | 92160 | mAh | 1 |  Full capacity |
+|backupFullCap|0 | 100000 | mAh | 1 |  Full capacity |
 |backupBatPer|0 | 100 | % | 1 |  Battery SOC |
 |backupDischargeRmainBatCap|0 | 20000 | mAh | 1 |  Discharge remain. capacity |
 

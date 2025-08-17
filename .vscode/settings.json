@@ -1,26 +1,22 @@
 {
-	"eslint.enable": true,
-	"json.schemas": [
-		{
-			"fileMatch": [
-				"io-package.json"
-			],
-			"url": "https://raw.githubusercontent.com/ioBroker/ioBroker.js-controller/master/schemas/io-package.json"
-		},
-		{
-			"fileMatch": [
-				"admin/jsonConfig.json",
-				"admin/jsonCustom.json",
-				"admin/jsonTab.json"
-			],
-			"url": "https://raw.githubusercontent.com/ioBroker/adapter-react-v5/main/schemas/jsonConfig.json"
-		}
-	],
-	"editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
-	"editor.formatOnType": false, // required
-	"editor.formatOnPaste": true, // optional
-	"editor.formatOnSave": true, // optional
-	"editor.formatOnSaveMode": "file", // required to format on save
-	"files.autoSave": "onFocusChange", // optional but recommended
-	"vs-code-prettier-eslint.prettierLast": false // set as "true" to run 'prettier' last not first
+    "eslint.enable": true,
+    "json.schemas": [
+        {
+            "fileMatch": ["io-package.json"],
+            "url": "https://raw.githubusercontent.com/ioBroker/ioBroker.js-controller/master/schemas/io-package.json"
+        },
+        {
+            "fileMatch": ["admin/jsonConfig.json", "admin/jsonCustom.json", "admin/jsonTab.json"],
+            "url": "https://raw.githubusercontent.com/ioBroker/adapter-react-v5/main/schemas/jsonConfig.json"
+        }
+    ],
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.formatOnType": false, // required
+    "editor.formatOnPaste": true, // optional
+    "editor.formatOnSave": true, // optional
+    "editor.formatOnSaveMode": "file", // required to format on save
+    "files.autoSave": "onFocusChange" // optional but recommended
 }

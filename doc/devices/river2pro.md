@@ -1,5 +1,5 @@
 # States for  RIVER2PRO
-### version: 1.3.1
+### version: 1.4.0
 
 [pd](#pd)
 
@@ -20,7 +20,7 @@
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |typec1Temp|0 | 80 | °C | 1 |  Type-C 1 temperature |
 |qcUsb1Watts|0 | 500 | W | 1 |  Quick charge usb1 output power |
-|wattsInSum|0 | 660 | W | 1 |  Total input power |
+|wattsInSum|0 | 4000 | W | 1 |  Total input power |
 |dcInUsedTime|0 | 9999999 | min | 0.0166 |  DC charging time |
 |dsgPowerDC|0 |  n/a | kWh | 0.001 |  Cumulative DC discharge capacity |
 |chgPowerDC|0 |  n/a | kWh | 0.001 |  Cumulative DC power charged for PD (adapter) |
@@ -121,7 +121,7 @@
 |vol|0 | 60 | V | 0.001 |  Voltage |
 |remainTime|0 | 143999 | min | 1 |  Time remaining |
 |fullCap|0 | 80000 | mAh | 1 |  Full capacity |
-|amp|0 | 50 | A | 0.001 |  Current |
+|amp|0 | 25 | A | 0.001 |  Current |
 |soc|0 | 100 | % | 1 |  Remaining battery percentage |
 |inputWatts|0 | 4000 | W | 0.1 |  Input power |
 |tagChgAmp|0 | 100 | A | 0.0001 |  Target charging current |
@@ -186,21 +186,21 @@
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|carOutVol|0 | 15 | V | 0.001 |  Car charging output voltage |
+|carOutVol|0 | 60 | V | 0.1 |  Car charging output voltage |
 |carTemp|0 | 80 | °C | 1 |  Car charging temperature |
-|outWatts|0 | 1600 | W | 1 |  PV output power |
-|carOutAmp|0 | 13 | A | 0.001 |  Car charging output current |
-|outAmp|0 | 31 | A | 0.001 |  PV output current |
+|outWatts|0 | 600 | W | 0.1 |  PV output power |
+|carOutAmp|0 | 13 | A | 0.01 |  Car charging output current |
+|outAmp|0 | 13 | A | 0.01 |  PV output current |
 |dcdc12vWatts|0 | 500 | W | 0.1 |  DC12V30A output power, which is valid only for DELTA Pro |
 |powStandbyMin|0 | 720 | min | 1 |  Power standby time /min 0 Never standby 720 Default value ? |
-|inWatts|0 | 230 | W | 1 |  PV input power |
+|inWatts|0 | 500 | W | 0.1 |  PV input power |
 |dcdc12vVol|0 | 60 | V | 0.1 |  DC12V30A output voltage, which is valid only for DELTA Pro |
-|inAmp|0 | 16 | A | 0.001 |  PV input current |
+|inAmp|0 | 13 | A | 0.01 |  PV input current |
 |scrStandbyMin|0 | 720 | min | 1 |  SCR standby time /min 0 Never standby 720 Default value ? |
-|inVol|0 | 55 | V | 0.001 |  PV input voltage |
+|inVol|0 | 150 | V | 0.1 |  PV input voltage |
 |carOutWatts|0 | 500 | W | 0.1 |  Car charging output power |
-|mpptTemp|0 | 120 | °C | 1 |  MPPT temperature |
-|outVol|0 | 60 | V | 0.001 |  PV output voltage |
+|mpptTemp|0 | 80 | °C | 1 |  MPPT temperature |
+|outVol|0 | 60 | V | 0.1 |  PV output voltage |
 |dcdc12vAmp|0 | 13 | A | 0.01 |  DC12V30A output current, which is valid only for DELTA Pro |
 |dc24vTemp|0 | 80 | °C | 1 |  DCDC24V temperature |
 
@@ -242,7 +242,7 @@
 |acStandbyMins| 0 | 720 | min | 1 |  AC standby time /min 0 Never standby 720 Default value | {valName:standbyMins,moduleType:5,operateType:acStandby,params:{standbyMins:360}} |
 |carStandbyMin| 0 | 720 | min | 1 |  CAR standby time /min 0 Never standby 720 Default value | {valName:standbyMins,moduleType:5,operateType:standbyTime,params:{standbyMins:720}} |
 |dcChgCurrent| 4 | 8 | A | 0.001 |  On-board charging current | {valName:dcChgCfg,moduleType:5,operateType:dcChgCfg,params:{dcChgCfg:8000}} |
-|cfgChgWatts| 100 | 940 | W | 1 |  Maximum charging power for charging (W) ? | {valName:chgWatts,moduleType:5,operateType:acChgCfg,params:{chgWatts:100,chgPauseFlag:255}} |
+|cfgChgWatts| 0 | 2200 | W | 1 |  Maximum charging power for charging (W) ? | {valName:chgWatts,moduleType:5,operateType:acChgCfg,params:{chgWatts:100,chgPauseFlag:255}} |
 
 ## ems
 

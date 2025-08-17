@@ -1,5 +1,5 @@
 # States for  SHELLY3EM
-### version: 1.3.1
+### version: 1.4.0
 
 [emeters](#emeters)
 
@@ -12,9 +12,9 @@
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|currentL1|0 | 100 | A | 1 |  Current L1 |
-|currentL2|0 | 100 | A | 1 |  Current L2 |
-|currentL3|0 | 100 | A | 1 |  Current L3 |
+|currentL1|0 | 50 | A | 1 |  Current L1 |
+|currentL2|0 | 50 | A | 1 |  Current L2 |
+|currentL3|0 | 50 | A | 1 |  Current L3 |
 |voltageL1|0 | 250 | V | 1 |  Voltage L1 |
 |voltageL2|0 | 250 | V | 1 |  Voltage L2 |
 |voltageL3|0 | 250 | V | 1 |  Voltage L3 |

@@ -1,5 +1,5 @@
 # States for  PSTREAM
-### version: 1.3.1
+### version: 1.4.0
 
 [inverter_heartbeat](#inverter_heartbeat)
 
@@ -63,13 +63,13 @@
 |consWatt|0 | 10000 | W | 0.1 |  cons watt |
 |acSetWatts|0 | 900 | W | 0.1 |  ac set watts |
 |fisoRxyz|0 | 1000 | V | 1 |  fiso rxyz |
-|historyPvToInvWatts|0 |  n/a | kWh | 0.001 |  history pv to inv watts |
-|historyBatInputWatts|0 |  n/a | kWh | 0.001 |  history bat input watts |
-|historyInvOutputWatts|0 |  n/a | kWh | 0.001 |  history inv output watts |
-|historyGridConsWatts|0 |  n/a | kWh | 0.001 |  history grid cons watts |
-|historyPlugTotalWatts|0 |  n/a | kWh | 0.001 |  history plug total watts |
-|historyInvToPlugWatts|0 |  n/a | kWh | 0.001 |  history inv to plug watts |
-|historyPermanentWatts|0 |  n/a | kWh | 0.001 |  history permanent watts |
+|historyPvToInvWatts|0 |  n/a | W | 0.1 |  history pv to inv watts |
+|historyBatInputWatts|0 |  n/a | W | 0.1 |  history bat input watts |
+|historyInvOutputWatts|0 |  n/a | W | 0.1 |  history inv output watts |
+|historyGridConsWatts|0 |  n/a | W | 0.1 |  history grid cons watts |
+|historyPlugTotalWatts|0 |  n/a | W | 0.1 |  history plug total watts |
+|historyInvToPlugWatts|0 |  n/a | W | 0.1 |  history inv to plug watts |
+|historyPermanentWatts|0 |  n/a | W | 0.1 |  history permanent watts |
 |espTempsensor|-20 | 90 | °C | 0.1 |  esp tempsensor |
 
 
@@ -77,8 +77,8 @@
 
 | State  |      Min     |     Max     |  Unit |  Mult |  Name |  cmd |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
-|permanentWatts| 0 | 600 | W | 0.1 |  Permanent Power | {cmdFunc:20,cmdId:129,dataLen:3} |
-|ratedPower| 0 | 600 | W | 0.1 |  Inverter rated power | {cmdFunc:20,cmdId:146,dataLen:3} |
+|permanentWatts| 0 | 800 | W | 0.1 |  Permanent Power | {cmdFunc:20,cmdId:129,dataLen:3} |
+|ratedPower| 0 | 800 | W | 1 |  Inverter rated power | {cmdFunc:20,cmdId:146,dataLen:3} |
 |lowerLimit| 0 | 30 | % | 1 |  Battery SOC lower limit | {cmdFunc:20,cmdId:132,dataLen:2} |
 |upperLimit| 50 | 100 | % | 1 |  Battery SOC upper limit | {cmdFunc:20,cmdId:133,dataLen:2} |
 |invBrightness| 0 | 100 | % | 0.1 |  Inverter brightness | {cmdFunc:20,cmdId:135,dataLen:3} |

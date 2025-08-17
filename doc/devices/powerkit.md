@@ -1,7 +1,11 @@
 # States for  POWERKIT
-### version: 1.3.1
+### version: 1.4.0
 
 [bp1](#bp1)
+
+[bp2](#bp2)
+
+[bp3](#bp3)
 
 [bbcout](#bbcout)
 
@@ -40,7 +44,163 @@
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |oilCloseSoc|50 | 100 | % | 1 |  Smart generator shutoff SOC |
 |amp|0 | 60 | A | 0.001 |  Current mA |
-|fullCap|0 | 100000 | mAh | 1 |  Capacity of full charging |
+|fullCap|0 | 120000 | mAh | 1 |  Capacity of full charging |
+|soc|0 | 100 | % | 1 |  soc |
+|minCellVol|0 | 6 | V | 0.001 |  Minimum battery cell voltage |
+|ptcRemainTime|0 | 360 | min | 1 |  Remaining time of PTC heating |
+|vol|0 | 60 | V | 0.001 |  Voltage |
+|minCellTemp|-30 | 100 | °C | 1 |  Minimum battery cell temperature |
+|ptcChgErrCnt|0 |  n/a |  | 1 |  Error count of PTC heating |
+|remainCap|0 | 100000 | mAh | 1 |  Remaining capacity |
+|inWatts|0 | 5000 | W | 1 |  Input power |
+|temp|-30 | 100 | °C | 1 |  Showing current temperature |
+|maxMosTemp|0 | 100 | °C | 1 |  Maximum MOS temperature |
+|maxCellTemp|-30 | 80 | °C | 1 |  Maximum battery cell temperature |
+|minMosTemp|0 | 100 | °C | 1 |  Minimum MOS temperature |
+|lcdStandbyMin|0 | 3600 | min | 1 |  LCD screen standby time |
+|maxPtcTemp|-30 | 100 | °C | 1 |  Maximum PTC temperature |
+|maxCellVol|0 | 6 | V | 0.001 |  Maximum battery cell voltage |
+|dsgSetSoc|0 | 30 | % | 1 |  SOC lower limit when discharging the UPS |
+|minPtcTemp|0 | 100 | °C | 1 |  Minimum PTC temperature |
+|chgSetSoc|60 | 100 | % | 1 |  SOC upper limit when charging the UPS |
+|oilOpenSoc|0 | 60 | % | 1 |  Smart generator startup SOC |
+|designCap|0 | 100000 | mAh | 1 |  Design capacity |
+|outWatts|0 | 6000 | W | 1 |  Output power |
+|bmsChgUpline|0 | 100 | % | 1 |  Upper limit of UPS charging of BMS |
+|remainTime|0 | 15000 | min | 1 |  Remaining time |
+|totalFullCap|0 | 300000 | mAh | 1 |  Total battery capacity |
+|totalOutWatts|0 | 7200 | W | 1 |  Total output power |
+|acDcLsplShutdMin|0 | 7200 | min | 1 |  Time to shutoff when both AC and DC enter low power mode |
+|totalInWatts|0 | 3000 | W | 1 |  Total input power |
+|lcdOffConfirmS|0 | 7200 | min | 1 |  Screen shutoff time |
+|oilStopUpline|60 | 100 | % | 1 |  Upper limit for the smart generator to disable |
+|oilStartDownline|0 | 30 | % | 1 |  Lower limit for the smart generator to start |
+|cycles|0 |  n/a |  | 1 |  Cycles |
+|totalSoc|0 | 100 | % | 1 |  Total SOC |
+|totalRemainTime|0 | 15000 | min | 1 |  Total remaining time |
+|bmsDsgDownline|0 | 30 | % | 1 |  Lower limit of UPS charging of BMS |
+|totalAmp|0 | 60 | A | 0.1 |  Total current |
+
+
+### diagnostic
+
+| State  |     Name |  values |
+|----------|:-------------:|------|
+|chgDsgMosState| Status of charging and discharging MOS | {0:OK?} |
+|ptcHeatingEvent| PTC stop heating event | {0:OK?} |
+|upsFlag| Status of UPS mode | {0:OK?} |
+|warnCode| Alarm code | {0:OK?} |
+|openBmsIdex| Enable the battery or not. 0: not enabled, 1: enabled | {0:not enabled,1:enabled} |
+|ptcHeatingFlag| Current status of PTC: 0: stop, 1: heating, in delay due to error | {0:stop,1:heating, in delay due to error} |
+|proChgDsgMosState| Pre-discharging MOS status | {0:OK?} |
+|chgState| Charging/Discharging status | {0:charging?,1:discharging?} |
+|ptcMosErr| Heating MOS exception | {0:OK?} |
+|ptcAllowFlag| Allow PTC heating indication: 0: not allowed, 1: allowed | {0:not allowed,1:allowed} |
+|eventCode| Event code | {0:OK?} |
+|errCode| Error code | {0:OK?} |
+|ptcTouchFlag| PTC triggering event: 0: not triggered, 1: heating by charging, 2: heating by discharging | {0:not triggered,1:heating by charging,2:heating by discharging} |
+|balanceFlag| Balancing status | {0:OK?} |
+|bmsFault| BMS permanent failure | {0:OK?} |
+|bmsType| 0:BP5000 1:BP2000 | {0:BP5000,1:BP2000} |
+|doubleOilErrorFlag| Dual smart generator error | {0:OK?} |
+|totalChgDsgState| Overall charging/discharging status, 0: idle, 1: discharging, 2: charging | {0:idle,1:discharging,2:charging} |
+|remindDsgPtcFlag| HUB under-voltage reminder to heat by charging | {0:OK?} |
+|warningEvent| Alarm event, 0: no warning, 1: charging, shutoff warning not allowed | {0:no warning,1:charging, shutoff warning not allowed} |
+
+## bp2
+
+### string
+
+| State  |  Name |
+|----------|------|
+|moduleSn| Module SN# |
+|kitNum| Unique dynamic ID for CAN Mediation |
+|canId| Version No. |
+
+### number
+| State  |      Min     |      Max     |  Unit |  Mult |  Name |
+|----------|:-------------:|:-------------:|:------:|:-----:|-----|
+|oilCloseSoc|50 | 100 | % | 1 |  Smart generator shutoff SOC |
+|amp|0 | 60 | A | 0.001 |  Current mA |
+|fullCap|0 | 120000 | mAh | 1 |  Capacity of full charging |
+|soc|0 | 100 | % | 1 |  soc |
+|minCellVol|0 | 6 | V | 0.001 |  Minimum battery cell voltage |
+|ptcRemainTime|0 | 360 | min | 1 |  Remaining time of PTC heating |
+|vol|0 | 60 | V | 0.001 |  Voltage |
+|minCellTemp|-30 | 100 | °C | 1 |  Minimum battery cell temperature |
+|ptcChgErrCnt|0 |  n/a |  | 1 |  Error count of PTC heating |
+|remainCap|0 | 100000 | mAh | 1 |  Remaining capacity |
+|inWatts|0 | 5000 | W | 1 |  Input power |
+|temp|-30 | 100 | °C | 1 |  Showing current temperature |
+|maxMosTemp|0 | 100 | °C | 1 |  Maximum MOS temperature |
+|maxCellTemp|-30 | 80 | °C | 1 |  Maximum battery cell temperature |
+|minMosTemp|0 | 100 | °C | 1 |  Minimum MOS temperature |
+|lcdStandbyMin|0 | 3600 | min | 1 |  LCD screen standby time |
+|maxPtcTemp|-30 | 100 | °C | 1 |  Maximum PTC temperature |
+|maxCellVol|0 | 6 | V | 0.001 |  Maximum battery cell voltage |
+|dsgSetSoc|0 | 30 | % | 1 |  SOC lower limit when discharging the UPS |
+|minPtcTemp|0 | 100 | °C | 1 |  Minimum PTC temperature |
+|chgSetSoc|60 | 100 | % | 1 |  SOC upper limit when charging the UPS |
+|oilOpenSoc|0 | 60 | % | 1 |  Smart generator startup SOC |
+|designCap|0 | 100000 | mAh | 1 |  Design capacity |
+|outWatts|0 | 6000 | W | 1 |  Output power |
+|bmsChgUpline|0 | 100 | % | 1 |  Upper limit of UPS charging of BMS |
+|remainTime|0 | 15000 | min | 1 |  Remaining time |
+|totalFullCap|0 | 120000 | mAh | 1 |  Total battery capacity |
+|totalOutWatts|0 | 7200 | W | 1 |  Total output power |
+|acDcLsplShutdMin|0 | 7200 | min | 1 |  Time to shutoff when both AC and DC enter low power mode |
+|totalInWatts|0 | 3000 | W | 1 |  Total input power |
+|lcdOffConfirmS|0 | 7200 | min | 1 |  Screen shutoff time |
+|oilStopUpline|60 | 100 | % | 1 |  Upper limit for the smart generator to disable |
+|oilStartDownline|0 | 30 | % | 1 |  Lower limit for the smart generator to start |
+|cycles|0 |  n/a |  | 1 |  Cycles |
+|totalSoc|0 | 100 | % | 1 |  Total SOC |
+|totalRemainTime|0 | 15000 | min | 1 |  Total remaining time |
+|bmsDsgDownline|0 | 30 | % | 1 |  Lower limit of UPS charging of BMS |
+|totalAmp|0 | 60 | A | 0.1 |  Total current |
+
+
+### diagnostic
+
+| State  |     Name |  values |
+|----------|:-------------:|------|
+|chgDsgMosState| Status of charging and discharging MOS | {0:OK?} |
+|ptcHeatingEvent| PTC stop heating event | {0:OK?} |
+|upsFlag| Status of UPS mode | {0:OK?} |
+|warnCode| Alarm code | {0:OK?} |
+|openBmsIdex| Enable the battery or not. 0: not enabled, 1: enabled | {0:not enabled,1:enabled} |
+|ptcHeatingFlag| Current status of PTC: 0: stop, 1: heating, in delay due to error | {0:stop,1:heating, in delay due to error} |
+|proChgDsgMosState| Pre-discharging MOS status | {0:OK?} |
+|chgState| Charging/Discharging status | {0:charging?,1:discharging?} |
+|ptcMosErr| Heating MOS exception | {0:OK?} |
+|ptcAllowFlag| Allow PTC heating indication: 0: not allowed, 1: allowed | {0:not allowed,1:allowed} |
+|eventCode| Event code | {0:OK?} |
+|errCode| Error code | {0:OK?} |
+|ptcTouchFlag| PTC triggering event: 0: not triggered, 1: heating by charging, 2: heating by discharging | {0:not triggered,1:heating by charging,2:heating by discharging} |
+|balanceFlag| Balancing status | {0:OK?} |
+|bmsFault| BMS permanent failure | {0:OK?} |
+|bmsType| 0:BP5000 1:BP2000 | {0:BP5000,1:BP2000} |
+|doubleOilErrorFlag| Dual smart generator error | {0:OK?} |
+|totalChgDsgState| Overall charging/discharging status, 0: idle, 1: discharging, 2: charging | {0:idle,1:discharging,2:charging} |
+|remindDsgPtcFlag| HUB under-voltage reminder to heat by charging | {0:OK?} |
+|warningEvent| Alarm event, 0: no warning, 1: charging, shutoff warning not allowed | {0:no warning,1:charging, shutoff warning not allowed} |
+
+## bp3
+
+### string
+
+| State  |  Name |
+|----------|------|
+|moduleSn| Module SN# |
+|kitNum| Unique dynamic ID for CAN Mediation |
+|canId| Version No. |
+
+### number
+| State  |      Min     |      Max     |  Unit |  Mult |  Name |
+|----------|:-------------:|:-------------:|:------:|:-----:|-----|
+|oilCloseSoc|50 | 100 | % | 1 |  Smart generator shutoff SOC |
+|amp|0 | 60 | A | 0.001 |  Current mA |
+|fullCap|0 | 120000 | mAh | 1 |  Capacity of full charging |
 |soc|0 | 100 | % | 1 |  soc |
 |minCellVol|0 | 6 | V | 0.001 |  Minimum battery cell voltage |
 |ptcRemainTime|0 | 360 | min | 1 |  Remaining time of PTC heating |
@@ -414,7 +574,7 @@
 |maxChgCurr|0 | 60 | A | 0.001 |  Maximum chargeable current |
 |bmsChgCurr|0 | 60 | A | 0.001 |  BMS chargeable current |
 |chgBatVol|0 | 60 | V | 0.001 |  Charging voltage |
-|realSoc|0 | 100 | 5 | 1 |  Real SOC |
+|realSoc|0 | 100 | % | 1 |  Real SOC |
 
 
 ## ichigh

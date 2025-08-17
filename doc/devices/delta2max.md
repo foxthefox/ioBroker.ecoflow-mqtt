@@ -1,5 +1,5 @@
 # States for  DELTA2MAX
-### version: 1.3.1
+### version: 1.4.0
 
 [bmsMaster](#bmsMaster)
 
@@ -18,7 +18,7 @@
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|amp|0 | 50 | A | 0.001 |  Current |
+|amp|0 | 25 | A | 0.001 |  Current |
 |cycles|0 | 6000 |  | 1 |  Number of cycles |
 |designCap|0 | 80000 | mAh | 1 |  Design capacity |
 |f32ShowSoc|0 | 100 | % | 1 |  SOC |
@@ -145,7 +145,7 @@
 
 | State  |      Min     |     Max     |  Unit |  Mult |  Name |  cmd |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
-|SlowChgWatts| 200 | 2400 | W | 1 |  Maximum charging power for AC slow charging (W) | {valName:slowChgWatts,moduleType:3,operateType:acChgCfg,params:{slowChgWatts:200,fastChgWatts:255,chgPauseFlag:0}} |
+|SlowChgWatts| 200 | 1000 | W | 1 |  Maximum charging power for AC slow charging (W) | {valName:slowChgWatts,moduleType:3,operateType:acChgCfg,params:{slowChgWatts:200,fastChgWatts:255,chgPauseFlag:0}} |
 
 ### diagnostic
 
@@ -182,24 +182,24 @@
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|carOutAmp|0 | 13 | A | 0.001 |  Car charging output current |
-|carOutVol|0 | 15 | V | 0.001 |  Car charging output voltage |
+|carOutAmp|0 | 13 | A | 0.01 |  Car charging output current |
+|carOutVol|0 | 60 | V | 0.1 |  Car charging output voltage |
 |carOutWatts|0 | 500 | W | 0.1 |  Car charging output power |
 |carTemp|0 | 80 | °C | 1 |  Car charging temperature |
 |dc24vTemp|0 | 80 | °C | 1 |  DCDC24V temperature |
 |dcdc12vAmp|0 | 13 | A | 0.01 |  DC12V30A output current, which is valid only for DELTA Pro |
 |dcdc12vVol|0 | 60 | V | 0.1 |  DC12V30A output voltage, which is valid only for DELTA Pro |
 |dcdc12vWatts|0 | 500 | W | 0.1 |  DC12V30A output power, which is valid only for DELTA Pro |
-|inAmp|0 | 16 | A | 0.001 |  PV input current |
-|inVol|0 | 60 | V | 0.001 |  PV input voltage |
-|inWatts|0 | 900 | W | 1 |  PV input power |
-|mpptTemp|0 | 120 | °C | 1 |  MPPT temperature |
-|outAmp|0 | 31 | A | 0.001 |  PV output current |
-|outVol|0 | 60 | V | 0.001 |  PV output voltage |
-|outWatts|0 | 1600 | W | 1 |  PV output power |
-|pv2InAmp|0 | 13 | A | 0.001 |  PV input current |
-|pv2InVol|0 | 150 | V | 0.001 |  PV input voltage |
-|pv2InWatts|0 | 500 | W | 1 |  PV input power |
+|inAmp|0 | 13 | A | 0.01 |  PV input current |
+|inVol|0 | 150 | V | 0.1 |  PV input voltage |
+|inWatts|0 | 500 | W | 0.1 |  PV input power |
+|mpptTemp|0 | 80 | °C | 1 |  MPPT temperature |
+|outAmp|0 | 13 | A | 0.01 |  PV output current |
+|outVol|0 | 60 | V | 0.1 |  PV output voltage |
+|outWatts|0 | 600 | W | 0.1 |  PV output power |
+|pv2InAmp|0 | 13 | A | 0.01 |  PV input current |
+|pv2InVol|0 | 150 | V | 0.1 |  PV input voltage |
+|pv2InWatts|0 | 500 | W | 0.1 |  PV input power |
 |pv2MpptTemp|0 | 80 | °C | 1 |  MPPT temperature |
 
 
