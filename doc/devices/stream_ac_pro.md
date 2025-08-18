@@ -1,5 +1,5 @@
 # States for  STREAM_AC_PRO
-### version: 1.4.0
+### version: 1.4.1
 
 [RuntimePropertyUpload](#RuntimePropertyUpload)
 
@@ -44,7 +44,6 @@
 |powGetPv|0 | 600 | W | 1 |  pow get pv |
 |cmsBattPowOutMax|0 | 4000 | W | 1 |  cms batt pow out max |
 |cmsBattPowInMax|0 | 4000 | W | 1 |  cms batt pow in max |
-|backupReverseSoc|0 | 100 | % | 1 |  Backup Reverse Soc |
 |cmsBattFullEnergy|0 | 1920 | Wh | 1 |  cms batt full energy |
 |stormPatternEndTime|0 | 60 | h | 1 |  storm pattern end time |
 |powGetSysGrid|0 | 3000 | W | 1 |  pow get sys grid |
@@ -133,7 +132,6 @@
 |energyBackupState| energy Backup State | {0:OK?} |
 |distributedDeviceStatus| distributed Device Status | {0:Election,1:Master,2:Slave} |
 |seriesConnectDeviceStatus| series Connect Device Status | {0:Election,1:Master,2:Slave} |
-|powConsumptionMeasurement| pow Consumption Measurement | {0:none?,1:plug?,2:meter?} |
 |devCtrlStatus| dev Ctrl Status | {0:not ok?,1:ok?} |
 |updateBanFlag| update Ban Flag | {0:not set?,1:set?} |
 
@@ -141,8 +139,10 @@
 
 | State  |      Min     |     Max     |  Unit |  Mult |  Name |  cmd |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
-|cmsMaxChgSoc| 50 | 100 | % | 1 |  Charge limit | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
-|cmsMinDsgSoc| 0 | 30 | % | 1 |  Discharge limit | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
+|cmsMaxChgSoc| 50 | 100 | % | 1 |  Charge limit | {src:32,dest:2,dSrc:1,dDest:1,cmdFunc:254,cmdId:17,dataLen:12,productId:56,version:3,payloadVer:1,pdata:{cfgUtcTime:6,cmsMaxChgSoc:33}} |
+|cmsMinDsgSoc| 0 | 30 | % | 1 |  Discharge limit | {src:32,dest:2,dSrc:1,dDest:1,cmdFunc:254,cmdId:17,dataLen:12,productId:56,version:3,payloadVer:1,pdata:{cfgUtcTime:6,cmsMinDsgSoc:34}} |
+|backupReverseSoc| 0 | 100 | % | 1 |  Backup Reserve SOC | {src:32,dest:2,dSrc:1,dDest:1,cmdFunc:254,cmdId:17,dataLen:9,productId:56,version:3,payloadVer:1,pdata:{cfgUtcTime:6,backupReverseSoc:102}} |
+|powConsumptionMeasurement| 1 | 2 |  | 1 |  pow Consumption Measurement handling | {src:32,dest:2,dSrc:1,dDest:1,cmdFunc:254,cmdId:17,dataLen:9,productId:56,version:3,payloadVer:1,pdata:{cfgUtcTime:6,powConsumptionMeasurement:239}} |
 
 ### switch
 
@@ -187,7 +187,7 @@
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |soc|0 | 100 | % | 1 |  soc |
 |vol|0 | 60 | V | 0.001 |  vol |
-|amp|0 | 40 | A | 0.001 |  amp |
+|amp|0 | 40 | A | 0.0001 |  amp |
 |temp|0 | 90 | °C | 1 |  temp |
 |designCap|0 | 100000 | mAh | 1 |  design cap |
 |remainCap|0 | 100000 | mAh | 1 |  remain cap |

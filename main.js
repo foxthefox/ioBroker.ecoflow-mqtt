@@ -698,6 +698,7 @@ class EcoflowMqtt extends utils.Adapter {
                     ) {
                         if (this.pdevicesStatesDict && this.pdevicesStates) {
                             let msgdecode = null;
+                            /*
                             if (devtype === 'unknown') {
                                 this.log.debug(
                                     `[PROTOBUF unknown] ${topic} [${devtype}/${msgtype}] raw (hex): ${message.toString(
@@ -705,85 +706,85 @@ class EcoflowMqtt extends utils.Adapter {
                                     )}`,
                                 );
                             } else {
-                                try {
-                                    msgdecode = ef.pstreamDecode(
-                                        this,
-                                        message,
-                                        '',
-                                        topic,
-                                        msgtype,
-                                        this.protoSource[devtype],
-                                        this.protoMsg[devtype],
-                                        logged,
-                                    );
-                                } catch (error) {
-                                    this.log.debug(`pstreamDecode call ->${error}`);
-                                }
-                                if (
-                                    msgtype === 'update' ||
-                                    msgtype === 'get_reply' ||
-                                    msgtype === 'set_reply' ||
-                                    msgtype === 'set'
-                                ) {
-                                    if (msgdecode !== null && typeof msgdecode === 'object') {
-                                        if (Object.keys(msgdecode).length > 0) {
-                                            //storeStreamPayload handles multiple objects
-                                            const haupdate = await this.storeProtoPayload[devtype](
-                                                this,
-                                                this.pdevicesStatesDict[origdevtype],
-                                                this.pdevicesStates[origdevtype],
-                                                topic,
-                                                msgdecode,
-                                                devtype,
-                                                this.pdevices[topic]['haEnable'],
-                                                logged,
-                                            );
-                                            if (haupdate.length > 0) {
-                                                for (let i = 0; i < haupdate.length; i++) {
-                                                    if (haupdate[i]) {
-                                                        if (typeof haupdate[i].payload === 'string') {
-                                                            ha.publish(
-                                                                this,
-                                                                topic,
-                                                                haupdate[i].topic,
-                                                                haupdate[i].payload,
-                                                                { qos: 1 },
-                                                                devicelogged && this.config.msgHaOutgoing,
-                                                                'HA EF PB UPDATE RCV',
-                                                            );
-                                                        } else {
-                                                            this.log.warn(
-                                                                `not a string! : ${haupdate[i].topic}  ${
-                                                                    haupdate[i].payload
-                                                                }`,
-                                                            );
-                                                        }
+                                */
+                            try {
+                                msgdecode = ef.pstreamDecode(
+                                    this,
+                                    message,
+                                    '',
+                                    topic,
+                                    msgtype,
+                                    this.protoSource[devtype],
+                                    this.protoMsg[devtype],
+                                    logged,
+                                );
+                            } catch (error) {
+                                this.log.debug(`pstreamDecode call ->${error}`);
+                            }
+                            if (
+                                msgtype === 'update' ||
+                                msgtype === 'get_reply' ||
+                                msgtype === 'set_reply' ||
+                                msgtype === 'set'
+                            ) {
+                                if (msgdecode !== null && typeof msgdecode === 'object') {
+                                    if (Object.keys(msgdecode).length > 0) {
+                                        //storeStreamPayload handles multiple objects
+                                        const haupdate = await this.storeProtoPayload[devtype](
+                                            this,
+                                            this.pdevicesStatesDict[origdevtype],
+                                            this.pdevicesStates[origdevtype],
+                                            topic,
+                                            msgdecode,
+                                            devtype,
+                                            this.pdevices[topic]['haEnable'],
+                                            logged,
+                                        );
+                                        if (haupdate.length > 0) {
+                                            for (let i = 0; i < haupdate.length; i++) {
+                                                if (haupdate[i]) {
+                                                    if (typeof haupdate[i].payload === 'string') {
+                                                        ha.publish(
+                                                            this,
+                                                            topic,
+                                                            haupdate[i].topic,
+                                                            haupdate[i].payload,
+                                                            { qos: 1 },
+                                                            devicelogged && this.config.msgHaOutgoing,
+                                                            'HA EF PB UPDATE RCV',
+                                                        );
+                                                    } else {
+                                                        this.log.warn(
+                                                            `not a string! : ${haupdate[i].topic}  ${
+                                                                haupdate[i].payload
+                                                            }`,
+                                                        );
                                                     }
                                                 }
                                             }
                                         }
                                     }
-                                    //msg counter, only when receiving telegrams
-                                    if (msgtype === 'update' || msgtype === 'get_reply' || msgtype === 'set_reply') {
-                                        try {
-                                            let countobj = await this.getStateAsync(`${topic}.info.msgCount`);
-                                            if (countobj) {
-                                                if (countobj.val !== null) {
-                                                    await this.setState(`${topic}.info.msgCount`, {
-                                                        val: parseInt(countobj.val) + 1,
-                                                        ack: true,
-                                                    });
-                                                }
-                                            } else {
-                                                this.log.debug(`did not get count info ${topic}  ${countobj}`);
-                                            }
-                                        } catch (error) {
-                                            this.log.error(`Error writing msg count ${error}`);
-                                        }
-                                    }
-                                } else {
-                                    //ef.pstreamDecode()
                                 }
+                                //msg counter, only when receiving telegrams
+                                if (msgtype === 'update' || msgtype === 'get_reply' || msgtype === 'set_reply') {
+                                    try {
+                                        let countobj = await this.getStateAsync(`${topic}.info.msgCount`);
+                                        if (countobj) {
+                                            if (countobj.val !== null) {
+                                                await this.setState(`${topic}.info.msgCount`, {
+                                                    val: parseInt(countobj.val) + 1,
+                                                    ack: true,
+                                                });
+                                            }
+                                        } else {
+                                            this.log.debug(`did not get count info ${topic}  ${countobj}`);
+                                        }
+                                    } catch (error) {
+                                        this.log.error(`Error writing msg count ${error}`);
+                                    }
+                                }
+                            } else {
+                                //ef.pstreamDecode()
                             }
                         }
                     } else {
@@ -1365,6 +1366,7 @@ class EcoflowMqtt extends utils.Adapter {
                             case 'stream_pro':
                             case 'stream_ultra':
                             case 'wave3':
+                            case 'unknown':
                                 devicetype = this.pdevices[device]['devType'];
                                 type = 'protobuf'; //includes also plugs
                                 cmd = this.pdevicesCmd[devicetype];
