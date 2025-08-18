@@ -358,10 +358,13 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 
 ## Changelog
 
-### 1.4.1 (WIP)
+### 1.4.2 (npm)
 
 - (foxthefox) new datapoints for PowerOcean and HeatingRod
 - (foxthefox) new datapoints Delta2max
+
+### 1.4.1 (npm)
+
 - (foxthefox) SHP time task enable switch
 
 ### 1.4.0 (npm)

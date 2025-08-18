@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "ecoflow-mqtt",
-        "version": "1.4.0",
+        "version": "1.4.1",
         "news": {
+            "1.4.1": {
+                "en": "corrections ",
+                "de": "Korrekturen",
+                "ru": "исправления",
+                "pt": "Correções",
+                "nl": "correcties",
+                "fr": "correction",
+                "it": "corrections ",
+                "es": "correcciones",
+                "pl": "poprawki",
+                "uk": "виправлення",
+                "zh-cn": "更正"
+            },
             "1.4.0": {
                 "en": "major efactoring, many new devices ",
                 "de": "Hauptfaktoring, viele neue Geräte",
