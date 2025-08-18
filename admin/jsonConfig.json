@@ -341,6 +341,14 @@
 								{
 									"value": "stream_ultra",
 									"label": "Stream Ultra"
+								},
+								{
+									"value": "unknown",
+									"label": "Stream Ultra Pro"
+								},
+								{
+									"value": "unknown",
+									"label": "Stream Inverter"
 								}
 							],
 							"title": "Powerstream Type",
@@ -605,6 +613,10 @@
 								{
 									"value": "plug",
 									"label": "Plug"
+								},
+								{
+									"value": "unknown",
+									"label": "Eco Flow x Shelly Smart Plug"
 								}
 							],
 							"title": "Plug Type",
@@ -783,6 +795,10 @@
 								{
 									"value": "generator",
 									"label": "Smart Generator"
+								},
+								{
+									"value": "unknown",
+									"label": "Smart Generator 4000W dual fuel"
 								}
 							],
 							"title": "Generator Type",
@@ -1161,6 +1177,10 @@
 								{
 									"value": "glacier",
 									"label": "Glacier Cooler"
+								},
+								{
+									"value": "unknown",
+									"label": "Glacier 2 Cooler "
 								}
 							],
 							"title": "Glacier Type",

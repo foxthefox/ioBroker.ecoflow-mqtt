@@ -366,6 +366,8 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 ### 1.4.1 (npm)
 
 - (foxthefox) SHP time task enable switch
+- (foxthefox) Stream factor for BMS...amp
+- (foxthefox) separate handler for unknown devices
 
 ### 1.4.0 (npm)
 
