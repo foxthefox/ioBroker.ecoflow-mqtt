@@ -615,8 +615,8 @@
 									"label": "Plug"
 								},
 								{
-									"value": "unknown",
-									"label": "Eco Flow x Shelly Smart Plug"
+									"value": "unknownjson",
+									"label": "EF x Shelly Smart Plug"
 								}
 							],
 							"title": "Plug Type",
@@ -708,7 +708,11 @@
 								{
 									"value": "smartmeter",
 									"label": "EF smartmeter"
-								}
+								},
+								{
+									"value": "unknownjson",
+									"label": "EF x Shelly Pro3EM"
+								},
 							],
 							"title": "Type",
 							"attr": "devType",
@@ -1177,10 +1181,6 @@
 								{
 									"value": "glacier",
 									"label": "Glacier Cooler"
-								},
-								{
-									"value": "unknown",
-									"label": "Glacier 2 Cooler "
 								}
 							],
 							"title": "Glacier Type",
@@ -1468,6 +1468,10 @@
 								{
 									"value": "unknown",
 									"label": "Unknown"
+								},
+								{
+									"value": "unknownjson",
+									"label": "Unknown JSON"
 								}
 							],
 							"title": "Device Type",

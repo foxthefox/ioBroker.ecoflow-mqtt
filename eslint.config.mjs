@@ -21,7 +21,6 @@ export default [
             '**/adapter-config.d.ts',
             'test',
             'lib/helper',
-            'lib/dict_data/ef_unknown_data.js',
         ],
     },
     {
