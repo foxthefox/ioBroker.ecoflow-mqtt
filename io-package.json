@@ -4,17 +4,17 @@
         "version": "1.4.1",
         "news": {
             "1.4.1": {
-                "en": "corrections ",
-                "de": "Korrekturen",
-                "ru": "исправления",
-                "pt": "Correções",
-                "nl": "correcties",
-                "fr": "correction",
-                "it": "corrections ",
-                "es": "correcciones",
-                "pl": "poprawki",
-                "uk": "виправлення",
-                "zh-cn": "更正"
+                "en": "correction multiplication of float, new commands for STREAM and River3",
+                "de": "Korrekturmultiplikation von Float, neue Befehle für Stream und River33",
+                "ru": "Умножение коррекции плавания, новые команды для потока и реки3",
+                "pt": "Multiplicação de correção de flutuação, novos comandos para stream e rio3",
+                "nl": "Correctievermmen van float, nieuwe opdrachten voor stroom en rivier3",
+                "fr": "Multiplication de correction du flotteur, de nouvelles commandes pour le cours d'eau et la rivière3",
+                "it": "Correzione Moltiplicazione di Float, Nuovi comandi per Stream e River3",
+                "es": "Multiplicación de corrección del flotador, nuevos comandos para Stream y River3",
+                "pl": "Mnożenie korekcji pływaków, nowe polecenia strumienia i rzeki3",
+                "uk": "Корекційне множення поплавця, нові команди для потоку та річки3",
+                "zh-cn": "Float的校正乘法，溪流和River3的新命令3"
             },
             "1.4.0": {
                 "en": "major efactoring, many new devices ",
