@@ -360,11 +360,15 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 
 ## Changelog
 
-### 1.4.2 (npm)
+### 1.4.3 (WIP)
 
 - (foxthefox) new datapoints for PowerOcean and HeatingRod
 - (foxthefox) new datapoints Delta2max
 - (foxthefox) SHP time task enable switch
+
+### 1.4.2 (npm)
+
+- (foxthefox) correction of bool in proto of River3(Plus)
 
 ### 1.4.1 (npm)
 
