@@ -268,6 +268,8 @@ some explanation to the device data
 
 [River 2 Pro](./doc/devices/river2pro.md)
 
+[River 3](./doc/devices/river3.md)
+
 [River 3 Plus](./doc/devices/river3plus.md)
 
 [Delta 2](./doc/devices/delta2.md)
@@ -358,11 +360,19 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 
 ## Changelog
 
-### 1.4.1 (WIP)
+### 1.4.2 (npm)
 
 - (foxthefox) new datapoints for PowerOcean and HeatingRod
 - (foxthefox) new datapoints Delta2max
 - (foxthefox) SHP time task enable switch
+
+### 1.4.1 (npm)
+
+- (foxthefox) Correction of multiplication, some float values may be incorrect now
+- (foxthefox) new commands for STREAM and River3
+- (foxthefox) River3 llcbusvol correction
+- (foxthefox) Stream max settings for power,
+- (foxthefox) separate handler for unknown devices
 
 ### 1.4.0 (npm)
 

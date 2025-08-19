@@ -151,86 +151,6 @@ class EcoflowMqtt extends utils.Adapter {
                             } else {
                                 devStates = require(`./lib/dict_data/ef_${devtype}_data.js`).deviceStates;
                             }
-                            /*
-							if (devtype === 'powerocean') {
-								devStates = require('./lib/dict_data/ef_powerocean_data.js').deviceStates;
-							} else if (devtype === 'panel') {
-								devStates = require('./lib/dict_data/ef_panel_data.js').panelStates;
-							} else if (devtype === 'panel2') {
-								devStates = require('./lib/dict_data/ef_panel2_data.js').deviceStates;
-							} else if (devtype === 'deltaproultra') {
-								devStates = require('./lib/dict_data/ef_deltaproultra_data.js').deviceStates;
-							} else if (devtype === 'alternator') {
-								devStates = require('./lib/dict_data/ef_alternator_data.js').deviceStates;
-							} else if (devtype === 'deltapro3') {
-								devStates = require('./lib/dict_data/ef_deltapro3_data.js').deviceStates;
-							} else if (devtype === 'delta3plus') {
-								devStates = require('./lib/dict_data/ef_delta3plus_data.js').deviceStates;
-							} else if (devtype === 'river3plus') {
-								devStates = require('./lib/dict_data/ef_river3plus_data.js').deviceStates;
-							} else if (devtype === 'delta3') {
-								devStates = require('./lib/dict_data/ef_delta3_data.js').deviceStates;
-							} else if (devtype === 'river3') {
-								devStates = require('./lib/dict_data/ef_river3_data.js').deviceStates;
-							} else {
-								devStates = require('./lib/ecoflow_data.js').pstationStates;
-							}
-							*/
-
-                            /*
-							if (devtype !== 'none' && devStates) {
-								let devupd = null;
-								if (devtype === 'pstream600' || devtype === 'pstream800') {
-									devupd = require('./lib/dict_data/ef_pstream_data.js').deviceRanges[devtype];
-								} else if (
-									devtype === 'powerkitbp2000' ||
-									devtype === 'powerkitbp5000' ||
-									devtype === 'powerkit'
-								) {
-									devupd = require('./lib/dict_data/ef_powerkit_data.js').deviceRanges[devtype];
-								} else if (devtype === 'plug') {
-									devupd = require('./lib/dict_data/ef_plug_data.js').deviceRanges[devtype];
-								} else {
-									devupd = require('./lib/dict_data/ef_' + devtype + '_data.js').deviceRanges[devtype];
-								}
-								this.log.debug('Updating device ' + devtype)
-								this.log.debug('device upd ' + JSON.stringify(devupd));
-								if (devupd) {
-									if (Object.keys(devupd).length > 0) {
-										for (let channel in devupd) {
-											for (let type in devupd[channel]) {
-												for (let state in devupd[channel][type]) {
-													for (let value in devupd[channel][type][state]) {
-														this.log.debug(
-															'manipulate: ' +
-															channel +
-															'/' +
-															state +
-															'(' +
-															value +
-															')  old--new ' +
-															devStates[channel][type][state][value] +
-															' -- ' +
-															devupd[channel][type][state][value]
-														);
-														devStates[channel][type][state][value] =
-															devupd[channel][type][state][value];
-													}
-												}
-											}
-										}
-										//we have to store the states individually, because same state can have different ranges, factors in different devices
-									} else {
-										this.log.error('device states upd not possible');
-									}
-								} else {
-									this.log.warn('did not get devupd for ' + devtype);
-								}
-
-							} else {
-								this.log.error('devType not set -> ' + devtype + 'or no device states -> ' + devStates);
-							}
-							*/
 
                             if (!devStates) {
                                 this.log.warn(`no states for ${devtype}`);
@@ -270,7 +190,8 @@ class EcoflowMqtt extends utils.Adapter {
                                 devtype === 'stream_ac_pro' ||
                                 devtype === 'stream_pro' ||
                                 devtype === 'stream_ultra' ||
-                                devtype === 'wave3'
+                                devtype === 'wave3' ||
+                                devtype === 'unknown'
                             ) {
                                 pdevicesStatesDict = require(`./lib/dict_data/ef_${devtype}_data.js`).deviceStatesDict[
                                     devtype
@@ -292,95 +213,7 @@ class EcoflowMqtt extends utils.Adapter {
                                 ];
                                 pdevicesCmd = require(`./lib/dict_data/ef_${devtype}_data.js`).deviceCmd[origdevtype];
                             }
-                            /*
-							if (devtype === 'pstream') {
-								pdevicesStatesDict = require('./lib/dict_data/ef_pstream_data.js').deviceStatesDict[devtype];
-								pdevicesCmd = require('./lib/dict_data/ef_pstream_data.js').deviceCmd[origdevtype];
-								protoSource = require('./lib/dict_data/ef_pstream_data.js').protoSource;
-								protoMsg = require('./lib/dict_data/ef_pstream_data.js').protoMsg;
-								storeProtoPayload = require('./lib/dict_data/ef_pstream_data.js').storeProtoPayload;
-								prepareProtoCmd = require('./lib/dict_data/ef_pstream_data.js').prepareProtoCmd;
-							} else if (devtype === 'plug') {
-								pdevicesStatesDict = require('./lib/dict_data/ef_plug_data.js').deviceStatesDict[devtype];
-								pdevicesCmd = require('./lib/dict_data/ef_plug_data.js').deviceCmd[devtype];
-								protoSource = require('./lib/dict_data/ef_plug_data.js').protoSource;
-								protoMsg = require('./lib/dict_data/ef_plug_data.js').protoMsg;
-								storeProtoPayload = require('./lib/dict_data/ef_plug_data.js').storeProtoPayload;
-								prepareProtoCmd = require('./lib/dict_data/ef_plug_data.js').prepareProtoCmd;
-							} else if (devtype === 'powerkit') {
-								pdevicesStatesDict = require('./lib/dict_data/ef_powerkit_data.js').powerkitStatesDict[devtype];
-								pdevicesCmd = require('./lib/dict_data/ef_powerkit_data.js').powerkitCmd[devtype];
-							} else if (devtype === 'powerocean') {
-								pdevicesStatesDict = require('./lib/dict_data/ef_powerocean_data.js').deviceStatesDict[devtype];
-								pdevicesCmd = require('./lib/dict_data/ef_powerocean_data.js').deviceCmd[devtype];
-								protoSource = require('./lib/dict_data/ef_powerocean_data.js').protoSource;
-								protoMsg = require('./lib/dict_data/ef_powerocean_data.js').protoMsg;
-								storeProtoPayload = require('./lib/dict_data/ef_powerocean_data.js').storeProtoPayload;
-								prepareProtoCmd = require('./lib/dict_data/ef_powerocean_data.js').prepareProtoCmd;
-							} else if (devtype === 'panel') {
-								pdevicesStatesDict = require('./lib/dict_data/ef_panel_data.js').panelStatesDict[devtype];
-								pdevicesCmd = require('./lib/dict_data/ef_panel_data.js').panelCmd[devtype];
-							} else if (devtype === 'panel2') {
-								pdevicesStatesDict = require('./lib/dict_data/ef_panel2_data.js').deviceStatesDict[devtype];
-								pdevicesCmd = require('./lib/dict_data/ef_panel2_data.js').deviceCmd[devtype];
-								protoSource = require('./lib/dict_data/ef_panel2_data.js').protoSource;
-								protoMsg = require('./lib/dict_data/ef_panel2_data.js').protoMsg;
-								storeProtoPayload = require('./lib/dict_data/ef_panel2_data.js').storeProtoPayload;
-								prepareProtoCmd = require('./lib/dict_data/ef_panel2_data.js').prepareProtoCmd;
-							} else if (devtype === 'deltaproultra') {
-								pdevicesStatesDict = require('./lib/dict_data/ef_deltaproultra_data.js').deviceStatesDict[devtype];
-								pdevicesCmd = require('./lib/dict_data/ef_deltaproultra_data.js').deviceCmd[devtype];
-								protoSource = require('./lib/dict_data/ef_deltaproultra_data.js').protoSource;
-								protoMsg = require('./lib/dict_data/ef_deltaproultra_data.js').protoMsg;
-								storeProtoPayload = require('./lib/dict_data/ef_deltaproultra_data.js').storeProtoPayload;
-								prepareProtoCmd = require('./lib/dict_data/ef_deltaproultra_data.js').prepareProtoCmd;
-							} else if (devtype === 'alternator') {
-								pdevicesStatesDict = require('./lib/dict_data/ef_alternator_data.js').deviceStatesDict[devtype];
-								pdevicesCmd = require('./lib/dict_data/ef_alternator_data.js').deviceCmd[devtype];
-								protoSource = require('./lib/dict_data/ef_alternator_data.js').protoSource;
-								protoMsg = require('./lib/dict_data/ef_alternator_data.js').protoMsg;
-								storeProtoPayload = require('./lib/dict_data/ef_alternator_data.js').storeProtoPayload;
-								prepareProtoCmd = require('./lib/dict_data/ef_alternator_data.js').prepareProtoCmd;
-							} else if (devtype === 'deltapro3') {
-								pdevicesStatesDict = require('./lib/dict_data/ef_deltapro3_data.js').deviceStatesDict[devtype];
-								pdevicesCmd = require('./lib/dict_data/ef_deltapro3_data.js').deviceCmd[devtype];
-								protoSource = require('./lib/dict_data/ef_deltapro3_data.js').protoSource;
-								protoMsg = require('./lib/dict_data/ef_deltapro3_data.js').protoMsg;
-								storeProtoPayload = require('./lib/dict_data/ef_deltapro3_data.js').storeProtoPayload;
-								prepareProtoCmd = require('./lib/dict_data/ef_deltapro3_data.js').prepareProtoCmd;
-							} else if (devtype === 'delta3') {
-								pdevicesStatesDict = require('./lib/dict_data/ef_delta3_data.js').deviceStatesDict[devtype];
-								pdevicesCmd = require('./lib/dict_data/ef_delta3_data.js').deviceCmd[devtype];
-								protoSource = require('./lib/dict_data/ef_delta3_data.js').protoSource;
-								protoMsg = require('./lib/dict_data/ef_delta3_data.js').protoMsg;
-								//storeProtoPayload = require('./lib/dict_data/ef_delta3_data.js').storeProtoPayload;
-								prepareProtoCmd = require('./lib/dict_data/ef_delta3_data.js').prepareProtoCmd;
-							} else if (devtype === 'delta3plus') {
-								pdevicesStatesDict = require('./lib/dict_data/ef_delta3plus_data.js').deviceStatesDict[devtype];
-								pdevicesCmd = require('./lib/dict_data/ef_delta3plus_data.js').deviceCmd[devtype];
-								protoSource = require('./lib/dict_data/ef_delta3plus_data.js').protoSource;
-								protoMsg = require('./lib/dict_data/ef_delta3plus_data.js').protoMsg;
-								storeProtoPayload = require('./lib/dict_data/ef_delta3plus_data.js').storeProtoPayload;
-								prepareProtoCmd = require('./lib/dict_data/ef_delta3plus_data.js').prepareProtoCmd;
-							} else if (devtype === 'river3') {
-								pdevicesStatesDict = require('./lib/dict_data/ef_river3_data.js').deviceStatesDict[devtype];
-								pdevicesCmd = require('./lib/dict_data/ef_river3_data.js').deviceCmd[devtype];
-								protoSource = require('./lib/dict_data/ef_river3_data.js').protoSource;
-								protoMsg = require('./lib/dict_data/ef_river3_data.js').protoMsg;
-								//storeProtoPayload = require('./lib/dict_data/ef_river3_data.js').storeProtoPayload;
-								prepareProtoCmd = require('./lib/dict_data/ef_river3_data.js').prepareProtoCmd;
-							} else if (devtype === 'river3plus') {
-								pdevicesStatesDict = require('./lib/dict_data/ef_river3plus_data.js').deviceStatesDict[devtype];
-								pdevicesCmd = require('./lib/dict_data/ef_river3plus_data.js').deviceCmd[devtype];
-								protoSource = require('./lib/dict_data/ef_river3plus_data.js').protoSource;
-								protoMsg = require('./lib/dict_data/ef_river3plus_data.js').protoMsg;
-								storeProtoPayload = require('./lib/dict_data/ef_river3plus_data.js').storeProtoPayload;
-								prepareProtoCmd = require('./lib/dict_data/ef_river3plus_data.js').prepareProtoCmd;
-							} else {
-								pdevicesStatesDict = require('./lib/ecoflow_data.js').pstationStatesDict[origdevtype];
-								pdevicesCmd = require('./lib/ecoflow_data.js').pstationCmd[origdevtype];
-							}
-							*/
+
                             if (!pdevicesStatesDict) {
                                 this.log.warn(`no states dict for ${devtype}`);
                             }
@@ -865,6 +698,7 @@ class EcoflowMqtt extends utils.Adapter {
                     ) {
                         if (this.pdevicesStatesDict && this.pdevicesStates) {
                             let msgdecode = null;
+                            /*
                             if (devtype === 'unknown') {
                                 this.log.debug(
                                     `[PROTOBUF unknown] ${topic} [${devtype}/${msgtype}] raw (hex): ${message.toString(
@@ -872,85 +706,85 @@ class EcoflowMqtt extends utils.Adapter {
                                     )}`,
                                 );
                             } else {
-                                try {
-                                    msgdecode = ef.pstreamDecode(
-                                        this,
-                                        message,
-                                        '',
-                                        topic,
-                                        msgtype,
-                                        this.protoSource[devtype],
-                                        this.protoMsg[devtype],
-                                        logged,
-                                    );
-                                } catch (error) {
-                                    this.log.debug(`pstreamDecode call ->${error}`);
-                                }
-                                if (
-                                    msgtype === 'update' ||
-                                    msgtype === 'get_reply' ||
-                                    msgtype === 'set_reply' ||
-                                    msgtype === 'set'
-                                ) {
-                                    if (msgdecode !== null && typeof msgdecode === 'object') {
-                                        if (Object.keys(msgdecode).length > 0) {
-                                            //storeStreamPayload handles multiple objects
-                                            const haupdate = await this.storeProtoPayload[devtype](
-                                                this,
-                                                this.pdevicesStatesDict[origdevtype],
-                                                this.pdevicesStates[origdevtype],
-                                                topic,
-                                                msgdecode,
-                                                devtype,
-                                                this.pdevices[topic]['haEnable'],
-                                                logged,
-                                            );
-                                            if (haupdate.length > 0) {
-                                                for (let i = 0; i < haupdate.length; i++) {
-                                                    if (haupdate[i]) {
-                                                        if (typeof haupdate[i].payload === 'string') {
-                                                            ha.publish(
-                                                                this,
-                                                                topic,
-                                                                haupdate[i].topic,
-                                                                haupdate[i].payload,
-                                                                { qos: 1 },
-                                                                devicelogged && this.config.msgHaOutgoing,
-                                                                'HA EF PB UPDATE RCV',
-                                                            );
-                                                        } else {
-                                                            this.log.warn(
-                                                                `not a string! : ${haupdate[i].topic}  ${
-                                                                    haupdate[i].payload
-                                                                }`,
-                                                            );
-                                                        }
+                                */
+                            try {
+                                msgdecode = ef.pstreamDecode(
+                                    this,
+                                    message,
+                                    '',
+                                    topic,
+                                    msgtype,
+                                    this.protoSource[devtype],
+                                    this.protoMsg[devtype],
+                                    logged,
+                                );
+                            } catch (error) {
+                                this.log.debug(`pstreamDecode call ->${error}`);
+                            }
+                            if (
+                                msgtype === 'update' ||
+                                msgtype === 'get_reply' ||
+                                msgtype === 'set_reply' ||
+                                msgtype === 'set'
+                            ) {
+                                if (msgdecode !== null && typeof msgdecode === 'object') {
+                                    if (Object.keys(msgdecode).length > 0) {
+                                        //storeStreamPayload handles multiple objects
+                                        const haupdate = await this.storeProtoPayload[devtype](
+                                            this,
+                                            this.pdevicesStatesDict[origdevtype],
+                                            this.pdevicesStates[origdevtype],
+                                            topic,
+                                            msgdecode,
+                                            devtype,
+                                            this.pdevices[topic]['haEnable'],
+                                            logged,
+                                        );
+                                        if (haupdate.length > 0) {
+                                            for (let i = 0; i < haupdate.length; i++) {
+                                                if (haupdate[i]) {
+                                                    if (typeof haupdate[i].payload === 'string') {
+                                                        ha.publish(
+                                                            this,
+                                                            topic,
+                                                            haupdate[i].topic,
+                                                            haupdate[i].payload,
+                                                            { qos: 1 },
+                                                            devicelogged && this.config.msgHaOutgoing,
+                                                            'HA EF PB UPDATE RCV',
+                                                        );
+                                                    } else {
+                                                        this.log.warn(
+                                                            `not a string! : ${haupdate[i].topic}  ${
+                                                                haupdate[i].payload
+                                                            }`,
+                                                        );
                                                     }
                                                 }
                                             }
                                         }
                                     }
-                                    //msg counter, only when receiving telegrams
-                                    if (msgtype === 'update' || msgtype === 'get_reply' || msgtype === 'set_reply') {
-                                        try {
-                                            let countobj = await this.getStateAsync(`${topic}.info.msgCount`);
-                                            if (countobj) {
-                                                if (countobj.val !== null) {
-                                                    await this.setState(`${topic}.info.msgCount`, {
-                                                        val: parseInt(countobj.val) + 1,
-                                                        ack: true,
-                                                    });
-                                                }
-                                            } else {
-                                                this.log.debug(`did not get count info ${topic}  ${countobj}`);
-                                            }
-                                        } catch (error) {
-                                            this.log.error(`Error writing msg count ${error}`);
-                                        }
-                                    }
-                                } else {
-                                    //ef.pstreamDecode()
                                 }
+                                //msg counter, only when receiving telegrams
+                                if (msgtype === 'update' || msgtype === 'get_reply' || msgtype === 'set_reply') {
+                                    try {
+                                        let countobj = await this.getStateAsync(`${topic}.info.msgCount`);
+                                        if (countobj) {
+                                            if (countobj.val !== null) {
+                                                await this.setState(`${topic}.info.msgCount`, {
+                                                    val: parseInt(countobj.val) + 1,
+                                                    ack: true,
+                                                });
+                                            }
+                                        } else {
+                                            this.log.debug(`did not get count info ${topic}  ${countobj}`);
+                                        }
+                                    } catch (error) {
+                                        this.log.error(`Error writing msg count ${error}`);
+                                    }
+                                }
+                            } else {
+                                //ef.pstreamDecode()
                             }
                         }
                     } else {
@@ -1034,6 +868,8 @@ class EcoflowMqtt extends utils.Adapter {
                                         this.pdevices[topic]['haEnable'],
                                         logged,
                                     );
+                                    break;
+                                case 'unknownjson':
                                     break;
                                 default:
                                     haupdate = await ef.storeStationPayload(
@@ -1530,6 +1366,7 @@ class EcoflowMqtt extends utils.Adapter {
                             case 'stream_pro':
                             case 'stream_ultra':
                             case 'wave3':
+                            case 'unknown':
                                 devicetype = this.pdevices[device]['devType'];
                                 type = 'protobuf'; //includes also plugs
                                 cmd = this.pdevicesCmd[devicetype];
@@ -1752,109 +1589,6 @@ class EcoflowMqtt extends utils.Adapter {
         }
     }
 
-    /*
-    async initDeviceWithHA(device, state) {
-        if (this.pdevices && this.pdevicesStatesDict && this.pdevicesStates && this.config.haTopic) {
-            ha.publish(
-                this,
-                device,
-                `${this.config.haTopic}/${device}/info/status`,
-                state,
-                { qos: 1 },
-                true,
-                `HA STATE UPD`,
-            );
-            //if device is gone offline, then the HA shows undefined anyhow
-            if (state === 'online') {
-                const id = device;
-                const type = this.pdevices[id]['devType'];
-                let bat1 = false;
-                let bat2 = false;
-                let bat3 = false;
-                if (this.pdevices[id]['pstationsSlave1']) {
-                    bat1 = this.pdevices[id]['pstationsSlave1'];
-                }
-                if (this.pdevices[id]['pstationsSlave2']) {
-                    bat2 = this.pdevices[id]['pstationsSlave2'];
-                }
-                if (this.pdevices[id]['pstationsSlave3']) {
-                    bat3 = this.pdevices[id]['pstationsSlave3'];
-                }
-
-                const update = ha.prepareFullHaUpd(
-                    id,
-                    this.pdevicesStatesDict[type],
-                    this.pdevicesStates[type],
-                    this.config.haTopic,
-                    bat1,
-                    bat2,
-                    bat3,
-                );
-                if (this.config.msgHaStatusInitial) {
-                    this.log.debug(`[HA STATE INIT DATA] ${id} initial update: ${update.length} objects `);
-                    //this.log.debug(id + ' initial update: ' + JSON.stringify(update));
-                }
-                let missing = [];
-                for (let i = 0; i < update.length; i++) {
-                    const value = await this.getStateAsync(update[i].getId).catch(e => {
-                        this.log.warn(`[HA STATE INIT DATA] problem getting state for initialization ${e}`);
-                    });
-                    if (value) {
-                        let val;
-                        try {
-                            if (update[i].entity === 'switch') {
-                                val = value.val === true ? update[i].on : update[i].off;
-                            } else if (update[i].entity === 'select') {
-                                try {
-                                    val = update[i].states[value.val];
-                                } catch (error) {
-                                    this.log.warn(
-                                        `[HA STATE INIT DATA] value not in range ${value.val}  ${update[i].states} err -> ${
-                                            error
-                                        }`,
-                                    );
-                                }
-                            } else if (update[i].entity === 'text') {
-                                val = value.val;
-                            } else {
-                                val = String(value.val);
-                            }
-                            if (this.config.msgHaStatusInitial) {
-                                this.log.debug(`[HA INITIAL] ${id} update [${i}] ${update[i].topic} with ${val}`);
-                            }
-                            if (typeof val === 'string' && val !== 'undefined') {
-                                ha.publish(
-                                    this,
-                                    id,
-                                    update[i].topic,
-                                    val,
-                                    { qos: 1 },
-                                    false, //this.config.msgHaStatusInitial,
-                                    'HA STATE INIT DATA',
-                                );
-                            } else {
-                                this.log.warn(`[HA STATE INIT DATA] not a STRING ! : ${update[i].topic} with ${val}`);
-                            }
-                        } catch (error) {
-                            this.log.warn(
-                                `[HA STATE INIT DATA] ${update[i].getId} problem initialiizing ${value.val}-> ${error}`,
-                            );
-                        }
-                    } else {
-                        missing.push(update[i].getId);
-                        this.log.warn(
-                            `[HA STATE INIT DATA] ${update[i].getId} getState returned -> ${JSON.stringify(value)}`,
-                        );
-                    }
-                }
-                if (this.config.msgHaStatusInitial && missing.length > 0) {
-                    this.log.debug(`[HA STATE INIT DATA] Partly FINISHED sent initial updates objects to HA for ${id}`);
-                    this.log.debug(`[HA STATE INIT DATA] ${id} missing items ${JSON.stringify(missing)}`);
-                }
-            }
-        }
-    }
-    */
     // If you need to accept messages in your adapter, uncomment the following block and the corresponding line in the constructor.
     // /**
     //  * Some message was sent to this instance over message box. Used by email, pushover, text2speech, ...

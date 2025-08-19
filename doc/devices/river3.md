@@ -1,4 +1,4 @@
-# States for  RIVER3PLUS
+# States for  RIVER3
 ### version: 1.4.1
 
 [RuntimePropertyUpload](#RuntimePropertyUpload)
@@ -7,9 +7,7 @@
 
 [StatisticsSum](#StatisticsSum)
 
-[BMSHeartBeatReport0](#BMSHeartBeatReport0)
-
-[BMSHeartBeatReport1](#BMSHeartBeatReport1)
+[BMSHeartBeatReport](#BMSHeartBeatReport)
 
 [setDp3](#setDp3)
 
@@ -21,6 +19,7 @@
 
 | State  |     Name |  values |
 |----------|:-------------:|------|
+|acPhaseType| ac Phase Type | {0:50Hz?,1:60Hz?} |
 |pcsWorkMode| pcs work mode | {0:OK?} |
 |plugInInfoAcOutType| plug in info ac out type | {0:OK?} |
 |bmsBalState| bms bal state | {0:OK?} |
@@ -85,6 +84,7 @@
 |displayPropertyFullUploadPeriod| display property full upload period |
 |displayPropertyIncrementalUploadPeriod| display property incremental upload period |
 |pvVinRef| pv vin ref |
+|llcInvFirmVer| llc Inv Firmware Ver |
 
 ### array
 
@@ -123,7 +123,7 @@
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |powInSumW|0 | 800 | W | 1 |  Total input power |
-|powOutSumW|0 | 1000 | W | 1 |  Total output power |
+|powOutSumW|0 | 800 | W | 1 |  Total output power |
 |energyBackupStartSoc|0 | 100 | % | 1 |  Backup reserve level |
 |powGetQcusb1|0 | 120 | W | 1 |  Real-time power of the USB 1 port |
 |powGetQcusb2|0 | 120 | W | 1 |  Real-time power of the USB 2 port |
@@ -226,7 +226,7 @@
 |----------|:-------------:|:------:|------|------|
 |xboostEn| off | on | X-Boost switch | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
 |outputPowerOffMemory| off | on | output power off memory | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
-|enBeep| off | on | Beeper on/off. (true: on, false: off.) | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
+|enBeep| off | on | Beeper on/off. (true: on, false: off.) | {dest:2,cmdFunc:254,cmdId:17,dataLen:2} |
 
 ### array
 
@@ -268,7 +268,7 @@
 |ledOutTime|0 |  n/a | min | 1 |  LED Out Time |
 
 
-## BMSHeartBeatReport0
+## BMSHeartBeatReport
 
 ### string
 
@@ -296,8 +296,6 @@
 |afeSysStatus| afe sys status |
 |mcuPinInStatus| mcu pin in status |
 |mcuPinOutStatus| mcu pin out status |
-|packSn| pack sn |
-|waterInFlag| water in flag |
 
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
@@ -306,9 +304,9 @@
 |vol|0 | 60 | V | 0.001 |  vol |
 |amp|0 | 30 | A | 0.001 |  amp |
 |temp|0 | 90 | °C | 1 |  temp |
-|designCap|0 | 12800 | mAh | 1 |  design cap |
-|remainCap|0 | 12800 | mAh | 1 |  remain cap |
-|fullCap|0 | 12800 | mAh | 1 |  full cap |
+|designCap|0 | 20000 | mAh | 1 |  design cap |
+|remainCap|0 | 20000 | mAh | 1 |  remain cap |
+|fullCap|0 | 20000 | mAh | 1 |  full cap |
 |cycles|0 | 6000 |  | 1 |  Number of cycles |
 |soh|0 | 100 | % | 1 |  soh |
 |maxCellVol|0 | 5 | V | 0.001 |  max cell vol |
@@ -338,112 +336,6 @@
 |minEnvTemp|-10 | 80 | °C | 1 |  min env temp |
 |maxCurSensorTemp|0 | 90 | °C | 1 |  max cur sensor temp |
 |minCurSensorTemp|0 | 90 | °C | 1 |  min cur sensor temp |
-|accuChgEnergy|0 |  n/a | kWh | 0.001 |  accu chg energy |
-|accuDsgEnergy|0 |  n/a | kWh | 0.001 |  accu dsg energy |
-|heatfilmNtcNum|0 | 10 |  | 1 |   heatfilm Ntc Num |
-|minHeatfilmTemp|0 | 90 | °C | 1 |  min Heatfilm Temp |
-|maxHeatfilmTemp|0 | 90 | °C | 1 |  max Heatfilm Temp |
-
-
-### diagnostic
-
-| State  |     Name |  values |
-|----------|:-------------:|------|
-|openBmsFlag| open bms flag | {0:OK?} |
-|bmsFault| bms fault | {0:OK?} |
-|mosState| mos state | {0:OK?} |
-|balanceState| balance state | {0:OK?} |
-|sysState| sys state | {0:OK?} |
-|chgDsgState| chg dsg state | {0:OK?} |
-|allErrCode| all err code | {0:OK?} |
-|allBmsFault| all bms fault | {0:OK?} |
-|bmsAlarmState1| bms alarm state1 | {0:OK?} |
-|bmsAlarmState2| bms alarm state2 | {0:OK?} |
-|bmsProtectState1| bms protect state1 | {0:OK?} |
-|bmsProtectState2| bms protect state2 | {0:OK?} |
-|bmsFaultState| bms fault state | {0:OK?} |
-
-### array
-
-| State  |  Name |
-|----------|------|
-|cellVol| Cell voltage |
-|cellTemp| Cell temperature |
-|remainBalanceTime| remain balance time |
-|heatfilmTemp| heatfilm Temp |
-
-## BMSHeartBeatReport1
-
-### string
-
-| State  |  Name |
-|----------|------|
-|num| num |
-|type| type |
-|cellId| cell id |
-|errCode| err code |
-|sysVer| sys ver |
-|bqSysStatReg| bq sys stat reg |
-|cellSeriesNum| cell series num |
-|cellNtcNum| cell ntc num |
-|hwVer| hw ver |
-|bmsHeartbeatVer| bms heartbeat ver |
-|ecloudOcv| ecloud ocv |
-|bmsSn| bms sn |
-|productType| product type |
-|productDetail| product detail |
-|sysLoaderVer| sys loader ver |
-|mosNtcNum| mos ntc num |
-|envNtcNum| env ntc num |
-|curSensorNtcNum| cur sensor ntc num |
-|balanceCmd| balance cmd |
-|afeSysStatus| afe sys status |
-|mcuPinInStatus| mcu pin in status |
-|mcuPinOutStatus| mcu pin out status |
-|packSn| pack sn |
-|waterInFlag| water in flag |
-
-### number
-| State  |      Min     |      Max     |  Unit |  Mult |  Name |
-|----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|soc|0 | 100 | % | 1 |  soc |
-|vol|0 | 60 | V | 0.001 |  vol |
-|amp|0 | 30 | A | 0.001 |  amp |
-|temp|0 | 90 | °C | 1 |  temp |
-|designCap|0 | 12800 | mAh | 1 |  design cap |
-|remainCap|0 | 12800 | mAh | 1 |  remain cap |
-|fullCap|0 | 12800 | mAh | 1 |  full cap |
-|cycles|0 | 6000 |  | 1 |  Number of cycles |
-|soh|0 | 100 | % | 1 |  soh |
-|maxCellVol|0 | 5 | V | 0.001 |  max cell vol |
-|minCellVol|0 | 5 | V | 0.001 |  min cell vol |
-|maxCellTemp|0 | 90 | °C | 1 |  max cell temp |
-|minCellTemp|0 | 90 | °C | 1 |  min cell temp |
-|maxMosTemp|0 | 100 | °C | 1 |  max mos temp |
-|minMosTemp|0 | 100 | °C | 1 |  min mos temp |
-|tagChgAmp|0 | 60 | A | 0.001 |  tag chg amp |
-|f32ShowSoc|0 | 100 | % | 1 |  f32 show soc |
-|inputWatts|0 | 1000 | W | 1 |  input watts |
-|outputWatts|0 | 1000 | W | 1 |  output watts |
-|remainTime|0 | 5999 | h | 1 |  remain time |
-|maxVolDiff|0 | 1 | V | 0.001 |  max vol diff |
-|actSoc|0 | 100 | % | 1 |  act soc |
-|diffSoc|0 | 100 | % | 1 |  diff soc |
-|targetSoc|0 | 100 | % | 1 |  target soc |
-|accuChgCap|0 |  n/a | mAh | 1 |  accu chg cap |
-|accuDsgCap|0 |  n/a | mAh | 1 |  accu dsg cap |
-|realSoh|0 | 100 | % | 1 |  real soh |
-|calendarSoh|0 | 100 | % | 1 |  calendar soh |
-|cycleSoh|0 | 100 | % | 1 |  cycle soh |
-|mosTemp|0 | 100 | °C | 1 |  mos temp |
-|envTemp|0 | 80 | °C | 1 |  env temp |
-|curSensorTemp|0 | 80 | °C | 1 |  cur sensor temp |
-|maxEnvTemp|0 | 80 | °C | 1 |  max env temp |
-|minEnvTemp|-10 | 80 | °C | 1 |  min env temp |
-|maxCurSensorTemp|0 | 90 | °C | 1 |  max cur sensor temp |
-|minCurSensorTemp|0 | 90 | °C | 1 |  min cur sensor temp |
-|accuChgEnergy|0 |  n/a | kWh | 0.001 |  accu chg energy |
-|accuDsgEnergy|0 |  n/a | kWh | 0.001 |  accu dsg energy |
 |heatfilmNtcNum|0 | 10 |  | 1 |   heatfilm Ntc Num |
 |minHeatfilmTemp|0 | 90 | °C | 1 |  min Heatfilm Temp |
 |maxHeatfilmTemp|0 | 90 | °C | 1 |  max Heatfilm Temp |
