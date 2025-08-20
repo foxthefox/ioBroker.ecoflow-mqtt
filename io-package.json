@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "ecoflow-mqtt",
-        "version": "1.4.1",
+        "version": "1.4.2",
         "news": {
+            "1.4.2": {
+                "en": "corrections",
+                "de": "Korrekturen",
+                "ru": "исправления",
+                "pt": "Correções",
+                "nl": "correcties",
+                "fr": "correction",
+                "it": "correzioni",
+                "es": "correcciones",
+                "pl": "poprawki",
+                "uk": "виправлення",
+                "zh-cn": "更正"
+            },
             "1.4.1": {
                 "en": "correction multiplication of float, new commands for STREAM and River3",
                 "de": "Korrekturmultiplikation von Float, neue Befehle für Stream und River33",
