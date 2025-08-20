@@ -1,5 +1,5 @@
 # States for  RIVER3
-### version: 1.4.1
+### version: 1.4.2
 
 [RuntimePropertyUpload](#RuntimePropertyUpload)
 
@@ -124,7 +124,6 @@
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |powInSumW|0 | 800 | W | 1 |  Total input power |
 |powOutSumW|0 | 800 | W | 1 |  Total output power |
-|energyBackupStartSoc|0 | 100 | % | 1 |  Backup reserve level |
 |powGetQcusb1|0 | 120 | W | 1 |  Real-time power of the USB 1 port |
 |powGetQcusb2|0 | 120 | W | 1 |  Real-time power of the USB 2 port |
 |powGetTypec1|0 | 4000 | W | 1 |  Real-time power of Type-C port 1 |
@@ -152,7 +151,6 @@
 |cmsDsgRemTime|0 | 15999 | min | 1 |  Remaining discharging time |
 |cmsChgRemTime|0 | 15999 | min | 1 |  Remaining charging time |
 |timeTaskChangeCnt|0 | 60 |  | 1 |  time task change cnt |
-|plugInInfoPvDcAmpMax|0 | 60 | A | 1 |  plug in info pv dc amp max |
 |lowPowerAlarm|0 | 60 | W | 1 |  low power alarm |
 |silenceChgWatt|0 | 600 | W | 1 |  silence chg watt |
 |powGetPv|0 | 60 | W | 1 |  pow get pv |
@@ -163,11 +161,33 @@
 |plugInInfoAcInChgHalPowMax|0 | 2000 | W | 1 |  Maximum AC charging power |
 
 
+### switch
+
+| State  |      off    |  on |  Name |  cmd |
+|----------|:-------------:|:------:|------|------|
+|energyBackupEn| off | on | Backup reserve function switch | {cfg_energy_backup:{energy_backup_en:1,energy_backup_start_soc:2}} |
+|xboostEn| off | on | X-Boost switch | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
+|outputPowerOffMemory| off | on | output power off memory | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
+|enBeep| off | on | Beeper on/off. (true: on, false: off.) | {dest:2,cmdFunc:254,cmdId:17,dataLen:2} |
+
+### level
+
+| State  |      Min     |     Max     |  Unit |  Mult |  Name |  cmd |
+|----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
+|energyBackupStartSoc| 0 | 30 | % | 1 |  Backup reserve level | {cfg_energy_backup:{energy_backup_en:1,energy_backup_start_soc:2}} |
+|devStandbyTime| 0 | 1440 | min | 1 |  Device timeout (min) | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
+|screenOffTime| 0 | 1800 | s | 1 |  Screen timeout (s) | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
+|acStandbyTime| 0 | 1440 | min | 1 |  AC timeout (min) | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
+|pvChgType| 0 | 2 |  | 1 |  DC charging mode | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
+|plugInInfoAcInChgPowMax| 50 | 305 | W | 1 |  Maximum AC input power for charging | {dest:2,cmdFunc:254,cmdId:17,dataLen:4} |
+|cmsMaxChgSoc| 50 | 100 | % | 1 |  Charge limit | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
+|cmsMinDsgSoc| 0 | 30 | % | 1 |  Discharge limit | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
+|plugInInfoPvDcAmpMax| 4 | 8 | A | 1 |  plug in info pv dc amp max | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
+
 ### diagnostic
 
 | State  |     Name |  values |
 |----------|:-------------:|------|
-|energyBackupEn| Backup reserve function switch | {0:off,1:on} |
 |flowInfoQcusb1| USB output port 1 switch status | {0:off,2:on} |
 |flowInfoQcusb2| USB output port 2 switch status | {0:off,2:on} |
 |flowInfoTypec1| Type-C port 1 switch status | {0:off,2:on} |
@@ -185,7 +205,6 @@
 |plugInInfoDcp2ChargerFlag| plug in info dcp2 charger flag | {0:OK?} |
 |plugInInfoDcp2Type| plug in info dcp2 type | {0:OK?} |
 |plugInInfoDcp2RunState| plug in info dcp2 run state | {0:OK?} |
-|pvChgType| pv chg type | {0:OK?} |
 |flowInfoBmsDsg| flow info bms dsg | {0:off,2:on} |
 |flowInfoBmsChg| flow info bms chg | {0:off,2:on} |
 |plugInInfoAcChargerFlag| Indicates whether the charger is connected to the AC port | {0:not charging?,1:charging?} |
@@ -208,25 +227,6 @@
 |plugInInfoDcpDsgChgType| plug in info dcp dsg chg type | {0:OK?} |
 |plugInInfoDcpChargerFlag| plug in info dcp charger flag | {0:OK?} |
 |plugInInfoDcpRunState| plug in info dcp run state | {0:OK?} |
-
-### level
-
-| State  |      Min     |     Max     |  Unit |  Mult |  Name |  cmd |
-|----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
-|devStandbyTime| 0 | 1440 | min | 1 |  Device timeout (min) | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
-|screenOffTime| 0 | 1800 | s | 1 |  Screen timeout (s) | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
-|acStandbyTime| 0 | 1440 | min | 1 |  AC timeout (min) | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
-|plugInInfoAcInChgPowMax| 50 | 305 | W | 1 |  Maximum AC input power for charging | {dest:2,cmdFunc:254,cmdId:17,dataLen:4} |
-|cmsMaxChgSoc| 50 | 100 | % | 1 |  Charge limit | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
-|cmsMinDsgSoc| 0 | 30 | % | 1 |  Discharge limit | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
-
-### switch
-
-| State  |      off    |  on |  Name |  cmd |
-|----------|:-------------:|:------:|------|------|
-|xboostEn| off | on | X-Boost switch | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
-|outputPowerOffMemory| off | on | output power off memory | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
-|enBeep| off | on | Beeper on/off. (true: on, false: off.) | {dest:2,cmdFunc:254,cmdId:17,dataLen:2} |
 
 ### array
 

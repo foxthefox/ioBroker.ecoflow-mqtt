@@ -368,6 +368,7 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 
 ### 1.4.2 (npm)
 
+- (foxthefox) completionof commands for River3(Plus)
 - (foxthefox) correction of bool in proto of River3(Plus)
 
 ### 1.4.1 (npm)
