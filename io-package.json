@@ -1,9 +1,9 @@
 {
     "common": {
         "name": "ecoflow-mqtt",
-        "version": "1.4.2",
+        "version": "1.4.3",
         "news": {
-            "1.4.2": {
+            "1.4.3": {
                 "en": "corrections",
                 "de": "Korrekturen",
                 "ru": "исправления",
@@ -15,6 +15,19 @@
                 "pl": "poprawki",
                 "uk": "виправлення",
                 "zh-cn": "更正"
+            },
+            "1.4.2": {
+                "en": "River 3 commands",
+                "de": "Fluss 3 Kommandos",
+                "ru": "Команды реки 3",
+                "pt": "Comandos do rio 3",
+                "nl": "Rivier 3 commando's",
+                "fr": "River 3 Commandes",
+                "it": "Comandi del fiume 3",
+                "es": "River 3 comandos",
+                "pl": "Rzeka 3 polecenia",
+                "uk": "Річка 3 команди",
+                "zh-cn": "河3命令"
             },
             "1.4.1": {
                 "en": "correction multiplication of float, new commands for STREAM and River3",

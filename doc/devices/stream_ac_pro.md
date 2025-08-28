@@ -1,7 +1,9 @@
 # States for  STREAM_AC_PRO
-### version: 1.4.1
+### version: 1.4.3
 
 [RuntimePropertyUpload](#RuntimePropertyUpload)
+
+[dayResidentLoadList](#dayResidentLoadList)
 
 [DisplayPropertyUpload](#DisplayPropertyUpload)
 
@@ -19,6 +21,21 @@
 |displayPropertyIncrementalUploadPeriod| Display Property Incremental Upload Period |
 |runtimePropertyFullUploadPeriod| Runtime Property Full Upload Period |
 |runtimePropertyIncrementalUploadPeriod| Runtime Property Incremental Upload Period |
+
+## dayResidentLoadList
+
+### number
+| State  |      Min     |      Max     |  Unit |  Mult |  Name |
+|----------|:-------------:|:-------------:|:------:|:-----:|-----|
+|startMin1|-1440 | 1440 | min | 1 |  starting minutes task#1 |
+|endMin1|-1440 | 1440 | min | 1 |  ending minutes task#1 |
+
+
+### level
+
+| State  |      Min     |     Max     |  Unit |  Mult |  Name |  cmd |
+|----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
+|loadPower1| 0 | 800 | W | 1 |  load output power task#1 | {src:32,dest:2,dSrc:1,dDest:1,cmdFunc:254,cmdId:17,dataLen:9,productId:56,version:3,payloadVer:1,pdata:{cfgUtcTime:6,cfg_feed_grid_mode_pow_limit:169,cfg_day_resident_load_list:{startMin:1,endMin:2,loadPower:3}}} |
 
 ## DisplayPropertyUpload
 

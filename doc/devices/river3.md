@@ -1,5 +1,5 @@
 # States for  RIVER3
-### version: 1.4.2
+### version: 1.4.3
 
 [RuntimePropertyUpload](#RuntimePropertyUpload)
 
@@ -174,7 +174,7 @@
 
 | State  |      Min     |     Max     |  Unit |  Mult |  Name |  cmd |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
-|energyBackupStartSoc| 0 | 30 | % | 1 |  Backup reserve level | {cfg_energy_backup:{energy_backup_en:1,energy_backup_start_soc:2}} |
+|energyBackupStartSoc| 5 | 100 | % | 1 |  Backup reserve level | {cfg_energy_backup:{energy_backup_en:1,energy_backup_start_soc:2}} |
 |devStandbyTime| 0 | 1440 | min | 1 |  Device timeout (min) | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
 |screenOffTime| 0 | 1800 | s | 1 |  Screen timeout (s) | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
 |acStandbyTime| 0 | 1440 | min | 1 |  AC timeout (min) | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |

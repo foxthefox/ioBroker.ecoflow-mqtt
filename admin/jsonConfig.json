@@ -1319,6 +1319,33 @@
 							"filter": false,
 							"sort": false,
 							"default": false
+						},
+						{
+							"type": "checkbox",
+							"title": "add BP 3",
+							"width": "5%",
+							"attr": "pstationsSlave3",
+							"filter": false,
+							"sort": false,
+							"default": false
+						},
+						{
+							"type": "checkbox",
+							"title": "add BP 4",
+							"width": "5%",
+							"attr": "pstationsSlave4",
+							"filter": false,
+							"sort": false,
+							"default": false
+						},
+						{
+							"type": "checkbox",
+							"title": "add BP 5",
+							"width": "5%",
+							"attr": "pstationsSlave5",
+							"filter": false,
+							"sort": false,
+							"default": false
 						}
 					]
 				},

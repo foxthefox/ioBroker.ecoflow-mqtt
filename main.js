@@ -137,6 +137,12 @@ class EcoflowMqtt extends utils.Adapter {
                             if (confdevices[psta]['pstationsSlave3']) {
                                 this.pdevices[id]['pstationsSlave3'] = confdevices[psta]['pstationsSlave3'];
                             }
+                            if (confdevices[psta]['pstationsSlave4']) {
+                                this.pdevices[id]['pstationsSlave4'] = confdevices[psta]['pstationsSlave4'];
+                            }
+                            if (confdevices[psta]['pstationsSlave5']) {
+                                this.pdevices[id]['pstationsSlave5'] = confdevices[psta]['pstationsSlave5'];
+                            }
                             let devStates = null;
                             if (devtype === 'pstream600' || devtype === 'pstream800') {
                                 devStates = require('./lib/dict_data/ef_pstream_data.js').deviceStates;
@@ -328,7 +334,10 @@ class EcoflowMqtt extends utils.Adapter {
                                                 part === 'BMSHeartBeatReport2' ||
                                                 part !== 'bPInfo2') &&
                                                 confdevices[psta]['pstationsSlave2']) ||
-                                            (part === 'BPInfo3' && confdevices[psta]['pstationsSlave3'])
+                                            ((part === 'statusReportBattery4' || part === 'BPInfo3') &&
+                                                confdevices[psta]['pstationsSlave3']) ||
+                                            (part === 'statusReportBattery5' && confdevices[psta]['pstationsSlave4']) ||
+                                            (part === 'statusReportBattery6' && confdevices[psta]['pstationsSlave5'])
                                         ) {
                                             if (this.config.msgStateCreation) {
                                                 this.log.debug('____________________________________________');

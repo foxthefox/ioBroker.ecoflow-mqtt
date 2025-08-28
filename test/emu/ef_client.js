@@ -50,13 +50,14 @@ quota['R632Z1B1234567890'] = require('../lastQuotas/river3plus.js').all;
 quota['R332Z1B1234567890'] = require('../lastQuotas/delta3plus.js').all;
 quota['BK21Z1B1234567890'] = require('../lastQuotas/smartmeter.js').all;
 quota['HC31Z123456789012'] = require('../lastQuotas/oceanfit.js').get.all;
-quota['R631Z1B1234567890'] = require('../lastQuotas/river3.js').message.debug4_1;
+quota['R631Z1B1234567890'] = require('../lastQuotas/river3.js').message.kv2; //debug4_1;
 quota['R331Z1B1234567890'] = require('../lastQuotas/delta3.js').all;
 quota['BK31Z123456789012'] = require('../lastQuotas/streamacpro.js').get.all;
 quota['BK11Z123456789012'] = require('../lastQuotas/streamultra.js').get.all;
 quota['KT31ZC123456789'] = require('../lastQuotas/wave3.js').message.latestQuotas;
 quota['UNKNOWNPROTO'] = require('../lastQuotas/unknown.js').messages.test;
 quota['UNKNOWNJSON'] = require('../lastQuotas/unknownjson.json');
+quota['R371A112345678'] = require('../lastQuotas/oceanplus.js').get.bat;
 
 const panelparams = require('../lastQuotas/vm2.js').params;
 
@@ -100,6 +101,7 @@ const pdevices = {
     KT31ZC123456789: { devName: 'My wave3', devType: 'wave3', haEnable: false },
     UNKNOWNPROTO: { devName: 'My wave3', devType: 'wave3', haEnable: false },
     UNKNOWNJSON: { devName: 'My wave3', devType: 'wave3', haEnable: false },
+    R371A112345678: { devName: 'EF Oecan dc plus', devType: 'poweroceanplus', haEnable: false },
 };
 
 let lastQuotInterval = null;
@@ -227,6 +229,11 @@ client.on('message', (topic, message) => {
             client.publish('/app/' + mqttUserId + '/' + topic + '/thing/property/get_reply', buffer);
         } else if (topic == 'UNKNOWNPROTO') {
             const string = quota['UNKNOWNPROTO'].replace(/ /g, '').toLowerCase();
+            //console.log(string);
+            const buffer = Buffer.from(string, 'hex');
+            client.publish('/app/' + mqttUserId + '/' + topic + '/thing/property/get_reply', buffer);
+        } else if (topic == 'R371A112345678') {
+            const string = quota['R371A112345678'].replace(/ /g, '').toLowerCase();
             //console.log(string);
             const buffer = Buffer.from(string, 'hex');
             client.publish('/app/' + mqttUserId + '/' + topic + '/thing/property/get_reply', buffer);
