@@ -314,6 +314,8 @@ Dual Fuel generator is not available, could be implemented, if data is available
 
 [Stream Ultra](./doc/devices/stream_ultra.md)
 
+[Stream Inverter](./doc/devices/stream_inverter.md)
+
 The 800W version is also implemented and only difference ist the 800W maximum power.
 supply priority
 -> 0/false = prioritized grid supply;
@@ -370,6 +372,7 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 
 - (foxthefox) new cmd Stream to adjust output power via load task (dayResidentLoadList)
 - (foxthefox) correction energyBackupand cmd for River3(Plus)
+- (foxthefox) new device Stream Inverter supported
 - (foxthefox) first improvements for power ocean plus (i.e. batteries)
 
 ### 1.4.2 (npm)

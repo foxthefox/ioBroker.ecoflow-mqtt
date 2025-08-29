@@ -145,7 +145,7 @@
 |bmsBattHeating| bms Batt Heating status | {0:off?,1:on} |
 |stormPatternEnable| storm pattern enable | {0:off?,1:on?} |
 |stormPatternOpenFlag| storm pattern open flag | {0:off?,1:on?} |
-|gridConnectionSta| grid Connection Sta | {0:GRD_STA_NO_VAILD,1:GRID_IN,2:GRID_NOT_ONLINE,3:FEED_GRID} |
+|gridConnectionSta| grid Connection Sta | {0:GRD_STA_NO_VALID,1:GRID_IN,2:GRID_NOT_ONLINE,3:FEED_GRID} |
 |energyBackupState| energy Backup State | {0:OK?} |
 |distributedDeviceStatus| distributed Device Status | {0:Election,1:Master,2:Slave} |
 |seriesConnectDeviceStatus| series Connect Device Status | {0:Election,1:Master,2:Slave} |

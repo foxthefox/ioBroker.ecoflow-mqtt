@@ -344,10 +344,10 @@
 								},
 								{
 									"value": "unknown",
-									"label": "Stream Ultra Pro"
+									"label": "Stream Ultra Pro (unkn)"
 								},
 								{
-									"value": "unknown",
+									"value": "stream_inverter",
 									"label": "Stream Inverter"
 								}
 							],
