@@ -481,8 +481,8 @@ class EcoflowMqtt extends utils.Adapter {
                                                 this,
                                                 id,
                                                 `${part}.${task}`,
-                                                'cfgIndex',
-                                                devStates[part]['cfg']['cfgIndex'],
+                                                'index',
+                                                devStates[part]['cfg']['index'],
                                             );
                                             //discharge has chSta state omly
                                             await myutils.createMyState(
