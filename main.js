@@ -470,7 +470,29 @@ class EcoflowMqtt extends utils.Adapter {
                                         for (let j = 1; j < 21; j++) {
                                             const task = `task${j}`;
                                             await myutils.createMyChannel(this, `${id}.${part}`, task, task, 'channel');
-                                            //param
+                                            await myutils.createMyState(
+                                                this,
+                                                id,
+                                                `${part}.${task}`,
+                                                'id',
+                                                devStates[part]['cfg']['id'],
+                                            );
+                                            await myutils.createMyState(
+                                                this,
+                                                id,
+                                                `${part}.${task}`,
+                                                'cfgIndex',
+                                                devStates[part]['cfg']['cfgIndex'],
+                                            );
+                                            //discharge has chSta state omly
+                                            await myutils.createMyState(
+                                                this,
+                                                id,
+                                                `${part}.${task}`,
+                                                'chSta',
+                                                devStates[part]['cfg']['chSta'],
+                                            );
+                                            //charge has param instead of chSta
                                             await myutils.createMyChannel(
                                                 this,
                                                 `${id}.${part}.${task}`,
@@ -1339,7 +1361,12 @@ class EcoflowMqtt extends utils.Adapter {
                 const idsplit = id.split('.');
                 const device = idsplit[2];
                 const channel = idsplit[3];
-                const item = idsplit[4];
+                let item = '';
+                if (idsplit.length === 5) {
+                    item = idsplit[4];
+                } else if (channel === 'timeTask' && idsplit.length === 7) {
+                    item = idsplit[6];
+                }
                 this.log.info(`(ack=false) ->cmd : channel ${channel} state ${item}`);
                 let topic = '';
                 if (item === 'latestQuotas' || item.includes('get')) {

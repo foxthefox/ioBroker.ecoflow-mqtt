@@ -60,13 +60,13 @@ The mqqt Broker settings are default and usually need no modification.
 
 Use the tab "Device(s) Configuration" for adding your equipment.
 
-<details><summary><i> Parametrizing the Powerstream</i></summary>
+<details><summary><i> Parametrizing the Powerstream or STREAM</i></summary>
 <p>
 
 - add a new row
-- set the deviceID of Powerstream as shown in the app, something like "HW51...."
+- set the deviceID of (Power)Stream as shown in the app, something like "HW51..../BK...."
 - give it a name
-- select the version (600W or 800W)
+- select the version
 
 </p></details>
 
@@ -236,7 +236,6 @@ This is not necessarily a failure or an indicator for not working adapter, it is
 ### annotations to functionality
 
 - Due to to the asynchronity of information updates and command transfer sometimes race conditions may be visible. So a switch is commanded and its toggling back and forth before it stays, can be observed.
-- restart of HA may not be recognized correctly in iobroker, so it needs a manual restart of the adapter (WIP)
 
 ## Implemented Devices & Structure with Datapoints
 
@@ -366,7 +365,6 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 
 - (foxthefox) new datapoints for PowerOcean and HeatingRod
 - (foxthefox) new datapoints Delta2max
-- (foxthefox) SHP time task enable switch
 
 ### 1.4.3 (npm)
 
@@ -374,6 +372,7 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 - (foxthefox) correction energyBackupand cmd for River3(Plus)
 - (foxthefox) new device Stream Inverter supported
 - (foxthefox) first improvements for power ocean plus (i.e. batteries)
+- (foxthefox) SHP time task enable switch and load level adjustment
 
 ### 1.4.2 (npm)
 

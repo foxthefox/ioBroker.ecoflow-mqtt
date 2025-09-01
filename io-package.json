@@ -4,17 +4,17 @@
         "version": "1.4.3",
         "news": {
             "1.4.3": {
-                "en": "corrections",
-                "de": "Korrekturen",
-                "ru": "исправления",
-                "pt": "Correções",
-                "nl": "correcties",
-                "fr": "correction",
-                "it": "correzioni",
-                "es": "correcciones",
-                "pl": "poprawki",
-                "uk": "виправлення",
-                "zh-cn": "更正"
+                "en": "new Stream Inverter, new cmd for load Stream AC/Ultra, corr. energyBackupand River3",
+                "de": "Neuer Stream -Wechselrichter, neuer CMD für Laststream AC/Ultra, Corr. EnergyBackupand River3",
+                "ru": "Новый поток инвертор, новый CMD для потока загрузки AC/Ultra, Corr. Energybackupand River3",
+                "pt": "Novo inversor de fluxo, novo CMD para fluxo de carga AC/Ultra, Corr. Energybackupand River3",
+                "nl": "Nieuwe stream -omvormer, nieuwe CMD voor laadstroom AC/Ultra, Corr. EnergyBackupand River3",
+                "fr": "Nouveau onduleur de flux, nouveau CMD pour le flux de charge AC / Ultra, Corr. EnergyBackupand River3",
+                "it": "Nuovo inverter di flusso, nuovo CMD per il flusso di carico AC/Ultra, Corr. EnergyBackupand River3",
+                "es": "Nuevo inversor de transmisión, nuevo CMD para la transmisión de carga AC/Ultra, Corr. Energybackupand River3",
+                "pl": "Nowy falownik strumienia, nowy CMD dla strumienia obciążenia AC/Ultra, Corr. Rzeka energetyczna 3",
+                "uk": "Новий інвертор потоку, новий CMD для навантаження потоку AC/Ultra, Corr. EnergyBackupand River3",
+                "zh-cn": "新流逆变器，用于负载流AC/Ultra的新CMD，Corr。 EnergyBackupand和River3"
             },
             "1.4.2": {
                 "en": "River 3 commands",
@@ -257,7 +257,7 @@
         ],
         "globalDependencies": [
             {
-                "admin": ">=7.4.10"
+                "admin": ">=7.6.17"
             }
         ]
     },
