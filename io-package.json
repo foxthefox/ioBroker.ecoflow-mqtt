@@ -1,20 +1,33 @@
 {
     "common": {
         "name": "ecoflow-mqtt",
-        "version": "1.4.2",
+        "version": "1.4.3",
         "news": {
+            "1.4.3": {
+                "en": "new Stream Inverter, new cmd for load Stream AC/Ultra, corr. energyBackup River3, SHP task chChargeWatt",
+                "de": "Neuer Stream -Wechselrichter, neuer CMD für Laststream AC/Ultra, Corr. Energybackup River3, SHP Task Chargewatt",
+                "ru": "Новый поток инвертор, новый CMD для потока загрузки AC/Ultra, Corr. Energybackup River3, SHP Task Chargerwatt",
+                "pt": "Novo inversor de fluxo, novo CMD para fluxo de carga AC/Ultra, Corr. Energybackup River3, SHP Task Chchargewatt",
+                "nl": "Nieuwe stream -omvormer, nieuwe CMD voor laadstroom AC/Ultra, Corr. EnergyBackup River3, SHP Task ChargeWatt",
+                "fr": "Nouveau onduleur de flux, nouveau CMD pour le flux de charge AC / Ultra, Corr. EnergyBackup River3, tâche SHP Chchargewatt",
+                "it": "Nuovo inverter di flusso, nuovo CMD per il flusso di carico AC/Ultra, Corr. EnergyBackup River3, Shp Task Chchargewatt",
+                "es": "Nuevo inversor de transmisión, nuevo CMD para la transmisión de carga AC/Ultra, Corr. EnergyBackup River3, SHP Tarea Chchargewatt",
+                "pl": "Nowy falownik strumienia, nowy CMD dla strumienia obciążenia AC/Ultra, Corr. River Backbacku3, shp zadanie charcargewatt",
+                "uk": "Новий інвертор потоку, новий CMD для навантаження потоку AC/Ultra, Corr. EnergyBackup River3, SHP Task Chagerwatt",
+                "zh-cn": "新流逆变器，用于负载流AC/Ultra的新CMD，Corr。 EnergyBackup River3，SHP任务Chchargewatt"
+            },
             "1.4.2": {
-                "en": "corrections",
-                "de": "Korrekturen",
-                "ru": "исправления",
-                "pt": "Correções",
-                "nl": "correcties",
-                "fr": "correction",
-                "it": "correzioni",
-                "es": "correcciones",
-                "pl": "poprawki",
-                "uk": "виправлення",
-                "zh-cn": "更正"
+                "en": "River 3 commands",
+                "de": "Fluss 3 Kommandos",
+                "ru": "Команды реки 3",
+                "pt": "Comandos do rio 3",
+                "nl": "Rivier 3 commando's",
+                "fr": "River 3 Commandes",
+                "it": "Comandi del fiume 3",
+                "es": "River 3 comandos",
+                "pl": "Rzeka 3 polecenia",
+                "uk": "Річка 3 команди",
+                "zh-cn": "河3命令"
             },
             "1.4.1": {
                 "en": "correction multiplication of float, new commands for STREAM and River3",
@@ -244,7 +257,7 @@
         ],
         "globalDependencies": [
             {
-                "admin": ">=7.4.10"
+                "admin": ">=7.6.17"
             }
         ]
     },

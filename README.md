@@ -60,13 +60,13 @@ The mqqt Broker settings are default and usually need no modification.
 
 Use the tab "Device(s) Configuration" for adding your equipment.
 
-<details><summary><i> Parametrizing the Powerstream</i></summary>
+<details><summary><i> Parametrizing the Powerstream or STREAM</i></summary>
 <p>
 
 - add a new row
-- set the deviceID of Powerstream as shown in the app, something like "HW51...."
+- set the deviceID of (Power)Stream as shown in the app, something like "HW51..../BK...."
 - give it a name
-- select the version (600W or 800W)
+- select the version
 
 </p></details>
 
@@ -236,7 +236,6 @@ This is not necessarily a failure or an indicator for not working adapter, it is
 ### annotations to functionality
 
 - Due to to the asynchronity of information updates and command transfer sometimes race conditions may be visible. So a switch is commanded and its toggling back and forth before it stays, can be observed.
-- restart of HA may not be recognized correctly in iobroker, so it needs a manual restart of the adapter (WIP)
 
 ## Implemented Devices & Structure with Datapoints
 
@@ -314,6 +313,8 @@ Dual Fuel generator is not available, could be implemented, if data is available
 
 [Stream Ultra](./doc/devices/stream_ultra.md)
 
+[Stream Inverter](./doc/devices/stream_inverter.md)
+
 The 800W version is also implemented and only difference ist the 800W maximum power.
 supply priority
 -> 0/false = prioritized grid supply;
@@ -360,15 +361,22 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 
 ## Changelog
 
-### 1.4.3 (WIP)
+### 1.4.4 (WIP)
 
 - (foxthefox) new datapoints for PowerOcean and HeatingRod
 - (foxthefox) new datapoints Delta2max
-- (foxthefox) SHP time task enable switch
+
+### 1.4.3 (npm)
+
+- (foxthefox) new cmd Stream to adjust output power via load task (dayResidentLoadList)
+- (foxthefox) correction energyBackupand cmd for River3(Plus)
+- (foxthefox) new device Stream Inverter supported
+- (foxthefox) first improvements for power ocean plus (i.e. batteries)
+- (foxthefox) SHP time task enable switch and load level adjustment
 
 ### 1.4.2 (npm)
 
-- (foxthefox) completionof commands for River3(Plus)
+- (foxthefox) completion commands for River3(Plus)
 - (foxthefox) correction of bool in proto of River3(Plus)
 
 ### 1.4.1 (npm)

@@ -1,6 +1,6 @@
 {
 	"name": "iobroker.ecoflow-mqtt",
-	"version": "1.4.2",
+	"version": "1.4.3",
 	"description": "connects to ecoflow products",
 	"author": {
 		"name": "foxthefox",
@@ -24,7 +24,7 @@
 		"node": ">= 20"
 	},
 	"dependencies": {
-		"@iobroker/adapter-core": "^3.2.3",
+		"@iobroker/adapter-core": "^3.3.2",
 		"mqtt": "^5.13.1",
 		"protobufjs": "^7.5.3"
 	},

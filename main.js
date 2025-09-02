@@ -137,6 +137,12 @@ class EcoflowMqtt extends utils.Adapter {
                             if (confdevices[psta]['pstationsSlave3']) {
                                 this.pdevices[id]['pstationsSlave3'] = confdevices[psta]['pstationsSlave3'];
                             }
+                            if (confdevices[psta]['pstationsSlave4']) {
+                                this.pdevices[id]['pstationsSlave4'] = confdevices[psta]['pstationsSlave4'];
+                            }
+                            if (confdevices[psta]['pstationsSlave5']) {
+                                this.pdevices[id]['pstationsSlave5'] = confdevices[psta]['pstationsSlave5'];
+                            }
                             let devStates = null;
                             if (devtype === 'pstream600' || devtype === 'pstream800') {
                                 devStates = require('./lib/dict_data/ef_pstream_data.js').deviceStates;
@@ -191,6 +197,7 @@ class EcoflowMqtt extends utils.Adapter {
                                 devtype === 'stream_pro' ||
                                 devtype === 'stream_ultra' ||
                                 devtype === 'wave3' ||
+                                devtype === 'stream_inverter' ||
                                 devtype === 'unknown'
                             ) {
                                 pdevicesStatesDict = require(`./lib/dict_data/ef_${devtype}_data.js`).deviceStatesDict[
@@ -328,7 +335,10 @@ class EcoflowMqtt extends utils.Adapter {
                                                 part === 'BMSHeartBeatReport2' ||
                                                 part !== 'bPInfo2') &&
                                                 confdevices[psta]['pstationsSlave2']) ||
-                                            (part === 'BPInfo3' && confdevices[psta]['pstationsSlave3'])
+                                            ((part === 'statusReportBattery4' || part === 'BPInfo3') &&
+                                                confdevices[psta]['pstationsSlave3']) ||
+                                            (part === 'statusReportBattery5' && confdevices[psta]['pstationsSlave4']) ||
+                                            (part === 'statusReportBattery6' && confdevices[psta]['pstationsSlave5'])
                                         ) {
                                             if (this.config.msgStateCreation) {
                                                 this.log.debug('____________________________________________');
@@ -460,7 +470,29 @@ class EcoflowMqtt extends utils.Adapter {
                                         for (let j = 1; j < 21; j++) {
                                             const task = `task${j}`;
                                             await myutils.createMyChannel(this, `${id}.${part}`, task, task, 'channel');
-                                            //param
+                                            await myutils.createMyState(
+                                                this,
+                                                id,
+                                                `${part}.${task}`,
+                                                'id',
+                                                devStates[part]['cfg']['id'],
+                                            );
+                                            await myutils.createMyState(
+                                                this,
+                                                id,
+                                                `${part}.${task}`,
+                                                'index',
+                                                devStates[part]['cfg']['index'],
+                                            );
+                                            //discharge has chSta state omly
+                                            await myutils.createMyState(
+                                                this,
+                                                id,
+                                                `${part}.${task}`,
+                                                'chSta',
+                                                devStates[part]['cfg']['chSta'],
+                                            );
+                                            //charge has param instead of chSta
                                             await myutils.createMyChannel(
                                                 this,
                                                 `${id}.${part}.${task}`,
@@ -693,6 +725,7 @@ class EcoflowMqtt extends utils.Adapter {
                         devtype === 'stream_ac_pro' ||
                         devtype === 'stream_pro' ||
                         devtype === 'stream_ultra' ||
+                        devtype === 'stream_inverter' ||
                         devtype === 'wave3' ||
                         devtype === 'unknown'
                     ) {
@@ -1327,8 +1360,14 @@ class EcoflowMqtt extends utils.Adapter {
                 // kein Ladezuschaltung, wenn SOC über maxChg liegt
                 const idsplit = id.split('.');
                 const device = idsplit[2];
-                const channel = idsplit[3];
-                const item = idsplit[4];
+                let channel = idsplit[3];
+                let item = '';
+                if (idsplit.length === 5) {
+                    item = idsplit[4];
+                } else if (channel === 'timeTask' && idsplit.length === 7) {
+                    channel = idsplit[4];
+                    item = idsplit[6];
+                }
                 this.log.info(`(ack=false) ->cmd : channel ${channel} state ${item}`);
                 let topic = '';
                 if (item === 'latestQuotas' || item.includes('get')) {
@@ -1365,6 +1404,7 @@ class EcoflowMqtt extends utils.Adapter {
                             case 'stream_ac_pro':
                             case 'stream_pro':
                             case 'stream_ultra':
+                            case 'stream_inverter':
                             case 'wave3':
                             case 'unknown':
                                 devicetype = this.pdevices[device]['devType'];

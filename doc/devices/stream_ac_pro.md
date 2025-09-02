@@ -1,7 +1,9 @@
 # States for  STREAM_AC_PRO
-### version: 1.4.1
+### version: 1.4.3
 
 [RuntimePropertyUpload](#RuntimePropertyUpload)
+
+[dayResidentLoadList](#dayResidentLoadList)
 
 [DisplayPropertyUpload](#DisplayPropertyUpload)
 
@@ -19,6 +21,21 @@
 |displayPropertyIncrementalUploadPeriod| Display Property Incremental Upload Period |
 |runtimePropertyFullUploadPeriod| Runtime Property Full Upload Period |
 |runtimePropertyIncrementalUploadPeriod| Runtime Property Incremental Upload Period |
+
+## dayResidentLoadList
+
+### number
+| State  |      Min     |      Max     |  Unit |  Mult |  Name |
+|----------|:-------------:|:-------------:|:------:|:-----:|-----|
+|startMin1|-1440 | 1440 | min | 1 |  starting minutes task#1 |
+|endMin1|-1440 | 1440 | min | 1 |  ending minutes task#1 |
+
+
+### level
+
+| State  |      Min     |     Max     |  Unit |  Mult |  Name |  cmd |
+|----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
+|loadPower1| 0 | 800 | W | 1 |  load output power task#1 | {src:32,dest:2,dSrc:1,dDest:1,cmdFunc:254,cmdId:17,dataLen:9,productId:56,version:3,payloadVer:1,pdata:{cfgUtcTime:6,cfg_feed_grid_mode_pow_limit:169,cfg_day_resident_load_list:{startMin:1,endMin:2,loadPower:3}}} |
 
 ## DisplayPropertyUpload
 
@@ -128,7 +145,7 @@
 |bmsBattHeating| bms Batt Heating status | {0:off?,1:on} |
 |stormPatternEnable| storm pattern enable | {0:off?,1:on?} |
 |stormPatternOpenFlag| storm pattern open flag | {0:off?,1:on?} |
-|gridConnectionSta| grid Connection Sta | {0:GRD_STA_NO_VAILD,1:GRID_IN,2:GRID_NOT_ONLINE,3:FEED_GRID} |
+|gridConnectionSta| grid Connection Sta | {0:GRD_STA_NO_VALID,1:GRID_IN,2:GRID_NOT_ONLINE,3:FEED_GRID} |
 |energyBackupState| energy Backup State | {0:OK?} |
 |distributedDeviceStatus| distributed Device Status | {0:Election,1:Master,2:Slave} |
 |seriesConnectDeviceStatus| series Connect Device Status | {0:Election,1:Master,2:Slave} |
