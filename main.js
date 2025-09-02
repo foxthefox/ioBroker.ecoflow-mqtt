@@ -1360,11 +1360,12 @@ class EcoflowMqtt extends utils.Adapter {
                 // kein Ladezuschaltung, wenn SOC über maxChg liegt
                 const idsplit = id.split('.');
                 const device = idsplit[2];
-                const channel = idsplit[3];
+                let channel = idsplit[3];
                 let item = '';
                 if (idsplit.length === 5) {
                     item = idsplit[4];
                 } else if (channel === 'timeTask' && idsplit.length === 7) {
+                    channel = idsplit[4];
                     item = idsplit[6];
                 }
                 this.log.info(`(ack=false) ->cmd : channel ${channel} state ${item}`);
