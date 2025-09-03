@@ -1,8 +1,11 @@
 {
     "common": {
         "name": "ecoflow-mqtt",
-        "version": "1.4.3",
+        "version": "1.4.4",
         "news": {
+            "1.4.4": {
+                "en": "enhancement powerocean"
+            },
             "1.4.3": {
                 "en": "new Stream Inverter, new cmd for load Stream AC/Ultra, corr. energyBackup River3, SHP task chChargeWatt",
                 "de": "Neuer Stream -Wechselrichter, neuer CMD für Laststream AC/Ultra, Corr. Energybackup River3, SHP Task Chargewatt",
@@ -67,45 +70,6 @@
                 "pl": "Ulepszenia poleceń HA (liczba)",
                 "uk": "вдосконалення для команд HA (число)",
                 "zh-cn": "HA命令的改进（编号）"
-            },
-            "1.3.0": {
-                "en": "correction PS energy, new Delta Pro 3, Delta3Plus, River3Plus, major refactoring",
-                "de": "Korrektur PS Energy, New Delta Pro 3, Delta3plus, River3plus, Major Refactoring",
-                "ru": "Коррекция PS Energy, New Delta Pro 3, Delta3plus, River3plus, крупный рефакторинг",
-                "pt": "Correção PS Energy, New Delta Pro 3, Delta3plus, River3plus, Maior Refatoração",
-                "nl": "Correctie PS Energy, New Delta Pro 3, Delta3Plus, River3Plus, Major Refactoring",
-                "fr": "Correction PS Energy, New Delta Pro 3, Delta3Plus, River3Plus, Major Refactoring",
-                "it": "Correzione PS Energy, New Delta Pro 3, Delta3Plus, River3Plus, importante refactoring",
-                "es": "Corrección PS Energy, New Delta Pro 3, Delta3Plus, River3Plus, refactorización importante",
-                "pl": "Korekta PS Energy, New Delta Pro 3, Delta3Plus, River3Plus, główne refaktoryzacja",
-                "uk": "Корекція PS Energy, New Delta Pro 3, Delta3Plus, River3Plus, основне рефакторинг",
-                "zh-cn": "校正PS Energy，New Delta Pro 3，Delta3plus，River3plus，主要重构"
-            },
-            "1.2.0": {
-                "en": "new values powerocean, new values powerstream, new values plug, enhancements on values for SHP2,DPU,alternator",
-                "de": "Neue Werte Powerocean, neue Werte Powerstream, neue Werte Plug, Verbesserungen der Werte für SHP2, DPU, Lichtmaschine",
-                "ru": "новые значения powerocean, новые значения powerstream, штекер новых значений, улучшения значений для SHP2, DPU, генератора переменного тока",
-                "pt": "novos valores powerocean, novos valores powerstream, novos valores plug, melhorias nos valores para SHP2, DPU, alternador",
-                "nl": "nieuwe waarden powerocean, nieuwe waarden powerstream, nieuwe waardenplug, verbeteringen op waarden voor SHP2,DPU,alternator",
-                "fr": "nouvelles valeurs powerocean, nouvelles valeurs powerstream, nouvelles valeurs plug, améliorations des valeurs pour SHP2, DPU, alternateur",
-                "it": "nuovi valori powerocean, nuovi valori powerstream, nuovi valori plug, miglioramenti ai valori per SHP2,DPU,alternatore",
-                "es": "nuevos valores powerocean, nuevos valores powerstream, nuevos valores plug, mejoras en los valores para SHP2,DPU,alternador",
-                "pl": "nowe wartości powerocean, nowe wartości powerstream, nowa wtyczka wartości, ulepszenia wartości dla SHP2, DPU, alternatora",
-                "uk": "нові значення powerocean, нові значення powerstream, нові значення plug, покращення значень для SHP2, DPU, генератора",
-                "zh-cn": "新值 powerocean、新值 powerstream、新值插头、SHP2、DPU、交流发电机值的增强"
-            },
-            "1.1.2": {
-                "en": "handle HA restart , initial state population of BPInfo2/3 to HA",
-                "de": "Behandeln Sie den HA-Neustart und füllen Sie BPInfo2/3 im Anfangszustand mit HA aus",
-                "ru": "обработка перезапуска HA, загрузка начального состояния BPInfo2/3 в HA",
-                "pt": "lidar com reinicialização de HA, população de estado inicial de BPInfo2/3 para HA",
-                "nl": "handle HA restart , initiële statuspopulatie van BBPinfo2/3 naar HA",
-                "fr": "gérer le redémarrage de HA, le remplissage de l'état initial de BPInfo2/3 vers HA",
-                "it": "gestire il riavvio HA, popolamento dello stato iniziale di BPInfo2/3 in HA",
-                "es": "manejar el reinicio de HA, población del estado inicial de BPInfo2/3 en HA",
-                "pl": "obsłuż ponowne uruchomienie HA, zaludnienie stanu początkowego BPInfo2/3 do HA",
-                "uk": "обробка перезапуску HA, заповнення початкового стану BPInfo2/3 до HA",
-                "zh-cn": "处理HA重启，将BPInfo2/3的初始状态填充到HA"
             }
         },
         "messages": [
@@ -252,7 +216,7 @@
         },
         "dependencies": [
             {
-                "js-controller": ">=5.0.19"
+                "js-controller": ">=6.0.11"
             }
         ],
         "globalDependencies": [

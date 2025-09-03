@@ -361,17 +361,22 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 
 ## Changelog
 
-### 1.4.4 (WIP)
+### 1.4.5 (WIP)
+
+- (foxthefox) new datapoints Delta2max
+
+### 1.4.4 (npm)
 
 - (foxthefox) new datapoints for PowerOcean and HeatingRod
-- (foxthefox) new datapoints Delta2max
+- (foxthefox) change from object to array for messages (for telegrams with multiple messages of same type i.e. powerocean)
+- (foxthefox) testing JSON->buffer
 
 ### 1.4.3 (npm)
 
 - (foxthefox) new cmd Stream to adjust output power via load task (dayResidentLoadList)
 - (foxthefox) correction energyBackupand cmd for River3(Plus)
 - (foxthefox) new device Stream Inverter supported
-- (foxthefox) first improvements for power ocean plus (i.e. batteries)
+- (foxthefox) first improvements for power ocean plus (i.e. 6 batteries)
 - (foxthefox) SHP time task enable switch and load level adjustment
 
 ### 1.4.2 (npm)
