@@ -272,6 +272,8 @@ tests.integration(path.join(__dirname, '..'), {
                                 pstationsSlave1: true,
                                 pstationsSlave2: true,
                                 pstationsSlave3: true,
+                                pstationsSlave4: true,
+                                pstationsSlave5: true,
                                 devName: 'My power ocean',
                                 devId: 'R37200012345678',
                                 devType: 'poweroceanplus',
@@ -315,7 +317,7 @@ tests.integration(path.join(__dirname, '..'), {
                         resolve();
                     });
                 });
-            }).timeout(12000);
+            }).timeout(20000);
 
             it('Plug states should be created', async () => {
                 //await harness.objects.delObject('ecoflow-mqtt.0.HW52ZDH4SF12345.plug_heartbeat.brightness');
