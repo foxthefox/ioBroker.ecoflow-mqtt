@@ -1,5 +1,5 @@
 # States for  POWEROCEAN
-### version: 1.4.3
+### version: 1.4.4
 
 [statusReportBattery1](#statusReportBattery1)
 
@@ -8,6 +8,8 @@
 [statusReportBattery3](#statusReportBattery3)
 
 [JTS1_ENERGY_STREAM_REPORT](#JTS1_ENERGY_STREAM_REPORT)
+
+[ParallelEnergyStreamReport](#ParallelEnergyStreamReport)
 
 [JTS1_EMS_HEARTBEAT](#JTS1_EMS_HEARTBEAT)
 
@@ -297,6 +299,41 @@
 |bpPwr|0 | 5200 | W | 1 |  Battery power |
 |bpSoc|0 | 100 | % | 1 |  Battery SOC |
 
+
+## ParallelEnergyStreamReport
+
+### number
+| State  |      Min     |      Max     |  Unit |  Mult |  Name |
+|----------|:-------------:|:-------------:|:------:|:-----:|-----|
+|sysLoadPwr|0 | 15000 | W | 1 |  System load |
+|sysGridPwr|-15000 | 15000 | W | 1 |  Grid power |
+|mpptPwr|0 | 5000 | W | 1 |  Solar power |
+|bpPwr|0 | 5200 | W | 1 |  Battery power |
+|bpSoc|0 | 100 | % | 1 |  Battery SOC |
+|unknown9|0 | 5200 | W | 1 |  unknown9 power |
+|unknown10|0 | 5200 | W | 1 |  unknown10 power |
+|ocean_sysLoadPwr|0 | 15000 | W | 1 |  ocean System load |
+|ocean_sysGridPwr|0 | 15000 | W | 1 |  ocean Grid power |
+|ocean_mpptPwr|0 | 5000 | W | 1 |  ocean Solar power |
+|ocean_bpPwr|0 | 5200 | W | 1 |  ocean Battery power |
+|ocean_bpSoc|0 | 100 | % | 1 |  ocean Battery SOC |
+|ocean_unknown9|0 | 5200 | W | 1 |  ocean unknown9 power |
+|ocean_unknown10|0 | 5200 | W | 1 |  ocean unknown10 power |
+|system1_sysLoadPwr|0 | 15000 | W | 1 |  system1 System load |
+|system1_sysGridPwr|0 | 15000 | W | 1 |  system1 Grid power |
+|system1_mpptPwr|0 | 5000 | W | 1 |  system1 Solar power |
+|system1_bpPwr|0 | 5200 | W | 1 |  system1 Battery power |
+|system1_bpSoc|0 | 100 | % | 1 |  system1 Battery SOC |
+|system1_unknown9|0 | 5200 | W | 1 |  system1 unknown9 power |
+|system1_unknown10|0 | 5200 | W | 1 |  system1 unknown10 power |
+
+
+### string
+
+| State  |  Name |
+|----------|------|
+|ocean_devSn| ocean sn |
+|system1_devSn| system1 sn |
 
 ## JTS1_EMS_HEARTBEAT
 
