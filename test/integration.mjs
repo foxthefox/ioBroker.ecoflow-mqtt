@@ -313,7 +313,7 @@ tests.integration(path.join(__dirname, '..'), {
                         console.log('TEST: ADAPTER SETTINGS ', JSON.stringify(obj));
                         // Start the adapter and wait until it has started
                         await harness.startAdapterAndWait();
-                        await delay(9000);
+                        await delay(15000);
                         resolve();
                     });
                 });
