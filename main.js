@@ -1150,8 +1150,6 @@ class EcoflowMqtt extends utils.Adapter {
                             }`,
                         );
                     }
-                    //we set the connection status after the discovery things, this triggers the full update of states
-                    this.setState('info.haConnection', { val: 'online', ack: true });
                 });
 
                 this.haClient.on('message', async (topic, message) => {
@@ -1255,7 +1253,8 @@ class EcoflowMqtt extends utils.Adapter {
                     } else if (topic === 'homeassistant/status') {
                         this.log.info(`[HA] got broker status: ${String(message)}`);
                         this.setState('info.haBrokerStatus', { val: String(message), ack: true });
-                        //wenn online darauf reagieren und discovery schicken ?!
+                        //wenn online darauf reagieren und discovery schicken ?! -> ja, sonst bei restart von homeassistant keine reaktion
+                        this.setState('info.haConnection', { val: 'online', ack: true });
                     }
                 });
 

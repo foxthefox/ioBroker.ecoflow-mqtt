@@ -364,11 +364,13 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 ### 1.4.5 (WIP)
 
 - (foxthefox) new datapoints Delta2max
+- (foxthefox) change from object to array for messages (for telegrams with multiple messages of same type i.e. powerocean)
 
 ### 1.4.4 (npm)
 
-- (foxthefox) new datapoints for PowerOcean and HeatingRod
-- (foxthefox) change from object to array for messages (for telegrams with multiple messages of same type i.e. powerocean)
+- (foxthefox) new datapoints for PowerOcean (HeatingRod, ParallelEnergy)
+- (foxthefox) improvements tp powerocean plus
+- (foxthefox) corrections for powerocean
 - (foxthefox) testing JSON->buffer
 
 ### 1.4.3 (npm)

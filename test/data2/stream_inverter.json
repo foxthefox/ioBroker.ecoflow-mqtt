@@ -1,0 +1,39 @@
+{
+    "RuntimePropertyUpload": {
+        "displayPropertyFullUploadPeriod": 120000,
+        "displayPropertyIncrementalUploadPeriod": 2000,
+        "runtimePropertyFullUploadPeriod": 120000,
+        "runtimePropertyIncrementalUploadPeriod": 2000
+    },
+    "DisplayPropertyUpload": {
+        "powGetPv2": 84.8,
+        "plugInInfoPv2Amp": 2.16,
+        "utcTimezone": 200,
+        "utcTimezoneId": "Europe/Berlin",
+        "utcSetMode": 1,
+        "powGetPv": 99.28,
+        "invNtcTemp3": 37,
+        "plugInInfoPvVol": 35.65,
+        "plugInInfoPvAmp": 2.44,
+        "plugInInfoPv2Vol": 36.93,
+        "feedGridModePowLimit": 800,
+        "moduleWifiRssi": -35,
+        "gridConnectionVol": 232.63174438476562,
+        "gridConnectionFreq": 50,
+        "gridConnectionPower": 184.1,
+        "gridConnectionSta": 1,
+        "devErrcodeList": {},
+        "feedGridModePowMax": 300,
+        "townCode": 0,
+        "gridCodeSelection": 5,
+        "gridCodeVersion": 10001,
+        "gridConnectionAmp": 0.72,
+        "gridConnectionReactivePower": 0,
+        "gridConnectionPowerFactor": 1,
+        "gridCurtailmentSignal": 0,
+        "invTargetPwr": 0,
+        "factoryModeEnable": 0,
+        "debugModeEnable": 0,
+        "gridConnectionPowerFactorSetting": 0
+    }
+}

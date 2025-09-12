@@ -1,0 +1,1181 @@
+{
+    "id": 122911886,
+    "operateType": "latestQuotas",
+    "code": "0",
+    "data": {
+        "sn": "SP10ZE1234567890",
+        "productType": 40,
+        "model": 0,
+        "online": 1,
+        "quotaMap": {
+            "cfgSta": { "sta": 1, "cmdSet": 11, "id": 8 },
+            "chUseInfo": {
+                "cmdSet": 11,
+                "id": 27,
+                "isEnable": [true, true, true, true, true, true, true, true, true, true]
+            },
+            "loadChInfo": {
+                "cmdSet": 11,
+                "id": 33,
+                "info": [
+                    {
+                        "iconNum": 15,
+                        "chName": [
+                            75, 195, 188, 104, 108, 115, 99, 104, 114, 97, 110, 107, 44, 32, 83, 97, 117, 103, 114, 111,
+                            98, 111, 116, 101, 114, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+                        ]
+                    },
+                    {
+                        "iconNum": 0,
+                        "chName": [
+                            87, 111, 104, 110, 122, 105, 109, 109, 101, 114, 32, 71, 101, 115, 99, 104, 105, 114, 114,
+                            115, 112, 195, 188, 108, 101, 114, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+                        ]
+                    },
+                    {
+                        "iconNum": 3,
+                        "chName": [
+                            83, 99, 104, 108, 97, 102, 122, 105, 109, 109, 101, 114, 44, 32, 65, 110, 107, 108, 101,
+                            105, 100, 101, 44, 32, 66, 97, 100, 44, 32, 84, 114, 111, 99, 107, 110, 101, 114, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+                        ]
+                    },
+                    {
+                        "iconNum": 12,
+                        "chName": [
+                            66, 195, 188, 114, 111, 44, 32, 87, 67, 44, 32, 87, 97, 115, 99, 104, 109, 97, 115, 99, 104,
+                            105, 110, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+                        ]
+                    },
+                    {
+                        "iconNum": 12,
+                        "chName": [
+                            72, 111, 98, 98, 121, 114, 97, 117, 109, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0
+                        ]
+                    },
+                    {
+                        "iconNum": 2,
+                        "chName": [
+                            75, 195, 188, 99, 104, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0
+                        ]
+                    },
+                    {
+                        "iconNum": 6,
+                        "chName": [
+                            75, 105, 110, 100, 101, 114, 122, 105, 109, 109, 101, 114, 44, 32, 66, 97, 100, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+                        ]
+                    },
+                    {
+                        "iconNum": 11,
+                        "chName": [
+                            71, 97, 114, 97, 103, 101, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0
+                        ]
+                    },
+                    {
+                        "iconNum": 27,
+                        "chName": [
+                            84, 101, 99, 104, 110, 105, 107, 114, 97, 117, 109, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0, 0
+                        ]
+                    },
+                    {
+                        "iconNum": 9,
+                        "chName": [
+                            84, 114, 101, 112, 112, 101, 110, 104, 97, 117, 115, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0, 0, 0
+                        ]
+                    }
+                ]
+            },
+            "gridInfo": { "gridFreq": 50, "cmdSet": 11, "id": 23, "gridVol": 230 },
+            "backupChaDiscCfg": { "cmdSet": 11, "discLower": 5, "id": 30, "forceChargeHigh": 100 },
+            "heartbeat": {
+                "backupCmdChCtrlInfos": [
+                    { "powCh": 0, "ctrlSta": 0, "ctrlMode": 0, "priority": 0 },
+                    { "powCh": 0, "ctrlSta": 1, "ctrlMode": 0, "priority": 0 }
+                ],
+                "gridDayWatth": 1006.8827,
+                "backupFullCap": 394647,
+                "errorCodes": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                "workTime": 26864130239,
+                "backupBatPer": 25,
+                "backupDayWatth": 2260.4648,
+                "loadCmdChCtrlInfos": [
+                    { "powCh": 1, "ctrlSta": 0, "ctrlMode": 0, "priority": 0 },
+                    { "powCh": 1, "ctrlSta": 0, "ctrlMode": 0, "priority": 1 },
+                    { "powCh": 1, "ctrlSta": 0, "ctrlMode": 0, "priority": 2 },
+                    { "powCh": 1, "ctrlSta": 0, "ctrlMode": 0, "priority": 3 },
+                    { "powCh": 1, "ctrlSta": 0, "ctrlMode": 0, "priority": 4 },
+                    { "powCh": 1, "ctrlSta": 0, "ctrlMode": 0, "priority": 5 },
+                    { "powCh": 1, "ctrlSta": 0, "ctrlMode": 0, "priority": 6 },
+                    { "powCh": 1, "ctrlSta": 0, "ctrlMode": 0, "priority": 7 },
+                    { "powCh": 1, "ctrlSta": 0, "ctrlMode": 0, "priority": 8 },
+                    { "powCh": 1, "ctrlSta": 0, "ctrlMode": 0, "priority": 9 }
+                ],
+                "cmdSet": 11,
+                "backupChaTime": 143999,
+                "gridSta": 1,
+                "time": { "sec": 15, "week": 6, "min": 57, "hour": 10, "month": 9, "year": 2024, "day": 28 },
+                "id": 2,
+                "energyInfos": [
+                    {
+                        "dischargeTime": 6234,
+                        "mulPackNum": 2,
+                        "stateBean": {
+                            "isPowerOutput": 0,
+                            "isGridCharge": 0,
+                            "isConnect": 1,
+                            "isMpptCharge": 1,
+                            "isAcOpen": 0,
+                            "isEnable": 1
+                        },
+                        "outputPower": 0,
+                        "lcdInputWatts": 258,
+                        "fullCap": 80000,
+                        "chargeTime": 711,
+                        "emsChgFlag": 1,
+                        "type": 14,
+                        "emsBatTemp": 28,
+                        "ratePower": 3600,
+                        "batteryPercentage": 24,
+                        "oilPackNum": 0
+                    },
+                    {
+                        "dischargeTime": 6344,
+                        "mulPackNum": 1,
+                        "stateBean": {
+                            "isPowerOutput": 1,
+                            "isGridCharge": 0,
+                            "isConnect": 1,
+                            "isMpptCharge": 1,
+                            "isAcOpen": 1,
+                            "isEnable": 1
+                        },
+                        "outputPower": 0,
+                        "lcdInputWatts": 255,
+                        "fullCap": 80000,
+                        "chargeTime": 6287,
+                        "emsChgFlag": 1,
+                        "type": 14,
+                        "emsBatTemp": 27,
+                        "ratePower": 3600,
+                        "batteryPercentage": 25,
+                        "oilPackNum": 0
+                    }
+                ]
+            },
+            "backupLoadWatt": {
+                "rtc": "2024-9-28",
+                "watth": [
+                    [38, 54, 61, 70, 120, 45, 37, 50, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    [4, 4, 4, 5, 7, 7, 8, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    [9, 9, 9, 9, 14, 13, 14, 26, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    [15, 16, 15, 16, 22, 23, 21, 21, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    [19, 21, 18, 22, 21, 23, 22, 21, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    [11, 11, 11, 11, 12, 240, 132, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    [6, 6, 6, 6, 6, 6, 6, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    [0, 0, 0, 1, 2, 2, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    [84, 84, 85, 84, 83, 83, 84, 80, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    [12, 12, 12, 13, 14, 14, 17, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                ],
+                "cmdSet": 11,
+                "id": 49
+            },
+            "epsModeInfo": { "cmdSet": 11, "eps": true, "id": 25 },
+            "splitPhaseInfo": {
+                "cfgList": [
+                    { "linkCh": 0, "linkMark": 0 },
+                    { "linkCh": 0, "linkMark": 0 },
+                    { "linkCh": 0, "linkMark": 0 },
+                    { "linkCh": 0, "linkMark": 0 },
+                    { "linkCh": 0, "linkMark": 0 },
+                    { "linkCh": 0, "linkMark": 0 },
+                    { "linkCh": 0, "linkMark": 0 },
+                    { "linkCh": 0, "linkMark": 0 },
+                    { "linkCh": 0, "linkMark": 0 },
+                    { "linkCh": 0, "linkMark": 0 }
+                ],
+                "cmdSet": 11,
+                "id": 19
+            },
+            "areaInfo": {
+                "area": "Germany,Baden-Württemberg\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000",
+                "cmdSet": 11,
+                "id": 35
+            },
+            "topupLoadWatt": {
+                "rtc": "2024-9-28",
+                "watth": [
+                    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                ],
+                "cmdSet": 11,
+                "id": 50
+            },
+            "emergencyStrategy": {
+                "backupMode": 1,
+                "isCfg": 1,
+                "cmdSet": 11,
+                "chSta": [
+                    { "priority": 0, "isEnable": 1 },
+                    { "priority": 1, "isEnable": 1 },
+                    { "priority": 2, "isEnable": 1 },
+                    { "priority": 3, "isEnable": 1 },
+                    { "priority": 4, "isEnable": 1 },
+                    { "priority": 5, "isEnable": 1 },
+                    { "priority": 6, "isEnable": 1 },
+                    { "priority": 7, "isEnable": 1 },
+                    { "priority": 8, "isEnable": 1 },
+                    { "priority": 9, "isEnable": 1 }
+                ],
+                "id": 65,
+                "overloadMode": 1
+            },
+            "channelPower": {
+                "cmdSet": 11,
+                "time": { "sec": 15, "week": 6, "min": 57, "hour": 10, "month": 9, "year": 2024, "day": 28 },
+                "infoList": [
+                    { "powType": 0, "chWatt": 124.05729 },
+                    { "powType": 0, "chWatt": 38.322887 },
+                    { "powType": 0, "chWatt": 11.493443 },
+                    { "powType": 0, "chWatt": 65.68293 },
+                    { "powType": 0, "chWatt": 23.457577 },
+                    { "powType": 0, "chWatt": 16.927795 },
+                    { "powType": 0, "chWatt": 0 },
+                    { "powType": 0, "chWatt": 0 },
+                    { "powType": 0, "chWatt": 77.46734 },
+                    { "powType": 0, "chWatt": 18.930376 },
+                    { "powType": 0, "chWatt": 0 },
+                    { "powType": 1, "chWatt": 0 }
+                ],
+                "id": 96
+            },
+            "selfCheck": {
+                "result": 1,
+                "flag": 1,
+                "cmdSet": 11,
+                "chErrorSta": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                "vIn": [
+                    3.57047, 2.171832, 232.13345, 0.6518756, 3.6470098, 0.29152763, 4.6780877, 0.29152763, 232.11937,
+                    3.8233492
+                ],
+                "id": 113,
+                "phaseType": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                "vOut": [0, 0, 0, 0.20614117, 0, 0.20614117, 0, 0, 0.20614117, 0]
+            },
+            "loadChCurInfo": { "cur": [20, 30, 30, 30, 16, 16, 16, 16, 16, 16, 20, 20], "cmdSet": 11, "id": 21 },
+            "mainsLoadWatt": {
+                "rtc": "2024-9-28",
+                "watth": [
+                    [0, 0, 0, 0, 0, 0, 0, 0, 53, 110, 118, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    [0, 0, 0, 0, 0, 0, 0, 0, 10, 9, 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    [0, 0, 0, 0, 0, 0, 0, 0, 13, 14, 13, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    [0, 0, 0, 0, 0, 0, 0, 0, 24, 41, 34, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    [0, 0, 0, 0, 0, 0, 0, 0, 21, 20, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    [0, 0, 0, 0, 0, 0, 0, 0, 14, 62, 69, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    [0, 0, 0, 0, 0, 0, 0, 0, 5, 5, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    [0, 0, 0, 0, 0, 0, 0, 0, 79, 77, 77, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                    [0, 0, 0, 0, 0, 0, 0, 0, 48, 17, 16, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                ],
+                "cmdSet": 11,
+                "id": 48
+            },
+            "timeTask": [
+                {
+                    "cfg": {
+                        "param": {
+                            "lowBattery": 0,
+                            "chChargeWatt": 0,
+                            "chSta": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                            "hightBattery": 0
+                        },
+                        "comCfg": {
+                            "timeScale": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                            "isCfg": 0,
+                            "type": 0,
+                            "isEnable": 0,
+                            "setTime": { "sec": 0, "week": 0, "min": 0, "hour": 0, "month": 0, "year": 0, "day": 0 },
+                            "timeRange": {
+                                "isCfg": 0,
+                                "timeMode": 0,
+                                "startTime": {
+                                    "sec": 0,
+                                    "week": 0,
+                                    "min": 0,
+                                    "hour": 0,
+                                    "month": 0,
+                                    "year": 0,
+                                    "day": 0
+                                },
+                                "endTime": {
+                                    "sec": 59,
+                                    "week": 0,
+                                    "min": 59,
+                                    "hour": 23,
+                                    "month": 0,
+                                    "year": 0,
+                                    "day": 0
+                                },
+                                "isEnable": 0
+                            }
+                        }
+                    },
+                    "cmdSet": 11,
+                    "index": 16,
+                    "id": 80
+                },
+                {
+                    "cfg": {
+                        "param": {
+                            "lowBattery": 0,
+                            "chChargeWatt": 0,
+                            "chSta": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                            "hightBattery": 0
+                        },
+                        "comCfg": {
+                            "timeScale": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                            "isCfg": 0,
+                            "type": 0,
+                            "isEnable": 0,
+                            "setTime": { "sec": 0, "week": 0, "min": 0, "hour": 0, "month": 0, "year": 0, "day": 0 },
+                            "timeRange": {
+                                "isCfg": 0,
+                                "timeMode": 0,
+                                "startTime": {
+                                    "sec": 0,
+                                    "week": 0,
+                                    "min": 0,
+                                    "hour": 0,
+                                    "month": 0,
+                                    "year": 0,
+                                    "day": 0
+                                },
+                                "endTime": {
+                                    "sec": 59,
+                                    "week": 0,
+                                    "min": 59,
+                                    "hour": 23,
+                                    "month": 0,
+                                    "year": 0,
+                                    "day": 0
+                                },
+                                "isEnable": 0
+                            }
+                        }
+                    },
+                    "cmdSet": 11,
+                    "index": 17,
+                    "id": 80
+                },
+                {
+                    "cfg": {
+                        "param": {
+                            "lowBattery": 0,
+                            "chChargeWatt": 0,
+                            "chSta": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                            "hightBattery": 0
+                        },
+                        "comCfg": {
+                            "timeScale": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                            "isCfg": 0,
+                            "type": 0,
+                            "isEnable": 0,
+                            "setTime": { "sec": 0, "week": 0, "min": 0, "hour": 0, "month": 0, "year": 0, "day": 0 },
+                            "timeRange": {
+                                "isCfg": 0,
+                                "timeMode": 0,
+                                "startTime": {
+                                    "sec": 0,
+                                    "week": 0,
+                                    "min": 0,
+                                    "hour": 0,
+                                    "month": 0,
+                                    "year": 0,
+                                    "day": 0
+                                },
+                                "endTime": {
+                                    "sec": 59,
+                                    "week": 0,
+                                    "min": 59,
+                                    "hour": 23,
+                                    "month": 0,
+                                    "year": 0,
+                                    "day": 0
+                                },
+                                "isEnable": 0
+                            }
+                        }
+                    },
+                    "cmdSet": 11,
+                    "index": 14,
+                    "id": 80
+                },
+                {
+                    "cfg": {
+                        "param": {
+                            "lowBattery": 0,
+                            "chChargeWatt": 0,
+                            "chSta": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                            "hightBattery": 0
+                        },
+                        "comCfg": {
+                            "timeScale": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                            "isCfg": 0,
+                            "type": 0,
+                            "isEnable": 0,
+                            "setTime": { "sec": 0, "week": 0, "min": 0, "hour": 0, "month": 0, "year": 0, "day": 0 },
+                            "timeRange": {
+                                "isCfg": 0,
+                                "timeMode": 0,
+                                "startTime": {
+                                    "sec": 0,
+                                    "week": 0,
+                                    "min": 0,
+                                    "hour": 0,
+                                    "month": 0,
+                                    "year": 0,
+                                    "day": 0
+                                },
+                                "endTime": {
+                                    "sec": 59,
+                                    "week": 0,
+                                    "min": 59,
+                                    "hour": 23,
+                                    "month": 0,
+                                    "year": 0,
+                                    "day": 0
+                                },
+                                "isEnable": 0
+                            }
+                        }
+                    },
+                    "cmdSet": 11,
+                    "index": 15,
+                    "id": 80
+                },
+                {
+                    "cfg": {
+                        "param": {
+                            "lowBattery": 0,
+                            "chChargeWatt": 0,
+                            "chSta": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                            "hightBattery": 0
+                        },
+                        "comCfg": {
+                            "timeScale": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                            "isCfg": 0,
+                            "type": 0,
+                            "isEnable": 0,
+                            "setTime": { "sec": 0, "week": 0, "min": 0, "hour": 0, "month": 0, "year": 0, "day": 0 },
+                            "timeRange": {
+                                "isCfg": 0,
+                                "timeMode": 0,
+                                "startTime": {
+                                    "sec": 0,
+                                    "week": 0,
+                                    "min": 0,
+                                    "hour": 0,
+                                    "month": 0,
+                                    "year": 0,
+                                    "day": 0
+                                },
+                                "endTime": {
+                                    "sec": 59,
+                                    "week": 0,
+                                    "min": 59,
+                                    "hour": 23,
+                                    "month": 0,
+                                    "year": 0,
+                                    "day": 0
+                                },
+                                "isEnable": 0
+                            }
+                        }
+                    },
+                    "cmdSet": 11,
+                    "index": 18,
+                    "id": 80
+                },
+                {
+                    "cfg": {
+                        "param": {
+                            "lowBattery": 0,
+                            "chChargeWatt": 0,
+                            "chSta": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                            "hightBattery": 0
+                        },
+                        "comCfg": {
+                            "timeScale": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                            "isCfg": 0,
+                            "type": 0,
+                            "isEnable": 0,
+                            "setTime": { "sec": 0, "week": 0, "min": 0, "hour": 0, "month": 0, "year": 0, "day": 0 },
+                            "timeRange": {
+                                "isCfg": 0,
+                                "timeMode": 0,
+                                "startTime": {
+                                    "sec": 0,
+                                    "week": 0,
+                                    "min": 0,
+                                    "hour": 0,
+                                    "month": 0,
+                                    "year": 0,
+                                    "day": 0
+                                },
+                                "endTime": {
+                                    "sec": 59,
+                                    "week": 0,
+                                    "min": 59,
+                                    "hour": 23,
+                                    "month": 0,
+                                    "year": 0,
+                                    "day": 0
+                                },
+                                "isEnable": 0
+                            }
+                        }
+                    },
+                    "cmdSet": 11,
+                    "index": 19,
+                    "id": 80
+                },
+                {
+                    "cfg": {
+                        "param": {
+                            "lowBattery": 0,
+                            "chChargeWatt": 0,
+                            "chSta": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+                            "hightBattery": 0
+                        },
+                        "comCfg": {
+                            "timeScale": [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+                            "isCfg": 1,
+                            "type": 2,
+                            "isEnable": 0,
+                            "setTime": {
+                                "sec": 14,
+                                "week": 7,
+                                "min": 38,
+                                "hour": 11,
+                                "month": 9,
+                                "year": 2024,
+                                "day": 24
+                            },
+                            "timeRange": {
+                                "isCfg": 1,
+                                "timeMode": 0,
+                                "startTime": {
+                                    "sec": 0,
+                                    "week": 2,
+                                    "min": 0,
+                                    "hour": 0,
+                                    "month": 4,
+                                    "year": 2024,
+                                    "day": 11
+                                },
+                                "endTime": {
+                                    "sec": 59,
+                                    "week": 5,
+                                    "min": 59,
+                                    "hour": 23,
+                                    "month": 10,
+                                    "year": 2024,
+                                    "day": 31
+                                },
+                                "isEnable": 1
+                            }
+                        }
+                    },
+                    "cmdSet": 11,
+                    "index": 0,
+                    "id": 80
+                },
+                {
+                    "cfg": {
+                        "param": {
+                            "lowBattery": 0,
+                            "chChargeWatt": 0,
+                            "chSta": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                            "hightBattery": 0
+                        },
+                        "comCfg": {
+                            "timeScale": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                            "isCfg": 0,
+                            "type": 0,
+                            "isEnable": 0,
+                            "setTime": { "sec": 0, "week": 0, "min": 0, "hour": 0, "month": 0, "year": 0, "day": 0 },
+                            "timeRange": {
+                                "isCfg": 0,
+                                "timeMode": 0,
+                                "startTime": {
+                                    "sec": 0,
+                                    "week": 0,
+                                    "min": 0,
+                                    "hour": 0,
+                                    "month": 0,
+                                    "year": 0,
+                                    "day": 0
+                                },
+                                "endTime": {
+                                    "sec": 59,
+                                    "week": 0,
+                                    "min": 59,
+                                    "hour": 23,
+                                    "month": 0,
+                                    "year": 0,
+                                    "day": 0
+                                },
+                                "isEnable": 0
+                            }
+                        }
+                    },
+                    "cmdSet": 11,
+                    "index": 3,
+                    "id": 80
+                },
+                {
+                    "cfg": {
+                        "param": {
+                            "lowBattery": 0,
+                            "chChargeWatt": 0,
+                            "chSta": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                            "hightBattery": 0
+                        },
+                        "comCfg": {
+                            "timeScale": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                            "isCfg": 0,
+                            "type": 0,
+                            "isEnable": 0,
+                            "setTime": { "sec": 0, "week": 0, "min": 0, "hour": 0, "month": 0, "year": 0, "day": 0 },
+                            "timeRange": {
+                                "isCfg": 0,
+                                "timeMode": 0,
+                                "startTime": {
+                                    "sec": 0,
+                                    "week": 0,
+                                    "min": 0,
+                                    "hour": 0,
+                                    "month": 0,
+                                    "year": 0,
+                                    "day": 0
+                                },
+                                "endTime": {
+                                    "sec": 59,
+                                    "week": 0,
+                                    "min": 59,
+                                    "hour": 23,
+                                    "month": 0,
+                                    "year": 0,
+                                    "day": 0
+                                },
+                                "isEnable": 0
+                            }
+                        }
+                    },
+                    "cmdSet": 11,
+                    "index": 4,
+                    "id": 80
+                },
+                {
+                    "cfg": {
+                        "param": {
+                            "lowBattery": 0,
+                            "chChargeWatt": 0,
+                            "chSta": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+                            "hightBattery": 0
+                        },
+                        "comCfg": {
+                            "timeScale": [-1, -1, -1, -1, -1, -1, 0, 0, 0, 0, 0, 0, 0, -16, -1, -1, -1, -1],
+                            "isCfg": 1,
+                            "type": 2,
+                            "isEnable": 1,
+                            "setTime": {
+                                "sec": 22,
+                                "week": 7,
+                                "min": 33,
+                                "hour": 21,
+                                "month": 9,
+                                "year": 2024,
+                                "day": 27
+                            },
+                            "timeRange": {
+                                "isCfg": 1,
+                                "timeMode": 0,
+                                "startTime": {
+                                    "sec": 0,
+                                    "week": 4,
+                                    "min": 0,
+                                    "hour": 0,
+                                    "month": 6,
+                                    "year": 2023,
+                                    "day": 24
+                                },
+                                "endTime": {
+                                    "sec": 59,
+                                    "week": 1,
+                                    "min": 59,
+                                    "hour": 23,
+                                    "month": 1,
+                                    "year": 2035,
+                                    "day": 1
+                                },
+                                "isEnable": 1
+                            }
+                        }
+                    },
+                    "cmdSet": 11,
+                    "index": 1,
+                    "id": 80
+                },
+                {
+                    "cfg": {
+                        "param": { "lowBattery": 95, "chChargeWatt": 200, "chSta": [1, 0], "hightBattery": 100 },
+                        "comCfg": {
+                            "timeScale": [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],
+                            "isCfg": 1,
+                            "type": 1,
+                            "isEnable": 0,
+                            "setTime": {
+                                "sec": 28,
+                                "week": 7,
+                                "min": 53,
+                                "hour": 10,
+                                "month": 9,
+                                "year": 2024,
+                                "day": 28
+                            },
+                            "timeRange": {
+                                "mode3": { "month": 9, "year": 2024, "day": 28 },
+                                "isCfg": 1,
+                                "timeMode": 3,
+                                "startTime": {
+                                    "sec": 0,
+                                    "week": 4,
+                                    "min": 0,
+                                    "hour": 0,
+                                    "month": 9,
+                                    "year": 2024,
+                                    "day": 28
+                                },
+                                "endTime": {
+                                    "sec": 59,
+                                    "week": 4,
+                                    "min": 59,
+                                    "hour": 23,
+                                    "month": 9,
+                                    "year": 2024,
+                                    "day": 28
+                                },
+                                "isEnable": 3
+                            }
+                        }
+                    },
+                    "cmdSet": 11,
+                    "index": 2,
+                    "id": 80
+                },
+                {
+                    "cfg": {
+                        "param": {
+                            "lowBattery": 0,
+                            "chChargeWatt": 0,
+                            "chSta": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                            "hightBattery": 0
+                        },
+                        "comCfg": {
+                            "timeScale": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                            "isCfg": 0,
+                            "type": 0,
+                            "isEnable": 0,
+                            "setTime": { "sec": 0, "week": 0, "min": 0, "hour": 0, "month": 0, "year": 0, "day": 0 },
+                            "timeRange": {
+                                "isCfg": 0,
+                                "timeMode": 0,
+                                "startTime": {
+                                    "sec": 0,
+                                    "week": 0,
+                                    "min": 0,
+                                    "hour": 0,
+                                    "month": 0,
+                                    "year": 0,
+                                    "day": 0
+                                },
+                                "endTime": {
+                                    "sec": 59,
+                                    "week": 0,
+                                    "min": 59,
+                                    "hour": 23,
+                                    "month": 0,
+                                    "year": 0,
+                                    "day": 0
+                                },
+                                "isEnable": 0
+                            }
+                        }
+                    },
+                    "cmdSet": 11,
+                    "index": 7,
+                    "id": 80
+                },
+                {
+                    "cfg": {
+                        "param": {
+                            "lowBattery": 0,
+                            "chChargeWatt": 0,
+                            "chSta": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                            "hightBattery": 0
+                        },
+                        "comCfg": {
+                            "timeScale": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                            "isCfg": 0,
+                            "type": 0,
+                            "isEnable": 0,
+                            "setTime": { "sec": 0, "week": 0, "min": 0, "hour": 0, "month": 0, "year": 0, "day": 0 },
+                            "timeRange": {
+                                "isCfg": 0,
+                                "timeMode": 0,
+                                "startTime": {
+                                    "sec": 0,
+                                    "week": 0,
+                                    "min": 0,
+                                    "hour": 0,
+                                    "month": 0,
+                                    "year": 0,
+                                    "day": 0
+                                },
+                                "endTime": {
+                                    "sec": 59,
+                                    "week": 0,
+                                    "min": 59,
+                                    "hour": 23,
+                                    "month": 0,
+                                    "year": 0,
+                                    "day": 0
+                                },
+                                "isEnable": 0
+                            }
+                        }
+                    },
+                    "cmdSet": 11,
+                    "index": 8,
+                    "id": 80
+                },
+                {
+                    "cfg": {
+                        "param": {
+                            "lowBattery": 0,
+                            "chChargeWatt": 0,
+                            "chSta": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                            "hightBattery": 0
+                        },
+                        "comCfg": {
+                            "timeScale": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                            "isCfg": 0,
+                            "type": 0,
+                            "isEnable": 0,
+                            "setTime": { "sec": 0, "week": 0, "min": 0, "hour": 0, "month": 0, "year": 0, "day": 0 },
+                            "timeRange": {
+                                "isCfg": 0,
+                                "timeMode": 0,
+                                "startTime": {
+                                    "sec": 0,
+                                    "week": 0,
+                                    "min": 0,
+                                    "hour": 0,
+                                    "month": 0,
+                                    "year": 0,
+                                    "day": 0
+                                },
+                                "endTime": {
+                                    "sec": 59,
+                                    "week": 0,
+                                    "min": 59,
+                                    "hour": 23,
+                                    "month": 0,
+                                    "year": 0,
+                                    "day": 0
+                                },
+                                "isEnable": 0
+                            }
+                        }
+                    },
+                    "cmdSet": 11,
+                    "index": 5,
+                    "id": 80
+                },
+                {
+                    "cfg": {
+                        "param": {
+                            "lowBattery": 0,
+                            "chChargeWatt": 0,
+                            "chSta": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                            "hightBattery": 0
+                        },
+                        "comCfg": {
+                            "timeScale": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                            "isCfg": 0,
+                            "type": 0,
+                            "isEnable": 0,
+                            "setTime": { "sec": 0, "week": 0, "min": 0, "hour": 0, "month": 0, "year": 0, "day": 0 },
+                            "timeRange": {
+                                "isCfg": 0,
+                                "timeMode": 0,
+                                "startTime": {
+                                    "sec": 0,
+                                    "week": 0,
+                                    "min": 0,
+                                    "hour": 0,
+                                    "month": 0,
+                                    "year": 0,
+                                    "day": 0
+                                },
+                                "endTime": {
+                                    "sec": 59,
+                                    "week": 0,
+                                    "min": 59,
+                                    "hour": 23,
+                                    "month": 0,
+                                    "year": 0,
+                                    "day": 0
+                                },
+                                "isEnable": 0
+                            }
+                        }
+                    },
+                    "cmdSet": 11,
+                    "index": 6,
+                    "id": 80
+                },
+                {
+                    "cfg": {
+                        "param": {
+                            "lowBattery": 0,
+                            "chChargeWatt": 0,
+                            "chSta": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                            "hightBattery": 0
+                        },
+                        "comCfg": {
+                            "timeScale": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                            "isCfg": 0,
+                            "type": 0,
+                            "isEnable": 0,
+                            "setTime": { "sec": 0, "week": 0, "min": 0, "hour": 0, "month": 0, "year": 0, "day": 0 },
+                            "timeRange": {
+                                "isCfg": 0,
+                                "timeMode": 0,
+                                "startTime": {
+                                    "sec": 0,
+                                    "week": 0,
+                                    "min": 0,
+                                    "hour": 0,
+                                    "month": 0,
+                                    "year": 0,
+                                    "day": 0
+                                },
+                                "endTime": {
+                                    "sec": 59,
+                                    "week": 0,
+                                    "min": 59,
+                                    "hour": 23,
+                                    "month": 0,
+                                    "year": 0,
+                                    "day": 0
+                                },
+                                "isEnable": 0
+                            }
+                        }
+                    },
+                    "cmdSet": 11,
+                    "index": 12,
+                    "id": 80
+                },
+                {
+                    "cfg": {
+                        "param": {
+                            "lowBattery": 0,
+                            "chChargeWatt": 0,
+                            "chSta": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                            "hightBattery": 0
+                        },
+                        "comCfg": {
+                            "timeScale": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                            "isCfg": 0,
+                            "type": 0,
+                            "isEnable": 0,
+                            "setTime": { "sec": 0, "week": 0, "min": 0, "hour": 0, "month": 0, "year": 0, "day": 0 },
+                            "timeRange": {
+                                "isCfg": 0,
+                                "timeMode": 0,
+                                "startTime": {
+                                    "sec": 0,
+                                    "week": 0,
+                                    "min": 0,
+                                    "hour": 0,
+                                    "month": 0,
+                                    "year": 0,
+                                    "day": 0
+                                },
+                                "endTime": {
+                                    "sec": 59,
+                                    "week": 0,
+                                    "min": 59,
+                                    "hour": 23,
+                                    "month": 0,
+                                    "year": 0,
+                                    "day": 0
+                                },
+                                "isEnable": 0
+                            }
+                        }
+                    },
+                    "cmdSet": 11,
+                    "index": 13,
+                    "id": 80
+                },
+                {
+                    "cfg": {
+                        "param": {
+                            "lowBattery": 0,
+                            "chChargeWatt": 0,
+                            "chSta": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                            "hightBattery": 0
+                        },
+                        "comCfg": {
+                            "timeScale": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                            "isCfg": 0,
+                            "type": 0,
+                            "isEnable": 0,
+                            "setTime": { "sec": 0, "week": 0, "min": 0, "hour": 0, "month": 0, "year": 0, "day": 0 },
+                            "timeRange": {
+                                "isCfg": 0,
+                                "timeMode": 0,
+                                "startTime": {
+                                    "sec": 0,
+                                    "week": 0,
+                                    "min": 0,
+                                    "hour": 0,
+                                    "month": 0,
+                                    "year": 0,
+                                    "day": 0
+                                },
+                                "endTime": {
+                                    "sec": 59,
+                                    "week": 0,
+                                    "min": 59,
+                                    "hour": 23,
+                                    "month": 0,
+                                    "year": 0,
+                                    "day": 0
+                                },
+                                "isEnable": 0
+                            }
+                        }
+                    },
+                    "cmdSet": 11,
+                    "index": 9,
+                    "id": 80
+                },
+                {
+                    "cfg": {
+                        "param": {
+                            "lowBattery": 0,
+                            "chChargeWatt": 0,
+                            "chSta": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                            "hightBattery": 0
+                        },
+                        "comCfg": {
+                            "timeScale": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                            "isCfg": 0,
+                            "type": 0,
+                            "isEnable": 0,
+                            "setTime": { "sec": 0, "week": 0, "min": 0, "hour": 0, "month": 0, "year": 0, "day": 0 },
+                            "timeRange": {
+                                "isCfg": 0,
+                                "timeMode": 0,
+                                "startTime": {
+                                    "sec": 0,
+                                    "week": 0,
+                                    "min": 0,
+                                    "hour": 0,
+                                    "month": 0,
+                                    "year": 0,
+                                    "day": 0
+                                },
+                                "endTime": {
+                                    "sec": 59,
+                                    "week": 0,
+                                    "min": 59,
+                                    "hour": 23,
+                                    "month": 0,
+                                    "year": 0,
+                                    "day": 0
+                                },
+                                "isEnable": 0
+                            }
+                        }
+                    },
+                    "cmdSet": 11,
+                    "index": 10,
+                    "id": 80
+                },
+                {
+                    "cfg": {
+                        "param": {
+                            "lowBattery": 0,
+                            "chChargeWatt": 0,
+                            "chSta": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                            "hightBattery": 0
+                        },
+                        "comCfg": {
+                            "timeScale": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                            "isCfg": 0,
+                            "type": 0,
+                            "isEnable": 0,
+                            "setTime": { "sec": 0, "week": 0, "min": 0, "hour": 0, "month": 0, "year": 0, "day": 0 },
+                            "timeRange": {
+                                "isCfg": 0,
+                                "timeMode": 0,
+                                "startTime": {
+                                    "sec": 0,
+                                    "week": 0,
+                                    "min": 0,
+                                    "hour": 0,
+                                    "month": 0,
+                                    "year": 0,
+                                    "day": 0
+                                },
+                                "endTime": {
+                                    "sec": 59,
+                                    "week": 0,
+                                    "min": 59,
+                                    "hour": 23,
+                                    "month": 0,
+                                    "year": 0,
+                                    "day": 0
+                                },
+                                "isEnable": 0
+                            }
+                        }
+                    },
+                    "cmdSet": 11,
+                    "index": 11,
+                    "id": 80
+                }
+            ]
+        }
+    }
+}

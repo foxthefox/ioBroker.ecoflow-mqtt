@@ -1,0 +1,38 @@
+{
+    "RuntimePropertyUpload": {
+        "displayPropertyFullUploadPeriod": 120000,
+        "displayPropertyIncrementalUploadPeriod": 2000,
+        "runtimePropertyFullUploadPeriod": 300000,
+        "runtimePropertyIncrementalUploadPeriod": 60000
+    },
+    "DisplayPropertyUpload": {
+        "utcTimezone": 200,
+        "utcTimezoneId": "Europe/Berlin",
+        "utcSetMode": 1,
+        "totalPower": 384.71832275390625,
+        "unknown618": 0,
+        "unknown619": 1,
+        "unknown627": [""],
+        "unknown728": [""],
+        "unknown729": 0,
+        "unknown732": 0,
+        "unknown733": 0,
+        "unknown762": 1,
+        "unknown763": 1,
+        "unknown764": 1,
+        "voltageL3": 226.04031372070312,
+        "powerL3": 151.01795959472656,
+        "energy": {
+            "energyL1daily": 1547,
+            "energyL2daily": 1029,
+            "energyL3daily": 84,
+            "lifeTimeEnergyConsumption": 4155,
+            "lifeTimeEnergyDelivery": 1495,
+            "netEnergyConsumption": 2660
+        },
+        "voltageL1": 225.7567901611328,
+        "voltageL2": 224.825439453125,
+        "powerL1": 163.541015625,
+        "powerL2": 70.15934753417969
+    }
+}

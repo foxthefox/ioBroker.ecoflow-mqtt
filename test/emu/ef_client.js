@@ -57,7 +57,7 @@ quota['BK11Z123456789012'] = require('../lastQuotas/streamultra.js').get.all;
 quota['KT31ZC123456789'] = require('../lastQuotas/wave3.js').message.latestQuotas;
 quota['UNKNOWNPROTO'] = require('../lastQuotas/unknown.js').messages.test;
 quota['UNKNOWNJSON'] = require('../lastQuotas/unknownjson.json');
-quota['R371A112345678'] = require('../lastQuotas/oceanplus.js').get.bat;
+quota['R371A112345678'] = require('../lastQuotas/oceanplus.js').get.all;
 quota['BK41Z123456789012'] = require('../lastQuotas/streaminverter.js').get.all;
 
 const panelparams = require('../lastQuotas/vm2.js').params;

@@ -1,0 +1,23 @@
+{
+    "alternatorHeartbeat": {
+        "status1": 32,
+        "temp": 14,
+        "alternatorPower": 0,
+        "switchOFF130": 1,
+        "startVoltage": 130,
+        "carBatVolt": 11.993016242980957,
+        "batSoc": 97,
+        "chargeToFull268": 2605,
+        "unknown269": 2605,
+        "stationPower": 0,
+        "unknown427": 65535,
+        "unknown428": 65535,
+        "operationMode": 1,
+        "startStop": 1,
+        "permanentWatts": 250,
+        "wifiRssi": -48,
+        "ratedPower": 800,
+        "cableLength608": 0,
+        "unknown609": 0
+    }
+}

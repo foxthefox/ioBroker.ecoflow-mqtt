@@ -19,6 +19,10 @@
 
 [JTS1_EMS_PARAM_CHANGE_REPORT](#JTS1_EMS_PARAM_CHANGE_REPORT)
 
+[HRChargingParamReport](#HRChargingParamReport)
+
+[HeatingRodEnergyStreamShow](#HeatingRodEnergyStreamShow)
+
 
 
 ## statusReportBattery1
@@ -310,22 +314,22 @@
 |mpptPwr|0 | 5000 | W | 1 |  Solar power |
 |bpPwr|0 | 5200 | W | 1 |  Battery power |
 |bpSoc|0 | 100 | % | 1 |  Battery SOC |
-|unknown9|0 | 5200 | W | 1 |  unknown9 power |
-|unknown10|0 | 5200 | W | 1 |  unknown10 power |
+|powerPv1|0 | 5200 | W | 1 |  Pv1 power |
+|powerPv2|0 | 5200 | W | 1 |  Pv2 power |
 |ocean_sysLoadPwr|0 | 15000 | W | 1 |  ocean System load |
 |ocean_sysGridPwr|0 | 15000 | W | 1 |  ocean Grid power |
 |ocean_mpptPwr|0 | 5000 | W | 1 |  ocean Solar power |
 |ocean_bpPwr|0 | 5200 | W | 1 |  ocean Battery power |
 |ocean_bpSoc|0 | 100 | % | 1 |  ocean Battery SOC |
-|ocean_unknown9|0 | 5200 | W | 1 |  ocean unknown9 power |
-|ocean_unknown10|0 | 5200 | W | 1 |  ocean unknown10 power |
+|ocean_powerPv1|0 | 5200 | W | 1 |  ocean Pv1 power |
+|ocean_powerPv2|0 | 5200 | W | 1 |  ocean Pv2 power |
 |system1_sysLoadPwr|0 | 15000 | W | 1 |  system1 System load |
 |system1_sysGridPwr|0 | 15000 | W | 1 |  system1 Grid power |
 |system1_mpptPwr|0 | 5000 | W | 1 |  system1 Solar power |
 |system1_bpPwr|0 | 5200 | W | 1 |  system1 Battery power |
 |system1_bpSoc|0 | 100 | % | 1 |  system1 Battery SOC |
-|system1_unknown9|0 | 5200 | W | 1 |  system1 unknown9 power |
-|system1_unknown10|0 | 5200 | W | 1 |  system1 unknown10 power |
+|system1_powerPv1|0 | 5200 | W | 1 |  system1 Pv1 power |
+|system1_powerPv2|0 | 5200 | W | 1 |  system1 Pv2 power |
 
 
 ### string
@@ -755,7 +759,7 @@
 
 | State  |     Name |  values |
 |----------|:-------------:|------|
-|chargingStatus| charging status | {0:OK?} |
+|chargingStatus| charging status | {0:NONE,1:AVAILABLE,2:PREPARING,3:CHARGING,4:SUSPENDED_EVSE,5:SUSPENDED_EV,6:FINISHING,9:FAULTED} |
 |workMode| work mode | {0:off?,1:on?} |
 |orderState| order state | {0:OK?} |
 
@@ -773,4 +777,51 @@
 |lowerPowerStat| lower power stat |
 |breakerCapacityMax| breaker capacity max |
 |breakerEnableState| breaker enable state |
+
+## HRChargingParamReport
+
+### string
+
+| State  |  Name |
+|----------|------|
+|hrSn| hr serial |
+
+### diagnostic
+
+| State  |     Name |  values |
+|----------|:-------------:|------|
+|mode| mode | {0:OK?,1:1?,2:2?} |
+|onlineBits| onlineBits | {0:0?,1:1?,2:2?} |
+|runStat| runStat | {0:off?,1:on?} |
+|errorCode| errorCode: | {0:OK?,1:fault?} |
+|runFlag| run Flag | {0:off?,1:on?} |
+
+### number
+| State  |      Min     |      Max     |  Unit |  Mult |  Name |
+|----------|:-------------:|:-------------:|:------:|:-----:|-----|
+|heatingPower|0 | 10000 | W | 1 |  heating power |
+|targetPower|0 | 10000 | W | 1 |  target power |
+|temp|0 | 90 | °C | 1 |  water temperature |
+|targetTemp|0 | 90 | °C | 1 |  target temperature |
+|waterTankVolume|0 | 2000 | l | 1 |  water tank vaolume |
+|selfcheckPercent|0 | 100 | % | 1 |  selfcheck Percent |
+
+
+## HeatingRodEnergyStreamShow
+
+### string
+
+| State  |  Name |
+|----------|------|
+|rod1_hrSn| hr serial |
+
+### number
+| State  |      Min     |      Max     |  Unit |  Mult |  Name |
+|----------|:-------------:|:-------------:|:------:|:-----:|-----|
+|rod1_hrPwr|0 | 10000 | W | 1 |  heating power |
+|rod1_temp|0 | 90 | °C | 1 |  rod temperature |
+|rod1_fromPv|0 | 10000 | W | 1 |  power from pv |
+|rod1_fromBat|0 | 10000 | W | 1 |  power from bat |
+|rod1_fromGrid|0 | 10000 | W | 1 |  power from grid |
+
 

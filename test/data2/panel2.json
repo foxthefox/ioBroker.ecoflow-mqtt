@@ -1,0 +1,460 @@
+{
+    "ProtoTimeStat": {
+        "masterInfo": { "gridWatt": 4697, "sysTimezone": -500, "timezoneId": "America/Chicago" },
+        "loadInfo": {
+            "hall1Watt": [198, 24, 483, 618, 103, 646, 96, 187, 1164, 0, 1153, 25],
+            "hall1Curr": [
+                2.66814923286438, 0.6387117505073547, 6.017177104949951, 5.615972518920898, 0.9763685464859009,
+                5.965906620025635, 0.8607820868492126, 1.8019838333129883, 10.762174606323242, 0.17709526419639587,
+                10.718664169311523, 0.2681646943092346
+            ]
+        },
+        "backupInfo": {
+            "chWatt": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            "backupDischargeTime": 20823,
+            "energy_1": { "chargeTime": 22472, "dischargeTime": 23971 },
+            "energy_2": { "chargeTime": 19396, "dischargeTime": 23922 }
+        },
+        "wattInfo": { "gridWatt": 4657, "chWatt": [0, 0, 0], "allHallWatt": 4657 }
+    },
+    "ProtoPushAndSet": {
+        "gridVol": 120,
+        "gridFreq": 60,
+        "productType": 1,
+        "epsModeInfo": 1,
+        "foceChargeHight": 90,
+        "chargeWattPower": 3000,
+        "discLower": 0,
+        "powerSta": 0,
+        "masterCur": 100,
+        "isSetOilEngine": 0,
+        "oilEngineWatt": 500,
+        "hasConfigDone": 1,
+        "isAreaErr": 0,
+        "area": "United States Houston",
+        "ch1ForceCharge": 0,
+        "ch2ForceCharge": 0,
+        "ch3ForceCharge": 0,
+        "stormIsEnable": 1,
+        "stormEndTimestamp": 1716969600,
+        "inStormMode": 1,
+        "ch1EnableSet": 1,
+        "ch2EnableSet": 1,
+        "ch3EnableSet": 0,
+        "oilEngineToBackChargePersent": 0,
+        "LoadStrategyCfg": {
+            "isCfg": 1,
+            "midPriorityChDischargeLow": 30,
+            "hall1ChInfo": [
+                { "loadIsEnable": 1, "loadPriority": 13 },
+                { "loadIsEnable": 1, "loadPriority": 14 },
+                { "loadPriority": 25 },
+                { "loadIsEnable": 1, "loadPriority": 15 },
+                { "loadIsEnable": 1, "loadPriority": 16 },
+                { "loadIsEnable": 1, "loadPriority": 1 },
+                { "loadIsEnable": 1, "loadPriority": 2 },
+                { "loadIsEnable": 1, "loadPriority": 17 },
+                { "loadPriority": 26 },
+                { "loadIsEnable": 1, "loadPriority": 19 },
+                { "loadPriority": 26 },
+                { "loadIsEnable": 1, "loadPriority": 18 }
+            ]
+        },
+        "TimeTaskCfg_1": {},
+        "TimeTaskCfg_2": {},
+        "TimeTaskCfg_3": {},
+        "TimeTaskCfg_4": {},
+        "TimeTaskCfg_5": {},
+        "TimeTaskCfg_6": {},
+        "TimeTaskCfg_7": {},
+        "TimeTaskCfg_8": {},
+        "TimeTaskCfg_9": {},
+        "TimeTaskCfg_10": {},
+        "ntcOverTempErr": 0,
+        "smartBackupMode": 0,
+        "backupReserveEnable": 1,
+        "backupReserveSoc": 50,
+        "localTime": 1716920795,
+        "timeZone": -5,
+        "solarBackupReserveSoc": 90,
+        "oilType": 2,
+        "oilMaxOutputWatt": 3000,
+        "backupIncreInfo": {
+            "errcode": {
+                "errCode": [
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+                ]
+            },
+            "backupFullCap": 12288,
+            "backupBatPer": 100,
+            "backupDischargeRmainBatCap": 0,
+            "backupCh1Info": {
+                "backupIsReady": 1,
+                "ctrlSta": 0,
+                "forceChargeSta": 0,
+                "backupRly1Cnt": 1021,
+                "backupRly2Cnt": 1021,
+                "wakeUpChargeSta": 0,
+                "energy_5p8Type": 29
+            },
+            "backupCh2Info": {
+                "backupIsReady": 1,
+                "ctrlSta": 0,
+                "forceChargeSta": 0,
+                "backupRly1Cnt": 870,
+                "backupRly2Cnt": 870,
+                "wakeUpChargeSta": 0,
+                "energy_5p8Type": 29
+            },
+            "backupCh3Info": {
+                "backupIsReady": 0,
+                "ctrlSta": 0,
+                "forceChargeSta": 0,
+                "backupRly1Cnt": 10,
+                "backupRly2Cnt": 10,
+                "wakeUpChargeSta": 0,
+                "energy_5p8Type": 0
+            },
+            "Energy1Info": {
+                "devInfo": {
+                    "modelInfo": { "sn": "Y711Z1234567890" },
+                    "type": 81,
+                    "fullCap": 6144,
+                    "ratePower": 7200
+                },
+                "isEnable": 1,
+                "isConnect": 1,
+                "isAcOpen": 0,
+                "isPowerOutput": 0,
+                "isGridCharge": 0,
+                "isMpptCharge": 0,
+                "batteryPercentage": 100,
+                "outputPower": 0,
+                "oilPackNum": 0,
+                "multPackNum": 0,
+                "emsChgFlag": 0,
+                "hwConnect": 1,
+                "emsBatTemp": 42,
+                "lcdInputWatts": 0,
+                "pvChargeWatts": 0,
+                "pvLowChargeWatts": 0,
+                "pvHeightChargeWatts": 0,
+                "errorCodeNum": 0
+            },
+            "Energy2Info": {
+                "devInfo": {
+                    "modelInfo": { "sn": "Y711Z234567890" },
+                    "type": 81,
+                    "fullCap": 6144,
+                    "ratePower": 7200
+                },
+                "isEnable": 1,
+                "isConnect": 1,
+                "isAcOpen": 0,
+                "isPowerOutput": 0,
+                "isGridCharge": 0,
+                "isMpptCharge": 0,
+                "batteryPercentage": 100,
+                "outputPower": 0,
+                "oilPackNum": 0,
+                "multPackNum": 0,
+                "emsChgFlag": 0,
+                "hwConnect": 1,
+                "emsBatTemp": 38,
+                "lcdInputWatts": 0,
+                "pvChargeWatts": 0,
+                "pvLowChargeWatts": 0,
+                "pvHeightChargeWatts": 0,
+                "errorCodeNum": 0
+            },
+            "Energy3Info": {
+                "devInfo": { "type": 81 },
+                "isEnable": 0,
+                "isConnect": 0,
+                "isAcOpen": 0,
+                "isPowerOutput": 0,
+                "isGridCharge": 0,
+                "isMpptCharge": 0,
+                "batteryPercentage": 0,
+                "outputPower": 0,
+                "oilPackNum": 0,
+                "multPackNum": 0,
+                "emsChgFlag": 0,
+                "hwConnect": 0,
+                "emsBatTemp": 0,
+                "lcdInputWatts": 0,
+                "pvChargeWatts": 0,
+                "pvLowChargeWatts": 0,
+                "pvHeightChargeWatts": 0,
+                "errorCodeNum": 0
+            },
+            "DeltaPro1Info": {
+                "modelInfo": {},
+                "isConnect": 0,
+                "batterySoc": 0,
+                "fullCap": 0,
+                "ratePower": 0,
+                "isAcOpen": 0,
+                "outputPower": 0,
+                "emsBatTemp": 0,
+                "lcdInputWatts": 0,
+                "pvInsertState": 0,
+                "pvLowChargeWatts": 0,
+                "chargeTime": 0,
+                "dischargeTime": 0
+            },
+            "DeltaPro2Info": {
+                "modelInfo": {},
+                "isConnect": 0,
+                "batterySoc": 0,
+                "fullCap": 0,
+                "ratePower": 0,
+                "isAcOpen": 0,
+                "outputPower": 0,
+                "emsBatTemp": 0,
+                "lcdInputWatts": 0,
+                "pvInsertState": 0,
+                "pvLowChargeWatts": 0,
+                "chargeTime": 0,
+                "dischargeTime": 0
+            }
+        },
+        "loadIncreInfo": {
+            "hall1IncreInfo": {
+                "errCode": {
+                    "errCode": [
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+                    ]
+                },
+                "modelInfo": {},
+                "midPriorityDischargeTime": 0,
+                "highPriorityDischargeTime": 0,
+                "ch1Info": {
+                    "splitphase": { "linkMark": 0, "linkCh": 0 },
+                    "setAmp": 20,
+                    "iconNum": 1,
+                    "chName": "Plugs",
+                    "loadRlyCnt": 31
+                },
+                "ch2Info": {
+                    "splitphase": { "linkMark": 0, "linkCh": 0 },
+                    "setAmp": 15,
+                    "iconNum": 1,
+                    "chName": "Bath",
+                    "loadRlyCnt": 33
+                },
+                "ch3Info": {
+                    "splitphase": { "linkMark": 0, "linkCh": 0 },
+                    "setAmp": 20,
+                    "iconNum": 1,
+                    "chName": "Fryer",
+                    "loadRlyCnt": 47
+                },
+                "ch4Info": {
+                    "splitphase": { "linkMark": 0, "linkCh": 0 },
+                    "setAmp": 15,
+                    "iconNum": 1,
+                    "chName": "Office",
+                    "loadRlyCnt": 37
+                },
+                "ch5Info": {
+                    "splitphase": { "linkMark": 0, "linkCh": 0 },
+                    "setAmp": 15,
+                    "iconNum": 1,
+                    "chName": "Upstairs",
+                    "loadRlyCnt": 28
+                },
+                "ch6Info": {
+                    "splitphase": { "linkMark": 0, "linkCh": 0 },
+                    "setAmp": 15,
+                    "iconNum": 1,
+                    "chName": "Bedroom",
+                    "loadRlyCnt": 10
+                },
+                "ch7Info": {
+                    "splitphase": { "linkMark": 0, "linkCh": 0 },
+                    "setAmp": 20,
+                    "iconNum": 1,
+                    "chName": "Refrigerator",
+                    "loadRlyCnt": 12
+                },
+                "ch8Info": {
+                    "splitphase": { "linkMark": 0, "linkCh": 0 },
+                    "setAmp": 15,
+                    "iconNum": 1,
+                    "chName": "Living Room",
+                    "loadRlyCnt": 25
+                },
+                "ch9Info": {
+                    "splitphase": { "linkMark": 1, "linkCh": 11 },
+                    "setAmp": 30,
+                    "iconNum": 1,
+                    "chName": "Air Conditioner",
+                    "loadRlyCnt": 35
+                },
+                "ch10Info": {
+                    "splitphase": { "linkMark": 0, "linkCh": 0 },
+                    "setAmp": 15,
+                    "iconNum": 1,
+                    "chName": "Lights",
+                    "loadRlyCnt": 29
+                },
+                "ch11Info": {
+                    "splitphase": { "linkMark": 1, "linkCh": 9 },
+                    "setAmp": 30,
+                    "iconNum": 1,
+                    "chName": "Air Conditioner",
+                    "loadRlyCnt": 35
+                },
+                "ch12Info": {
+                    "splitphase": { "linkMark": 0, "linkCh": 0 },
+                    "setAmp": 15,
+                    "iconNum": 1,
+                    "chName": "Garage",
+                    "loadRlyCnt": 27
+                },
+                "ch1Sta": {
+                    "loadSta": 1,
+                    "ctrlMode": 1,
+                    "noticeSetTime": 0,
+                    "noticeEnable": 0,
+                    "noticeAction": 0,
+                    "loadChSwitchCause": 0
+                },
+                "ch2Sta": {
+                    "loadSta": 1,
+                    "ctrlMode": 1,
+                    "noticeSetTime": 0,
+                    "noticeEnable": 0,
+                    "noticeAction": 0,
+                    "loadChSwitchCause": 0
+                },
+                "ch3Sta": {
+                    "loadSta": 1,
+                    "ctrlMode": 1,
+                    "noticeSetTime": 0,
+                    "noticeEnable": 0,
+                    "noticeAction": 0,
+                    "loadChSwitchCause": 0
+                },
+                "ch4Sta": {
+                    "loadSta": 1,
+                    "ctrlMode": 1,
+                    "noticeSetTime": 0,
+                    "noticeEnable": 0,
+                    "noticeAction": 0,
+                    "loadChSwitchCause": 0
+                },
+                "ch5Sta": {
+                    "loadSta": 1,
+                    "ctrlMode": 1,
+                    "noticeSetTime": 0,
+                    "noticeEnable": 0,
+                    "noticeAction": 0,
+                    "loadChSwitchCause": 0
+                },
+                "ch6Sta": {
+                    "loadSta": 1,
+                    "ctrlMode": 1,
+                    "noticeSetTime": 0,
+                    "noticeEnable": 0,
+                    "noticeAction": 0,
+                    "loadChSwitchCause": 0
+                },
+                "ch7Sta": {
+                    "loadSta": 1,
+                    "ctrlMode": 1,
+                    "noticeSetTime": 0,
+                    "noticeEnable": 0,
+                    "noticeAction": 0,
+                    "loadChSwitchCause": 0
+                },
+                "ch8Sta": {
+                    "loadSta": 1,
+                    "ctrlMode": 1,
+                    "noticeSetTime": 0,
+                    "noticeEnable": 0,
+                    "noticeAction": 0,
+                    "loadChSwitchCause": 0
+                },
+                "ch9Sta": {
+                    "loadSta": 1,
+                    "ctrlMode": 1,
+                    "noticeSetTime": 0,
+                    "noticeEnable": 0,
+                    "noticeAction": 0,
+                    "loadChSwitchCause": 0
+                },
+                "ch10Sta": {
+                    "loadSta": 1,
+                    "ctrlMode": 1,
+                    "noticeSetTime": 0,
+                    "noticeEnable": 0,
+                    "noticeAction": 0,
+                    "loadChSwitchCause": 0
+                },
+                "ch11Sta": {
+                    "loadSta": 1,
+                    "ctrlMode": 1,
+                    "noticeSetTime": 0,
+                    "noticeEnable": 0,
+                    "noticeAction": 0,
+                    "loadChSwitchCause": 0
+                },
+                "ch12Sta": {
+                    "loadSta": 1,
+                    "ctrlMode": 1,
+                    "noticeSetTime": 0,
+                    "noticeEnable": 0,
+                    "noticeAction": 0,
+                    "loadChSwitchCause": 0
+                }
+            }
+        },
+        "masterIncreInfo": {
+            "errCode": {
+                "errCode": [
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+                ]
+            },
+            "gridSta": 1,
+            "gridVol": 118,
+            "masterRly1Cnt": 82,
+            "masterRly2Cnt": 84,
+            "masterRly3Cnt": 132,
+            "masterRly4Cnt": 132,
+            "masterRlyErrFlg": 0,
+            "backupVol_L1SafeData": 0.467933714389801,
+            "backupVol_L2SafeData": 0,
+            "backupPhaseDiffSafeData": 65535,
+            "loadVol_L1SafeData": 117.5582046508789,
+            "loadVol_L2SafeData": 117.67871856689453,
+            "loadPhaseDiffSafeData": 178,
+            "masterVol_L1SafeData": 0.6043955683708191,
+            "masterVol_L2SafeData": 0.30219778418540955,
+            "masterPhaseDiffSafeData": 0
+        },
+        "stormRequestFlag": 1,
+        "stormCurTimeStopFlag": 0,
+        "sysCurRunningState": 0,
+        "rly1RealSta": 2,
+        "rly2RealSta": 2,
+        "rly3RealSta": 1,
+        "rly4RealSta": 1,
+        "curRunningStrategy": 0,
+        "reasonOfStopDischar": 0,
+        "reasonOsStopCharge": 0,
+        "inletBoxCurrent": 0,
+        "phaseSubValue": 180
+    }
+}
