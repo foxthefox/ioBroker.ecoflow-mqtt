@@ -1,0 +1,123 @@
+{
+    "plug_heartbeat": {
+        "errCode": 0,
+        "warnCode": 0,
+        "country": 17477,
+        "town": 0,
+        "maxCur": 0,
+        "temp": 39,
+        "freq": 50,
+        "current": 1,
+        "volt": 235,
+        "watts": 0,
+        "switch": true,
+        "brightness": 624,
+        "maxWatts": 2300,
+        "heartbeatFrequency": 2,
+        "meshEnable": 0,
+        "resetReason": 1,
+        "rtcResetReason": 1,
+        "resetCount": 32,
+        "uptime": 267724,
+        "lanState": 3,
+        "stackFree": 57,
+        "stackMinFree": 9,
+        "meshId": 940184576,
+        "meshLayer": 1,
+        "selfMac": -894048772,
+        "parentMac": 456844162,
+        "otaDlErr": 0,
+        "otaDlTlsErr": 0,
+        "staIpAddr": 1420994752,
+        "matterFabric": 0,
+        "geneNum": 1,
+        "consNum": 1,
+        "geneWatt": 0,
+        "powerPlugs": 0,
+        "wifiErr": 31,
+        "wifiErrTime": 1757507169,
+        "mqttErr": 6,
+        "mqttErrTime": 1757579559,
+        "dynWattEnable": 1,
+        "parentWifiRssi": -62,
+        "rssiThreshold": 0
+    },
+    "time_task_config_post": {
+        "task1": {
+            "timeRange": {
+                "startTime": { "week": 0, "sec": 0, "min": 0, "hour": 0, "day": 0, "month": 0, "year": 0 },
+                "stopTime": { "week": 0, "sec": 0, "min": 0, "hour": 0, "day": 0, "month": 0, "year": 0 }
+            }
+        },
+        "task2": {
+            "taskIndex": 1,
+            "timeRange": {
+                "startTime": { "week": 0, "sec": 0, "min": 0, "hour": 0, "day": 0, "month": 0, "year": 0 },
+                "stopTime": { "week": 0, "sec": 0, "min": 0, "hour": 0, "day": 0, "month": 0, "year": 0 }
+            }
+        },
+        "task3": {
+            "taskIndex": 2,
+            "timeRange": {
+                "startTime": { "week": 0, "sec": 0, "min": 0, "hour": 0, "day": 0, "month": 0, "year": 0 },
+                "stopTime": { "week": 0, "sec": 0, "min": 0, "hour": 0, "day": 0, "month": 0, "year": 0 }
+            }
+        },
+        "task4": {
+            "taskIndex": 3,
+            "timeRange": {
+                "startTime": { "week": 0, "sec": 0, "min": 0, "hour": 0, "day": 0, "month": 0, "year": 0 },
+                "stopTime": { "week": 0, "sec": 0, "min": 0, "hour": 0, "day": 0, "month": 0, "year": 0 }
+            }
+        },
+        "task5": {
+            "taskIndex": 4,
+            "timeRange": {
+                "startTime": { "week": 0, "sec": 0, "min": 0, "hour": 0, "day": 0, "month": 0, "year": 0 },
+                "stopTime": { "week": 0, "sec": 0, "min": 0, "hour": 0, "day": 0, "month": 0, "year": 0 }
+            }
+        },
+        "task6": {
+            "taskIndex": 5,
+            "timeRange": {
+                "startTime": { "week": 0, "sec": 0, "min": 0, "hour": 0, "day": 0, "month": 0, "year": 0 },
+                "stopTime": { "week": 0, "sec": 0, "min": 0, "hour": 0, "day": 0, "month": 0, "year": 0 }
+            }
+        },
+        "task7": {
+            "taskIndex": 6,
+            "timeRange": {
+                "startTime": { "week": 0, "sec": 0, "min": 0, "hour": 0, "day": 0, "month": 0, "year": 0 },
+                "stopTime": { "week": 0, "sec": 0, "min": 0, "hour": 0, "day": 0, "month": 0, "year": 0 }
+            }
+        },
+        "task8": {
+            "taskIndex": 7,
+            "timeRange": {
+                "startTime": { "week": 0, "sec": 0, "min": 0, "hour": 0, "day": 0, "month": 0, "year": 0 },
+                "stopTime": { "week": 0, "sec": 0, "min": 0, "hour": 0, "day": 0, "month": 0, "year": 0 }
+            }
+        },
+        "task9": {
+            "taskIndex": 8,
+            "timeRange": {
+                "startTime": { "week": 0, "sec": 0, "min": 0, "hour": 0, "day": 0, "month": 0, "year": 0 },
+                "stopTime": { "week": 0, "sec": 0, "min": 0, "hour": 0, "day": 0, "month": 0, "year": 0 }
+            }
+        },
+        "task10": {
+            "taskIndex": 9,
+            "timeRange": {
+                "startTime": { "week": 0, "sec": 0, "min": 0, "hour": 0, "day": 0, "month": 0, "year": 0 },
+                "stopTime": { "week": 0, "sec": 0, "min": 0, "hour": 0, "day": 0, "month": 0, "year": 0 }
+            }
+        },
+        "task11": {
+            "taskIndex": 10,
+            "timeRange": {
+                "startTime": { "week": 0, "sec": 0, "min": 0, "hour": 0, "day": 0, "month": 0, "year": 0 },
+                "stopTime": { "week": 0, "sec": 0, "min": 0, "hour": 0, "day": 0, "month": 0, "year": 0 }
+            }
+        }
+    }
+}

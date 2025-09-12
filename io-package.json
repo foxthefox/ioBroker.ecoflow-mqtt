@@ -4,7 +4,17 @@
         "version": "1.4.4",
         "news": {
             "1.4.4": {
-                "en": "enhancement powerocean"
+                "en": "enhancement powerocean, new datapoints",
+                "de": "Verbesserung Powerocean, neue Datenpunkte",
+                "ru": "Усовершенствование POLESOCEAN, новые данные DataPoints",
+                "pt": "aprimoramento Powerocean, novos dados",
+                "nl": "Enhancement PowerOcean, Nieuwe Datapoints",
+                "fr": "Enhancement PoweroCean, nouveaux points de données",
+                "it": "PowerOcean di miglioramento, nuovi dati",
+                "es": "Mejora de PowerOtean, nuevos puntos de datos",
+                "pl": "Ulepszenia Powerocean, nowe punkty danych",
+                "uk": "Поліпшення Powerocean, нові точки даних",
+                "zh-cn": "增强功率，新数据点"
             },
             "1.4.3": {
                 "en": "new Stream Inverter, new cmd for load Stream AC/Ultra, corr. energyBackup River3, SHP task chChargeWatt",

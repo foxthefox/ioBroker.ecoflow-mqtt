@@ -1,5 +1,5 @@
 # States for  POWEROCEANPLUS
-### version: 1.4.3
+### version: 1.4.4
 
 [statusReportBattery1](#statusReportBattery1)
 
@@ -21,7 +21,9 @@
 
 [EVChargingParamReport](#EVChargingParamReport)
 
-[JTS1_EMS_PARAM_CHANGE_REPORT](#JTS1_EMS_PARAM_CHANGE_REPORT)
+[HRChargingParamReport](#HRChargingParamReport)
+
+[HeatingRodEnergyStreamShow](#HeatingRodEnergyStreamShow)
 
 
 
@@ -566,8 +568,8 @@
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |sysLoadPwr|0 | 15000 | W | 1 |  System load |
 |sysGridPwr|0 | 15000 | W | 1 |  Grid power |
-|mpptPwr|0 | 5000 | W | 1 |  Solar power |
-|bpPwr|0 | 5200 | W | 1 |  Battery power |
+|mpptPwr|0 | 20000 | W | 1 |  Solar power |
+|bpPwr|0 | 20000 | W | 1 |  Battery power |
 |bpSoc|0 | 100 | % | 1 |  Battery SOC |
 
 
@@ -704,41 +706,13 @@
 
 ## JTS1_EMS_CHANGE_REPORT
 
-### number
-| State  |      Min     |      Max     |  Unit |  Mult |  Name |
-|----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|bpSoc|0 | 100 | % | 1 |  Battery SOC |
-|bpTotalChgEnergy|0 |  n/a | kWh | 0.001 |  Battery total energy charged |
-|bpTotalDsgEnergy|0 |  n/a | kWh | 0.001 |  Battery total energy discharged |
-|sysBatChgUpLimit|0 | 100 | % | 1 |  sys bat chg up limit |
-|sysBatDsgDownLimit|0 | 100 | % | 1 |  sys bat dsg down limit |
-|sysBatBackupRatio|0 | 100 | % | 1 |  sys bat backup ratio |
-|emsFeedRatio|0 | 100 | % | 1 |  ems feed ratio |
-|emsFeedPwr|0 | 20000 | W | 1 |  ems feed pwr |
-|chgDsgPwr|0 | 7000 | W | 1 |  chg dsg pwr |
-
-
-### array
-
-| State  |  Name |
-|----------|------|
-|evBindList| ev bind list |
-
 ### diagnostic
 
 | State  |     Name |  values |
 |----------|:-------------:|------|
-|sysWorkSta| sys work sta | {0:OK?} |
-|sysGridSta| sys grid sta | {0:OK?} |
 |emsWorkMode| ems work mode | {0:SELFUSE,1:TOU,2:BACKUP,3:DBG,4:AC_MAKEUP,5:DRM_MODE,6:REMOTE_SCHED,7:STANDBY_MODE,8:SOC_CALIB,9:TIMER_MODE} |
-|bpChgDsgSta| bp chg dsg sta | {0:OK?} |
 |emsFeedMode| ems feed mode | {0:off?,1:on?} |
-|pcsRunSta| pcs run sta | {0:STANDBY,1:RUN,2:STOP} |
 |emsSgRunStat| ems sg run stat | {0:OK?} |
-|iot_4gSta| iot_4g sta | {0:OK?} |
-|sysHeatStat| sys heat stat | {0:OK?} |
-|batRealyStatus| bat realy status | {0:OK?} |
-|wifiStaStat| wifi sta stat | {0:OK?} |
 |chgDsgMode| chg dsg mode | {0:off?,1:on?} |
 
 ### string
@@ -746,206 +720,27 @@
 | State  |  Name |
 |----------|------|
 |emsBackupEvent| ems backup event |
-|emsKeepSoc| ems keep soc |
-|emsSysSelfCheckStat| ems sys self check stat |
-|bpOnlineSum| bp online sum |
-|sysOnOffMachineStat| sys on off machine stat |
 |sysMeterCfg| sys meter cfg |
 |sysTypeCfg| sys type cfg |
-|pcsAcErrCode| pcs ac err code |
-|pcsDcErrCode| pcs dc err code |
-|pcsOverVol1| pcs over vol1 |
-|pcsOverVol2| pcs over vol2 |
-|pcsOverVol3| pcs over vol3 |
-|pcsOverVolTime1| pcs over vol time1 |
-|pcsOverVolTime2| pcs over vol time2 |
-|pcsOverVolTime3| pcs over vol time3 |
-|pcsLowVol1| pcs low vol1 |
-|pcsLowVol2| pcs low vol2 |
-|pcsLowVol3| pcs low vol3 |
-|pcsLowVolTime1| pcs low vol time1 |
-|pcsLowVolTime2| pcs low vol time2 |
-|pcsLowVolTime3| pcs low vol time3 |
-|pcsOverVolRecover| pcs over vol recover |
-|pcsLowVolRecover| pcs low vol recover |
-|pcsVolRecoverTime| pcs vol recover time |
-|pcs_10minOverVol| pcs_10min over vol |
-|pcs_10minOverVolTime| pcs_10min over vol time |
-|pcsOverFreq1| pcs over freq1 |
-|pcsOverFreq2| pcs over freq2 |
-|pcsOverFreqTime1| pcs over freq time1 |
-|pcsOverFreqTime2| pcs over freq time2 |
-|pcsLowFreq1| pcs low freq1 |
-|pcsLowFreq2| pcs low freq2 |
-|pcsLowFreqTime1| pcs low freq time1 |
-|pcsLowFreqTime2| pcs low freq time2 |
-|pcsOverFreqRecover| pcs over req recover |
-|pcsLowFreqRecover| pcs low freq recover |
-|pcsFreqRecoverTime| pcs freq recover time |
-|pcsHvrtLvrtSwitch| pcs hvrt lvrt switch |
-|pcsOverVolRideThroughStart1| pcs over vol ride through start1 |
-|pcsOverVolRideThroughStart2| pcs over vol ride through start2 |
-|pcsOverVolRideThroughProtectTime1| pcs over vol ride through protect time1 |
-|pcsOverVolRideThroughProtectTime2| pcs over vol ride through protect time2 |
-|pcsLowVolRideThroughStart1| pcs low vol ride through start1 |
-|pcsLowVolRideThroughStart2| pcs low vol ride through start2 |
-|pcsLowVolRideThroughStart3| pcs low vol ride through start3 |
-|pcsLowVolRideThroughProtectTime1| pcs low vol ride through protect time1 |
-|pcsLowVolRideThroughProtectTime2| pcs low vol ride through protect time2 |
-|pcsLowVolRideThroughProtectTime3| pcs low vol ride through protect time3 |
-|pcsHighVolRideThroughRecover| pcs high vol ride through recover |
-|pcsLowVolRideThroughRecover| pcs low vol ride through recover |
-|pcsIslandDetectSwitch| pcs island detect switch |
-|pcsActivePowerDeratingSwitch| pcs active power derating switch |
-|pcsActivePowerDeratingPercent| pcs active power derating percent |
-|pcsActivePowerGradient| pcs active power gradient |
-|pcsActivePowerSoftstartSwitch| pcs active power softstart switch |
-|pcsActivePowerSoftstartTime| pcs active power softstart time |
-|pcsOverFreqDeratingSwitch| pcs over freq derating switch |
-|pcsOverFreqDeratingPowerBased| pcs over freq derating power based |
-|pcsOverFreqDeratingStart| pcs over freq derating start |
-|pcsOverFreqDeratingEnd| pcs over freq derating end |
-|pcsOverFreqDeratingSlope| pcs over freq derating slope |
-|pcsOverFreqDeratingRecoverSlope| pcs over freq derating recover slope |
-|pcsOverFreqDeratingFrozeSwitch| pcs over freq derating froze switch |
-|pcsOverFreqDeratingCutoffPower| pcs over freq derating cutoff power |
-|pcsUnderFreqIncrementSwitch| pcs under freq increment switch |
-|pcsUnderFreqIncrementStart| pcs under freq increment start |
-|pcsUnderFreqIncrementEnd| pcs under freq increment end |
-|pcsUnderFreqIncrementSlope| pcs under freq increment slope |
-|pcsUnderFreqIncrementRecoverSlope| pcs under freq increment recover slope |
-|pcsUnderFreqIncrementFrozeSwitch| pcs under freq increment froze switch |
-|pcsAntiBackFlowSwitch| pcs anti back flow switch |
-|pcsOverVolDeratingSwitch| pcs over vol derating switch |
-|pcsOverVolDeratingStart| pcs over vol derating start |
-|pcsOverVolDeratingEnd| pcs over vol derating end |
-|pcsOverVolDeratingStartingPower| pcs over vol derating starting power |
-|pcsOverVolDeratingEndPower| pcs over vol derating end power |
-|pcsOverVolDeratingTimeConst| pcs over vol derating time const |
-|pcsReactPwrModeSelect| pcs react pwr mode select |
-|pcsReactPwrCompensation| pcs react pwr compensation |
-|pcsPfValue| pcs pf value |
-|pcsReactPwrPercent| pcs react pwr percent |
-|pcsQuV1| pcs qu v1 |
-|pcsQuV2| pcs qu v2 |
-|pcsQuV3| pcs qu v3 |
-|pcsQuV4| pcs qu v4 |
-|pcsQuQ1| ppcs qu q1 |
-|pcsQuQ2| ppcs qu q2 |
-|pcsQuQ3| ppcs qu q3 |
-|pcsQuQ4| ppcs qu q4 |
-|pcsQuTimeConst| pcs qu time const |
-|pcsCospP1| pcs cosp p1 |
-|pcsCospP2| pcs cosp p2 |
-|pcsCospP3| pcs cosp p3 |
-|pcsCospPf1| pcs cosp pf1 |
-|pcsCospPf2| pcs cosp pf2 |
-|pcsCospPf3| pcs cosp pf3 |
-|pcsSafetyCountryCodeSelection| pcs safety country code selection |
-|pcsReconnectGridDetectSwitch| pcs reconnect grid detect switch |
-|pcsOnGridWaitTime| pcs on grid wait time |
-|pcsHighVolOnGrid| pcs high vol on grid |
-|pcsLowVolOnGrid| pcs low vol on grid |
-|pcsHighFreqOnGrid| pcs high freq on grid |
-|pcsLowFreqOnGrid| pcs low freq on grid |
-|pcsFaultRecoverOnGridWaitTime| pcs fault recover on grid wait time |
-|pcsFaultRecoverHighVolOnGrid| pcs fault recover high vol on grid |
-|pcsFaultRecoverLowVolOnGrid| pcs fault recover low vol on grid |
-|pcsFaultRecoverHighFreqOnGrid| pcs fault recover high freq on grid |
-|pcsFaultRecoverLowFreqOnGrid| pcs fault recover low freq on grid |
-|pcsPowerDeratingFlag| pcs power derating flag |
-|pcsPowerDeratingSet| pcs power derating set |
-|pcsSendEnd| pcs send end |
 |rateCtrlSwtich| rate ctrl swtich |
 |sysRateCtrlTime| sys rate ctrl time |
 |duraTime| dura time |
-|pcs_10minOverVolSwitch| pcs_10min over vol switch |
-|pcsActivePowerSoftStartRate| pcs active power soft start rate |
-|pcsActivePowerNormalRampUpRate| pcs active power normal ramp up rate |
-|pcsOverFreqDeratingStartDelay| pcs over freq derating start delay |
-|pcsOverFreqDeratingEndDelay| pcs over freq derating end delay |
-|pcsOverFreqDeratingRecoverSlopeSwitch| pcs over freq derating recover slope switch |
-|pcsUnderFreqIncrementStartDelay| pcs under freq increment start delay |
-|pcsUnderFreqIncrementEndDelay| pcs under freq increment end delay |
-|pcsOverVolDeratingDelayTime| pcs over vol derating delay time |
-|pcsOngridReconnectFlag| pcs ongrid reconnect flag |
-|pcsQuLockinPower| pcs qu lockin power |
-|pcsQuLockoutPower| pcs qu lockout power |
-|pcsQuMinimumCosphi| pcs qu minimum cosphi |
-|pcsFastCheck| pcs fast check |
-|pcsFunctionEnable| pcs function enable |
 |emsCtrlLedType| ems ctrl led type |
 |emsCtrlLedBright| ems ctrl led bright |
-|pcsUnderFreqIncrementRecoverSlopeSwitch| pcs under freq increment recover slope switch |
-|pcsOverVolDeratingDaleyTime| pcs over vol derating daley time |
-|pcsCospP4| pcs cosp p4 |
-|pcsCospPf4| pcs cosp pf4 |
-|pcsReserved1| pcs reserved1 |
-|pcsReserved2| pcs reserved2 |
-|pcsReserved3| pcs reserved3 |
-|pcsReserved4| pcs reserved4 |
-|pcsReserved5| pcs reserved5 |
-|pcsReserved6| pcs reserved6 |
-|pcsReserved7| pcs reserved7 |
-|pcsReserved8| pcs reserved8 |
-|pcsReserved9| pcs reserved9 |
-|pcsReserved10| pcs reserved10 |
-|pcsReserved11| pcs reserved11 |
-|pcsReserved12| pcs reserved12 |
-|pcsReserved13| pcs reserved13 |
-|pcsReserved14| pcs reserved14 |
-|pcsReserved15| pcs reserved15 |
-|pcsReserved16| pcs reserved16 |
 |sysMulPeakSwitch| sys mul peak switch |
 |sysMulPeakTime| sys mul peak time |
 |emsSgReady| ems sg ready |
 |emsSgReadyEn| ems sg ready en |
-|emsStopAll| ems stop all |
-|iot_4gOn| iot_4g on |
-|iot_4gPdp| iot_4g pdp |
-|iot_4gErr| iot_4g err |
-|pcsAcWarningCode| pcs ac warning code |
-|pcsRelaySelfCheckSta| pcs relay self check sta |
-|pcsRunFsmState| pcsRunFsmState |
-|mppt1FaultCode| mppt1 fault code |
-|mppt2FaultCode| mppt2 fault code |
-|mppt1WarningCode| mppt1 warning code |
-|mppt2WarningCode| mppt2 warning code |
-|bpLineOffFlag| bp line off flag |
-|bpRestartFlag| bp restart flag |
-|bpReverseFlag| bp reverse flag |
-|batRelayCloseFailFlag| bat relay close fail flag |
-|batSoftRelayStatus| bat soft relay status |
-|pcsRelayStateShow| pcsRelayStateShow |
-|emsWorkState| ems work state |
-|afciFaultCntCh1| afci fault cnt ch1 |
-|afciFaultValueCh1| afci fault value ch1 |
-|afciFaultMaxValueCh1| afci fault max value ch1 |
-|afciProtectValueCh1| afci protect value ch1 |
-|afciFaultFlagCh1| afci fault flag ch1 |
-|afciFaultCntCh2| afci fault cnt ch2 |
-|afciFaultValueCh2| afci fault value ch2 |
-|afciFaultMaxValueCh2| afci fault max value ch2 |
-|afciProtectValueCh2| afci protect value ch2 |
-|afciFaultFlagCh2| afci fault flag ch2 |
-|afciSelfTestCmdState| afci self test cmd state |
-|afciEnableCmdState| afci enable cmd state |
-|afciFaultClearState| afci fault clear state |
-|afciSellfTestResult| afci sellf test result |
-|afciSwitchFreqCh1| afci switch freq ch1 |
-|afciSwitchFreqCh2| afci switch freq ch2 |
-|sysCalStat| sys cal stat |
-|ethWanStat| eth wan stat |
-|wireless_4gIccid| wireless_4g iccid |
-|virtualHardEdition| virtual hard edition |
 |userRole| user role |
-|parallelAllowState| parallel allow state |
-|parallelTypeSet| parallel type set |
-|parallelType| parallel type |
-|afciIsExist| afci is exist |
-|afciEn| afci en |
-|afciEnSet| afci en set |
-|parallelTypeCur| parallel type cur |
+
+### number
+| State  |      Min     |      Max     |  Unit |  Mult |  Name |
+|----------|:-------------:|:-------------:|:------:|:-----:|-----|
+|sysBatDsgDownLimit|0 | 100 | % | 1 |  sys bat dsg down limit |
+|emsFeedRatio|0 | 100 | % | 1 |  ems feed ratio |
+|emsFeedPwr|0 | 20000 | W | 1 |  ems feed pwr |
+|chgDsgPwr|0 | 7000 | W | 1 |  chg dsg pwr |
+
 
 ## EVChargingParamReport
 
@@ -987,18 +782,50 @@
 |workMode| work mode | {0:off?,1:on?} |
 |orderState| order state | {0:OK?} |
 
-## JTS1_EMS_PARAM_CHANGE_REPORT
+## HRChargingParamReport
 
 ### string
 
 | State  |  Name |
 |----------|------|
-|smartCtrl| smart ctrl |
-|energyEfficientEnable| energy efficient enable |
-|sysZone| sys zone |
-|sysTimeTab| sys time tab |
-|bpBurst| bp burst |
-|lowerPowerStat| lower power stat |
-|breakerCapacityMax| breaker capacity max |
-|breakerEnableState| breaker enable state |
+|hrSn| hr serial |
+
+### diagnostic
+
+| State  |     Name |  values |
+|----------|:-------------:|------|
+|mode| mode | {0:OK?,1:1?,2:2?} |
+|onlineBits| onlineBits | {0:0?,1:1?,2:2?} |
+|runStat| runStat | {0:off?,1:on?} |
+|errorCode| errorCode: | {0:OK?,1:fault?} |
+|runFlag| run Flag | {0:off?,1:on?} |
+
+### number
+| State  |      Min     |      Max     |  Unit |  Mult |  Name |
+|----------|:-------------:|:-------------:|:------:|:-----:|-----|
+|heatingPower|0 | 10000 | W | 1 |  heating power |
+|targetPower|0 | 10000 | W | 1 |  target power |
+|temp|0 | 90 | °C | 1 |  water temperature |
+|targetTemp|0 | 90 | °C | 1 |  target temperature |
+|waterTankVolume|0 | 2000 | l | 1 |  water tank vaolume |
+|selfcheckPercent|0 | 100 | % | 1 |  selfcheck Percent |
+
+
+## HeatingRodEnergyStreamShow
+
+### string
+
+| State  |  Name |
+|----------|------|
+|rod1_hrSn| hr serial |
+
+### number
+| State  |      Min     |      Max     |  Unit |  Mult |  Name |
+|----------|:-------------:|:-------------:|:------:|:-----:|-----|
+|rod1_hrPwr|0 | 10000 | W | 1 |  heating power |
+|rod1_temp|0 | 90 | °C | 1 |  rod temperature |
+|rod1_fromPv|0 | 10000 | W | 1 |  power from pv |
+|rod1_fromBat|0 | 10000 | W | 1 |  power from bat |
+|rod1_fromGrid|0 | 10000 | W | 1 |  power from grid |
+
 

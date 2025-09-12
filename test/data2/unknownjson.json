@@ -1,0 +1,66 @@
+{
+    "src": "ecoflowpro3em-ece123456",
+    "dst": "ecoflowpro3em-ece123456/events",
+    "method": "NotifyStatus",
+    "params": {
+        "switch:0": null,
+        "deviceInfo": {
+            "name": null,
+            "id": "ecoflowpro3em-ece123456",
+            "mac": "ECE123456",
+            "slot": 0,
+            "model": "EFPEM-003CEBEU120",
+            "gen": 2,
+            "fw_id": "20250730-063258/1.7.0-gbe7545d",
+            "ver": "1.7.0",
+            "app": "Pro3EMEF",
+            "auth_en": false,
+            "auth_domain": null,
+            "profile": "triphase"
+        },
+        "wifiConfig": {
+            "ap": {
+                "ssid": "EcoFlowPro3EM-ECE123456",
+                "is_open": true,
+                "enable": false,
+                "range_extender": {
+                    "enable": false
+                }
+            },
+            "sta": {
+                "ssid": "Wasdasd",
+                "is_open": true,
+                "enable": false,
+                "ipv4mode": "dhcp",
+                "ip": null,
+                "netmask": null,
+                "gw": null,
+                "nameserver": null
+            },
+            "sta1": {
+                "ssid": null,
+                "is_open": true,
+                "enable": false,
+                "ipv4mode": "dhcp",
+                "ip": null,
+                "netmask": null,
+                "gw": null,
+                "nameserver": null
+            },
+            "roam": {
+                "rssi_thr": -80,
+                "interval": 60
+            }
+        },
+        "wifi": {
+            "ssid": "Waisdzsaiu",
+            "is_open": true,
+            "enable": false,
+            "ipv4mode": "dhcp",
+            "ip": null,
+            "netmask": null,
+            "gw": null,
+            "nameserver": null
+        }
+    }
+}

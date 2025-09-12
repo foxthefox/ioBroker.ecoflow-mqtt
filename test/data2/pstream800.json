@@ -1,0 +1,192 @@
+{
+    "inverter_heartbeat": {
+        "invErrCode": 0,
+        "pv1ErrCode": 128,
+        "invWarnCode": 0,
+        "pv1WarnCode": 0,
+        "pv2ErrCode": 0,
+        "pv2WarningCode": 0,
+        "batErrCode": 0,
+        "batWarningCode": 0,
+        "llcErrCode": 0,
+        "llcWarningCode": 0,
+        "pv1Status": 1,
+        "pv2Status": 4,
+        "batStatus": 5,
+        "llcStatus": 3,
+        "invStatus": 1,
+        "pv1InputVolt": 0,
+        "pv1OpVolt": 0,
+        "pv1InputCur": 0,
+        "pv1InputWatts": 0,
+        "pv1Temp": 280,
+        "pv2InputVolt": 188,
+        "pv2OpVolt": 1752,
+        "pv2InputCur": 2,
+        "pv2InputWatts": 0,
+        "pv2Temp": 280,
+        "batInputVolt": 538,
+        "batOpVolt": 183,
+        "batInputCur": 0,
+        "batInputWatts": 0,
+        "batTemp": 270,
+        "batSoc": 34,
+        "llcInputVolt": 0,
+        "llcOpVolt": 21,
+        "llcTemp": 270,
+        "invInputVolt": 0,
+        "invOpVolt": 2379,
+        "invOutputCur": 10,
+        "invOutputWatts": 0,
+        "invTemp": 0,
+        "invFreq": 500,
+        "bpType": 2,
+        "invRelayStatus": 0,
+        "pv1RelayStatus": 0,
+        "pv2RelayStatus": 0,
+        "installCountry": 17477,
+        "installTown": 0,
+        "permanentWatts": 0,
+        "dynamicWatts": 10,
+        "supplyPriority": 0,
+        "lowerLimit": 30,
+        "upperLimit": 100,
+        "invOnOff": 1,
+        "wirelessErrCode": 0,
+        "wirelessWarnCode": 0,
+        "invBrightness": 410,
+        "heartbeatFrequency": 2,
+        "ratedPower": 6000,
+        "batChargingTime": 5999,
+        "batDischargingTime": 5999,
+        "feedPriority": 0,
+        "pvToInvWatts": 0,
+        "gridConsWatts": 10,
+        "plugTotalWatts": 10,
+        "invToPlugWatts": 0,
+        "spaceDemandWatts": 10,
+        "invDemandWatts": 10,
+        "interfaceConnFlag": 7,
+        "pv1CtrlMpptOffFlag": 0,
+        "pv2CtrlMpptOffFlag": 0,
+        "batOffFlag": 0,
+        "llcOffFlag": 0,
+        "acOffFlag": 1,
+        "bmsReqChgVol": 574800,
+        "bmsReqChgAmp": 0,
+        "uwloadLimitFlag": 5,
+        "invLoadLimitFlag": 8,
+        "batLoadLimitFlag": 0,
+        "antiBackFlowFlag": 6000,
+        "uwsocFlag": 0,
+        "uwlowLightFlag": 0,
+        "invToOtherWatts": 0,
+        "wifiRssi": -68,
+        "batSystem": 0,
+        "floadLimitOut": 0,
+        "invOutputLoadLimit": 5981,
+        "batOutputLoadLimit": 6000,
+        "pvPowerLimitAcPower": 5986,
+        "batErrorInvLoadLimit": 8000,
+        "resetReason": 1,
+        "resetCount": 6763,
+        "meshId": 940184576,
+        "meshLayel": 1,
+        "selfMac": 632673636,
+        "parentMac": 456844162,
+        "staIpAddr": -525162304,
+        "geneNum": 1,
+        "consNum": 1,
+        "geneWatt": 0,
+        "consWatt": -10,
+        "wifiErr": 27,
+        "wifiErrTime": 1757579556,
+        "mqttErr": 6,
+        "mqttErrTime": 1757575335,
+        "stackFree": 0,
+        "stackMinFree": 0,
+        "mqttTlsLastErr": 32769,
+        "mqttTlsStackErr": 0,
+        "mqttSockErrno": 128
+    },
+    "time_task_config_post": {
+        "task1": {
+            "timeRange": {
+                "startTime": { "week": 0, "sec": 0, "min": 0, "hour": 0, "day": 0, "month": 0, "year": 0 },
+                "stopTime": { "week": 0, "sec": 0, "min": 0, "hour": 0, "day": 0, "month": 0, "year": 0 }
+            }
+        },
+        "task2": {
+            "taskIndex": 1,
+            "timeRange": {
+                "isConfig": true,
+                "startTime": { "week": 0, "sec": 0, "min": 0, "hour": 19, "day": 26, "month": 11, "year": 2024 },
+                "stopTime": { "week": 0, "sec": 0, "min": 0, "hour": 0, "day": 0, "month": 0, "year": 0 }
+            },
+            "type": 1
+        },
+        "task3": {
+            "taskIndex": 2,
+            "timeRange": {
+                "startTime": { "week": 0, "sec": 0, "min": 0, "hour": 0, "day": 0, "month": 0, "year": 0 },
+                "stopTime": { "week": 0, "sec": 0, "min": 0, "hour": 0, "day": 0, "month": 0, "year": 0 }
+            }
+        },
+        "task4": {
+            "taskIndex": 3,
+            "timeRange": {
+                "startTime": { "week": 0, "sec": 0, "min": 0, "hour": 0, "day": 0, "month": 0, "year": 0 },
+                "stopTime": { "week": 0, "sec": 0, "min": 0, "hour": 0, "day": 0, "month": 0, "year": 0 }
+            }
+        },
+        "task5": {
+            "taskIndex": 4,
+            "timeRange": {
+                "startTime": { "week": 0, "sec": 0, "min": 0, "hour": 0, "day": 0, "month": 0, "year": 0 },
+                "stopTime": { "week": 0, "sec": 0, "min": 0, "hour": 0, "day": 0, "month": 0, "year": 0 }
+            }
+        },
+        "task6": {
+            "taskIndex": 5,
+            "timeRange": {
+                "startTime": { "week": 0, "sec": 0, "min": 0, "hour": 0, "day": 0, "month": 0, "year": 0 },
+                "stopTime": { "week": 0, "sec": 0, "min": 0, "hour": 0, "day": 0, "month": 0, "year": 0 }
+            }
+        },
+        "task7": {
+            "taskIndex": 6,
+            "timeRange": {
+                "startTime": { "week": 0, "sec": 0, "min": 0, "hour": 0, "day": 0, "month": 0, "year": 0 },
+                "stopTime": { "week": 0, "sec": 0, "min": 0, "hour": 0, "day": 0, "month": 0, "year": 0 }
+            }
+        },
+        "task8": {
+            "taskIndex": 7,
+            "timeRange": {
+                "startTime": { "week": 0, "sec": 0, "min": 0, "hour": 0, "day": 0, "month": 0, "year": 0 },
+                "stopTime": { "week": 0, "sec": 0, "min": 0, "hour": 0, "day": 0, "month": 0, "year": 0 }
+            }
+        },
+        "task9": {
+            "taskIndex": 8,
+            "timeRange": {
+                "startTime": { "week": 0, "sec": 0, "min": 0, "hour": 0, "day": 0, "month": 0, "year": 0 },
+                "stopTime": { "week": 0, "sec": 0, "min": 0, "hour": 0, "day": 0, "month": 0, "year": 0 }
+            }
+        },
+        "task10": {
+            "taskIndex": 9,
+            "timeRange": {
+                "startTime": { "week": 0, "sec": 0, "min": 0, "hour": 0, "day": 0, "month": 0, "year": 0 },
+                "stopTime": { "week": 0, "sec": 0, "min": 0, "hour": 0, "day": 0, "month": 0, "year": 0 }
+            }
+        },
+        "task11": {
+            "taskIndex": 10,
+            "timeRange": {
+                "startTime": { "week": 0, "sec": 0, "min": 0, "hour": 0, "day": 0, "month": 0, "year": 0 },
+                "stopTime": { "week": 0, "sec": 0, "min": 0, "hour": 0, "day": 0, "month": 0, "year": 0 }
+            }
+        }
+    }
+}
