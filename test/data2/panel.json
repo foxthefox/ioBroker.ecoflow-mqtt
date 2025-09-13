@@ -759,7 +759,6 @@
                                 "day": 28
                             },
                             "timeRange": {
-                                "mode3": { "month": 9, "year": 2024, "day": 28 },
                                 "isCfg": 1,
                                 "timeMode": 3,
                                 "startTime": {

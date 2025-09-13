@@ -1,5 +1,5 @@
 # States for  STREAM_INVERTER
-### version: 1.4.4
+### version: 1.4.5
 
 [RuntimePropertyUpload](#RuntimePropertyUpload)
 

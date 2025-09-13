@@ -51,6 +51,15 @@
                 "bpSocMax": 100,
                 "bpSocMin": 15,
                 "bpTemp": 26
+            },
+            {
+                "bpNo": 4,
+                "bpSoc": 94,
+                "bpEnergy": 6144,
+                "remainTime": 22522,
+                "bpSocMax": 100,
+                "bpSocMin": 15,
+                "bpTemp": 26
             }
         ]
     },
