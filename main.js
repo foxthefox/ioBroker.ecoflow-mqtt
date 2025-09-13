@@ -731,7 +731,6 @@ class EcoflowMqtt extends utils.Adapter {
                     ) {
                         if (this.pdevicesStatesDict && this.pdevicesStates) {
                             let msgdecode = null;
-                            /*
                             if (devtype === 'unknown') {
                                 this.log.debug(
                                     `[PROTOBUF unknown] ${topic} [${devtype}/${msgtype}] raw (hex): ${message.toString(
@@ -739,20 +738,20 @@ class EcoflowMqtt extends utils.Adapter {
                                     )}`,
                                 );
                             } else {
-                                */
-                            try {
-                                msgdecode = ef.pstreamDecode(
-                                    this,
-                                    message,
-                                    '',
-                                    topic,
-                                    msgtype,
-                                    this.protoSource[devtype],
-                                    this.protoMsg[devtype],
-                                    logged,
-                                );
-                            } catch (error) {
-                                this.log.debug(`pstreamDecode call ->${error}`);
+                                try {
+                                    msgdecode = ef.pstreamDecode(
+                                        this,
+                                        message,
+                                        '',
+                                        topic,
+                                        msgtype,
+                                        this.protoSource[devtype],
+                                        this.protoMsg[devtype],
+                                        logged,
+                                    );
+                                } catch (error) {
+                                    this.log.debug(`pstreamDecode call (${devtype}) ->${error}`);
+                                }
                             }
                             if (
                                 msgtype === 'update' ||

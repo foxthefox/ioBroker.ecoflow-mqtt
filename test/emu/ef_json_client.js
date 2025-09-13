@@ -141,7 +141,7 @@ const pdevices = {
     R632Z1B1234567890: { devName: 'My river3plus', devType: 'river3plus', haEnable: false },
     R332Z1B1234567890: { devName: 'My delta3plus', devType: 'delta3plus', haEnable: false },
     BK21Z1B1234567890: { devName: 'EF smartmeter', devType: 'smartmeter', haEnable: false },
-    //HC31Z123456789012: { devName: 'EF Oecan dc fit', devType: 'poweroceanfit', haEnable: false },
+    HC31Z123456789012: { devName: 'EF Oecan dc fit', devType: 'poweroceanfit', haEnable: false },
     R631Z1B1234567890: { devName: 'My river3', devType: 'river3', haEnable: false },
     R331Z1B1234567890: { devName: 'My delta3', devType: 'delta3', haEnable: false },
     BK31Z123456789012: { devName: 'My stream ac pro', devType: 'stream_ac_pro', haEnable: false },
