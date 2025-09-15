@@ -361,9 +361,13 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 
 ## Changelog
 
-### 1.4.6 (WIP)
+### 1.4.7 (WIP)
 
 - (foxthefox) new datapoints Delta2max
+
+### 1.4.6 (npm)
+
+- (foxthefox) powerocean implementation of ParallelEnergyStreamDetail
 
 ### 1.4.5 (npm)
 
