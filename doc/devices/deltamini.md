@@ -1,5 +1,5 @@
 # States for  DELTAMINI
-### version: 1.4.5
+### version: 1.4.6
 
 [bmsMaster](#bmsMaster)
 
@@ -122,7 +122,7 @@
 |acInAmp|0 | 13 | A | 0.001 |  Inverter input current |
 |acInFreq|0 | 62 | Hz | 1 |  Inverter input frequency |
 |acInVol|0 | 250 | V | 0.001 |  Inverter input voltage |
-|cfgFastChgWatts|200 | 2400 | W | 1 |  Maximum charging power for AC fast charging (W) |
+|cfgFastChgWatts|200 | 900 | W | 1 |  Maximum charging power for AC fast charging (W) |
 |dcInAmp|0 | 13 | A | 0.001 |  DC input current |
 |dcInTemp|0 | 80 | °C | 1 |  DC temperature |
 |dcInVol|0 | 60 | V | 0.001 |  DC input voltage |
@@ -155,8 +155,8 @@
 
 | State  |      Min     |     Max     |  Unit |  Mult |  Name |  cmd |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
-|cfgSlowChgWatts| 200 | 1000 | W | 1 |  Maximum charging power for AC slow charging (W) | {from:Android,operateType:TCP,id:747329085,lang:en-us,params:{id:69,slowChgPower:300},version:1.0} |
-|cfgStandbyMin| 0 | 720 | min | 1 |  AC standby time /min 0 Never standby 720 Default value | {from:Android,operateType:TCP,id:153750799,lang:en-us,params:{id:153,standByMins:360},version:1.0} |
+|cfgSlowChgWatts| 200 | 800 | W | 1 |  Maximum charging power for AC slow charging (W) | {from:Android,operateType:TCP,id:747329085,lang:en-us,params:{id:69,slowChgPower:300},version:1.0} |
+|cfgStandbyMin| 0 | 1440 | min | 1 |  AC standby time /min 0 Never standby 1440 Default value | {from:Android,operateType:TCP,id:153750799,lang:en-us,params:{id:153,standByMins:360},version:1.0} |
 
 ## mppt
 
@@ -164,7 +164,7 @@
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |carOutAmp|0 | 13 | A | 0.01 |  Car charging output current |
-|carOutVol|0 | 60 | V | 0.1 |  Car charging output voltage |
+|carOutVol|0 | 15 | V | 0.1 |  Car charging output voltage |
 |carOutWatts|0 | 500 | W | 0.1 |  Car charging output power |
 |carTemp|0 | 80 | °C | 1 |  Car charging temperature |
 |dc24vTemp|0 | 80 | °C | 1 |  DCDC24V temperature |
@@ -172,7 +172,7 @@
 |dcdc12vVol|0 | 60 | V | 0.1 |  DC12V30A output voltage, which is valid only for DELTA Pro |
 |dcdc12vWatts|0 | 500 | W | 0.1 |  DC12V30A output power, which is valid only for DELTA Pro |
 |inAmp|0 | 13 | A | 0.01 |  PV input current |
-|inVol|0 | 150 | V | 0.1 |  PV input voltage |
+|inVol|0 | 75 | V | 0.1 |  PV input voltage |
 |inWatts|0 | 500 | W | 0.1 |  PV input power |
 |mpptTemp|0 | 80 | °C | 1 |  MPPT temperature |
 |outAmp|0 | 13 | A | 0.01 |  PV output current |

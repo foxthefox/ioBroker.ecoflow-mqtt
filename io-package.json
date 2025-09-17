@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "ecoflow-mqtt",
-        "version": "1.4.5",
+        "version": "1.4.6",
         "news": {
+            "1.4.6": {
+                "en": "powerocean enhancements",
+                "de": "Powerocean -Verbesserungen",
+                "ru": "Powerocean улучшения",
+                "pt": "Aprimoramentos do Powerocean",
+                "nl": "Powerocean -verbeteringen",
+                "fr": "Améliorations Powerocean",
+                "it": "Miglioramenti di PowerOcean",
+                "es": "Mejoras de PowerOcean",
+                "pl": "Ulepszenia Powerocean",
+                "uk": "Powerocean удосконалення",
+                "zh-cn": "Powerocean增强功能"
+            },
             "1.4.5": {
                 "en": "internal improvements",
                 "de": "interne Verbesserungen",

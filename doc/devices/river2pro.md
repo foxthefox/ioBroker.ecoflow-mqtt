@@ -1,5 +1,5 @@
 # States for  RIVER2PRO
-### version: 1.4.5
+### version: 1.4.6
 
 [pd](#pd)
 
@@ -45,8 +45,8 @@
 |soc|0 | 100 | % | 1 |  Displayed SOC |
 |invUsedTime|0 | 9999999 | min | 0.0166 |  Inverter use time |
 |typecChaWatts|0 | 500 | W | 0.1 |  PD? charging power |
-|acAutoOutPause|0 | 255 | s (0-255?) | 1 |  AC Auto out Pause |
-|minAcoutSoc|0 | 255 | % (0-255?) | 1 |  minimum AC out SOC |
+|acAutoOutPause|0 | 255 | s | 1 |  AC Auto out Pause  (0-255?) |
+|minAcoutSoc|0 | 255 | % | 1 |  minimum AC out SOC  (0-255?) |
 
 
 ### string
@@ -61,6 +61,12 @@
 |sysVer| System version |
 |hysteresisAdd| Hysteresis SOC |
 |relaySwitchCnt| Number of relay disconnections |
+|pdInfoFull| PD info full update period |
+|pdInfoIncre| PD info inremental update period |
+|pdRunIncre| PD run incremental |
+|bmsInfoFull| BMS info full update period |
+|bmsInfoIncre| BMS info inremental update period |
+|bmsRunIncre| BMS run incremental |
 
 ### diagnostic
 
@@ -82,7 +88,7 @@
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
 |standbyMin| 0 | 720 | min | 1 |  Standby time /min 0 Never standby 720 Default value ? | {} |
 |lcdOffSec| 0 | 1800 | s | 1 |  LCD screen-off duration: 0: never off | {valName:delayOff,moduleType:1,operateType:lcdCfg,params:{brighLevel:255,delayOff:300}} |
-|bpPowerSoc| 0 | 100 | % | 1 |  Backup Power SOC |  |
+|bpPowerSoc| 0 | 100 | % | 1 |  Backup Power SOC | {valName:bpPowerSoc,moduleType:1,operateType:watthConfig,params:{isConfig:1,bpPowerSoc:35,minDsgSoc:10,minChgSoc:90}} |
 
 ### switch
 
@@ -186,21 +192,21 @@
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|carOutVol|0 | 60 | V | 0.1 |  Car charging output voltage |
+|carOutVol|0 | 15 | V | 0.001 |  Car charging output voltage |
 |carTemp|0 | 80 | °C | 1 |  Car charging temperature |
-|outWatts|0 | 600 | W | 0.1 |  PV output power |
-|carOutAmp|0 | 13 | A | 0.01 |  Car charging output current |
-|outAmp|0 | 13 | A | 0.01 |  PV output current |
+|outWatts|0 | 600 | W | 1 |  PV output power |
+|carOutAmp|0 | 13 | A | 0.001 |  Car charging output current |
+|outAmp|0 | 13 | A | 0.001 |  PV output current |
 |dcdc12vWatts|0 | 500 | W | 0.1 |  DC12V30A output power, which is valid only for DELTA Pro |
 |powStandbyMin|0 | 720 | min | 1 |  Power standby time /min 0 Never standby 720 Default value ? |
-|inWatts|0 | 500 | W | 0.1 |  PV input power |
+|inWatts|0 | 230 | W | 1 |  PV input power |
 |dcdc12vVol|0 | 60 | V | 0.1 |  DC12V30A output voltage, which is valid only for DELTA Pro |
-|inAmp|0 | 13 | A | 0.01 |  PV input current |
+|inAmp|0 | 13 | A | 0.001 |  PV input current |
 |scrStandbyMin|0 | 720 | min | 1 |  SCR standby time /min 0 Never standby 720 Default value ? |
-|inVol|0 | 150 | V | 0.1 |  PV input voltage |
+|inVol|0 | 55 | V | 0.001 |  PV input voltage |
 |carOutWatts|0 | 500 | W | 0.1 |  Car charging output power |
 |mpptTemp|0 | 80 | °C | 1 |  MPPT temperature |
-|outVol|0 | 60 | V | 0.1 |  PV output voltage |
+|outVol|0 | 60 | V | 0.001 |  PV output voltage |
 |dcdc12vAmp|0 | 13 | A | 0.01 |  DC12V30A output current, which is valid only for DELTA Pro |
 |dc24vTemp|0 | 80 | °C | 1 |  DCDC24V temperature |
 
@@ -242,7 +248,7 @@
 |acStandbyMins| 0 | 720 | min | 1 |  AC standby time /min 0 Never standby 720 Default value | {valName:standbyMins,moduleType:5,operateType:acStandby,params:{standbyMins:360}} |
 |carStandbyMin| 0 | 720 | min | 1 |  CAR standby time /min 0 Never standby 720 Default value | {valName:standbyMins,moduleType:5,operateType:standbyTime,params:{standbyMins:720}} |
 |dcChgCurrent| 4 | 8 | A | 0.001 |  On-board charging current | {valName:dcChgCfg,moduleType:5,operateType:dcChgCfg,params:{dcChgCfg:8000}} |
-|cfgChgWatts| 0 | 2200 | W | 1 |  Maximum charging power for charging (W) ? | {valName:chgWatts,moduleType:5,operateType:acChgCfg,params:{chgWatts:100,chgPauseFlag:255}} |
+|cfgChgWatts| 100 | 940 | W | 1 |  Maximum charging power for charging (W) ? | {valName:chgWatts,moduleType:5,operateType:acChgCfg,params:{chgWatts:100,chgPauseFlag:255}} |
 
 ## ems
 
@@ -275,8 +281,8 @@
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
 |maxChargeSoc| 50 | 100 | % | 1 |  Charge upper limit | {valName:maxChgSoc,moduleType:2,operateType:upsConfig,params:{maxChgSoc:90}} |
 |minDsgSoc| 0 | 30 | % | 1 |  Discharge lower limit | {valName:minDsgSoc,moduleType:2,operateType:dsgCfg,params:{minDsgSoc:5}} |
-|minOpenOilEb| 0 | 30 | % | 1 |  The upper threshold of smart generator auto on Range: 0~100 |  |
-|maxCloseOilEb| 50 | 100 | % | 1 |  The lower threshold of smart generator auto off Range: 0~100 |  |
+|minOpenOilEb| 0 | 30 | % | 1 |  The upper threshold of smart generator auto on Range: 0~100 | {} |
+|maxCloseOilEb| 50 | 100 | % | 1 |  The lower threshold of smart generator auto off Range: 0~100 | {} |
 
 ### string
 
