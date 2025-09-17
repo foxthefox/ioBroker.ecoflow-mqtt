@@ -1,5 +1,5 @@
 # States for  RIVER2MAX
-### version: 1.4.5
+### version: 1.4.6
 
 [bmsMaster](#bmsMaster)
 
@@ -162,7 +162,7 @@
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
 |acStandbyMins| 0 | 720 | min | 1 |  AC standby time /min 0 Never standby 720 Default value | {valName:standbyMins,moduleType:5,operateType:acStandby,params:{standbyMins:720}} |
 |carStandbyMin| 0 | 720 | min | 1 |  CAR standby time /min 0 Never standby 720 Default value | {valName:standbyMins,moduleType:5,operateType:standbyTime,params:{standbyMins:720}} |
-|cfgChgWatts| 0 | 2200 | W | 1 |  Maximum charging power for charging (W) ? | {valName:chgWatts,moduleType:5,operateType:acChgCfg,params:{chgWatts:200}} |
+|cfgChgWatts| 50 | 660 | W | 1 |  Maximum charging power for charging (W) ? | {valName:chgWatts,moduleType:5,operateType:acChgCfg,params:{chgWatts:200,chgPauseFlag:255}} |
 |dcChgCurrent| 4 | 8 | A | 0.001 |  On-board charging current | {valName:dcChgCfg,moduleType:5,operateType:dcChgCfg,params:{dcChgCfg:8000}} |
 
 ### switch
@@ -177,21 +177,21 @@
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|carOutAmp|0 | 13 | A | 0.01 |  Car charging output current |
-|carOutVol|0 | 60 | V | 0.1 |  Car charging output voltage |
+|carOutAmp|0 | 13 | A | 0.001 |  Car charging output current |
+|carOutVol|0 | 15 | V | 0.001 |  Car charging output voltage |
 |carOutWatts|0 | 500 | W | 0.1 |  Car charging output power |
 |carTemp|0 | 80 | °C | 1 |  Car charging temperature |
 |dc24vTemp|0 | 80 | °C | 1 |  DCDC24V temperature |
 |dcdc12vAmp|0 | 13 | A | 0.01 |  DC12V30A output current, which is valid only for DELTA Pro |
 |dcdc12vVol|0 | 60 | V | 0.1 |  DC12V30A output voltage, which is valid only for DELTA Pro |
 |dcdc12vWatts|0 | 500 | W | 0.1 |  DC12V30A output power, which is valid only for DELTA Pro |
-|inAmp|0 | 13 | A | 0.01 |  PV input current |
-|inVol|0 | 150 | V | 0.1 |  PV input voltage |
-|inWatts|0 | 500 | W | 0.1 |  PV input power |
+|inAmp|0 | 13 | A | 0.001 |  PV input current |
+|inVol|0 | 50 | V | 0.001 |  PV input voltage |
+|inWatts|0 | 500 | W | 1 |  PV input power |
 |mpptTemp|0 | 80 | °C | 1 |  MPPT temperature |
-|outAmp|0 | 13 | A | 0.01 |  PV output current |
-|outVol|0 | 60 | V | 0.1 |  PV output voltage |
-|outWatts|0 | 600 | W | 0.1 |  PV output power |
+|outAmp|0 | 13 | A | 0.001 |  PV output current |
+|outVol|0 | 60 | V | 0.001 |  PV output voltage |
+|outWatts|0 | 600 | W | 1 |  PV output power |
 |powStandbyMin|0 | 720 | min | 1 |  Power standby time /min 0 Never standby 720 Default value ? |
 |scrStandbyMin|0 | 720 | min | 1 |  SCR standby time /min 0 Never standby 720 Default value ? |
 
@@ -229,7 +229,7 @@
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|acAutoOutPause|0 | 255 | s (0-255?) | 1 |  AC Auto out Pause |
+|acAutoOutPause|0 | 255 | s | 1 |  AC Auto out Pause  (0-255?) |
 |carTemp|0 | 80 | °C | 1 |  CAR temperature |
 |carUsedTime|0 | 9999999 | min | 0.0166 |  Car use time |
 |carWatts|0 | 500 | W | 0.1 |  CAR output power |
@@ -240,7 +240,7 @@
 |dsgPowerAC|0 |  n/a | kWh | 0.001 |  Cumulative AC power discharged  |
 |dsgPowerDC|0 |  n/a | kWh | 0.001 |  Cumulative DC discharge capacity |
 |invUsedTime|0 | 9999999 | min | 0.0166 |  Inverter use time |
-|minAcoutSoc|0 | 255 | % (0-255?) | 1 |  minimum AC out SOC |
+|minAcoutSoc|0 | 255 | % | 1 |  minimum AC out SOC  (0-255?) |
 |mpptUsedTime|0 | 9999999 | min | 0.0166 |  MPPT use time |
 |qcUsb1Watts|0 | 500 | W | 1 |  Quick charge usb1 output power |
 |qcUsb2Watts|0 | 500 | W | 0.1 |  Quick charge usb2 output power |
@@ -294,4 +294,10 @@
 |wifiRssi| Wi-Fi signal intensity |
 |wifiVer| Wi-Fi version |
 |wireWatts| Wireless charging output power (W) |
+|pdInfoFull| PD info full update period |
+|pdInfoIncre| PD info inremental update period |
+|pdRunIncre| PD run incremental |
+|bmsInfoFull| BMS info full update period |
+|bmsInfoIncre| BMS info inremental update period |
+|bmsRunIncre| BMS run incremental |
 

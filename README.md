@@ -367,7 +367,8 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 
 ### 1.4.6 (npm)
 
-- (foxthefox) powerocean implementation of ParallelEnergyStreamDetail
+- (foxthefox) powerocean implementation of ParallelEnergyStreamDetail which is the update to ParallelEnergyStreamReport
+- (foxthefox) powerocean implementation of EnergyStreamDetail which is the update to EnergyStreamReport
 
 ### 1.4.5 (npm)
 

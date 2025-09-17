@@ -1,7 +1,9 @@
 # States for  DELTA2
-### version: 1.4.5
+### version: 1.4.6
 
 [bmsMaster](#bmsMaster)
+
+[bmsSlave1](#bmsSlave1)
 
 [ems](#ems)
 
@@ -14,6 +16,52 @@
 
 
 ## bmsMaster
+
+### number
+| State  |      Min     |      Max     |  Unit |  Mult |  Name |
+|----------|:-------------:|:-------------:|:------:|:-----:|-----|
+|amp|0 | 25 | A | 0.001 |  Current |
+|cycles|0 | 6000 |  | 1 |  Number of cycles |
+|designCap|0 | 80000 | mAh | 1 |  Design capacity |
+|f32ShowSoc|0 | 100 | % | 1 |  SOC |
+|fullCap|0 | 80000 | mAh | 1 |  Full capacity |
+|inputWatts|0 | 4000 | W | 0.1 |  Input power |
+|maxCellTemp|0 | 80 | °C | 1 |  Maximum cell temperature |
+|maxCellVol|0 | 60 | V | 0.001 |  Maximum cell voltage |
+|maxMosTemp|0 | 80 | °C | 1 |  Maximum MOS temperature |
+|minCellTemp|0 | 80 | °C | 1 |  Minimum cell temperature |
+|minCellVol|0 | 60 | V | 0.001 |  Minimum cell voltage |
+|minMosTemp|0 | 80 | °C | 1 |  Minimum MOS temperature |
+|outputWatts|0 | 4000 | W | 0.1 |  Output power |
+|remainCap|0 | 80000 | mAh | 1 |  Remaining capacity |
+|remainTime|0 | 143999 | min | 1 |  Time remaining |
+|soc|0 | 100 | % | 1 |  Remaining battery percentage |
+|tagChgAmp|0 | 100 | A | 0.0001 |  Target charging current |
+|temp|0 | 80 | °C | 1 |  Temperature |
+|vol|0 | 60 | V | 0.001 |  Voltage |
+|OCV|0 | 65 | V | 0.001 |  Open Circuit Voltage |
+
+
+### string
+
+| State  |  Name |
+|----------|------|
+|bmsFault| BMS permanent fault |
+|bqSysStatReg| BQ hardware protection register |
+|num| BMS number |
+|openBmsIdx| Battery pack enable state |
+|soh| Health status |
+|sysVer| System version |
+
+### diagnostic
+
+| State  |     Name |  values |
+|----------|:-------------:|------|
+|cellId| Battery capacity type | {1:2.5 Ah per battery,2:2 Ah per battery} |
+|errCode| Global error code | {0:OK?} |
+|type| BMS type | {1:Lithium battery,2:Oil-powered} |
+
+## bmsSlave1
 
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
@@ -159,21 +207,21 @@
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|carOutAmp|0 | 13 | A | 0.01 |  Car charging output current |
-|carOutVol|0 | 60 | V | 0.1 |  Car charging output voltage |
+|carOutAmp|0 | 13 | A | 0.001 |  Car charging output current |
+|carOutVol|0 | 15 | V | 0.001 |  Car charging output voltage |
 |carOutWatts|0 | 500 | W | 0.1 |  Car charging output power |
 |carTemp|0 | 80 | °C | 1 |  Car charging temperature |
 |dc24vTemp|0 | 80 | °C | 1 |  DCDC24V temperature |
 |dcdc12vAmp|0 | 13 | A | 0.01 |  DC12V30A output current, which is valid only for DELTA Pro |
 |dcdc12vVol|0 | 60 | V | 0.1 |  DC12V30A output voltage, which is valid only for DELTA Pro |
 |dcdc12vWatts|0 | 500 | W | 0.1 |  DC12V30A output power, which is valid only for DELTA Pro |
-|inAmp|0 | 13 | A | 0.01 |  PV input current |
-|inVol|0 | 150 | V | 0.1 |  PV input voltage |
-|inWatts|0 | 500 | W | 0.1 |  PV input power |
+|inAmp|0 | 13 | A | 0.001 |  PV input current |
+|inVol|0 | 60 | V | 0.001 |  PV input voltage |
+|inWatts|0 | 550 | W | 1 |  PV input power |
 |mpptTemp|0 | 80 | °C | 1 |  MPPT temperature |
-|outAmp|0 | 13 | A | 0.01 |  PV output current |
-|outVol|0 | 60 | V | 0.1 |  PV output voltage |
-|outWatts|0 | 600 | W | 0.1 |  PV output power |
+|outAmp|0 | 13 | A | 0.001 |  PV output current |
+|outVol|0 | 60 | V | 0.001 |  PV output voltage |
+|outWatts|0 | 600 | W | 1 |  PV output power |
 |powStandbyMin|0 | 720 | min | 1 |  Power standby time /min 0 Never standby 720 Default value ? |
 |scrStandbyMin|0 | 720 | min | 1 |  SCR standby time /min 0 Never standby 720 Default value ? |
 
@@ -214,7 +262,7 @@
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
 |acStandbyMins| 0 | 720 | min | 1 |  AC standby time /min 0 Never standby 720 Default value | {valName:standbyMins,moduleType:5,operateType:standbyTime,params:{standbyMins:720}} |
 |carStandbyMin| 0 | 720 | min | 1 |  CAR standby time /min 0 Never standby 720 Default value | {valName:standbyMins,moduleType:5,operateType:carStandby,params:{standbyMins:720}} |
-|cfgChgWatts| 0 | 2200 | W | 1 |  Maximum charging power for charging (W) ? | {valName:chgWatts,moduleType:5,operateType:acChgCfg,params:{chgWatts:200,chgPauseFlag:255}} |
+|cfgChgWatts| 50 | 1200 | W | 1 |  Maximum charging power for charging (W) ? | {valName:chgWatts,moduleType:5,operateType:acChgCfg,params:{chgWatts:200,chgPauseFlag:255}} |
 |dcChgCurrent| 4 | 8 | A | 0.001 |  On-board charging current | {valName:dcChgCfg,moduleType:5,operateType:dcChgCfg,params:{dcChgCfg:8000}} |
 
 ## pd
@@ -245,7 +293,7 @@
 |chgSunPower|0 | 65000 | kWh | 0.001 |  Cumulative solar power charged |
 |dcInUsedTime|0 | 9999999 | min | 0.0166 |  DC charging time |
 |invUsedTime|0 | 9999999 | min | 0.0166 |  Inverter use time |
-|minAcoutSoc|0 | 255 | % (0-255?) | 1 |  minimum AC out SOC |
+|minAcoutSoc|0 | 100 | % | 1 |  minimum AC out SOC |
 |mpptUsedTime|0 | 9999999 | min | 0.0166 |  MPPT use time |
 |qcUsb1Watts|0 | 500 | W | 1 |  Quick charge usb1 output power |
 |qcUsb2Watts|0 | 500 | W | 0.1 |  Quick charge usb2 output power |
@@ -261,7 +309,7 @@
 |usbqcUsedTime|0 | 9999999 | min | 0.0166 |  USB QC use time |
 |wattsInSum|0 | 4000 | W | 1 |  Total input power |
 |wattsOutSum|0 | 4000 | W | 1 |  Total output power |
-|acAutoOutPause|0 | 255 | s (0-255?) | 1 |  AC Auto out Pause |
+|acAutoOutPause|0 | 255 | s | 1 |  AC Auto out Pause |
 |chgPowerAC|0 |  n/a | kWh | 0.001 |  Cumulative AC power charged for PD (wall socket) |
 |chgPowerDC|0 |  n/a | kWh | 0.001 |  Cumulative DC power charged for PD (adapter) |
 |dsgPowerAC|0 |  n/a | kWh | 0.001 |  Cumulative AC power discharged  |

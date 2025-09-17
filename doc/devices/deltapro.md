@@ -1,7 +1,11 @@
 # States for  DELTAPRO
-### version: 1.4.5
+### version: 1.4.6
 
 [bmsMaster](#bmsMaster)
+
+[bmsSlave1](#bmsSlave1)
+
+[bmsSlave2](#bmsSlave2)
 
 [ems](#ems)
 
@@ -21,18 +25,166 @@
 |f32ShowSoc|0 | 100 | % | 1 |  SOC |
 |designCap|0 | 80000 | mAh | 1 |  Design capacity |
 |remainCap|0 | 80000 | mAh | 1 |  Remaining capacity |
-|temp|0 | 80 | °C | 1 |  Temperature |
+|temp|0 | 120 | °C | 1 |  Temperature |
 |maxCellTemp|0 | 80 | °C | 1 |  Maximum cell temperature |
 |vol|0 | 60 | V | 0.001 |  Voltage |
-|amp|0 | 25 | A | 0.001 |  Current |
+|amp|0 | 50 | A | 0.001 |  Current |
 |outputWatts|0 | 4000 | W | 0.1 |  Output power |
 |soc|0 | 100 | % | 1 |  Remaining battery percentage |
 |minCellTemp|0 | 80 | °C | 1 |  Minimum cell temperature |
-|maxMosTemp|0 | 80 | °C | 1 |  Maximum MOS temperature |
+|maxMosTemp|0 | 120 | °C | 1 |  Maximum MOS temperature |
 |tagChgAmp|0 | 100 | A | 0.0001 |  Target charging current |
 |maxCellVol|0 | 60 | V | 0.001 |  Maximum cell voltage |
 |inputWatts|0 | 4000 | W | 0.1 |  Input power |
-|minMosTemp|0 | 80 | °C | 1 |  Minimum MOS temperature |
+|minMosTemp|0 | 120 | °C | 1 |  Minimum MOS temperature |
+|remainTime|0 | 143999 | min | 1 |  Time remaining |
+|minCellVol|0 | 60 | V | 0.001 |  Minimum cell voltage |
+|fullCap|0 | 80000 | mAh | 1 |  Full capacity |
+|cycles|0 | 6000 |  | 1 |  Number of cycles |
+|diffSoc|0 | 100 | % | 1 |  SOC difference |
+|targetSoc|0 | 100 | % | 1 |  Target SoC |
+|actSoc|0 | 100 | % | 1 |  Actual SoC |
+|maxVolDiff|0 | 500 | V | 0.001 |  Maximum cell voltage difference |
+
+
+### string
+
+| State  |  Name |
+|----------|------|
+|bmsFault| BMS permanent fault |
+|soh| Health status |
+|sysVer| System version |
+|bqSysStatReg| BQ hardware protection register |
+|num| BMS number |
+|openBmsIdx| Battery pack enable state |
+|cycleSoh| cycle Soh |
+|realSoh| real Soh |
+|bmsHeartbeatVer| bms Heartbeat Version |
+|productDetail| Product Detail |
+|sysLoaderVer| sysLoaderVer |
+|totalDsgCap| Total Discharge Capacity |
+|totalChgCap| Total Charge Capacity |
+|ecloudOcv| ecloudOcv |
+
+### diagnostic
+
+| State  |     Name |  values |
+|----------|:-------------:|------|
+|type| BMS type | {1:Lithium battery,2:Oil-powered} |
+|errCode| Global error code | {0:OK?} |
+|cellId| Battery capacity type | {1:2.5 Ah per battery,2:2 Ah per battery} |
+|chgDsgState| chg Dsg State | {0:0?,1:1?,2:2?} |
+|productType| Product Type | {14:Delta Pro?} |
+|calendarSch| Calendar Schedule | {0:0?,1:1?} |
+|sysState| sys State | {0:0?,1:1?} |
+|allErrCode| all Err Code | {0:0?,1:1?,2:2?} |
+|allBmsFault| all Bms Faulttype | {0:0?,1:1?,2:2?} |
+|mosState| MOS state | {0:0?,1:1?,2:2?,3:3?} |
+|balanceState| Balance State | {0:0&#x3D;OK?,1:1?,2:2?} |
+
+### array
+
+| State  |  Name |
+|----------|------|
+|packSn| Pack SN |
+|cellVol| Cell voltage |
+|cellTemp| Cell temperature |
+|hwEdition| HW edition |
+
+## bmsSlave1
+
+### number
+| State  |      Min     |      Max     |  Unit |  Mult |  Name |
+|----------|:-------------:|:-------------:|:------:|:-----:|-----|
+|f32ShowSoc|0 | 100 | % | 1 |  SOC |
+|designCap|0 | 80000 | mAh | 1 |  Design capacity |
+|remainCap|0 | 80000 | mAh | 1 |  Remaining capacity |
+|temp|0 | 120 | °C | 1 |  Temperature |
+|maxCellTemp|0 | 80 | °C | 1 |  Maximum cell temperature |
+|vol|0 | 60 | V | 0.001 |  Voltage |
+|amp|0 | 50 | A | 0.001 |  Current |
+|outputWatts|0 | 4000 | W | 0.1 |  Output power |
+|soc|0 | 100 | % | 1 |  Remaining battery percentage |
+|minCellTemp|0 | 80 | °C | 1 |  Minimum cell temperature |
+|maxMosTemp|0 | 120 | °C | 1 |  Maximum MOS temperature |
+|tagChgAmp|0 | 100 | A | 0.0001 |  Target charging current |
+|maxCellVol|0 | 60 | V | 0.001 |  Maximum cell voltage |
+|inputWatts|0 | 4000 | W | 0.1 |  Input power |
+|minMosTemp|0 | 120 | °C | 1 |  Minimum MOS temperature |
+|remainTime|0 | 143999 | min | 1 |  Time remaining |
+|minCellVol|0 | 60 | V | 0.001 |  Minimum cell voltage |
+|fullCap|0 | 80000 | mAh | 1 |  Full capacity |
+|cycles|0 | 6000 |  | 1 |  Number of cycles |
+|diffSoc|0 | 100 | % | 1 |  SOC difference |
+|targetSoc|0 | 100 | % | 1 |  Target SoC |
+|actSoc|0 | 100 | % | 1 |  Actual SoC |
+|maxVolDiff|0 | 500 | V | 0.001 |  Maximum cell voltage difference |
+
+
+### string
+
+| State  |  Name |
+|----------|------|
+|bmsFault| BMS permanent fault |
+|soh| Health status |
+|sysVer| System version |
+|bqSysStatReg| BQ hardware protection register |
+|num| BMS number |
+|openBmsIdx| Battery pack enable state |
+|cycleSoh| cycle Soh |
+|realSoh| real Soh |
+|bmsHeartbeatVer| bms Heartbeat Version |
+|productDetail| Product Detail |
+|sysLoaderVer| sysLoaderVer |
+|totalDsgCap| Total Discharge Capacity |
+|totalChgCap| Total Charge Capacity |
+|ecloudOcv| ecloudOcv |
+
+### diagnostic
+
+| State  |     Name |  values |
+|----------|:-------------:|------|
+|type| BMS type | {1:Lithium battery,2:Oil-powered} |
+|errCode| Global error code | {0:OK?} |
+|cellId| Battery capacity type | {1:2.5 Ah per battery,2:2 Ah per battery} |
+|chgDsgState| chg Dsg State | {0:0?,1:1?,2:2?} |
+|productType| Product Type | {14:Delta Pro?} |
+|calendarSch| Calendar Schedule | {0:0?,1:1?} |
+|sysState| sys State | {0:0?,1:1?} |
+|allErrCode| all Err Code | {0:0?,1:1?,2:2?} |
+|allBmsFault| all Bms Faulttype | {0:0?,1:1?,2:2?} |
+|mosState| MOS state | {0:0?,1:1?,2:2?,3:3?} |
+|balanceState| Balance State | {0:0&#x3D;OK?,1:1?,2:2?} |
+
+### array
+
+| State  |  Name |
+|----------|------|
+|packSn| Pack SN |
+|cellVol| Cell voltage |
+|cellTemp| Cell temperature |
+|hwEdition| HW edition |
+
+## bmsSlave2
+
+### number
+| State  |      Min     |      Max     |  Unit |  Mult |  Name |
+|----------|:-------------:|:-------------:|:------:|:-----:|-----|
+|f32ShowSoc|0 | 100 | % | 1 |  SOC |
+|designCap|0 | 80000 | mAh | 1 |  Design capacity |
+|remainCap|0 | 80000 | mAh | 1 |  Remaining capacity |
+|temp|0 | 120 | °C | 1 |  Temperature |
+|maxCellTemp|0 | 80 | °C | 1 |  Maximum cell temperature |
+|vol|0 | 60 | V | 0.001 |  Voltage |
+|amp|0 | 50 | A | 0.001 |  Current |
+|outputWatts|0 | 4000 | W | 0.1 |  Output power |
+|soc|0 | 100 | % | 1 |  Remaining battery percentage |
+|minCellTemp|0 | 80 | °C | 1 |  Minimum cell temperature |
+|maxMosTemp|0 | 120 | °C | 1 |  Maximum MOS temperature |
+|tagChgAmp|0 | 100 | A | 0.0001 |  Target charging current |
+|maxCellVol|0 | 60 | V | 0.001 |  Maximum cell voltage |
+|inputWatts|0 | 4000 | W | 0.1 |  Input power |
+|minMosTemp|0 | 120 | °C | 1 |  Minimum MOS temperature |
 |remainTime|0 | 143999 | min | 1 |  Time remaining |
 |minCellVol|0 | 60 | V | 0.001 |  Minimum cell voltage |
 |fullCap|0 | 80000 | mAh | 1 |  Full capacity |
@@ -144,7 +296,7 @@
 |outputWatts|0 | 4000 | W | 1 |  Discharging power |
 |dcInTemp|0 | 80 | °C | 1 |  DC temperature |
 |invOutFreq|0 | 62 | Hz | 1 |  Inverter output frequency |
-|cfgFastChgWatts|200 | 2400 | W | 1 |  Maximum charging power for AC fast charging (W) |
+|cfgFastChgWatts|200 | 2900 | W | 1 |  Maximum charging power for AC fast charging (W) |
 |acInAmp|0 | 13 | A | 0.001 |  Inverter input current |
 |outTemp|0 | 90 | °C | 1 |  Inverter temperature |
 |invOutVol|0 | 250 | V | 0.001 |  Actual inverter output voltage |
@@ -176,7 +328,7 @@
 | State  |      Min     |     Max     |  Unit |  Mult |  Name |  cmd |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
 |cfgStandbyMin| 0 | 720 | min | 1 |  AC standby time /min 0 Never standby 720 Default value | {from:Android,operateType:TCP,id:153750799,lang:en-us,params:{id:153,standByMins:360},version:1.0} |
-|cfgSlowChgWatts| 200 | 1000 | W | 1 |  Maximum charging power for AC slow charging (W) | {from:Android,operateType:TCP,id:747329085,lang:en-us,params:{id:69,slowChgPower:300},version:1.0} |
+|cfgSlowChgWatts| 200 | 2900 | W | 1 |  Maximum charging power for AC slow charging (W) | {from:Android,operateType:TCP,id:747329085,lang:en-us,params:{id:69,slowChgPower:300},version:1.0} |
 
 ### diagnostic
 
@@ -221,8 +373,8 @@
 |mpptUsedTime|0 | 9999999 | min | 0.0166 |  MPPT use time |
 |carWatts|0 | 500 | W | 0.1 |  CAR output power |
 |usb2Watts|0 | 500 | W | 1 |  Common usb2 output power |
-|minAcoutSoc|0 | 255 | % (0-255?) | 1 |  minimum AC out SOC |
-|acautooutPause|0 | 255 | s (0-255?) | 1 |  AC Auto out Pause |
+|minAcoutSoc|0 | 255 | % | 1 |  minimum AC out SOC  (0-255?) |
+|acautooutPause|0 | 255 | s | 1 |  AC Auto out Pause  (0-255?) |
 
 
 ### string
@@ -275,16 +427,16 @@
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |carOutVol|0 | 60 | V | 0.1 |  Car charging output voltage |
 |carTemp|0 | 80 | °C | 1 |  Car charging temperature |
-|outWatts|0 | 600 | W | 0.1 |  PV output power |
+|outWatts|0 | 1600 | W | 0.1 |  PV output power |
 |carOutAmp|0 | 13 | A | 0.01 |  Car charging output current |
-|outAmp|0 | 13 | A | 0.01 |  PV output current |
+|outAmp|0 | 31 | A | 0.01 |  PV output current |
 |dcdc12vWatts|0 | 500 | W | 0.1 |  DC12V30A output power, which is valid only for DELTA Pro |
-|inWatts|0 | 500 | W | 0.1 |  PV input power |
+|inWatts|0 | 1650 | W | 0.1 |  PV input power |
 |dcdc12vVol|0 | 60 | V | 0.1 |  DC12V30A output voltage, which is valid only for DELTA Pro |
-|inAmp|0 | 13 | A | 0.01 |  PV input current |
+|inAmp|0 | 16 | A | 0.01 |  PV input current |
 |inVol|0 | 150 | V | 0.1 |  PV input voltage |
 |carOutWatts|0 | 500 | W | 0.1 |  Car charging output power |
-|mpptTemp|0 | 80 | °C | 1 |  MPPT temperature |
+|mpptTemp|0 | 120 | °C | 1 |  MPPT temperature |
 |outVol|0 | 60 | V | 0.1 |  PV output voltage |
 |dcdc12vAmp|0 | 13 | A | 0.01 |  DC12V30A output current, which is valid only for DELTA Pro |
 |dc24vTemp|0 | 80 | °C | 1 |  DCDC24V temperature |
@@ -301,7 +453,7 @@
 | State  |     Name |  values |
 |----------|:-------------:|------|
 |faultCode| Error code | {0:OK?,1:mppt_fault,2:car_fault,4:dc24v_fault} |
-|xt60ChgType| XT60 charging type | {0:not detected,1:MPPT,2:adapter} |
+|xt60ChgType| XT60 charging type | {0:not detected,1:adapter,2:MPPT} |
 |dc24vState| DCDC24 switch state | {0:off,1:on} |
 |chgPauseFlag| PV charging pause flag | {0:not stopped ?,1:charging stopped} |
 |chgType| Actual charging type | {0:null,1:adapter (adapter/DC source),2:MPPT (solar),3:AC (mains supply),4:gas,5:wind} |
@@ -318,5 +470,5 @@
 
 | State  |      Min     |     Max     |  Unit |  Mult |  Name |  cmd |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
-|cfgDcChgCurrent| 4 | 8 | A | 0.001 |  On-board charging current | {from:Android,operateType:TCP,id:787426012,lang:en-us,params:{id:71,currMa:6000},version:1.0} |
+|cfgDcChgCurrent| 4 | 13 | A | 0.001 |  On-board charging current | {from:Android,operateType:TCP,id:787426012,lang:en-us,params:{id:71,currMa:6000},version:1.0} |
 
