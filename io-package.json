@@ -68,19 +68,6 @@
                 "uk": "Корекційне множення поплавця, нові команди для потоку та річки3",
                 "zh-cn": "Float的校正乘法，溪流和River3的新命令3"
             },
-            "1.4.0": {
-                "en": "major efactoring, many new devices ",
-                "de": "Hauptfaktoring, viele neue Geräte",
-                "ru": "крупный эфакторинг, много новых устройств",
-                "pt": "grande efactoring, muitos novos dispositivos",
-                "nl": "Major Efactoring, veel nieuwe apparaten",
-                "fr": "Efactoring majeur, de nombreux nouveaux appareils",
-                "it": "Maggiore efattore, molti nuovi dispositivi",
-                "es": "mayor efactoring, muchos dispositivos nuevos",
-                "pl": "Główne efaktyczne, wiele nowych urządzeń",
-                "uk": "Основні електронні дії, багато нових пристроїв",
-                "zh-cn": "主要的效率，许多新设备"
-            },
             "1.3.2": {
                 "en": "improvements for HA commands (number)",
                 "de": "Verbesserungen für HA -Befehle (Nummer)",
