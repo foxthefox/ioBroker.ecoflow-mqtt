@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "ecoflow-mqtt",
-        "version": "1.4.7",
+        "version": "1.4.8",
         "news": {
+            "1.4.8": {
+                "en": "dev dependencies",
+                "de": "Dev -Abhängigkeiten",
+                "ru": "DEV -зависимости",
+                "pt": "Dependências dev",
+                "nl": "Dev -afhankelijkheden",
+                "fr": "dépendances de développement",
+                "it": "Dipendenze Dev",
+                "es": "dependencias",
+                "pl": "zależności dew",
+                "uk": "залежності DEV",
+                "zh-cn": "开发依赖性"
+            },
             "1.4.7": {
                 "en": "powerocean enhancements",
                 "de": "Powerocean -Verbesserungen",
@@ -86,7 +99,10 @@
             {
                 "condition": {
                     "operand": "and",
-                    "rules": ["oldVersion<0.0.8", "newVersion>=0.0.9"]
+                    "rules": [
+                        "oldVersion<0.0.8",
+                        "newVersion>=0.0.9"
+                    ]
                 },
                 "title": {
                     "en": "Important notice!",
@@ -115,12 +131,18 @@
                     "zh-cn": "为了正常工作，适配器需要 ioBroker.admin >=6.12.3。请确保这个边界条件。您可以通过启用专家设置并从 npm 作为源进行安装来实现此目的。"
                 },
                 "level": "warn",
-                "buttons": ["ok", "cancel"]
+                "buttons": [
+                    "ok",
+                    "cancel"
+                ]
             },
             {
                 "condition": {
                     "operand": "and",
-                    "rules": ["oldVersion<1.0.0", "newVersion>=1.0.0"]
+                    "rules": [
+                        "oldVersion<1.0.0",
+                        "newVersion>=1.0.0"
+                    ]
                 },
                 "title": {
                     "en": "Important notice!",
@@ -149,7 +171,10 @@
                     "zh-cn": "数据点的状态角色已更正，请停止适配器，删除ecoflow-mqtt实例的所有对象并重新启动适配器。数据点被重新创建。"
                 },
                 "level": "warn",
-                "buttons": ["ok", "cancel"]
+                "buttons": [
+                    "ok",
+                    "cancel"
+                ]
             }
         ],
         "titleLang": {
@@ -178,8 +203,19 @@
             "uk": "підключається до продуктів ecoflow",
             "zh-cn": "连接至 Ecoflow 产品"
         },
-        "authors": ["foxthefox <foxthefox@wysiwis.net>"],
-        "keywords": ["ecoflow", "powerstream", "powerstation", "delta", "river", "powerkit", "powerocaen", "shp"],
+        "authors": [
+            "foxthefox <foxthefox@wysiwis.net>"
+        ],
+        "keywords": [
+            "ecoflow",
+            "powerstream",
+            "powerstation",
+            "delta",
+            "river",
+            "powerkit",
+            "powerocaen",
+            "shp"
+        ],
         "platform": "Javascript/Node.js",
         "icon": "ecoflow-mqtt.png",
         "enabled": true,
@@ -221,7 +257,11 @@
         "haMqttUserId",
         "haMqttUserPWd"
     ],
-    "encryptedNative": ["userPassword", "mqttPwd", "haMqttUserPWd"],
+    "encryptedNative": [
+        "userPassword",
+        "mqttPwd",
+        "haMqttUserPWd"
+    ],
     "native": {
         "userName": "userEmail",
         "userPassword": "pw",
