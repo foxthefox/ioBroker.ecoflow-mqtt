@@ -1,9 +1,9 @@
 {
     "common": {
         "name": "ecoflow-mqtt",
-        "version": "1.4.6",
+        "version": "1.4.7",
         "news": {
-            "1.4.6": {
+            "1.4.7": {
                 "en": "powerocean enhancements",
                 "de": "Powerocean -Verbesserungen",
                 "ru": "Powerocean улучшения",
@@ -16,31 +16,18 @@
                 "uk": "Powerocean удосконалення",
                 "zh-cn": "Powerocean增强功能"
             },
-            "1.4.5": {
-                "en": "internal improvements",
-                "de": "interne Verbesserungen",
-                "ru": "внутренние улучшения",
-                "pt": "melhorias internas",
-                "nl": "interne verbeteringen",
-                "fr": "Améliorations internes",
-                "it": "Miglioramenti interni",
-                "es": "mejoras internas",
-                "pl": "Ulepszenia wewnętrzne",
-                "uk": "Внутрішні вдосконалення",
-                "zh-cn": "内部改进"
-            },
-            "1.4.4": {
-                "en": "enhancement powerocean, new datapoints",
-                "de": "Verbesserung Powerocean, neue Datenpunkte",
-                "ru": "Усовершенствование POLESOCEAN, новые данные DataPoints",
-                "pt": "aprimoramento Powerocean, novos dados",
-                "nl": "Enhancement PowerOcean, Nieuwe Datapoints",
-                "fr": "Enhancement PoweroCean, nouveaux points de données",
-                "it": "PowerOcean di miglioramento, nuovi dati",
-                "es": "Mejora de PowerOtean, nuevos puntos de datos",
-                "pl": "Ulepszenia Powerocean, nowe punkty danych",
-                "uk": "Поліпшення Powerocean, нові точки даних",
-                "zh-cn": "增强功率，新数据点"
+            "1.4.6": {
+                "en": "powerocean enhancements",
+                "de": "Powerocean -Verbesserungen",
+                "ru": "Powerocean улучшения",
+                "pt": "Aprimoramentos do Powerocean",
+                "nl": "Powerocean -verbeteringen",
+                "fr": "Améliorations Powerocean",
+                "it": "Miglioramenti di PowerOcean",
+                "es": "Mejoras de PowerOcean",
+                "pl": "Ulepszenia Powerocean",
+                "uk": "Powerocean удосконалення",
+                "zh-cn": "Powerocean增强功能"
             },
             "1.4.3": {
                 "en": "new Stream Inverter, new cmd for load Stream AC/Ultra, corr. energyBackup River3, SHP task chChargeWatt",
@@ -81,19 +68,6 @@
                 "uk": "Корекційне множення поплавця, нові команди для потоку та річки3",
                 "zh-cn": "Float的校正乘法，溪流和River3的新命令3"
             },
-            "1.4.0": {
-                "en": "major efactoring, many new devices ",
-                "de": "Hauptfaktoring, viele neue Geräte",
-                "ru": "крупный эфакторинг, много новых устройств",
-                "pt": "grande efactoring, muitos novos dispositivos",
-                "nl": "Major Efactoring, veel nieuwe apparaten",
-                "fr": "Efactoring majeur, de nombreux nouveaux appareils",
-                "it": "Maggiore efattore, molti nuovi dispositivi",
-                "es": "mayor efactoring, muchos dispositivos nuevos",
-                "pl": "Główne efaktyczne, wiele nowych urządzeń",
-                "uk": "Основні електронні дії, багато нових пристроїв",
-                "zh-cn": "主要的效率，许多新设备"
-            },
             "1.3.2": {
                 "en": "improvements for HA commands (number)",
                 "de": "Verbesserungen für HA -Befehle (Nummer)",
@@ -112,10 +86,7 @@
             {
                 "condition": {
                     "operand": "and",
-                    "rules": [
-                        "oldVersion<0.0.8",
-                        "newVersion>=0.0.9"
-                    ]
+                    "rules": ["oldVersion<0.0.8", "newVersion>=0.0.9"]
                 },
                 "title": {
                     "en": "Important notice!",
@@ -144,18 +115,12 @@
                     "zh-cn": "为了正常工作，适配器需要 ioBroker.admin >=6.12.3。请确保这个边界条件。您可以通过启用专家设置并从 npm 作为源进行安装来实现此目的。"
                 },
                 "level": "warn",
-                "buttons": [
-                    "ok",
-                    "cancel"
-                ]
+                "buttons": ["ok", "cancel"]
             },
             {
                 "condition": {
                     "operand": "and",
-                    "rules": [
-                        "oldVersion<1.0.0",
-                        "newVersion>=1.0.0"
-                    ]
+                    "rules": ["oldVersion<1.0.0", "newVersion>=1.0.0"]
                 },
                 "title": {
                     "en": "Important notice!",
@@ -184,10 +149,7 @@
                     "zh-cn": "数据点的状态角色已更正，请停止适配器，删除ecoflow-mqtt实例的所有对象并重新启动适配器。数据点被重新创建。"
                 },
                 "level": "warn",
-                "buttons": [
-                    "ok",
-                    "cancel"
-                ]
+                "buttons": ["ok", "cancel"]
             }
         ],
         "titleLang": {
@@ -216,19 +178,8 @@
             "uk": "підключається до продуктів ecoflow",
             "zh-cn": "连接至 Ecoflow 产品"
         },
-        "authors": [
-            "foxthefox <foxthefox@wysiwis.net>"
-        ],
-        "keywords": [
-            "ecoflow",
-            "powerstream",
-            "powerstation",
-            "delta",
-            "river",
-            "powerkit",
-            "powerocaen",
-            "shp"
-        ],
+        "authors": ["foxthefox <foxthefox@wysiwis.net>"],
+        "keywords": ["ecoflow", "powerstream", "powerstation", "delta", "river", "powerkit", "powerocaen", "shp"],
         "platform": "Javascript/Node.js",
         "icon": "ecoflow-mqtt.png",
         "enabled": true,
@@ -270,11 +221,7 @@
         "haMqttUserId",
         "haMqttUserPWd"
     ],
-    "encryptedNative": [
-        "userPassword",
-        "mqttPwd",
-        "haMqttUserPWd"
-    ],
+    "encryptedNative": ["userPassword", "mqttPwd", "haMqttUserPWd"],
     "native": {
         "userName": "userEmail",
         "userPassword": "pw",

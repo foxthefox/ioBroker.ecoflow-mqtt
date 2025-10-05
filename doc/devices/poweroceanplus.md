@@ -1,5 +1,5 @@
 # States for  POWEROCEANPLUS
-### version: 1.4.6
+### version: 1.4.7
 
 [statusReportBattery1](#statusReportBattery1)
 
@@ -64,7 +64,7 @@
 |bpChgSop|0 | 100 | % | 1 |  ChgSop |
 |bpDsgSop|0 | 100 | % | 1 |  DsgSop |
 |bpRemainWatth|0 | 7000 | Wh | 1 |  Remain energy |
-|bpTargetSoc|0 | 100 | % | 1 |  Target SOC |
+|bpTargetSoc|0 | 101 | % | 1 |  Target SOC |
 |bpDiffSoc|0 | 100 | % | 1 |  Diff. SOC |
 |bpMaxSoc|0 | 100 | % | 1 |  Maximum SOC |
 |bpMinSoc|0 | 100 | % | 1 |  Minimum SOC |
@@ -153,7 +153,7 @@
 |bpChgSop|0 | 100 | % | 1 |  ChgSop |
 |bpDsgSop|0 | 100 | % | 1 |  DsgSop |
 |bpRemainWatth|0 | 7000 | Wh | 1 |  Remain energy |
-|bpTargetSoc|0 | 100 | % | 1 |  Target SOC |
+|bpTargetSoc|0 | 101 | % | 1 |  Target SOC |
 |bpDiffSoc|0 | 100 | % | 1 |  Diff. SOC |
 |bpMaxSoc|0 | 100 | % | 1 |  Maximum SOC |
 |bpMinSoc|0 | 100 | % | 1 |  Minimum SOC |
@@ -242,7 +242,7 @@
 |bpChgSop|0 | 100 | % | 1 |  ChgSop |
 |bpDsgSop|0 | 100 | % | 1 |  DsgSop |
 |bpRemainWatth|0 | 7000 | Wh | 1 |  Remain energy |
-|bpTargetSoc|0 | 100 | % | 1 |  Target SOC |
+|bpTargetSoc|0 | 101 | % | 1 |  Target SOC |
 |bpDiffSoc|0 | 100 | % | 1 |  Diff. SOC |
 |bpMaxSoc|0 | 100 | % | 1 |  Maximum SOC |
 |bpMinSoc|0 | 100 | % | 1 |  Minimum SOC |
@@ -331,7 +331,7 @@
 |bpChgSop|0 | 100 | % | 1 |  ChgSop |
 |bpDsgSop|0 | 100 | % | 1 |  DsgSop |
 |bpRemainWatth|0 | 7000 | Wh | 1 |  Remain energy |
-|bpTargetSoc|0 | 100 | % | 1 |  Target SOC |
+|bpTargetSoc|0 | 101 | % | 1 |  Target SOC |
 |bpDiffSoc|0 | 100 | % | 1 |  Diff. SOC |
 |bpMaxSoc|0 | 100 | % | 1 |  Maximum SOC |
 |bpMinSoc|0 | 100 | % | 1 |  Minimum SOC |
@@ -420,7 +420,7 @@
 |bpChgSop|0 | 100 | % | 1 |  ChgSop |
 |bpDsgSop|0 | 100 | % | 1 |  DsgSop |
 |bpRemainWatth|0 | 7000 | Wh | 1 |  Remain energy |
-|bpTargetSoc|0 | 100 | % | 1 |  Target SOC |
+|bpTargetSoc|0 | 101 | % | 1 |  Target SOC |
 |bpDiffSoc|0 | 100 | % | 1 |  Diff. SOC |
 |bpMaxSoc|0 | 100 | % | 1 |  Maximum SOC |
 |bpMinSoc|0 | 100 | % | 1 |  Minimum SOC |
@@ -509,7 +509,7 @@
 |bpChgSop|0 | 100 | % | 1 |  ChgSop |
 |bpDsgSop|0 | 100 | % | 1 |  DsgSop |
 |bpRemainWatth|0 | 7000 | Wh | 1 |  Remain energy |
-|bpTargetSoc|0 | 100 | % | 1 |  Target SOC |
+|bpTargetSoc|0 | 101 | % | 1 |  Target SOC |
 |bpDiffSoc|0 | 100 | % | 1 |  Diff. SOC |
 |bpMaxSoc|0 | 100 | % | 1 |  Maximum SOC |
 |bpMinSoc|0 | 100 | % | 1 |  Minimum SOC |
@@ -580,17 +580,17 @@
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |pcsAPhase_volt|0 | 250 | V | 1 |  Phase A voltage |
 |pcsAPhase_amp|0 | 20 | A | 1 |  Phase A current |
-|pcsAPhase_actPwr|-2000 | 5000 | W | 1 |  Phase A active power |
+|pcsAPhase_actPwr|-5000 | 5000 | W | 1 |  Phase A active power |
 |pcsAPhase_reactPwr|-1000 | 5000 | var | 1 |  Phase A reactive power |
 |pcsAPhase_apparentPwr|0 | 5000 | VA | 1 |  Phase A apparent power |
 |pcsBPhase_volt|0 | 250 | V | 1 |  Phase B voltage |
 |pcsBPhase_amp|0 | 20 | A | 1 |  Phase B current |
-|pcsBPhase_actPwr|-2000 | 5000 | W | 1 |  Phase B active power |
+|pcsBPhase_actPwr|-5000 | 5000 | W | 1 |  Phase B active power |
 |pcsBPhase_reactPwr|-1000 | 15000 | var | 1 |  Phase B reactive power |
 |pcsBPhase_apparentPwr|0 | 5000 | VA | 1 |  Phase B apparent power |
 |pcsCPhase_volt|0 | 250 | V | 1 |  Phase C voltage |
 |pcsCPhase_amp|0 | 20 | A | 1 |  Phase C current |
-|pcsCPhase_actPwr|-2000 | 5000 | W | 1 |  Phase C active power |
+|pcsCPhase_actPwr|-5000 | 5000 | W | 1 |  Phase C active power |
 |pcsCPhase_reactPwr|-1000 | 5000 | var | 1 |  Phase C reactive power |
 |pcsCPhase_apparentPwr|0 | 5000 | VA | 1 |  Phase C apparent power |
 |mpptHeartBeat_mpptPv_vol0|0 | 1000 | V | 1 |  Solar 1 voltage |
@@ -610,7 +610,7 @@
 |pcsAcFreq|0 | 65 | Hz | 1 |  pcs ac freq |
 |pcsBusVolt|0 | 900 | V | 1 |  pcs bus volt |
 |pcsLeakAmp|0 | 1000 | mA | 1 |  pcs leak amp |
-|pcsBpPower|0 | 7000 | W | 1 |  pcs bp power |
+|pcsBpPower|0 | 10000 | W | 1 |  pcs bp power |
 |pcsBpPowerChgLimit|0 | 10000 | Wh | 1 |  pcs bp power chg limit |
 |pcsPfcCurReal|0 | 10 | A | 1 |  pcs pfc cur real |
 |pcsPfcCurRef|0 | 10 | A | 1 |  pcs pfc cur ref |

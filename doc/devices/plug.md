@@ -1,5 +1,5 @@
 # States for  PLUG
-### version: 1.4.6
+### version: 1.4.7
 
 [plug_heartbeat](#plug_heartbeat)
 

@@ -361,9 +361,14 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 
 ## Changelog
 
-### 1.4.7 (WIP)
+### 1.4.8 (WIP)
 
 - (foxthefox) new datapoints Delta2max
+
+### 1.4.7 (npm)
+
+- (foxthefox) poweroceanplus, set mpptPwr/sysGridPwr/bpPwr values to 0, when the entity is not sent within the telegram
+- (foxthefox) poweroceanplus, bpTargetSoc max new set to 101%, pcsBpPower max=10kW, pcsXPhase_actPwr min=-5kW
 
 ### 1.4.6 (npm)
 

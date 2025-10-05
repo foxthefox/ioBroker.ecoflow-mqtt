@@ -120,13 +120,13 @@ acknowledge the connection to the mqtt broker
 check or enable the status messages of the broker
 
 got to Devices&services -> MQTT -> settings
-![mqtt_Settings](Bildschirmfoto 2025-09-12%20um%2021.49.50.png)
+![mqtt_Settings](Bildschirmfoto%202025-09-12%20um%2021.49.50.png)
 
 got to "configuration MQTT options"
-![mqtt_configs](Bildschirmfoto 2025-09-12%20um%2021.50.15.png)
+![mqtt_configs](Bildschirmfoto%202025-09-12%20um%2021.50.15.png)
 
 got to settings
-![mqtt_msg_enable](Bildschirmfoto 2025-09-12%20um%2021.48.03.png)
+![mqtt_msg_enable](Bildschirmfoto%202025-09-12%20um%2021.48.03.png)
 
 if ioBroker adapter is running and connected you see:
 
