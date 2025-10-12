@@ -1,5 +1,5 @@
 # States for  SHELLY3EM
-### version: 1.4.7
+### version: 1.4.8
 
 [emeters](#emeters)
 
