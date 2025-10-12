@@ -1,5 +1,5 @@
 # States for  POWEROCEANPLUS
-### version: 1.4.7
+### version: 1.4.8
 
 [statusReportBattery1](#statusReportBattery1)
 
@@ -606,7 +606,7 @@
 |pcsLoadInfo_pwr|0 | 10000 | W | 1 |  load power |
 |bpRemainWatth|0 |  n/a | kWh | 0.001 |  bp remain watth |
 |bpDsgTime|0 |  n/a | min | 1 |  bp dsg time |
-|pcsActPwr|0 | 7000 | W | 1 |  pcs act pwr |
+|pcsActPwr|0 | 20000 | W | 1 |  pcs act pwr |
 |pcsAcFreq|0 | 65 | Hz | 1 |  pcs ac freq |
 |pcsBusVolt|0 | 900 | V | 1 |  pcs bus volt |
 |pcsLeakAmp|0 | 1000 | mA | 1 |  pcs leak amp |

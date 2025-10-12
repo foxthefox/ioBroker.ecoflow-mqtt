@@ -361,9 +361,15 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 
 ## Changelog
 
-### 1.4.8 (WIP)
+### 1.4.9 (WIP)
 
 - (foxthefox) new datapoints Delta2max
+
+### 1.4.8 (npm)
+
+- (foxthefox) poweroceanplus set hrPwr/fromPv/romBat/fromGrid values to 0 for non transmitted datapoints in HeatingRodEnergyStreamShow
+- (foxthefox) poweroceanplus pcsActPwr max 20kW
+- (foxthefox) dev dependencies cleanup
 
 ### 1.4.7 (npm)
 
