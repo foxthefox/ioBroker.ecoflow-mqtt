@@ -579,17 +579,17 @@
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |pcsAPhase_volt|0 | 250 | V | 1 |  Phase A voltage |
-|pcsAPhase_amp|0 | 20 | A | 1 |  Phase A current |
+|pcsAPhase_amp|0 | 60 | A | 1 |  Phase A current |
 |pcsAPhase_actPwr|-5000 | 5000 | W | 1 |  Phase A active power |
 |pcsAPhase_reactPwr|-1000 | 5000 | var | 1 |  Phase A reactive power |
 |pcsAPhase_apparentPwr|0 | 5000 | VA | 1 |  Phase A apparent power |
 |pcsBPhase_volt|0 | 250 | V | 1 |  Phase B voltage |
-|pcsBPhase_amp|0 | 20 | A | 1 |  Phase B current |
+|pcsBPhase_amp|0 | 60 | A | 1 |  Phase B current |
 |pcsBPhase_actPwr|-5000 | 5000 | W | 1 |  Phase B active power |
 |pcsBPhase_reactPwr|-1000 | 15000 | var | 1 |  Phase B reactive power |
 |pcsBPhase_apparentPwr|0 | 5000 | VA | 1 |  Phase B apparent power |
 |pcsCPhase_volt|0 | 250 | V | 1 |  Phase C voltage |
-|pcsCPhase_amp|0 | 20 | A | 1 |  Phase C current |
+|pcsCPhase_amp|0 | 60 | A | 1 |  Phase C current |
 |pcsCPhase_actPwr|-5000 | 5000 | W | 1 |  Phase C active power |
 |pcsCPhase_reactPwr|-1000 | 5000 | var | 1 |  Phase C reactive power |
 |pcsCPhase_apparentPwr|0 | 5000 | VA | 1 |  Phase C apparent power |
