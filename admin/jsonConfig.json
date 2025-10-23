@@ -1,1689 +1,1693 @@
 {
-	"i18n": true,
-	"type": "tabs",
-	"tabsStyle": {
-		"width": "calc(100% - 100px)"
-	},
-	"items": {
-		"tab_1": {
-			"type": "panel",
-			"label": "Credentials & Debug Settings",
-			"items": {
-				"_userdata": {
-					"newLine": true,
-					"type": "header",
-					"text": "User Data",
-					"xs": 12,
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"xl": 12,
-					"size": 3
-				},
-				"userName": {
-					"type": "text",
-					"label": "ecoflow account name / email  ",
-					"newLine": false,
-					"xs": 12,
-					"sm": 12,
-					"md": 6,
-					"lg": 6,
-					"xl": 4
-				},
-				"userPassword": {
-					"type": "password",
-					"visible": true,
-					"label": "user password",
-					"newLine": false,
-					"xs": 12,
-					"sm": 12,
-					"md": 6,
-					"lg": 6,
-					"xl": 4
-				},
-				"_create": {
-					"type": "sendTo",
-					"label": "Create Login Data",
-					"command": "create",
-					"variant": "outlined",
-					"jsonData": "{\"user\": \"${data.userName}\", \"pass\": \"${data.userPassword}\"}",
-					"useNative": true,
-					"xs": 12,
-					"sm": 12,
-					"md": 6,
-					"lg": 6,
-					"xl": 4
-				},
-				"_connection": {
-					"newLine": true,
-					"type": "header",
-					"text": "Connection settings",
-					"xs": 12,
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"xl": 12,
-					"size": 3
-				},
-				"mqttUrl": {
-					"type": "text",
-					"label": "mqtt broker",
-					"newLine": false,
-					"xs": 12,
-					"sm": 12,
-					"md": 6,
-					"lg": 6,
-					"xl": 4
-				},
-				"mqttPort": {
-					"type": "text",
-					"label": "mqtt port",
-					"newLine": false,
-					"xs": 12,
-					"sm": 12,
-					"md": 6,
-					"lg": 6,
-					"xl": 4
-				},
-				"_auth": {
-					"newLine": true,
-					"type": "header",
-					"text": "MQTT Authentication settings",
-					"xs": 12,
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"xl": 12,
-					"size": 3
-				},
-				"mqttUserId": {
-					"type": "text",
-					"label": "mqtt userId",
-					"newLine": false,
-					"xs": 12,
-					"sm": 12,
-					"md": 6,
-					"lg": 4,
-					"xl": 4
-				},
-				"mqttUserName": {
-					"type": "text",
-					"label": "mqtt user name",
-					"newLine": false,
-					"xs": 12,
-					"sm": 12,
-					"md": 6,
-					"lg": 4,
-					"xl": 4
-				},
-				"mqttPwd": {
-					"type": "password",
-					"visible": true,
-					"label": "mqtt pwd",
-					"newLine": true,
-					"xs": 12,
-					"sm": 12,
-					"md": 6,
-					"lg": 4,
-					"xl": 4
-				},
-				"mqttClientId": {
-					"type": "text",
-					"label": "mqtt clientId",
-					"newLine": false,
-					"xs": 12,
-					"sm": 12,
-					"md": 6,
-					"lg": 4,
-					"xl": 4
-				},
-				"enableMqttReconnect": {
-					"type": "checkbox",
-					"label": "enable check for reconnects (10min)",
-					"newLine": true,
-					"xs": 12,
-					"sm": 12,
-					"md": 6,
-					"lg": 4,
-					"xl": 4
-				},
-				"_test": {
-					"type": "sendTo",
-					"hidden": "true",
-					"label": "Test connection",
-					"command": "test",
-					"variant": "contained",
-					"jsonData": "{\"user\": \"${data.mqttUserName}\", \"pass\": \"${data.mqttPwd}\", \"url\": \"${data.mqttUrl}\", \"port\": ${data.mqttPort}, \"clientId\": \"${data.mqttClientId}\"}",
-					"xs": 12,
-					"sm": 12,
-					"md": 6,
-					"lg": 6,
-					"xl": 4
-				},
-				"_debugcommon": {
-					"newLine": true,
-					"type": "header",
-					"text": "common DEBUG settings",
-					"xs": 12,
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"xl": 12,
-					"size": 3
-				},
-				"msgStateCreation": {
-					"type": "checkbox",
-					"label": "msgStateCreation",
-					"xs": 12,
-					"sm": 12,
-					"md": 6,
-					"lg": 4,
-					"xl": 4
-				},
-				"getQuota": {
-					"type": "sendTo",
-					"hidden": "false",
-					"label": "Debug Quotas",
-					"command": "quotajson",
-					"variant": "contained",
-					"jsonData": "{\"quota\": \"now\"}",
-					"xs": 12,
-					"sm": 12,
-					"md": 6,
-					"lg": 4,
-					"xl": 4
-				},
-				"getQuota2": {
-					"type": "sendTo",
-					"hidden": "false",
-					"label": "Debug unkn. msg",
-					"command": "quotabuf",
-					"variant": "contained",
-					"jsonData": "{\"quota\": \"now\"}",
-					"xs": 12,
-					"sm": 12,
-					"md": 6,
-					"lg": 4,
-					"xl": 4
-				},
-				"_debugoptions": {
-					"newLine": true,
-					"type": "header",
-					"text": "Selection of specific DEBUG settings (only effective on the device where debug is enabled)",
-					"xs": 12,
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"xl": 12,
-					"size": 3
-				},
-				"_introDebug": {
-					"type": "staticText",
-					"text": "If you are unsure, tick all checkboxes for all debug messages. (it is only effective when the adapter is in debug mode (see header of this admin page and the far right setting))",
-					"newLine": true,
-					"xs": 12,
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"xl": 12
-				},
-				"msgUpdate": {
-					"newLine": true,
-					"type": "checkbox",
-					"label": "msgUpdate",
-					"xs": 12,
-					"sm": 12,
-					"md": 6,
-					"lg": 4,
-					"xl": 4
-				},
-				"msgUpdateValue": {
-					"type": "checkbox",
-					"label": "msgUpdateValue",
-					"xs": 12,
-					"sm": 12,
-					"md": 6,
-					"lg": 4,
-					"xl": 4
-				},
-				"msgSetGet": {
-					"type": "checkbox",
-					"label": "msgSetGet",
-					"xs": 12,
-					"sm": 12,
-					"md": 6,
-					"lg": 4,
-					"xl": 4
-				},
-				"msgCmd": {
-					"type": "checkbox",
-					"label": "msgCmd",
-					"xs": 12,
-					"sm": 12,
-					"md": 6,
-					"lg": 4,
-					"xl": 4
-				}
-			}
-		},
-		"tab_2": {
-			"type": "panel",
-			"label": "Device(s) Configuration",
-			"items": {
-				"_pstremHeader": {
-					"newLine": true,
-					"type": "header",
-					"text": "(Power) Stream Configuration",
-					"xs": 12,
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"xl": 12,
-					"size": 3
-				},
-				"_introTable1Txt1": {
-					"type": "staticText",
-					"text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have no device, delete the added line item",
-					"xs": 12,
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"xl": 12,
-					"newLine": true
-				},
-				"pstreams": {
-					"xs": 12,
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"xl": 12,
-					"newLine": true,
-					"type": "table",
-					"items": [
-						{
-							"type": "text",
-							"width": "15%",
-							"title": "name",
-							"attr": "devName",
-							"filter": false,
-							"sort": false,
-							"default": "My Stream1"
-						},
-						{
-							"type": "text",
-							"width": "15%",
-							"title": "id",
-							"attr": "devId",
-							"filter": false,
-							"sort": false,
-							"default": "HW51.../BK..."
-						},
-						{
-							"type": "select",
-							"width": "10%",
-							"options": [
-								{
-									"value": "none",
-									"label": "none"
-								},
-								{
-									"value": "pstream600",
-									"label": "Powerstream 600W"
-								},
-								{
-									"value": "pstream800",
-									"label": "Powerstream 800W"
-								},
-								{
-									"value": "stream_inverter",
-									"label": "Stream Inverter"
-								},
-								{
-									"value": "stream_ac_pro",
-									"label": "Stream AC Pro"
-								},
-								{
-									"value": "stream_ultra",
-									"label": "Stream Ultra"
-								},
-								{
-									"value": "unknown",
-									"label": "Stream Ultra X (unkn)"
-								}
-							],
-							"title": "(Power)Stream Type",
-							"attr": "devType",
-							"filter": false,
-							"sort": false,
-							"default": "none"
-						},
-						{
-							"type": "checkbox",
-							"title": "debug enable",
-							"width": "5%",
-							"attr": "debugEnable",
-							"filter": false,
-							"sort": false,
-							"default": false
-						},
-						{
-							"type": "checkbox",
-							"title": "HA enable",
-							"width": "5%",
-							"attr": "haEnable",
-							"filter": false,
-							"sort": false,
-							"default": false
-						}
-					]
-				},
-				"_pstationHeader": {
-					"newLine": true,
-					"type": "header",
-					"text": "Power Station Configuration",
-					"xs": 12,
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"xl": 12,
-					"size": 3
-				},
-				"_introTable1Txt2": {
-					"type": "staticText",
-					"text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have additional batteries connected, check the slave port#. If you have no device, delete the added line item",
-					"xs": 12,
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"xl": 12,
-					"newLine": true
-				},
-				"pstations": {
-					"xs": 12,
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"xl": 12,
-					"newLine": true,
-					"type": "table",
-					"items": [
-						{
-							"type": "text",
-							"attr": "devName",
-							"width": "15%",
-							"title": "Name",
-							"filter": false,
-							"sort": false,
-							"default": "My Station#1"
-						},
-						{
-							"type": "text",
-							"width": "15%",
-							"title": "id",
-							"attr": "devId",
-							"filter": false,
-							"sort": false,
-							"default": "Dxxxx/Rxxxx"
-						},
-						{
-							"type": "select",
-							"width": "10%",
-							"options": [
-								{
-									"value": "none",
-									"label": "none"
-								},
-								{
-									"value": "deltamini",
-									"label": "Delta Mini (882Wh)"
-								},
-								{
-									"value": "delta",
-									"label": "Delta (1260Wh)"
-								},
-								{
-									"value": "deltamax",
-									"label": "Delta Max (1600/2000)"
-								},
-								{
-									"value": "deltapro",
-									"label": "Delta Pro"
-								},
-								{
-									"value": "delta2",
-									"label": "Delta 2"
-								},
-								{
-									"value": "delta2max",
-									"label": "Delta 2 Max"
-								},
-								{
-									"value": "delta3",
-									"label": "Delta 3"
-								},
-								{
-									"value": "delta3plus",
-									"label": "Delta 3 Plus"
-								},
-								{
-									"value": "deltapro3",
-									"label": "Delta 3 Pro"
-								},
-								{
-									"value": "deltaproultra",
-									"label": "Delta Pro Ultra"
-								},
-								{
-									"value": "rivermax",
-									"label": "River Max"
-								},
-								{
-									"value": "riverpro",
-									"label": "River Pro"
-								},
-								{
-									"value": "river2max",
-									"label": "River 2 Max"
-								},
-								{
-									"value": "river2pro",
-									"label": "River 2 Pro"
-								},
-								{
-									"value": "river3",
-									"label": "River 3"
-								},
-								{
-									"value": "river3plus",
-									"label": "River 3 Plus"
-								}
-							],
-							"title": "Power Station Type",
-							"attr": "devType",
-							"filter": false,
-							"sort": false,
-							"default": "none"
-						},
-						{
-							"type": "checkbox",
-							"title": "debug enable",
-							"width": "5%",
-							"attr": "debugEnable",
-							"filter": false,
-							"sort": false,
-							"default": false
-						},
-						{
-							"type": "checkbox",
-							"title": "HA enable",
-							"width": "5%",
-							"attr": "haEnable",
-							"filter": false,
-							"sort": false,
-							"default": false
-						},
-						{
-							"type": "checkbox",
-							"title": "Slave 1",
-							"width": "5%",
-							"hidden": "data.devType !== 'deltapro' && data.devType !== 'deltamax' && data.devType !== 'delta2max' && data.devType !== 'delta' && data.devType !== 'delta2' && data.devType !== 'deltaproultra' && data.devType !== 'deltapro3' && data.devType !== 'delta3plus' && data.devType !== 'river3plus'",
-							"attr": "pstationsSlave1",
-							"filter": false,
-							"sort": false,
-							"default": false
-						},
-						{
-							"type": "checkbox",
-							"title": "Slave 2",
-							"width": "5%",
-							"hidden": "data.devType !== 'deltapro' && data.devType !== 'deltamax' && data.devType !== 'delta2max' && data.devType !== 'deltaproultra' && data.devType !== 'deltapro3'",
-							"attr": "pstationsSlave2",
-							"filter": false,
-							"sort": false,
-							"default": false
-						},
-						{
-							"type": "checkbox",
-							"title": "Slave 3",
-							"width": "5%",
-							"hidden": "data.devType !== 'deltaproultra'",
-							"attr": "pstationsSlave3",
-							"filter": false,
-							"sort": false,
-							"default": false
-						}
-					]
-				},
-				"_plugHeader": {
-					"newLine": true,
-					"type": "header",
-					"text": "Plug Configuration",
-					"xs": 12,
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"xl": 12,
-					"size": 3
-				},
-				"_introTable1Txt3": {
-					"type": "staticText",
-					"text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have no device, delete the added line item",
-					"xs": 12,
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"xl": 12,
-					"newLine": true
-				},
-				"plugs": {
-					"xs": 12,
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"xl": 12,
-					"newLine": true,
-					"type": "table",
-					"items": [
-						{
-							"type": "text",
-							"width": "15%",
-							"title": "name",
-							"attr": "devName",
-							"filter": false,
-							"sort": false,
-							"default": "My Plug1"
-						},
-						{
-							"type": "text",
-							"width": "15%",
-							"title": "id",
-							"attr": "devId",
-							"filter": false,
-							"sort": false,
-							"default": "HW52"
-						},
-						{
-							"type": "select",
-							"width": "10%",
-							"options": [
-								{
-									"value": "none",
-									"label": "none"
-								},
-								{
-									"value": "plug",
-									"label": "Plug"
-								},
-								{
-									"value": "unknownjson",
-									"label": "EF x Shelly Smart Plug"
-								}
-							],
-							"title": "Plug Type",
-							"attr": "devType",
-							"filter": false,
-							"sort": false,
-							"default": "none"
-						},
-						{
-							"type": "checkbox",
-							"title": "debug enable",
-							"width": "5%",
-							"attr": "debugEnable",
-							"filter": false,
-							"sort": false,
-							"default": false
-						},
-						{
-							"type": "checkbox",
-							"title": "HA enable",
-							"width": "5%",
-							"attr": "haEnable",
-							"filter": false,
-							"sort": false,
-							"default": false
-						}
-					]
-				},
-				"_shellyHeader": {
-					"newLine": true,
-					"type": "header",
-					"text": "Smartmeter Configuration",
-					"xs": 12,
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"xl": 12,
-					"size": 3
-				},
-				"_shellyTable1Txt1": {
-					"type": "staticText",
-					"text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have no device, delete the added line item",
-					"xs": 12,
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"xl": 12,
-					"newLine": true
-				},
-				"shellies": {
-					"xs": 12,
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"xl": 12,
-					"newLine": true,
-					"type": "table",
-					"items": [
-						{
-							"type": "text",
-							"width": "15%",
-							"title": "name",
-							"attr": "devName",
-							"filter": false,
-							"sort": false,
-							"default": "My device1"
-						},
-						{
-							"type": "text",
-							"width": "15%",
-							"title": "id",
-							"attr": "devId",
-							"filter": false,
-							"sort": false,
-							"default": "1234../BK12..."
-						},
-						{
-							"type": "select",
-							"width": "10%",
-							"options": [
-								{
-									"value": "none",
-									"label": "none"
-								},
-								{
-									"value": "shelly3em",
-									"label": "Shelly3EM"
-								},
-								{
-									"value": "smartmeter",
-									"label": "EF smartmeter"
-								},
-								{
-									"value": "unknownjson",
-									"label": "EF x Shelly Pro3EM"
-								}
-							],
-							"title": "Type",
-							"attr": "devType",
-							"filter": false,
-							"sort": false,
-							"default": "none"
-						},
-						{
-							"type": "checkbox",
-							"title": "debug enable",
-							"width": "5%",
-							"attr": "debugEnable",
-							"filter": false,
-							"sort": false,
-							"default": false
-						},
-						{
-							"type": "checkbox",
-							"title": "HA enable",
-							"width": "5%",
-							"attr": "haEnable",
-							"filter": false,
-							"sort": false,
-							"default": false
-						}
-					]
-				},
-				"_generatorHeader": {
-					"newLine": true,
-					"type": "header",
-					"text": "Generator Configuration",
-					"xs": 12,
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"xl": 12,
-					"size": 3
-				},
-				"_introTable2Txt2": {
-					"type": "staticText",
-					"text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have no device, delete the added line item",
-					"xs": 12,
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"xl": 12,
-					"newLine": true
-				},
-				"generators": {
-					"xs": 12,
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"xl": 12,
-					"newLine": true,
-					"type": "table",
-					"items": [
-						{
-							"type": "text",
-							"width": "15%",
-							"title": "name",
-							"attr": "devName",
-							"filter": false,
-							"sort": false,
-							"default": "My Gen1"
-						},
-						{
-							"type": "text",
-							"width": "15%",
-							"title": "id",
-							"attr": "devId",
-							"filter": false,
-							"sort": false,
-							"default": "DGEB"
-						},
-						{
-							"type": "select",
-							"width": "10%",
-							"options": [
-								{
-									"value": "none",
-									"label": "none"
-								},
-								{
-									"value": "generator",
-									"label": "Smart Generator"
-								},
-								{
-									"value": "unknown",
-									"label": "Smart Generator 4000W dual fuel"
-								}
-							],
-							"title": "Generator Type",
-							"attr": "devType",
-							"filter": false,
-							"sort": false,
-							"default": "none"
-						},
-						{
-							"type": "checkbox",
-							"title": "debug enable",
-							"width": "5%",
-							"attr": "debugEnable",
-							"filter": false,
-							"sort": false,
-							"default": false
-						},
-						{
-							"type": "checkbox",
-							"title": "HA enable",
-							"width": "5%",
-							"attr": "haEnable",
-							"filter": false,
-							"sort": false,
-							"default": false
-						}
-					]
-				},
-				"_powerkitHeader": {
-					"newLine": true,
-					"type": "header",
-					"text": "Power Kit Configuration",
-					"xs": 12,
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"xl": 12,
-					"size": 3
-				},
-				"_introPowerkitTxt2": {
-					"type": "staticText",
-					"text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have more than one battery check the slave1/slave2. If you have no device, delete the added line item",
-					"xs": 12,
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"xl": 12,
-					"newLine": true
-				},
-				"powerkits": {
-					"xs": 12,
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"xl": 12,
-					"newLine": true,
-					"type": "table",
-					"items": [
-						{
-							"type": "text",
-							"width": "15%",
-							"title": "name",
-							"attr": "devName",
-							"filter": false,
-							"sort": false,
-							"default": "My Powerkit"
-						},
-						{
-							"type": "text",
-							"width": "15%",
-							"title": "id",
-							"attr": "devId",
-							"filter": false,
-							"sort": false,
-							"default": "M10...."
-						},
-						{
-							"type": "select",
-							"width": "10%",
-							"options": [
-								{
-									"value": "none",
-									"label": "none"
-								},
-								{
-									"value": "powerkitbp2000",
-									"label": "Powerkit BP2000"
-								},
-								{
-									"value": "powerkitbp5000",
-									"label": "Powerkit BP5000"
-								}
-							],
-							"title": "Power Kit Type",
-							"attr": "devType",
-							"filter": false,
-							"sort": false,
-							"default": "none"
-						},
-						{
-							"type": "checkbox",
-							"title": "debug enable",
-							"width": "5%",
-							"attr": "debugEnable",
-							"filter": false,
-							"sort": false,
-							"default": false
-						},
-						{
-							"type": "checkbox",
-							"title": "HA enable",
-							"width": "5%",
-							"attr": "haEnable",
-							"filter": false,
-							"sort": false,
-							"default": false
-						},
-						{
-							"type": "checkbox",
-							"title": "add BP 1",
-							"width": "5%",
-							"attr": "pstationsSlave1",
-							"filter": false,
-							"sort": false,
-							"default": false
-						},
-						{
-							"type": "checkbox",
-							"title": "add BP 2",
-							"width": "5%",
-							"attr": "pstationsSlave2",
-							"filter": false,
-							"sort": false,
-							"default": false
-						}
-					]
-				},
-				"_shpHeader": {
-					"newLine": true,
-					"type": "header",
-					"text": "Smart Home Panel Configuration",
-					"xs": 12,
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"xl": 12,
-					"size": 3
-				},
-				"_introTable3Txt1": {
-					"type": "staticText",
-					"text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have no device, delete the added line item",
-					"xs": 12,
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"xl": 12,
-					"newLine": true
-				},
-				"panels": {
-					"xs": 12,
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"xl": 12,
-					"newLine": true,
-					"type": "table",
-					"items": [
-						{
-							"type": "text",
-							"width": "15%",
-							"title": "name",
-							"attr": "devName",
-							"filter": false,
-							"sort": false,
-							"default": "My SHP1"
-						},
-						{
-							"type": "text",
-							"width": "15%",
-							"title": "id",
-							"attr": "devId",
-							"filter": false,
-							"sort": false,
-							"default": "SP10"
-						},
-						{
-							"type": "select",
-							"width": "10%",
-							"options": [
-								{
-									"value": "none",
-									"label": "none"
-								},
-								{
-									"value": "panel",
-									"label": "Smart Home Panel"
-								},
-								{
-									"value": "panel2",
-									"label": "Smart Home Panel 2"
-								}
-							],
-							"title": "SHP Type",
-							"attr": "devType",
-							"filter": false,
-							"sort": false,
-							"default": "none"
-						},
-						{
-							"type": "checkbox",
-							"title": "debug enable",
-							"width": "5%",
-							"attr": "debugEnable",
-							"filter": false,
-							"sort": false,
-							"default": false
-						},
-						{
-							"type": "checkbox",
-							"title": "HA enable",
-							"width": "5%",
-							"attr": "haEnable",
-							"filter": false,
-							"sort": false,
-							"default": false
-						}
-					]
-				},
-				"_waveHeader": {
-					"newLine": true,
-					"type": "header",
-					"text": "Wave Configuration",
-					"xs": 12,
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"xl": 12,
-					"size": 3
-				},
-				"_introTable4Txt1": {
-					"type": "staticText",
-					"text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have no device, delete the added line item",
-					"xs": 12,
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"xl": 12,
-					"newLine": true
-				},
-				"waves": {
-					"xs": 12,
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"xl": 12,
-					"newLine": true,
-					"type": "table",
-					"items": [
-						{
-							"type": "text",
-							"width": "15%",
-							"title": "name",
-							"attr": "devName",
-							"filter": false,
-							"sort": false,
-							"default": "My Wave1"
-						},
-						{
-							"type": "text",
-							"width": "15%",
-							"title": "id",
-							"attr": "devId",
-							"filter": false,
-							"sort": false,
-							"default": "KT21.."
-						},
-						{
-							"type": "select",
-							"width": "10%",
-							"options": [
-								{
-									"value": "none",
-									"label": "none"
-								},
-								{
-									"value": "wave2",
-									"label": "Wave 2 Air Con"
-								},
-								{
-									"value": "wave3",
-									"label": "Wave 3 Air Con"
-								}
-							],
-							"title": "Wave Type",
-							"attr": "devType",
-							"filter": false,
-							"sort": false,
-							"default": "none"
-						},
-						{
-							"type": "checkbox",
-							"title": "debug enable",
-							"width": "5%",
-							"attr": "debugEnable",
-							"filter": false,
-							"sort": false,
-							"default": false
-						},
-						{
-							"type": "checkbox",
-							"title": "HA enable",
-							"width": "5%",
-							"attr": "haEnable",
-							"filter": false,
-							"sort": false,
-							"default": false
-						}
-					]
-				},
-				"_glacierHeader": {
-					"newLine": true,
-					"type": "header",
-					"text": "Glacier Configuration",
-					"xs": 12,
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"xl": 12,
-					"size": 3
-				},
-				"_glacierTable1Txt1": {
-					"type": "staticText",
-					"text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have no device, delete the added line item",
-					"xs": 12,
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"xl": 12,
-					"newLine": true
-				},
-				"glaciers": {
-					"xs": 12,
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"xl": 12,
-					"newLine": true,
-					"type": "table",
-					"items": [
-						{
-							"type": "text",
-							"width": "15%",
-							"title": "name",
-							"attr": "devName",
-							"filter": false,
-							"sort": false,
-							"default": "My Glacier1"
-						},
-						{
-							"type": "text",
-							"width": "15%",
-							"title": "id",
-							"attr": "devId",
-							"filter": false,
-							"sort": false,
-							"default": "BX11.."
-						},
-						{
-							"type": "select",
-							"width": "10%",
-							"options": [
-								{
-									"value": "none",
-									"label": "none"
-								},
-								{
-									"value": "glacier",
-									"label": "Glacier Cooler"
-								}
-							],
-							"title": "Glacier Type",
-							"attr": "devType",
-							"filter": false,
-							"sort": false,
-							"default": "none"
-						},
-						{
-							"type": "checkbox",
-							"title": "debug enable",
-							"width": "5%",
-							"attr": "debugEnable",
-							"filter": false,
-							"sort": false,
-							"default": false
-						},
-						{
-							"type": "checkbox",
-							"title": "HA enable",
-							"width": "5%",
-							"attr": "haEnable",
-							"filter": false,
-							"sort": false,
-							"default": false
-						}
-					]
-				},
-				"_poweroceanHeader": {
-					"newLine": true,
-					"type": "header",
-					"text": "Power Ocean Configuration",
-					"xs": 12,
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"xl": 12,
-					"size": 3
-				},
-				"_introPoweroceanTxt2": {
-					"type": "staticText",
-					"text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have no device, delete the added line item.",
-					"xs": 12,
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"xl": 12,
-					"newLine": true
-				},
-				"poweroceans": {
-					"xs": 12,
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"xl": 12,
-					"newLine": true,
-					"type": "table",
-					"items": [
-						{
-							"type": "text",
-							"width": "15%",
-							"title": "name",
-							"attr": "devName",
-							"filter": false,
-							"sort": false,
-							"default": "My Power Ocean"
-						},
-						{
-							"type": "text",
-							"width": "15%",
-							"title": "id",
-							"attr": "devId",
-							"filter": false,
-							"sort": false,
-							"default": "HJ3..."
-						},
-						{
-							"type": "select",
-							"width": "10%",
-							"options": [
-								{
-									"value": "none",
-									"label": "none"
-								},
-								{
-									"value": "powerocean",
-									"label": "Power Ocean DC"
-								},
-								{
-									"value": "poweroceanplus",
-									"label": "Power Ocean Plus"
-								},
-								{
-									"value": "poweroceanfit",
-									"label": "Power Ocean DC FIT"
-								}
-							],
-							"title": "Power Ocean Type",
-							"attr": "devType",
-							"filter": false,
-							"sort": false,
-							"default": "none"
-						},
-						{
-							"type": "checkbox",
-							"title": "debug enable",
-							"width": "5%",
-							"attr": "debugEnable",
-							"filter": false,
-							"sort": false,
-							"default": false
-						},
-						{
-							"type": "checkbox",
-							"title": "HA enable",
-							"width": "5%",
-							"attr": "haEnable",
-							"filter": false,
-							"sort": false,
-							"default": false
-						},
-						{
-							"type": "checkbox",
-							"title": "add BP 1",
-							"width": "5%",
-							"attr": "pstationsSlave1",
-							"filter": false,
-							"sort": false,
-							"default": false
-						},
-						{
-							"type": "checkbox",
-							"title": "add BP 2",
-							"width": "5%",
-							"attr": "pstationsSlave2",
-							"filter": false,
-							"sort": false,
-							"default": false
-						},
-						{
-							"type": "checkbox",
-							"title": "add BP 3",
-							"width": "5%",
-							"attr": "pstationsSlave3",
-							"filter": false,
-							"sort": false,
-							"default": false
-						},
-						{
-							"type": "checkbox",
-							"title": "add BP 4",
-							"width": "5%",
-							"attr": "pstationsSlave4",
-							"filter": false,
-							"sort": false,
-							"default": false
-						},
-						{
-							"type": "checkbox",
-							"title": "add BP 5",
-							"width": "5%",
-							"attr": "pstationsSlave5",
-							"filter": false,
-							"sort": false,
-							"default": false
-						}
-					]
-				},
-				"_alternatorHeader": {
-					"newLine": true,
-					"type": "header",
-					"text": "Alternator Configuration",
-					"xs": 12,
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"xl": 12,
-					"size": 3
-				},
-				"_alternatorTable1Txt1": {
-					"type": "staticText",
-					"text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have no device, delete the added line item",
-					"xs": 12,
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"xl": 12,
-					"newLine": true
-				},
-				"alternators": {
-					"xs": 12,
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"xl": 12,
-					"newLine": true,
-					"type": "table",
-					"items": [
-						{
-							"type": "text",
-							"width": "15%",
-							"title": "name",
-							"attr": "devName",
-							"filter": false,
-							"sort": false,
-							"default": "My Alternator1"
-						},
-						{
-							"type": "text",
-							"width": "15%",
-							"title": "id",
-							"attr": "devId",
-							"filter": false,
-							"sort": false,
-							"default": "F37.."
-						},
-						{
-							"type": "select",
-							"width": "10%",
-							"options": [
-								{
-									"value": "none",
-									"label": "none"
-								},
-								{
-									"value": "alternator",
-									"label": "Alternator 800W"
-								}
-							],
-							"title": "Alternator Type",
-							"attr": "devType",
-							"filter": false,
-							"sort": false,
-							"default": "none"
-						},
-						{
-							"type": "checkbox",
-							"title": "debug enable",
-							"width": "5%",
-							"attr": "debugEnable",
-							"filter": false,
-							"sort": false,
-							"default": false
-						},
-						{
-							"type": "checkbox",
-							"title": "HA enable",
-							"width": "5%",
-							"attr": "haEnable",
-							"filter": false,
-							"sort": false,
-							"default": false
-						}
-					]
-				},
-				"_unknownHeader": {
-					"newLine": true,
-					"type": "header",
-					"text": "Configuration for not yet supported devices for debugging",
-					"xs": 12,
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"xl": 12,
-					"size": 3
-				},
-				"_unknownTable1Txt1": {
-					"type": "staticText",
-					"text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have no device, delete the added line item",
-					"xs": 12,
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"xl": 12,
-					"newLine": true
-				},
-				"unknowns": {
-					"xs": 12,
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"xl": 12,
-					"newLine": true,
-					"type": "table",
-					"items": [
-						{
-							"type": "text",
-							"width": "15%",
-							"title": "name",
-							"attr": "devName",
-							"filter": false,
-							"sort": false,
-							"default": "Device 1"
-						},
-						{
-							"type": "text",
-							"width": "15%",
-							"title": "id",
-							"attr": "devId",
-							"filter": false,
-							"sort": false,
-							"default": "Serial.."
-						},
-						{
-							"type": "select",
-							"width": "10%",
-							"options": [
-								{
-									"value": "none",
-									"label": "none"
-								},
-								{
-									"value": "unknown",
-									"label": "Unknown"
-								},
-								{
-									"value": "unknownjson",
-									"label": "Unknown JSON"
-								}
-							],
-							"title": "Device Type",
-							"attr": "devType",
-							"filter": false,
-							"sort": false,
-							"default": "none"
-						},
-						{
-							"type": "checkbox",
-							"title": "debug enable",
-							"width": "5%",
-							"attr": "debugEnable",
-							"filter": false,
-							"sort": false,
-							"default": true
-						}
-					]
-				}
-			}
-		},
-		"tab_3": {
-			"type": "panel",
-			"label": "Homeassistant",
-			"items": {
-				"_connection": {
-					"newLine": true,
-					"type": "header",
-					"text": "Connection settings",
-					"xs": 12,
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"xl": 12,
-					"size": 3
-				},
-				"haMqttEnable": {
-					"type": "checkbox",
-					"label": "enable communication with Homeassistant MQTT Broker",
-					"newLine": true,
-					"xs": 12,
-					"sm": 12,
-					"md": 6,
-					"lg": 6,
-					"xl": 4
-				},
-				"haMqttProtocol": {
-					"type": "text",
-					"label": "HA mqtt protocol",
-					"newLine": true,
-					"xs": 12,
-					"sm": 12,
-					"md": 6,
-					"lg": 6,
-					"xl": 4
-				},
-				"haMqttUrl": {
-					"type": "text",
-					"label": "HA mqtt Url",
-					"newLine": false,
-					"xs": 12,
-					"sm": 12,
-					"md": 6,
-					"lg": 6,
-					"xl": 4
-				},
-				"haMqttPort": {
-					"type": "text",
-					"label": "HA mqtt port",
-					"newLine": false,
-					"xs": 12,
-					"sm": 12,
-					"md": 6,
-					"lg": 6,
-					"xl": 4
-				},
-				"haTopic": {
-					"type": "text",
-					"label": "HA topic prefix",
-					"newLine": false,
-					"xs": 12,
-					"sm": 12,
-					"md": 6,
-					"lg": 6,
-					"xl": 4
-				},
-				"_auth": {
-					"newLine": true,
-					"type": "header",
-					"text": "Homeassistant MQTT Authentication settings",
-					"xs": 12,
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"xl": 12,
-					"size": 3
-				},
-				"haMqttUserId": {
-					"type": "text",
-					"label": "HA mqtt user",
-					"newLine": false,
-					"xs": 12,
-					"sm": 12,
-					"md": 6,
-					"lg": 4,
-					"xl": 4
-				},
-				"haMqttUserPWd": {
-					"type": "password",
-					"visible": true,
-					"label": "HA mqtt pwd",
-					"newLine": false,
-					"xs": 12,
-					"sm": 12,
-					"md": 6,
-					"lg": 4,
-					"xl": 4
-				},
-				"haDiscoveryRetain": {
-					"type": "checkbox",
-					"label": "send retained msg for discovery",
-					"newLine": true,
-					"xs": 12,
-					"sm": 12,
-					"md": 6,
-					"lg": 4,
-					"xl": 4
-				},
-				"_debugcommon": {
-					"newLine": true,
-					"type": "header",
-					"text": "HA DEBUG settings",
-					"xs": 12,
-					"sm": 12,
-					"md": 12,
-					"lg": 12,
-					"xl": 12,
-					"size": 3
-				},
-				"msgHaAutoDiscovery": {
-					"type": "checkbox",
-					"label": "msgHaAutoDiscovery",
-					"xs": 12,
-					"sm": 12,
-					"md": 6,
-					"lg": 4,
-					"xl": 4
-				},
-				"showDiscoveryObject": {
-					"type": "checkbox",
-					"label": "showDiscoveryObject",
-					"xs": 12,
-					"sm": 12,
-					"md": 6,
-					"lg": 4,
-					"xl": 4
-				},
-				"msgHaIncomming": {
-					"type": "checkbox",
-					"label": "msgHaIncomming",
-					"xs": 12,
-					"sm": 12,
-					"md": 6,
-					"lg": 4,
-					"xl": 4
-				},
-				"msgHaOutgoing": {
-					"type": "checkbox",
-					"label": "msgHaOutgoing",
-					"xs": 12,
-					"sm": 12,
-					"md": 6,
-					"lg": 4,
-					"xl": 4
-				},
-				"msgHaStatusInitial": {
-					"type": "checkbox",
-					"label": "msgHaStatusInitial",
-					"xs": 12,
-					"sm": 12,
-					"md": 6,
-					"lg": 4,
-					"xl": 4
-				}
-			}
-		}
-	}
+    "i18n": true,
+    "type": "tabs",
+    "tabsStyle": {
+        "width": "calc(100% - 100px)"
+    },
+    "items": {
+        "tab_1": {
+            "type": "panel",
+            "label": "Credentials & Debug Settings",
+            "items": {
+                "_userdata": {
+                    "newLine": true,
+                    "type": "header",
+                    "text": "User Data",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12,
+                    "size": 3
+                },
+                "userName": {
+                    "type": "text",
+                    "label": "ecoflow account name / email  ",
+                    "newLine": false,
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 6,
+                    "xl": 4
+                },
+                "userPassword": {
+                    "type": "password",
+                    "visible": true,
+                    "label": "user password",
+                    "newLine": false,
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 6,
+                    "xl": 4
+                },
+                "_create": {
+                    "type": "sendTo",
+                    "label": "Create Login Data",
+                    "command": "create",
+                    "variant": "outlined",
+                    "jsonData": "{\"user\": \"${data.userName}\", \"pass\": \"${data.userPassword}\"}",
+                    "useNative": true,
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 6,
+                    "xl": 4
+                },
+                "_connection": {
+                    "newLine": true,
+                    "type": "header",
+                    "text": "Connection settings",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12,
+                    "size": 3
+                },
+                "mqttUrl": {
+                    "type": "text",
+                    "label": "mqtt broker",
+                    "newLine": false,
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 6,
+                    "xl": 4
+                },
+                "mqttPort": {
+                    "type": "text",
+                    "label": "mqtt port",
+                    "newLine": false,
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 6,
+                    "xl": 4
+                },
+                "_auth": {
+                    "newLine": true,
+                    "type": "header",
+                    "text": "MQTT Authentication settings",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12,
+                    "size": 3
+                },
+                "mqttUserId": {
+                    "type": "text",
+                    "label": "mqtt userId",
+                    "newLine": false,
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 4,
+                    "xl": 4
+                },
+                "mqttUserName": {
+                    "type": "text",
+                    "label": "mqtt user name",
+                    "newLine": false,
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 4,
+                    "xl": 4
+                },
+                "mqttPwd": {
+                    "type": "password",
+                    "visible": true,
+                    "label": "mqtt pwd",
+                    "newLine": true,
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 4,
+                    "xl": 4
+                },
+                "mqttClientId": {
+                    "type": "text",
+                    "label": "mqtt clientId",
+                    "newLine": false,
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 4,
+                    "xl": 4
+                },
+                "enableMqttReconnect": {
+                    "type": "checkbox",
+                    "label": "enable check for reconnects (10min)",
+                    "newLine": true,
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 4,
+                    "xl": 4
+                },
+                "_test": {
+                    "type": "sendTo",
+                    "hidden": "true",
+                    "label": "Test connection",
+                    "command": "test",
+                    "variant": "contained",
+                    "jsonData": "{\"user\": \"${data.mqttUserName}\", \"pass\": \"${data.mqttPwd}\", \"url\": \"${data.mqttUrl}\", \"port\": ${data.mqttPort}, \"clientId\": \"${data.mqttClientId}\"}",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 6,
+                    "xl": 4
+                },
+                "_debugcommon": {
+                    "newLine": true,
+                    "type": "header",
+                    "text": "common DEBUG settings",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12,
+                    "size": 3
+                },
+                "msgStateCreation": {
+                    "type": "checkbox",
+                    "label": "msgStateCreation",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 4,
+                    "xl": 4
+                },
+                "getQuota": {
+                    "type": "sendTo",
+                    "hidden": "false",
+                    "label": "Debug Quotas",
+                    "command": "quotajson",
+                    "variant": "contained",
+                    "jsonData": "{\"quota\": \"now\"}",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 4,
+                    "xl": 4
+                },
+                "getQuota2": {
+                    "type": "sendTo",
+                    "hidden": "false",
+                    "label": "Debug unkn. msg",
+                    "command": "quotabuf",
+                    "variant": "contained",
+                    "jsonData": "{\"quota\": \"now\"}",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 4,
+                    "xl": 4
+                },
+                "_debugoptions": {
+                    "newLine": true,
+                    "type": "header",
+                    "text": "Selection of specific DEBUG settings (only effective on the device where debug is enabled)",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12,
+                    "size": 3
+                },
+                "_introDebug": {
+                    "type": "staticText",
+                    "text": "If you are unsure, tick all checkboxes for all debug messages. (it is only effective when the adapter is in debug mode (see header of this admin page and the far right setting))",
+                    "newLine": true,
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12
+                },
+                "msgUpdate": {
+                    "newLine": true,
+                    "type": "checkbox",
+                    "label": "msgUpdate",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 4,
+                    "xl": 4
+                },
+                "msgUpdateValue": {
+                    "type": "checkbox",
+                    "label": "msgUpdateValue",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 4,
+                    "xl": 4
+                },
+                "msgSetGet": {
+                    "type": "checkbox",
+                    "label": "msgSetGet",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 4,
+                    "xl": 4
+                },
+                "msgCmd": {
+                    "type": "checkbox",
+                    "label": "msgCmd",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 4,
+                    "xl": 4
+                }
+            }
+        },
+        "tab_2": {
+            "type": "panel",
+            "label": "Device(s) Configuration",
+            "items": {
+                "_pstremHeader": {
+                    "newLine": true,
+                    "type": "header",
+                    "text": "(Power) Stream Configuration",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12,
+                    "size": 3
+                },
+                "_introTable1Txt1": {
+                    "type": "staticText",
+                    "text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have no device, delete the added line item",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12,
+                    "newLine": true
+                },
+                "pstreams": {
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12,
+                    "newLine": true,
+                    "type": "table",
+                    "items": [
+                        {
+                            "type": "text",
+                            "width": "15%",
+                            "title": "name",
+                            "attr": "devName",
+                            "filter": false,
+                            "sort": false,
+                            "default": "My Stream1"
+                        },
+                        {
+                            "type": "text",
+                            "width": "15%",
+                            "title": "id",
+                            "attr": "devId",
+                            "filter": false,
+                            "sort": false,
+                            "default": "HW51.../BK..."
+                        },
+                        {
+                            "type": "select",
+                            "width": "10%",
+                            "options": [
+                                {
+                                    "value": "none",
+                                    "label": "none"
+                                },
+                                {
+                                    "value": "pstream600",
+                                    "label": "Powerstream 600W"
+                                },
+                                {
+                                    "value": "pstream800",
+                                    "label": "Powerstream 800W"
+                                },
+                                {
+                                    "value": "stream_inverter",
+                                    "label": "Stream Inverter"
+                                },
+                                {
+                                    "value": "stream_ac_pro",
+                                    "label": "Stream AC Pro"
+                                },
+                                {
+                                    "value": "stream_ultra",
+                                    "label": "Stream Ultra"
+                                },
+                                {
+                                    "value": "unknown",
+                                    "label": "Stream Ultra X (unkn)"
+                                }
+                            ],
+                            "title": "(Power)Stream Type",
+                            "attr": "devType",
+                            "filter": false,
+                            "sort": false,
+                            "default": "none"
+                        },
+                        {
+                            "type": "checkbox",
+                            "title": "debug enable",
+                            "width": "5%",
+                            "attr": "debugEnable",
+                            "filter": false,
+                            "sort": false,
+                            "default": false
+                        },
+                        {
+                            "type": "checkbox",
+                            "title": "HA enable",
+                            "width": "5%",
+                            "attr": "haEnable",
+                            "filter": false,
+                            "sort": false,
+                            "default": false
+                        }
+                    ]
+                },
+                "_pstationHeader": {
+                    "newLine": true,
+                    "type": "header",
+                    "text": "Power Station Configuration",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12,
+                    "size": 3
+                },
+                "_introTable1Txt2": {
+                    "type": "staticText",
+                    "text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have additional batteries connected, check the slave port#. If you have no device, delete the added line item",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12,
+                    "newLine": true
+                },
+                "pstations": {
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12,
+                    "newLine": true,
+                    "type": "table",
+                    "items": [
+                        {
+                            "type": "text",
+                            "attr": "devName",
+                            "width": "15%",
+                            "title": "Name",
+                            "filter": false,
+                            "sort": false,
+                            "default": "My Station#1"
+                        },
+                        {
+                            "type": "text",
+                            "width": "15%",
+                            "title": "id",
+                            "attr": "devId",
+                            "filter": false,
+                            "sort": false,
+                            "default": "Dxxxx/Rxxxx"
+                        },
+                        {
+                            "type": "select",
+                            "width": "10%",
+                            "options": [
+                                {
+                                    "value": "none",
+                                    "label": "none"
+                                },
+                                {
+                                    "value": "deltamini",
+                                    "label": "Delta Mini (882Wh)"
+                                },
+                                {
+                                    "value": "delta",
+                                    "label": "Delta (1260Wh)"
+                                },
+                                {
+                                    "value": "deltamax",
+                                    "label": "Delta Max (1600/2000)"
+                                },
+                                {
+                                    "value": "deltapro",
+                                    "label": "Delta Pro"
+                                },
+                                {
+                                    "value": "delta2",
+                                    "label": "Delta 2"
+                                },
+                                {
+                                    "value": "delta2max",
+                                    "label": "Delta 2 Max"
+                                },
+                                {
+                                    "value": "delta3",
+                                    "label": "Delta 3"
+                                },
+                                {
+                                    "value": "delta3plus",
+                                    "label": "Delta 3 Plus"
+                                },
+                                {
+                                    "value": "deltapro3",
+                                    "label": "Delta 3 Pro"
+                                },
+                                {
+                                    "value": "deltaproultra",
+                                    "label": "Delta Pro Ultra"
+                                },
+                                {
+                                    "value": "rivermax",
+                                    "label": "River Max"
+                                },
+                                {
+                                    "value": "riverpro",
+                                    "label": "River Pro"
+                                },
+                                {
+                                    "value": "river2max",
+                                    "label": "River 2 Max"
+                                },
+                                {
+                                    "value": "river2pro",
+                                    "label": "River 2 Pro"
+                                },
+                                {
+                                    "value": "river3",
+                                    "label": "River 3"
+                                },
+                                {
+                                    "value": "river3plus",
+                                    "label": "River 3 Plus"
+                                }
+                            ],
+                            "title": "Power Station Type",
+                            "attr": "devType",
+                            "filter": false,
+                            "sort": false,
+                            "default": "none"
+                        },
+                        {
+                            "type": "checkbox",
+                            "title": "debug enable",
+                            "width": "5%",
+                            "attr": "debugEnable",
+                            "filter": false,
+                            "sort": false,
+                            "default": false
+                        },
+                        {
+                            "type": "checkbox",
+                            "title": "HA enable",
+                            "width": "5%",
+                            "attr": "haEnable",
+                            "filter": false,
+                            "sort": false,
+                            "default": false
+                        },
+                        {
+                            "type": "checkbox",
+                            "title": "Slave 1",
+                            "width": "5%",
+                            "hidden": "data.devType !== 'deltapro' && data.devType !== 'deltamax' && data.devType !== 'delta2max' && data.devType !== 'delta' && data.devType !== 'delta2' && data.devType !== 'deltaproultra' && data.devType !== 'deltapro3' && data.devType !== 'delta3plus' && data.devType !== 'river3plus'",
+                            "attr": "pstationsSlave1",
+                            "filter": false,
+                            "sort": false,
+                            "default": false
+                        },
+                        {
+                            "type": "checkbox",
+                            "title": "Slave 2",
+                            "width": "5%",
+                            "hidden": "data.devType !== 'deltapro' && data.devType !== 'deltamax' && data.devType !== 'delta2max' && data.devType !== 'deltaproultra' && data.devType !== 'deltapro3'",
+                            "attr": "pstationsSlave2",
+                            "filter": false,
+                            "sort": false,
+                            "default": false
+                        },
+                        {
+                            "type": "checkbox",
+                            "title": "Slave 3",
+                            "width": "5%",
+                            "hidden": "data.devType !== 'deltaproultra'",
+                            "attr": "pstationsSlave3",
+                            "filter": false,
+                            "sort": false,
+                            "default": false
+                        }
+                    ]
+                },
+                "_plugHeader": {
+                    "newLine": true,
+                    "type": "header",
+                    "text": "Plug Configuration",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12,
+                    "size": 3
+                },
+                "_introTable1Txt3": {
+                    "type": "staticText",
+                    "text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have no device, delete the added line item",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12,
+                    "newLine": true
+                },
+                "plugs": {
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12,
+                    "newLine": true,
+                    "type": "table",
+                    "items": [
+                        {
+                            "type": "text",
+                            "width": "15%",
+                            "title": "name",
+                            "attr": "devName",
+                            "filter": false,
+                            "sort": false,
+                            "default": "My Plug1"
+                        },
+                        {
+                            "type": "text",
+                            "width": "15%",
+                            "title": "id",
+                            "attr": "devId",
+                            "filter": false,
+                            "sort": false,
+                            "default": "HW52"
+                        },
+                        {
+                            "type": "select",
+                            "width": "10%",
+                            "options": [
+                                {
+                                    "value": "none",
+                                    "label": "none"
+                                },
+                                {
+                                    "value": "plug",
+                                    "label": "Plug"
+                                },
+                                {
+                                    "value": "unknownjson",
+                                    "label": "EF x Shelly Smart Plug"
+                                }
+                            ],
+                            "title": "Plug Type",
+                            "attr": "devType",
+                            "filter": false,
+                            "sort": false,
+                            "default": "none"
+                        },
+                        {
+                            "type": "checkbox",
+                            "title": "debug enable",
+                            "width": "5%",
+                            "attr": "debugEnable",
+                            "filter": false,
+                            "sort": false,
+                            "default": false
+                        },
+                        {
+                            "type": "checkbox",
+                            "title": "HA enable",
+                            "width": "5%",
+                            "attr": "haEnable",
+                            "filter": false,
+                            "sort": false,
+                            "default": false
+                        }
+                    ]
+                },
+                "_shellyHeader": {
+                    "newLine": true,
+                    "type": "header",
+                    "text": "Smartmeter Configuration",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12,
+                    "size": 3
+                },
+                "_shellyTable1Txt1": {
+                    "type": "staticText",
+                    "text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have no device, delete the added line item",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12,
+                    "newLine": true
+                },
+                "shellies": {
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12,
+                    "newLine": true,
+                    "type": "table",
+                    "items": [
+                        {
+                            "type": "text",
+                            "width": "15%",
+                            "title": "name",
+                            "attr": "devName",
+                            "filter": false,
+                            "sort": false,
+                            "default": "My device1"
+                        },
+                        {
+                            "type": "text",
+                            "width": "15%",
+                            "title": "id",
+                            "attr": "devId",
+                            "filter": false,
+                            "sort": false,
+                            "default": "1234../BK12..."
+                        },
+                        {
+                            "type": "select",
+                            "width": "10%",
+                            "options": [
+                                {
+                                    "value": "none",
+                                    "label": "none"
+                                },
+                                {
+                                    "value": "shelly3em",
+                                    "label": "Shelly3EM"
+                                },
+                                {
+                                    "value": "smartmeter",
+                                    "label": "EF smartmeter"
+                                },
+                                {
+                                    "value": "unknownjson",
+                                    "label": "EF x Shelly Pro3EM"
+                                }
+                            ],
+                            "title": "Type",
+                            "attr": "devType",
+                            "filter": false,
+                            "sort": false,
+                            "default": "none"
+                        },
+                        {
+                            "type": "checkbox",
+                            "title": "debug enable",
+                            "width": "5%",
+                            "attr": "debugEnable",
+                            "filter": false,
+                            "sort": false,
+                            "default": false
+                        },
+                        {
+                            "type": "checkbox",
+                            "title": "HA enable",
+                            "width": "5%",
+                            "attr": "haEnable",
+                            "filter": false,
+                            "sort": false,
+                            "default": false
+                        }
+                    ]
+                },
+                "_generatorHeader": {
+                    "newLine": true,
+                    "type": "header",
+                    "text": "Generator Configuration",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12,
+                    "size": 3
+                },
+                "_introTable2Txt2": {
+                    "type": "staticText",
+                    "text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have no device, delete the added line item",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12,
+                    "newLine": true
+                },
+                "generators": {
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12,
+                    "newLine": true,
+                    "type": "table",
+                    "items": [
+                        {
+                            "type": "text",
+                            "width": "15%",
+                            "title": "name",
+                            "attr": "devName",
+                            "filter": false,
+                            "sort": false,
+                            "default": "My Gen1"
+                        },
+                        {
+                            "type": "text",
+                            "width": "15%",
+                            "title": "id",
+                            "attr": "devId",
+                            "filter": false,
+                            "sort": false,
+                            "default": "DGEB"
+                        },
+                        {
+                            "type": "select",
+                            "width": "10%",
+                            "options": [
+                                {
+                                    "value": "none",
+                                    "label": "none"
+                                },
+                                {
+                                    "value": "generator",
+                                    "label": "Smart Generator"
+                                },
+                                {
+                                    "value": "unknown",
+                                    "label": "Smart Generator 4000W dual fuel"
+                                }
+                            ],
+                            "title": "Generator Type",
+                            "attr": "devType",
+                            "filter": false,
+                            "sort": false,
+                            "default": "none"
+                        },
+                        {
+                            "type": "checkbox",
+                            "title": "debug enable",
+                            "width": "5%",
+                            "attr": "debugEnable",
+                            "filter": false,
+                            "sort": false,
+                            "default": false
+                        },
+                        {
+                            "type": "checkbox",
+                            "title": "HA enable",
+                            "width": "5%",
+                            "attr": "haEnable",
+                            "filter": false,
+                            "sort": false,
+                            "default": false
+                        }
+                    ]
+                },
+                "_powerkitHeader": {
+                    "newLine": true,
+                    "type": "header",
+                    "text": "Power Kit Configuration",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12,
+                    "size": 3
+                },
+                "_introPowerkitTxt2": {
+                    "type": "staticText",
+                    "text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have more than one battery check the slave1/slave2. If you have no device, delete the added line item",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12,
+                    "newLine": true
+                },
+                "powerkits": {
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12,
+                    "newLine": true,
+                    "type": "table",
+                    "items": [
+                        {
+                            "type": "text",
+                            "width": "15%",
+                            "title": "name",
+                            "attr": "devName",
+                            "filter": false,
+                            "sort": false,
+                            "default": "My Powerkit"
+                        },
+                        {
+                            "type": "text",
+                            "width": "15%",
+                            "title": "id",
+                            "attr": "devId",
+                            "filter": false,
+                            "sort": false,
+                            "default": "M10...."
+                        },
+                        {
+                            "type": "select",
+                            "width": "10%",
+                            "options": [
+                                {
+                                    "value": "none",
+                                    "label": "none"
+                                },
+                                {
+                                    "value": "powerkitbp2000",
+                                    "label": "Powerkit BP2000"
+                                },
+                                {
+                                    "value": "powerkitbp5000",
+                                    "label": "Powerkit BP5000"
+                                }
+                            ],
+                            "title": "Power Kit Type",
+                            "attr": "devType",
+                            "filter": false,
+                            "sort": false,
+                            "default": "none"
+                        },
+                        {
+                            "type": "checkbox",
+                            "title": "debug enable",
+                            "width": "5%",
+                            "attr": "debugEnable",
+                            "filter": false,
+                            "sort": false,
+                            "default": false
+                        },
+                        {
+                            "type": "checkbox",
+                            "title": "HA enable",
+                            "width": "5%",
+                            "attr": "haEnable",
+                            "filter": false,
+                            "sort": false,
+                            "default": false
+                        },
+                        {
+                            "type": "checkbox",
+                            "title": "add BP 1",
+                            "width": "5%",
+                            "attr": "pstationsSlave1",
+                            "filter": false,
+                            "sort": false,
+                            "default": false
+                        },
+                        {
+                            "type": "checkbox",
+                            "title": "add BP 2",
+                            "width": "5%",
+                            "attr": "pstationsSlave2",
+                            "filter": false,
+                            "sort": false,
+                            "default": false
+                        }
+                    ]
+                },
+                "_shpHeader": {
+                    "newLine": true,
+                    "type": "header",
+                    "text": "Smart Home Panel Configuration",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12,
+                    "size": 3
+                },
+                "_introTable3Txt1": {
+                    "type": "staticText",
+                    "text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have no device, delete the added line item",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12,
+                    "newLine": true
+                },
+                "panels": {
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12,
+                    "newLine": true,
+                    "type": "table",
+                    "items": [
+                        {
+                            "type": "text",
+                            "width": "15%",
+                            "title": "name",
+                            "attr": "devName",
+                            "filter": false,
+                            "sort": false,
+                            "default": "My SHP1"
+                        },
+                        {
+                            "type": "text",
+                            "width": "15%",
+                            "title": "id",
+                            "attr": "devId",
+                            "filter": false,
+                            "sort": false,
+                            "default": "SP10"
+                        },
+                        {
+                            "type": "select",
+                            "width": "10%",
+                            "options": [
+                                {
+                                    "value": "none",
+                                    "label": "none"
+                                },
+                                {
+                                    "value": "panel",
+                                    "label": "Smart Home Panel"
+                                },
+                                {
+                                    "value": "panel2",
+                                    "label": "Smart Home Panel 2"
+                                }
+                            ],
+                            "title": "SHP Type",
+                            "attr": "devType",
+                            "filter": false,
+                            "sort": false,
+                            "default": "none"
+                        },
+                        {
+                            "type": "checkbox",
+                            "title": "debug enable",
+                            "width": "5%",
+                            "attr": "debugEnable",
+                            "filter": false,
+                            "sort": false,
+                            "default": false
+                        },
+                        {
+                            "type": "checkbox",
+                            "title": "HA enable",
+                            "width": "5%",
+                            "attr": "haEnable",
+                            "filter": false,
+                            "sort": false,
+                            "default": false
+                        }
+                    ]
+                },
+                "_waveHeader": {
+                    "newLine": true,
+                    "type": "header",
+                    "text": "Wave Configuration",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12,
+                    "size": 3
+                },
+                "_introTable4Txt1": {
+                    "type": "staticText",
+                    "text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have no device, delete the added line item",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12,
+                    "newLine": true
+                },
+                "waves": {
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12,
+                    "newLine": true,
+                    "type": "table",
+                    "items": [
+                        {
+                            "type": "text",
+                            "width": "15%",
+                            "title": "name",
+                            "attr": "devName",
+                            "filter": false,
+                            "sort": false,
+                            "default": "My Wave1"
+                        },
+                        {
+                            "type": "text",
+                            "width": "15%",
+                            "title": "id",
+                            "attr": "devId",
+                            "filter": false,
+                            "sort": false,
+                            "default": "KT21.."
+                        },
+                        {
+                            "type": "select",
+                            "width": "10%",
+                            "options": [
+                                {
+                                    "value": "none",
+                                    "label": "none"
+                                },
+                                {
+                                    "value": "wave2",
+                                    "label": "Wave 2 Air Con"
+                                },
+                                {
+                                    "value": "wave3",
+                                    "label": "Wave 3 Air Con"
+                                }
+                            ],
+                            "title": "Wave Type",
+                            "attr": "devType",
+                            "filter": false,
+                            "sort": false,
+                            "default": "none"
+                        },
+                        {
+                            "type": "checkbox",
+                            "title": "debug enable",
+                            "width": "5%",
+                            "attr": "debugEnable",
+                            "filter": false,
+                            "sort": false,
+                            "default": false
+                        },
+                        {
+                            "type": "checkbox",
+                            "title": "HA enable",
+                            "width": "5%",
+                            "attr": "haEnable",
+                            "filter": false,
+                            "sort": false,
+                            "default": false
+                        }
+                    ]
+                },
+                "_glacierHeader": {
+                    "newLine": true,
+                    "type": "header",
+                    "text": "Glacier Configuration",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12,
+                    "size": 3
+                },
+                "_glacierTable1Txt1": {
+                    "type": "staticText",
+                    "text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have no device, delete the added line item",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12,
+                    "newLine": true
+                },
+                "glaciers": {
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12,
+                    "newLine": true,
+                    "type": "table",
+                    "items": [
+                        {
+                            "type": "text",
+                            "width": "15%",
+                            "title": "name",
+                            "attr": "devName",
+                            "filter": false,
+                            "sort": false,
+                            "default": "My Glacier1"
+                        },
+                        {
+                            "type": "text",
+                            "width": "15%",
+                            "title": "id",
+                            "attr": "devId",
+                            "filter": false,
+                            "sort": false,
+                            "default": "BX11.."
+                        },
+                        {
+                            "type": "select",
+                            "width": "10%",
+                            "options": [
+                                {
+                                    "value": "none",
+                                    "label": "none"
+                                },
+                                {
+                                    "value": "glacier",
+                                    "label": "Glacier Cooler"
+                                },
+                                {
+                                    "value": "glacier55",
+                                    "label": "Glacier Classic 55L"
+                                }
+                            ],
+                            "title": "Glacier Type",
+                            "attr": "devType",
+                            "filter": false,
+                            "sort": false,
+                            "default": "none"
+                        },
+                        {
+                            "type": "checkbox",
+                            "title": "debug enable",
+                            "width": "5%",
+                            "attr": "debugEnable",
+                            "filter": false,
+                            "sort": false,
+                            "default": false
+                        },
+                        {
+                            "type": "checkbox",
+                            "title": "HA enable",
+                            "width": "5%",
+                            "attr": "haEnable",
+                            "filter": false,
+                            "sort": false,
+                            "default": false
+                        }
+                    ]
+                },
+                "_poweroceanHeader": {
+                    "newLine": true,
+                    "type": "header",
+                    "text": "Power Ocean Configuration",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12,
+                    "size": 3
+                },
+                "_introPoweroceanTxt2": {
+                    "type": "staticText",
+                    "text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have no device, delete the added line item.",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12,
+                    "newLine": true
+                },
+                "poweroceans": {
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12,
+                    "newLine": true,
+                    "type": "table",
+                    "items": [
+                        {
+                            "type": "text",
+                            "width": "15%",
+                            "title": "name",
+                            "attr": "devName",
+                            "filter": false,
+                            "sort": false,
+                            "default": "My Power Ocean"
+                        },
+                        {
+                            "type": "text",
+                            "width": "15%",
+                            "title": "id",
+                            "attr": "devId",
+                            "filter": false,
+                            "sort": false,
+                            "default": "HJ3..."
+                        },
+                        {
+                            "type": "select",
+                            "width": "10%",
+                            "options": [
+                                {
+                                    "value": "none",
+                                    "label": "none"
+                                },
+                                {
+                                    "value": "powerocean",
+                                    "label": "Power Ocean DC"
+                                },
+                                {
+                                    "value": "poweroceanplus",
+                                    "label": "Power Ocean Plus"
+                                },
+                                {
+                                    "value": "poweroceanfit",
+                                    "label": "Power Ocean DC FIT"
+                                }
+                            ],
+                            "title": "Power Ocean Type",
+                            "attr": "devType",
+                            "filter": false,
+                            "sort": false,
+                            "default": "none"
+                        },
+                        {
+                            "type": "checkbox",
+                            "title": "debug enable",
+                            "width": "5%",
+                            "attr": "debugEnable",
+                            "filter": false,
+                            "sort": false,
+                            "default": false
+                        },
+                        {
+                            "type": "checkbox",
+                            "title": "HA enable",
+                            "width": "5%",
+                            "attr": "haEnable",
+                            "filter": false,
+                            "sort": false,
+                            "default": false
+                        },
+                        {
+                            "type": "checkbox",
+                            "title": "add BP 1",
+                            "width": "5%",
+                            "attr": "pstationsSlave1",
+                            "filter": false,
+                            "sort": false,
+                            "default": false
+                        },
+                        {
+                            "type": "checkbox",
+                            "title": "add BP 2",
+                            "width": "5%",
+                            "attr": "pstationsSlave2",
+                            "filter": false,
+                            "sort": false,
+                            "default": false
+                        },
+                        {
+                            "type": "checkbox",
+                            "title": "add BP 3",
+                            "width": "5%",
+                            "attr": "pstationsSlave3",
+                            "filter": false,
+                            "sort": false,
+                            "default": false
+                        },
+                        {
+                            "type": "checkbox",
+                            "title": "add BP 4",
+                            "width": "5%",
+                            "attr": "pstationsSlave4",
+                            "filter": false,
+                            "sort": false,
+                            "default": false
+                        },
+                        {
+                            "type": "checkbox",
+                            "title": "add BP 5",
+                            "width": "5%",
+                            "attr": "pstationsSlave5",
+                            "filter": false,
+                            "sort": false,
+                            "default": false
+                        }
+                    ]
+                },
+                "_alternatorHeader": {
+                    "newLine": true,
+                    "type": "header",
+                    "text": "Alternator Configuration",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12,
+                    "size": 3
+                },
+                "_alternatorTable1Txt1": {
+                    "type": "staticText",
+                    "text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have no device, delete the added line item",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12,
+                    "newLine": true
+                },
+                "alternators": {
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12,
+                    "newLine": true,
+                    "type": "table",
+                    "items": [
+                        {
+                            "type": "text",
+                            "width": "15%",
+                            "title": "name",
+                            "attr": "devName",
+                            "filter": false,
+                            "sort": false,
+                            "default": "My Alternator1"
+                        },
+                        {
+                            "type": "text",
+                            "width": "15%",
+                            "title": "id",
+                            "attr": "devId",
+                            "filter": false,
+                            "sort": false,
+                            "default": "F37.."
+                        },
+                        {
+                            "type": "select",
+                            "width": "10%",
+                            "options": [
+                                {
+                                    "value": "none",
+                                    "label": "none"
+                                },
+                                {
+                                    "value": "alternator",
+                                    "label": "Alternator 800W"
+                                }
+                            ],
+                            "title": "Alternator Type",
+                            "attr": "devType",
+                            "filter": false,
+                            "sort": false,
+                            "default": "none"
+                        },
+                        {
+                            "type": "checkbox",
+                            "title": "debug enable",
+                            "width": "5%",
+                            "attr": "debugEnable",
+                            "filter": false,
+                            "sort": false,
+                            "default": false
+                        },
+                        {
+                            "type": "checkbox",
+                            "title": "HA enable",
+                            "width": "5%",
+                            "attr": "haEnable",
+                            "filter": false,
+                            "sort": false,
+                            "default": false
+                        }
+                    ]
+                },
+                "_unknownHeader": {
+                    "newLine": true,
+                    "type": "header",
+                    "text": "Configuration for not yet supported devices for debugging",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12,
+                    "size": 3
+                },
+                "_unknownTable1Txt1": {
+                    "type": "staticText",
+                    "text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have no device, delete the added line item",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12,
+                    "newLine": true
+                },
+                "unknowns": {
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12,
+                    "newLine": true,
+                    "type": "table",
+                    "items": [
+                        {
+                            "type": "text",
+                            "width": "15%",
+                            "title": "name",
+                            "attr": "devName",
+                            "filter": false,
+                            "sort": false,
+                            "default": "Device 1"
+                        },
+                        {
+                            "type": "text",
+                            "width": "15%",
+                            "title": "id",
+                            "attr": "devId",
+                            "filter": false,
+                            "sort": false,
+                            "default": "Serial.."
+                        },
+                        {
+                            "type": "select",
+                            "width": "10%",
+                            "options": [
+                                {
+                                    "value": "none",
+                                    "label": "none"
+                                },
+                                {
+                                    "value": "unknown",
+                                    "label": "Unknown"
+                                },
+                                {
+                                    "value": "unknownjson",
+                                    "label": "Unknown JSON"
+                                }
+                            ],
+                            "title": "Device Type",
+                            "attr": "devType",
+                            "filter": false,
+                            "sort": false,
+                            "default": "none"
+                        },
+                        {
+                            "type": "checkbox",
+                            "title": "debug enable",
+                            "width": "5%",
+                            "attr": "debugEnable",
+                            "filter": false,
+                            "sort": false,
+                            "default": true
+                        }
+                    ]
+                }
+            }
+        },
+        "tab_3": {
+            "type": "panel",
+            "label": "Homeassistant",
+            "items": {
+                "_connection": {
+                    "newLine": true,
+                    "type": "header",
+                    "text": "Connection settings",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12,
+                    "size": 3
+                },
+                "haMqttEnable": {
+                    "type": "checkbox",
+                    "label": "enable communication with Homeassistant MQTT Broker",
+                    "newLine": true,
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 6,
+                    "xl": 4
+                },
+                "haMqttProtocol": {
+                    "type": "text",
+                    "label": "HA mqtt protocol",
+                    "newLine": true,
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 6,
+                    "xl": 4
+                },
+                "haMqttUrl": {
+                    "type": "text",
+                    "label": "HA mqtt Url",
+                    "newLine": false,
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 6,
+                    "xl": 4
+                },
+                "haMqttPort": {
+                    "type": "text",
+                    "label": "HA mqtt port",
+                    "newLine": false,
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 6,
+                    "xl": 4
+                },
+                "haTopic": {
+                    "type": "text",
+                    "label": "HA topic prefix",
+                    "newLine": false,
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 6,
+                    "xl": 4
+                },
+                "_auth": {
+                    "newLine": true,
+                    "type": "header",
+                    "text": "Homeassistant MQTT Authentication settings",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12,
+                    "size": 3
+                },
+                "haMqttUserId": {
+                    "type": "text",
+                    "label": "HA mqtt user",
+                    "newLine": false,
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 4,
+                    "xl": 4
+                },
+                "haMqttUserPWd": {
+                    "type": "password",
+                    "visible": true,
+                    "label": "HA mqtt pwd",
+                    "newLine": false,
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 4,
+                    "xl": 4
+                },
+                "haDiscoveryRetain": {
+                    "type": "checkbox",
+                    "label": "send retained msg for discovery",
+                    "newLine": true,
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 4,
+                    "xl": 4
+                },
+                "_debugcommon": {
+                    "newLine": true,
+                    "type": "header",
+                    "text": "HA DEBUG settings",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12,
+                    "size": 3
+                },
+                "msgHaAutoDiscovery": {
+                    "type": "checkbox",
+                    "label": "msgHaAutoDiscovery",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 4,
+                    "xl": 4
+                },
+                "showDiscoveryObject": {
+                    "type": "checkbox",
+                    "label": "showDiscoveryObject",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 4,
+                    "xl": 4
+                },
+                "msgHaIncomming": {
+                    "type": "checkbox",
+                    "label": "msgHaIncomming",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 4,
+                    "xl": 4
+                },
+                "msgHaOutgoing": {
+                    "type": "checkbox",
+                    "label": "msgHaOutgoing",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 4,
+                    "xl": 4
+                },
+                "msgHaStatusInitial": {
+                    "type": "checkbox",
+                    "label": "msgHaStatusInitial",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 4,
+                    "xl": 4
+                }
+            }
+        }
+    }
 }
