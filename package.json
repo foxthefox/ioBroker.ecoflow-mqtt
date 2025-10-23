@@ -66,7 +66,8 @@
         "translate": "translate-adapter",
         "release": "release-script",
         "docugen": "node ./lib/helper/gen_docs.js",
-        "sim": "node ./test/emu/ef_json_client.js"
+        "sim": "node ./test/emu/ef_json_client.js",
+        "sim2": "node ./test/emu/ef_client.js"
     },
     "bugs": {
         "url": "https://github.com/foxthefox/ioBroker.ecoflow-mqtt/issues"
