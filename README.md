@@ -342,6 +342,8 @@ Wave is not available, could be implemented, if data is available.
 
 [Glacier](./doc/devices/glacier.md)
 
+[Glacier Classic 55L](./doc/devices/glacier55.md)
+
 ### Alternator
 
 [Alternator](./doc/devices/alternator.md)

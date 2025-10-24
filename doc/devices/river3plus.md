@@ -331,7 +331,6 @@
 |realSoh|0 | 100 | % | 1 |  real soh |
 |calendarSoh|0 | 100 | % | 1 |  calendar soh |
 |cycleSoh|0 | 100 | % | 1 |  cycle soh |
-|mosTemp|0 | 100 | °C | 1 |  mos temp |
 |envTemp|0 | 80 | °C | 1 |  env temp |
 |curSensorTemp|0 | 80 | °C | 1 |  cur sensor temp |
 |maxEnvTemp|0 | 80 | °C | 1 |  max env temp |
@@ -370,7 +369,6 @@
 |cellVol| Cell voltage |
 |cellTemp| Cell temperature |
 |remainBalanceTime| remain balance time |
-|heatfilmTemp| heatfilm Temp |
 
 ## BMSHeartBeatReport1
 
@@ -435,7 +433,6 @@
 |realSoh|0 | 100 | % | 1 |  real soh |
 |calendarSoh|0 | 100 | % | 1 |  calendar soh |
 |cycleSoh|0 | 100 | % | 1 |  cycle soh |
-|mosTemp|0 | 100 | °C | 1 |  mos temp |
 |envTemp|0 | 80 | °C | 1 |  env temp |
 |curSensorTemp|0 | 80 | °C | 1 |  cur sensor temp |
 |maxEnvTemp|0 | 80 | °C | 1 |  max env temp |
@@ -473,8 +470,8 @@
 |----------|------|
 |cellVol| Cell voltage |
 |cellTemp| Cell temperature |
+|mosTemp| mos temp |
 |remainBalanceTime| remain balance time |
-|heatfilmTemp| heatfilm Temp |
 
 ## setDp3
 
