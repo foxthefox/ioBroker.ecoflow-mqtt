@@ -580,19 +580,19 @@
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |pcsAPhase_volt|0 | 250 | V | 1 |  Phase A voltage |
 |pcsAPhase_amp|0 | 60 | A | 1 |  Phase A current |
-|pcsAPhase_actPwr|-5000 | 5000 | W | 1 |  Phase A active power |
+|pcsAPhase_actPwr|-15000 | 15000 | W | 1 |  Phase A active power |
 |pcsAPhase_reactPwr|-1000 | 5000 | var | 1 |  Phase A reactive power |
-|pcsAPhase_apparentPwr|0 | 5000 | VA | 1 |  Phase A apparent power |
+|pcsAPhase_apparentPwr|0 | 15000 | VA | 1 |  Phase A apparent power |
 |pcsBPhase_volt|0 | 250 | V | 1 |  Phase B voltage |
 |pcsBPhase_amp|0 | 60 | A | 1 |  Phase B current |
-|pcsBPhase_actPwr|-5000 | 5000 | W | 1 |  Phase B active power |
+|pcsBPhase_actPwr|-15000 | 15000 | W | 1 |  Phase B active power |
 |pcsBPhase_reactPwr|-1000 | 15000 | var | 1 |  Phase B reactive power |
-|pcsBPhase_apparentPwr|0 | 5000 | VA | 1 |  Phase B apparent power |
+|pcsBPhase_apparentPwr|0 | 15000 | VA | 1 |  Phase B apparent power |
 |pcsCPhase_volt|0 | 250 | V | 1 |  Phase C voltage |
 |pcsCPhase_amp|0 | 60 | A | 1 |  Phase C current |
-|pcsCPhase_actPwr|-5000 | 5000 | W | 1 |  Phase C active power |
+|pcsCPhase_actPwr|-15000 | 15000 | W | 1 |  Phase C active power |
 |pcsCPhase_reactPwr|-1000 | 5000 | var | 1 |  Phase C reactive power |
-|pcsCPhase_apparentPwr|0 | 5000 | VA | 1 |  Phase C apparent power |
+|pcsCPhase_apparentPwr|0 | 15000 | VA | 1 |  Phase C apparent power |
 |mpptHeartBeat_mpptPv_vol0|0 | 1000 | V | 1 |  Solar 1 voltage |
 |mpptHeartBeat_mpptPv_vol1|0 | 1000 | V | 1 |  Solar 2 voltage |
 |mpptHeartBeat_mpptPv_amp0|0 | 21 | A | 1 |  Solar 1 current |

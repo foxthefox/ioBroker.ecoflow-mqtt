@@ -154,7 +154,7 @@ const pdevices = {
     R371A112345678: { devName: 'EF Oecan dc plus', devType: 'poweroceanplus', haEnable: false },
     BK41Z123456789012: { devName: 'Stream inverter', devType: 'stream_inverter', haEnable: false },
     HW5255555G1234567: { devName: 'My plug', devType: 'plug', haEnable: false },
-    BX12Z11234567: { devName: 'My glacier55', devType: 'glacier55', haEnable: false },
+    RF45Z11234567: { devName: 'My glacier55', devType: 'glacier55', haEnable: false },
 };
 
 let quota = loadQuotas(pdevices);

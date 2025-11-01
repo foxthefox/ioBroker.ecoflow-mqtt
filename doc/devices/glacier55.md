@@ -33,39 +33,37 @@
 | State  |  Name |
 |----------|------|
 |errcode| errcode |
-|unknown102| unknown102 |
+|batTemp102| battery temperature |
 |bmsErrCode| main battery err code |
 |errCodeRecordList| err code record list |
 |pdErrCode| pd err code |
 |bmsMainSn| bms Main Sn |
-|unknown512| unknown512 |
 |unknown623| unknown623 |
 |unknown631| unknown631 |
-|unknown738| unknown738 |
-|unknown739| unknown739 |
-|unknown740| unknown740 |
-|unknown741| unknown741 |
-|unknown744| unknown744 |
-|unknown745| unknown745 |
 |unknown746| unknown746 |
 |unknown747| unknown747 |
-|unknown748| unknown748 |
 
 ### diagnostic
 
 | State  |     Name |  values |
 |----------|:-------------:|------|
-|sysStatus| System status | {1:OK?} |
+|sysStatus| System status | {0:device off,1:device on,2:device standby} |
 |cmsChgDsgState| Charging/Discharging status | {0:not charging or discharging,1:discharging,2:charging} |
-|plugInInfoPvFlag| plug in info pv flag | {0:bad?,1:OK?} |
-|plugInInfoPvType| plug in info pv type | {0:12v?,1:solar?} |
-|plugInInfoDcpInFlag| plug in info dcp in flag | {0:Off?,1:On?} |
+|plugInInfoPvFlag| plug in info pv flag | {0:XT60 connector AC power adapter removed,1:XT60 connector AC power adapter inserted} |
+|plugInInfoPvType| plug in info pv type | {0:AC power cord removed, only battery,1:AC power cord inserted} |
+|plugInInfoDcpInFlag| plug in info dcp in flag | {0:Battery not inserted,1:Battery inserted} |
+|tempUnit| Unit of Temperature  | {0:not set?,1:°C (Celsius),2:°F (Fahrenheit)} |
+|lidStatus| lid/door status | {0:Closed,1:Open} |
+|zoneStatus| Zone Status (Compartment Separator) | {0:Dual Zone,1:Single Zone (when in Single, the Left Setpoint takes charge)} |
+|tempAlert| Temperature alarm | {0:off,1:on} |
 
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |powInSumW|0 | 4000 | W | 1 |  Total input power |
 |powOutSumW|0 | 1000 | W | 1 |  Total output power |
+|lcdLight|0 | 100 | % | 0.390625 |  Screen brightness |
+|screenOffTime|0 | 1800 | s | 1 |  Screen timeout (s) |
 |cmsBattSoc|0 | 100 | % | 1 |  Overall SOC |
 |cmsDsgRemTime|0 | 15999 | min | 1 |  Remaining discharging time |
 |cmsChgRemTime|0 | 15999 | min | 1 |  Remaining charging time |
@@ -74,7 +72,7 @@
 |cmsBattPowInMax|0 | 4000 | W | 1 |  cms batt pow in max |
 |tempMonitorLeft|-30 | 40 | °C | 1 |  Temp Monitor Left |
 |tempMonitorRight|-30 | 40 | °C | 1 |  Temp Monitor Right |
-|iceTime749|0 |  n/a | s | 0.001 |  ice time duration |
+|uptime749|0 |  n/a | s | 0.001 |  ice time duration |
 |inputVolt777|0 | 40 | V | 1 |  input voltage |
 
 
@@ -82,19 +80,21 @@
 
 | State  |      Min     |     Max     |  Unit |  Mult |  Name |  cmd |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|------|
-|lcdLight| 0 | 100 | % | 0.390625 |  Screen brightness | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
-|devStandbyTime| 0 | 1440 | min | 1 |  Device timeout (min) | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
-|screenOffTime| 0 | 1800 | s | 1 |  Screen timeout (s) | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
+|devStandbyTime| 0 | 96400 | min | 1 |  Device timeout | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
 |cmsMaxChgSoc| 50 | 100 | % | 1 |  Charge limit | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
 |cmsMinDsgSoc| 0 | 30 | % | 1 |  Discharge limit | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
-|setPointLeft| -30 | 40 | °C | 1 |  Setpoint Temp. Left | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
-|setPointRight| -30 | 40 | °C | 1 |  Setpoint Temp. Right | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
+|setPointLeft| -20 | 20 | °C | 1 |  Setpoint Temp. Left | {dest:2,cmdFunc:254,cmdId:17,dataLen:6} |
+|setPointRight| -20 | 20 | °C | 1 |  Setpoint Temp. Right | {dest:2,cmdFunc:254,cmdId:17,dataLen:6} |
+|batProtect| 0 | 3 |  | 1 |  Starter battery protection | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
 
 ### switch
 
 | State  |      off    |  on |  Name |  cmd |
 |----------|:-------------:|:------:|------|------|
-|enBeep| off | on | Beeper on/off. (true: on, false: off.) | {dest:2,cmdFunc:254,cmdId:17,dataLen:2} |
+|enBeep| off | on | Beeper on/off | {dest:2,cmdFunc:254,cmdId:17,dataLen:2} |
+|childLock| off | on | child lock | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
+|simpleMode| off | on | simple mode | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
+|coolingMode| off | on | cooling mode | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
 
 ## BMSHeartBeatReport
 
@@ -124,6 +124,8 @@
 |afeSysStatus| afe sys status |
 |mcuPinInStatus| mcu pin in status |
 |mcuPinOutStatus| mcu pin out status |
+|packSn| pack sn |
+|waterInFlag| water in flag |
 
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
