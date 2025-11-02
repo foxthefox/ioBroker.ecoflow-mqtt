@@ -74,23 +74,38 @@
         "plugInInfoDcpRunState": 0,
         "plugInInfoDcpErrCode": 0,
         "plugInInfoAcInChgHalPowMax": 0,
-        "inletTemp484": 18.940000534057617,
-        "humidity485": 52.77000045776367,
-        "fanLevel486": 5,
-        "outletTemp494": 43.7400016784668,
-        "unknown504": 0,
-        "unknown505": 0,
-        "unknown506": 1,
-        "unknown507": 2,
-        "unknown508": 1,
-        "unknown509": 0,
-        "unknown510": 0,
-        "unknown512": 2,
-        "unknown513": 0,
-        "wave": { "range": { "unknown1": 1, "unknown2": 40, "unknown3": 23.75, "unknown5": 26.5, "unknown6": 21 } },
-        "unknown627": "\n\u0006\u0000\u0000\u0000\u0000\u0000\u0000",
-        "unknown777": 50,
-        "unknown778": 0,
-        "unknown779": 0
+        "tempAmbient": 18.940000534057617,
+        "humiAmbient": 52.77000045776367,
+        "waveOperatingMode": 5,
+        "tempIndoorSupplyAir": 43.7400016784668,
+        "condensateWaterLevel": 0,
+        "inDrainage": false,
+        "drainageMode": 1,
+        "moodLightMode": 2,
+        "lcdShowTempType": 1,
+        "enPetCare": false,
+        "tempPetCareWarning": 0,
+        "userTempUnit": 2,
+        "petCareWarning": false,
+        "waveModeInfo": {
+            "listInfo": [
+                {},
+                { "submode": 4, "airflowSpeed": 20, "tempSet": 22.899999618530273 },
+                { "submode": 3, "airflowSpeed": 20, "tempSet": 26 },
+                { "airflowSpeed": 40 },
+                { "airflowSpeed": 100, "humiSet": 50 },
+                {
+                    "submode": 1,
+                    "airflowSpeed": 40,
+                    "tempSet": 23.75,
+                    "tempThermostaticUpperLimit": 26.5,
+                    "tempThermostaticLowerLimit": 21
+                }
+            ]
+        },
+        "devErrcodeList": { "devErrcode": [0, 0, 0, 0, 0, 0] },
+        "powGetSelfConsume": 50,
+        "powerOffDelaySet": 0,
+        "powerOffDelayRemaining": 0
     }
 }

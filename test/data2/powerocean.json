@@ -605,5 +605,85 @@
         "hrEnergyStream": [
             { "hrSn": "HF32Z1234567890", "hrPwr": 3550, "temp": 39, "fromPv": 3550, "fromBat": 500, "fromGrid": 600 }
         ]
+    },
+    "ParallelEnergyStreamDetail": {
+        "paraEnergyStreamDetail": [
+            {
+                "sysLoadPwr": 503.03240966796875,
+                "sysGridPwr": 301.1585693359375,
+                "bpPwr": -201.8738555908203,
+                "timestamp": 1757961000,
+                "bpSoc": 90,
+                "devSn": "HJXXXXXX"
+            },
+            {
+                "sysLoadPwr": 506.3233947753906,
+                "sysGridPwr": -3.4679183959960938,
+                "bpPwr": -509.79132080078125,
+                "timestamp": 1757961000,
+                "bpSoc": 89
+            },
+            {
+                "sysLoadPwr": 502.0224304199219,
+                "sysGridPwr": 304.16064453125,
+                "bpPwr": -197.86178588867188,
+                "timestamp": 1757960940,
+                "bpSoc": 91,
+                "devSn": "HJXXXXXX"
+            },
+            {
+                "sysLoadPwr": 510.2342529296875,
+                "sysGridPwr": -0.3312835693359375,
+                "bpPwr": -510.5655517578125,
+                "timestamp": 1757960940,
+                "bpSoc": 90
+            },
+            {
+                "sysLoadPwr": 547.7385864257812,
+                "sysGridPwr": 352.0101623535156,
+                "bpPwr": -195.72840881347656,
+                "timestamp": 1757960880,
+                "bpSoc": 91,
+                "devSn": "HJXXXXXX"
+            },
+            {
+                "sysLoadPwr": 507.2791748046875,
+                "sysGridPwr": 18.305538177490234,
+                "bpPwr": -488.9736328125,
+                "timestamp": 1757960880,
+                "bpSoc": 90
+            },
+            {
+                "sysLoadPwr": 510.12713623046875,
+                "sysGridPwr": 310.16888427734375,
+                "bpPwr": -199.95823669433594,
+                "timestamp": 1757960820,
+                "bpSoc": 91,
+                "devSn": "HJXXXXXX"
+            },
+            {
+                "sysLoadPwr": 511.625732421875,
+                "sysGridPwr": -1.3682823181152344,
+                "bpPwr": -512.9940185546875,
+                "timestamp": 1757960820,
+                "bpSoc": 90
+            },
+            {
+                "sysLoadPwr": 510.26312255859375,
+                "sysGridPwr": 309.22314453125,
+                "bpPwr": -201.0399932861328,
+                "timestamp": 1757960760,
+                "bpSoc": 91,
+                "devSn": "HJXXXXXX"
+            },
+            {
+                "sysLoadPwr": 518.1139526367188,
+                "sysGridPwr": 4.331111907958984,
+                "bpPwr": -513.7828369140625,
+                "timestamp": 1757960760,
+                "bpSoc": 90
+            }
+        ],
+        "paraSysSeq": 42461
     }
 }

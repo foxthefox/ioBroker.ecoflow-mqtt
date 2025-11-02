@@ -368,6 +368,7 @@
 |----------|------|
 |cellVol| Cell voltage |
 |cellTemp| Cell temperature |
+|mosTemp| mos temp |
 |remainBalanceTime| remain balance time |
 
 ## BMSHeartBeatReport1

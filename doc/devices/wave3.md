@@ -31,6 +31,9 @@
 |plugInInfoDcpSn| plug in info dcp sn |
 |plugInInfoDcpFirmVer| plug in info dcp firm ver |
 |plugInInfoDcpErrCode| plug in info dcp err code |
+|tempPetCareWarning| temp Pet Care Warning |
+|powerOffDelaySet| powerOffDelaySet |
+|powerOffDelayRemaining| powerOffDelayRemaining |
 
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
@@ -66,13 +69,11 @@
 |plugInInfoPvChgVolMax|0 | 60 | V | 1 |  plug in info pv chg vol max |
 |powGetDcp|0 | 60 | W | 1 |  pow get dcp |
 |plugInInfoAcInChgHalPowMax|0 | 2000 | W | 1 |  Maximum AC charging power |
-|inletTemp484|0 |  n/a | °C | 1 |  inlet temp? |
-|humidity485|0 |  n/a | % | 1 |  humidity? |
-|fanLevel486|0 |  n/a |  | 1 |  fan level? |
-|outletTemp494|0 |  n/a | °C | 1 |  outlet temp? |
-|unknown504|0 |  n/a |  | 1 |  unknown 504 |
-|unknown510|0 |  n/a |  | 1 |  unknown 510 |
-|unknown777|0 |  n/a |  | 1 |  unknown 777 |
+|tempAmbient|0 |  n/a | °C | 1 |  inlet temp? |
+|humiAmbient|0 |  n/a | % | 1 |  humidity? |
+|tempIndoorSupplyAir|0 |  n/a | °C | 1 |  outlet temp? |
+|condensateWaterLevel|0 | 100 | % | 1 |  condensateWaterLevel |
+|powGetSelfConsume|0 |  n/a | W | 1 |  Power Self Consumtion |
 
 
 ### level
@@ -114,10 +115,25 @@
 |plugInInfoDcpDsgChgType| plug in info dcp dsg chg type | {0:OK?} |
 |plugInInfoDcpChargerFlag| plug in info dcp charger flag | {0:OK?} |
 |plugInInfoDcpRunState| plug in info dcp run state | {0:OK?} |
+|waveOperatingMode| Wave Operating Mode | {0:NULL,1:COOLING,2:HEATING,3:VENTING,4:DEHUMIDIFYING,5:THERMOSTATIC} |
+|inDrainage| inDrainage | {0:off?,1:on?} |
+|drainageMode| drainageMode | {0:off?,1:on?} |
+|moodLightMode| moodLightMode | {0:off?,1:on?,2:dim?} |
+|lcdShowTempType| lcdShowTempType | {0:off?,1:on?} |
+|enPetCare|  enPetCare | {0:off,1:on} |
+|userTempUnit| Unit of Temperature  | {0:not set?,1:°C (Celsius),2:°F (Fahrenheit)} |
+|petCareWarning| petCareWarning | {0:off?,1:on?} |
 
 ### switch
 
 | State  |      off    |  on |  Name |  cmd |
 |----------|:-------------:|:------:|------|------|
 |enBeep| off | on | Beeper on/off. (true: on, false: off.) | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
+
+### array
+
+| State  |  Name |
+|----------|------|
+|waveModeInfo| wave mode info |
+|devErrcodeList| device error code list |
 
