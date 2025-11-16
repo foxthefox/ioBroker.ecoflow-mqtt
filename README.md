@@ -255,14 +255,6 @@ some explanation to the device data
 
 [River Pro](./doc/devices/riverpro.md)
 
-[Delta Mini](./doc/devices/deltamini.md)
-
-[Delta](./doc/devices/delta.md)
-
-[Delta Max](./doc/devices/deltamax.md)
-
-[Delta Pro](./doc/devices/deltapro.md)
-
 [River 2 Max](./doc/devices/river2max.md)
 
 [River 2 Pro](./doc/devices/river2pro.md)
@@ -271,11 +263,23 @@ some explanation to the device data
 
 [River 3 Plus](./doc/devices/river3plus.md)
 
+[Delta Mini](./doc/devices/deltamini.md)
+
+[Delta](./doc/devices/delta.md)
+
+[Delta Max](./doc/devices/deltamax.md)
+
 [Delta 2](./doc/devices/delta2.md)
 
 [Delta 2 Max](./doc/devices/delta2max.md)
 
+[Delta 3](./doc/devices/delta3.md)
+
 [Delta 3 Plus](./doc/devices/delta3plus.md)
+
+[Delta 3 Max Plus](./doc/devices/delta3maxplus.md)
+
+[Delta Pro](./doc/devices/deltapro.md)
 
 [Delta Pro 3](./doc/devices/deltapro3.md)
 
@@ -308,6 +312,8 @@ Dual Fuel generator is not available, could be implemented, if data is available
 ### Powerstream & Stream
 
 [Powerstream](./doc/devices/pstream600.md)
+
+[Stream AC](./doc/devices/stream_ac.md)
 
 [Stream AC PRO](./doc/devices/stream_ac_pro.md)
 
@@ -370,6 +376,9 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 ### 1.4.8 (npm)
 
 - (foxthefox) new device Glacier Classic 55L support
+- (foxthefox) new device Delta 3 Max Plus support
+- (foxthefox) new device Stream AC support
+- (foxthefox) enhancements on wave3
 - (foxthefox) poweroceanplus set hrPwr/fromPv/romBat/fromGrid values to 0 for non transmitted datapoints in HeatingRodEnergyStreamShow
 - (foxthefox) poweroceanplus pcsActPwr max 20kW, pcsXPhase_amp max 60A
 - (foxthefox) corrections in BMSHeartBeatReport for river3/river3plus
