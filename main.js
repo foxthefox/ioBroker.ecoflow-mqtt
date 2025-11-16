@@ -199,6 +199,7 @@ class EcoflowMqtt extends utils.Adapter {
                                 devtype === 'wave3' ||
                                 devtype === 'stream_inverter' ||
                                 devtype === 'glacier55' ||
+                                devtype === 'delta3maxplus' ||
                                 devtype === 'unknown'
                             ) {
                                 pdevicesStatesDict = require(`./lib/dict_data/ef_${devtype}_data.js`).deviceStatesDict[
@@ -729,6 +730,7 @@ class EcoflowMqtt extends utils.Adapter {
                         devtype === 'stream_inverter' ||
                         devtype === 'glacier55' ||
                         devtype === 'wave3' ||
+                        devtype === 'devtype === ' ||
                         devtype === 'unknown'
                     ) {
                         if (this.pdevicesStatesDict && this.pdevicesStates) {
@@ -1407,6 +1409,7 @@ class EcoflowMqtt extends utils.Adapter {
                             case 'stream_inverter':
                             case 'glacier55':
                             case 'wave3':
+                            case 'delta3maxplus':
                             case 'unknown':
                                 devicetype = this.pdevices[device]['devType'];
                                 type = 'protobuf'; //includes also plugs
