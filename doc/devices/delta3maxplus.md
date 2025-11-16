@@ -23,29 +23,29 @@
 |plugInInfoAcOutFreq|49 | 61 | Hz | 1 |  plug in info ac out freq |
 |plugInInfoAcOutVol|0 | 250 | V | 1 |  plug in info ac out vol |
 |plugInInfoAcInVol|0 | 250 | V | 1 |  plug in info ac in vol |
-|plugInInfoPv2Amp|0 | 15 | A | 1 |  plug in info pv2 amp |
+|plugInInfoPv2Amp|0 | 15 | A | 0.01 |  plug in info pv2 amp |
 |plugInInfoBmsVol|0 | 60 | V | 0.001 |  plug in info main battery vol |
-|plugInInfoAcInAmp|0 | 10 | A | 1 |  plug in info ac in amp |
-|plugInInfoAcOutAmp|0 | 10 | A | 1 |  plug in info ac out amp |
+|plugInInfoAcInAmp|0 | 10 | A | 0.01 |  plug in info ac in amp |
+|plugInInfoAcOutAmp|0 | 10 | A | 0.01 |  plug in info ac out amp |
 |bmsBattVol|0 | 60 | V | 0.001 |  main battery batt vol |
 |bmsBattAmp|-80 | 80 | A | 0.01 |  main battery batt amp |
-|bmsFullCap|0 | 20000 | mAh | 1 |  main battery full cap |
+|bmsFullCap|0 | 80000 | mAh | 1 |  main battery full cap |
 |bmsRemainCap|0 | 80000 | mAh | 1 |  main battery remain cap |
 |bmsMinCellVol|0 | 5 | V | 0.001 |  Minimum voltage of the main battery |
 |bmsMaxCellVol|0 | 5 | V | 0.001 |  main battery max cell vol |
 |cmsBattVol|0 | 60 | V | 0.001 |  cms batt vol |
 |cmsBattAmp|-80 | 80 | A | 0.01 |  cms batt amp |
 |cmsChgReqVol|0 | 60 | V | 0.001 |  cms chg req vol |
-|cmsChgReqAmp|0 | 60 | A | 1 |  cms chg req amp |
+|cmsChgReqAmp|0 | 60 | A | 0.01 |  cms chg req amp |
 |runtimePropertyFullUploadPeriod|0 |  n/a | s | 1 |  runtime property full upload period |
 |runtimePropertyIncrementalUploadPeriod|0 |  n/a | s | 1 |  runtime property incremental upload period |
 |tempPv|0 | 100 | °C | 1 |  temp pv |
 |plugInInfoPvVol|0 | 60 | V | 1 |  plug in info pv vol |
-|plugInInfoPvAmp|0 | 15 | A | 1 |  plug in info pv amp |
+|plugInInfoPvAmp|0 | 15 | A | 0.01 |  plug in info pv amp |
 |tempPv2|0 | 100 | °C | 1 |  temp pv2 |
 |plugInInfoPv2Vol|0 | 60 | V | 1 |  plug in info pv2 vol |
 |plugInInfoDcpVol|0 | 60 | V | 1 |  plug in info dcp vol |
-|plugInInfoDcpAmp|0 | 15 | A | 1 |  plug in info dcp amp |
+|plugInInfoDcpAmp|0 | 15 | A | 0.01 |  plug in info dcp amp |
 
 
 ### diagnostic
@@ -120,9 +120,9 @@
 |powGetAcIn|0 | 4000 | W | 1 |  Real-time AC input power |
 |plugInInfoAcInFeq|49 | 61 | Hz | 1 |  AC input frequency |
 |powGetPv2|0 | 600 | W | 1 |  pow get pv2 |
-|plugInInfoPv2DcAmpMax|0 | 15 | A | 1 |  plug in info pv2 dc amp max |
-|plugInInfoPv2ChgAmpMax|0 | 15 | A | 1 |  plug in info pv2 chg amp max |
-|plugInInfoPv2ChgVolMax|0 | 60 | V | 1 |  plug in info pv2 chg vol max |
+|plugInInfoPv2DcAmpMax|0 | 15 | A | 0.01 |  plug in info pv2 dc amp max |
+|plugInInfoPv2ChgAmpMax|0 | 15 | A | 0.01 |  plug in info pv2 chg amp max |
+|plugInInfoPv2ChgVolMax|0 | 60 | V | 0.001 |  plug in info pv2 chg vol max |
 |utcTimezone|-1200 | 1200 |  | 1 |  utc timezone |
 |wirelessOilOnSoc|0 | 100 | % | 1 |  wireless oil on soc |
 |wirelessOilOffSoc|0 | 100 | % | 1 |  wireless oil off soc |
@@ -131,7 +131,7 @@
 |plugInInfoAcOutDsgPowMax|0 | 4000 | W | 1 |  Maximum AC discharging power |
 |bmsBattSoc|0 | 100 | % | 1 |  SOC of the main battery |
 |bmsBattSoh|0 | 100 | % | 1 |  SOH of the main battery |
-|bmsDesignCap|0 | 20000 | mAh | 1 |  Battery capacity |
+|bmsDesignCap|0 | 80000 | mAh | 1 |  Battery capacity |
 |bmsDsgRemTime|0 | 15999 | min | 1 |  Remaining discharging time |
 |bmsChgRemTime|0 | 15999 | min | 1 |  Remaining charging time of the main battery |
 |bmsMinCellTemp|0 | 80 | °C | 1 |  Minimum temperature of the main battery |
@@ -144,10 +144,10 @@
 |cmsChgRemTime|0 | 15999 | min | 1 |  Remaining charging time |
 |timeTaskChangeCnt|0 |  n/a |  | 1 |  time task change cnt |
 |powGetDc|0 | 150 | W | 1 |  pow get dc |
-|plugInInfoPvDcAmpMax|0 | 15 | A | 1 |  plug in info pv dc amp max |
+|plugInInfoPvDcAmpMax|0 | 15 | A | 0.01 |  plug in info pv dc amp max |
 |powGetPv|0 | 600 | W | 1 |  pow get pv |
-|plugInInfoPvChgAmpMax|0 | 15 | A | 1 |  plug in info pv chg amp max |
-|plugInInfoPvChgVolMax|0 | 61 | V | 1 |  plug in info pv chg vol max |
+|plugInInfoPvChgAmpMax|0 | 15 | A | 0.01 |  plug in info pv chg amp max |
+|plugInInfoPvChgVolMax|0 | 61 | V | 0.001 |  plug in info pv chg vol max |
 |powGetAcOut|0 | 4000 | W | 1 |  pow get ac out |
 |powGetDcp|0 | 600 | W | 1 |  pow get dcp |
 |cmsBattPowOutMax|0 | 4000 | W | 1 |  cms batt pow out max |
@@ -272,9 +272,9 @@
 |vol|0 | 60 | V | 0.001 |  vol |
 |amp|0 | 30 | A | 0.001 |  amp |
 |temp|0 | 90 | °C | 1 |  temp |
-|designCap|0 | 20000 | mAh | 1 |  design cap |
+|designCap|0 | 80000 | mAh | 1 |  design cap |
 |remainCap|0 | 80000 | mAh | 1 |  remain cap |
-|fullCap|0 | 20000 | mAh | 1 |  full cap |
+|fullCap|0 | 80000 | mAh | 1 |  full cap |
 |cycles|0 | 6000 |  | 1 |  Number of cycles |
 |soh|0 | 100 | % | 1 |  soh |
 |maxCellVol|0 | 5 | V | 0.001 |  max cell vol |
@@ -376,9 +376,9 @@
 |vol|0 | 60 | V | 0.001 |  vol |
 |amp|0 | 30 | A | 0.001 |  amp |
 |temp|0 | 90 | °C | 1 |  temp |
-|designCap|0 | 20000 | mAh | 1 |  design cap |
+|designCap|0 | 80000 | mAh | 1 |  design cap |
 |remainCap|0 | 80000 | mAh | 1 |  remain cap |
-|fullCap|0 | 20000 | mAh | 1 |  full cap |
+|fullCap|0 | 80000 | mAh | 1 |  full cap |
 |cycles|0 | 6000 |  | 1 |  Number of cycles |
 |soh|0 | 100 | % | 1 |  soh |
 |maxCellVol|0 | 5 | V | 0.001 |  max cell vol |
