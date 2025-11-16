@@ -466,6 +466,10 @@
                                     "label": "Delta 3 Plus"
                                 },
                                 {
+                                    "value": "delta3maxplus",
+                                    "label": "Delta 3 Max Plus"
+                                },
+                                {
                                     "value": "deltapro3",
                                     "label": "Delta 3 Pro"
                                 },
