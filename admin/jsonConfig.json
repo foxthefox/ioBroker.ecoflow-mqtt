@@ -339,6 +339,10 @@
                                     "label": "Stream Inverter"
                                 },
                                 {
+                                    "value": "stream_ac",
+                                    "label": "Stream AC"
+                                },
+                                {
                                     "value": "stream_ac_pro",
                                     "label": "Stream AC Pro"
                                 },

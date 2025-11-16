@@ -313,6 +313,8 @@ Dual Fuel generator is not available, could be implemented, if data is available
 
 [Powerstream](./doc/devices/pstream600.md)
 
+[Stream AC](./doc/devices/stream_ac.md)
+
 [Stream AC PRO](./doc/devices/stream_ac_pro.md)
 
 [Stream Ultra](./doc/devices/stream_ultra.md)
@@ -375,6 +377,8 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 
 - (foxthefox) new device Glacier Classic 55L support
 - (foxthefox) new device Delta 3 Max Plus support
+- (foxthefox) new device Stream AC support
+- (foxthefox) enhancements on wave3
 - (foxthefox) poweroceanplus set hrPwr/fromPv/romBat/fromGrid values to 0 for non transmitted datapoints in HeatingRodEnergyStreamShow
 - (foxthefox) poweroceanplus pcsActPwr max 20kW, pcsXPhase_amp max 60A
 - (foxthefox) corrections in BMSHeartBeatReport for river3/river3plus
