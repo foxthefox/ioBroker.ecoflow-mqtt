@@ -29,8 +29,8 @@
 |plugInInfoAcOutAmp|0 | 10 | A | 0.01 |  plug in info ac out amp |
 |bmsBattVol|0 | 60 | V | 0.001 |  main battery batt vol |
 |bmsBattAmp|-80 | 80 | A | 0.01 |  main battery batt amp |
-|bmsFullCap|0 | 80000 | mAh | 1 |  main battery full cap |
-|bmsRemainCap|0 | 80000 | mAh | 1 |  main battery remain cap |
+|bmsFullCap|0 | 40000 | mAh | 1 |  main battery full cap |
+|bmsRemainCap|0 | 40000 | mAh | 1 |  main battery remain cap |
 |bmsMinCellVol|0 | 5 | V | 0.001 |  Minimum voltage of the main battery |
 |bmsMaxCellVol|0 | 5 | V | 0.001 |  main battery max cell vol |
 |cmsBattVol|0 | 60 | V | 0.001 |  cms batt vol |
@@ -131,7 +131,7 @@
 |plugInInfoAcOutDsgPowMax|0 | 4000 | W | 1 |  Maximum AC discharging power |
 |bmsBattSoc|0 | 100 | % | 1 |  SOC of the main battery |
 |bmsBattSoh|0 | 100 | % | 1 |  SOH of the main battery |
-|bmsDesignCap|0 | 80000 | mAh | 1 |  Battery capacity |
+|bmsDesignCap|0 | 40000 | mAh | 1 |  Battery capacity |
 |bmsDsgRemTime|0 | 15999 | min | 1 |  Remaining discharging time |
 |bmsChgRemTime|0 | 15999 | min | 1 |  Remaining charging time of the main battery |
 |bmsMinCellTemp|0 | 80 | °C | 1 |  Minimum temperature of the main battery |
