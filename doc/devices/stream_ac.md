@@ -139,8 +139,6 @@
 |plugInInfoPv2Flag| plug in info pv2 flag | {0:OK?} |
 |plugInInfoPv3Flag| plug in info pv3 flag | {0:OK?} |
 |plugInInfoPv4Flag| plug in info pv4 flag | {0:OK?} |
-|relay1Onoff| relay 1 status | {0:off?,1:on} |
-|relay4Onoff| relay 4 status | {0:off?,1:on} |
 |feedGridMode| feed grid mode | {1:online?} |
 |bmsBattHeating| bms Batt Heating status | {0:off?,1:on} |
 |stormPatternEnable| storm pattern enable | {0:off?,1:on?} |
@@ -160,13 +158,6 @@
 |cmsMinDsgSoc| 0 | 30 | % | 1 |  Discharge limit | {src:32,dest:2,dSrc:1,dDest:1,cmdFunc:254,cmdId:17,dataLen:12,productId:56,version:3,payloadVer:1,pdata:{cfgUtcTime:6,cmsMinDsgSoc:34}} |
 |backupReverseSoc| 0 | 100 | % | 1 |  Backup Reserve SOC | {src:32,dest:2,dSrc:1,dDest:1,cmdFunc:254,cmdId:17,dataLen:9,productId:56,version:3,payloadVer:1,pdata:{cfgUtcTime:6,backupReverseSoc:102}} |
 |powConsumptionMeasurement| 1 | 2 |  | 1 |  pow Consumption Measurement handling | {src:32,dest:2,dSrc:1,dDest:1,cmdFunc:254,cmdId:17,dataLen:9,productId:56,version:3,payloadVer:1,pdata:{cfgUtcTime:6,powConsumptionMeasurement:239}} |
-
-### switch
-
-| State  |      off    |  on |  Name |  cmd |
-|----------|:-------------:|:------:|------|------|
-|relay2Onoff| off | on | relay AC out #1 | {src:32,dest:2,dSrc:1,dDest:1,cmdFunc:254,cmdId:17,dataLen:9,productId:56,version:3,payloadVer:1,pdata:{cfgUtcTime:6,relay2Onoff:380}} |
-|relay3Onoff| off | on | relay AC out #2 | {src:32,dest:2,dSrc:1,dDest:1,cmdFunc:254,cmdId:17,dataLen:9,productId:56,version:3,payloadVer:1,pdata:{cfgUtcTime:6,relay3Onoff:380}} |
 
 ## BMSHeartBeatReport
 
