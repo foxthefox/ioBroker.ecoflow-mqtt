@@ -60,6 +60,7 @@ function loadMesgObj(pdevices) {
             devtype === 'stream_inverter' ||
             devtype === 'wave3' ||
             devtype === 'glacier55' ||
+            devtype === 'stream_ac' ||
             devtype === 'unknown'
         ) {
             if (devtype === 'pstream600' || devtype === 'pstream800') {
@@ -99,6 +100,7 @@ function loadProtoObj(pdevices) {
             devtype === 'stream_inverter' ||
             devtype === 'wave3' ||
             devtype === 'glacier55' ||
+            devtype === 'stream_ac' ||
             devtype === 'unknown'
         ) {
             if (devtype === 'pstream600' || devtype === 'pstream800') {
@@ -155,6 +157,7 @@ const pdevices = {
     BK41Z123456789012: { devName: 'Stream inverter', devType: 'stream_inverter', haEnable: false },
     HW5255555G1234567: { devName: 'My plug', devType: 'plug', haEnable: false },
     RF45Z11234567: { devName: 'My glacier55', devType: 'glacier55', haEnable: false },
+    BK32Z123456789012: { devName: 'My stream ac', devType: 'stream_ac', haEnable: false },
 };
 
 let quota = loadQuotas(pdevices);
@@ -238,6 +241,7 @@ client.on('message', (topic, message) => {
             case 'stream_inverter':
             case 'wave3':
             case 'glacier55':
+            case 'stream_ac':
             case 'unknown':
                 if (msgQbj[topic]) {
                     const string = ef.createMsgFromObjects(msgQbj[topic], quota[topic], protoQbj[topic], true);

@@ -379,6 +379,7 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 - (foxthefox) new device Delta 3 Max Plus support
 - (foxthefox) new device Stream AC support
 - (foxthefox) enhancements on wave3
+- (foxthefox) corrections in river3plus for data processing
 - (foxthefox) poweroceanplus set hrPwr/fromPv/romBat/fromGrid values to 0 for non transmitted datapoints in HeatingRodEnergyStreamShow
 - (foxthefox) poweroceanplus pcsActPwr max 20kW, pcsXPhase_amp max 60A
 - (foxthefox) corrections in BMSHeartBeatReport for river3/river3plus
