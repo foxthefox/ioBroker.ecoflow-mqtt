@@ -42,7 +42,6 @@
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|powGetPv2|0 | 600 | W | 1 |  pow get pv2 |
 |utcTimezone|-1200 | 1200 |  | 1 |  utc timezone |
 |bmsBattSoc|0 | 100 | % | 1 |  SOC of the main battery |
 |bmsBattSoh|0 | 100 | % | 1 |  SOH of the main battery |
@@ -58,7 +57,6 @@
 |cmsBattSoh|0 | 100 | % | 1 |  Overall SOH |
 |cmsDsgRemTime|0 | 15999 | min | 1 |  Remaining discharging time |
 |cmsChgRemTime|0 | 15999 | min | 1 |  Remaining charging time |
-|powGetPv|0 | 600 | W | 1 |  pow get pv |
 |cmsBattPowOutMax|0 | 4000 | W | 1 |  cms batt pow out max |
 |cmsBattPowInMax|0 | 4000 | W | 1 |  cms batt pow in max |
 |cmsBattFullEnergy|0 | 1920 | Wh | 1 |  cms batt full energy |
@@ -72,23 +70,11 @@
 |gridConnectionFreq|0 | 62 | Hz | 1 |  grid connection freq |
 |gridConnectionPower|0 | 2000 | W | 1 |  Grid Connection Power |
 |sysGridConnectionPower|0 | 2000 | W | 1 |  sys Grid Connection Power |
-|powGetPv3|0 | 600 | W | 1 |  pow get pv3 |
-|powGetPv4|0 | 600 | W | 1 |  pow get pv4 |
-|plugInInfoPvVol|0 | 60 | V | 1 |  plug in info pv1 vol |
-|plugInInfoPvAmp|0 | 15 | A | 1 |  plug in info pv1 current |
-|plugInInfoPv2Vol|0 | 60 | V | 1 |  plug in info pv2 vol |
-|plugInInfoPv2Amp|0 | 15 | A | 1 |  plug in info pv2 current |
-|plugInInfoPv3Vol|0 | 60 | V | 1 |  plug in info pv3 vol |
-|plugInInfoPv3Amp|0 | 15 | A | 1 |  plug in info pv3 current |
-|plugInInfoPv4Vol|0 | 60 | V | 1 |  plug in info pv4 vol |
-|plugInInfoPv4Amp|0 | 15 | A | 1 |  plug in info pv4 current |
 |powGetSysLoadFromPv|0 | 2000 | W | 1 |  power get sys load from Pv  |
 |powGetSysLoadFromBp|0 | 2500 | W | 1 |  pow get gys load from bp |
 |powGetSysLoadFromGrid|0 | 3000 | W | 1 |  pow get sys load from grid |
 |powSysAcInMax|0 | 3000 | W | 1 |  pow Sys Ac In Max |
 |socketMeasurePower|0 | 2000 | W | 1 |  socket Measure Power |
-|powGetSchuko1|0 | 2000 | W | 1 |  Power Outlet 1 |
-|powGetSchuko2|0 | 2000 | W | 1 |  Power Outlet 2 |
 |busbarPowLimit|0 | 2300 | W | 1 |  Busbar Power Limit |
 |maxInvInput|0 | 2000 | W | 1 |  max Inv Input |
 |maxInvOutput|0 | 2000 | W | 1 |  max Inv Output |
@@ -134,13 +120,7 @@
 |cmsBmsRunState| On/Off status | {0:off,1:on} |
 |bmsChgDsgState| Charging/Discharging status of the main battery | {0:not charging or discharging,1:discharging,2:charging} |
 |cmsChgDsgState| Charging/Discharging status | {0:not charging or discharging,1:discharging,2:charging} |
-|plugInInfoPvFlag| plug in info pv flag | {0:OK?} |
 |gridCodeSelection| grid Code Selection | {0:NULL,1:AUSTRIA,2:SWITZER,3:POLAND,4:NETHERLANDS,5:VDE_4105,6:IEEE_1547,7:USER_DEFINED,8:NORWAY,9:CZECH_REPUBLIC,10:DENMARK,11:IRELAND,12:SWEDEN,13:LATVIA,14:GREECE_A,15:GREECE_B,16:PORTUGAL,17:ROMANIA,18:LITHUANIA,19:HUNGARY,20:ITALY,21:G98,22:G99,23:NTS_631,24:UNE_217001,25:UNE_217002,26:UTE_MAINLAND,27:UTE_50HZ_ISLAND,28:UTE_60HZ_ISLAND,29:BELGIUM,30:UKRAINE,31:SLOVENIA,32:BULGARIA,33:EU_GENERAL,1001:NORTH_AMERICA} |
-|plugInInfoPv2Flag| plug in info pv2 flag | {0:OK?} |
-|plugInInfoPv3Flag| plug in info pv3 flag | {0:OK?} |
-|plugInInfoPv4Flag| plug in info pv4 flag | {0:OK?} |
-|relay1Onoff| relay 1 status | {0:off?,1:on} |
-|relay4Onoff| relay 4 status | {0:off?,1:on} |
 |feedGridMode| feed grid mode | {1:online?} |
 |bmsBattHeating| bms Batt Heating status | {0:off?,1:on} |
 |stormPatternEnable| storm pattern enable | {0:off?,1:on?} |
@@ -160,13 +140,6 @@
 |cmsMinDsgSoc| 0 | 30 | % | 1 |  Discharge limit | {src:32,dest:2,dSrc:1,dDest:1,cmdFunc:254,cmdId:17,dataLen:12,productId:56,version:3,payloadVer:1,pdata:{cfgUtcTime:6,cmsMinDsgSoc:34}} |
 |backupReverseSoc| 0 | 100 | % | 1 |  Backup Reserve SOC | {src:32,dest:2,dSrc:1,dDest:1,cmdFunc:254,cmdId:17,dataLen:9,productId:56,version:3,payloadVer:1,pdata:{cfgUtcTime:6,backupReverseSoc:102}} |
 |powConsumptionMeasurement| 1 | 2 |  | 1 |  pow Consumption Measurement handling | {src:32,dest:2,dSrc:1,dDest:1,cmdFunc:254,cmdId:17,dataLen:9,productId:56,version:3,payloadVer:1,pdata:{cfgUtcTime:6,powConsumptionMeasurement:239}} |
-
-### switch
-
-| State  |      off    |  on |  Name |  cmd |
-|----------|:-------------:|:------:|------|------|
-|relay2Onoff| off | on | relay AC out #1 | {src:32,dest:2,dSrc:1,dDest:1,cmdFunc:254,cmdId:17,dataLen:9,productId:56,version:3,payloadVer:1,pdata:{cfgUtcTime:6,relay2Onoff:380}} |
-|relay3Onoff| off | on | relay AC out #2 | {src:32,dest:2,dSrc:1,dDest:1,cmdFunc:254,cmdId:17,dataLen:9,productId:56,version:3,payloadVer:1,pdata:{cfgUtcTime:6,relay3Onoff:380}} |
 
 ## BMSHeartBeatReport
 
