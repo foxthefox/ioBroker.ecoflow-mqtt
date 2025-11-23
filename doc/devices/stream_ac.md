@@ -72,7 +72,7 @@
 |sysGridConnectionPower|0 | 2000 | W | 1 |  sys Grid Connection Power |
 |powGetSysLoadFromPv|0 | 2000 | W | 1 |  power get sys load from Pv  |
 |powGetSysLoadFromBp|0 | 2500 | W | 1 |  pow get gys load from bp |
-|powGetSysLoadFromGrid|0 | 3000 | W | 1 |  pow get sys load from grid |
+|powGetSysLoadFromGrid|0 | 10000 | W | 1 |  pow get sys load from grid |
 |powSysAcInMax|0 | 3000 | W | 1 |  pow Sys Ac In Max |
 |socketMeasurePower|0 | 2000 | W | 1 |  socket Measure Power |
 |busbarPowLimit|0 | 2300 | W | 1 |  Busbar Power Limit |
