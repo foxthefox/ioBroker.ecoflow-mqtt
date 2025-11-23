@@ -84,7 +84,7 @@
 |plugInInfoPv4Amp|0 | 15 | A | 1 |  plug in info pv4 current |
 |powGetSysLoadFromPv|0 | 2000 | W | 1 |  power get sys load from Pv  |
 |powGetSysLoadFromBp|0 | 4000 | W | 1 |  pow get gys load from bp |
-|powGetSysLoadFromGrid|0 | 4000 | W | 1 |  pow get sys load from grid |
+|powGetSysLoadFromGrid|0 | 10000 | W | 1 |  pow get sys load from grid |
 |powSysAcInMax|0 | 4000 | W | 1 |  pow Sys Ac In Max |
 |socketMeasurePower|0 | 4000 | W | 1 |  socket Measure Power |
 |powGetSchuko1|0 | 2000 | W | 1 |  Power Outlet 1 |
