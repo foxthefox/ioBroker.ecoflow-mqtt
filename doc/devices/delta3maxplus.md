@@ -46,6 +46,18 @@
 |plugInInfoPv2Vol|0 | 60 | V | 1 |  plug in info pv2 vol |
 |plugInInfoDcpVol|0 | 60 | V | 1 |  plug in info dcp vol |
 |plugInInfoDcpAmp|0 | 15 | A | 0.01 |  plug in info dcp amp |
+|plugInInfoDcp2Vol|0 | 60 | V | 1 |  plug in info dcp2 vol |
+|plugInInfoDcp2Amp|0 | 15 | A | 0.01 |  plug in info dcp2 amp |
+|pvVinRef|0 | 60 | V | 1 |  pv Voltage input Ref |
+|pv2VinRef|0 | 60 | V | 1 |  pv2 Voltage input Ref |
+|plugInInfoPfcOutVol|0 | 60 | V | 1 |  plug in info pfc out vol |
+|dcdcChgReqCur|0 | 100 | A | 1 |  dcdc chg req cur |
+|llcRecvCmsChgReqVol|0 | 60 | V | 1 |  llc recv cms chg req vol |
+|plugInInfo_12vVol|0 | 16 | V | 1 |  plug in info_12v vol |
+|plugInInfo_12vAmp|0 | 10 | A | 1 |  plug in info_12v amp |
+|llcBatVol|0 | 60 | V | 1 |  llc bat vol |
+|llcBatCur|-60 | 60 | A | 1 |  llc bat cur |
+|llcBusVol|0 | 60 | V | 0.1 |  llc bus vol |
 
 
 ### diagnostic
@@ -76,6 +88,10 @@
 |pdInvCommErr| pd inv comm err |
 |dcdcFirmVer| dcdc firm ver |
 |invFirmVer| inv firm ver |
+|invMonitorFlag| inv Monitor Flag |
+|invMainFsmstate| inv MainFsm state |
+|llcMonitorFlag| llc Monitor Flag |
+|llcFsmState| llc Fsm State |
 
 ## DisplayPropertyUpload
 
@@ -153,7 +169,7 @@
 |cmsBattPowOutMax|0 | 4000 | W | 1 |  cms batt pow out max |
 |cmsBattPowInMax|0 | 4000 | W | 1 |  cms batt pow in max |
 |backupReverseSoc|0 | 100 | % | 1 |  Backup Reverse Soc |
-|cmsBattFullEnergy|0 | 1024 | Wh | 1 |  cms batt full energy |
+|cmsBattFullEnergy|0 | 2048 | Wh | 1 |  cms batt full energy |
 |stormPatternEndTime|0 | 60 | h | 1 |  storm pattern end time |
 
 
@@ -287,7 +303,7 @@
 |f32ShowSoc|0 | 100 | % | 1 |  f32 show soc |
 |inputWatts|0 | 1000 | W | 1 |  input watts |
 |outputWatts|0 | 1000 | W | 1 |  output watts |
-|remainTime|0 | 5999 | h | 1 |  remain time |
+|remainTime|0 | 15999 | h | 1 |  remain time |
 |maxVolDiff|0 | 1 | V | 0.001 |  max vol diff |
 |actSoc|0 | 100 | % | 1 |  act soc |
 |diffSoc|0 | 100 | % | 1 |  diff soc |
