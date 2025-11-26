@@ -733,6 +733,7 @@ class EcoflowMqtt extends utils.Adapter {
                         devtype === 'wave3' ||
                         devtype === 'devtype === ' ||
                         devtype === 'stream_ac' ||
+                        devtype === 'delta3maxplus' ||
                         devtype === 'unknown'
                     ) {
                         if (this.pdevicesStatesDict && this.pdevicesStates) {

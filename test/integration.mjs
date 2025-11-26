@@ -317,7 +317,7 @@ tests.integration(path.join(__dirname, '..'), {
                         resolve();
                     });
                 });
-            }).timeout(20000);
+            }).timeout(25000);
 
             it('Plug states should be created', async () => {
                 //await harness.objects.delObject('ecoflow-mqtt.0.HW52ZDH4SF12345.plug_heartbeat.brightness');
@@ -373,6 +373,24 @@ tests.integration(path.join(__dirname, '..'), {
                     }
                 }
             });
+            it('Stream AC states should be created', async () => {
+                //await harness.objects.delObject('ecoflow-mqtt.0.BK32Z123456789012.inverter_heartbeat.permanentWatts');
+                for (let channel in streamacstates['deviceStatesDict']['stream_ac']) {
+                    for (let state in streamacstates['deviceStatesDict']['stream_ac'][channel]) {
+                        await harness.objects.getObject(
+                            'ecoflow-mqtt.0.BK32Z123456789012.' + channel + '.' + state,
+                            function (err, obj) {
+                                if (err) console.error('stream ac TEST' + channel + '.' + state + ' -> ' + err);
+
+                                if (!obj) {
+                                    console.error('stream ac state ' + channel + '.' + state + ' not set');
+                                }
+                                expect(obj).to.exist;
+                            },
+                        );
+                    }
+                }
+            });
             it('Stream AC pro states should be created', async () => {
                 //await harness.objects.delObject('ecoflow-mqtt.0.HW51ZOH5SF412345.inverter_heartbeat.permanentWatts');
                 for (let channel in streamacstates['deviceStatesDict']['stream_ac_pro']) {
@@ -380,10 +398,10 @@ tests.integration(path.join(__dirname, '..'), {
                         await harness.objects.getObject(
                             'ecoflow-mqtt.0.BK31Z123456789012.' + channel + '.' + state,
                             function (err, obj) {
-                                if (err) console.error('stream ac TEST' + channel + '.' + state + ' -> ' + err);
+                                if (err) console.error('stream ac pro TEST' + channel + '.' + state + ' -> ' + err);
 
                                 if (!obj) {
-                                    console.error('stream ac state ' + channel + '.' + state + ' not set');
+                                    console.error('stream ac pro state ' + channel + '.' + state + ' not set');
                                 }
                                 expect(obj).to.exist;
                             },
@@ -589,6 +607,29 @@ tests.integration(path.join(__dirname, '..'), {
                     }
                 }
             });
+            it('Delta3 Max plus should be created', async () => {
+                //await harness.objects.delObject('ecoflow-mqtt.0.D3M1ZE1234567890.mppt.');
+                for (let channel in delta3plusstates['deviceStatesDict']['delta3maxplus']) {
+                    for (let state in delta3plusstates['deviceStatesDict']['delta3maxplus'][channel]) {
+                        if (
+                            delta3plusstates['deviceStatesDict']['delta3maxplus'][channel][state]['entity'] !== 'icon'
+                        ) {
+                            await harness.objects.getObject(
+                                'ecoflow-mqtt.0.D3M1ZE1234567890.' + channel + '.' + state,
+                                function (err, obj) {
+                                    if (err)
+                                        console.error('delta3max plus TEST' + channel + '.' + state + ' -> ' + err);
+
+                                    if (!obj) {
+                                        console.error('delta3max plus state ' + channel + '.' + state + ' not set');
+                                    }
+                                    expect(obj).to.exist;
+                                },
+                            );
+                        }
+                    }
+                }
+            });
             it('River2Pro should be created', async () => {
                 //await harness.objects.delObject('ecoflow-mqtt.0.R621ZEB4XEC12345.mppt.');
                 for (let channel in river2prostates['deviceStatesDict']['river2pro']) {
@@ -768,7 +809,26 @@ tests.integration(path.join(__dirname, '..'), {
                     }
                 }
             });
+            it('Glacier55L should be created', async () => {
+                //await harness.objects.delObject('ecoflow-mqtt.0.RF45Z11234567.mppt.');
+                for (let channel in glacierstates['deviceStatesDict']['glacier55']) {
+                    for (let state in glacierstates['deviceStatesDict']['glacier55'][channel]) {
+                        if (glacierstates['deviceStatesDict']['glacier55'][channel][state]['entity'] !== 'icon') {
+                            await harness.objects.getObject(
+                                'ecoflow-mqtt.0.RF45Z11234567.' + channel + '.' + state,
+                                function (err, obj) {
+                                    if (err) console.error('glacier55 TEST' + channel + '.' + state + ' -> ' + err);
 
+                                    if (!obj) {
+                                        console.error('glacier55 state ' + channel + '.' + state + ' not set');
+                                    }
+                                    expect(obj).to.exist;
+                                },
+                            );
+                        }
+                    }
+                }
+            });
             it('Generator should be created', async () => {
                 //await harness.objects.delObject('ecoflow-mqtt.0.BX11ZFB5EF412345.mppt.');
                 for (let channel in generatorstates['deviceStatesDict']['generator']) {
