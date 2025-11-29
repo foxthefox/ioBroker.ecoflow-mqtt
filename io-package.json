@@ -4,17 +4,17 @@
         "version": "1.4.8",
         "news": {
             "1.4.8": {
-                "en": "dev dependencies",
-                "de": "Dev -Abhängigkeiten",
-                "ru": "DEV -зависимости",
-                "pt": "Dependências dev",
-                "nl": "Dev -afhankelijkheden",
-                "fr": "dépendances de développement",
-                "it": "Dipendenze Dev",
-                "es": "dependencias",
-                "pl": "zależności dew",
-                "uk": "залежності DEV",
-                "zh-cn": "开发依赖性"
+                "en": "dev dependencies; new glacier55L, delta3maxplus, stream ac; error corrections",
+                "de": "Entwicklungsabhängigkeiten; neuer Glacier55L, Delta3maxplus, Stream AC; Fehlerkorrekturen",
+                "ru": "зависимости разработчиков; новый ледник55L, delta3maxplus, поток переменного тока; исправление ошибок",
+                "pt": "dependências de desenvolvimento; novo glacier55L, delta3maxplus, fluxo ac; correções de erros",
+                "nl": "afhankelijkheden van ontwikkelaars; nieuwe gletsjer55L, delta3maxplus, stroom ac; Foutcorrecties",
+                "fr": "dépendances de développement ; nouveau glacier55L, delta3maxplus, ruisseau ac; corrections d'erreurs",
+                "it": "dipendenze dello sviluppatore; nuovo ghiacciaio55L, delta3maxplus, torrente ac; correzioni di errori",
+                "es": "dependencias de desarrollo; nuevo glaciar55L, delta3maxplus, arroyo ac; correcciones de errores",
+                "pl": "zależności deweloperskie; nowy lodowiec55L, delta3maxplus, strumień ac; poprawki błędów",
+                "uk": "залежності від розробника; новий льодовик55L, delta3maxplus, потік ac; виправлення помилок",
+                "zh-cn": "开发依赖；新glacier55L、delta3maxplus、stream ac；错误更正"
             },
             "1.4.7": {
                 "en": "powerocean enhancements",
