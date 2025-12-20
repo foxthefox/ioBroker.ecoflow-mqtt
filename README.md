@@ -383,6 +383,8 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 - (foxthefox) poweroceanplus set hrPwr/fromPv/romBat/fromGrid values to 0 for non transmitted datapoints in HeatingRodEnergyStreamShow
 - (foxthefox) poweroceanplus pcsActPwr max 20kW, pcsXPhase_amp max 60A
 - (foxthefox) corrections in BMSHeartBeatReport for river3/river3plus
+- (foxthefox) powGetSysLoad for streamAC/ACPro/Ultra set to 10kW
+- (foxthefox) new msg counter for received telegrams from EF-cloud (within 10s)
 - (foxthefox) dev dependencies cleanup
 
 ### 1.4.7 (npm)
