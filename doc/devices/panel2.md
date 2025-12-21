@@ -105,9 +105,9 @@
 |ch3ForceCharge| Ch3 force charging | {0:normal?,1:forced?} |
 |stormIsEnable| Storm is enable | {0:off?,1:on} |
 |inStormMode| Storm mode | {0:inactive?,1:active?} |
-|ch1EnableSet| Ch1 enabled | {0:off?,1:on?} |
-|ch2EnableSet| Ch2 enabled | {0:off?,1:on?} |
-|ch3EnableSet| Ch3 enabled | {0:off?,1:on?} |
+|ch1EnableSet| Ch1 enabled | {0:no operation,1:off,2:on} |
+|ch2EnableSet| Ch2 enabled | {0:no operation,1:off,2:on} |
+|ch3EnableSet| Ch3 enabled | {0:no operation,1:off,2:on} |
 |oilEngineToBackChargePersent| Oil Engine To Back Charge Present | {0:not present?,1:present?} |
 |ntcOverTempErr| NTC over temp error | {0:OK?,1:error?} |
 |smartBackupMode| Smart Backup Mode | {0:off?,1:on?} |
