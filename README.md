@@ -387,6 +387,7 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 - (foxthefox) new msg counter for received telegrams from EF-cloud (within 10s)
 - (foxthefox) correction of enBeep (dataLen=2) for Delta3/+/max+/pro
 - (foxthefox) correction of AC1/2/3 switching on SHP2 (issue #312)
+- (foxthefox) Stream AC timetask58x exclude
 - (foxthefox) dev dependencies cleanup
 
 ### 1.4.7 (npm)
