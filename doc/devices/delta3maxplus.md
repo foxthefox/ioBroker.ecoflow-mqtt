@@ -240,7 +240,7 @@
 | State  |      off    |  on |  Name |  cmd |
 |----------|:-------------:|:------:|------|------|
 |xboostEn| off | on | X-Boost switch | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
-|enBeep| off | on | Beeper on/off. (true: on, false: off.) | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
+|enBeep| off | on | Beeper on/off. (true: on, false: off.) | {dest:2,cmdFunc:254,cmdId:17,dataLen:2} |
 |cmsOilSelfStart| off | on | Smart Generator auto start/stop switch | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
 
 ### array

@@ -30,7 +30,7 @@
 |bmsBattVol|0 | 60 | V | 1 |  main battery batt vol |
 |bmsBattAmp|-80 | 80 | A | 1 |  main battery batt amp |
 |bmsFullCap|0 | 20000 | mAh | 1 |  main battery full cap |
-|bmsRemainCap|0 | 20000 | mAh | 1 |  main battery remain cap |
+|bmsRemainCap|0 | 40000 | mAh | 1 |  main battery remain cap |
 |bmsMinCellVol|0 | 5 | V | 0.001 |  Minimum voltage of the main battery |
 |bmsMaxCellVol|0 | 5 | V | 0.001 |  main battery max cell vol |
 |cmsBattVol|0 | 60 | V | 1 |  cms batt vol |
@@ -224,7 +224,7 @@
 | State  |      off    |  on |  Name |  cmd |
 |----------|:-------------:|:------:|------|------|
 |xboostEn| off | on | X-Boost switch | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
-|enBeep| off | on | Beeper on/off. (true: on, false: off.) | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
+|enBeep| off | on | Beeper on/off. (true: on, false: off.) | {dest:2,cmdFunc:254,cmdId:17,dataLen:2} |
 |cmsOilSelfStart| off | on | Smart Generator auto start/stop switch | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
 
 ### array
