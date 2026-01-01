@@ -833,7 +833,7 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 
 MIT License
 
-Copyright (c) 2023-2025 foxthefox <foxthefox@wysiwis.net>
+Copyright (c) 2023-2026 foxthefox <foxthefox@wysiwis.net>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
