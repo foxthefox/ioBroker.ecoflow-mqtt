@@ -380,10 +380,11 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 - (foxthefox) new device Stream AC support
 - (foxthefox) enhancements on wave3
 - (foxthefox) corrections in river3plus for data processing
+- (foxthefox) corrections in D2M for command inv.cfgAcEnabled #340
 - (foxthefox) poweroceanplus set hrPwr/fromPv/romBat/fromGrid values to 0 for non transmitted datapoints in HeatingRodEnergyStreamShow
 - (foxthefox) poweroceanplus pcsActPwr max 20kW, pcsXPhase_amp max 60A
 - (foxthefox) corrections in BMSHeartBeatReport for river3/river3plus
-- (foxthefox) powGetSysLoad for streamAC/ACPro/Ultra set to 10kW
+- (foxthefox) powGetSysLoad for streamAC/ACPro/Ultra set to 10kW, powGetSchuko 2100W
 - (foxthefox) new msg counter for received telegrams from EF-cloud (within 10s)
 - (foxthefox) correction of enBeep (dataLen=2) for Delta3/+/max+/pro
 - (foxthefox) correction of AC1/2/3 switching on SHP2 (issue #312)
