@@ -49,6 +49,16 @@ jobs:
               with:
                   node-version: ${{ matrix.node-version }}
                   os: ${{ matrix.os }}
+
+            - name: Run integration tests (unix only)
+              if: startsWith(runner.OS, 'windows') == false
+              run: DEBUG=testing:* npm run test:integration
+
+            - name: Run integration tests (windows only)
+              if: startsWith(runner.OS, 'windows')
+              run:
+                  set DEBUG=testing:* & npm run test:integration
+
                   # Uncomment the following line if your adapter cannot be installed using 'npm ci'
                   # install-command: 'npm install'
 # TODO: To enable automatic npm releases, create a token on npmjs.org
