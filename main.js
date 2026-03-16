@@ -57,6 +57,8 @@ class EcoflowMqtt extends utils.Adapter {
         this.efCounter = 0;
         this.efCountMem = 0;
         this.onlineDevices = [];
+        this.specialPoweroceanZero = false;
+        this.specialPoweroceanReportFromDetail = false;
 
         this.on('ready', this.onReady.bind(this));
         this.on('stateChange', this.onStateChange.bind(this));
@@ -95,6 +97,10 @@ class EcoflowMqtt extends utils.Adapter {
             this.log.info(`powerocean   -> ${JSON.stringify(this.config.poweroceans)}`);
             this.log.info(`alternator   -> ${JSON.stringify(this.config.alternators)}`);
             this.log.info(`unknown      -> ${JSON.stringify(this.config.unknowns)}`);
+
+            //special settings
+            this.specialPoweroceanZero = this.config.specialPoweroceanZero;
+            this.specialPoweroceanReportFromDetail = this.config.specialPoweroceanReportFromDetail;
 
             //loop durch alle Geräte
 
