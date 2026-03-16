@@ -1696,6 +1696,43 @@
                     "xl": 4
                 }
             }
+        },
+        "tab_4": {
+            "type": "panel",
+            "label": "Special Settings",
+            "items": {
+                "_poeroceanplus": {
+                    "newLine": true,
+                    "type": "header",
+                    "text": "PowerOcean Plus",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12,
+                    "size": 3
+                },
+                "specialPoweroceanZero": {
+                    "type": "checkbox",
+                    "label": "enable logic to set 0 when no values is inside telegram (Energy and HeatingRod)",
+                    "newLine": true,
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 4,
+                    "xl": 4
+                },
+                "specialPoweroceanReportFromDetail": {
+                    "type": "checkbox",
+                    "label": "enable logic to derive Energy_REPORT from EnergyStreamDetail",
+                    "newLine": true,
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 6,
+                    "lg": 4,
+                    "xl": 4
+                }
+            }
         }
     }
 }
