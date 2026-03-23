@@ -58,7 +58,6 @@ class EcoflowMqtt extends utils.Adapter {
         this.efCountMem = 0;
         this.onlineDevices = [];
         this.specialPoweroceanZero = false;
-        this.specialPoweroceanReportFromDetail = false;
 
         this.on('ready', this.onReady.bind(this));
         this.on('stateChange', this.onStateChange.bind(this));
@@ -96,11 +95,11 @@ class EcoflowMqtt extends utils.Adapter {
             this.log.info(`powerkit     -> ${JSON.stringify(this.config.powerkits)}`);
             this.log.info(`powerocean   -> ${JSON.stringify(this.config.poweroceans)}`);
             this.log.info(`alternator   -> ${JSON.stringify(this.config.alternators)}`);
+            this.log.info(`rapid        -> ${JSON.stringify(this.config.rapids)}`);
             this.log.info(`unknown      -> ${JSON.stringify(this.config.unknowns)}`);
 
             //special settings
             this.specialPoweroceanZero = this.config.specialPoweroceanZero;
-            this.specialPoweroceanReportFromDetail = this.config.specialPoweroceanReportFromDetail;
 
             //loop durch alle Geräte
 
@@ -116,6 +115,7 @@ class EcoflowMqtt extends utils.Adapter {
                 this.config.powerkits,
                 this.config.poweroceans,
                 this.config.alternators,
+                this.config.rapids,
                 this.config.unknowns,
             );
             if (confdevices.length > 0) {
@@ -210,6 +210,7 @@ class EcoflowMqtt extends utils.Adapter {
                                 devtype === 'glacier55' ||
                                 devtype === 'delta3maxplus' ||
                                 devtype === 'stream_ac' ||
+                                devtype === 'rapidpro320' ||
                                 devtype === 'unknown'
                             ) {
                                 pdevicesStatesDict = require(`./lib/dict_data/ef_${devtype}_data.js`).deviceStatesDict[
@@ -746,6 +747,7 @@ class EcoflowMqtt extends utils.Adapter {
                         devtype === 'devtype === ' ||
                         devtype === 'stream_ac' ||
                         devtype === 'delta3maxplus' ||
+                        devtype === 'rapidpro320' ||
                         devtype === 'unknown'
                     ) {
                         if (this.pdevicesStatesDict && this.pdevicesStates) {
@@ -1430,6 +1432,7 @@ class EcoflowMqtt extends utils.Adapter {
                             case 'wave3':
                             case 'delta3maxplus':
                             case 'stream_ac':
+                            case 'rapidpro320':
                             case 'unknown':
                                 devicetype = this.pdevices[device]['devType'];
                                 type = 'protobuf'; //includes also plugs

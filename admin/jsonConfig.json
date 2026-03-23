@@ -1448,6 +1448,93 @@
                         }
                     ]
                 },
+                "_rapidHeader": {
+                    "newLine": true,
+                    "type": "header",
+                    "text": "Configuration for Rapid charger devices",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12,
+                    "size": 3
+                },
+                "_rapidstable1Txt1": {
+                    "type": "staticText",
+                    "text": "Please add (+) a device and configure it with its name, Serial Number (id) and it's type. If you have no device, delete the added line item",
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12,
+                    "newLine": true
+                },
+                "rapids": {
+                    "xs": 12,
+                    "sm": 12,
+                    "md": 12,
+                    "lg": 12,
+                    "xl": 12,
+                    "newLine": true,
+                    "type": "table",
+                    "items": [
+                        {
+                            "type": "text",
+                            "width": "15%",
+                            "title": "name",
+                            "attr": "devName",
+                            "filter": false,
+                            "sort": false,
+                            "default": "My Rapid1"
+                        },
+                        {
+                            "type": "text",
+                            "width": "15%",
+                            "title": "id",
+                            "attr": "devId",
+                            "filter": false,
+                            "sort": false,
+                            "default": "P512.."
+                        },
+                        {
+                            "type": "select",
+                            "width": "10%",
+                            "options": [
+                                {
+                                    "value": "none",
+                                    "label": "none"
+                                },
+                                {
+                                    "value": "rapidpro320",
+                                    "label": "Rapid Pro Charger 320W"
+                                }
+                            ],
+                            "title": "Rapid Type",
+                            "attr": "devType",
+                            "filter": false,
+                            "sort": false,
+                            "default": "none"
+                        },
+                        {
+                            "type": "checkbox",
+                            "title": "debug enable",
+                            "width": "5%",
+                            "attr": "debugEnable",
+                            "filter": false,
+                            "sort": false,
+                            "default": false
+                        },
+                        {
+                            "type": "checkbox",
+                            "title": "HA enable",
+                            "width": "5%",
+                            "attr": "haEnable",
+                            "filter": false,
+                            "sort": false,
+                            "default": false
+                        }
+                    ]
+                },
                 "_unknownHeader": {
                     "newLine": true,
                     "type": "header",
@@ -1715,16 +1802,6 @@
                 "specialPoweroceanZero": {
                     "type": "checkbox",
                     "label": "enable logic to set 0 when no values is inside telegram (Energy and HeatingRod)",
-                    "newLine": true,
-                    "xs": 12,
-                    "sm": 12,
-                    "md": 6,
-                    "lg": 4,
-                    "xl": 4
-                },
-                "specialPoweroceanReportFromDetail": {
-                    "type": "checkbox",
-                    "label": "enable logic to derive Energy_REPORT from EnergyStreamDetail",
                     "newLine": true,
                     "xs": 12,
                     "sm": 12,

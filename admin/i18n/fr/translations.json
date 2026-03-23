@@ -7,8 +7,6 @@
     "deviceName": "nom de l'appareil",
     "ecoflow-mqtt adapter settings": "Paramètres d'adaptateur pour ecoflow-mqtt",
     "mqttBroker": "courtier mqtt",
-    "option1": "Option 1",
-    "option2": "Option 2",
     "userName": "nom d'utilisateur",
     "userPassword": "mot de passe de l'utilisateur"
 }

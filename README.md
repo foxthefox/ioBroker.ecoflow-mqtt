@@ -28,15 +28,6 @@ The adapter is based on the work of:
 - https://forum.iobroker.net/topic/66743/ecoflow-connector-script-zur-dynamischen-leistungsanpassung
 - https://konkludenz.de/en/making-ecoflow-wave2-smart-home-capable-with-node-red-and-mqtt
 
-## Installation
-
-The adapter is in stable repository and therefore you can install it by searching it.
-If updates are available the you should install them.
-
-If a very new version is available it might be neccesary to make a custom install from npm/github.
-In such case the expert mode must be enabled to get access to the "octacat" icon.
-![some more details](doc/en/installation.md)
-
 ## EF credentials
 
 In Admin Page (first tab) the mqqt credentials for the mqqt Broker need to be inserted.
@@ -321,7 +312,7 @@ Dual Fuel generator is not available, could be implemented, if data is available
 
 [Stream Inverter](./doc/devices/stream_inverter.md)
 
-The 800W version is also implemented and only difference ist the 800W maximum power.
+The 800W version is also implemented and only difference is the 800W maximum power.
 supply priority
 -> 0/false = prioritized grid supply;
 -> 1/true = prioritized battery supply (charging)
@@ -354,6 +345,10 @@ Wave is not available, could be implemented, if data is available.
 
 [Alternator](./doc/devices/alternator.md)
 
+### Charger
+
+[Rapid Pro](./doc/devices/rapid.md)
+
 ### Unsupported devices
 
 for debugging purpose this section is created, please select the device (delta pro3, delta3, delta3 plus) und put the serial in the added line
@@ -378,6 +373,7 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 - (foxthefox) new device Glacier Classic 55L support
 - (foxthefox) new device Delta 3 Max Plus support
 - (foxthefox) new device Stream AC support
+- (foxthefox) new device Rapid Pro 320W support
 - (foxthefox) enhancements on wave3
 - (foxthefox) corrections in river3plus for data processing
 - (foxthefox) corrections in D2M for command inv.cfgAcEnabled #340
@@ -389,6 +385,7 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 - (foxthefox) correction of enBeep (dataLen=2) for Delta3/+/max+/pro
 - (foxthefox) correction of AC1/2/3 switching on SHP2 (issue #312)
 - (foxthefox) Stream AC timetask58x exclude
+- (foxthefox) correction of powerocean / powerocean+ (issue #378), new ENERGY_STREAM_DETAIL and switch for missing datapoint -> value = 0
 - (foxthefox) dev dependencies cleanup
 
 ### 1.4.7 (npm)
