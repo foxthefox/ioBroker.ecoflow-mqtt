@@ -9,6 +9,8 @@
 
 [JTS1_ENERGY_STREAM_REPORT](#JTS1_ENERGY_STREAM_REPORT)
 
+[JTS1_ENERGY_STREAM_DETAIL](#JTS1_ENERGY_STREAM_DETAIL)
+
 [ParallelEnergyStreamReport](#ParallelEnergyStreamReport)
 
 [JTS1_EMS_HEARTBEAT](#JTS1_EMS_HEARTBEAT)
@@ -299,6 +301,18 @@
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |sysLoadPwr|0 | 15000 | W | 1 |  System load |
 |sysGridPwr|0 | 15000 | W | 1 |  Grid power |
+|mpptPwr|0 | 5000 | W | 1 |  Solar power |
+|bpPwr|0 | 5200 | W | 1 |  Battery power |
+|bpSoc|0 | 100 | % | 1 |  Battery SOC |
+
+
+## JTS1_ENERGY_STREAM_DETAIL
+
+### number
+| State  |      Min     |      Max     |  Unit |  Mult |  Name |
+|----------|:-------------:|:-------------:|:------:|:-----:|-----|
+|loadPwr|0 | 15000 | W | 1 |  System load |
+|gridPwr|0 | 15000 | W | 1 |  Grid power |
 |mpptPwr|0 | 5000 | W | 1 |  Solar power |
 |bpPwr|0 | 5200 | W | 1 |  Battery power |
 |bpSoc|0 | 100 | % | 1 |  Battery SOC |

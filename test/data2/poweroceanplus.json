@@ -292,7 +292,52 @@
             { "moduleSn": "HJ3AZ6788990123" }
         ]
     },
-    "JTS1_ENERGY_STREAM_REPORT": { "sysLoadPwr": 1510, "sysGridPwr": 10, "mpptPwr": 8690, "bpPwr": 7190, "bpSoc": 9 },
+    "JTS1_ENERGY_STREAM_REPORT": { "sysLoadPwr": 1510, "sysGridPwr": 10, "mpptPwr": 8900, "bpPwr": 7190, "bpSoc": 9 },
+    "EnergyStreamDetail": {
+        "sysEnergyStream": [
+            {
+                "loadPwr": 5850.724609375,
+                "gridPwr": -4.518697738647461,
+                "mpptPwr": 3982.75927734375,
+                "bpPwr": -1872.4832763671875,
+                "timestamp": 1774090620,
+                "bpSoc": 94
+            },
+            {
+                "loadPwr": 5860.87109375,
+                "gridPwr": -11.585332870483398,
+                "mpptPwr": 4091.089111328125,
+                "bpPwr": -1781.367919921875,
+                "timestamp": 1774090560,
+                "bpSoc": 94
+            },
+            {
+                "loadPwr": 5906.10400390625,
+                "gridPwr": -9.235353469848633,
+                "mpptPwr": 3331.830078125,
+                "bpPwr": -2583.508544921875,
+                "timestamp": 1774090500,
+                "bpSoc": 94
+            },
+            {
+                "loadPwr": 5888.64599609375,
+                "gridPwr": 0.111182302236557,
+                "mpptPwr": 3159.538818359375,
+                "bpPwr": -2728.994873046875,
+                "timestamp": 1774090440,
+                "bpSoc": 94
+            },
+            {
+                "loadPwr": 5993.44677734375,
+                "gridPwr": -20.547582626342773,
+                "mpptPwr": 4051.243408203125,
+                "bpPwr": -1962.7510986328125,
+                "timestamp": 1774090380,
+                "bpSoc": 95
+            }
+        ],
+        "sysSeq": 104115
+    },
     "JTS1_BP_STA_REPORT": {
         "bpSta": [
             {
