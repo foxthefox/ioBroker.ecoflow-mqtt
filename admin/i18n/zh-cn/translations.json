@@ -7,8 +7,6 @@
     "deviceName": "设备名称",
     "ecoflow-mqtt adapter settings": "ecoflow-mqtt的适配器设置",
     "mqttBroker": "MQTT 经纪人",
-    "option1": "选项1",
-    "option2": "选项2",
     "userName": "用户名",
     "userPassword": "用户密码"
 }
