@@ -61,6 +61,8 @@ function loadMesgObj(pdevices) {
             devtype === 'wave3' ||
             devtype === 'glacier55' ||
             devtype === 'stream_ac' ||
+            devtype === 'delta3maxplus' ||
+            devtype === 'rapidpro320' ||
             devtype === 'unknown'
         ) {
             if (devtype === 'pstream600' || devtype === 'pstream800') {
@@ -101,6 +103,8 @@ function loadProtoObj(pdevices) {
             devtype === 'wave3' ||
             devtype === 'glacier55' ||
             devtype === 'stream_ac' ||
+            devtype === 'delta3maxplus' ||
+            devtype === 'rapidpro320' ||
             devtype === 'unknown'
         ) {
             if (devtype === 'pstream600' || devtype === 'pstream800') {
@@ -153,11 +157,13 @@ const pdevices = {
     KT31ZC123456789: { devName: 'My wave3', devType: 'wave3', haEnable: false },
     UNKNOWNPROTO: { devName: 'My wave3', devType: 'wave3', haEnable: false },
     UNKNOWNJSON: { devName: 'My wave3', devType: 'wave3', haEnable: false },
-    R371A112345678: { devName: 'EF Oecan dc plus', devType: 'poweroceanplus', haEnable: false },
+    R371A112345678: { devName: 'EF Ocean dc plus', devType: 'poweroceanplus', haEnable: false },
     BK41Z123456789012: { devName: 'Stream inverter', devType: 'stream_inverter', haEnable: false },
     HW5255555G1234567: { devName: 'My plug', devType: 'plug', haEnable: false },
     RF45Z11234567: { devName: 'My glacier55', devType: 'glacier55', haEnable: false },
     BK32Z123456789012: { devName: 'My stream ac', devType: 'stream_ac', haEnable: false },
+    D3M1ZE1234567890: { devName: 'My delta3max plus', devType: 'delta3maxplus', haEnable: false },
+    P512ZE1234567890: { devName: 'My rapid 320', devType: 'rapidpro320', haEnable: false },
 };
 
 let quota = loadQuotas(pdevices);
@@ -242,6 +248,8 @@ client.on('message', (topic, message) => {
             case 'wave3':
             case 'glacier55':
             case 'stream_ac':
+            case 'delta3maxplus':
+            case 'rapidpro320':
             case 'unknown':
                 if (msgQbj[topic]) {
                     const string = ef.createMsgFromObjects(msgQbj[topic], quota[topic], protoQbj[topic], true);
