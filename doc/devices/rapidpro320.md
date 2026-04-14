@@ -37,24 +37,24 @@
 |cmsBattSoh|0 | 100 | % | 1 |  Overall SOH |
 |cmsDsgRemTime|0 | 15999 | min | 1 |  Remaining discharging time |
 |cmsChgRemTime|0 | 15999 | min | 1 |  Remaining charging time |
-|usbApower|-150 | 150 | W | 1 |  power of the USB A port |
-|usbAvoltage|-50 | 50 | V | 1 |  voltage of the USB A port |
-|usbAcurrent|-10 | 10 | A | 1 |  current of the USB A port |
-|usbC1power|-150 | 150 | W | 1 |  power of the USB 1 port |
-|usbC1voltage|-50 | 50 | V | 1 |  voltage of the USB 1 port |
-|usbC1current|-10 | 10 | A | 1 |  current of the USB 1 port |
-|usbC2power|-150 | 150 | W | 1 |  power of the USB 2 port |
-|usbC2voltage|-50 | 50 | V | 1 |  voltage of the USB 2 port |
-|usbC2current|-10 | 10 | A | 1 |  current of the USB 2 port |
-|usbC3power|-150 | 150 | W | 1 |  power of the USB 3 port |
-|usbC3voltage|-50 | 50 | V | 1 |  voltage of the USB 3 port |
-|usbC3current|-10 | 10 | A | 1 |  current of the USB 3 port |
-|usbC4power|-150 | 150 | W | 1 |  power of the USB 4 port |
-|usbC4voltage|-50 | 50 | V | 1 |  voltage of the USB 4 port |
-|usbC4current|-10 | 10 | A | 1 |  current of the USB 4 port |
-|pogoPinpower|-350 | 350 | W | 1 |  power of the pogoPin |
-|pogoPinvoltage|-50 | 50 | V | 1 |  voltage of the pogoPin |
-|pogoPincurrent|-20 | 20 | A | 1 |  current of the pogoPin |
+|usbTypeA1DisplayInfo_usbPow|-150 | 150 | W | 1 |  power of the USB A port |
+|usbTypeA1DisplayInfo_usbVolt|-50 | 50 | V | 1 |  voltage of the USB A port |
+|usbTypeA1DisplayInfo_usbAmp|-10 | 10 | A | 1 |  current of the USB A port |
+|usbTypec1DisplayInfo_usbPow|-150 | 150 | W | 1 |  power of the USB 1 port |
+|usbTypec1DisplayInfo_usbVolt|-50 | 50 | V | 1 |  voltage of the USB 1 port |
+|usbTypec1DisplayInfo_usbAmp|-10 | 10 | A | 1 |  current of the USB 1 port |
+|usbTypec2DisplayInfo_usbPow|-150 | 150 | W | 1 |  power of the USB 2 port |
+|usbTypec2DisplayInfo_usbVolt|-50 | 50 | V | 1 |  voltage of the USB 2 port |
+|usbTypec2DisplayInfo_usbAmp|-10 | 10 | A | 1 |  current of the USB 2 port |
+|usbTypec3DisplayInfo_usbPow|-150 | 150 | W | 1 |  power of the USB 3 port |
+|usbTypec3DisplayInfo_usbVolt|-50 | 50 | V | 1 |  voltage of the USB 3 port |
+|usbTypec3DisplayInfo_usbAmp|-10 | 10 | A | 1 |  current of the USB 3 port |
+|usbTypec4DisplayInfo_usbPow|-150 | 150 | W | 1 |  power of the USB 4 port |
+|usbTypec4DisplayInfo_usbVolt|-50 | 50 | V | 1 |  voltage of the USB 4 port |
+|usbTypec4DisplayInfo_usbAmp|-10 | 10 | A | 1 |  current of the USB 4 port |
+|pogopin_1DisplayInfo_usbPow|-350 | 350 | W | 1 |  power of the pogopin |
+|pogopin_1DisplayInfo_usbVolt|-50 | 50 | V | 1 |  voltage of the pogopin |
+|pogopin_1DisplayInfo_usbAmp|-20 | 20 | A | 1 |  current of the pogopin |
 
 
 ### level

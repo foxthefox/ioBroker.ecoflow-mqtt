@@ -63,6 +63,7 @@ function loadMesgObj(pdevices) {
             devtype === 'stream_ac' ||
             devtype === 'delta3maxplus' ||
             devtype === 'rapidpro320' ||
+            devtype === 'delta3classic' ||
             devtype === 'unknown'
         ) {
             if (devtype === 'pstream600' || devtype === 'pstream800') {
@@ -105,6 +106,7 @@ function loadProtoObj(pdevices) {
             devtype === 'stream_ac' ||
             devtype === 'delta3maxplus' ||
             devtype === 'rapidpro320' ||
+            devtype === 'delta3classic' ||
             devtype === 'unknown'
         ) {
             if (devtype === 'pstream600' || devtype === 'pstream800') {
@@ -164,6 +166,7 @@ const pdevices = {
     BK32Z123456789012: { devName: 'My stream ac', devType: 'stream_ac', haEnable: false },
     D3M1ZE1234567890: { devName: 'My delta3max plus', devType: 'delta3maxplus', haEnable: false },
     P512ZE1234567890: { devName: 'My rapid 320', devType: 'rapidpro320', haEnable: false },
+    P321P12345678901: { devName: 'My Delta3 classic', devType: 'delta3classic', haEnable: false },
 };
 
 let quota = loadQuotas(pdevices);
