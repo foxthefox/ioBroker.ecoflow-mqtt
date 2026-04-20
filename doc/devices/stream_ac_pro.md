@@ -87,8 +87,8 @@
 |powGetSysLoadFromGrid|0 | 10000 | W | 1 |  pow get sys load from grid |
 |powSysAcInMax|0 | 3000 | W | 1 |  pow Sys Ac In Max |
 |socketMeasurePower|0 | 2000 | W | 1 |  socket Measure Power |
-|powGetSchuko1|0 | 2000 | W | 1 |  Power Outlet 1 |
-|powGetSchuko2|0 | 2000 | W | 1 |  Power Outlet 2 |
+|powGetSchuko1|0 | 2100 | W | 1 |  Power Outlet 1 |
+|powGetSchuko2|0 | 2100 | W | 1 |  Power Outlet 2 |
 |busbarPowLimit|0 | 2300 | W | 1 |  Busbar Power Limit |
 |maxInvInput|0 | 2000 | W | 1 |  max Inv Input |
 |maxInvOutput|0 | 2000 | W | 1 |  max Inv Output |

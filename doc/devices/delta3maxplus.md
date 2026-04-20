@@ -89,9 +89,9 @@
 |dcdcFirmVer| dcdc firm ver |
 |invFirmVer| inv firm ver |
 |invMonitorFlag| inv Monitor Flag |
-|invMainFsmstate| inv MainFsm state |
+|invMainFsmstate| inv Main Fsm state |
 |llcMonitorFlag| llc Monitor Flag |
-|llcFsmState| llc Fsm State |
+|llcFsmstate| llc Fsm State |
 
 ## DisplayPropertyUpload
 
