@@ -392,6 +392,8 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 
 [older changes](./CHANGELOG.md)
 
+[Older changelogs can be found there](CHANGELOG_OLD.md)
+
 ## License
 
 MIT License
