@@ -21,7 +21,7 @@
         "url": "https://github.com/foxthefox/ioBroker.ecoflow-mqtt.git"
     },
     "engines": {
-        "node": ">= 20"
+        "node": ">= 22"
     },
     "dependencies": {
         "@iobroker/adapter-core": "^3.3.2",
