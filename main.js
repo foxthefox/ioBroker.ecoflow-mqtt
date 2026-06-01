@@ -13,7 +13,7 @@ const ha = require('./lib/ha_utils.js');
 const mqtt = require('mqtt');
 
 // Load your modules here, e.g.:
-// const fs = require("fs");
+// const fs = require("node:fs");
 
 let recon_timer = null;
 let lastQuotInterval = null;
