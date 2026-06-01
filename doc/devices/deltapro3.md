@@ -272,18 +272,18 @@
 |plugInInfoPfcOutVol|0 | 60 | V | 1 |  plug in info pfc out vol |
 |powGetL1|0 | 4000 | W | 1 |  pow get l1 |
 |powGetL2|0 | 4000 | W | 1 |  pow get l2 |
-|invBusVol|0 | 60 | V | 1 |  inv bus vol |
+|invBusVol|0 | 60 | V | 0.1 |  inv bus vol |
 |invNtcTemp2|0 | 100 | °C | 1 |  inv ntc temp2 |
 |invNtcTemp3|0 | 100 | °C | 1 |  inv ntc temp3 |
 |llcNtcTemp|0 | 100 | °C | 1 |  llc ntc temp |
-|dcdcChgReqCur|0 | 100 | A | 1 |  dcdc chg req cur |
+|dcdcChgReqCur|0 | 150 | A | 1 |  dcdc chg req cur |
 |llcRecvCmsChgReqVol|0 | 60 | V | 1 |  llc recv cms chg req vol |
 |invToLlcAcPowLim|0 | 4000 | W | 1 |  inv to llc ac pow lim |
 |plugInInfo_12vVol|0 | 16 | V | 1 |  plug in info_12v vol |
 |plugInInfo_12vAmp|0 | 10 | A | 1 |  plug in info_12v amp |
 |llcBatVol|0 | 60 | V | 1 |  llc bat vol |
 |llcBatCur|-60 | 60 | A | 1 |  llc bat cur |
-|llcBusVol|0 | 60 | V | 1 |  llc bus vol |
+|llcBusVol|0 | 60 | V | 0.1 |  llc bus vol |
 
 
 ### string
@@ -368,7 +368,7 @@
 |f32ShowSoc|0 | 100 | % | 1 |  f32 show soc |
 |inputWatts|0 | 1000 | W | 1 |  input watts |
 |outputWatts|0 | 1000 | W | 1 |  output watts |
-|remainTime|0 | 5999 | h | 1 |  remain time |
+|remainTime|0 | 12520 | h | 1 |  remain time |
 |maxVolDiff|0 | 1 | V | 0.001 |  max vol diff |
 |actSoc|0 | 100 | % | 1 |  act soc |
 |diffSoc|0 | 100 | % | 1 |  diff soc |
@@ -468,7 +468,7 @@
 |f32ShowSoc|0 | 100 | % | 1 |  f32 show soc |
 |inputWatts|0 | 1000 | W | 1 |  input watts |
 |outputWatts|0 | 1000 | W | 1 |  output watts |
-|remainTime|0 | 5999 | h | 1 |  remain time |
+|remainTime|0 | 12520 | h | 1 |  remain time |
 |maxVolDiff|0 | 1 | V | 0.001 |  max vol diff |
 |actSoc|0 | 100 | % | 1 |  act soc |
 |diffSoc|0 | 100 | % | 1 |  diff soc |
@@ -568,7 +568,7 @@
 |f32ShowSoc|0 | 100 | % | 1 |  f32 show soc |
 |inputWatts|0 | 1000 | W | 1 |  input watts |
 |outputWatts|0 | 1000 | W | 1 |  output watts |
-|remainTime|0 | 5999 | h | 1 |  remain time |
+|remainTime|0 | 12520 | h | 1 |  remain time |
 |maxVolDiff|0 | 1 | V | 0.001 |  max vol diff |
 |actSoc|0 | 100 | % | 1 |  act soc |
 |diffSoc|0 | 100 | % | 1 |  diff soc |

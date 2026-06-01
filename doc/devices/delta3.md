@@ -144,7 +144,7 @@
 |cmsBattPowInMax|0 | 4000 | W | 1 |  cms batt pow in max |
 |cmsBattFullEnergy|0 | 1024 | Wh | 1 |  cms batt full energy |
 |stormPatternEndTime|0 | 60 | h | 1 |  storm pattern end time |
-|backupReverseSoc|0 | 100 | % | 1 |  Backup Reverse Soc |
+|backupReverseSoc|0 | 100 | % | 1 |  Backup Reserve Soc |
 
 
 ### level

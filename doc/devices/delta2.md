@@ -232,7 +232,7 @@
 |----------|:-------------:|:------:|------|------|
 |carState| off | on | Car charger switch setting | {valName:enabled,moduleType:5,operateType:mpptCar,params:{enabled:1}} |
 |beepState| normal | quiet | Beep status | {valName:enabled,moduleType:5,operateType:quietMode,params:{enabled:1}} |
-|cfgAcEnabled| off | on | AC discharge switch setting | {valName:enabled,moduleType:5,operateType:acOutCfg,params:{enabled:1}} |
+|cfgAcEnabled| off | on | AC discharge switch setting | {valName:enabled,moduleType:5,operateType:acOutCfg,params:{out_voltage:-1,out_freq:255,xboost:255,enabled:1}} |
 |cfgAcXboost| off | on | X-Boost switch | {valName:xboost,moduleType:5,operateType:acOutCfg,params:{xboost:1}} |
 
 ### diagnostic

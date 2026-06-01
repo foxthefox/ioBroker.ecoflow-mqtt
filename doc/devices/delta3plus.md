@@ -152,7 +152,6 @@
 |powGetDcp|0 | 600 | W | 1 |  pow get dcp |
 |cmsBattPowOutMax|0 | 4000 | W | 1 |  cms batt pow out max |
 |cmsBattPowInMax|0 | 4000 | W | 1 |  cms batt pow in max |
-|backupReverseSoc|0 | 100 | % | 1 |  Backup Reverse Soc |
 |cmsBattFullEnergy|0 | 1024 | Wh | 1 |  cms batt full energy |
 |stormPatternEndTime|0 | 60 | h | 1 |  storm pattern end time |
 
@@ -172,6 +171,7 @@
 |cmsMinDsgSoc| 0 | 30 | % | 1 |  Discharge limit | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
 |cmsOilOnSoc| 10 | 30 | % | 1 |  SOC for automatically starting the Smart Generator | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
 |cmsOilOffSoc| 50 | 100 | % | 1 |  SOC for automatically stopping the Smart Generator | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
+|backupReverseSoc| 0 | 100 | % | 1 |  Backup Reserve SOC | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
 
 ### diagnostic
 

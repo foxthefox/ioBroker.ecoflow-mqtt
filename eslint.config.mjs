@@ -21,6 +21,7 @@ export default [
             '**/adapter-config.d.ts',
             'test',
             'lib/helper',
+            'lib/dict_data/test_proto.js',
         ],
     },
     {

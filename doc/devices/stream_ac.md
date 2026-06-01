@@ -63,13 +63,13 @@
 |stormPatternEndTime|0 | 60 | h | 1 |  storm pattern end time |
 |powGetSysGrid|0 | 3000 | W | 1 |  pow get sys grid |
 |powGetSysLoad|0 | 10000 | W | 1 |  pow get sys load |
-|powGetPvSum|0 | 2400 | W | 1 |  pow get pv sum |
+|powGetPvSum|0 | 3600 | W | 1 |  pow get pv sum |
 |powGetBpCms|0 | 2000 | W | 1 |  pow get bp cms |
 |powSysAcOutMax|0 | 2000 | W | 1 |  pow sys ac out max |
 |gridConnectionVol|0 | 250 | V | 1 |  grid Connection Vol |
 |gridConnectionFreq|0 | 62 | Hz | 1 |  grid connection freq |
 |gridConnectionPower|0 | 2000 | W | 1 |  Grid Connection Power |
-|sysGridConnectionPower|0 | 2000 | W | 1 |  sys Grid Connection Power |
+|sysGridConnectionPower|0 | 2500 | W | 1 |  sys Grid Connection Power |
 |powGetSysLoadFromPv|0 | 2000 | W | 1 |  power get sys load from Pv  |
 |powGetSysLoadFromBp|0 | 2500 | W | 1 |  pow get gys load from bp |
 |powGetSysLoadFromGrid|0 | 10000 | W | 1 |  pow get sys load from grid |

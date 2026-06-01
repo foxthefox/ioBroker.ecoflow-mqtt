@@ -378,7 +378,7 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 - (foxthefox) new device Glacier Classic 55L support
 - (foxthefox) new device Delta 3 Max Plus support
 - (foxthefox) new device Stream AC support
-- (foxthefox) new device Rapid Pro 320W support
+- (foxthefox) new device Rapid Pro 320W support #372
 - (foxthefox) enhancements on wave3
 - (foxthefox) corrections in river3plus for data processing
 - (foxthefox) corrections in D2M for command inv.cfgAcEnabled #340
@@ -392,10 +392,19 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 - (foxthefox) Stream AC timetask58x exclude
 - (foxthefox) correction of powerocean / powerocean+ (issue #378), new ENERGY_STREAM_DETAIL and switch for missing datapoint -> value = 0
 - (foxthefox) dev dependencies cleanup
+- (foxthefox) #415 powGetPvSum max=3600, sysGridConnectionPower max = 2500
+- (foxthefox) #422 Backup Reserve Soc as level Delta 3 Plus
+- (foxthefox) #417 Delta Pro 3, remainTime max= 12520, dcdcChgReqCur max = 150, invBusVol/llcBusVol mult=0.1
 
 [older changes](./CHANGELOG.md)
 
-[Older changelogs can be found there](CHANGELOG_OLD.md)
+## Disclaimer
+
+This open-source software is not affiliated with or endorsed by the company Ecoflow in any way.
+Use of the software is at your own risk and discretion, and I assume no liability for any potential
+damages or issues that may arise from using the software. It is important to be aware that using
+this open-source software comes without direct support or guarantees from the company Ecoflow.
+
 
 ## License
 
@@ -420,10 +429,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
-## Disclaimer
-
-This open-source software is not affiliated with or endorsed by the company Ecoflow in any way.
-Use of the software is at your own risk and discretion, and I assume no liability for any potential
-damages or issues that may arise from using the software. It is important to be aware that using
-this open-source software comes without direct support or guarantees from the company Ecoflow.
