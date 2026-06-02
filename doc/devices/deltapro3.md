@@ -1,5 +1,5 @@
 # States for  DELTAPRO3
-### version: 1.4.8
+### version: 1.4.9
 
 [DisplayPropertyUpload](#DisplayPropertyUpload)
 
@@ -75,16 +75,16 @@
 |bmsBattSoc|0 | 100 | % | 1 |  SOC of the main battery |
 |bmsBattSoh|0 | 100 | % | 1 |  SOH of the main battery |
 |bmsDesignCap|0 | 80000 | mAh | 1 |  Battery capacity |
-|bmsDsgRemTime|0 | 15999 | min | 1 |  Remaining discharging time |
-|bmsChgRemTime|0 | 15999 | min | 1 |  Remaining charging time of the main battery |
+|bmsDsgRemTime|0 | 25605 | min | 1 |  Remaining discharging time |
+|bmsChgRemTime|0 | 25605 | min | 1 |  Remaining charging time of the main battery |
 |bmsMinCellTemp|0 | 80 | °C | 1 |  Minimum temperature of the main battery |
 |bmsMaxCellTemp|0 | 80 | °C | 1 |  Temperature of the main battery |
 |bmsMinMosTemp|0 | 100 | °C | 1 |  bms min mos temp |
 |bmsMaxMosTemp|0 | 100 | °C | 1 |  bms max mos temp |
 |cmsBattSoc|0 | 100 | % | 1 |  Overall SOC |
 |cmsBattSoh|0 | 100 | % | 1 |  Overall SOH |
-|cmsDsgRemTime|0 | 15999 | min | 1 |  Remaining discharging time |
-|cmsChgRemTime|0 | 15999 | min | 1 |  Remaining charging time |
+|cmsDsgRemTime|0 | 25605 | min | 1 |  Remaining discharging time |
+|cmsChgRemTime|0 | 25605 | min | 1 |  Remaining charging time |
 |timeTaskChangeCnt|0 | 60 |  | 1 |  time task change cnt |
 |generatorPvHybridModeSocMax|0 | 100 | % | 1 |  generator pv hybrid mode soc max |
 |generatorCareModeStartTime|0 | 2000 | h | 1 |  generator care mode start time |
@@ -264,7 +264,7 @@
 |runtimePropertyFullUploadPeriod|0 |  n/a | s | 1 |  runtime property full upload period |
 |runtimePropertyIncrementalUploadPeriod|0 |  n/a | s | 1 |  runtime property incremental upload period |
 |mpptRecvCmsChgReqVol|0 | 60 | V | 1 |  mppt recv cms chg req vol |
-|mpptRecvCmsChgReqAmp|0 | 90 | A | 1 |  mppt recv cms chg req amp |
+|mpptRecvCmsChgReqAmp|0 | 150 | A | 1 |  mppt recv cms chg req amp |
 |pv2BusVol|0 | 150 | V | 1 |  pv2 bus vol |
 |mpptBatVol|0 | 60 | V | 1 |  mppt bat vol |
 |mpptBatAmp|0 | 20 | A | 1 |  mppt bat amp |
