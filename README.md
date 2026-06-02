@@ -367,11 +367,16 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 ## Changelog
 
 ### **WORK IN PROGRESS**
+
 - (copilot) Adapter requires node.js >= 22 now
 
-### 1.4.9 (WIP)
+### 1.4.10 (WIP)
 
 - (foxthefox) new datapoints Delta2max
+
+### 1.4.9 (npm)
+
+- (foxthefox) delta 3 plus backupReserveSoc in relation to Discharge Limit + 5%"
 
 ### 1.4.8 (npm)
 
@@ -404,7 +409,6 @@ This open-source software is not affiliated with or endorsed by the company Ecof
 Use of the software is at your own risk and discretion, and I assume no liability for any potential
 damages or issues that may arise from using the software. It is important to be aware that using
 this open-source software comes without direct support or guarantees from the company Ecoflow.
-
 
 ## License
 
