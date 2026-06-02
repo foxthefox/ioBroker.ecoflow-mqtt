@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "ecoflow-mqtt",
-        "version": "1.4.8",
+        "version": "1.4.9",
         "news": {
+            "1.4.9": {
+                "en": "enhancements",
+                "de": "Verbesserungen",
+                "ru": "улучшения",
+                "pt": "melhorias",
+                "nl": "verbeteringen",
+                "fr": "améliorations",
+                "it": "miglioramenti",
+                "es": "mejoras",
+                "pl": "ulepszenia",
+                "uk": "покращення",
+                "zh-cn": "增强功能"
+            },
             "1.4.8": {
                 "en": "dev dependencies; new glacier55L, delta3maxplus, stream ac; error corrections",
                 "de": "Entwicklungsabhängigkeiten; neuer Glacier55L, Delta3maxplus, Stream AC; Fehlerkorrekturen",
