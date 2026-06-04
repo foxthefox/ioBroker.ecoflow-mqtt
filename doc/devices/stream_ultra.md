@@ -59,8 +59,8 @@
 |cmsDsgRemTime|0 | 15999 | min | 1 |  Remaining discharging time |
 |cmsChgRemTime|0 | 15999 | min | 1 |  Remaining charging time |
 |powGetPv|0 | 600 | W | 1 |  pow get pv |
-|cmsBattPowOutMax|0 | 4000 | W | 1 |  cms batt pow out max |
-|cmsBattPowInMax|0 | 4000 | W | 1 |  cms batt pow in max |
+|cmsBattPowOutMax|0 | 8000 | W | 1 |  cms batt pow out max |
+|cmsBattPowInMax|0 | 8000 | W | 1 |  cms batt pow in max |
 |cmsBattFullEnergy|0 | 1920 | Wh | 1 |  cms batt full energy |
 |stormPatternEndTime|0 | 60 | h | 1 |  storm pattern end time |
 |powGetSysGrid|0 | 4000 | W | 1 |  pow get sys grid |
