@@ -621,8 +621,8 @@
 
 | State  |      off    |  on |  Name |  cmd |
 |----------|:-------------:|:------:|------|------|
-|cfgPowerOff| off | on | Shut down the entire device | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
-|cfgHvAcOutOpen| off | on | high-voltage AC output switch | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
-|cfgLvAcOutOpen| off | on | low-voltage AC output switch | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
-|cfgDc12vOutOpen| off | on | 12V output switch | {dest:2,cmdFunc:254,cmdId:17,dataLen:3} |
+|cfgPowerOff| off | on | Shut down the entire device | {dest:2,cmdFunc:254,cmdId:17,dataLen:2} |
+|cfgHvAcOutOpen| off | on | high-voltage AC output switch | {dest:2,cmdFunc:254,cmdId:17,dataLen:2} |
+|cfgLvAcOutOpen| off | on | low-voltage AC output switch | {dest:2,cmdFunc:254,cmdId:17,dataLen:2} |
+|cfgDc12vOutOpen| off | on | 12V output switch | {dest:2,cmdFunc:254,cmdId:17,dataLen:2} |
 
