@@ -351,8 +351,8 @@
                                     "label": "Stream Ultra"
                                 },
                                 {
-                                    "value": "unknown",
-                                    "label": "Stream Ultra X (unkn)"
+                                    "value": "stream_ultra_x",
+                                    "label": "Stream Ultra X"
                                 }
                             ],
                             "title": "(Power)Stream Type",
