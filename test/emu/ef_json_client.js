@@ -64,6 +64,7 @@ function loadMesgObj(pdevices) {
             devtype === 'delta3maxplus' ||
             devtype === 'rapidpro320' ||
             devtype === 'delta3classic' ||
+            devtype === 'stream_ultra_x' ||
             devtype === 'unknown'
         ) {
             if (devtype === 'pstream600' || devtype === 'pstream800') {
@@ -107,6 +108,7 @@ function loadProtoObj(pdevices) {
             devtype === 'delta3maxplus' ||
             devtype === 'rapidpro320' ||
             devtype === 'delta3classic' ||
+            devtype === 'stream_ultra_x' ||
             devtype === 'unknown'
         ) {
             if (devtype === 'pstream600' || devtype === 'pstream800') {
@@ -167,6 +169,7 @@ const pdevices = {
     D3M1ZE1234567890: { devName: 'My delta3max plus', devType: 'delta3maxplus', haEnable: false },
     P512ZE1234567890: { devName: 'My rapid 320', devType: 'rapidpro320', haEnable: false },
     P321P12345678901: { devName: 'My Delta3 classic', devType: 'delta3classic', haEnable: false },
+    BK61Z123456789012: { devName: 'My stream ultra X', devType: 'stream_ultra_x', haEnable: false },
 };
 
 let quota = loadQuotas(pdevices);
@@ -253,6 +256,7 @@ client.on('message', (topic, message) => {
             case 'stream_ac':
             case 'delta3maxplus':
             case 'rapidpro320':
+            case 'stream_ultra_x':
             case 'unknown':
                 if (msgQbj[topic]) {
                     const string = ef.createMsgFromObjects(msgQbj[topic], quota[topic], protoQbj[topic], true);

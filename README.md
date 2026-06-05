@@ -376,6 +376,7 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 
 ### 1.4.9 (npm)
 
+- (foxthefox) new device Strem Ultra X
 - (foxthefox) delta 3 plus backupReserveSoc in relation to Discharge Limit + 5%
 - (foxthefox) deltapro3 some max values adapted
 - (foxthefox) powerstream timeData
