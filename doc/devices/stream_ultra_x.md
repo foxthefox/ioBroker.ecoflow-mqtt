@@ -21,6 +21,175 @@
 |displayPropertyIncrementalUploadPeriod| Display Property Incremental Upload Period |
 |runtimePropertyFullUploadPeriod| Runtime Property Full Upload Period |
 |runtimePropertyIncrementalUploadPeriod| Runtime Property Incremental Upload Period |
+|lanSysMeterValue| lan sys meter value |
+|cascadeSysCanId| cascade sys can id |
+|pvStateMonitor1| pv state monitor1 |
+|pvStateMonitor2| pv state monitor2 |
+|dabStateMonitor1| dab state monitor1 |
+|dabStateMonitor2| dab state monitor2 |
+|dabStateMonitor3| dab state monitor3 |
+|pv1InsRx| pv1 ins rx |
+|pv2InsRx| pv2 ins rx |
+|pv3InsRx| pv3 ins rx |
+|pv4InsRx| pv4 ins rx |
+|pv1GndInsRy| pv1 gnd ins ry |
+|pv2GndInsRy| pv2 gnd ins ry |
+|pv3GndInsRy| pv3 gnd ins ry |
+|pv4GndInsRy| pv4 gnd ins ry |
+|invTodcData| inv todc data |
+|dcToInvData| dc to inv data |
+|emsPfcChgPwrTag| ems pfc chg pwr tag |
+|chgPowerLoopRef| chg power loop ref |
+|iDabLv| i dab lv |
+|exPsD1| ex ps d1 |
+|pvIoutFilt| pv iout filt |
+|ref1P65| ref1 p65 |
+|ref2P5| ref2 p5 |
+|dcvFilt| dcv filt |
+|dciFilt| dci filt |
+|voltFreqfilter| volt freqfilter |
+|pfcVbusTag| pfc vbus tag |
+
+### number
+| State  |      Min     |      Max     |  Unit |  Mult |  Name |
+|----------|:-------------:|:-------------:|:------:|:-----:|-----|
+|lanSysHomeNeedPwr|0 | 6000 | W | 1 |  lan sys home need pwr |
+|aiTouTargetSoc|0 | 100 | % | 1 |  ai tou target soc |
+|lanSysDeviceCnt|0 | 7 |  | 1 |  lan sys device cnt |
+|lanSysTargetPwr|0 | 6000 | W | 1 |  lan sys target pwr |
+|cascadeSysTargetPwr|0 | 6000 | W | 1 |  cascade sys target pwr |
+|cascadeSysSoc|0 | 100 | % | 1 |  cascade sys soc |
+|cascadeSysDeviceCnt|0 | 7 |  | 1 |  cascade sys device cnt |
+|cascadeSysDistributedPwrSum|-2000 | 2000 | W | 1 |  cascade sys distributed pwr sum |
+|cascadeSysOutputPwrDiff|0 | 6000 | W | 1 |  cascade sys output pwr diff |
+|dev1DistributeTarget|0 | 100 | % | 1 |  dev1 distribute target |
+|dev2DistributeTarget|0 | 100 | % | 1 |  dev2 distribute target |
+|dev3DistributeTarget|0 | 100 | % | 1 |  dev3 distribute target |
+|dev4DistributeTarget|0 | 100 | % | 1 |  dev4 distribute target |
+|dev5DistributeTarget|0 | 100 | % | 1 |  dev5 distribute target |
+|dev6DistributeTarget|0 | 100 | % | 1 |  dev6 distribute target |
+|dev1ToPcsPwr|0 | 2000 | W | 1 |  dev1 to pcs pwr |
+|dev2ToPcsPwr|0 | 2000 | W | 1 |  dev2 to pcs pwr |
+|dev3ToPcsPwr|0 | 2000 | W | 1 |  dev3 to pcs pwr |
+|dev4ToPcsPwr|0 | 2000 | W | 1 |  dev4 to pcs pwr |
+|dev5ToPcsPwr|0 | 2000 | W | 1 |  dev5 to pcs pwr |
+|dev6ToPcsPwr|0 | 2000 | W | 1 |  dev6 to pcs pwr |
+|dev1PvRemain|0 | 2000 | W | 1 |  dev1 pv remain |
+|dev2PvRemain|0 | 2000 | W | 1 |  dev2 pv remain |
+|dev3PvRemain|0 | 2000 | W | 1 |  dev3 pv remain |
+|dev4PvRemain|0 | 2000 | W | 1 |  dev4 pv remain |
+|dev5PvRemain|0 | 2000 | W | 1 |  dev5 pv remain |
+|dev6PvRemain|0 | 2000 | W | 1 |  dev6 pv remain |
+|dev1PowerAbility|0 | 2000 | W | 1 |  dev1 power ability |
+|dev2PowerAbility|0 | 2000 | W | 1 |  dev2 power ability |
+|dev3PowerAbility|0 | 2000 | W | 1 |  dev3 power ability |
+|dev4PowerAbility|0 | 2000 | W | 1 |  dev4 power ability |
+|dev5PowerAbility|0 | 2000 | W | 1 |  dev5 power ability |
+|dev6PowerAbility|0 | 2000 | W | 1 |  dev6 power ability |
+|dev1PowerInAbility|0 | 2000 | W | 1 |  dev1 power in ability |
+|dev2PowerInAbility|0 | 2000 | W | 1 |  dev2 power in ability |
+|dev3PowerInAbility|0 | 2000 | W | 1 |  dev3 power in ability |
+|dev4PowerInAbility|0 | 2000 | W | 1 |  dev4 power in ability |
+|dev5PowerInAbility|0 | 2000 | W | 1 |  dev5 power in ability |
+|dev6PowerInAbility|0 | 2000 | W | 1 |  dev6 power in ability |
+|chgOverCurOffCnt|0 |  n/a | A | 1 |  chg over cur off cnt |
+|vinPv1|0 | 70 | V | 0.1 |  v in pv1 |
+|vinPv2|0 | 70 | V | 0.1 |  v in pv2 |
+|vinPv3|0 | 70 | V | 0.1 |  vin pv3 |
+|vinPv4|0 | 70 | V | 0.1 |  v in pv4 |
+|iinPv1|-1 | 15 | A | 0.01 |  i in pv1 |
+|iinPv2|-1 | 15 | A | 0.01 |  i in pv2 |
+|iinPv3|-1 | 15 | A | 0.01 |  i in pv3 |
+|iinPv4|-1 | 15 | A | 0.01 |  i in pv4 |
+|pinPv1|0 | 600 | W | 0.1 |  p in pv1 |
+|pinPv2|0 | 600 | W | 0.1 |  p in pv2 |
+|pinPv3|0 | 600 | W | 0.1 |  p in pv3 |
+|pinPv4|0 | 600 | W | 0.1 |  p in pv4 |
+|bmsChgReqVolt|0 | 60 | V | 0.001 |  bms chg req volt |
+|bmsChgReqCurr|0 | 60 | A | 0.001 |  bms chg req curr |
+|curAvaiToBmsPower|0 | 2000 | W | 1 |  cur avai to bms power |
+|invInPowerAbilityMax|0 | 2000 | W | 1 |  inv in power ability max |
+|invOutPowerAbilityMax|0 | 2000 | W | 1 |  inv out power ability max |
+|ongridOutPowerAbilityMax|0 | 3000 | W | 1 |  ongrid out power ability max |
+|bypassOutPowerAbilityMax|0 | 3000 | W | 1 |  bypass out power ability max |
+|vBusHv|0 | 60 | V | 0.1 |  v bus hv |
+|vBat|0 | 60 | V | 0.001 |  v bat |
+|ioutBat|0 | 60 | A | 0.01 |  iout bat |
+|vBusPidRef|0 | 60 | V | 0.1 |  v bus pid ref |
+|dcTemp1Ntc|0 | 100 | °C | 1 |  dc temp1 ntc |
+|dcTemp2Ntc|0 | 100 | °C | 1 |  dc temp2 ntc |
+|dcTemp3Ntc|0 | 100 | °C | 1 |  dc temp3 ntc |
+|dabLvTempNtc|0 | 100 | °C | 1 |  dab lv temp ntc |
+|invIl1Rms|0 | 60 | A | 0.1 |  inv il1 rms |
+|ongridIinRms|0 | 60 | A | 0.1 |  ongrid iin rms |
+|vBus|0 | 60 | V | 0.1 |  v bus |
+|ongridVinRms|0 | 250 | V | 0.1 |  ongrid vin rms |
+|ongridVoutRms|0 | 250 | V | 0.1 |  ongrid vout rms |
+|offgridVout1Rms|0 | 250 | V | 0.1 |  offgrid v out1 rms |
+|offgridVout2Rms|0 | 250 | V | 0.1 |  offgrid v out2 rms |
+|invVcapRms|0 | 250 | V | 0.1 |  inv vcap rms |
+|acTotalActivePower|0 | 6000 | W | 1 |  ac total active power |
+|ongridInActivePower|0 | 6000 | W | 1 |  ongrid in active power |
+|ongridInReactivePower|0 | 6000 | W | 1 |  ongrid in reactive power |
+|offgrid1ActivePower|-200 | 2000 | W | 1 |  offgrid1 active power |
+|offgrid2ActivePower|-2000 | 2000 | W | 1 |  offgrid2 active power |
+|seriesPower|-6000 | 6000 | W | 1 |  series power |
+|offgrid1ApperentPower|0 | 6000 | W | 1 |  offgrid1 apperent power |
+|offgrid2ApperentPower|0 | 6000 | W | 1 |  offgrid2 apperent power |
+|offgridInvDeratePower|0 | 6000 | W | 1 |  offgrid inv derate power |
+|ongridInvDeratePower|0 | 6000 | W | 1 |  ongrid inv derate power |
+|acTotalInvDeratePower|0 | 6000 | W | 1 |  ac total inv derate power |
+|mosVolt|0 | 60 | V | 0.1 |  mos volt |
+|reactPwrRefDelta|0 | 6000 | W | 1 |  react pwr ref delta |
+|addPwrActLimit|0 | 6000 | W | 1 |  add pwr act limit |
+|invTempNtc|0 | 100 | °C | 1 |  inv temp ntc |
+|dabHighTempNtc|0 | 100 | °C | 1 |  dab high temp ntc |
+|emsSetRatedPower|0 | 6000 | W | 1 |  ems set rated power |
+|actPwrRated|0 | 6000 | W | 1 |  act pwr rated |
+|activePowerNeed|0 | 6000 | W | 1 |  active power need |
+|actPwrByPerc|0 | 1000 | W | 1 |  act pwr by perc |
+|actPwrByRampUp|0 | 1000 | W | 1 |  act pwr by ramp up |
+|actPwrByOfdp|0 | 1000 | W | 1 |  act pwr by ofdp |
+|actPwrByUfip|0 | 1000 | W | 1 |  act pwr by ufip |
+|actPwrByFreqDroop|0 | 1000 | W | 1 |  act pwr by freq droop |
+|actPwrByOvdp|0 | 1000 | W | 1 |  act pwr by ovdp |
+|ongridActivePowerRef|0 | 1000 | W | 1 |  ongrid active power ref |
+
+
+### diagnostic
+
+| State  |     Name |  values |
+|----------|:-------------:|------|
+|aiTouValid| ai tou valid | {0:OK?} |
+|lanSysWorkMode| lan sys work mode | {0:OK?} |
+|cascadeSysWorkMode| cascade sys work mode | {0:OK?} |
+|dev1ToPcsWorkMode| dev1 to pcs work mode | {0:OK?} |
+|dev2ToPcsWorkMode| dev2 to pcs work mode | {0:OK?} |
+|dev3ToPcsWorkMode| dev3 to pcs work mode | {0:OK?} |
+|dev4ToPcsWorkMode| dev4 to pcs work mode | {0:OK?} |
+|dev5ToPcsWorkMode| dev5 to pcs work mode | {0:OK?} |
+|dev6ToPcsWorkMode| dev6 to pcs work mode | {0:OK?} |
+|mpptFaultComm| mppt fault comm | {0:OK?} |
+|mpptPv1Fault| mppt pv1 fault | {0:OK?} |
+|mpptPv2Fault| mppt pv2 fault | {0:OK?} |
+|mpptPv3Fault| mppt pv3 fault | {0:OK?} |
+|mpptPv4Fault| mppt pv4 fault | {0:OK?} |
+|dabFault| dab fault | {0:OK?} |
+|dabFaultLock| dab fault lock | {0:OK?} |
+|invStateMonitor1| inv state monitor1 | {0:OK?} |
+|invStateMonitor2| inv state monitor2 | {0:OK?} |
+|invStateMonitor3| inv state monitor3 | {0:OK?} |
+|invFault| inv fault | {0:OK?} |
+|invFaultLock| inv fault lock | {0:OK?} |
+|pfcFault| pfc fault | {0:OK?} |
+|invCommFault| inv comm fault | {0:OK?} |
+|gridFault| grid fault | {0:OK?} |
+
+### array
+
+| State  |  Name |
+|----------|------|
+|lanSysScheduleOutput| lan sys schedule output |
 
 ## dayResidentLoadList
 
