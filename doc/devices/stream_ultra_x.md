@@ -62,12 +62,12 @@
 |cascadeSysDeviceCnt|0 | 7 |  | 1 |  cascade sys device cnt |
 |cascadeSysDistributedPwrSum|-2000 | 2000 | W | 1 |  cascade sys distributed pwr sum |
 |cascadeSysOutputPwrDiff|0 | 6000 | W | 1 |  cascade sys output pwr diff |
-|dev1DistributeTarget|0 | 100 | % | 1 |  dev1 distribute target |
-|dev2DistributeTarget|0 | 100 | % | 1 |  dev2 distribute target |
-|dev3DistributeTarget|0 | 100 | % | 1 |  dev3 distribute target |
-|dev4DistributeTarget|0 | 100 | % | 1 |  dev4 distribute target |
-|dev5DistributeTarget|0 | 100 | % | 1 |  dev5 distribute target |
-|dev6DistributeTarget|0 | 100 | % | 1 |  dev6 distribute target |
+|dev1DistributeTarget|0 | 2000 | W | 1 |  dev1 distribute target |
+|dev2DistributeTarget|0 | 2000 | W | 1 |  dev2 distribute target |
+|dev3DistributeTarget|0 | 2000 | W | 1 |  dev3 distribute target |
+|dev4DistributeTarget|0 | 2000 | W | 1 |  dev4 distribute target |
+|dev5DistributeTarget|0 | 2000 | W | 1 |  dev5 distribute target |
+|dev6DistributeTarget|0 | 2000 | W | 1 |  dev6 distribute target |
 |dev1ToPcsPwr|0 | 2000 | W | 1 |  dev1 to pcs pwr |
 |dev2ToPcsPwr|0 | 2000 | W | 1 |  dev2 to pcs pwr |
 |dev3ToPcsPwr|0 | 2000 | W | 1 |  dev3 to pcs pwr |
@@ -388,7 +388,7 @@
 |amp|0 | 40 | A | 0.0001 |  amp |
 |temp|0 | 90 | °C | 1 |  temp |
 |designCap|0 | 200000 | mAh | 1 |  design cap |
-|remainCap|0 | 100000 | mAh | 1 |  remain cap |
+|remainCap|0 | 200000 | mAh | 1 |  remain cap |
 |fullCap|0 | 200000 | mAh | 1 |  full cap |
 |cycles|0 | 6000 |  | 1 |  Number of cycles |
 |soh|0 | 100 | % | 1 |  soh |

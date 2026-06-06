@@ -4,17 +4,17 @@
         "version": "1.4.9",
         "news": {
             "1.4.9": {
-                "en": "enhancements",
-                "de": "Verbesserungen",
-                "ru": "улучшения",
-                "pt": "melhorias",
-                "nl": "verbeteringen",
-                "fr": "améliorations",
-                "it": "miglioramenti",
-                "es": "mejoras",
-                "pl": "ulepszenia",
-                "uk": "покращення",
-                "zh-cn": "增强功能"
+                "en": "enhancements, new Stream Ultra X",
+                "de": "Verbesserungen, neues Stream Ultra X",
+                "ru": "улучшения, новый Stream Ultra X",
+                "pt": "melhorias, novo Stream Ultra X",
+                "nl": "verbeteringen, nieuwe Stream Ultra X",
+                "fr": "améliorations, nouveau Stream Ultra X",
+                "it": "miglioramenti, nuovo Stream Ultra X",
+                "es": "mejoras, nuevo Stream Ultra X",
+                "pl": "udoskonalenia, nowy Stream Ultra X",
+                "uk": "покращення, новий Stream Ultra X",
+                "zh-cn": "增强功能，新的 Stream Ultra X"
             },
             "1.4.8": {
                 "en": "dev dependencies; new glacier55L, delta3maxplus, stream ac; error corrections",
@@ -67,55 +67,13 @@
                 "pl": "Nowy falownik strumienia, nowy CMD dla strumienia obciążenia AC/Ultra, Corr. River Backbacku3, shp zadanie charcargewatt",
                 "uk": "Новий інвертор потоку, новий CMD для навантаження потоку AC/Ultra, Corr. EnergyBackup River3, SHP Task Chagerwatt",
                 "zh-cn": "新流逆变器，用于负载流AC/Ultra的新CMD，Corr。 EnergyBackup River3，SHP任务Chchargewatt"
-            },
-            "1.4.2": {
-                "en": "River 3 commands",
-                "de": "Fluss 3 Kommandos",
-                "ru": "Команды реки 3",
-                "pt": "Comandos do rio 3",
-                "nl": "Rivier 3 commando's",
-                "fr": "River 3 Commandes",
-                "it": "Comandi del fiume 3",
-                "es": "River 3 comandos",
-                "pl": "Rzeka 3 polecenia",
-                "uk": "Річка 3 команди",
-                "zh-cn": "河3命令"
-            },
-            "1.4.1": {
-                "en": "correction multiplication of float, new commands for STREAM and River3",
-                "de": "Korrekturmultiplikation von Float, neue Befehle für Stream und River33",
-                "ru": "Умножение коррекции плавания, новые команды для потока и реки3",
-                "pt": "Multiplicação de correção de flutuação, novos comandos para stream e rio3",
-                "nl": "Correctievermmen van float, nieuwe opdrachten voor stroom en rivier3",
-                "fr": "Multiplication de correction du flotteur, de nouvelles commandes pour le cours d'eau et la rivière3",
-                "it": "Correzione Moltiplicazione di Float, Nuovi comandi per Stream e River3",
-                "es": "Multiplicación de corrección del flotador, nuevos comandos para Stream y River3",
-                "pl": "Mnożenie korekcji pływaków, nowe polecenia strumienia i rzeki3",
-                "uk": "Корекційне множення поплавця, нові команди для потоку та річки3",
-                "zh-cn": "Float的校正乘法，溪流和River3的新命令3"
-            },
-            "1.3.2": {
-                "en": "improvements for HA commands (number)",
-                "de": "Verbesserungen für HA -Befehle (Nummer)",
-                "ru": "Улучшения для команд HA (номер)",
-                "pt": "Melhorias para os comandos HA (número)",
-                "nl": "Verbeteringen voor HA -opdrachten (nummer)",
-                "fr": "Améliorations pour les commandes HA (numéro)",
-                "it": "Miglioramenti per comandi HA (numero)",
-                "es": "Mejoras para los comandos HA (número)",
-                "pl": "Ulepszenia poleceń HA (liczba)",
-                "uk": "вдосконалення для команд HA (число)",
-                "zh-cn": "HA命令的改进（编号）"
             }
         },
         "messages": [
             {
                 "condition": {
                     "operand": "and",
-                    "rules": [
-                        "oldVersion<0.0.8",
-                        "newVersion>=0.0.9"
-                    ]
+                    "rules": ["oldVersion<0.0.8", "newVersion>=0.0.9"]
                 },
                 "title": {
                     "en": "Important notice!",
@@ -144,18 +102,12 @@
                     "zh-cn": "为了正常工作，适配器需要 ioBroker.admin >=6.12.3。请确保这个边界条件。您可以通过启用专家设置并从 npm 作为源进行安装来实现此目的。"
                 },
                 "level": "warn",
-                "buttons": [
-                    "ok",
-                    "cancel"
-                ]
+                "buttons": ["ok", "cancel"]
             },
             {
                 "condition": {
                     "operand": "and",
-                    "rules": [
-                        "oldVersion<1.0.0",
-                        "newVersion>=1.0.0"
-                    ]
+                    "rules": ["oldVersion<1.0.0", "newVersion>=1.0.0"]
                 },
                 "title": {
                     "en": "Important notice!",
@@ -184,10 +136,7 @@
                     "zh-cn": "数据点的状态角色已更正，请停止适配器，删除ecoflow-mqtt实例的所有对象并重新启动适配器。数据点被重新创建。"
                 },
                 "level": "warn",
-                "buttons": [
-                    "ok",
-                    "cancel"
-                ]
+                "buttons": ["ok", "cancel"]
             }
         ],
         "titleLang": {
@@ -216,19 +165,8 @@
             "uk": "підключається до продуктів ecoflow",
             "zh-cn": "连接至 Ecoflow 产品"
         },
-        "authors": [
-            "foxthefox <foxthefox@wysiwis.net>"
-        ],
-        "keywords": [
-            "ecoflow",
-            "powerstream",
-            "powerstation",
-            "delta",
-            "river",
-            "powerkit",
-            "powerocaen",
-            "shp"
-        ],
+        "authors": ["foxthefox <foxthefox@wysiwis.net>"],
+        "keywords": ["ecoflow", "powerstream", "powerstation", "delta", "river", "powerkit", "powerocaen", "shp"],
         "platform": "Javascript/Node.js",
         "icon": "ecoflow-mqtt.png",
         "enabled": true,
@@ -270,11 +208,7 @@
         "haMqttUserId",
         "haMqttUserPWd"
     ],
-    "encryptedNative": [
-        "userPassword",
-        "mqttPwd",
-        "haMqttUserPWd"
-    ],
+    "encryptedNative": ["userPassword", "mqttPwd", "haMqttUserPWd"],
     "native": {
         "userName": "userEmail",
         "userPassword": "pw",
