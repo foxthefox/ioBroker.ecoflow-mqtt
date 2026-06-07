@@ -60,12 +60,12 @@
 |cmsChgRemTime|0 | 15999 | min | 1 |  Remaining charging time |
 |powGetPv|0 | 600 | W | 1 |  pow get pv |
 |cmsBattPowOutMax|0 | 4000 | W | 1 |  cms batt pow out max |
-|cmsBattPowInMax|0 | 4000 | W | 1 |  cms batt pow in max |
+|cmsBattPowInMax|0 | 8000 | W | 1 |  cms batt pow in max |
 |cmsBattFullEnergy|0 | 1920 | Wh | 1 |  cms batt full energy |
 |stormPatternEndTime|0 | 60 | h | 1 |  storm pattern end time |
 |powGetSysGrid|0 | 3000 | W | 1 |  pow get sys grid |
 |powGetSysLoad|0 | 10000 | W | 1 |  pow get sys load |
-|powGetPvSum|0 | 3600 | W | 1 |  pow get pv sum |
+|powGetPvSum|0 | 8000 | W | 1 |  pow get pv sum |
 |powGetBpCms|0 | 2000 | W | 1 |  pow get bp cms |
 |powSysAcOutMax|0 | 2000 | W | 1 |  pow sys ac out max |
 |gridConnectionVol|0 | 250 | V | 1 |  grid Connection Vol |
@@ -75,13 +75,13 @@
 |powGetPv3|0 | 600 | W | 1 |  pow get pv3 |
 |powGetPv4|0 | 600 | W | 1 |  pow get pv4 |
 |plugInInfoPvVol|0 | 60 | V | 1 |  plug in info pv1 vol |
-|plugInInfoPvAmp|0 | 15 | A | 1 |  plug in info pv1 current |
+|plugInInfoPvAmp|0 | 20 | A | 1 |  plug in info pv1 current |
 |plugInInfoPv2Vol|0 | 60 | V | 1 |  plug in info pv2 vol |
-|plugInInfoPv2Amp|0 | 15 | A | 1 |  plug in info pv2 current |
+|plugInInfoPv2Amp|0 | 20 | A | 1 |  plug in info pv2 current |
 |plugInInfoPv3Vol|0 | 60 | V | 1 |  plug in info pv3 vol |
-|plugInInfoPv3Amp|0 | 15 | A | 1 |  plug in info pv3 current |
+|plugInInfoPv3Amp|0 | 20 | A | 1 |  plug in info pv3 current |
 |plugInInfoPv4Vol|0 | 60 | V | 1 |  plug in info pv4 vol |
-|plugInInfoPv4Amp|0 | 15 | A | 1 |  plug in info pv4 current |
+|plugInInfoPv4Amp|0 | 20 | A | 1 |  plug in info pv4 current |
 |powGetSysLoadFromPv|0 | 2000 | W | 1 |  power get sys load from Pv  |
 |powGetSysLoadFromBp|0 | 2500 | W | 1 |  pow get gys load from bp |
 |powGetSysLoadFromGrid|0 | 10000 | W | 1 |  pow get sys load from grid |
