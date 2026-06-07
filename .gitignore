@@ -7,6 +7,9 @@
 node_modules
 nbproject
 .commitinfo
+test/data
+test/lastQuotas
+lib/proto
 
 # npm package files
 iobroker.*.tgz
