@@ -59,6 +59,7 @@ quota['UNKNOWNPROTO'] = require('../lastQuotas/unknown.js').messages.test;
 quota['UNKNOWNJSON'] = require('../lastQuotas/unknownjson.json');
 quota['R371A112345678'] = require('../lastQuotas/oceanplus.js').get.bat;
 quota['BK41Z123456789012'] = require('../lastQuotas/streaminverter.js').get.all;
+quota['BK61Z123456789012'] = require('../lastQuotas/streamultra_x.js').get.all;
 
 const panelparams = require('../lastQuotas/vm2.js').params;
 
@@ -104,6 +105,7 @@ const pdevices = {
     UNKNOWNJSON: { devName: 'My wave3', devType: 'wave3', haEnable: false },
     R371A112345678: { devName: 'EF Oecan dc plus', devType: 'poweroceanplus', haEnable: false },
     BK41Z123456789012: { devName: 'Stream inverter', devType: 'stream_inverter', haEnable: false },
+    BK61Z123456789012: { devName: 'My stream ultra X', devType: 'stream_ultra_x', haEnable: false },
 };
 
 let lastQuotInterval = null;
@@ -241,6 +243,11 @@ client.on('message', (topic, message) => {
             client.publish('/app/' + mqttUserId + '/' + topic + '/thing/property/get_reply', buffer);
         } else if (topic == 'BK41Z123456789012') {
             const string = quota['BK41Z123456789012'].replace(/ /g, '').toLowerCase();
+            //console.log(string);
+            const buffer = Buffer.from(string, 'hex');
+            client.publish('/app/' + mqttUserId + '/' + topic + '/thing/property/get_reply', buffer);
+        } else if (topic == 'BK61Z123456789012') {
+            const string = quota['BK61Z123456789012'].replace(/ /g, '').toLowerCase();
             //console.log(string);
             const buffer = Buffer.from(string, 'hex');
             client.publish('/app/' + mqttUserId + '/' + topic + '/thing/property/get_reply', buffer);
