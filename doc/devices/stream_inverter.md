@@ -24,7 +24,7 @@
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |powGetPv2|0 | 600 | W | 1 |  pow get pv2 |
-|plugInInfoPv2Amp|0 | 15 | A | 1 |  plug in info pv2 current |
+|plugInInfoPv2Amp|0 | 20 | A | 1 |  plug in info pv2 current |
 |utcTimezone|-1200 | 1200 |  | 1 |  utc timezone |
 |powGetPv|0 | 600 | W | 1 |  pow get pv |
 |invNtcTemp3|0 | 100 | °C | 1 |  inv Ntc Temp 3 |

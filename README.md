@@ -368,10 +368,6 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 
 ### **WORK IN PROGRESS**
 
-- (copilot) Adapter requires node.js >= 22 now
-
-### 1.4.10 (WIP)
-
 - (foxthefox) new datapoints Delta2max
 
 ### 1.4.9 (npm)
@@ -380,6 +376,7 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 - (foxthefox) delta 3 plus backupReserveSoc in relation to Discharge Limit + 5%
 - (foxthefox) deltapro3 some max values adapted
 - (foxthefox) powerstream timeData
+- (foxthefox) corrections of max values in Stream series
 
 ### 1.4.8 (npm)
 
