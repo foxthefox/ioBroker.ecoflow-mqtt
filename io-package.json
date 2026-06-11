@@ -1,8 +1,11 @@
 {
     "common": {
         "name": "ecoflow-mqtt",
-        "version": "1.4.9",
+        "version": "1.4.10",
         "news": {
+            "1.4.10": {
+                "en": "enhancements"
+            },
             "1.4.9": {
                 "en": "enhancements, new Stream Ultra X",
                 "de": "Verbesserungen, neues Stream Ultra X",

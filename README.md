@@ -370,6 +370,10 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 
 - (foxthefox) new datapoints Delta2max
 
+### 1.4.10 (npm)
+
+- (foxthefox) deltapro3 some max values adapted
+
 ### 1.4.9 (npm)
 
 - (foxthefox) new device Strem Ultra X

@@ -1,5 +1,5 @@
 # States for  POWEROCEANFIT
-### version: 1.4.9
+### version: 1.4.10
 
 [CloudBmsInfoReport](#CloudBmsInfoReport)
 

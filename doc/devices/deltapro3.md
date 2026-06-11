@@ -1,5 +1,5 @@
 # States for  DELTAPRO3
-### version: 1.4.9
+### version: 1.4.10
 
 [DisplayPropertyUpload](#DisplayPropertyUpload)
 
@@ -247,7 +247,7 @@
 |plugInInfoAcpL1Vol|0 | 240 | V | 1 |  plug in info acp l1 vol |
 |plugInInfoAcpL1l2Vol|0 | 240 | V | 1 |  plug in info acp l1l2 vol |
 |plugInInfoPvHAmp|0 | 15 | A | 1 |  plug in info pv h amp |
-|plugInInfoPvLAmp|0 | 20 | A | 1 |  plug in info pv l amp |
+|plugInInfoPvLAmp|0 | 22 | A | 1 |  plug in info pv l amp |
 |plugInInfoAcInAmp|0 | 30 | A | 1 |  plug in info ac in amp |
 |plugInInfo_4p8_1Amp|0 | 30 | A | 1 |  plug in info_4p8_1 amp |
 |plugInInfo_4p8_2Amp|0 | 30 | A | 1 |  plug in info_4p8_2 amp |
@@ -367,7 +367,7 @@
 |tagChgAmp|0 | 80 | A | 0.001 |  tag chg amp |
 |f32ShowSoc|0 | 100 | % | 1 |  f32 show soc |
 |inputWatts|0 | 1000 | W | 1 |  input watts |
-|outputWatts|0 | 1000 | W | 1 |  output watts |
+|outputWatts|0 | 10000 | W | 1 |  output watts |
 |remainTime|0 | 12520 | h | 1 |  remain time |
 |maxVolDiff|0 | 1 | V | 0.001 |  max vol diff |
 |actSoc|0 | 100 | % | 1 |  act soc |
@@ -467,7 +467,7 @@
 |tagChgAmp|0 | 60 | A | 0.001 |  tag chg amp |
 |f32ShowSoc|0 | 100 | % | 1 |  f32 show soc |
 |inputWatts|0 | 1000 | W | 1 |  input watts |
-|outputWatts|0 | 1000 | W | 1 |  output watts |
+|outputWatts|0 | 10000 | W | 1 |  output watts |
 |remainTime|0 | 12520 | h | 1 |  remain time |
 |maxVolDiff|0 | 1 | V | 0.001 |  max vol diff |
 |actSoc|0 | 100 | % | 1 |  act soc |
@@ -567,7 +567,7 @@
 |tagChgAmp|0 | 80 | A | 0.001 |  tag chg amp |
 |f32ShowSoc|0 | 100 | % | 1 |  f32 show soc |
 |inputWatts|0 | 1000 | W | 1 |  input watts |
-|outputWatts|0 | 1000 | W | 1 |  output watts |
+|outputWatts|0 | 10000 | W | 1 |  output watts |
 |remainTime|0 | 12520 | h | 1 |  remain time |
 |maxVolDiff|0 | 1 | V | 0.001 |  max vol diff |
 |actSoc|0 | 100 | % | 1 |  act soc |

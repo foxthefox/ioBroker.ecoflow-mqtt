@@ -1,5 +1,5 @@
 # States for  POWEROCEAN
-### version: 1.4.9
+### version: 1.4.10
 
 [statusReportBattery1](#statusReportBattery1)
 
