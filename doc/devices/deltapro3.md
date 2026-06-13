@@ -237,7 +237,7 @@
 |plugInInfoAcInVol|0 | 250 | V | 1 |  plug in info ac in vol |
 |plugInInfo_24vVol|0 | 30 | V | 1 |  plug in info_24v vol |
 |plugInInfo_24vAmp|-30 | 30 | A | 1 |  plug in info_24v amp |
-|plugInInfoL1Vol|0 | 240 | V | 1 |  plug in info l1 vol |
+|plugInInfoL1Vol|0 | 250 | V | 1 |  plug in info l1 vol |
 |plugInInfo_4p8_1Vol|0 | 240 | V | 1 |  plug in info_4p8_1 vol |
 |plugInInfo_4p8_2Vol|0 | 240 | V | 1 |  plug in info_4p8_2 vol |
 |plugInInfoBmsVol|0 | 60 | V | 1 |  plug in info bms vol |
@@ -351,7 +351,7 @@
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |soc|0 | 100 | % | 1 |  soc |
 |vol|0 | 60 | V | 0.001 |  vol |
-|amp|0 | 30 | A | 0.001 |  amp |
+|amp|0 | 50 | A | 0.001 |  amp |
 |temp|0 | 90 | °C | 1 |  temp |
 |designCap|0 | 80000 | mAh | 1 |  design cap |
 |remainCap|0 | 80000 | mAh | 1 |  remain cap |
@@ -366,7 +366,7 @@
 |minMosTemp|0 | 100 | °C | 1 |  min mos temp |
 |tagChgAmp|0 | 80 | A | 0.001 |  tag chg amp |
 |f32ShowSoc|0 | 100 | % | 1 |  f32 show soc |
-|inputWatts|0 | 1000 | W | 1 |  input watts |
+|inputWatts|0 | 4000 | W | 1 |  input watts |
 |outputWatts|0 | 10000 | W | 1 |  output watts |
 |remainTime|0 | 12520 | h | 1 |  remain time |
 |maxVolDiff|0 | 1 | V | 0.001 |  max vol diff |
@@ -451,7 +451,7 @@
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |soc|0 | 100 | % | 1 |  soc |
 |vol|0 | 60 | V | 0.001 |  vol |
-|amp|0 | 30 | A | 0.001 |  amp |
+|amp|0 | 50 | A | 0.001 |  amp |
 |temp|0 | 90 | °C | 1 |  temp |
 |designCap|0 | 80000 | mAh | 1 |  design cap |
 |remainCap|0 | 80000 | mAh | 1 |  remain cap |
@@ -466,7 +466,7 @@
 |minMosTemp|0 | 100 | °C | 1 |  min mos temp |
 |tagChgAmp|0 | 60 | A | 0.001 |  tag chg amp |
 |f32ShowSoc|0 | 100 | % | 1 |  f32 show soc |
-|inputWatts|0 | 1000 | W | 1 |  input watts |
+|inputWatts|0 | 4000 | W | 1 |  input watts |
 |outputWatts|0 | 10000 | W | 1 |  output watts |
 |remainTime|0 | 12520 | h | 1 |  remain time |
 |maxVolDiff|0 | 1 | V | 0.001 |  max vol diff |
@@ -551,7 +551,7 @@
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
 |soc|0 | 100 | % | 1 |  soc |
 |vol|0 | 60 | V | 0.001 |  vol |
-|amp|0 | 30 | A | 0.001 |  amp |
+|amp|0 | 50 | A | 0.001 |  amp |
 |temp|0 | 90 | °C | 1 |  temp |
 |designCap|0 | 80000 | mAh | 1 |  design cap |
 |remainCap|0 | 80000 | mAh | 1 |  remain cap |
@@ -566,7 +566,7 @@
 |minMosTemp|0 | 100 | °C | 1 |  min mos temp |
 |tagChgAmp|0 | 80 | A | 0.001 |  tag chg amp |
 |f32ShowSoc|0 | 100 | % | 1 |  f32 show soc |
-|inputWatts|0 | 1000 | W | 1 |  input watts |
+|inputWatts|0 | 4000 | W | 1 |  input watts |
 |outputWatts|0 | 10000 | W | 1 |  output watts |
 |remainTime|0 | 12520 | h | 1 |  remain time |
 |maxVolDiff|0 | 1 | V | 0.001 |  max vol diff |
