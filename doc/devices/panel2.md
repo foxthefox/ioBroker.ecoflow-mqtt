@@ -584,7 +584,7 @@
 |cur_0|0 | 30 | A | 1 |  Channel #1 current |
 |cur_1|0 | 30 | A | 1 |  Channel #2 current |
 |cur_2|0 | 30 | A | 1 |  Channel #3 current |
-|cur_3|0 | 30 | A | 1 |  Channel #4 current |
+|cur_3|0 | 50 | A | 1 |  Channel #4 current |
 |cur_4|0 | 30 | A | 1 |  Channel #5 current |
 |cur_5|0 | 30 | A | 1 |  Channel #6 current |
 |cur_6|0 | 30 | A | 1 |  Channel #7 current |
