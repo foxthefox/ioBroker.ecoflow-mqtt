@@ -593,7 +593,7 @@
 |cur_9|0 | 30 | A | 1 |  Channel #10 current |
 |cur_10|0 | 30 | A | 1 |  Channel #11 current |
 |cur_11|0 | 30 | A | 1 |  Channel #12 current |
-|sumCur|0 | 30 | A | 1 |  Total Load Current |
+|sumCur|0 | 100 | A | 1 |  Total Load Current |
 
 
 ## loadPower
@@ -601,18 +601,18 @@
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
 |----------|:-------------:|:-------------:|:------:|:-----:|-----|
-|chWatt_0|0 | 3600 | W | 1 |  Power channel #1 |
-|chWatt_1|0 | 3600 | W | 1 |  Power channel #2 |
-|chWatt_2|0 | 3600 | W | 1 |  Power channel #3 |
-|chWatt_3|0 | 3600 | W | 1 |  Power channel #4 |
-|chWatt_4|0 | 3600 | W | 1 |  Power channel #5 |
-|chWatt_5|0 | 3600 | W | 1 |  Power channel #6 |
-|chWatt_6|0 | 3600 | W | 1 |  Power channel #7 |
-|chWatt_7|0 | 3600 | W | 1 |  Power channel #8 |
-|chWatt_8|0 | 3600 | W | 1 |  Power channel #9 |
-|chWatt_9|0 | 3600 | W | 1 |  Power channel #10 |
-|chWatt_10|0 | 3600 | W | 1 |  Power channel #11 |
-|chWatt_11|0 | 3600 | W | 1 |  Power channel #12 |
-|sumWatt|0 | 10000 | W | 1 |  Total Load Power |
+|chWatt_0|0 | 5800 | W | 1 |  Power channel #1 |
+|chWatt_1|0 | 5800 | W | 1 |  Power channel #2 |
+|chWatt_2|0 | 5800 | W | 1 |  Power channel #3 |
+|chWatt_3|0 | 5800 | W | 1 |  Power channel #4 |
+|chWatt_4|0 | 5800 | W | 1 |  Power channel #5 |
+|chWatt_5|0 | 5800 | W | 1 |  Power channel #6 |
+|chWatt_6|0 | 5800 | W | 1 |  Power channel #7 |
+|chWatt_7|0 | 5800 | W | 1 |  Power channel #8 |
+|chWatt_8|0 | 5800 | W | 1 |  Power channel #9 |
+|chWatt_9|0 | 5800 | W | 1 |  Power channel #10 |
+|chWatt_10|0 | 5800 | W | 1 |  Power channel #11 |
+|chWatt_11|0 | 5800 | W | 1 |  Power channel #12 |
+|sumWatt|0 | 12000 | W | 1 |  Total Load Power |
 
 
