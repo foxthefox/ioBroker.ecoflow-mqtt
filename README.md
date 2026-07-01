@@ -373,6 +373,8 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 ### 1.4.10 (npm)
 
 - (foxthefox) deltapro3 some max values adapted
+- (foxthefox) deltaproultra more batteries
+- (Tigerlilly28) timer leak, connack timout, sporadic huge values
 
 ### 1.4.9 (npm)
 

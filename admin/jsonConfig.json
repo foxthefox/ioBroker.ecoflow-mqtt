@@ -563,6 +563,26 @@
                             "filter": false,
                             "sort": false,
                             "default": false
+                        },
+                        {
+                            "type": "checkbox",
+                            "title": "Slave 4",
+                            "width": "5%",
+                            "hidden": "data.devType !== 'deltaproultra'",
+                            "attr": "pstationsSlave3",
+                            "filter": false,
+                            "sort": false,
+                            "default": false
+                        },
+                        {
+                            "type": "checkbox",
+                            "title": "Slave 5",
+                            "width": "5%",
+                            "hidden": "data.devType !== 'deltaproultra'",
+                            "attr": "pstationsSlave3",
+                            "filter": false,
+                            "sort": false,
+                            "default": false
                         }
                     ]
                 },

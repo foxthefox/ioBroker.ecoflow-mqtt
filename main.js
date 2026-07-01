@@ -17,6 +17,7 @@ const mqtt = require('mqtt');
 
 let recon_timer = null;
 let lastQuotInterval = null;
+
 let haLoadInterval = null;
 let msgCalcInterval = null;
 
@@ -309,7 +310,12 @@ class EcoflowMqtt extends utils.Adapter {
                                             part !== 'BPInfo2' &&
                                             part !== 'BMSHeartBeatReport2' &&
                                             part !== 'bPInfo2' &&
-                                            part !== 'BPInfo3'
+                                            part !== 'BPInfo3' &&
+                                            part !== 'BPInfo4' &&
+                                            part !== 'BPInfo5' &&
+                                            part !== 'statusReportBattery4' &&
+                                            part !== 'statusReportBattery5' &&
+                                            part !== 'statusReportBattery6'
                                         ) {
                                             if (this.config.msgStateCreation) {
                                                 this.log.debug('____________________________________________');
@@ -352,8 +358,10 @@ class EcoflowMqtt extends utils.Adapter {
                                                 confdevices[psta]['pstationsSlave2']) ||
                                             ((part === 'statusReportBattery4' || part === 'BPInfo3') &&
                                                 confdevices[psta]['pstationsSlave3']) ||
-                                            (part === 'statusReportBattery5' && confdevices[psta]['pstationsSlave4']) ||
-                                            (part === 'statusReportBattery6' && confdevices[psta]['pstationsSlave5'])
+                                            ((part === 'statusReportBattery5' || part === 'BPInfo4') &&
+                                                confdevices[psta]['pstationsSlave4']) ||
+                                            ((part === 'statusReportBattery6' || part === 'BPInfo5') &&
+                                                confdevices[psta]['pstationsSlave5'])
                                         ) {
                                             if (this.config.msgStateCreation) {
                                                 this.log.debug('____________________________________________');
@@ -658,10 +666,18 @@ class EcoflowMqtt extends utils.Adapter {
                 this.log.debug(`[EF] ` + `url           -> ${this.mqttUrl}`);
                 this.log.debug(`[EF] ` + `protocol      -> ${this.mqttProtocol}`);
 
-                this.client = mqtt.connect(`${this.mqttUrl}:${this.mqttPort}`, optionsMqtt);
+                this.client = mqtt.connect(`${this.mqttProtocol}${this.mqttUrl}:${this.mqttPort}`, optionsMqtt);
 
                 this.client.on('connect', async () => {
                     this.log.info('EF connected');
+                    if (lastQuotInterval) {
+                        this.clearInterval(lastQuotInterval);
+                        lastQuotInterval = null;
+                    }
+                    if (msgCalcInterval) {
+                        this.clearInterval(msgCalcInterval);
+                        msgCalcInterval = null;
+                    }
                     if (topics.length > 0) {
                         if (this.client) {
                             this.client.subscribe(topics, async err => {

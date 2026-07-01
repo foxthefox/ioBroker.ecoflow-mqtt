@@ -15,6 +15,10 @@
 
 [BPInfo3](#BPInfo3)
 
+[BPInfo4](#BPInfo4)
+
+[BPInfo5](#BPInfo5)
+
 
 
 ## AppParaHeartbeatReport
@@ -287,6 +291,52 @@
 |bpErrCode| Battery pack Error Code | {0:OK?} |
 
 ## BPInfo3
+
+### number
+| State  |      Min     |      Max     |  Unit |  Mult |  Name |
+|----------|:-------------:|:-------------:|:------:|:-----:|-----|
+|bpNo|0 | 5 |  | 1 |  Battery pack number |
+|bpSoc|0 | 100 | % | 1 |  Battery pack SOC |
+|bpPwr|0 | 7200 | W | 1 |  Battery pack power |
+|bpEnergy|0 | 6200 | Wh | 1 |  Battery pack energy |
+|heatTime|0 | 360 | min | 1 |  Battery pack heating time |
+|remainTime|0 |  n/a | min | 1 |  Battery pack remain time |
+|bpSocMax|60 | 100 | % | 1 |  Battery pack max SOC |
+|bpSocMin|0 | 30 | % | 1 |  Battery pack min SOC |
+|bpTemp|0 | 80 | °C | 1 |  Battery pack temperature |
+
+
+### diagnostic
+
+| State  |     Name |  values |
+|----------|:-------------:|------|
+|bpChgSta| Battery pack Charge State | {0:OK?} |
+|bpErrCode| Battery pack Error Code | {0:OK?} |
+
+## BPInfo4
+
+### number
+| State  |      Min     |      Max     |  Unit |  Mult |  Name |
+|----------|:-------------:|:-------------:|:------:|:-----:|-----|
+|bpNo|0 | 5 |  | 1 |  Battery pack number |
+|bpSoc|0 | 100 | % | 1 |  Battery pack SOC |
+|bpPwr|0 | 7200 | W | 1 |  Battery pack power |
+|bpEnergy|0 | 6200 | Wh | 1 |  Battery pack energy |
+|heatTime|0 | 360 | min | 1 |  Battery pack heating time |
+|remainTime|0 |  n/a | min | 1 |  Battery pack remain time |
+|bpSocMax|60 | 100 | % | 1 |  Battery pack max SOC |
+|bpSocMin|0 | 30 | % | 1 |  Battery pack min SOC |
+|bpTemp|0 | 80 | °C | 1 |  Battery pack temperature |
+
+
+### diagnostic
+
+| State  |     Name |  values |
+|----------|:-------------:|------|
+|bpChgSta| Battery pack Charge State | {0:OK?} |
+|bpErrCode| Battery pack Error Code | {0:OK?} |
+
+## BPInfo5
 
 ### number
 | State  |      Min     |      Max     |  Unit |  Mult |  Name |
