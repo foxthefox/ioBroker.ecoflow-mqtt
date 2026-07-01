@@ -219,7 +219,7 @@
 |minMosTemp|0 | 100 | °C | 1 |  min mos temp |
 |tagChgAmp|0 | 60 | A | 0.001 |  tag chg amp |
 |f32ShowSoc|0 | 100 | % | 1 |  f32 show soc |
-|inputWatts|0 | 1000 | W | 1 |  input watts |
+|inputWatts|0 | 1500 | W | 1 |  input watts |
 |outputWatts|0 | 1000 | W | 1 |  output watts |
 |remainTime|0 | 5999 | h | 1 |  remain time |
 |maxVolDiff|0 | 1 | V | 0.001 |  max vol diff |

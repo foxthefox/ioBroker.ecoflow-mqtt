@@ -230,7 +230,7 @@
 |powGetPv|0 | 600 | W | 1 |  pow get pv |
 |cmsBattPowOutMax|0 | 8000 | W | 1 |  cms batt pow out max |
 |cmsBattPowInMax|0 | 8000 | W | 1 |  cms batt pow in max |
-|cmsBattFullEnergy|0 | 3840 | Wh | 1 |  cms batt full energy |
+|cmsBattFullEnergy|0 | 15000 | Wh | 1 |  cms batt full energy |
 |stormPatternEndTime|0 | 60 | h | 1 |  storm pattern end time |
 |powGetSysGrid|0 | 4000 | W | 1 |  pow get sys grid |
 |powGetSysLoad|0 | 10000 | W | 1 |  pow get sys load |
