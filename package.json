@@ -24,7 +24,7 @@
         "node": ">= 22"
     },
     "dependencies": {
-        "@iobroker/adapter-core": "^3.4.1",
+        "@iobroker/adapter-core": "^3.4.3",
         "mqtt": "^5.15.2",
         "protobufjs": "^8.7.1"
     },
