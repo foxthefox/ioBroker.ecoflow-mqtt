@@ -4,6 +4,42 @@
  * Created with @iobroker/create-adapter v2.5.0
  */
 
+
+/*
+* Adapter
+* - definition of devices
+* - creation of generic device states
+* - propagation of device definitions to EF API
+* - propagation of log level
+* - configuration of EF MQTT
+* - initiating EF MQTT
+* - receiving EF JSON (definitions + data)
+* - creation of object tree based on definitions
+* - storage data JSON in IOB
+* - configuration of HA MQTT
+* - initiating HA MQTT
+* - creation of MQTT discovery for HA
+* - 
+* - adapter subscribes to commands only
+* - EF Telegram -> IOB processing -> HA processing (but not from state change)
+* - 
+* EF MQTT
+* - EF decoding
+* - receive JSON
+* - process JSON
+* - 
+* HA MQTT
+* - 
+
+* EF API class
+* - puts the data together for commands, based on the internal states
+* - stores the proto and device state defs
+* - one instance per device
+* - 
+
+* EF Gateway
+* - MQTT local map between pathes
+
 // The adapter-core module gives you access to the core ioBroker functions
 // you need to create an adapter
 const utils = require('@iobroker/adapter-core');
@@ -40,15 +76,7 @@ class EcoflowMqtt extends utils.Adapter {
         this.mqttPort = 8883;
         this.mqttProtocol = 'mqtts://';
         this.mqttUrl = 'mqtt-e.ecoflow.com';
-        this.pdevices = {};
-        this.pdevicesStates = {};
-        this.pdevicesStatesDict = {};
-        this.pdevicesStates = {};
-        this.pdevicesCmd = {};
-        this.protoSource = {};
-        this.protoMsg = {};
-        this.storeProtoPayload = {};
-        this.prepareProtoCmd = {};
+
         this.quotas = {};
         this.unknownPBmsg = {};
         this.haDevices = null;
@@ -137,480 +165,6 @@ class EcoflowMqtt extends utils.Adapter {
                             this.pdevices[id]['devName'] = name;
                             this.pdevices[id]['haEnable'] = haEnable;
                             this.pdevices[id]['debugEnable'] = debugEnable;
-                            if (confdevices[psta]['pstationsSlave1']) {
-                                this.pdevices[id]['pstationsSlave1'] = confdevices[psta]['pstationsSlave1'];
-                            }
-                            if (confdevices[psta]['pstationsSlave2']) {
-                                this.pdevices[id]['pstationsSlave2'] = confdevices[psta]['pstationsSlave2'];
-                            }
-                            if (confdevices[psta]['pstationsSlave3']) {
-                                this.pdevices[id]['pstationsSlave3'] = confdevices[psta]['pstationsSlave3'];
-                            }
-                            if (confdevices[psta]['pstationsSlave4']) {
-                                this.pdevices[id]['pstationsSlave4'] = confdevices[psta]['pstationsSlave4'];
-                            }
-                            if (confdevices[psta]['pstationsSlave5']) {
-                                this.pdevices[id]['pstationsSlave5'] = confdevices[psta]['pstationsSlave5'];
-                            }
-                            let devStates = null;
-                            if (devtype === 'pstream600' || devtype === 'pstream800') {
-                                devStates = require('./lib/dict_data/ef_pstream_data.js').deviceStates;
-                            } else if (
-                                devtype === 'powerkitbp2000' ||
-                                devtype === 'powerkitbp5000' ||
-                                devtype === 'powerkit'
-                            ) {
-                                devStates = require('./lib/dict_data/ef_powerkit_data.js').deviceStates;
-                            } else if (devtype === 'plug') {
-                                devStates = require('./lib/dict_data/ef_plug_data.js').deviceStates;
-                            } else {
-                                devStates = require(`./lib/dict_data/ef_${devtype}_data.js`).deviceStates;
-                            }
-
-                            if (!devStates) {
-                                this.log.warn(`no states for ${devtype}`);
-                            }
-
-                            //create pdevices objects
-                            const origdevtype = devtype;
-                            if (devtype === 'pstream600' || devtype === 'pstream800') {
-                                devtype = 'pstream';
-                            }
-                            if (devtype === 'powerkitbp2000' || devtype === 'powerkitbp5000') {
-                                devtype = 'powerkit';
-                            }
-
-                            let pdevicesStatesDict = null;
-                            let pdevicesCmd = null;
-                            let protoSource = null;
-                            let protoMsg = null;
-                            let storeProtoPayload = null;
-                            let prepareProtoCmd = null;
-                            //protobuf devices
-                            if (
-                                devtype === 'pstream' ||
-                                devtype === 'plug' ||
-                                devtype === 'powerocean' ||
-                                devtype === 'poweroceanplus' ||
-                                devtype === 'poweroceanfit' ||
-                                devtype === 'panel2' ||
-                                devtype === 'deltaproultra' ||
-                                devtype === 'alternator' ||
-                                devtype === 'deltapro3' ||
-                                devtype === 'delta3' ||
-                                devtype === 'delta3plus' ||
-                                devtype === 'river3' ||
-                                devtype === 'river3plus' ||
-                                devtype === 'smartmeter' ||
-                                devtype === 'stream_ac_pro' ||
-                                devtype === 'stream_pro' ||
-                                devtype === 'stream_ultra' ||
-                                devtype === 'wave3' ||
-                                devtype === 'stream_inverter' ||
-                                devtype === 'glacier55' ||
-                                devtype === 'delta3maxplus' ||
-                                devtype === 'stream_ac' ||
-                                devtype === 'rapidpro320' ||
-                                devtype === 'delta3classic' ||
-                                devtype === 'stream_ultra_x' ||
-                                devtype === 'unknown'
-                            ) {
-                                pdevicesStatesDict = require(`./lib/dict_data/ef_${devtype}_data.js`).deviceStatesDict[
-                                    devtype
-                                ];
-                                pdevicesCmd = require(`./lib/dict_data/ef_${devtype}_data.js`).deviceCmd[origdevtype];
-                                protoSource = require(`./lib/dict_data/ef_${devtype}_data.js`).protoSource;
-                                protoMsg = require(`./lib/dict_data/ef_${devtype}_data.js`).protoMsg;
-                                storeProtoPayload = require(`./lib/dict_data/ef_${devtype}_data.js`).storeProtoPayload;
-                                prepareProtoCmd = require(`./lib/dict_data/ef_${devtype}_data.js`).prepareProtoCmd;
-                            } else if (devtype === 'powerkit') {
-                                pdevicesStatesDict = require(`./lib/dict_data/ef_${devtype}_data.js`).deviceStatesDict[
-                                    devtype
-                                ];
-                                pdevicesCmd = require(`./lib/dict_data/ef_${devtype}_data.js`).deviceCmd[devtype];
-                            } else {
-                                //JSON devices
-                                pdevicesStatesDict = require(`./lib/dict_data/ef_${devtype}_data.js`).deviceStatesDict[
-                                    origdevtype
-                                ];
-                                pdevicesCmd = require(`./lib/dict_data/ef_${devtype}_data.js`).deviceCmd[origdevtype];
-                            }
-
-                            if (!pdevicesStatesDict) {
-                                this.log.warn(`no states dict for ${devtype}`);
-                            }
-                            if (!pdevicesCmd) {
-                                this.log.warn(`no CMD dict for ${devtype}`);
-                            }
-
-                            //create device objects
-                            //we store only the dict from used components
-                            if (!this.pdevicesStatesDict[origdevtype]) {
-                                this.pdevicesStatesDict[origdevtype] = pdevicesStatesDict;
-                            }
-
-                            if (!this.pdevicesStates[origdevtype]) {
-                                this.pdevicesStates[origdevtype] = ef.statesFromDict(devStates, pdevicesStatesDict);
-                            }
-                            //if protobuf devices store additionally the protoSource and protoMsg
-                            if (protoSource) {
-                                if (!this.protoSource[devtype]) {
-                                    this.protoSource[devtype] = protoSource;
-                                }
-                            }
-                            if (protoMsg) {
-                                if (!this.protoMsg[devtype]) {
-                                    this.protoMsg[devtype] = protoMsg;
-                                }
-                            }
-                            // and storing the functions
-                            if (storeProtoPayload) {
-                                if (!this.storeProtoPayload[devtype]) {
-                                    this.storeProtoPayload[devtype] = storeProtoPayload;
-                                }
-                            }
-                            if (prepareProtoCmd) {
-                                if (!this.prepareProtoCmd[devtype]) {
-                                    this.prepareProtoCmd[devtype] = prepareProtoCmd;
-                                }
-                            }
-                            //we store only the cmd from used components
-                            if (!this.pdevicesCmd[origdevtype]) {
-                                this.pdevicesCmd[origdevtype] = pdevicesCmd;
-                            }
-                            // create devices
-                            if (devtype !== 'none' && devStates && pdevicesStatesDict) {
-                                this.log.info('==========================');
-                                this.log.info(`start device state creation ->${devtype} for Id ${id}`);
-                                try {
-                                    if (this.config.msgStateCreation) {
-                                        this.log.debug('____________________________________________');
-                                        this.log.debug(`create  device ${id}`);
-                                    }
-                                    await this.setObjectNotExistsAsync(id, {
-                                        type: 'device',
-                                        common: {
-                                            name: name,
-                                            role: 'device',
-                                        },
-                                        native: {},
-                                    });
-                                    for (let part in pdevicesStatesDict) {
-                                        if (
-                                            part !== 'bmsSlave1' &&
-                                            part !== 'bp2' &&
-                                            part !== 'statusReportBattery2' &&
-                                            part !== 'BPInfo1' &&
-                                            part !== 'BMSHeartBeatReport1' &&
-                                            part !== 'bPInfo1' &&
-                                            part !== 'bmsSlave2' &&
-                                            part !== 'bp3' &&
-                                            part !== 'statusReportBattery3' &&
-                                            part !== 'BPInfo2' &&
-                                            part !== 'BMSHeartBeatReport2' &&
-                                            part !== 'bPInfo2' &&
-                                            part !== 'BPInfo3'
-                                        ) {
-                                            if (this.config.msgStateCreation) {
-                                                this.log.debug('____________________________________________');
-                                                this.log.debug(`create  channel ${part}`);
-                                            }
-                                            await myutils.createMyChannel(this, id, part, part, 'channel');
-                                            for (let key in pdevicesStatesDict[part]) {
-                                                let type = pdevicesStatesDict[part][key]['entity'];
-                                                if (type !== 'icon') {
-                                                    if (devStates[part][type][key]) {
-                                                        if (this.config.msgStateCreation) {
-                                                            this.log.debug(`state creation ${key}`);
-                                                        }
-                                                        await myutils.createMyState(
-                                                            this,
-                                                            id,
-                                                            part,
-                                                            key,
-                                                            devStates[part][type][key],
-                                                        );
-                                                    } else {
-                                                        this.log.info(`not created/mismatch ->${part} ${key} ${type}`);
-                                                    }
-                                                }
-                                            }
-                                        } else if (
-                                            ((part === 'bmsSlave1' ||
-                                                part === 'bp2' ||
-                                                part === 'statusReportBattery2' ||
-                                                part === 'BPInfo1' ||
-                                                part === 'BMSHeartBeatReport1' ||
-                                                part !== 'bPInfo1') &&
-                                                confdevices[psta]['pstationsSlave1']) ||
-                                            ((part === 'bmsSlave2' ||
-                                                part === 'bp3' ||
-                                                part === 'statusReportBattery3' ||
-                                                part === 'BPInfo2' ||
-                                                part === 'BMSHeartBeatReport2' ||
-                                                part !== 'bPInfo2') &&
-                                                confdevices[psta]['pstationsSlave2']) ||
-                                            ((part === 'statusReportBattery4' || part === 'BPInfo3') &&
-                                                confdevices[psta]['pstationsSlave3']) ||
-                                            (part === 'statusReportBattery5' && confdevices[psta]['pstationsSlave4']) ||
-                                            (part === 'statusReportBattery6' && confdevices[psta]['pstationsSlave5'])
-                                        ) {
-                                            if (this.config.msgStateCreation) {
-                                                this.log.debug('____________________________________________');
-                                                this.log.debug(`create  channel ${part}`);
-                                            }
-                                            await myutils.createMyChannel(this, id, part, part, 'channel');
-                                            for (let key in pdevicesStatesDict[part]) {
-                                                let type = pdevicesStatesDict[part][key]['entity'];
-                                                if (type !== 'icon') {
-                                                    if (devStates[part][type][key]) {
-                                                        if (this.config.msgStateCreation) {
-                                                            this.log.debug(`state creation ${key}`);
-                                                        }
-                                                        await myutils.createMyState(
-                                                            this,
-                                                            id,
-                                                            part,
-                                                            key,
-                                                            devStates[part][type][key],
-                                                        );
-                                                    } else {
-                                                        this.log.info(`not created/mismatch ->${part} ${key} ${type}`);
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                    //create timeTask only for certain devices
-                                    if (devtype === 'pstream' || devtype === 'plug') {
-                                        let part = 'time_task_config_post';
-                                        if (this.config.msgStateCreation) {
-                                            this.log.debug('____________________________________________');
-                                            this.log.debug(`create  channel ${part}`);
-                                        }
-                                        //createMyChannel(adapter, device, channel, name, role)
-                                        await myutils.createMyChannel(this, id, part, part, 'channel');
-                                        for (let j = 1; j < 12; j++) {
-                                            const task = `task${j}`;
-                                            await myutils.createMyChannel(this, `${id}.${part}`, task, task, 'channel');
-                                            //taskIndex
-                                            //createMyState(adapter, device, channel, datapoint, stateObj)
-                                            await myutils.createMyState(
-                                                this,
-                                                id,
-                                                `${part}.${task}`,
-                                                'taskIndex',
-                                                devStates[part]['tasks']['taskIndex'],
-                                            );
-                                            //type
-                                            await myutils.createMyState(
-                                                this,
-                                                id,
-                                                `${part}.${task}`,
-                                                'type',
-                                                devStates[part]['tasks']['type'],
-                                            );
-                                            //timerange
-                                            await myutils.createMyChannel(
-                                                this,
-                                                `${id}.${part}.${task}`,
-                                                'timeRange',
-                                                'timeRange',
-                                                'channel',
-                                            );
-                                            for (let key in devStates[part]['tasks']['timeRange']) {
-                                                if (key === 'startTime' || key === 'stopTime') {
-                                                    for (let key2 in devStates[part]['tasks']['timeRange'][key]) {
-                                                        await myutils.createMyState(
-                                                            this,
-                                                            id,
-                                                            `${part}.${task}.timeRange.${key}`,
-                                                            key2,
-                                                            devStates[part]['tasks']['timeRange'][key][key2],
-                                                        );
-                                                    }
-                                                } else {
-                                                    await myutils.createMyState(
-                                                        this,
-                                                        id,
-                                                        `${part}.${task}.timeRange`,
-                                                        key,
-                                                        devStates[part]['tasks']['timeRange'][key],
-                                                    );
-                                                }
-                                            }
-                                        }
-                                    } else if (devtype === 'deltamax') {
-                                        let part = 'timeTask';
-                                        if (this.config.msgStateCreation) {
-                                            this.log.debug('____________________________________________');
-                                            this.log.debug(`create  channel ${part}`);
-                                        }
-                                        //createMyChannel(adapter, device, channel, name, role)
-                                        await myutils.createMyChannel(this, id, part, part, 'channel');
-                                        //"totalTaskNum"
-                                        await myutils.createMyState(
-                                            this,
-                                            id,
-                                            part,
-                                            'totalTaskNum',
-                                            devStates[part]['totalTaskNum'],
-                                        );
-                                        for (let j = 0; j < 6; j++) {
-                                            const task = `task${j}`;
-                                            await myutils.createMyChannel(this, `${id}.${part}`, task, task, 'channel');
-
-                                            for (let type in devStates[part]) {
-                                                if (type !== 'totalTaskNum') {
-                                                    for (let key in devStates[part][type]) {
-                                                        await myutils.createMyState(
-                                                            this,
-                                                            id,
-                                                            `${part}.${task}`,
-                                                            key,
-                                                            devStates[part][type][key],
-                                                        );
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    } else if (devtype === 'panel') {
-                                        let part = 'timeTask';
-                                        if (this.config.msgStateCreation) {
-                                            this.log.debug('____________________________________________');
-                                            this.log.debug(`create  channel ${part}`);
-                                        }
-                                        //createMyChannel(adapter, device, channel, name, role)
-                                        await myutils.createMyChannel(this, id, part, part, 'channel');
-                                        for (let j = 1; j < 21; j++) {
-                                            const task = `task${j}`;
-                                            await myutils.createMyChannel(this, `${id}.${part}`, task, task, 'channel');
-                                            await myutils.createMyState(
-                                                this,
-                                                id,
-                                                `${part}.${task}`,
-                                                'id',
-                                                devStates[part]['cfg']['id'],
-                                            );
-                                            await myutils.createMyState(
-                                                this,
-                                                id,
-                                                `${part}.${task}`,
-                                                'index',
-                                                devStates[part]['cfg']['index'],
-                                            );
-                                            //discharge has chSta state omly
-                                            await myutils.createMyState(
-                                                this,
-                                                id,
-                                                `${part}.${task}`,
-                                                'chSta',
-                                                devStates[part]['cfg']['chSta'],
-                                            );
-                                            //charge has param instead of chSta
-                                            await myutils.createMyChannel(
-                                                this,
-                                                `${id}.${part}.${task}`,
-                                                'param',
-                                                'param',
-                                                'channel',
-                                            );
-                                            for (let key in devStates[part]['cfg']['param']) {
-                                                await myutils.createMyState(
-                                                    this,
-                                                    id,
-                                                    `${part}.${task}.param`,
-                                                    key,
-                                                    devStates[part]['cfg']['param'][key],
-                                                );
-                                            }
-                                            //comCfg
-                                            await myutils.createMyChannel(
-                                                this,
-                                                `${id}.${part}.${task}`,
-                                                'comCfg',
-                                                'comCfg',
-                                                'channel',
-                                            );
-                                            for (let key in devStates[part]['cfg']['comCfg']) {
-                                                if (key === 'setTime') {
-                                                    //setTime
-                                                    await myutils.createMyChannel(
-                                                        this,
-                                                        `${id}.${part}.${task}.comCfg`,
-                                                        'setTime',
-                                                        'setTime',
-                                                        'channel',
-                                                    );
-                                                    for (let key2 in devStates[part]['cfg']['comCfg'][key]) {
-                                                        await myutils.createMyState(
-                                                            this,
-                                                            id,
-                                                            `${part}.${task}.comCfg.${key}`,
-                                                            key2,
-                                                            devStates[part]['cfg']['comCfg'][key][key2],
-                                                        );
-                                                    }
-                                                } else if (key === 'timeRange') {
-                                                    //timerange
-                                                    await myutils.createMyChannel(
-                                                        this,
-                                                        `${id}.${part}.${task}.comCfg`,
-                                                        'timeRange',
-                                                        'timeRange',
-                                                        'channel',
-                                                    );
-                                                    for (let key2 in devStates[part]['cfg']['comCfg'][key]) {
-                                                        if (key2 === 'startTime' || key2 === 'endTime') {
-                                                            for (let key3 in devStates[part]['cfg']['comCfg'][key][
-                                                                key2
-                                                            ]) {
-                                                                await myutils.createMyState(
-                                                                    this,
-                                                                    id,
-                                                                    `${part}.${task}.comCfg.${key}.${key2}`,
-                                                                    key3,
-                                                                    devStates[part]['cfg']['comCfg'][key][key2][key3],
-                                                                );
-                                                            }
-                                                        } else {
-                                                            await myutils.createMyState(
-                                                                this,
-                                                                id,
-                                                                `${part}.${task}.comCfg.${key}`,
-                                                                key2,
-                                                                devStates[part]['cfg']['comCfg'][key][key2],
-                                                            );
-                                                        }
-                                                    }
-                                                } else {
-                                                    await myutils.createMyState(
-                                                        this,
-                                                        id,
-                                                        `${part}.${task}.comCfg`,
-                                                        key,
-                                                        devStates[part]['cfg']['comCfg'][key],
-                                                    );
-                                                }
-                                            }
-                                        }
-                                    }
-                                    this.setState(`${id}.info.msgCount`, {
-                                        val: 0,
-                                        ack: true,
-                                    });
-                                    this.log.info(`device states created for ${id} / ${devtype} / ${name}`);
-                                    this.log.info('==========================');
-                                } catch (error) {
-                                    this.log.error(`create states ${error}`);
-                                }
-                            } else {
-                                this.log.error(
-                                    `something empty ID->${id} states -> ${devStates} dict -> ${
-                                        pdevicesStatesDict
-                                    } type -> ${devtype}`,
-                                );
-                            }
                         }
                     } catch (error) {
                         this.log.error(`${devtype} modification or state creation went wrong ->${error}`);
@@ -620,6 +174,14 @@ class EcoflowMqtt extends utils.Adapter {
         } catch (error) {
             this.log.error(`read config ${error}`);
         }
+        
+        new EF()
+        listener
+        case
+        
+        trigger of new messages 
+        
+        
 
         //Homeassistant connection
         if (this.config.haMqttEnable) {

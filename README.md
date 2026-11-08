@@ -368,7 +368,22 @@ it creates [PROTOBUF unknown] messages in th log, they contain the raw hex teleg
 
 ### **WORK IN PROGRESS**
 
-- (foxthefox) new datapoints Delta2max
+### 2.0.0 BREAKING changes
+The adapter got a huge refactoring which was needed to catch up with the increasing number of devices and their individual structure.
+Most of the original structure from previous versions is kept!
+Changes are related to use the raw telegram structure as much as possible and avoid the limit to 2 levels in the object tree.
+Deeply nested states are now transferred into deeper level of the object tree.
+This makes highly interesting data like cell voltage finally visible.
+Similar the task configuration is now fully visible, whereby the tasks shall still be defined in the EF-App.
+Changes in setting of states are now directly taken over and there is no need to delete the datapoint anymore.
+In many cases the command datapoint gets separated from the status value, which gives on one side a clear structure and on the other side avoids hardcoded mapping/merging.
+Defining the amount of additional batteries is no longer needed hence.
+
+Where are the breaking changes
+- SmartHome Panel 1 or 2 (almost the complete object tree)
+- Power Ocean (battery and other data)
+- Delta Pro Ultra (battery data numbering)
+- Glacier (settings portion)
 
 ### 1.4.9 (npm)
 
